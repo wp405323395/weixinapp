@@ -1,0 +1,106 @@
+/**index.wxss**/
+@import "../common/lib/weui.wxss";
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+/* root.wxss */
+
+.scrollview {
+  height: 400px;
+  margin-top: 10px;
+}
+
+.product_box_containner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.scroll_view_item {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
+
+.partingline {
+  height: 2px;
+  width: 100%;
+  background-color: black;
+}
+
+.item-name {
+  text-align: left;
+  margin-left: 55rpx;
+}
+
+.product_img {
+  border: 1px solid black;
+  width: 100px;
+  height: 70px;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+  display:block;
+
+}
+
+button:last-child {
+  margin-bottom: 0;
+}
+
+.page-section-title {
+  padding: 0;
+}
+
+.swiper-item {
+  display: block;
+  height: 150px;
+}
+
+.page-section-title {
+  margin-top: 60rpx;
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  right: 0;
+  color: #353535;
+  font-size: 30rpx;
+}
+
+.page-foot {
+  margin-top: 50rpx;
+}
+
+.product_type_name {
+  height: 70rpx;
+  line-height: 70rpx;
+  background: yellow;
+  padding-left: 30rpx;
+}
+
+.product_box {
+  padding: 20rpx;
+  
+}

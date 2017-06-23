@@ -1,0 +1,20 @@
+
+<view class="scrollView">
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
+
+      <block wx:for="{{products}}" wx:key="{{item.typeId}}">
+        <view class="product_type_name">{{item.typeName}}</view>
+        <view class="product_box_containner">
+        <block  wx:for="{{item.products}}" wx:key="{{item.typeId}}">
+          <view class="scroll_view_item">
+            <view class="product_box">
+<view id="{{item.id}}" class="item-name">{{item.name}}</view>
+            <image src="{{item.img}}" class="product_img" mode="scaleToFill"></image>
+            </view>
+          </view>
+        </block>
+        </view>
+      </block>
+
+    </scroll-view>
+  </view>
