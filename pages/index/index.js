@@ -104,7 +104,7 @@ Page({
     var product = event.currentTarget.dataset.name;
     console.log("点击了+" + product.id);
     wx.navigateTo({
-      url: '../product_detail/product_detail',
+      url: '../product_detail/product_detail?id=' +product.id,
     });
   }
 })

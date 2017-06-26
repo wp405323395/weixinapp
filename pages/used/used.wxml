@@ -1,5 +1,5 @@
 <!--used.wxml-->
 <!--<import src="../common/products.wxml" />-->
 <include src="../common/products.wxml" />
-<view>xxxxxdd</view>
+
 

@@ -19,7 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var product = loadProductHelper.getProductById("100008");
+    var productId = options.id;
+    var product = loadProductHelper.getProductById(productId);
     var btnText;
     if (product.isUsed) {
       product.btnText = "已使用";
