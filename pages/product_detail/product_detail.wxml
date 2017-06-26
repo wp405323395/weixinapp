@@ -1,2 +1,36 @@
 <!--product_detail.wxml-->
-<text>product_detail.wxml</text>
+<view class="container">
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+<text class="details">
+    {{product.storeInstructions}}
+  </text>
+
+  <view class="introduce">
+    <view class="introduce_item">
+      <text class="lable">优惠活动</text>
+      <text class="details">{{product.productInstructions}}</text>
+    </view>
+    <view class="introduce_item">
+      <text class="lable">截至日期</text>
+      <text class="details">{{product.deadline}}</text>
+    </view>
+    <view class="introduce_item">
+      <text class="lable">我们的公众号</text>
+      <text class="details">公众号</text>
+    </view>
+  </view>
+
+<button id="receive"  disabled="{{product.isUsed}}" bindtap="btn_click">{{product.btnText}}</button>
+
+
+
+</view>

@@ -1,1 +1,46 @@
 /* product_detail.wxss */
+@import "../common/lib/weui.wxss";
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+} 
+.swiper-item {
+  display: block;
+  height: 150px;
+}
+.details{
+  margin-top: 0;
+  padding-top: 0;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+}
+.introduce_item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+}
+.introduce{
+  margin-top: 20rpx;
+  width: 100%;
+}
+.lable{
+  color: #666666;
+}
+
+#receive{
+  position: absolute;
+  bottom: 0px;
+  box-sizing: border-box;
+  margin-right: 20rpx;
+  width: 90%;
+}
