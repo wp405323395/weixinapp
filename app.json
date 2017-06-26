@@ -28,12 +28,6 @@
         "iconPath": "image/icon_API.png",
         "selectedIconPath": "image/icon_API_HL.png",
         "text": "已使用"
-      },
-      {
-        "pagePath": "pages/product_detail/product_detail",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "详情"
       }
     ]
   },

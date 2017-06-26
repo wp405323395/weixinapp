@@ -17,14 +17,14 @@
       <block wx:for="{{products}}" wx:key="{{item.typeId}}">
         <view class="product_type_name">{{item.typeName}}</view>
         <view class="product_box_containner">
-        <block  wx:for="{{item.products}}" wx:key="{{item.typeId}}">
-          <view class="scroll_view_item">
-            <view class="product_box">
-<view id="{{item.id}}" class="item-name">{{item.name}}</view>
-            <image src="{{item.img}}" class="product_img" mode="scaleToFill"></image>
+          <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
+            <view class="scroll_view_item">
+              <view class="product_box"  >
+                <view id="{{item.id}}" class="item-name">{{item.name}}</view>
+                <image src="{{item.img}}" class="product_img" mode="scaleToFill" bindtap="productClick" data-name="{{item}}"></image>
+              </view>
             </view>
-          </view>
-        </block>
+          </block>
         </view>
       </block>
 

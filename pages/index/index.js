@@ -17,31 +17,31 @@ Page({
     interval: 2000,
     duration: 500
   },
-  
+
   onLoad: function () {
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
+    app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo:userInfo
+        userInfo: userInfo
       })
     })
     this.loadProduct();
   },
 
   upper: function (e) {
-     //console.log(e)
+    //console.log(e)
   },
   lower: function (e) {
-   // console.log(e)
+    // console.log(e)
   },
   scroll: function (e) {
-   // console.log(e)
+    // console.log(e)
   },
 
-  loadMore:function(){
+  loadMore: function () {
     console.log("加载更多");
   },
 
@@ -52,9 +52,9 @@ Page({
 
   },
 
-/**
- * 加载商品
- */
+  /**
+   * 加载商品
+   */
   loadProduct: function () {
     var self = this
 
@@ -78,7 +78,7 @@ Page({
           loading: false
         })
         //////
-        
+
         self.setData({
           products: common.getProducts()
         })
@@ -100,7 +100,13 @@ Page({
       }
     })
   },
-
+  productClick: function (event) {
+    var product = event.currentTarget.dataset.name;
+    console.log("点击了+" + product.id);
+    wx.navigateTo({
+      url: '../product_detail/product_detail',
+    });
+  }
 })
 
 
