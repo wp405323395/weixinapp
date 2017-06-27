@@ -1,111 +1,146 @@
 // used.js
- const requestUrl = require('../../config').requestUrl
- const duration = 2000
+const requestUrl = require('../../config').requestUrl
+const duration = 2000
 var common = require('../common/loadProduct.js')
+var url = "http://cccm";
+var page = 1;
+var that;
+
+var loadding;
+var currentTypeId;
+
+var GetList = function (that,typeId) {
+  if(currentTypeId != typeId) {
+    page = 1;
+  }
+  currentTypeId = typeId;
+  if (loadding) {
+    return;
+  }
+  loadding = true;
+  var a = common.getProducts()[0];
+  that.setData({
+    foot_loading: false
+  });
+  wx.request({
+    url: url,
+    data: {
+      pageSize: 10,
+      pageNo: page,
+      typeId:typeId
+    },
+    success: function (res) {
+      var l = that.data.list
+      for (var i = 0; i < res.data.length; i++) {
+        //l.push(res.data[i])
+        l.push(a);
+      }
+      that.setData({
+        list: l
+      });
+      page++;
+      that.setData({
+        foot_loading: true
+      });
+      loadding = false;
+      wx.hideToast();
+    },
+    fail: function ({errMsg}) {
+      var l = that.data.list
+      var lis = common.getProductsByTypeId(1);
+      l = l.concat(lis);
+      that.setData({
+        list: l,
+        foot_loading: true
+      });
+      loadding = false;
+      wx.hideToast();
+    }
+  });
+}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    toView: 'green',
-
     userInfo: {},
-    products: {},
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: true,
-    interval: 2000,
-    duration: 500
+    foot_loading: true,
+    list: [],
+    scrollTop: 0,
+    scrollHeight: 0,
+    status_menu: ["menu_focus", "menu_unfocus", "menu_unfocus"]
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadProduct();
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+    that = this;
+    wx.showToast({
+      title: "loading",
+      icon: "loading",
+      duration: 10000
+    })
+    GetList(this);
+    wx.getSystemInfo({
+      success: function (res) {
+        console.info(res.windowHeight);
+        that.setData({
+          scrollHeight: res.windowHeight
+        });
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  bindDownLoad: function () {
+    console.log("bindDownLoad");
+    GetList(this);
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  scroll: function (event) {
+    //console.log("scroll");
+    // this.setData({
+    //   scrollTop: event.detail.scrollTop
+    // });
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  refresh: function (event) {
+    console.log("refresh");
+    // page = 1;
+    // this.setData({
+    //   list: [],
+    //   scrollTop: 0
+    // });
+    // GetList(this)
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
-  upper: function (e) {
-    //console.log(e)
-  },
-  lower: function (e) {
-    // console.log(e)
-  },
-  scroll: function (e) {
-    // console.log(e)
-  },
-
-  loadMore: function () {
-    console.log("加载更多");
-  },
 
   /**
    * 加载商品
    */
-   loadProduct :function() {
+  loadProduct: function () {
     var self = this
-
-  self.setData({
-      loading: true
-    })
-
-  wx.request({
+    wx.showNavigationBarLoading();
+    wx.request({
       url: requestUrl,
       data: {
         noncestr: Date.now()
       },
       success: function (result) {
+        wx.hideNavigationBarLoading();
         wx.showToast({
           title: '请求成功',
           icon: 'success',
@@ -113,30 +148,34 @@ Page({
           duration: duration
         })
         self.setData({
-          loading: false
+          list: common.getProducts()
         })
-        //////
-
-        self.setData({
-          products: common.getProducts()
-        })
-        //////
-        console.log('request success', result)
       },
 
       fail: function ({errMsg}) {
-        console.log('request fail', errMsg)
+        wx.hideNavigationBarLoading();
         self.setData({
-          loading: false
+          list: common.getProducts()
         })
-        //////
-
-        self.setData({
-          products: common.getProducts()
-        })
-        //////
       }
     })
+  },
+  onClick: function (event) {
+    var menuId = event.currentTarget.dataset.name;
+    var length = this.data.status_menu.length;
+    var classs = this.data.status_menu;
+    for (var i = 0; i < length; i++) {
+      if (i == menuId) {
+        classs[menuId] = "menu_focus";
+      } else {
+        classs[i] = "menu_unfocus";
+      }
+    }
+    that.setData({
+      status_menu: classs
+    });
+    GetList(that, menuId);
+    
   }
 
 })

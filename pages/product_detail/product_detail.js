@@ -84,10 +84,28 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '人气小店',
+      desc: '最具人气的小店!',
+      path: "../pages/index/index"
+    }
   },
   consumIt: function (id) {
-    console.log("立即消费:" + id);
+    //console.log("立即消费:" + id);
+    wx.showModal({
+      title: "确认消费？",
+      content: "",
+      showCancel: true,
+      confirmText: "确定",
+      success:function(res) {
+        if(res.confirm) {
+          console.log('确认消费了。。。。。');
+          wx.showToast({
+            title: "消费成功"
+          });
+        }
+      }
+    })
   },
   receiveIt: function (id) {
     console.log("立即领取+" + id);

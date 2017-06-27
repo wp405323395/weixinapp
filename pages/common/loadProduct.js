@@ -172,12 +172,136 @@ function getProductById(productId) {
     typeName: "餐饮美食",
     productInstructions: "全场满十元减五元",
     deadline: "2017.6.18-2017.9.18",
-    isReceive: false,
+    isReceive: true,
     isUsed: false
   };
 }
 
+function getProductsByTypeId(typeId) {
+  return [
+    {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }, {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }, {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }, {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }, {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }, {
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    },{
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    },{
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    },{
+      id: '100008',
+      storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
+      storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
+      name: '柿子',
+      price: 7,
+      img: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
+      typeId: 1,
+      typeName: "餐饮美食",
+      productInstructions: "全场满十元减五元",
+      deadline: "2017.6.18-2017.9.18",
+      isReceive: true,
+      isUsed: false
+    }
+  ];
+}
 
+
+module.exports.getProductsByTypeId = getProductsByTypeId;
 module.exports.getProducts = getProducts
 module.exports.getProductById = getProductById;
 //exports.sayGoodbye = sayGoodbye

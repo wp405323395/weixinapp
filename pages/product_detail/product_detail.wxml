@@ -28,9 +28,12 @@
       <text class="details">公众号</text>
     </view>
   </view>
+<view class="bottom_btn">
+<button id="receive" type="primary" disabled="{{product.isUsed}}" bindtap="btn_click">{{product.btnText}}</button>
 
-<button id="receive"  disabled="{{product.isUsed}}" bindtap="btn_click">{{product.btnText}}</button>
+<button class="btn_delete_click" type="warn" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</button>
 
+</view>
 
 
 </view>

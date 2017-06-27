@@ -19,7 +19,7 @@ Page({
   },
 
   onLoad: function () {
-    console.log('onLoad')
+    wx.showNavigationBarLoading();
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
@@ -68,12 +68,7 @@ Page({
         noncestr: Date.now()
       },
       success: function (result) {
-        wx.showToast({
-          title: '请求成功',
-          icon: 'success',
-          mask: true,
-          duration: duration
-        })
+        wx.hideNavigationBarLoading();
         self.setData({
           loading: false
         })
@@ -87,6 +82,7 @@ Page({
       },
 
       fail: function ({errMsg}) {
+        wx.hideNavigationBarLoading();
         console.log('request fail', errMsg)
         self.setData({
           loading: false
@@ -106,6 +102,21 @@ Page({
     wx.navigateTo({
       url: '../product_detail/product_detail?id=' +product.id,
     });
+  },
+  onPullDownRefresh: function () {
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
+    })
+    console.log('onPullDownRefresh', new Date())
+  },
+  stopPullDownRefresh: function () {
+    wx.stopPullDownRefresh({
+      complete: function (res) {
+        wx.hideToast()
+        console.log(res, new Date())
+      }
+    })
   }
 })
 

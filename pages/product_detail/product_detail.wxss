@@ -32,15 +32,15 @@
 .introduce{
   margin-top: 20rpx;
   width: 100%;
+  border-top: 2rpx solid black;
 }
 .lable{
   color: #666666;
 }
-
-#receive{
+.bottom_btn{
   position: absolute;
   bottom: 0px;
   box-sizing: border-box;
-  margin-right: 20rpx;
   width: 90%;
 }
+
