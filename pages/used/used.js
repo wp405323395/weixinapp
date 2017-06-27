@@ -61,9 +61,6 @@ var GetList = function (that,typeId) {
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     userInfo: {},
     foot_loading: true,
@@ -74,9 +71,6 @@ Page({
     
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     that = this;
     wx.showToast({
@@ -95,29 +89,11 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
   },
   bindDownLoad: function () {
     console.log("bindDownLoad");
     GetList(this);
-  },
-  scroll: function (event) {
-    //console.log("scroll");
-    // this.setData({
-    //   scrollTop: event.detail.scrollTop
-    // });
-  },
-  refresh: function (event) {
-    console.log("refresh");
-    // page = 1;
-    // this.setData({
-    //   list: [],
-    //   scrollTop: 0
-    // });
-    // GetList(this)
   },
 
   /**
@@ -127,39 +103,6 @@ Page({
 
   },
 
-
-  /**
-   * 加载商品
-   */
-  loadProduct: function () {
-    var self = this
-    wx.showNavigationBarLoading();
-    wx.request({
-      url: requestUrl,
-      data: {
-        noncestr: Date.now()
-      },
-      success: function (result) {
-        wx.hideNavigationBarLoading();
-        wx.showToast({
-          title: '请求成功',
-          icon: 'success',
-          mask: true,
-          duration: duration
-        })
-        self.setData({
-          list: common.getProducts()
-        })
-      },
-
-      fail: function ({errMsg}) {
-        wx.hideNavigationBarLoading();
-        self.setData({
-          list: common.getProducts()
-        })
-      }
-    })
-  },
   onClick: function (event) {
     var menuId = event.currentTarget.dataset.name;
     var length = this.data.status_menu.length;
