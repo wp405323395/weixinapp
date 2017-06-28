@@ -4,6 +4,7 @@ const duration = 2000
 var common = require('../common/loadProduct.js')
 //获取应用实例
 var app = getApp()
+var firstLoad;
 Page({
   data: {
     toView: 'green',
@@ -18,8 +19,12 @@ Page({
     duration: 500
   },
 
+  onShow: function () {
+    this.loadProduct();
+  },
+
   onLoad: function () {
-    wx.showNavigationBarLoading();
+    firstLoad = true;
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
@@ -28,7 +33,6 @@ Page({
         userInfo: userInfo
       })
     })
-    this.loadProduct();
   },
 
   upper: function (e) {
@@ -61,6 +65,20 @@ Page({
     self.setData({
       loading: true
     })
+
+    if (this.data.deleteItem) {
+      this.setData({
+        deleteItem: false
+      });
+
+    } else {
+      if (!firstLoad) {
+        return;
+      }
+
+    }
+    firstLoad = false;
+    wx.showNavigationBarLoading();
 
     wx.request({
       url: requestUrl,
@@ -100,7 +118,7 @@ Page({
     var product = event.currentTarget.dataset.name;
     console.log("点击了+" + product.id);
     wx.navigateTo({
-      url: '../product_detail/product_detail?id=' +product.id,
+      url: '../product_detail/product_detail?id=' + product.id,
     });
   },
   onPullDownRefresh: function () {

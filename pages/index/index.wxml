@@ -1,25 +1,23 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="page-section page-section-spacing swiper">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{background}}" wx:key="*this">
-        <swiper-item>
-          <view class="swiper-item {{item}}"></view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-
-
   <view class="scrollView">
     <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
+      <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item>
+              <view class="swiper-item {{item}}"></view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
 
       <block wx:for="{{products}}" wx:key="{{item.typeId}}">
         <view class="product_type_name">{{item.typeName}}</view>
         <view class="product_box_containner">
           <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
             <view class="scroll_view_item">
-              <view class="product_box"  >
+              <view class="product_box">
                 <view id="{{item.id}}" class="item-name">{{item.name}}</view>
                 <image src="{{item.img}}" class="product_img" mode="scaleToFill" bindtap="productClick" data-name="{{item}}"></image>
               </view>

@@ -1,5 +1,7 @@
 // product_detail.js
 var loadProductHelper = require('../common/loadProduct.js')
+var productId;
+var that;
 Page({
 
   /**
@@ -19,7 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var productId = options.id;
+    that = this;
+    productId = options.id;
     var product = loadProductHelper.getProductById(productId);
     var btnText;
     if (product.isUsed) {
@@ -70,7 +73,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**
@@ -78,6 +80,8 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+  navigateBackFunc: function () {
   },
 
   /**
@@ -103,6 +107,7 @@ Page({
           wx.showToast({
             title: "消费成功"
           });
+          that.deleteItem();
         }
       }
     })
@@ -119,6 +124,19 @@ Page({
         this.receiveIt(this.data.product.id);
       }
     }
+  },
+  btn_delete_click:function() {
+    this.deleteItem();
+    wx.navigateBack(1);
+  },
+
+  deleteItem:function() {
+    var pages = getCurrentPages()
+    var prevPage = pages[pages.length - 1]  //当前界面
+    var prevPage = pages[pages.length - 2]  //上一个页面
+    prevPage.setData({
+      deleteItem: true
+    })
   }
  
 })

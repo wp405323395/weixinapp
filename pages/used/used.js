@@ -1,19 +1,21 @@
 // used.js
-const requestUrl = require('../../config').requestUrl
-const duration = 2000
 var common = require('../common/loadProduct.js')
 var url = "http://cccm";
 var page = 1;
+var firstFragPage;
+var secondFragPage;
+var thirdFragPage;
 var that;
 
 var loadding;
-var currentTypeId;
 
-var GetList = function (that,typeId) {
-  if(currentTypeId != typeId) {
-    page = 1;
-  }
-  currentTypeId = typeId;
+var firstPageList = [];
+var secondPageList = [];
+var thirdPageList = [];
+var foot_loading;
+var scrollHeight;
+
+var GetList = function (that, typeId) {
   if (loadding) {
     return;
   }
@@ -22,23 +24,59 @@ var GetList = function (that,typeId) {
   that.setData({
     foot_loading: false
   });
+  switch (typeId) {
+    case 0:
+      page = firstFragPage;
+      break;
+    case 1:
+      page = secondFragPage;
+      break;
+    case 2:
+      page = thirdFragPage;
+      break;
+  }
   wx.request({
     url: url,
     data: {
       pageSize: 10,
       pageNo: page,
-      typeId:typeId
+      typeId: typeId
     },
     success: function (res) {
-      var l = that.data.list
       for (var i = 0; i < res.data.length; i++) {
         //l.push(res.data[i])
-        l.push(a);
+        var current;
+        switch (typeId) {
+          case 0:
+            firstPageList.push(a);
+            current = firstPageList;
+            firstFragPage++;
+            break;
+          case 1:
+            secondPageList.push(a);
+            current = secondPageList;
+            secondFragPage++;
+            break;
+          case 2:
+            thirdPageList.push(a);
+            current = thirdPageList;
+            thirdFragPage++;
+            break;
+        }
+
       }
+
       that.setData({
-        list: l
+        first_page: {
+          scrollHeight: scrollHeight,
+          bindDownLoad: GetList,
+          list: current,
+          foot_loading: false,
+          page_id:0
+        }
       });
-      page++;
+
+
       that.setData({
         foot_loading: true
       });
@@ -46,12 +84,38 @@ var GetList = function (that,typeId) {
       wx.hideToast();
     },
     fail: function ({errMsg}) {
-      var l = that.data.list
       var lis = common.getProductsByTypeId(1);
-      l = l.concat(lis);
+      var current;
+      switch (typeId) {
+        case 0:
+          firstPageList = firstPageList.concat(lis);
+          current = firstPageList;
+          firstFragPage++;
+          break;
+        case 1:
+          secondPageList = secondPageList.concat(lis);
+          current = secondPageList;
+          secondFragPage++;
+          break;
+        case 2:
+          thirdPageList = thirdPageList.concat(lis);
+          current = thirdPageList;
+          thirdFragPage++;
+          break;
+      }
+
       that.setData({
-        list: l,
         foot_loading: true
+      });
+
+      that.setData({
+        first_page: {
+          scrollHeight: scrollHeight,
+          bindDownLoad: GetList,
+          list: current,
+          foot_loading: false,
+          page_id : 0
+        }
       });
       loadding = false;
       wx.hideToast();
@@ -59,18 +123,25 @@ var GetList = function (that,typeId) {
   });
 }
 
+
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    userInfo: {},
-    foot_loading: true,
-    list: [],
+    navbar: ['首页', '搜索', '我'],
+    currentTab: 0,
     scrollTop: 0,
     scrollHeight: 0,
-    status_menu: ["menu_focus", "menu_unfocus", "menu_unfocus"]
-    
+    first_page: {
+      scrollHeight: scrollHeight,
+      bindDownLoad: GetList,
+      list: firstPageList,
+      foot_loading: false,
+      page_id: 0
+    }
   },
-
   onLoad: function (options) {
     that = this;
     wx.showToast({
@@ -78,10 +149,11 @@ Page({
       icon: "loading",
       duration: 10000
     })
-    GetList(this);
+    GetList(this, 0);
     wx.getSystemInfo({
       success: function (res) {
         console.info(res.windowHeight);
+        scrollHeight = res.windowHeight;
         that.setData({
           scrollHeight: res.windowHeight
         });
@@ -89,36 +161,15 @@ Page({
     });
   },
 
-  onShow: function () {
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
   },
-  bindDownLoad: function () {
+
+  bindDownLoad: function (e) {
+    var id = e.currentTarget.dataset.id;
     console.log("bindDownLoad");
-    GetList(this);
+    GetList(this,id);
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  onClick: function (event) {
-    var menuId = event.currentTarget.dataset.name;
-    var length = this.data.status_menu.length;
-    var classs = this.data.status_menu;
-    for (var i = 0; i < length; i++) {
-      if (i == menuId) {
-        classs[menuId] = "menu_focus";
-      } else {
-        classs[i] = "menu_unfocus";
-      }
-    }
-    that.setData({
-      status_menu: classs
-    });
-    GetList(that, menuId);
-    
-  }
-
 })

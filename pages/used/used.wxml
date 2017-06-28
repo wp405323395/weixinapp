@@ -1,26 +1,23 @@
 <!--used.wxml-->
-<!--<include src="../common/products.wxml" />-->
+<import src="../common/used_list.wxml" />
 <view class="container">
-  <view class="head_menu">
-    <text bindtap="onClick" data-name="0" class="{{status_menu[0]}}">餐饮美食</text>
-    <text bindtap="onClick" data-name="1" class="{{status_menu[1]}}">生鲜超市</text>
-    <text bindtap="onClick" data-name="2" class="{{status_menu[2]}}">休闲娱乐</text>
+  <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
   </view>
 
-  <scroll-view scroll-y scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-    <block class="item" wx:for="{{list}}" wx:key="{{item.id}}">
-      <view class="product_item">
-        <image class="img" src="{{item.img}}"></image>
-        <view class="text">
-          <text class="title">{{item.name}}</text>
-          <text class="description">{{item.typeName}}</text>
-          <text class="description">{{item.deadline}}</text>
-        </view>
-      </view>
-    </block>
-  </scroll-view>
-  <view class="foot_loading" hidden="{{foot_loading}}">
-    <text>正在加载中... ...</text>
+  <!--首页-->
+  <view class="fragment" hidden="{{currentTab!==0}}">
+   <template is="used_list" data="{{...first_page}}"/>
+  </view>
+
+  <!--搜索-->
+  <view class="fragment" hidden="{{currentTab!==1}}">
+
+  </view>
+
+  <!--我-->
+  <view class="fragment" hidden="{{currentTab!==2}}">
+
   </view>
 
 </view>
