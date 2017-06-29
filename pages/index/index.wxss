@@ -103,7 +103,7 @@ button:last-child {
   width: 5px;
   height: 15px;
   top: 1px;
-  right: 15%;
+  right: 20%;
 }
 .bottom_dital{
   position: relative;
