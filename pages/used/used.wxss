@@ -8,16 +8,20 @@ page{
   width: 100%;
   flex: none;  
   display: flex;  
-  background: #fff;  
+  background: #ef2020; 
+  margin-bottom: 13rpx; 
 }  
-.navbar .item{  
+.navbar .item{
   position: relative;  
   flex: auto;  
   text-align: center;  
   line-height: 80rpx;  
+  color: #ffbdbd;
+  font-size: 15px;
 }  
 .navbar .item.active{  
-  color: #FFCC00;  
+  color: #ffffff;  
+  font-size: 15px;
 }  
 .navbar .item.active:after{  
   content: "";  
@@ -26,8 +30,8 @@ page{
   bottom: 0;  
   left: 0;  
   right: 0;  
-  height: 4rpx;  
-  background: #FFCC00;  
+  height: 6rpx;  
+  background: #ffffff;  
 }  
 .fragment {
   width: 100%;
@@ -36,6 +40,7 @@ page{
 .list{
   display: flex;
   flex-direction: column;
+  background: #ffffff;  
 }  
 .img{  
     height: 100rpx;  

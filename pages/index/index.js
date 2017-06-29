@@ -5,14 +5,14 @@ var common = require('../common/loadProduct.js')
 //获取应用实例
 var app = getApp()
 var firstLoad;
+var scrollHeight;
 Page({
   data: {
     toView: 'green',
-
     userInfo: {},
     products: {},
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
+    background: ['../../image/banner.png', '../../image/banner.png', '../../image/banner.png'],
+    indicatorDots: false,
     vertical: false,
     autoplay: true,
     interval: 2000,
@@ -32,7 +32,18 @@ Page({
       that.setData({
         userInfo: userInfo
       })
-    })
+    });
+      wx.getSystemInfo({
+        success: function (res) {
+          console.info(res.windowHeight);
+          that.setData({
+            bannerHeight: res.windowHeight*0.3,
+            tickit_width: res.windowWidth*0.35,
+            tickit_height: res.windowHeight * 0.13
+          });
+        }
+      });
+      
   },
 
   upper: function (e) {

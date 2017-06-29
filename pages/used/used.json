@@ -1,1 +1,4 @@
-{}
+{
+  "navigationBarTitleText": "已使用",
+  "enablePullDownRefresh": true
+}

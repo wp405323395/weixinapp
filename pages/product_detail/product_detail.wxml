@@ -1,6 +1,6 @@
 <!--product_detail.wxml-->
 <view class="container">
-  <view class="page-section page-section-spacing swiper">
+  <view class="swiper">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
@@ -10,30 +10,40 @@
     </swiper>
   </view>
 
-<text class="details">
-    {{product.storeInstructions}}
-  </text>
-
   <view class="introduce">
-    <view class="introduce_item">
-      <text class="lable">优惠活动</text>
+    <view class="introduce_item spacal">
+      <text class="lable">店铺介绍</text>
+      <text class="details">{{product.storeInstructions}}</text>
+    </view>
+    <view class="introduce_item has_border">
+      <text class="lable">活动介绍</text>
       <text class="details">{{product.productInstructions}}</text>
     </view>
-    <view class="introduce_item">
-      <text class="lable">截至日期</text>
+    <view class="introduce_item has_border">
+      <text class="lable">截止时间</text>
       <text class="details">{{product.deadline}}</text>
     </view>
+    <view class="introduce_item has_border">
+      <text class="lable">活动地址</text>
+      <text class="details">武汉</text>
+    </view>
     <view class="introduce_item">
-      <text class="lable">我们的公众号</text>
-      <text class="details">公众号</text>
+      <text class="lable">联系方式</text>
+      <text class="details">1856666666</text>
+    </view>
+
+    <view class="introduce_item">
+      <text class="lable">关注公众号</text>
+      <text class="details">优惠券公众号</text>
     </view>
   </view>
-<view class="bottom_btn">
-<button id="receive" type="primary" disabled="{{product.isUsed}}" bindtap="btn_click">{{product.btnText}}</button>
+  <text class="bottom_text">关注公众号，获取附近最新优惠及我的优惠券</text>
+  <view class="bottom_btn">
+    <button id="receive" type="primary" disabled="{{product.isUsed}}" bindtap="btn_click">{{product.btnText}}</button>
 
-<button class="btn_delete_click" type="warn" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</button>
+    <button class="btn_delete_click" type="warn" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</button>
 
-</view>
+  </view>
 
 
 </view>

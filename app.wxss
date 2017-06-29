@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10rpx 20rpx;
   box-sizing: border-box;
+  background: #eeeeee;
 } 
 /* reset */
 page {
@@ -130,10 +130,6 @@ form{
   box-sizing: border-box;
   padding: 0 30rpx;
 }
-.page-section-spacing{
-  box-sizing: border-box;
-  padding: 0 40rpx;
-}
 .page-section-title{
   font-size: 28rpx;
   color: #999999;
@@ -188,49 +184,10 @@ form{
   height: 4rpx;
   transform: translate(-50%, -50%);
 }
-
-.demo-text-1{
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #1AAD19;
-  color: #FFFFFF;
-  font-size: 36rpx;
+.swiper{
+  margin: 13rpx;
+  margin-bottom: 0;
 }
-.demo-text-1:before{
-  content: 'A';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.demo-text-2{
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #2782D7;
-  color: #FFFFFF;
-  font-size: 36rpx;
-}
-.demo-text-2:before{
-  content: 'B';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.demo-text-3{
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #F1F1F1;
-  color: #353535;
-  font-size: 36rpx;
-}
-.demo-text-3:before{
-  content: 'C';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+text{
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }

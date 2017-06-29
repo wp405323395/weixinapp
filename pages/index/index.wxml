@@ -2,29 +2,44 @@
 <view class="container">
   <view class="scrollView">
     <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
-      <view class="page-section page-section-spacing swiper">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <view class="swiper">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
           <block wx:for="{{background}}" wx:key="*this">
             <swiper-item>
-              <view class="swiper-item {{item}}"></view>
+              <image class="banner_img" src="{{item}}" style="height:{{bannerHeight}}px;"></image>
             </swiper-item>
           </block>
         </swiper>
       </view>
+      <view class="list">
+        <block wx:for="{{products}}" wx:key="{{item.typeId}}">
+          <text class="product_type_name">{{item.typeName}}</text>
+          <view class="border_line" style="background: #d4d4d4;height: 1px;"></view>
+          <view class="product_box_containner">
+            <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
+              <view class="ramp">
+                <view class="scroll_view_item">
+                  <view class="product_box">
+                    <view bindtap="productClick" data-name="{{item}}" class="product_img" style="background-image:url({{item.img}});background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
+                      <text class="tickit_content">
+                        <text hidden="false" class="tickit_content_symbol">¥</text>5.8<text class="tickit_content_symbol">折</text>
+                      </text>
 
-      <block wx:for="{{products}}" wx:key="{{item.typeId}}">
-        <view class="product_type_name">{{item.typeName}}</view>
-        <view class="product_box_containner">
-          <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
-            <view class="scroll_view_item">
-              <view class="product_box">
-                <view id="{{item.id}}" class="item-name">{{item.name}}</view>
-                <image src="{{item.img}}" class="product_img" mode="scaleToFill" bindtap="productClick" data-name="{{item}}"></image>
+                    </view>
+                    <view class="bottom_dital">
+                      <text id="{{item.id}}" class="item-name">{{item.name}}</text>
+                      <image src="../../image/left_btn.png" class="left_img"></image>
+                    </view>
+                  </view>
+                </view>
+                <!--<view bindtap="productClick" data-name="{{item}}" class="product_img" style="background-image:url(../../image/tickit_mengceng.png);background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">  
+                </view>-->
               </view>
-            </view>
-          </block>
-        </view>
-      </block>
+
+            </block>
+          </view>
+        </block>
+      </view>
 
     </scroll-view>
   </view>
