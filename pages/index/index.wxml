@@ -18,19 +18,22 @@
           <view class="product_box_containner">
             <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
 
-              <view class="scroll_view_item" bindtap="productClick" data-name="{{item}}" >
-                  <view class="product_box">
+              <view class="scroll_view_item" >
+                <view class="product_box">
+                  <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
                     <view class="product_img" style="background-image:url({{item.img}});background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
                       <text class="tickit_content">
                         <text hidden="false" class="tickit_content_symbol">¥</text>5.8<text class="tickit_content_symbol">折</text>
                       </text>
 
                     </view>
-                    <view class="bottom_dital">
-                      <text id="{{item.id}}" class="item-name">{{item.name}}</text>
-                      <image src="../../image/left_btn.png" class="left_img"></image>
-                    </view>
+                  </navigator>
+
+                  <view class="bottom_dital">
+                    <text id="{{item.id}}" class="item-name">{{item.name}}</text>
+                    <image src="../../image/left_btn.png" class="left_img"></image>
                   </view>
+                </view>
               </view>
             </block>
           </view>

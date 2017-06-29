@@ -136,18 +136,11 @@ button:last-child {
   overflow: hidden;
   position: relative;
 }
-
-.tickit_mengceng{
-  margin: 0 auto;
-  display:block;
-  position: absolute;
-  top:9%;
-  left:14.5%;
-
+.navigator-hover{
+  width: 65%;
+  margin-left: 15%;
+  top: 1px;
 }
-.tickit_mengceng{
-  visibility: hidden;
-}
-.tickit_mengceng:active{
-  visibility: visible;
+.link_nav{
+  position: relative;
 }
