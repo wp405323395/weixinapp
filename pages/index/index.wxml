@@ -17,10 +17,10 @@
           <view class="border_line" style="background: #d4d4d4;height: 1px;"></view>
           <view class="product_box_containner">
             <block wx:for="{{item.products}}" wx:key="{{item.typeId}}">
-              <view class="ramp">
-                <view class="scroll_view_item">
+
+              <view class="scroll_view_item" bindtap="productClick" data-name="{{item}}" >
                   <view class="product_box">
-                    <view bindtap="productClick" data-name="{{item}}" class="product_img" style="background-image:url({{item.img}});background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
+                    <view class="product_img" style="background-image:url({{item.img}});background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
                       <text class="tickit_content">
                         <text hidden="false" class="tickit_content_symbol">¥</text>5.8<text class="tickit_content_symbol">折</text>
                       </text>
@@ -31,11 +31,7 @@
                       <image src="../../image/left_btn.png" class="left_img"></image>
                     </view>
                   </view>
-                </view>
-                <!--<view bindtap="productClick" data-name="{{item}}" class="product_img" style="background-image:url(../../image/tickit_mengceng.png);background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">  
-                </view>-->
               </view>
-
             </block>
           </view>
         </block>

@@ -6,6 +6,7 @@ var common = require('../common/loadProduct.js')
 var app = getApp()
 var firstLoad;
 var scrollHeight;
+var that;
 Page({
   data: {
     toView: 'green',
@@ -16,7 +17,7 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 500
+    duration: 500,
   },
 
   onShow: function () {
@@ -25,7 +26,7 @@ Page({
 
   onLoad: function () {
     firstLoad = true;
-    var that = this
+    that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
