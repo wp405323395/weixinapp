@@ -196,8 +196,7 @@ text{
   flex-wrap: wrap;
   flex-direction: row;
   background: #ffffff;
-  padding-top: 15rpx;
-  padding-bottom: 15rpx;
+  padding-bottom: 10rpx;
 }
 .scroll_view_item{
   box-sizing: border-box;
