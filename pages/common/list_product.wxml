@@ -5,7 +5,7 @@
         <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
           <view class="product_img" style="background-image:url({{item.img}});background-position:center;background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
             <view class="tickit_content">
-              <text hidden="{{false}}" class="tickit_content_symbol">¥</text>
+              <text hidden="{{true}}" class="tickit_content_symbol">¥</text>
               <text class="tickit_num">5.8</text>
               <text hidden="{{false}}" class="tickit_content_symbol">折</text>
             </view>
@@ -32,7 +32,7 @@
         <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
           <view class="product_img" style="background-image:url({{item.img}});background-position:center;background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
             <view class="tickit_content">
-              <text hidden="{{false}}" class="tickit_content_symbol">¥</text>
+              <text hidden="{{true}}" class="tickit_content_symbol">¥</text>
               <text class="tickit_num">5.8</text>
               <text hidden="{{false}}" class="tickit_content_symbol">折</text>
             </view>

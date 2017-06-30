@@ -117,7 +117,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navbar: ['首页', '搜索', '我'],
+    navbar: ['餐饮美食', '生鲜超市', '休闲娱乐'],
     currentTab: 0,
     scrollTop: 0,
     scrollHeight: 0,
