@@ -24,13 +24,6 @@
 
 /* root.wxss */
 
-.product_box_containner {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  background: #ffffff;
-}
 
 .partingline {
   height: 2px;
@@ -87,13 +80,6 @@ button:last-child {
   display: block;
 }
 
-.product_box {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  padding: 20rpx;
-}
-
 .banner_img{
   height: 100%;
   width: 100%;
@@ -109,37 +95,47 @@ button:last-child {
   position: relative;
 }
 
-.tickit_content{
+.tickit_num{
   color: white;
   font-size: 35px;
   font-weight: 700;
-  position: absolute;
-  text-align: center;
-  width: 100%;  
-  flex-direction: row;
-  align-items:flex-start;
-  top: -3px;
+}
 
+.tickit_content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .tickit_content_symbol{
   color: white;
   font-size: 16px;
   font-weight: 600;
-  display: inline-block;
+  padding-top: 5px;
+}
 
+
+.product_box_containner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: #ffffff;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
 }
 
 .scroll_view_item{
-  flex: 0 0 50%;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+  flex-basis: 50%;
+
 }
 .navigator-hover{
+  top: 1px; 
   width: 65%;
   margin-left: 15%;
-  top: 1px;
 }
 .link_nav{
   position: relative;
