@@ -204,6 +204,8 @@ text{
   overflow: hidden;
   position: relative;
   flex-basis: 50%;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
 }
 .navigator-hover{
   top: 1px; 
@@ -224,18 +226,27 @@ text{
   flex-direction: row;
   justify-content: center;
 }
-
 .tickit_content_symbol{
   color: white;
-  font-size: 16px;
-  font-weight: 600;
-  padding-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 7px;
 }
+.tickit_content_symbol_left{
+  margin-right: 15rpx;
+}
+
+
+.tickit_content_symbol_right{
+  margin-left: 15rpx;
+}
+
 
 .tickit_num{
   color: white;
-  font-size: 35px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 500;
+  
 }
 .bottom_dital{
   position: relative;
@@ -257,6 +268,11 @@ text{
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.foot_loading{
+  border-top: 1px solid #d4d4d4;
+  padding-top: -1px;
+  background: white;
 }
 
 /** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/

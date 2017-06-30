@@ -42,6 +42,6 @@ page{
 }  
 
 .scroll_view_item{
-  margin-bottom: 20rpx;
-  margin-top: 20rpx;
+  border-bottom: 1px solid #d4d4d4;
 }
+
