@@ -135,7 +135,8 @@ Page({
     var prevPage = pages[pages.length - 1]  //当前界面
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
-      deleteItem: true
+      refresh_receive: true,
+      refresh_used:true
     })
   }
  

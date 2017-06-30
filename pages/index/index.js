@@ -26,6 +26,11 @@ Page({
   },
 
   onLoad: function () {
+    wx.showToast({
+      title: "loading",
+      icon: "loading",
+      duration: 10000
+    });
     firstLoad = true;
     that = this
     //调用应用实例的方法获取全局数据
@@ -58,9 +63,14 @@ Page({
       loading: true
     })
 
-    if (this.data.deleteItem) {
+    if (this.data.refresh_receive) {
       this.setData({
-        deleteItem: false
+        refresh_receive: false
+      });
+      wx.showToast({
+        title: "loading",
+        icon: "loading",
+        duration: 10000
       });
 
     } else {
@@ -78,31 +88,27 @@ Page({
         noncestr: Date.now()
       },
       success: function (result) {
-        wx.hideNavigationBarLoading();
         self.setData({
           loading: false
         })
-        //////
-
         self.setData({
           products: common.getProducts()
         })
-        //////
-        console.log('request success', result)
+        wx.hideNavigationBarLoading();
+        wx.hideToast();
+
       },
 
       fail: function ({errMsg}) {
-        wx.hideNavigationBarLoading();
-        console.log('request fail', errMsg)
         self.setData({
           loading: false
         })
-        //////
-
         self.setData({
           products: common.getProducts()
         })
-        //////
+
+        wx.hideNavigationBarLoading();
+        wx.hideToast();
       }
     })
   },

@@ -1,5 +1,5 @@
 <!--used.wxml-->
-<import src="../common/used_list.wxml" />
+
 <import src="../common/list_product.wxml" />
 <view class="container">
   <view class="navbar">

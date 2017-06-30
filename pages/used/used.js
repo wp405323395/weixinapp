@@ -14,19 +14,36 @@ var secondPageList = [];
 var thirdPageList = [];
 var scrollHeight;
 var firstLoad = true;
-var GetList = function (that, typeId) {
+var GetList = function (that, typeId,isLoadMore) {
+  if (that.data.refresh_used) {
+    wx.showToast({
+      title: "loading",
+      icon: "loading",
+      duration: 10000
+    });
+    that.setData({
+      refresh_used: false
+    });
+    firstFragPage = 0;
+    secondFragPage = 0;
+    thirdFragPage = 0;
+    firstPageList = [];
+    secondPageList = [];
+    thirdPageList = [];
+  } else {
+    if(firstLoad) {
+      firstLoad = false;
+    } else if (isLoadMore){} else {
+      return ;
+    }
+
+  }
   if (loadding) {
     return;
   }
   loadding = true;
   var a = common.getProducts()[0];
-  if (!firstLoad) {
-    that.setData({
-      foot_loading: false
-    });
-  }
-  firstLoad = false;
-
+  
   switch (typeId) {
     case 0:
       page = firstFragPage;
@@ -138,7 +155,7 @@ Page({
       icon: "loading",
       duration: 10000
     })
-    GetList(this, 0);
+
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -149,6 +166,9 @@ Page({
         });
       }
     });
+  }, 
+  onShow: function () {
+    GetList(this,0);
   },
 
   navbarTap: function (e) {
@@ -160,6 +180,6 @@ Page({
   bindDownLoad: function (e) {
     var id = e.currentTarget.dataset.id;
     console.log("bindDownLoad");
-    GetList(this,id);
+    GetList(this,id,true);
   },
 })
