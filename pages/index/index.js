@@ -18,6 +18,7 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 500,
+    foot_loading:true
   },
 
   onShow: function () {
@@ -45,27 +46,6 @@ Page({
         }
       });
       
-  },
-
-  upper: function (e) {
-    //console.log(e)
-  },
-  lower: function (e) {
-    // console.log(e)
-  },
-  scroll: function (e) {
-    // console.log(e)
-  },
-
-  loadMore: function () {
-    console.log("加载更多");
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
 
   /**
@@ -126,13 +106,7 @@ Page({
       }
     })
   },
-  productClick: function (event) {
-    var product = event.currentTarget.dataset.name;
-    console.log("点击了+" + product.id);
-    wx.navigateTo({
-      url: '../product_detail/product_detail?id=' + product.id,
-    });
-  },
+
   onPullDownRefresh: function () {
     wx.showToast({
       title: 'loading...',

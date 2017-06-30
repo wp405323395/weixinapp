@@ -1,5 +1,6 @@
 <!--used.wxml-->
 <import src="../common/used_list.wxml" />
+<import src="../common/list_product.wxml" />
 <view class="container">
   <view class="navbar">
     <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
@@ -7,7 +8,11 @@
 
   <!--首页-->
   <view class="fragment" hidden="{{currentTab!==0}}">
-   <template is="used_list" data="{{...first_page}}"/>
+   <!--<template is="used_list" data="{{...first_page}}"/>  -->
+   <scroll-view data-id="{{0}}" scroll-y class="list"  style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad">
+      <template is="list_productttt" data="{{...first_page,foot_loading,tickit_width,tickit_height}}"/>
+   </scroll-view>
+   
   </view>
 
   <!--搜索-->

@@ -141,9 +141,6 @@ form{
   padding-left: 0;
   padding-right: 0;
 }
-.page-section-ctn{
-
-}
 
 /* widget */
 .btn-area{
@@ -191,3 +188,75 @@ form{
 text{
     font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
+
+/** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/
+.product_box_containner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: #ffffff;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+.scroll_view_item{
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  flex-basis: 50%;
+}
+.navigator-hover{
+  top: 1px; 
+  width: 65%;
+  margin-left: 15%;
+}
+.link_nav{
+  position: relative;
+}
+.product_img {
+  margin: 0 auto;
+  display:block;
+  position: relative;
+}
+
+.tickit_content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tickit_content_symbol{
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.tickit_num{
+  color: white;
+  font-size: 35px;
+  font-weight: 700;
+}
+.bottom_dital{
+  position: relative;
+}
+
+.item-name {
+  text-align: center;
+  display: block;
+  font-size: 12px;
+}
+.left_img{
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  top: 1px;
+  right: 20%;
+}
+.foot_loading{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/

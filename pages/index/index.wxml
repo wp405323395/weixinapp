@@ -1,5 +1,5 @@
 <!--index.wxml-->
-
+<import src="../common/list_product.wxml" />
 <view class="container">
 
   <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
@@ -15,27 +15,7 @@
     <block wx:for="{{products}}" wx:key="{{item.typeId}}">
       <text class="product_type_name">{{item.typeName}}</text>
       <view class="border_line" style="background: #d4d4d4;height: 1px;"></view>
-      <view class="product_box_containner">
-        <block wx:for="{{item.products}}" wx:key="{{item.typeId}}" class="product_box_containner">
-          <view class="scroll_view_item">
-            <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
-              <view class="product_img" style="background-image:url({{item.img}});background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
-                <view class="tickit_content">
-                  <text hidden="{{false}}" class="tickit_content_symbol">¥</text>
-                  <text class="tickit_num">5.8</text>
-                  <text hidden="{{false}}" class="tickit_content_symbol">折</text>
-                </view>
-
-              </view>
-            </navigator>
-
-            <view class="bottom_dital">
-              <text id="{{item.id}}" class="item-name">{{item.name}}</text>
-              <image src="../../image/left_btn.png" class="left_img"></image>
-            </view>
-          </view>
-        </block>
-      </view>
+      <template is="list_product" data="{{item,tickit_width,tickit_height,foot_loading}}"/>
     </block>
   </scroll-view>
 

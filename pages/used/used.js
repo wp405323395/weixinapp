@@ -12,7 +12,6 @@ var loadding;
 var firstPageList = [];
 var secondPageList = [];
 var thirdPageList = [];
-var foot_loading;
 var scrollHeight;
 
 var GetList = function (that, typeId) {
@@ -65,21 +64,16 @@ var GetList = function (that, typeId) {
         }
 
       }
-
-      that.setData({
-        first_page: {
-          scrollHeight: scrollHeight,
-          bindDownLoad: GetList,
-          list: current,
-          foot_loading: false,
-          page_id:0
-        }
-      });
-
-
       that.setData({
         foot_loading: true
       });
+      that.setData({
+        first_page: {
+          bindDownLoad: GetList,
+          list: current,
+        }
+      });
+
       loadding = false;
       wx.hideToast();
     },
@@ -103,18 +97,13 @@ var GetList = function (that, typeId) {
           thirdFragPage++;
           break;
       }
-
       that.setData({
         foot_loading: true
       });
-
       that.setData({
         first_page: {
-          scrollHeight: scrollHeight,
           bindDownLoad: GetList,
           list: current,
-          foot_loading: false,
-          page_id : 0
         }
       });
       loadding = false;
@@ -123,9 +112,7 @@ var GetList = function (that, typeId) {
   });
 }
 
-
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -134,12 +121,10 @@ Page({
     currentTab: 0,
     scrollTop: 0,
     scrollHeight: 0,
+    foot_loading: true,
     first_page: {
-      scrollHeight: scrollHeight,
       bindDownLoad: GetList,
       list: firstPageList,
-      foot_loading: false,
-      page_id: 0
     }
   },
   onLoad: function (options) {
@@ -152,10 +137,11 @@ Page({
     GetList(this, 0);
     wx.getSystemInfo({
       success: function (res) {
-        console.info(res.windowHeight);
-        scrollHeight = res.windowHeight;
         that.setData({
-          scrollHeight: res.windowHeight
+          scrollHeight: res.windowHeight,
+          tickit_width: res.windowWidth * 0.35,
+          tickit_height: res.windowHeight * 0.13
+
         });
       }
     });
