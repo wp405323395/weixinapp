@@ -13,16 +13,20 @@ var firstPageList = [];
 var secondPageList = [];
 var thirdPageList = [];
 var scrollHeight;
-
+var firstLoad = true;
 var GetList = function (that, typeId) {
   if (loadding) {
     return;
   }
   loadding = true;
   var a = common.getProducts()[0];
-  that.setData({
-    foot_loading: false
-  });
+  if (!firstLoad) {
+    that.setData({
+      foot_loading: false
+    });
+  }
+  firstLoad = false;
+
   switch (typeId) {
     case 0:
       page = firstFragPage;
