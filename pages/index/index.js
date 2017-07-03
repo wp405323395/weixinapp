@@ -26,6 +26,7 @@ Page({
   },
 
   onLoad: function () {
+    wx.clearStorageSync();
     wx.showToast({
       title: "loading",
       icon: "loading",
@@ -62,22 +63,26 @@ Page({
     self.setData({
       loading: true
     })
+    try {
+      var value = wx.getStorageSync('isIndexNeedRefresh');
+      if ('need' === value) {
+        try {
+          wx.setStorageSync('isIndexNeedRefresh', 'unneed');
+        } catch (e) {
+        }
+        wx.showToast({
+          title: "loading",
+          icon: "loading",
+          duration: 10000
+        });
+      } else {
+        if (!firstLoad) {
+          return;
+        }
 
-    if (this.data.refresh_receive) {
-      this.setData({
-        refresh_receive: false
-      });
-      wx.showToast({
-        title: "loading",
-        icon: "loading",
-        duration: 10000
-      });
-
-    } else {
-      if (!firstLoad) {
-        return;
       }
-
+    } catch (e) {
+      // Do something when catch error
     }
     firstLoad = false;
     wx.showNavigationBarLoading();

@@ -15,29 +15,38 @@ var thirdPageList = [];
 var scrollHeight;
 var firstLoad = true;
 var GetList = function (that, typeId,isLoadMore) {
-  if (that.data.refresh_used) {
-    wx.showToast({
-      title: "loading",
-      icon: "loading",
-      duration: 10000
-    });
-    that.setData({
-      refresh_used: false
-    });
-    firstFragPage = 0;
-    secondFragPage = 0;
-    thirdFragPage = 0;
-    firstPageList = [];
-    secondPageList = [];
-    thirdPageList = [];
-  } else {
-    if(firstLoad) {
-      firstLoad = false;
-    } else if (isLoadMore){} else {
-      return ;
-    }
+  try {
+    var value = wx.getStorageSync('isUsedNeedRefresh');
 
+    if ('need' === value) {
+      try {
+        wx.setStorageSync('isUsedNeedRefresh', 'unneed');
+      } catch (e) {
+      }
+      wx.showToast({
+        title: "loading",
+        icon: "loading",
+        duration: 10000
+      });
+
+      firstFragPage = 0;
+      secondFragPage = 0;
+      thirdFragPage = 0;
+      firstPageList = [];
+      secondPageList = [];
+      thirdPageList = [];
+    } else {
+      if (firstLoad) {
+        firstLoad = false;
+      } else if (isLoadMore) { } else {
+        return;
+      }
+
+    }
+  } catch (e) {
+    // Do something when catch error
   }
+ 
   if (loadding) {
     return;
   }

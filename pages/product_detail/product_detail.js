@@ -131,13 +131,11 @@ Page({
   },
 
   deleteItem:function() {
-    var pages = getCurrentPages()
-    var prevPage = pages[pages.length - 1]  //当前界面
-    var prevPage = pages[pages.length - 2]  //上一个页面
-    prevPage.setData({
-      refresh_receive: true,
-      refresh_used:true
-    })
+    try {
+      wx.setStorageSync('isUsedNeedRefresh', 'need');
+      wx.setStorageSync('isIndexNeedRefresh', 'need');
+    } catch (e) {
+    }
   }
  
 })
