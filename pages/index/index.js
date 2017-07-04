@@ -89,8 +89,12 @@ Page({
 
     wx.request({
       url: requestUrl,
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
       data: {
-        noncestr: Date.now()
+         testStr:'abbdbdbbd'
       },
       success: function (result) {
         self.setData({
