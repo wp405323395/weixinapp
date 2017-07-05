@@ -128,7 +128,7 @@ var GetList = function (that, typeId,isLoadMore) {
           break;
       }
       that.setData({
-        foot_loading: true
+        foot_loading: false
       });
       that.setData({
         first_page: {

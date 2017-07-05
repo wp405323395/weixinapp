@@ -18,7 +18,7 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 500,
-    foot_loading:true
+    foot_loading:false
   },
 
   onShow: function () {
