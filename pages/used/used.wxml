@@ -1,6 +1,6 @@
 <!--used.wxml-->
 
-<import src="../common/list_product.wxml" />
+<import src="../../template/list_product.wxml" />
 <view class="container">
   <view class="navbar">
     <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>

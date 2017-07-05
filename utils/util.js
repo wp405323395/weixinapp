@@ -16,6 +16,19 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function my_openSetting() {
+  if (wx.openSetting) {
+    wx.openSetting({
+      success: (res) => {
+        console.log(JSON.stringify(res));
+      }
+    })
+  } else {
+    console.log('不支持 wx.openSetting');
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  my_openSetting: my_openSetting
 }

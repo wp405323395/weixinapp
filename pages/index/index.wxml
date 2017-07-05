@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<import src="../common/list_product.wxml" />
+<import src="../../template/list_product.wxml" />
 <view class="container">
 
   <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">

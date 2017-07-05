@@ -1,7 +1,7 @@
 //index.js
 const requestUrl = require('../../config').requestUrl
 const duration = 2000
-var common = require('../common/loadProduct.js')
+var common = require('../../netApi/loadProduct.js')
 //获取应用实例
 var app = getApp()
 var firstLoad;
@@ -26,7 +26,12 @@ Page({
   },
 
   onLoad: function () {
-    wx.clearStorageSync();
+    try {
+      wx.setStorageSync('isUsedNeedRefresh', 'unneed');
+      wx.setStorageSync('isIndexNeedRefresh', 'unneed');
+    } catch (e) {
+    }
+
     wx.showToast({
       title: "loading",
       icon: "loading",

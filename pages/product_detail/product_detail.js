@@ -1,5 +1,5 @@
 // product_detail.js
-var loadProductHelper = require('../common/loadProduct.js')
+var loadProductHelper = require('../../netApi/loadProduct.js')
 var productId;
 var that;
 Page({

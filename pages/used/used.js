@@ -1,5 +1,5 @@
 // used.js
-var common = require('../common/loadProduct.js')
+var common = require('../../netApi/loadProduct.js')
 var url = "http://cccm";
 var page = 1;
 var firstFragPage;

@@ -1,4 +1,4 @@
-const requestUrl = require('../../config').requestUrl
+const requestUrl = require('../config').requestUrl
 const duration = 2000
 var products_from_web = {
   products:
