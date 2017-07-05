@@ -24,30 +24,3 @@
     </view>
   </view>
 </template>
-
-<template name="list_productttt">
-  <view class="product_box_containner">
-    <block wx:for="{{list}}" wx:key="unique">
-      <view class="scroll_view_item">
-        <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
-          <view class="product_img" style="background-image:url({{item.img}});background-position:center;background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
-            <view class="tickit_content">
-              <text hidden="{{false}}" class="tickit_content_symbol_left tickit_content_symbol">¥</text>
-              <text class="tickit_num">5.8</text>
-              <text hidden="{{true}}" class="tickit_content_symbol_right tickit_content_symbol">折</text>
-            </view>
-
-          </view>
-        </navigator>
-
-        <view class="bottom_dital">
-          <text id="{{item.id}}" class="item-name">{{item.name}}</text>
-          <image src="../../image/left_btn.png" class="left_img"></image>
-        </view>
-      </view>
-    </block>
-    <view class="foot_loading" hidden="{{foot_loading}}">
-      <text>正在加载中... ...</text>
-    </view>
-  </view>
-</template>

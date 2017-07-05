@@ -15,7 +15,7 @@
     <block wx:for="{{products}}" wx:key="{{item.typeId}}">
       <text class="product_type_name">{{item.typeName}}</text>
       <view class="border_line" style="background: #d4d4d4;height: 1px;"></view>
-      <template is="list_product" data="{{item,tickit_width,tickit_height,foot_loading}}"/>
+      <template is="list_product" data="{{item ,tickit_width,tickit_height,foot_loading}}"/>
     </block>
   </scroll-view>
 

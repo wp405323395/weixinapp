@@ -26,7 +26,7 @@ var GetList = function (that, typeId,isLoadMore) {
       wx.showToast({
         title: "loading",
         icon: "loading",
-        duration: 10000
+        duration: 30000
       });
 
       firstFragPage = 0;
@@ -109,21 +109,21 @@ var GetList = function (that, typeId,isLoadMore) {
     },
     fail: function ({errMsg}) {
       var lis = common.getProductsByTypeId(1);
-      var current;
+      let current;
       switch (typeId) {
         case 0:
           firstPageList = firstPageList.concat(lis);
-          current = firstPageList;
+          current = { typeId: 0, typeName:'餐饮美食', products:firstPageList};
           firstFragPage++;
           break;
         case 1:
           secondPageList = secondPageList.concat(lis);
-          current = secondPageList;
+          current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
           secondFragPage++;
           break;
         case 2:
           thirdPageList = thirdPageList.concat(lis);
-          current = thirdPageList;
+          current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
           thirdFragPage++;
           break;
       }
@@ -133,7 +133,7 @@ var GetList = function (that, typeId,isLoadMore) {
       that.setData({
         first_page: {
           bindDownLoad: GetList,
-          list: current,
+          item: current,
         }
       });
       loadding = false;
@@ -154,7 +154,7 @@ Page({
     foot_loading: true,
     first_page: {
       bindDownLoad: GetList,
-      list: firstPageList,
+      item: { typeId: 0, typeName: '餐饮美食', products: firstPageList},
     }
   },
   onLoad: function (options) {
@@ -162,7 +162,7 @@ Page({
     wx.showToast({
       title: "loading",
       icon: "loading",
-      duration: 10000
+      duration: 30000
     })
 
     wx.getSystemInfo({

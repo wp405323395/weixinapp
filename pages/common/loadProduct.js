@@ -252,4 +252,5 @@ function getProductsByTypeId(typeId) {
 module.exports.getProductsByTypeId = getProductsByTypeId;
 module.exports.getProducts = getProducts
 module.exports.getProductById = getProductById;
+
 //exports.sayGoodbye = sayGoodbye
