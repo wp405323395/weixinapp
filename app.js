@@ -7,9 +7,10 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    util.my_openSetting();
-    myLogin.my_login();
-
+    //max_wang>>>>>>>>>>>>
+    //util.my_openSetting();
+    //myLogin.my_login();
+    //max_wang<<<<<<<<<<<<
   },
 
 

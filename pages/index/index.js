@@ -25,7 +25,14 @@ Page({
     this.loadProduct();
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
+    var scene = options.scene;
+    //scene = '../product_detail/product_detail?id=10001';
+    if(scene != undefined) {
+      wx.navigateTo({
+        url: scene
+      })
+    }
     try {
       wx.setStorageSync('isUsedNeedRefresh', 'unneed');
       wx.setStorageSync('isIndexNeedRefresh', 'unneed');
@@ -40,12 +47,7 @@ Page({
     firstLoad = true;
     that = this
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    });
+
       wx.getSystemInfo({
         success: function (res) {
           console.info(res.windowHeight);

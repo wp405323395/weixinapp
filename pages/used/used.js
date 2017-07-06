@@ -13,8 +13,24 @@ var firstPageList = [];
 var secondPageList = [];
 var thirdPageList = [];
 var scrollHeight;
-var firstLoad = true;
+var loadingModle = [{
+  typeId:0,
+  loadding:false
+}, {
+  typeId: 0,
+  loadding: false
+}, {
+  typeId: 0,
+  loadding: false
+}];
 var GetList = function (that, typeId,isLoadMore) {
+  if (loadingModle[typeId].loadding) {
+    return ;
+  }
+  loadingModle[typeId] = { typeId: typeId,loadding: true};
+  that.setData({
+    foot_loading: true
+  });
   try {
     var value = wx.getStorageSync('isUsedNeedRefresh');
 
@@ -35,24 +51,11 @@ var GetList = function (that, typeId,isLoadMore) {
       firstPageList = [];
       secondPageList = [];
       thirdPageList = [];
-    } else {
-      if (firstLoad) {
-        firstLoad = false;
-      } else if (isLoadMore) { } else {
-        return;
-      }
-
     }
   } catch (e) {
     // Do something when catch error
   }
- 
-  if (loadding) {
-    return;
-  }
-  loadding = true;
-  var a = common.getProducts()[0];
-  
+
   switch (typeId) {
     case 0:
       page = firstFragPage;
@@ -64,6 +67,17 @@ var GetList = function (that, typeId,isLoadMore) {
       page = thirdFragPage;
       break;
   }
+  if (page == undefined) {
+    wx.showToast({
+      title: "loading",
+      icon: "loading",
+      duration: 30000
+    });
+  } else if (isLoadMore) { }
+  else {
+    loadingModle[typeId] = { typeId: typeId, loadding: false };
+    return;
+  }
   wx.request({
     url: url,
     data: {
@@ -73,70 +87,54 @@ var GetList = function (that, typeId,isLoadMore) {
     },
     success: function (res) {
       for (var i = 0; i < res.data.length; i++) {
-        //l.push(res.data[i])
-        var current;
-        switch (typeId) {
-          case 0:
-            firstPageList.push(a);
-            current = firstPageList;
-            firstFragPage++;
-            break;
-          case 1:
-            secondPageList.push(a);
-            current = secondPageList;
-            secondFragPage++;
-            break;
-          case 2:
-            thirdPageList.push(a);
-            current = thirdPageList;
-            thirdFragPage++;
-            break;
-        }
-
       }
       that.setData({
-        foot_loading: true
-      });
-      that.setData({
-        first_page: {
-          bindDownLoad: GetList,
-          list: current,
-        }
+        foot_loading: false
       });
 
-      loadding = false;
+      loadingModle[typeId] = { typeId: typeId, loadding: false };
       wx.hideToast();
     },
     fail: function ({errMsg}) {
-      var lis = common.getProductsByTypeId(1);
+      var lis = common.getProductsByTypeId(typeId);
       let current;
       switch (typeId) {
         case 0:
           firstPageList = firstPageList.concat(lis);
           current = { typeId: 0, typeName:'餐饮美食', products:firstPageList};
           firstFragPage++;
+          that.setData({
+            first_page: {
+              item: current,
+            }
+          });
           break;
         case 1:
           secondPageList = secondPageList.concat(lis);
           current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
           secondFragPage++;
+          that.setData({
+            second_page: {
+              item: current,
+            }
+          });
           break;
         case 2:
           thirdPageList = thirdPageList.concat(lis);
           current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
           thirdFragPage++;
+          that.setData({
+            third_page: {
+              item: current,
+            }
+          });
           break;
       }
       that.setData({
         foot_loading: false
       });
-      that.setData({
-        first_page: {
-          bindDownLoad: GetList,
-          item: current,
-        }
-      });
-      loadding = false;
+      
+      loadingModle[typeId] = { typeId: typeId, loadding: false };
       wx.hideToast();
     }
   });
@@ -153,7 +151,6 @@ Page({
     scrollHeight: 0,
     foot_loading: true,
     first_page: {
-      bindDownLoad: GetList,
       item: { typeId: 0, typeName: '餐饮美食', products: firstPageList},
     }
   },
@@ -175,15 +172,18 @@ Page({
         });
       }
     });
+    GetList(this, 0);
   }, 
   onShow: function () {
-    GetList(this,0);
+    
   },
 
   navbarTap: function (e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx
-    })
+    });
+    var navbarTabXid =  e.currentTarget.dataset.idx;
+    switchNavbar(navbarTabXid);
   },
 
   bindDownLoad: function (e) {
@@ -192,3 +192,28 @@ Page({
     GetList(this,id,true);
   },
 })
+function switchNavbar(navbarTabXid) {
+  that.setData({
+    foot_loading: false
+  });
+
+  let current;
+  switch (navbarTabXid) {
+    case 0:
+      //current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
+      break;
+    case 1:
+      if (secondFragPage == undefined) {
+        GetList(that,1);
+      }
+      //current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
+      break;
+    case 2:
+      if(thirdFragPage == undefined) {
+        GetList(that, 2);
+      }
+      //current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
+      break;
+  }
+  
+}

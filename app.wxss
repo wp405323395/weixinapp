@@ -34,6 +34,15 @@ form{
   text-align: center;
 }
 
+.banner_img{
+  height: 100%;
+  width: 100%;
+}
+.swiper-item {
+  display: block;
+  height: 150px;
+}
+
 /* page */
 .container {
   display: flex;
@@ -182,8 +191,10 @@ form{
   transform: translate(-50%, -50%);
 }
 .swiper{
-  margin: 13rpx;
-  margin-bottom: 0;
+  width: 100%;
+}
+swiper{
+    margin: 13rpx;
 }
 text{
     font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
@@ -241,9 +252,9 @@ text{
 }
 
 
-.tickit_num{
+.tickit_num, .tickit_str{
   color: white;
-  font-size: 32px;
+  font-size: 32px;/*32px;*/
   font-weight: 500;
   
 }
@@ -273,5 +284,18 @@ text{
   padding-top: -1px;
   background: white;
 }
-
+.tickit_str{
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 5%;
+}
+.constraint{
+  color: white;
+  margin-bottom: 1px;
+  position: absolute;
+  bottom: 6px;
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}
 /** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/

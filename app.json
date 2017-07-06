@@ -32,10 +32,10 @@
     ]
   },
   "networkTimeout": {
-    "request": 10000,
-    "connectSocket": 10000,
-    "uploadFile": 10000,
-    "downloadFile": 10000
+    "request": 3000,
+    "connectSocket": 3000,
+    "uploadFile": 3000,
+    "downloadFile": 3000
   },
   "debug": false
 }

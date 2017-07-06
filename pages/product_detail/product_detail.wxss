@@ -8,10 +8,6 @@
   justify-content: flex-start;
   box-sizing: border-box;
 } 
-.swiper-item {
-  display: block;
-  height: 150px;
-}
 
 .details{
   margin-top: 0;
@@ -55,9 +51,9 @@
 }
 .bottom_btn{
   position: absolute;
-  bottom: 0px;
+  bottom: 40px;
   box-sizing: border-box;
-  width: 90%;
+  width: 100%;
 }
 
 .introduce>view:last-child{
@@ -71,8 +67,12 @@
   font-size: 23rpx;  
   text-align: left;
 }
-
-.navigator-hover{
-  
+button{
+  background: white;
+  height: 60%;
+  border-radius: 0;
+  color: #ef2020;
 }
+
+
 

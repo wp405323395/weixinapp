@@ -8,10 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
+    toView: 'green',
+    background: ['../../image/banner.png', '../../image/banner.png', '../../image/banner.png'],
     vertical: false,
     autoplay: true,
+    indicatorDots: true,
     interval: 2000,
     duration: 500,
     product:{}
@@ -22,6 +23,16 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    //调用应用实例的方法获取全局数据
+
+    wx.getSystemInfo({
+      success: function (res) {
+        console.info(res.windowHeight);
+        that.setData({
+          bannerHeight: res.windowHeight * 0.3
+        });
+      }
+    });
     productId = options.id;
     var product = loadProductHelper.getProductById(productId);
     var btnText;
@@ -29,7 +40,7 @@ Page({
       product.btnText = "已使用";
     } else {
       if (product.isReceive) {
-        product.btnText = "立即消费";
+        product.btnText = "立即使用";
       } else {
         product.btnText = "立即领取"
       }
@@ -113,7 +124,9 @@ Page({
     })
   },
   receiveIt: function (id) {
-    console.log("立即领取+" + id);
+    wx.showToast({
+      title: "领取失败"
+    });
   },
   btn_click:function() {
     if (this.data.product.isUsed) {

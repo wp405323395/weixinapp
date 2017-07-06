@@ -1,14 +1,15 @@
 <template name="list_product">
   <view class="product_box_containner">
-    <block wx:for="{{item.products}}" wx:key="unique">
+    <block wx:for="{{item.products}}" wx:key="*this">
       <view class="scroll_view_item">
         <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
           <view class="product_img" style="background-image:url({{item.img}});background-position:center;background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
+
             <view class="tickit_content">
-              <text hidden="{{true}}" class="tickit_content_symbol_left tickit_content_symbol">¥</text>
-              <text class="tickit_num">5.8</text>
-              <text hidden="{{false}}" class="tickit_content_symbol_right tickit_content_symbol">折</text>
+              <template wx:if="{{item.promotionStrategy === 0 || item.promotionStrategy === 1 }}" is="product_item_type0" data="{{item}}" />
+              <template wx:if="{{item.promotionStrategy === 2}}" is="product_item_type1" data="{{item}}" />
             </view>
+            <text class="constraint">({{item.constraint}})</text>
 
           </view>
         </navigator>
@@ -23,4 +24,14 @@
       <text>正在加载中... ...</text>
     </view>
   </view>
+</template>
+
+<template name="product_item_type0">
+  <text hidden="{{item.promotionStrategy != 1}}" class="tickit_content_symbol_left tickit_content_symbol">¥</text>
+  <text class="tickit_num">{{item.productInstructions}}</text>
+  <text hidden="{{item.promotionStrategy != 0}}" class="tickit_content_symbol_right tickit_content_symbol">折</text>
+</template>
+
+<template name="product_item_type1">
+  <text class="tickit_str">{{item.productInstructions}}</text>
 </template>
