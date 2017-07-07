@@ -33,11 +33,7 @@ Page({
         url: scene
       })
     }
-    try {
-      wx.setStorageSync('isUsedNeedRefresh', 'unneed');
-      wx.setStorageSync('isIndexNeedRefresh', 'unneed');
-    } catch (e) {
-    }
+    
 
     wx.showToast({
       title: "loading",
@@ -47,10 +43,14 @@ Page({
     firstLoad = true;
     that = this
     //调用应用实例的方法获取全局数据
+    let tickit_width;
+    let tickit_height;
 
       wx.getSystemInfo({
         success: function (res) {
           console.info(res.windowHeight);
+          tickit_width = res.windowWidth * 0.35;
+          tickit_height = res.windowHeight * 0.13;
           that.setData({
             bannerHeight: res.windowHeight*0.3,
             tickit_width: res.windowWidth*0.35,
@@ -58,6 +58,20 @@ Page({
           });
         }
       });
+      try {
+        wx.setStorageSync('isUsedNeedRefresh', 'unneed');
+        wx.setStorageSync('isIndexNeedRefresh', 'unneed');
+        wx.setStorage({
+          key:'tickit_height',
+          data: tickit_height,
+        });
+        wx.setStorage({
+          key: 'tickit_width',
+          data: tickit_width,
+        });
+
+      } catch (e) {
+      }
       
   },
 

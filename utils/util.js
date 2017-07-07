@@ -28,7 +28,14 @@ function my_openSetting() {
   }
 }
 
+function textIsNotNull(str){
+  if (str == null || str == undefined || str == ''){
+    return false;
+  }
+  return true;
+}
 module.exports = {
   formatTime: formatTime,
-  my_openSetting: my_openSetting
+  my_openSetting: my_openSetting,
+  textIsNotNull: textIsNotNull
 }

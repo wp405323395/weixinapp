@@ -1,5 +1,6 @@
 // used.js
 var common = require('../../netApi/loadProduct.js')
+var util = require('../../utils/util.js');
 var url = "http://cccm";
 var page = 1;
 var firstFragPage;
@@ -161,17 +162,32 @@ Page({
       icon: "loading",
       duration: 30000
     })
+    var tickit_width = wx.getStorageSync('tickit_width');
+    var tickit_height = wx.getStorageSync('tickit_height');
+    if (util.textIsNotNull(tickit_width) && util.textIsNotNull(tickit_height)) {
+      wx.getSystemInfo({
+        success: function (res) {
+          that.setData({
+            scrollHeight: res.windowHeight,
+            tickit_width: tickit_width,
+            tickit_height: tickit_height
 
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          scrollHeight: res.windowHeight,
-          tickit_width: res.windowWidth * 0.35,
-          tickit_height: res.windowHeight * 0.13
+          });
+        }
+      });
+    } else {
+      wx.getSystemInfo({
+        success: function (res) {
+          that.setData({
+            scrollHeight: res.windowHeight,
+            tickit_width: res.windowWidth * 0.35,
+            tickit_height: res.windowHeight * 0.13
 
-        });
-      }
-    });
+          });
+        }
+      });
+    }
+    
     GetList(this, 0);
   }, 
   onShow: function () {

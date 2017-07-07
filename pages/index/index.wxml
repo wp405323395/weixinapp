@@ -5,7 +5,7 @@
   <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
     <view class="swiper">
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
-        <block wx:for="{{background}}" wx:key="*this">
+        <block wx:for="{{background}}" wx:key="unique">
           <swiper-item>
             <image class="banner_img" src="{{item}}" style="height:{{bannerHeight}}px;"></image>
           </swiper-item>

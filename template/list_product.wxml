@@ -3,17 +3,16 @@
     <block wx:for="{{item.products}}" wx:key="*this">
       <view class="scroll_view_item">
         <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
-          <view class="product_img" style="background-image:url({{item.img}});background-position:center;background-repeat:no-repeat;background-size:contain;width:{{tickit_width}}px; height:{{tickit_height}}px; ">
-
-            <view class="tickit_content">
-              <template wx:if="{{item.promotionStrategy === 0 || item.promotionStrategy === 1 }}" is="product_item_type0" data="{{item}}" />
-              <template wx:if="{{item.promotionStrategy === 2}}" is="product_item_type1" data="{{item}}" />
-            </view>
-            <text class="constraint">({{item.constraint}})</text>
-
-          </view>
+          <!--background-image:url({{item.img}})-->
+          <image class="product_img" src="{{item.img}}" style="width:{{tickit_width}}px; height:{{tickit_height}}px; ">
+          </image>
+          <view class="tickit_content">
+          <template wx:if="{{item.promotionStrategy === 0 || item.promotionStrategy === 1 }}" is="product_item_type0" data="{{item}}" />
+          <template wx:if="{{item.promotionStrategy === 2}}" is="product_item_type1" data="{{item}}" />
+        </view>
+        <text class="constraint">({{item.constraint}})</text>
         </navigator>
-
+        
         <view class="bottom_dital">
           <text id="{{item.id}}" class="item-name">{{item.name}}</text>
           <image src="../../image/left_btn.png" class="left_img"></image>

@@ -235,6 +235,10 @@ text{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+
 }
 .tickit_content_symbol{
   color: white;
@@ -269,7 +273,7 @@ text{
 }
 .left_img{
   position: absolute;
-  width: 5px;
+  width: 8px;
   height: 15px;
   top: 1px;
   right: 20%;
@@ -293,7 +297,7 @@ text{
   color: white;
   margin-bottom: 1px;
   position: absolute;
-  bottom: 6px;
+  bottom: 4px;
   text-align: center;
   font-size: 12px;
   width: 100%;
