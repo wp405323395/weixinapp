@@ -41,7 +41,5 @@ page{
   background: #ffffff;  
 }  
 
-.scroll_view_item{
-  border-bottom: 1px solid #d4d4d4;
-}
+
 

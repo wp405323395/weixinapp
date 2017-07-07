@@ -37,9 +37,6 @@
   
 }
 
-.has_border{
-  border-bottom: 1px #d4d4d4 solid;
-}
 
 .introduce{
   width: 100%;
