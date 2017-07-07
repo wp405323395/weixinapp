@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "192.168.50.18"
+var host = "pingtas.qq.com"
 
 var config = {
 
@@ -13,10 +13,10 @@ var config = {
     host,
 
     // 登录地址，用于建立会话
-    loginUrl: `http://${host}/wappweb/merchantcoupon/wechat/merchant-coupon!login`,
+    loginUrl: `https://${host}/wappweb/merchantcoupon/wechat/merchant-coupon!login`,
 
     // 测试的请求地址，用于测试会话
-    requestUrl: `http://${host}/wappweb/merchantcoupon/tv/merchant-coupon!test`,
+    requestUrl: `https://${host}/wappweb/merchantcoupon/tv/merchant-coupon!test`,
 
     // 用code换取openId
     openIdUrl: `https://${host}/openid`,
@@ -34,7 +34,10 @@ var config = {
     uploadFileUrl: `https://${host}/upload`,
 
     // 下载示例图片接口
-    downloadExampleUrl: `https://${host}/static/weapp.jpg`
+    downloadExampleUrl: `https://${host}/static/weapp.jpg`,
+
+    //根据类型获取已经使用的优惠券列表
+    loadProductUrl: `https://${host}/kkkkkkkkkk`
 };
 
 

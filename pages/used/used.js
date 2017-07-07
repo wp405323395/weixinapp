@@ -2,7 +2,7 @@
 var common = require('../../netApi/loadProduct.js')
 var util = require('../../utils/util.js');
 var mta = require('../../utils/mta_analysis.js');
-var url = "http://cccm";
+var loadUsedProductUrl = require('../../config.js').loadProductUrl;
 var page = 1;
 var firstFragPage;
 var secondFragPage;
@@ -81,7 +81,7 @@ var GetList = function (that, typeId,isLoadMore) {
     return;
   }
   wx.request({
-    url: url,
+    url: loadUsedProductUrl,
     data: {
       pageSize: 10,
       pageNo: page,
