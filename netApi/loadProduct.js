@@ -6,8 +6,8 @@ var products_from_web = {
   [
     {
       id: '100000',
-      name: '青青果果',
-      img: "../../image/red_tickit.png",
+      storeName: '青青果果',
+      img: "../../image/tickit_expire_supermarket1.png",
       typeId: 0,
       typeName: "生鲜超市",
       promotionStrategy: 0,
@@ -16,8 +16,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '小蔡水果铺',
-      img: "../../image/red_tickit.png",
+      storeName: '小蔡水果铺',
+      img: "../../image/tickit_supermarket2.png",
       typeId: 0,
       typeName: "生鲜超市",
       promotionStrategy: 0,
@@ -26,8 +26,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '青青果果',
-      img: "../../image/tickit_blue.png",
+      storeName: '青青果果',
+      img: "../../image/tickit_supermarket2.png",
       typeId: 0,
       typeName: "生鲜超市",
       promotionStrategy: 2,
@@ -36,8 +36,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '佳品店',
-      img: "../../image/tickit_violet.png",
+      storeName: '佳品店',
+      img: "../../image/tickit_supermarket1.png",
       typeId: 0,
       typeName: "生鲜超市",
       promotionStrategy: 1,
@@ -46,8 +46,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '小重庆火锅',
-      img: "../../image/tickit_blue.png",
+      storeName: '小重庆火锅',
+      img: "../../image/tickit_restaurant1.png",
       typeId: 1,
       typeName: "餐饮美食",
       promotionStrategy: 0,
@@ -56,8 +56,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '农家菜馆',
-      img: "../../image/red_tickit.png",
+      storeName: '农家菜馆',
+      img: "../../image/tickit_expire_restaurant2.png",
       typeId: 1,
       typeName: "餐饮美食",
       promotionStrategy: 0,
@@ -66,8 +66,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '潜江油焖大虾',
-      img: "../../image/tickit_blue.png",
+      storeName: '潜江油焖大虾',
+      img: "../../image/tickit_restaurant2.png",
       typeId: 1,
       typeName: "餐饮美食",
       promotionStrategy: 0,
@@ -76,8 +76,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '好乐迪KTV',
-      img: "../../image/red_tickit.png",
+      storeName: '好乐迪KTV',
+      img: "../../image/tickit_game1.png",
       typeId: 2,
       typeName: "休闲娱乐",
       promotionStrategy: 0,
@@ -86,8 +86,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '椰岛发型',
-      img: "../../image/tickit_blue.png",
+      storeName: '椰岛发型',
+      img: "../../image/tickit_expire_game2.png",
       typeId: 2,
       typeName: "休闲娱乐",
       promotionStrategy: 1,
@@ -96,8 +96,8 @@ var products_from_web = {
     },
     {
       id: '100000',
-      name: '凯撒健身',
-      img: "../../image/red_tickit.png",
+      storeName: '凯撒健身',
+      img: "../../image/tickit_game1.png",
       typeId: 2,
       typeName: "休闲娱乐",
       promotionStrategy: 2,
@@ -140,13 +140,11 @@ function getProductById(productId) {
     id: '100008',
     storeInstructions: "这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店，这是一个神奇的小店",
     storeInstructionsImg: ["http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg", "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"],
-    name: '柿子',
-    price: 7,
-    img: "../../image/red_tickit.png",
-    typeId: 1,
+    storeName: '凯撒健身',
+    img: "../../image/game.png",
+    typeId: 2,
     typeName: "餐饮美食",
-    productInstructions: "全场满十元减五元",
-    deadline: "2017.6.18-2017.9.18",
+    productInstructions: "一周体验",
     isReceive: false,
     isUsed: false
   };
@@ -155,23 +153,23 @@ function getProductById(productId) {
 function getProductsByTypeId(typeId) {
   switch(typeId) {
     case 0:
-      return canyin;
+      return supermarket;
     break;
     case 1:
-      return shenghuochaoshi;
+      return restaurant;
     break;
     case 2:
-      return xiuxianyule;
+      return game;
     break;
   }
    
 }
 
-var canyin = [
+var supermarket = [
  {
     id: '100000',
-    name: '青青果果',
-    img: "../../image/red_tickit.png",
+    storeName: '青青果果',
+    img: "../../image/tickit_used_supermarket1.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 0,
@@ -179,8 +177,8 @@ var canyin = [
     constraint: '全场通用'
   }, {
     id: '100000',
-    name: '小蔡水果铺',
-    img: "../../image/red_tickit.png",
+    storeName: '小蔡水果铺',
+    img: "../../image/tickit_used_supermarket2.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 0,
@@ -188,8 +186,8 @@ var canyin = [
     constraint: '全场通用'
   }, {
     id: '100000',
-    name: '青青果果',
-    img: "../../image/tickit_blue.png",
+    storeName: '青青果果',
+    img: "../../image/tickit_used_supermarket2.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 2,
@@ -197,8 +195,8 @@ var canyin = [
     constraint: '仅限香蕉'
   },{
     id: '100000',
-    name: '佳品店',
-    img: "../../image/tickit_violet.png",
+    storeName: '佳品店',
+    img: "../../image/tickit_used_supermarket1.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 1,
@@ -206,8 +204,8 @@ var canyin = [
     constraint: '满50可用'
   }, {
     id: '100000',
-    name: '青青果果',
-    img: "../../image/red_tickit.png",
+    storeName: '青青果果',
+    img: "../../image/tickit_used_supermarket1.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 0,
@@ -215,8 +213,8 @@ var canyin = [
     constraint: '全场通用'
   }, {
     id: '100000',
-    name: '小蔡水果铺',
-    img: "../../image/red_tickit.png",
+    storeName: '小蔡水果铺',
+    img: "../../image/tickit_used_supermarket2.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 0,
@@ -224,8 +222,8 @@ var canyin = [
     constraint: '全场通用'
   }, {
     id: '100000',
-    name: '青青果果',
-    img: "../../image/tickit_blue.png",
+    storeName: '青青果果',
+    img: "../../image/tickit_used_supermarket2.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 2,
@@ -234,8 +232,8 @@ var canyin = [
   },
   {
     id: '100000',
-    name: '佳品店',
-    img: "../../image/tickit_violet.png",
+    storeName: '佳品店',
+    img: "../../image/tickit_used_supermarket1.png",
     typeId: 0,
     typeName: "生鲜超市",
     promotionStrategy: 1,
@@ -244,20 +242,11 @@ var canyin = [
   }
 ];
 
-var shenghuochaoshi = [{
-  id: '100000',
-  name: '佳品店',
-  img: "../../image/tickit_violet.png",
-  typeId: 0,
-  typeName: "生鲜超市",
-  promotionStrategy: 1,
-  productInstructions: "5",
-  constraint: '满50可用'
-},
+var restaurant = [
 {
   id: '100000',
-  name: '小重庆火锅',
-  img: "../../image/tickit_blue.png",
+  storeName: '小重庆火锅',
+  img: "../../image/tickit_used_restaurant1.png",
   typeId: 1,
   typeName: "餐饮美食",
   promotionStrategy: 0,
@@ -266,8 +255,8 @@ var shenghuochaoshi = [{
 },
 {
   id: '100000',
-  name: '农家菜馆',
-  img: "../../image/red_tickit.png",
+  storeName: '农家菜馆',
+  img: "../../image/tickit_used_restaurant2.png",
   typeId: 1,
   typeName: "餐饮美食",
   promotionStrategy: 0,
@@ -276,8 +265,8 @@ var shenghuochaoshi = [{
 },
 {
   id: '100000',
-  name: '潜江油焖大虾',
-  img: "../../image/tickit_blue.png",
+  storeName: '潜江油焖大虾',
+  img: "../../image/tickit_used_restaurant2.png",
   typeId: 1,
   typeName: "餐饮美食",
   promotionStrategy: 0,
@@ -285,30 +274,28 @@ var shenghuochaoshi = [{
   constraint: '除酒水'
 }];
 
-var xiuxianyule = [{
+var game = [{
   id: '100000',
-  name: '好乐迪KTV',
-  img: "../../image/red_tickit.png",
+  storeName: '好乐迪KTV',
+  img: "../../image/tickit_used_game1.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 0,
   productInstructions: "6.0",
   constraint: '18:00-24:00'
-},
-{
+},{
   id: '100000',
-  name: '椰岛发型',
-  img: "../../image/tickit_blue.png",
+  storeName: '椰岛发型',
+  img: "../../image/tickit_used_game1.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 1,
   productInstructions: "10",
   constraint: '14:00-17:00'
-},
-{
+},{
   id: '100000',
-  name: '凯撒健身',
-  img: "../../image/red_tickit.png",
+  storeName: '凯撒健身',
+  img: "../../image/tickit_used_game2.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 2,
@@ -316,28 +303,26 @@ var xiuxianyule = [{
   constraint: '仅限武胜路店'
 }, {
   id: '100000',
-  name: '好乐迪KTV',
-  img: "../../image/red_tickit.png",
+  storeName: '好乐迪KTV',
+  img: "../../image/tickit_used_game2.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 0,
   productInstructions: "6.0",
   constraint: '18:00-24:00'
-},
-{
+},{
   id: '100000',
-  name: '椰岛发型',
-  img: "../../image/tickit_blue.png",
+  storeName: '椰岛发型',
+  img: "../../image/tickit_used_game1.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 1,
   productInstructions: "10",
   constraint: '14:00-17:00'
-},
-{
+},{
   id: '100000',
-  name: '凯撒健身',
-  img: "../../image/red_tickit.png",
+  storeName: '凯撒健身',
+  img: "../../image/tickit_used_game1.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 2,
@@ -345,63 +330,15 @@ var xiuxianyule = [{
   constraint: '仅限武胜路店'
 }, {
   id: '100000',
-  name: '好乐迪KTV',
-  img: "../../image/red_tickit.png",
+  storeName: '好乐迪KTV',
+  img: "../../image/tickit_used_game2.png",
   typeId: 2,
   typeName: "休闲娱乐",
   promotionStrategy: 0,
   productInstructions: "6.0",
   constraint: '18:00-24:00'
-},
-{
-  id: '100000',
-  name: '椰岛发型',
-  img: "../../image/tickit_blue.png",
-  typeId: 2,
-  typeName: "休闲娱乐",
-  promotionStrategy: 1,
-  productInstructions: "10",
-  constraint: '14:00-17:00'
-},
-{
-  id: '100000',
-  name: '凯撒健身',
-  img: "../../image/red_tickit.png",
-  typeId: 2,
-  typeName: "休闲娱乐",
-  promotionStrategy: 2,
-  productInstructions: "一周体验",
-  constraint: '仅限武胜路店'
-}, {
-  id: '100000',
-  name: '好乐迪KTV',
-  img: "../../image/red_tickit.png",
-  typeId: 2,
-  typeName: "休闲娱乐",
-  promotionStrategy: 0,
-  productInstructions: "6.0",
-  constraint: '18:00-24:00'
-},
-{
-  id: '100000',
-  name: '椰岛发型',
-  img: "../../image/tickit_blue.png",
-  typeId: 2,
-  typeName: "休闲娱乐",
-  promotionStrategy: 1,
-  productInstructions: "10",
-  constraint: '14:00-17:00'
-},
-{
-  id: '100000',
-  name: '凯撒健身',
-  img: "../../image/red_tickit.png",
-  typeId: 2,
-  typeName: "休闲娱乐",
-  promotionStrategy: 2,
-  productInstructions: "一周体验",
-  constraint: '仅限武胜路店'
-}];
+}
+];
 
 
 module.exports.getProductsByTypeId = getProductsByTypeId;

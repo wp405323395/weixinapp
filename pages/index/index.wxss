@@ -53,6 +53,7 @@ button:last-child {
 
 .product_type_name {
   padding: 13rpx;
+  padding-left: 28rpx;
   width: 100%;
   color: #333333;
   font-size: 15px;

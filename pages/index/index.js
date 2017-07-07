@@ -1,7 +1,8 @@
 //index.js
 const requestUrl = require('../../config').requestUrl
 const duration = 2000
-var common = require('../../netApi/loadProduct.js')
+var common = require('../../netApi/loadProduct.js');
+var mta = require('../../utils/mta_analysis.js');
 //获取应用实例
 var app = getApp()
 var firstLoad;
@@ -26,6 +27,7 @@ Page({
   },
 
   onLoad: function (options) {
+    mta.Page.init();
     var scene = options.scene;
     //scene = '../product_detail/product_detail?id=10001';
     if(scene != undefined) {

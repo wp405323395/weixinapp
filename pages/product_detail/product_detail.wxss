@@ -34,6 +34,8 @@
   align-items: center;
   background: #ffffff;
   padding: 13rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
   
 }
 
@@ -44,7 +46,6 @@
 .lable{
   font-size: 30rpx;
   color: #333333;
-  font-weight:500;
 }
 .bottom_btn{
   position: absolute;
@@ -58,7 +59,7 @@
 }
 .bottom_text{
   width: 98%;
-  padding-left:13rpx;
+  padding-left:25rpx;
   padding-top: 5rpx;
   color: #999999;
   font-size: 23rpx;  

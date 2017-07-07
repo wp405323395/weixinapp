@@ -14,7 +14,7 @@
         </navigator>
         
         <view class="bottom_dital">
-          <text id="{{item.id}}" class="item-name">{{item.name}}</text>
+          <text id="{{item.id}}" class="item-name">{{item.storeName}}</text>
           <image src="../../image/left_btn.png" class="left_img"></image>
         </view>
       </view>

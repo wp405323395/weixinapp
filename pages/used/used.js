@@ -1,6 +1,7 @@
 // used.js
 var common = require('../../netApi/loadProduct.js')
 var util = require('../../utils/util.js');
+var mta = require('../../utils/mta_analysis.js');
 var url = "http://cccm";
 var page = 1;
 var firstFragPage;
@@ -156,6 +157,7 @@ Page({
     }
   },
   onLoad: function (options) {
+    mta.Page.init();
     that = this;
     wx.showToast({
       title: "loading",
@@ -191,7 +193,6 @@ Page({
     GetList(this, 0);
   }, 
   onShow: function () {
-    
   },
 
   navbarTap: function (e) {

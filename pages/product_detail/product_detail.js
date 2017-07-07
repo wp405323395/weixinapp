@@ -2,6 +2,7 @@
 var loadProductHelper = require('../../netApi/loadProduct.js')
 var productId;
 var that;
+var mta = require('../../utils/mta_analysis.js');
 Page({
 
   /**
@@ -9,7 +10,7 @@ Page({
    */
   data: {
     toView: 'green',
-    background: ['../../image/banner.png', '../../image/banner.png', '../../image/banner.png'],
+    background: ['../../image/product1.jpg', '../../image/product2.jpg', '../../image/product3.jpg'],
     vertical: false,
     autoplay: true,
     indicatorDots: true,
@@ -22,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    mta.Page.init();
     that = this;
     //调用应用实例的方法获取全局数据
 
@@ -124,6 +126,7 @@ Page({
     })
   },
   receiveIt: function (id) {
+    mta.Event.stat("tickit_receive", { 'tickittype': this.data.product.typeName, 'storename': this.data.product.storeName});
     wx.showToast({
       title: "领取失败"
     });
