@@ -88,7 +88,39 @@ var GetList = function (that, typeId,isLoadMore) {
       typeId: typeId
     },
     success: function (res) {
-      for (var i = 0; i < res.data.length; i++) {
+      var lis = common.getProductsByTypeId(typeId);
+      let current;
+      switch (typeId) {
+        case 0:
+          firstPageList = firstPageList.concat(lis);
+          current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
+          firstFragPage++;
+          that.setData({
+            first_page: {
+              item: current,
+            }
+          });
+          break;
+        case 1:
+          secondPageList = secondPageList.concat(lis);
+          current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
+          secondFragPage++;
+          that.setData({
+            second_page: {
+              item: current,
+            }
+          });
+          break;
+        case 2:
+          thirdPageList = thirdPageList.concat(lis);
+          current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
+          thirdFragPage++;
+          that.setData({
+            third_page: {
+              item: current,
+            }
+          });
+          break;
       }
       that.setData({
         foot_loading: false
