@@ -4,17 +4,17 @@
       <view class="scroll_view_item">
         <navigator url="../product_detail/product_detail?id={{item.id}}" hover-class="navigator-hover" class="link_nav" hover-stay-time="200">
           <!--background-image:url({{item.img}})-->
-          <image class="product_img" src="{{item.img}}" style="width:{{tickit_width}}px; height:{{tickit_height}}px; ">
+          <image class="product_img" src="{{srcUrl+item.imgurl}}" style="width:{{tickit_width}}px; height:{{tickit_height}}px; ">
           </image>
           <view class="tickit_content">
-          <template wx:if="{{item.promotionStrategy === 0 || item.promotionStrategy === 1 }}" is="product_item_type0" data="{{item}}" />
-          <template wx:if="{{item.promotionStrategy === 2}}" is="product_item_type1" data="{{item}}" />
+          <template wx:if="{{item.couponstype == 0 || item.couponstype == 1 }}" is="product_item_type0" data="{{item}}" />
+          <template wx:if="{{item.couponstype == 2}}" is="product_item_type1" data="{{item}}" />
         </view>
-        <text class="constraint">({{item.constraint}})</text>
+        <text class="constraint">({{item.usecondition}})</text>
         </navigator>
         
         <view class="bottom_dital">
-          <text id="{{item.id}}" class="item-name">{{item.storeName}}</text>
+          <text id="{{item.id}}" class="item-name">{{item.storename}}</text>
           <image src="../../image/left_btn.png" class="left_img"></image>
         </view>
       </view>
@@ -26,11 +26,11 @@
 </template>
 
 <template name="product_item_type0">
-  <text hidden="{{item.promotionStrategy != 1}}" class="tickit_content_symbol_left tickit_content_symbol">¥</text>
-  <text class="tickit_num">{{item.productInstructions}}</text>
-  <text hidden="{{item.promotionStrategy != 0}}" class="tickit_content_symbol_right tickit_content_symbol">折</text>
+  <text hidden="{{item.couponstype != 1}}" class="tickit_content_symbol_left tickit_content_symbol">¥</text>
+  <text class="tickit_num">{{item.couponmemo}}</text>
+  <text hidden="{{item.couponstype != 0}}" class="tickit_content_symbol_right tickit_content_symbol">折</text>
 </template>
 
 <template name="product_item_type1">
-  <text class="tickit_str">{{item.productInstructions}}</text>
+  <text class="tickit_str">{{item.couponmemo}}</text>
 </template>

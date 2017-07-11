@@ -20,11 +20,11 @@ function my_openSetting() {
   if (wx.openSetting) {
     wx.openSetting({
       success: (res) => {
-        console.log(JSON.stringify(res));
+        //console.log(JSON.stringify(res));
       }
     })
   } else {
-    console.log('不支持 wx.openSetting');
+    //console.log('不支持 wx.openSetting');
   }
 }
 

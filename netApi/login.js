@@ -2,9 +2,8 @@ const loginUrl = require('../config').loginUrl;
 function my_login() {
   wx.checkSession({
     success: function () {
-      console.log("login success");
       //session 未过期，并且在本生命周期一直有效
-      clientLogin()
+      //clientLogin()
     },
     fail: function () {
       //登录态过期
@@ -13,7 +12,7 @@ function my_login() {
     }
   });
 }
-function clientLogin() {
+function clientLogin(successFun,failedFun) {
   wx.login({
     success: function (res) {
       if (res.code) {
@@ -29,12 +28,18 @@ function clientLogin() {
             'content-type': 'application/json'
           },
           success: function (result) {
-
-
+            let cookie = result.header['Set-Cookie'];
+            console.log('1-cookie:' + cookie);
+            try {
+              wx.setStorageSync('user_token', cookie)
+            } catch (e) {
+            }
+            
+            successFun();
           },
 
           fail: function ({errMsg}) {
-
+            failedFun();
           }
           /////////
         })
@@ -45,5 +50,6 @@ function clientLogin() {
   });
 };
 module.exports = {
-  my_login: my_login
+  my_login: my_login,
+  clientLogin: clientLogin
 }

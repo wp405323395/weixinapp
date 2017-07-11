@@ -12,10 +12,10 @@
         </block>
       </swiper>
     </view>
-    <block wx:for="{{products}}" wx:key="{{item.typeId}}">
+    <block wx:for="{{products}}" wx:key="{{item.storetype}}">
       <text class="product_type_name">{{item.typeName}}</text>
       <view class="border_line" style="background: #eeeeee;height: 1px;"></view>
-      <template is="list_product" data="{{item ,tickit_width,tickit_height,foot_loading}}"/>
+      <template is="list_product" data="{{item ,srcUrl,tickit_width,tickit_height,foot_loading}}"/>
     </block>
   </scroll-view>
 
