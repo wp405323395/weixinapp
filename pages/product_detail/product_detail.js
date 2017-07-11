@@ -1,5 +1,7 @@
 // product_detail.js
 var loadProductHelper = require('../../netApi/loadProduct.js')
+const config = require('../../config');
+const requestModle = require('../../netApi/requestModle.js');
 var productId;
 var that;
 var mta = require('../../utils/mta_analysis.js');
@@ -26,7 +28,10 @@ Page({
     mta.Page.init();
     that = this;
     //调用应用实例的方法获取全局数据
-
+    var srcUrl = config.srcUrl;
+    that.setData({
+      srcUrl: srcUrl
+    });
     wx.getSystemInfo({
       success: function (res) {
         console.info(res.windowHeight);
@@ -37,64 +42,35 @@ Page({
     });
     productId = options.id;
     var product = loadProductHelper.getProductById(productId);
-    var btnText;
-    if (product.isUsed) {
-      product.btnText = "已使用";
-    } else {
-      if (product.isReceive) {
-        product.btnText = "立即使用";
+    ///////
+    var self = this
+    wx.showNavigationBarLoading();
+    requestModle.request(config.queryWxUserCouponDetail, { id: productId }, self.onLoad, (result) => {
+      var responseObj = JSON.parse(result.data);
+      var product = responseObj.retData;
+      var btnText;
+      if (product.isUsed) {
+        product.btnText = "已使用";
       } else {
-        product.btnText = "立即领取"
+        if (product.isReceive) {
+          product.btnText = "立即使用";
+        } else {
+          product.btnText = "立即领取"
+        }
       }
+      this.setData(
+        { product: product }
+      );
 
-    }
-    this.setData(
-      { product: product }
-    );
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-  navigateBackFunc: function () {
+      wx.hideNavigationBarLoading();
+      wx.hideToast();
+    }, (errorMsg) => {
+      
+      wx.hideNavigationBarLoading();
+      wx.hideToast();
+    }, () => { });
+    ///////
+    
   },
 
   /**
