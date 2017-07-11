@@ -2,7 +2,8 @@
 var common = require('../../netApi/loadProduct.js')
 var util = require('../../utils/util.js');
 var mta = require('../../utils/mta_analysis.js');
-var loadUsedProductUrl = require('../../config.js').loadProductUrl;
+const config = require('../../config');
+const requestModle = require('../../netApi/requestModle.js');
 var page = 1;
 var firstFragPage;
 var secondFragPage;
@@ -80,98 +81,55 @@ var GetList = function (that, typeId,isLoadMore) {
     loadingModle[typeId] = { typeId: typeId, loadding: false };
     return;
   }
-  wx.request({
-    url: loadUsedProductUrl,
-    data: {
-      pageSize: 10,
-      pageNo: page,
-      typeId: typeId
-    },
-    success: function (res) {
-      var lis = common.getProductsByTypeId(typeId);
-      let current;
-      switch (typeId) {
-        case 0:
-          firstPageList = firstPageList.concat(lis);
-          current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
-          firstFragPage++;
-          that.setData({
-            first_page: {
-              item: current,
-            }
-          });
-          break;
-        case 1:
-          secondPageList = secondPageList.concat(lis);
-          current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
-          secondFragPage++;
-          that.setData({
-            second_page: {
-              item: current,
-            }
-          });
-          break;
-        case 2:
-          thirdPageList = thirdPageList.concat(lis);
-          current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
-          thirdFragPage++;
-          that.setData({
-            third_page: {
-              item: current,
-            }
-          });
-          break;
-      }
-      that.setData({
-        foot_loading: false
-      });
-
-      loadingModle[typeId] = { typeId: typeId, loadding: false };
-      wx.hideToast();
-    },
-    fail: function ({errMsg}) {
-      var lis = common.getProductsByTypeId(typeId);
-      let current;
-      switch (typeId) {
-        case 0:
-          firstPageList = firstPageList.concat(lis);
-          current = { typeId: 0, typeName:'餐饮美食', products:firstPageList};
-          firstFragPage++;
-          that.setData({
-            first_page: {
-              item: current,
-            }
-          });
-          break;
-        case 1:
-          secondPageList = secondPageList.concat(lis);
-          current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
-          secondFragPage++;
-          that.setData({
-            second_page: {
-              item: current,
-            }
-          });
-          break;
-        case 2:
-          thirdPageList = thirdPageList.concat(lis);
-          current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
-          thirdFragPage++;
-          that.setData({
-            third_page: {
-              item: current,
-            }
-          });
-          break;
-      }
-      that.setData({
-        foot_loading: false
-      });
-      
-      loadingModle[typeId] = { typeId: typeId, loadding: false };
-      wx.hideToast();
+  /////////////////////////////////////
+  requestModle.request(config.used_tickit_url, { type: typeId, pageNo: page, pageSize:20}, GetList, (result) => {
+    var data = result.data;
+    var retData = JSON.parse(data).retData;
+    var pds = retData.result;
+    let current;
+    switch (typeId) {
+      case 0:
+        firstPageList = firstPageList.concat(pds);
+        current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
+        firstFragPage++;
+        that.setData({
+          first_page: {
+            item: current,
+          }
+        });
+        break;
+      case 1:
+        secondPageList = secondPageList.concat(pds);
+        current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
+        secondFragPage++;
+        that.setData({
+          second_page: {
+            item: current,
+          }
+        });
+        break;
+      case 2:
+        thirdPageList = thirdPageList.concat(pds);
+        current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
+        thirdFragPage++;
+        that.setData({
+          third_page: {
+            item: current,
+          }
+        });
+        break;
     }
-  });
+    that.setData({
+      foot_loading: false
+    });
+
+    loadingModle[typeId] = { typeId: typeId, loadding: false };
+    wx.hideToast();
+  }, (errorMsg) => {
+    
+    wx.hideNavigationBarLoading();
+    wx.hideToast();
+  }, () => { });
 }
 
 Page({
@@ -196,6 +154,12 @@ Page({
       icon: "loading",
       duration: 30000
     })
+
+    let srcUrl = config.srcUrl;
+    that.setData({
+      srcUrl: srcUrl
+    });
+
     var tickit_width = wx.getStorageSync('tickit_width');
     var tickit_height = wx.getStorageSync('tickit_height');
     if (util.textIsNotNull(tickit_width) && util.textIsNotNull(tickit_height)) {
@@ -221,7 +185,7 @@ Page({
         }
       });
     }
-    
+
     GetList(this, 0);
   }, 
   onShow: function () {

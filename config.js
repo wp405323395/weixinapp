@@ -17,6 +17,10 @@ var config = {
     loginUrl: `http://${host}/wappweb/mcwx/mc-wx!login`,
 
     received_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUnuseCouponList`,
+
+    used_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUsedCouponList`,
+    
+
     // 测试的请求地址，用于测试会话
     requestUrl: `https://${host}/wappweb/merchantcoupon/tv/merchant-coupon!test`,
 

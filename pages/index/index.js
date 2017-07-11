@@ -112,14 +112,10 @@ Page({
   loadDate: function () {
     var self = this
     wx.showNavigationBarLoading();
-    let user_token = wx.getStorageSync('user_token');
-    console.log('2_user_token:::' + user_token);
-
     requestModle.request(config.received_tickit_url, {}, self.loadDate, (result) => {
       var responseObj = JSON.parse(result.data);
       var products = responseObj.retData;
       let cookie = result.header['Set-Cookie'];
-      console.log('3_user_token:::' + user_token);
       var sortedProducts = common.getProducts(products);
       self.setData({
         loading: false, 

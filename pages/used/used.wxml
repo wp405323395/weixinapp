@@ -10,7 +10,7 @@
   <view class="fragment" hidden="{{currentTab!==0}}">
     <!--<template is="used_list" data="{{...first_page}}"/>  -->
     <scroll-view data-id="{{0}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
-      <template is="list_product" data="{{...first_page,foot_loading,tickit_width,tickit_height}}" />
+      <template is="list_product" data="{{...first_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
     </scroll-view>
 
   </view>
@@ -18,7 +18,7 @@
   <!--生鲜超市-->
   <view class="fragment" hidden="{{currentTab!==1}}">
     <scroll-view data-id="{{1}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
-      <template is="list_product" data="{{...second_page,foot_loading,tickit_width,tickit_height}}" />
+      <template is="list_product" data="{{...second_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
     </scroll-view>
 
   </view>
@@ -26,7 +26,7 @@
   <!--休闲娱乐-->
   <view class="fragment" hidden="{{currentTab!==2}}">
     <scroll-view data-id="{{2}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
-      <template is="list_product" data="{{...third_page,foot_loading,tickit_width,tickit_height}}" />
+      <template is="list_product" data="{{...third_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
     </scroll-view>
 
   </view>
