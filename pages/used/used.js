@@ -19,6 +19,8 @@ var scrollHeight;
 var firstPageHasNext = true;
 var secondPageHasNext = true;
 var thirdPageHasNext = true;
+var tickit_width ;
+var tickit_height;
 var loadingModle = [{
   typeId:0,
   loadding:false
@@ -146,7 +148,26 @@ var GetList = function (that, typeId,isLoadMore) {
 
     loadingModle[typeId] = { typeId: typeId, loadding: false };
   }, (errorMsg) => {
-  }, () => { });
+    that.setData({
+      hasData: false,
+      noteNoData: '检查您的网络',
+      no_data_image_height: tickit_height * 1.1,
+      no_data_image_width: tickit_width * 1.1
+    });
+    }, (res) => {
+    if (res.statusCode == 503) {
+      that.setData({
+        hasData: false,
+        noteNoData: '检查您的网络',
+        no_data_image_height: tickit_height * 1.1,
+        no_data_image_width: tickit_width * 1.1
+      });
+    }
+  });
+    that.setData({
+      foot_loading: false
+    });
+    
 }
 
 Page({
@@ -159,6 +180,7 @@ Page({
     scrollTop: 0,
     scrollHeight: 0,
     foot_loading: true,
+    hasData: true,
     first_page: {
       item: { typeId: 0, typeName: '餐饮美食', products: firstPageList},
     }
@@ -172,8 +194,8 @@ Page({
       srcUrl: srcUrl
     });
 
-    var tickit_width = wx.getStorageSync('tickit_width');
-    var tickit_height = wx.getStorageSync('tickit_height');
+    tickit_width = wx.getStorageSync('tickit_width');
+    tickit_height = wx.getStorageSync('tickit_height');
     if (util.textIsNotNull(tickit_width) && util.textIsNotNull(tickit_height)) {
       wx.getSystemInfo({
         success: function (res) {
@@ -188,11 +210,11 @@ Page({
     } else {
       wx.getSystemInfo({
         success: function (res) {
+          tickit_width = res.screenWidth * 0.38;
+          tickit_height = res.screenHeight * 0.115;
           that.setData({
-            scrollHeight: res.windowHeight,
-            tickit_width: res.windowWidth * 0.35,
-            tickit_height: res.windowHeight * 0.13
-
+            tickit_width: tickit_width,
+            tickit_height: tickit_height,
           });
         }
       });

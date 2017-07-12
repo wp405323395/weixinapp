@@ -302,5 +302,30 @@ text{
   font-size: 12px;
   width: 100%;
 }
-
+.no_data_image{
+  display: block;
+   margin:0 auto;
+   margin-top: 65px;
+}
+.hasNoData{
+  height: 100%;
+  width: 100%;
+  background: white;
+  margin-bottom: 30px;
+}
+.no_data_text{
+  display: block;
+  margin:20px 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 19px;
+  color: #999999;
+}
+.no_data_text2{
+  display: block;
+  margin:0 0;
+  text-align: center;
+   font-size: 19px;
+   color: #999999;
+}
 /** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/

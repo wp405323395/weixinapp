@@ -7,7 +7,7 @@
   </view>
 
   <!--餐饮美食-->
-  <view class="fragment" hidden="{{currentTab!==0}}">
+  <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
     <!--<template is="used_list" data="{{...first_page}}"/>  -->
     <scroll-view data-id="{{0}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
       <template is="list_product" data="{{...first_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
@@ -16,7 +16,7 @@
   </view>
 
   <!--生鲜超市-->
-  <view class="fragment" hidden="{{currentTab!==1}}">
+  <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
     <scroll-view data-id="{{1}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
       <template is="list_product" data="{{...second_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
     </scroll-view>
@@ -24,11 +24,16 @@
   </view>
 
   <!--休闲娱乐-->
-  <view class="fragment" hidden="{{currentTab!==2}}">
+  <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
     <scroll-view data-id="{{2}}" scroll-y class="list" bindscrolltolower="bindDownLoad" style="height:100%;">
       <template is="list_product" data="{{...third_page,srcUrl,foot_loading,tickit_width,tickit_height}}" />
     </scroll-view>
 
+  </view>
+  <view class="hasNoData">
+   <image src="../../image/no_data_page.png" style='height:{{no_data_image_height}}px;width:{{no_data_image_width}}px' class="no_data_image" hidden="{{hasData}}"/>
+  <text hidden='{{hasData}}' class="no_data_text">{{noteNoData}}</text>
+  <text hidden='{{hasData}}' class="no_data_text2">{{noteNoData2}}</text>
   </view>
 
 </view>

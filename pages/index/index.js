@@ -8,6 +8,8 @@ const requestModle = require('../../netApi/requestModle.js');
 //获取应用实例
 var firstLoad;
 var loading;
+var tickit_width;
+var tickit_height;
 Page({
   data: {
     toView: 'green',
@@ -18,7 +20,8 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 500,
-    foot_loading: false
+    foot_loading: false,
+    hasData:true
   },
 
   onShow: function () {
@@ -36,8 +39,7 @@ Page({
     firstLoad = true;
     var that = this
     //调用应用实例的方法获取全局数据
-    let tickit_width;
-    let tickit_height;
+
     let srcUrl = config.srcUrl;
     that.setData({
       srcUrl: srcUrl
@@ -45,12 +47,12 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
 
-        tickit_width = res.screenWidth * 0.35;
-        tickit_height = res.screenHeight * 0.13;
+        tickit_width = res.screenWidth * 0.38;
+        tickit_height = res.screenHeight * 0.115;
         that.setData({
-          bannerHeight: res.screenHeight * 0.3,
-          tickit_width: res.screenWidth * 0.35,
-          tickit_height: res.screenHeight * 0.13,
+          bannerHeight: res.screenHeight * 0.25,
+          tickit_width: tickit_width,
+          tickit_height: tickit_height,
         });
       }
     });
@@ -104,11 +106,37 @@ Page({
       var products = responseObj.retData;
       let cookie = result.header['Set-Cookie'];
       var sortedProducts = common.getProducts(products);
+      let hasData;
+      if (sortedProducts == null || sortedProducts.length == 0) {
+        hasData = false;
+      } else {
+        hasData = true;
+      }
       self.setData({
-        products: sortedProducts
+        products: sortedProducts,
+        hasData: hasData,
+        noteNoData:'您当前暂无优惠券可用,',
+        noteNoData2: '快去看电视领取吧',
+        no_data_image_height: tickit_height * 1.1,
+        no_data_image_width: tickit_width * 1.1
       });
     }, (errorMsg) => {
-    }, ()=>{
+      self.setData({
+        hasData: false,
+        noteNoData: '您当前暂无优惠券可用,',
+        noteNoData2:'快去看电视领取吧',
+        no_data_image_height: tickit_height*1.1,
+        no_data_image_width: tickit_width*1.1
+      });
+      }, (res)=>{
+        if (res.statusCode == 503) {
+          self.setData({
+            hasData: false,
+            noteNoData: '检查您的网络',
+            no_data_image_height: tickit_height * 1.1,
+            no_data_image_width: tickit_width * 1.1
+          });
+        }
       firstLoad = false;
       loading = false;
     });
