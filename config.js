@@ -24,6 +24,8 @@ var config = {
 
     // 测试的请求地址，用于测试会话
     requestUrl: `https://${host}/wappweb/merchantcoupon/tv/merchant-coupon!test`,
+    
+    useCoupon: `http://${host}/wappweb/mcwx/mc-wx!useCoupon`,
 
 };
 

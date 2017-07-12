@@ -22,7 +22,6 @@ function clientLogin(successFun,failedFun) {
           data: {
             loginCode: res.code
           },
-          ////////
           method: 'POST',
           header: {
             'content-type': 'application/json'
@@ -34,14 +33,16 @@ function clientLogin(successFun,failedFun) {
               wx.setStorageSync('user_token', cookie)
             } catch (e) {
             }
-            
-            successFun();
+            if(successFun != null) {
+              successFun();
+            }
           },
 
           fail: function ({errMsg}) {
-            failedFun();
+            if(failedFun != null) {
+              failedFun();
+            }
           }
-          /////////
         })
       } else {
         console.log('获取用户登录态失败！' + res.errMsg)

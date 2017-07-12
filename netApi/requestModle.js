@@ -23,20 +23,20 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
         console.log("身份失效");
         loginJs.clientLogin(reqMethod);
       } else {
-        requestSuccess(res);
         wx.hideNavigationBarLoading();
         wx.hideToast();
+        requestSuccess(res);
       }
     },
     fail: function (res) { 
-      requestFail(res);
       wx.hideNavigationBarLoading();
       wx.hideToast();
+      requestFail(res);
     },
     complete: function (res) { 
-      requestComplete(res);
       wx.hideNavigationBarLoading();
       wx.hideToast();
+      requestComplete(res);
     },
   })
 }

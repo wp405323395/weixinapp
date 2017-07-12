@@ -4,6 +4,7 @@ const config = require('../../config');
 const requestModle = require('../../netApi/requestModle.js');
 var productId;
 var that;
+var product;
 var mta = require('../../utils/mta_analysis.js');
 Page({
 
@@ -18,7 +19,7 @@ Page({
     indicatorDots: true,
     interval: 2000,
     duration: 500,
-    product:{}
+    product: {}
   },
 
   /**
@@ -41,29 +42,31 @@ Page({
       }
     });
     productId = options.id;
-    var product = loadProductHelper.getProductById(productId);
     ///////
     var self = this
     requestModle.request(config.queryWxUserCouponDetail, { id: productId }, self.onLoad, (result) => {
       var responseObj = JSON.parse(result.data);
-      var product = responseObj.retData;
+      product = responseObj.retData;
+      //0未使用 1已使用 2已删除 3已过期
+      //couponstatus;//优惠券状态
       var btnText;
-      if (product.isUsed) {
+      if (product.couponstatus == '1') {
         product.btnText = "已使用";
-      } else {
-        if (product.isReceive) {
-          product.btnText = "立即使用";
-        } else {
-          product.btnText = "立即领取"
-        }
+      } else if (product.couponstatus == '0') {
+        product.btnText = "立即使用";
+      } else if (product.couponstatus == '-1') {
+        product.btnText = "立即领取"
+      } else if (product.couponstatus == '3') {
+        product.btnText = "已过期"
       }
+
       this.setData(
         { product: product }
       );
     }, (errorMsg) => {
     }, () => { });
     ///////
-    
+
   },
 
   /**
@@ -77,50 +80,71 @@ Page({
     }
   },
   consumIt: function (id) {
-    //console.log("立即消费:" + id);
+    //console.log("立即使用:" + id);
     wx.showModal({
-      title: "确认消费？",
+      title: "确认使用？",
       content: "",
       showCancel: true,
       confirmText: "确定",
-      success:function(res) {
-        if(res.confirm) {
-          console.log('确认消费了。。。。。');
-          wx.showToast({
-            title: "消费成功"
-          });
+      success: function (res) {
+        if (res.confirm) {
+          ////////////////
+          var self = this
+          requestModle.request(config.useCoupon, { id: id }, null, (result) => {
+            var responseObj = JSON.parse(result.data);
+            if (responseObj.retCode == '0') {
+              wx.showToast({
+                title: "使用成功"
+              })
+              try {
+                wx.setStorageSync('isUsedNeedRefresh', 'need');
+                wx.setStorageSync('isIndexNeedRefresh', 'need');
+              } catch (e) {
+              }
+            }
+
+          }, (errorMsg) => {
+            wx.showToast({
+              title: "使用失败"
+            });
+          }, () => { });
+          ////////////
+
           that.deleteItem();
         }
       }
     })
   },
   receiveIt: function (id) {
-    mta.Event.stat("tickit_receive", { 'tickittype': this.data.product.typeName, 'storename': this.data.product.storeName});
+    mta.Event.stat("tickit_receive", { 'tickittype': this.data.product.typeName, 'storename': this.data.product.storeName });
     wx.showToast({
       title: "领取失败"
     });
   },
-  btn_click:function() {
-    if (this.data.product.isUsed) {
-    } else {
-      if (this.data.product.isReceive) {
-        this.consumIt(this.data.product.id);
-      } else {
-        this.receiveIt(this.data.product.id);
-      }
+  btn_click: function () {
+    if (product.couponstatus == '1') {
+      //"已使用";
+    } else if (product.couponstatus == '0') {
+      //"立即使用";
+      this.consumIt(this.data.product.id);
+    } else if (product.couponstatus == '-1') {
+      //"立即领取"
+      this.receiveIt(this.data.product.id);
+    } else if (product.couponstatus == '3') {
+      //"已过期"
     }
   },
-  btn_delete_click:function() {
+  btn_delete_click: function () {
     this.deleteItem();
     wx.navigateBack(1);
   },
 
-  deleteItem:function() {
+  deleteItem: function () {
     try {
       wx.setStorageSync('isUsedNeedRefresh', 'need');
       wx.setStorageSync('isIndexNeedRefresh', 'need');
     } catch (e) {
     }
   }
- 
+
 })
