@@ -9,7 +9,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     //max_wang>>>>>>>>>>>>
-    util.my_openSetting();
+    //util.my_openSetting();
     myLogin.my_login();
     //max_wang<<<<<<<<<<<<
     //这是示例代码，应用的接入代码请到“应用管理”进行拷贝

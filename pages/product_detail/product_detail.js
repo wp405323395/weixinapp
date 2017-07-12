@@ -44,7 +44,6 @@ Page({
     var product = loadProductHelper.getProductById(productId);
     ///////
     var self = this
-    wx.showNavigationBarLoading();
     requestModle.request(config.queryWxUserCouponDetail, { id: productId }, self.onLoad, (result) => {
       var responseObj = JSON.parse(result.data);
       var product = responseObj.retData;
@@ -61,13 +60,7 @@ Page({
       this.setData(
         { product: product }
       );
-
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
     }, (errorMsg) => {
-      
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
     }, () => { });
     ///////
     

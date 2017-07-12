@@ -42,11 +42,6 @@ var GetList = function (that, typeId,isLoadMore) {
         wx.setStorageSync('isUsedNeedRefresh', 'unneed');
       } catch (e) {
       }
-      wx.showToast({
-        title: "loading",
-        icon: "loading",
-        duration: 30000
-      });
 
       firstFragPage = 0;
       secondFragPage = 0;
@@ -71,11 +66,6 @@ var GetList = function (that, typeId,isLoadMore) {
       break;
   }
   if (page == undefined) {
-    wx.showToast({
-      title: "loading",
-      icon: "loading",
-      duration: 30000
-    });
   } else if (isLoadMore) { }
   else {
     loadingModle[typeId] = { typeId: typeId, loadding: false };
@@ -124,11 +114,7 @@ var GetList = function (that, typeId,isLoadMore) {
     });
 
     loadingModle[typeId] = { typeId: typeId, loadding: false };
-    wx.hideToast();
   }, (errorMsg) => {
-    
-    wx.hideNavigationBarLoading();
-    wx.hideToast();
   }, () => { });
 }
 
@@ -149,11 +135,6 @@ Page({
   onLoad: function (options) {
     mta.Page.init();
     that = this;
-    wx.showToast({
-      title: "loading",
-      icon: "loading",
-      duration: 30000
-    })
 
     let srcUrl = config.srcUrl;
     that.setData({
@@ -188,8 +169,6 @@ Page({
 
     GetList(this, 0);
   }, 
-  onShow: function () {
-  },
 
   navbarTap: function (e) {
     this.setData({
@@ -201,7 +180,6 @@ Page({
 
   bindDownLoad: function (e) {
     var id = e.currentTarget.dataset.id;
-    console.log("bindDownLoad");
     GetList(this,id,true);
   },
 })
@@ -210,22 +188,18 @@ function switchNavbar(navbarTabXid) {
     foot_loading: false
   });
 
-  let current;
   switch (navbarTabXid) {
     case 0:
-      //current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
       break;
     case 1:
       if (secondFragPage == undefined) {
         GetList(that,1);
       }
-      //current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
       break;
     case 2:
       if(thirdFragPage == undefined) {
         GetList(that, 2);
       }
-      //current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
       break;
   }
   

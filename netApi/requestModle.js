@@ -1,5 +1,11 @@
 const loginJs = require('./login.js');
 var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
+  wx.showNavigationBarLoading();
+  wx.showToast({
+    title: "loading",
+    icon: "loading",
+    duration: 30000
+  });
   let user_token = wx.getStorageSync('user_token');
   console.log('2_user_token:::' + user_token);
   wx.request({
@@ -18,14 +24,19 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
         loginJs.clientLogin(reqMethod);
       } else {
         requestSuccess(res);
+        wx.hideNavigationBarLoading();
+        wx.hideToast();
       }
-
     },
     fail: function (res) { 
       requestFail(res);
+      wx.hideNavigationBarLoading();
+      wx.hideToast();
     },
     complete: function (res) { 
       requestComplete(res);
+      wx.hideNavigationBarLoading();
+      wx.hideToast();
     },
   })
 }

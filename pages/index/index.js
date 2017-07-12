@@ -6,14 +6,11 @@ var mta = require('../../utils/mta_analysis.js');
 var util = require('../../utils/util.js');
 const requestModle = require('../../netApi/requestModle.js');
 //获取应用实例
-var app = getApp()
 var firstLoad;
-var scrollHeight;
-var that;
+var loading;
 Page({
   data: {
     toView: 'green',
-    userInfo: {},
     products: {},
     background: ['../../image/banner.png', '../../image/banner.png', '../../image/banner.png'],
     indicatorDots: false,
@@ -31,19 +28,13 @@ Page({
   onLoad: function (options) {
     mta.Page.init();
     var scene = options.scene;
-    //scene = '../product_detail/product_detail?id=10001';
     if (util.textIsNotNull(scene)) {
       wx.navigateTo({
         url: scene
       })
     }
-    wx.showToast({
-      title: "loading",
-      icon: "loading",
-      duration: 10000
-    });
     firstLoad = true;
-    that = this
+    var that = this
     //调用应用实例的方法获取全局数据
     let tickit_width;
     let tickit_height;
@@ -84,9 +75,7 @@ Page({
    * 加载商品
    */
   loadProduct: function () {
-    this.setData({
-      loading: true
-    })
+    
     try {
       var value = wx.getStorageSync('isIndexNeedRefresh');
       if ('need' === value) {
@@ -94,11 +83,6 @@ Page({
           wx.setStorageSync('isIndexNeedRefresh', 'unneed');
         } catch (e) {
         }
-        wx.showToast({
-          title: "loading",
-          icon: "loading",
-          duration: 10000
-        });
       } else {
         if (!firstLoad) {
           return;
@@ -107,30 +91,28 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
-    this.loadDate();
+    if(!loading) {
+      this.loadDate();
+    }
+    loading = true;
   },
   loadDate: function () {
     var self = this
-    wx.showNavigationBarLoading();
     requestModle.request(config.received_tickit_url, {}, self.loadDate, (result) => {
       var responseObj = JSON.parse(result.data);
       var products = responseObj.retData;
       let cookie = result.header['Set-Cookie'];
       var sortedProducts = common.getProducts(products);
       self.setData({
-        loading: false, 
         products: sortedProducts
-      })
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
+      });
+      loading: false;
       firstLoad = false;
     }, (errorMsg) => {
       self.setData({
-        loading: false,
-        products: common.getProducts()
-      })
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
+          products: common.getProducts()
+      });
+      loading: false;
     }, ()=>{});
   }
 })
