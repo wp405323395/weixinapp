@@ -50,18 +50,23 @@ Page({
       //0未使用 1已使用 2已删除 3已过期
       //couponstatus;//优惠券状态
       var btnText;
+      let unclick;
       if (product.couponstatus == '1') {
         product.btnText = "已使用";
+        unclick = true;
       } else if (product.couponstatus == '0') {
         product.btnText = "立即使用";
+        unclick = false;
       } else if (product.couponstatus == '-1') {
         product.btnText = "立即领取"
+        unclick = false;
       } else if (product.couponstatus == '3') {
         product.btnText = "已过期"
+        unclick = true;
       }
 
       this.setData(
-        { product: product }
+        { product: product ,unclick: unclick}
       );
     }, (errorMsg) => {
     }, () => { });
@@ -88,14 +93,20 @@ Page({
       confirmText: "确定",
       success: function (res) {
         if (res.confirm) {
-          ////////////////
-          var self = this
           requestModle.request(config.useCoupon, { id: id }, null, (result) => {
             var responseObj = JSON.parse(result.data);
             if (responseObj.retCode == '0') {
-              wx.showToast({
-                title: "使用成功"
-              })
+              product.btnText = '已使用'
+              let unclick = true;
+              that.setData(
+                { product: product, unclick: unclick }
+              );
+              setTimeout(() => {
+                wx.showToast({
+                  title: "使用成功"
+                })
+              }, 500);
+              
               try {
                 wx.setStorageSync('isUsedNeedRefresh', 'need');
                 wx.setStorageSync('isIndexNeedRefresh', 'need');
@@ -104,12 +115,13 @@ Page({
             }
 
           }, (errorMsg) => {
-            wx.showToast({
-              title: "使用失败"
-            });
-          }, () => { });
-          ////////////
+            setTimeout(() => {
+              wx.showToast({
+                title: "使用失败"
+              })
+            }, 500);
 
+          }, () => { });
           that.deleteItem();
         }
       }
@@ -117,9 +129,12 @@ Page({
   },
   receiveIt: function (id) {
     mta.Event.stat("tickit_receive", { 'tickittype': this.data.product.typeName, 'storename': this.data.product.storeName });
-    wx.showToast({
-      title: "领取失败"
-    });
+    setTimeout(() => {
+      wx.showToast({
+        title: "领取失败"
+      })
+    }, 500);
+    
   },
   btn_click: function () {
     if (product.couponstatus == '1') {

@@ -16,6 +16,9 @@ var firstPageList = [];
 var secondPageList = [];
 var thirdPageList = [];
 var scrollHeight;
+var firstPageHasNext = true;
+var secondPageHasNext = true;
+var thirdPageHasNext = true;
 var loadingModle = [{
   typeId:0,
   loadding:false
@@ -30,10 +33,7 @@ var GetList = function (that, typeId,isLoadMore) {
   if (loadingModle[typeId].loadding) {
     return ;
   }
-  loadingModle[typeId] = { typeId: typeId,loadding: true};
-  that.setData({
-    foot_loading: true
-  });
+  
   try {
     var value = wx.getStorageSync('isUsedNeedRefresh');
 
@@ -57,20 +57,45 @@ var GetList = function (that, typeId,isLoadMore) {
   switch (typeId) {
     case 0:
       page = firstFragPage;
+      if (!firstPageHasNext) {
+        return ;
+      }
       break;
     case 1:
       page = secondFragPage;
+      if (!secondPageHasNext) {
+        return;
+      }
       break;
     case 2:
       page = thirdFragPage;
+      if (!thirdPageHasNext) {
+        return;
+      }
       break;
   }
   if (page == undefined) {
+    page = 1;
+    switch (typeId) {
+      case 0:
+        firstFragPage = 1;
+        break;
+      case 1:
+        secondFragPage = 1;
+        break;
+      case 2:
+        thirdFragPage = 1;
+        break;
+    }
   } else if (isLoadMore) { }
   else {
     loadingModle[typeId] = { typeId: typeId, loadding: false };
     return;
   }
+  loadingModle[typeId] = { typeId: typeId, loadding: true };
+  that.setData({
+    foot_loading: true
+  });
   /////////////////////////////////////
   requestModle.request(config.used_tickit_url, { type: typeId, pageNo: page, pageSize:20}, GetList, (result) => {
     var data = result.data;
@@ -79,8 +104,10 @@ var GetList = function (that, typeId,isLoadMore) {
     let current;
     switch (typeId) {
       case 0:
+        firstPageHasNext = retData.hasNext;
         firstPageList = firstPageList.concat(pds);
         current = { typeId: 0, typeName: '餐饮美食', products: firstPageList };
+        firstFragPage = (firstFragPage == undefined) ? 0 : firstFragPage;
         firstFragPage++;
         that.setData({
           first_page: {
@@ -89,8 +116,10 @@ var GetList = function (that, typeId,isLoadMore) {
         });
         break;
       case 1:
+        secondPageHasNext = retData.hasNext;
         secondPageList = secondPageList.concat(pds);
         current = { typeId: 0, typeName: '生鲜超市', products: secondPageList };
+        secondFragPage = (secondFragPage == undefined) ? 0 : secondFragPage;
         secondFragPage++;
         that.setData({
           second_page: {
@@ -99,8 +128,10 @@ var GetList = function (that, typeId,isLoadMore) {
         });
         break;
       case 2:
+        thirdPageHasNext = retData.hasNext;
         thirdPageList = thirdPageList.concat(pds);
         current = { typeId: 0, typeName: '休闲娱乐', products: thirdPageList };
+        thirdFragPage = (thirdFragPage == undefined) ? 0 : thirdFragPage;
         thirdFragPage++;
         that.setData({
           third_page: {

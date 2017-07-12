@@ -44,13 +44,13 @@ Page({
     });
     wx.getSystemInfo({
       success: function (res) {
-        console.info(res.windowHeight);
-        tickit_width = res.windowWidth * 0.35;
-        tickit_height = res.windowHeight * 0.13;
+
+        tickit_width = res.screenWidth * 0.35;
+        tickit_height = res.screenHeight * 0.13;
         that.setData({
-          bannerHeight: res.windowHeight * 0.3,
-          tickit_width: res.windowWidth * 0.35,
-          tickit_height: res.windowHeight * 0.13,
+          bannerHeight: res.screenHeight * 0.3,
+          tickit_width: res.screenWidth * 0.35,
+          tickit_height: res.screenHeight * 0.13,
         });
       }
     });
@@ -92,9 +92,10 @@ Page({
       // Do something when catch error
     }
     if(!loading) {
+      loading = true;
       this.loadDate();
     }
-    loading = true;
+    
   },
   loadDate: function () {
     var self = this
@@ -106,14 +107,11 @@ Page({
       self.setData({
         products: sortedProducts
       });
-      loading: false;
-      firstLoad = false;
     }, (errorMsg) => {
-      self.setData({
-          products: common.getProducts()
-      });
-      loading: false;
-    }, ()=>{});
+    }, ()=>{
+      firstLoad = false;
+      loading = false;
+    });
   }
 })
 

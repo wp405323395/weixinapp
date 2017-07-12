@@ -1,4 +1,5 @@
 const loginJs = require('./login.js');
+const util = require('../utils/util.js');
 var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
   wx.showNavigationBarLoading();
   wx.showToast({
@@ -7,12 +8,27 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
     duration: 30000
   });
   let user_token = wx.getStorageSync('user_token');
-  console.log('2_user_token:::' + user_token);
+  let ua = wx.getStorageSync('user-agent');
+  if (!util.textIsNotNull(ua)) {
+    wx.getSystemInfo({
+      success: function (res) {
+        ua = {
+         model : res.model,
+         screenWidth : res.screenWidth,
+         screenHeight : res.screenHeight,
+         system : res.system,
+         version : res.version,
+         platform:'MCWX'
+        }
+      }
+    });
+  }
   wx.request({
     url: url,
     data: data,
     header: { 
       'Content-Type': 'application/json',
+      'userAgent': ua,
       'Cookie': user_token },
     method: 'POST',
     dataType: 'txt',
