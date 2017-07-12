@@ -12,6 +12,10 @@ var that;
 
 var loadding;
 
+var firstHasData = true;
+var secondHasData = true;
+var thirdHasData = true;
+
 var firstPageList = [];
 var secondPageList = [];
 var thirdPageList = [];
@@ -148,6 +152,8 @@ var GetList = function (that, typeId,isLoadMore) {
 
     loadingModle[typeId] = { typeId: typeId, loadding: false };
   }, (errorMsg) => {
+    valideHasdata(typeId);
+ 
     that.setData({
       hasData: false,
       noteNoData: '检查您的网络',
@@ -156,6 +162,8 @@ var GetList = function (that, typeId,isLoadMore) {
     });
     }, (res) => {
     if (res.statusCode == 503) {
+      valideHasdata(typeId);
+      
       that.setData({
         hasData: false,
         noteNoData: '检查您的网络',
@@ -224,11 +232,24 @@ Page({
   }, 
 
   navbarTap: function (e) {
+    var typeId = e.currentTarget.dataset.idx;
+    var pageHasData;
+    switch (typeId) {
+      case 0:
+        pageHasData = firstHasData;
+        break;
+      case 1:
+        pageHasData = secondHasData;
+        break;
+      case 2:
+        pageHasData = thirdHasData;
+        break;
+    }
     this.setData({
-      currentTab: e.currentTarget.dataset.idx
+      currentTab: typeId,
+      hasData:pageHasData
     });
-    var navbarTabXid =  e.currentTarget.dataset.idx;
-    switchNavbar(navbarTabXid);
+    switchNavbar(typeId);
   },
 
   bindDownLoad: function (e) {
@@ -256,4 +277,18 @@ function switchNavbar(navbarTabXid) {
       break;
   }
   
+}
+
+function valideHasdata(typeId) {
+  switch (typeId) {
+    case 0:
+      firstHasData = false;
+      break;
+    case 1:
+      secondHasData = false;
+      break;
+    case 2:
+      thirdHasData = false;
+      break;
+  }
 }
