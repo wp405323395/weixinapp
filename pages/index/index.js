@@ -14,7 +14,7 @@ Page({
     toView: 'green',
     userInfo: {},
     products: {},
-    background: ['../../image/banner.png', '../../image/banner.png', '../../image/banner.png'],
+    background: ['../../image/banner.jpg', '../../image/banner.jpg', '../../image/banner.jpg'],
     indicatorDots: false,
     vertical: false,
     autoplay: true,
