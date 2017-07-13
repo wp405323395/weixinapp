@@ -50,8 +50,8 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       requestFail(res);
     },
     complete: function (res) { 
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
+       wx.hideNavigationBarLoading();
+      // wx.hideToast();
       requestComplete(res);
     },
   })
