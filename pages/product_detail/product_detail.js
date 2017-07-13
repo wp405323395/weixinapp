@@ -104,7 +104,7 @@ Page({
     return {
       title: '人气小店',
       desc: '最具人气的小店!',
-      path: "../pages/index/index"
+      path: "../index/index"
     }
   },
   consumIt: function (id) {
