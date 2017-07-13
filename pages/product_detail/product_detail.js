@@ -27,6 +27,9 @@ Page({
    */
   onLoad: function (options) {
     mta.Page.init();
+    wx.setNavigationBarTitle({
+      title: '详情'
+    });
     that = this;
     //调用应用实例的方法获取全局数据
     var srcUrl = config.srcUrl;
