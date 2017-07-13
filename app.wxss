@@ -318,14 +318,14 @@ text{
   margin:20px 0;
   margin-bottom: 0;
   text-align: center;
-  font-size: 19px;
+  font-size: 1rem;
   color: #999999;
 }
 .no_data_text2{
   display: block;
   margin:0 0;
   text-align: center;
-   font-size: 19px;
+   font-size: 1rem;
    color: #999999;
 }
 /** xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**/
