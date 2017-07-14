@@ -53,6 +53,16 @@ Page({
     );
 
   },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+    return {
+      title: '人气小店',
+      desc: '最具人气的小店!',
+      path: "/pages/product_detail/product_detail?id=123"
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -97,16 +107,6 @@ Page({
   navigateBackFunc: function () {
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    return {
-      title: '人气小店',
-      desc: '最具人气的小店!',
-      path: "../index/index"
-    }
-  },
   consumIt: function (id) {
     //console.log("立即消费:" + id);
     wx.showModal({

@@ -79,6 +79,17 @@ Page({
   },
 
   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '人气小店',
+      desc: '最具人气的小店!',
+      path: "/pages/index/index?id=123"
+    }
+  },
+
+  /**
    * 加载商品
    */
   loadProduct: function () {
