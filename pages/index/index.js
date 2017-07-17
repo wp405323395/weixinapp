@@ -7,6 +7,7 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
+    
     navbar: ['限时秒杀', '智能推荐', '500米商圈','品牌入驻'],
     currentTab: 0,
     indicatorDots: true,
