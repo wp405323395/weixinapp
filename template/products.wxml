@@ -1,7 +1,7 @@
 <template name="products">
   <view class="list">
     <view class="product_item" wx:for="{{products}}" wx:key="unique">
-
+      <view class="product"></view>
     </view>
   </view>
 </template >

@@ -7,7 +7,7 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    
+
     navbar: ['限时秒杀', '智能推荐', '500米商圈','品牌入驻'],
     currentTab: 0,
     indicatorDots: true,
@@ -29,12 +29,14 @@ Page({
         });
       }
     });
+    var products = this.loadData(0);
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;
     this.setData({
       currentTab: typeId,
     });
+    this.loadData(typeId);
   },
   scroll:function(e){
     var scrollTop = e.detail.scrollTop;
@@ -47,7 +49,43 @@ Page({
         hidIt: true
       });
     }
+  },
+  loadData: function (typeId){
+    var prod;
+    switch (typeId) {
+      case 0:
+        prod = ['1', '', '', ''];
+        this.setData({
+          products: prod,
+          currentTab : 0,
+          hasData:true
+        });
+        break;
+      case 1:
+        prod = ['1', '',];
+        this.setData({
+          products: prod,
+          currentTab : 1,
+          hasData: true
+        });
+        break;
+      case 2:
+        prod = ['1', '', '', '', ''];
+        this.setData({
+          products: prod,
+          currentTab : 2,
+          hasData: true
+        });
+        break;
+      case 2:
+        prod = ['1', '', ''];
+        this.setData({
+          products: prod,
+          currentTab : 3,
+          hasData: true
+        });
+        break;
+    }
+
   }
-
-
 })

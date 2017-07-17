@@ -18,8 +18,19 @@
   <view class="navbar" id="navbar">
     <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
           {{item}}
-        </text>
+    </text>
   </view>
 
-  <template is="products" data="{{products}}" />
+  <view class="cons" hidden="{{!hasData || currentTab!==0}}">
+    <template is="products" data="{{products}}"/>
+  </view>
+  <view class="cons"  hidden="{{!hasData || currentTab!==1}}">
+    <template is="products" data="{{products}}"/>
+  </view>
+  <view class="cons"  hidden="{{!hasData || currentTab!==2}}">
+    <template is="products" data="{{products}}"/>
+  </view>
+  <view class="cons"  hidden="{{!hasData || currentTab!==3}}">
+    <template is="products" data="{{products}}"/>
+  </view>
 </scroll-view>
