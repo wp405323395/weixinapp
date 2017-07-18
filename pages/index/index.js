@@ -29,7 +29,7 @@ Page({
 
   onLoad: function (options) {
     mta.Page.init();
-    var scene = options.scene;
+    var scene = decodeURIComponent(options.scene);
     //scene = '../product_detail/product_detail?id=10001';
     if (util.textIsNotNull(scene)) {
       wx.navigateTo({
