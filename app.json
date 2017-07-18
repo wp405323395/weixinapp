@@ -6,7 +6,9 @@
     "pages/productDetail/detail",
     "pages/detail/detail",
     "pages/tvCard/tvcard",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/redcard/redcard",
+    "pages/pay/success/paySuccess"
   ],
   "window": {
     "navigationBarTextStyle": "black",

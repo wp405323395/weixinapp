@@ -17,6 +17,11 @@ Page({
   onLoad: function (options) {
   
   },
+  payClick:function(e){
+    wx.navigateTo({
+      url: 'success/paySuccess',
+    })
+  }, 
 
   /* 点击减号 */
   bindMinus: function () {

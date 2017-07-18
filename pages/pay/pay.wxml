@@ -1,27 +1,43 @@
 <!--pay.wxml-->
 <view class="container">
-<view class="hav">
-  <view class="item">
-    <text>选择套餐</text> 
-    <text>综艺高清直播包-A ></text>   
+  <view class="hav">
+    <view class="item">
+      <text>选择套餐</text>
+      <text>综艺高清直播包-A ></text>
+    </view>
+
+    <view class="item">
+      <text>选择订购周期（年）</text>
+      <!-- 主容器 -->
+      <view class="stepper">
+        <!-- 减号 -->
+        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+        <!-- 数值 -->
+        <input type="number" bindchange="bindManual" value="{{num}}" />
+        <!-- 加号 -->
+        <text class="normal" bindtap="bindPlus">+</text>
+      </view>
+    </view>
   </view>
 
-  <view class="item">
-    <text>选择订购周期（年）</text> 
-    <!-- 主容器 -->  
-    <view class="stepper">  
-      <!-- 减号 -->  
-      <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
-      <!-- 数值 -->  
-      <input type="number" bindchange="bindManual" value="{{num}}" />  
-      <!-- 加号 -->  
-      <text class="normal" bindtap="bindPlus">+</text>  
-    </view>   
-  </view> 
-</view>
-
-  <view class="item">
-    <text>地址</text> 
-    <text>湖北省，武汉市，洪山区</text>   
-  </view> 
+  <view class="item hav">
+    <text>当前可用优惠券</text>
+    <text>7天免费体验券 ></text>
+  </view>
+  <view class="pay_way">
+    <text class="item">选择支付方式</text>
+    <view class="item">
+      <view class="cell1">
+        <image class="pay_lable_img" src="../../img/weixinpay.png"/>
+        <text>微信支付</text>
+      </view>
+      
+      <text>。 ></text>
+    </view>
+    <text class="item">更多支付方式</text>
+  </view>
+  <view class="footer">
+    <text class="pay_intro"> 需要支付金额 10元</text>
+    <button bindtap="payClick" class="pay_btn" type="primary">立即支付</button>
+  </view>
 </view>

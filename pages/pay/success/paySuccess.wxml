@@ -1,0 +1,6 @@
+<!--paySuccess.wxml-->
+<view class="container">
+  <image class="okimage" src="../../../img/pay_success.png"/>
+  <text>订单支付成功</text>
+  <button class="iknow_btn" size="default">我知道了</button>
+</view>
