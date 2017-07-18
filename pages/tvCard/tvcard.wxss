@@ -1,0 +1,22 @@
+/* tvcard.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+}
+.item{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+text{
+  padding: 10px;
+}
+.hav{
+  margin:10px 0;
+}
+.nex_btn{
+  margin:30px 10px;
+}

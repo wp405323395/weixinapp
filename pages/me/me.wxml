@@ -1,11 +1,20 @@
 <import src="../../template/products.wxml" />
 
-<view class="container">
-  <template is="products" data="{{products}}" />
-</view>
-
 <view class="navbar">
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
           {{item}}
         </text>
 </view>
+<view class="container">
+  <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
+    <template is="products" data="{{...page0}}" />
+  </view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
+    <template is="products" data="{{...page1}}" />
+  </view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
+    <template is="products" data="{{...page2}}" />
+  </view>
+
+</view>
+

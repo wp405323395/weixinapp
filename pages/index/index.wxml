@@ -1,36 +1,39 @@
 <import src="../../template/products.wxml" />
-  <view class="navbar_fix" hidden="{{hidIt}}" >
+<view class="container">
+  <view class="navbar_fix" hidden="{{hidIt}}">
     <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
           {{item}}
         </text>
   </view>
-<scroll-view scrollY class="container" style="height: {{scrollViewHeight}}px;" bindscroll="scroll">
-  <view class="swiper">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
-      <block wx:for="{{imgUrls}}" wx:key="unique">
-        <swiper-item>
-          <image src="{{item}}" style="height:{{bannerHeight}}px;width: 100%;" />
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
+  <scroll-view scrollY class="container" style="height: {{scrollViewHeight}}px;" bindscroll="scroll">
+    <view class="swiper">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
+        <block wx:for="{{imgUrls}}" wx:key="unique">
+          <swiper-item>
+            <image src="{{item}}" style="height:{{bannerHeight}}px;width: 100%;" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
 
-  <view class="navbar" id="navbar">
-    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+    <view class="navbar" id="navbar">
+      <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
           {{item}}
     </text>
-  </view>
+    </view>
 
-  <view class="cons" hidden="{{!hasData || currentTab!==0}}">
-    <template is="products" data="{{products}}"/>
-  </view>
-  <view class="cons"  hidden="{{!hasData || currentTab!==1}}">
-    <template is="products" data="{{products}}"/>
-  </view>
-  <view class="cons"  hidden="{{!hasData || currentTab!==2}}">
-    <template is="products" data="{{products}}"/>
-  </view>
-  <view class="cons"  hidden="{{!hasData || currentTab!==3}}">
-    <template is="products" data="{{products}}"/>
-  </view>
-</scroll-view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
+      <template is="products" data="{{...page0}}" />
+    </view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
+      <template is="products" data="{{...page1}}" />
+    </view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
+      <template is="products" data="{{...page2}}" />
+    </view>
+    <view class="fragment" hidden="{{!hasData || currentTab!==3}}">
+      <template is="products" data="{{...page3}}" />
+    </view>
+  </scroll-view>
+
+</view>

@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/me/me",
-    "pages/productDetail/detail"
+    "pages/productDetail/detail",
+    "pages/detail/detail",
+    "pages/tvCard/tvcard",
+    "pages/pay/pay"
   ],
   "window": {
     "navigationBarTextStyle": "black",

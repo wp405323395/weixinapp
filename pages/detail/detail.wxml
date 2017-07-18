@@ -1,0 +1,18 @@
+<!--detail.wxml-->
+<view class="container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}" style="height:{{bannerHeight}}px;width: 100%;" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">弹框</button>
+  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">tvcard</button>
+
+</view>
+<view class="boomBox" hidden="{{isHidden}}">
+</view>
+<view class="dialog" hidden="{{isHidden}}">
+</view>

@@ -1,7 +1,10 @@
 <template name="products">
-  <view class="list">
+  <view class="list" bindtap="clickItem">
     <view class="product_item" wx:for="{{products}}" wx:key="unique">
-      <view class="product"></view>
+      
+        <navigator class="product" id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
+        
+        </navigator>
     </view>
   </view>
 </template >

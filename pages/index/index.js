@@ -1,5 +1,10 @@
 
 var bannerHeight;
+var da = require('../../data/data.js').data;
+var data0 = da.xianshimiaosha;
+var data1 = da.zhinengtuijian;
+var data2 = da.wubaimishangquan;
+var data3 = da.pingpairuzhu;
 Page({
   data: {
     imgUrls: [
@@ -16,7 +21,10 @@ Page({
     interval: 5000,
     duration: 1000,
     hidIt:true,
-    products:['1','','','','','','','','','','','','','']
+    page0: { products: data0},
+    page1: { products: data1 },
+    page2: { products: data2 },
+    page3: { products: data3 }
   },
   onLoad:function(options) {
     var that = this;
@@ -29,7 +37,7 @@ Page({
         });
       }
     });
-    var products = this.loadData(0);
+    this.loadData(0);
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;
@@ -51,41 +59,42 @@ Page({
     }
   },
   loadData: function (typeId){
-    var prod;
     switch (typeId) {
       case 0:
-        prod = ['1', '', '', ''];
+        if (data0 == null || data0.length  == 0) break;
         this.setData({
-          products: prod,
+          page0: { products: data0},
           currentTab : 0,
           hasData:true
         });
         break;
       case 1:
-        prod = ['1', '',];
+        if (data1 == null || data1.length == 0) break;
         this.setData({
-          products: prod,
+          page1: { products: data1 },
           currentTab : 1,
           hasData: true
         });
         break;
       case 2:
-        prod = ['1', '', '', '', ''];
+        if (data2 == null || data2.length == 0) break;
         this.setData({
-          products: prod,
+          page2: { products: data2 },
           currentTab : 2,
           hasData: true
         });
         break;
-      case 2:
-        prod = ['1', '', ''];
+      case 3:
+        if (data3 == null || data3.length == 0) break;
         this.setData({
-          products: prod,
+          page3: { products: data3 },
           currentTab : 3,
           hasData: true
         });
         break;
     }
-
+  },
+  clickItem:function(e) {
+    var id = e.target.id;
   }
 })

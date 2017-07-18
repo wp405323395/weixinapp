@@ -1,0 +1,26 @@
+/* detail.wxss */
+.button{
+  width: 100%;
+  height: 50px;
+  background: gray;
+}
+.boomBox{
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: black;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.dialog{
+  background: white;
+  position: fixed;
+  width: 70%;
+  height: 70%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1000;
+}
