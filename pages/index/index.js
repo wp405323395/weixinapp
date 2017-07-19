@@ -29,8 +29,16 @@ Page({
   },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
+    //scene = '../tvCard/tvcard';
     if (scene != undefined && scene != 'undefined' && scene != '') {
-      scene = '../detail/detail';
+      if (scene.indexOf("detail") >0){
+        scene = '../detail/detail';
+      } else if (scene.indexOf("tvCard") > 0) {
+        scene = '../tvCard/tvcard'
+      }
+      wx.showToast({
+        title: scene
+      })
       wx.navigateTo({
         url: scene,
       })
