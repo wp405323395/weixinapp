@@ -49,6 +49,24 @@ Page({
       url: '../tvCard/tvcard',
     });
   },
+  onclick_use_it:function(e){
+    this.setData({
+      isHidden:true
+    });
+  },
+  onclick_continue_get:function(e){
+    wx.navigateTo({
+      url: '../index/index'
+    })
+    this.setData({
+      isHidden: true
+    });
+  },
+  onclick_hide_dialog:function(e){
+    this.setData({
+      isHidden:true
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

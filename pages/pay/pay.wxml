@@ -32,7 +32,7 @@
         <text>微信支付</text>
       </view>
       
-      <label class="radio">
+      <label class="radio radio_layout">
         <radio value="r1" checked="true"/>
       </label>
     </view>

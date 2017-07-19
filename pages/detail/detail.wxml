@@ -48,9 +48,26 @@
 
 
 
-<button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">弹框</button>
-  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">tvcard</button>
-<view class="boomBox" hidden="{{isHidden}}">
+<button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">立即领取</button>
+  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">领取广电优惠券</button>
+<view bindtap="onclick_hide_dialog" class="boomBox" hidden="{{isHidden}}">
 </view>
-<view class="dialog" hidden="{{isHidden}}">
+
+<view class="dialog_border dialog" hidden="{{isHidden}}">
+  <image src="../../img/dialog_left.png" class="dialog_img" />
+  <view class="dialog_content">
+    <view class="dialog_title_wrap">
+      <view class="dialog_title_line">
+       <view class="dialog_title_shor_line"/>
+          <text class="dialog_t1">领取成功</text>
+        <view class="dialog_title_shor_line"/>
+      </view>
+    
+      <text class="dialog_t2" >领取成功的优惠券可在我的页面中查看</text>
+    </view>
+    <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
+   <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>
+  </view>
+  <image src="../../img/dialog_right.png" class="dialog_img"/>
 </view>
+

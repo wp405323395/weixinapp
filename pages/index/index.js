@@ -28,6 +28,14 @@ Page({
     page3: { products: data3 }
   },
   onLoad:function(options) {
+    var scene = decodeURIComponent(options.scene);
+    if (scene != undefined && scene != 'undefined' && scene != '') {
+      scene = '../detail/detail';
+      wx.navigateTo({
+        url: scene,
+      })
+    }
+   
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

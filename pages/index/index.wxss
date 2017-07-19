@@ -53,3 +53,6 @@
   align-items:center;
   flex-direction:column ;
 }
+.red_head{
+  margin-left: -30rpx;
+}

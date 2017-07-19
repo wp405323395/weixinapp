@@ -17,7 +17,7 @@ text,.cell1{
 .hav{
   margin:10px 0;
 }
-//--------------------
+
 /*主容器*/  
 .stepper {  
     width: 80px;  
@@ -83,4 +83,8 @@ text,.cell1{
 .pay_lable_img{
   width: 25px;
   height: 25px;
+  margin: auto 0;
+}
+.radio_layout{
+  margin: auto 0;
 }
