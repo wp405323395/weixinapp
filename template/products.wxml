@@ -1,9 +1,16 @@
 <template name="products">
   <view class="list" bindtap="clickItem">
-    <view class="product_item" wx:for="{{products}}" wx:key="unique">
-      
-        <navigator class="product" id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
-          
+    <view class="product_item" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
+        <navigator class="{{(idx+1) % 2 == 0 ? 'product_item_right':'product_item_left'}} product" id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
+          <image src="{{item.imgUrl}}" mode="widthFix"></image>
+          <view class="content_text">
+            <text class="text1">{{item.storeName}}</text>
+            <view style="display:flex;flex-direction:row;justify-content:space-between;">
+              <text class="text2">{{item.couponDescrip}}</text>
+              <image src="../../img/go_in.png" style="width: 17rpx; height: 17rpx;margin-right: 10rpx;" mode="widthFix"></image>
+            </view>
+            <text class="text3">{{item.useCondition}}</text>
+          </view>
         </navigator>
     </view>
   </view>

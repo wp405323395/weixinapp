@@ -1,8 +1,8 @@
 // me.js
-products: ['1', '', '', '', '', '', '', '', '', '', '', '', '', '']
-var data0;
-var data1;
-var data2;
+var da = require('../../data/data.js').data;
+var data0 = da.xianshimiaosha;
+var data1 = da.zhinengtuijian;
+var data2 = da.wubaimishangquan;
 Page({
 
   /**
@@ -33,7 +33,6 @@ Page({
   loadData: function (typeId) {
     switch (typeId) {
       case 0:
-        data0 = ['1', '', '', ''];
         this.setData({
           page0: { products: data0 },
           currentTab: 0,
@@ -41,7 +40,6 @@ Page({
         });
         break;
       case 1:
-        data1 = ['1', ''];
         this.setData({
           page1: { products: data1 },
           currentTab: 1,
@@ -49,7 +47,6 @@ Page({
         });
         break;
       case 2:
-        data2 = ['1', '', '', '', ''];
         this.setData({
           page2: { products: data2 },
           currentTab: 2,

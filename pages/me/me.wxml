@@ -1,9 +1,9 @@
 <import src="../../template/products.wxml" />
 
 <view class="navbar">
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
-          {{item}}
-        </text>
+  <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+    <text class="nav_text">{{item}}</text>
+  </view>
 </view>
 <view class="container">
   <view class="fragment" hidden="{{!hasData || currentTab!==0}}">

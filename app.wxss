@@ -1,14 +1,16 @@
 
 /* page */
 page{
-background-color:#f9eede;
+  background-color:#eeeeee;
+  font-size: 32rpx;
+  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
 .container {
-  background-color: #f9eede;
+  background-color: #eeeeee;
   height: 100%;
   width: 100%;
   font-size: 32rpx;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
 .list{
   display: flex;
@@ -18,17 +20,28 @@ background-color:#f9eede;
 }
 .list .product_item{
   width: 50%;
-  height: 100px;
+  height: 272rpx;
   display: inline-block;
-  
-  margin: 20px 0;
+  margin: 20rpx 0;
+
 }
 
 .list .product_item .product{
-background: yellow;
+background: #ffffff;
 margin: 0px auto;
 width: 90%;
-height: 80px;
+height: 100%;
+position: relative;
+box-shadow:0px 2px 5px #c3ced5;
+}
+.list .product_item .product_item_right{
+  right: 5rpx;
+}
+.list .product_item .product_item_left{
+  left: 5rpx;
+}
+.list .product_item  image {
+  width:100%;
 }
 .fragment{
   width: 100%;
@@ -38,4 +51,27 @@ height: 80px;
   top: 1px; 
   background-color:rgba(0,0,0,0);
   opacity:0.7;
+}
+.list .product_item .product .content_text{
+  display: flex;
+  flex-direction:column;
+  flex-wrap: nowrap;
+  margin: auto 10rpx;
+}
+.text1{
+  margin-left: 6rpx;
+  font-size: 0.6rem;
+  color:#666666;
+  padding: 5rpx;
+}
+.text2{
+  font-size: 0.8rem;
+  color:#333333;
+  padding: 5rpx;
+}
+.text3{
+  margin-left: 6rpx;
+  font-size: 0.5rem;
+  color:#999999;
+  padding: 5rpx;
 }
