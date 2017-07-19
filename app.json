@@ -17,21 +17,21 @@
     "backgroundColor": "#ffffff"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#ef2020",
+    "color": "#999999",
+    "selectedColor": "#3fa5ed",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "img/has_receive.png",
-        "selectedIconPath": "img/has_receive_li.png",
+        "iconPath": "img/index_discover.png",
+        "selectedIconPath": "img/index_discover_li.png",
         "text": "已领取"
       },
       {
         "pagePath": "pages/me/me",
-        "iconPath": "img/used.png",
-        "selectedIconPath": "img/used_li.png",
+        "iconPath": "img/index_me.png",
+        "selectedIconPath": "img/index_me_li.png",
         "text": "已使用"
       }
     ]

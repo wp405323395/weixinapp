@@ -27,7 +27,7 @@ background-color:#f9eede;
 .list .product_item .product{
 background: yellow;
 margin: 0px auto;
-width: 80px;
+width: 90%;
 height: 80px;
 }
 .fragment{

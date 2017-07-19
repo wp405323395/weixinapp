@@ -12,15 +12,16 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-
-    navbar: ['限时秒杀', '智能推荐', '500米商圈','品牌入驻'],
+    navbar: [{ img: '../../img/index_nav_time.png', img_li:'../../img/index_nav_time_li.png', text: '限时秒杀' }, 
+      { img: '../../img/index_nav_good.png', img_li: '../../img/index_nav_good_li.png', text: '每日优选' }, 
+      { img: '../../img/index_nav_circle.png', img_li: '../../img/index_nav_circle_li.png',  text: '500米商圈' }, 
+      { img: '../../img/index_nav_brand.png', img_li: '../../img/index_nav_brand_li.png',text: '品牌入驻' }],
     currentTab: 0,
     indicatorDots: true,
     autoplay: true,
     unShow:true,
     interval: 5000,
     duration: 1000,
-    hidIt:true,
     page0: { products: data0},
     page1: { products: data1 },
     page2: { products: data2 },
@@ -46,18 +47,7 @@ Page({
     });
     this.loadData(typeId);
   },
-  scroll:function(e){
-    var scrollTop = e.detail.scrollTop;
-    if (scrollTop > (bannerHeight + 12)) {
-      this.setData({
-        hidIt: false
-      });
-    } else if (scrollTop < (bannerHeight + 12 + 70)) {
-      this.setData({
-        hidIt: true
-      });
-    }
-  },
+
   loadData: function (typeId){
     switch (typeId) {
       case 0:

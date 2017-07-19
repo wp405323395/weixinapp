@@ -3,7 +3,7 @@
     <view class="product_item" wx:for="{{products}}" wx:key="unique">
       
         <navigator class="product" id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
-        
+          
         </navigator>
     </view>
   </view>
