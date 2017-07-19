@@ -1,12 +1,12 @@
 // pay.js
-var isWeiXin;
+var isWeiXin = true;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isWeiXin:true,
+    isWeiXin: isWeiXin,
     // input默认是1  
     num: 1,
     // 使用data数据对象设置样式名  
