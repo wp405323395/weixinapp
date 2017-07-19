@@ -12,6 +12,9 @@ page{
   font-size: 32rpx;
   font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
+.swiper{
+  margin: 12rpx;
+}
 .list{
   display: flex;
   flex-direction:row;

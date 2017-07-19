@@ -1,6 +1,4 @@
-.swiper{
-  margin: 6px;
-}
+
 .navbar_fix{
   display: flex;  
   background: white;

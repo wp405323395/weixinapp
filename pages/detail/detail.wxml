@@ -1,17 +1,55 @@
 <!--detail.wxml-->
 <view class="container">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
-    <block wx:for="{{imgUrls}}" wx:key="unique">
-      <swiper-item>
-        <image src="{{item}}" style="height:{{bannerHeight}}px;width: 100%;" />
-      </swiper-item>
-    </block>
-  </swiper>
+  <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{bannerHeight}}px;">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" style="height:{{bannerHeight}}px;width: 100%;" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 
-  <button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">弹框</button>
-  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">tvcard</button>
+  <view class="introduce">
+    <view class="introduce_item spacal">
+      <text class="lable">店铺介绍</text>
+      <text class="details">{{product.storeIntro}}</text>
+    </view>
+    <view class="introduce_item ">
+      <text class="lable">活动介绍</text>
+      <text class="details">{{product.couponIntro}}</text>
+    </view>
+    <view style="width:100%;height:1px;background:#eeeeee"></view>
+    <view class="introduce_item ">
+      <text class="lable">截止时间</text>
+      <text class="details">{{product.endTime}}</text>
+    </view>
+    <view style="width:100%;height:1px;background:#eeeeee"></view>
+    <view class="introduce_item ">
+      <text class="lable">活动地址</text>
+      <text class="details">{{product.storeAddr}}</text>
+    </view>
+    <view style="width:100%;height:1px;background:#eeeeee"></view>
+    <view class="introduce_item">
+      <text class="lable">联系方式</text>
+      <text class="details">{{product.storePhone}}</text>
+    </view>
+  </view>
+  <text class="bottom_text">关注公众号，获取附近最新优惠及我的优惠券</text>
+  <view class="bottom_btn">
+    <button id="receive"  disabled="{{unclick}}" bindtap="btn_click">{{product.btnText}}</button>
+
+    <text class="btn_delete_click" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</text>
+
+  </view>
+
 
 </view>
+
+
+
+<button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">弹框</button>
+  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">tvcard</button>
 <view class="boomBox" hidden="{{isHidden}}">
 </view>
 <view class="dialog" hidden="{{isHidden}}">

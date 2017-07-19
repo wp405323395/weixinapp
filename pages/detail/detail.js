@@ -1,4 +1,6 @@
 // detail.js
+var da = require('../../data/data.js').data;
+var product = da.productDetail;
 Page({
 
   /**
@@ -15,7 +17,8 @@ Page({
       '../../img/banner.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ]
+    ],
+    product: product
   },
 
   /**
@@ -24,6 +27,16 @@ Page({
   onLoad: function (options) {
     var productId = options.id;
     console.log(productId);
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var bannerHeight = res.screenHeight * 0.25;
+        that.setData({
+          bannerHeight: bannerHeight,
+          scrollViewHeight: res.screenHeight
+        });
+      }
+    });
   },
 
   click:function(e) {
