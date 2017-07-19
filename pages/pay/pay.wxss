@@ -20,8 +20,10 @@ text,.cell1{
 
 /*主容器*/  
 .stepper {  
-    width: 80px;  
-    height: 26px;  
+    width:200rpx;
+    display: flex;
+    flex-direction:row ;
+    height: 40rpx;  
     /*给主容器设一个边框*/  
     border: 1px solid #ccc;  
     border-radius: 3px;  
@@ -30,20 +32,18 @@ text,.cell1{
   
 /*加号和减号*/  
 .stepper text {  
-    width: 19px;  
-    line-height: 26px;  
-    height: 26px;  
+    width: 40rpx;  
+    line-height: 40rpx;  
+    height: 4r0px;  
     display: inline-block;
-    text-align: center;  
-    float: left;  
+    text-align: center;   
 }  
   
 /*数值*/  
 .stepper input {  
-    width: 40px;  
-    height: 80%;
-    line-height: 26px;  
-    float: left;  
+    width: 40rpx;  
+    height: 100%;
+    line-height: 40rpx;  
     margin: 0 auto;  
     text-align: center;  
     font-size: 12px;  
