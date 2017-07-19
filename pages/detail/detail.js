@@ -55,9 +55,9 @@ Page({
     });
   },
   onclick_continue_get:function(e){
-    wx.navigateTo({
-      url: '../index/index'
-    })
+    wx.navigateBack({
+      
+    });
     this.setData({
       isHidden: true
     });

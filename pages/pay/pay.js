@@ -1,14 +1,22 @@
 // pay.js
+var isWeiXin;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isWeiXin:true,
     // input默认是1  
     num: 1,
     // 使用data数据对象设置样式名  
     minusStatus: 'disabled'  
+  },
+  onWeixinClick:function(e) {
+    isWeiXin = !isWeiXin;
+    this.setData({
+      isWeiXin:isWeiXin
+    });
   },
 
   /**

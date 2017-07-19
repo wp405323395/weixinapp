@@ -25,15 +25,15 @@
     <text>7天免费体验券 ></text>
   </view>
   <view class="pay_way">
-    <text class="item">选择支付方式</text>
-    <view class="item">
+    <text class="item lable" >选择支付方式</text>
+    <view bindtap="onWeixinClick" hover-stay-time="50" hover-class="clickDown" class="item">
       <view class="cell1">
         <image class="pay_lable_img" src="../../img/weixinpay.png"/>
         <text>微信支付</text>
       </view>
       
       <label class="radio radio_layout">
-        <radio value="r1" checked="true"/>
+        <radio value="r1" checked="{{isWeiXin}}"/>
       </label>
     </view>
     <text class="item">更多支付方式</text>

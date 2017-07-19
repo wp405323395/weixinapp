@@ -9,7 +9,12 @@
   background-color: white;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content:space-between; 
+  align-items: center;
+}
+.lable{
+  font-size: 0.6rem;
+
 }
 text,.cell1{
   padding: 10px;
@@ -23,25 +28,23 @@ text,.cell1{
     width:200rpx;
     display: flex;
     flex-direction:row ;
-    height: 40rpx;  
+    height: 50rpx;  
+    align-items:center;
     /*给主容器设一个边框*/  
     border: 1px solid #ccc;  
     border-radius: 3px;  
-    margin:0 auto;  
+    margin-right: 16rpx;
 }  
   
 /*加号和减号*/  
 .stepper text {  
     width: 40rpx;  
-    line-height: 40rpx;  
-    height: 4r0px;  
-    display: inline-block;
     text-align: center;   
 }  
   
 /*数值*/  
 .stepper input {  
-    width: 40rpx;  
+    width: 60rpx;  
     height: 100%;
     line-height: 40rpx;  
     margin: 0 auto;  
@@ -80,10 +83,14 @@ text,.cell1{
   background-color: red;
 
 }
+.clickDown{
+  background-color: gray;
+}
 .pay_lable_img{
   width: 25px;
   height: 25px;
-  margin: auto 0;
+  position: relative;
+  top: 8rpx;
 }
 .radio_layout{
   margin: auto 0;
