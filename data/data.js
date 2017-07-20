@@ -61,7 +61,7 @@ var data = {
     'relaId': 1253,//优惠券挂载到人员的id。
     'imgUrl': '../../img/product1.png',//商铺图片
     'storeName': '小店',//商铺名称
-    'couponDescrip': '五元现金券免费送',
+    'couponDescrip': '五元现金券',
     'useCondition': '新品除外'
 
   },{
@@ -90,7 +90,7 @@ var data = {
       'relaId':1253,//优惠券挂载到人员的id。
       'imgUrl':'../../img/product1.png',//商铺图片
       'storeName': '小店',//商铺名称
-      'couponDescrip': '五元现金券免费送',
+      'couponDescrip': '五元现金券',
       'useCondition': '新品除外'
 
     }, {
@@ -125,7 +125,7 @@ var data = {
     'relaId': 1253,//优惠券挂载到人员的id。
     'imgUrl': '../../img/product1.png',//商铺图片
     'storeName': '小店',//商铺名称
-    'couponDescrip': '五元现金券免费送',
+    'couponDescrip': '五元现金券',
     'useCondition': '新品除外'
 
   }, {
@@ -149,7 +149,7 @@ var data = {
     'relaId': 1253,//优惠券挂载到人员的id。
     'imgUrl': '../../img/product1.png',//商铺图片
     'storeName': '小店',//商铺名称
-    'couponDescrip': '五元现金券免费送',
+    'couponDescrip': '五元现金券',
     'useCondition': '新品除外'
 
   }, {
@@ -193,7 +193,7 @@ var data = {
       'relaId': 1253,//优惠券挂载到人员的id。
       'imgUrl': '../../img/product1.png',//商铺图片
       'storeName': '小店',//商铺名称
-      'couponDescrip': '五元现金券免费送',
+      'couponDescrip': '五元现金券',
       'useCondition': '新品除外'
 
     }, {
@@ -228,7 +228,7 @@ var data = {
     'relaId': 1253,//优惠券挂载到人员的id。
     'imgUrl': '../../img/product1.png',//商铺图片
     'storeName': '小店',//商铺名称
-    'couponDescrip': '五元现金券免费送',
+    'couponDescrip': '五元现金券',
     'useCondition': '新品除外'
 
   }, {

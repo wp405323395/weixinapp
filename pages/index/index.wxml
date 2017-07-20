@@ -19,16 +19,16 @@
     </view>
   </view>
 
-  <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
+  <view  hidden="{{!hasData || currentTab!==0}}">
     <template is="products" data="{{...page0 ,isShowDownTime: true}}" />
   </view>
-  <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
+  <view  hidden="{{!hasData || currentTab!==1}}">
     <template is="products" data="{{...page1 ,isShowDownTime: false}}" />
   </view>
-  <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
+  <view hidden="{{!hasData || currentTab!==2}}">
     <template is="products" data="{{...page2, isShowDownTime: false}}" />
   </view>
-  <view class="fragment" hidden="{{!hasData || currentTab!==3}}">
+  <view hidden="{{!hasData || currentTab!==3}}">
     <template is="products" data="{{...page3, isShowDownTime: false}}" />
   </view>
 

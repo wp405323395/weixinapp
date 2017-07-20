@@ -3,8 +3,11 @@
     <view class="product_item" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
         <navigator class="{{(idx+1) % 2 == 0 ? 'product_item_right':'product_item_left'}} product" id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
           <view class="index_down_time" hidden="{{!isShowDownTime}}">
-            <image class="index_down_time_img" src="../../img/index_down_time.png"></image>
-            <text class="index_down_time_text">00:30:59</text>
+            <view class="index_down_time_content">
+              <image class="index_down_time_img" src="../../img/index_down_time.png"></image>
+              <text class="index_down_time_text">00:30:59</text>
+            </view>
+            
           </view>
           <image class="product_img" src="{{item.imgUrl}}" mode="widthFix"></image>
           <view class="content_text">
