@@ -7,7 +7,8 @@
     "pages/tvCard/tvcard",
     "pages/pay/pay",
     "pages/redcard/redcard",
-    "pages/pay/success/paySuccess"
+    "pages/pay/success/paySuccess",
+    "pages/redPackage/red"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -25,13 +26,13 @@
         "pagePath": "pages/index/index",
         "iconPath": "img/index_discover.png",
         "selectedIconPath": "img/index_discover_li.png",
-        "text": "已领取"
+        "text": "发现"
       },
       {
         "pagePath": "pages/me/me",
         "iconPath": "img/index_me.png",
         "selectedIconPath": "img/index_me_li.png",
-        "text": "已使用"
+        "text": "我的"
       }
     ]
   },

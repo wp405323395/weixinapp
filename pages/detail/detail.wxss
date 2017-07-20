@@ -92,12 +92,17 @@ button{
 
 .dialog{
   position: fixed;
-  width: 75%;
-  height: 40%;
+  width: 90%;
   left: 30%;
   top: 30%;
-  transform: translate(-23%,-30%);
   z-index: 1000;
+    transform: translate(-27.5%,-30%);
+}
+.dialog1{
+  height: 40%;
+}
+.dialog2{
+  height: 70%;
 }
 
 .dialog_content{
@@ -109,18 +114,19 @@ button{
   width: 100%;
 }
 .dialog_t1{
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: white;
   margin-bottom: 2rpx;
 }
 .dialog_t2{
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: white;
 }
 .dialog_bt{
+  font-size: 1rem;
   width: 80%;
   margin-top: 10%;
-  font-size: 0.75rem;
+  border-radius: 10rpx;
 }
 .dialog_bt1{
   background-color: #3fa5ed;
@@ -132,6 +138,7 @@ button{
 }
 .dialog_bt2{
   color: #666666;
+  margin-top: 30rpx;
 }
 
 .dialog_title_wrap{
@@ -166,5 +173,34 @@ button{
   height: 100rpx;
   margin-top: 30rpx;
 }
+.dialog2_content{
+  margin-top: 50rpx;
+  width: 100%;
+  height: 400rpx;
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+
+}
+.tickit_content{
+  height: 50%;
+  width: 100%;
+}
+.tickit{
+  width: 90%;
+  margin-left: 5%;
+}
+.tickit1{
+  margin-top:30rpx;
+}
+.tickit2{
+  margin-top: 15rpx;
+}
+.tickit_txt_content{
+  
+}
+
 
 

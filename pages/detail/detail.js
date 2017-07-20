@@ -13,6 +13,8 @@ Page({
     interval: 5000,
     duration: 1000,
     isHidden:true,
+    isHidden1:true,
+    isHidden2:true,
     imgUrls: [
       '../../img/banner.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
@@ -38,10 +40,16 @@ Page({
       }
     });
   },
+  onClickRedpackage:function(e) {
+    wx.navigateTo({
+      url: '../redPackage/red',
+    })
+  },
 
   click:function(e) {
     this.setData({
-      isHidden:false
+      isHidden:false,
+      isHidden2:false
     });
   },
   tvclick:function(e) {
@@ -51,6 +59,8 @@ Page({
   },
   onclick_use_it:function(e){
     this.setData({
+      isHidden1:true,
+      isHidden2:true,
       isHidden:true
     });
   },
@@ -59,12 +69,16 @@ Page({
       
     });
     this.setData({
-      isHidden: true
+      isHidden: true,
+      isHidden1: true,
+      isHidden2: true
     });
   },
   onclick_hide_dialog:function(e){
     this.setData({
-      isHidden:true
+      isHidden:true,
+      isHidden1: true,
+      isHidden2: true,
     });
   },
   /**
