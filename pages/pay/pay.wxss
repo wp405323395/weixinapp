@@ -1,8 +1,4 @@
 /* pay.wxss */
-.container{
-  width: 100%;
-  height: 100%;
-}
 .item{
   width: 100%;
   background-color: white;
@@ -19,7 +15,7 @@
 text,.cell1{
   padding: 25rpx;
 }
-.hav{
+.pa_wrap{
   margin:10px 0;
 }
 
@@ -105,4 +101,8 @@ text,.cell1{
   width:9px;
   height:16.2857px;
 
+}
+.pay_way{
+  overflow: hidden;
+  width: 100%;
 }

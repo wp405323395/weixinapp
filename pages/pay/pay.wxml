@@ -1,6 +1,6 @@
 <!--pay.wxml-->
 <view class="container">
-  <view class="hav">
+  <view class="pa_wrap">
     <view class="item">
       <text>选择套餐</text>
 
@@ -25,7 +25,7 @@
     </view>
   </view>
 
-  <view class="item hav">
+  <view class="item pa_wrap">
     <text>当前可用优惠券</text>
     <view style="margin-right:20rpx;"><text style="color: #3fa5ed">7天免费体验券</text>
     <image src="../../img/go_in.png" class="lit_left" ></image>
