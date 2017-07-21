@@ -80,20 +80,39 @@
       <text class="dialog_t2" >领取成功的优惠券可在我的页面中查看</text>
     </view>
     <view class="dialog2_content">
-      <view class="tickit_content">
-        <image src="../../img/tickit.png" class="tickit tickit1" mode="widthFix"></image>
-        <view class="tickit_txt_content">
-          <text class="tickit_title">武汉广电优惠券套餐</text>
-          <text class="ticki_title">满100减20元</text>
-          <text class="ticki_title">(任意套餐通用)</text>
+      <view class="tickit_content"  id="t1">
+        <view class="tickit_wrap tickit1">
+          <image src="../../img/tickit.png" class="tickit " mode="heightFix"></image>
+          <view class="tickit_txt_content">
+            <view class="tickit_title">
+              <text class="tickit_title1_style">武汉广电优惠券套餐</text>
+              <text class="tickit_lable">限时特惠</text>
+            </view>
+            
+            <text class="ticki_title tickit_title2_style">满100减20元</text>
+            <text class="ticki_title tickit_title3_style">(任意套餐通用)</text>
+          </view>
+          <text class="free_take_tickit">免费领取</text>
         </view>
         
-      </view>
-      <view class="tickit_content">
-        <image src="../../img/tickit.png" class="tickit tickit2" mode="widthFix"></image>
-      </view>
         
+      </view>
+      <view class="tickit_content" id="t2">
+        <view class="tickit_wrap tickit2">
+            <image src="../../img/tickit.png" class="tickit" mode="heightFix"></image>
+            <view class="tickit_txt_content">
+              <view class="tickit_title">
+                <text class="tickit_title1_style">武汉广电优惠券套餐</text>
+                <text class="tickit_lable">限时特惠</text>
+              </view>
 
+              <text class="ticki_title tickit_title2_style">订购享8.8折优惠</text>
+              <text class="ticki_title tickit_title3_style">(任意套餐通用)</text>
+             </view>
+             <text class="free_take_tickit">免费领取</text>
+         </view>
+        
+      </view>
     </view>
     <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
    <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>

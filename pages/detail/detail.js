@@ -1,6 +1,7 @@
 // detail.js
 var da = require('../../data/data.js').data;
 var product = da.productDetail;
+var autoflag ;  
 Page({
 
   /**
@@ -47,10 +48,19 @@ Page({
   },
 
   click:function(e) {
-    this.setData({
-      isHidden:false,
-      isHidden2:false
-    });
+    autoflag = !autoflag;
+    if(autoflag) {
+      this.setData({
+        isHidden: false,
+        isHidden2: false
+      });
+    } else {
+      this.setData({
+        isHidden: false,
+        isHidden1: false
+      });
+    }
+    
   },
   tvclick:function(e) {
     wx.navigateTo({
