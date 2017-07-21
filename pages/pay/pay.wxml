@@ -3,7 +3,12 @@
   <view class="hav">
     <view class="item">
       <text>选择套餐</text>
-      <text>综艺高清直播包-A ></text>
+
+      <view style="padding-right:20rpx;">
+        <text>综艺高清直播包-A  </text>
+        <image src="../../img/go_in.png" class="lit_left" ></image>
+      </view>
+
     </view>
 
     <view class="item">
@@ -22,7 +27,9 @@
 
   <view class="item hav">
     <text>当前可用优惠券</text>
-    <view style="margin-right:16rpx;"><text style="color: #3fa5ed">7天免费体验券</text>></view>
+    <view style="margin-right:20rpx;"><text style="color: #3fa5ed">7天免费体验券</text>
+    <image src="../../img/go_in.png" class="lit_left" ></image>
+    </view>
     
   </view>
   <view class="pay_way">

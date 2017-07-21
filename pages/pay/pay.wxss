@@ -33,7 +33,7 @@ text,.cell1{
     /*给主容器设一个边框*/  
     border: 1px solid #ccc;  
     border-radius: 3px;  
-    margin-right: 16rpx;
+    margin-right: 20rpx;
 }  
   
 /*加号和减号*/  
@@ -98,4 +98,11 @@ text,.cell1{
 }
 .radio_layout{
   margin: auto 0;
+  padding-right:20rpx;
+
+}
+.lit_left{
+  width:9px;
+  height:16.2857px;
+
 }

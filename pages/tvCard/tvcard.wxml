@@ -14,6 +14,6 @@
     <text>湖北省，武汉市，洪山区</text>   
   </view> 
 
-  <button bindtap="click" type="primary" class="nex_btn">下一步</button>
+  <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">下一步</button>
 </view>
 

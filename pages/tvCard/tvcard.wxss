@@ -20,4 +20,10 @@ text{
 }
 .nex_btn{
   margin:30px 10px;
+  background-color:#3fa5ed;
+
+}
+.nex_btn_tap{
+  opacity: 0.5;
+  padding-top: 5rpx;
 }
