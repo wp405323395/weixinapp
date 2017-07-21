@@ -282,3 +282,7 @@ button {
   margin: 50rpx 0;
   width: 100%;
 }
+.tickit_tap{
+  opacity: 0.5;
+  filter:Alpha(opacity=50);
+}
