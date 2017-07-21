@@ -41,9 +41,12 @@
     <text class="btn_delete_click" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</text>
   </view>
 
-  <button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">立即领取</button>
-  <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">领取广电优惠券</button>
-  <button bindtap="onClickRedpackage" class="button" hover-class="navigator-hover" hover-stay-time="200" >抢红包</button>
+  <view class="test_content">
+    <button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">立即领取</button>
+    <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">领取广电优惠券</button>
+    <button bindtap="onClickRedpackage" class="button" hover-class="navigator-hover" hover-stay-time="200" >抢红包</button>
+  </view>
+  
 </view>
 
 <view bindtap="onclick_hide_dialog" class="boomBox" hidden="{{isHidden}}">
@@ -61,8 +64,11 @@
     
       <text class="dialog_t2" >领取成功的优惠券可在我的页面中查看</text>
     </view>
-    <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
-   <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>
+    <view class="bottom_btn">
+      <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
+       <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>
+    </view>
+   
   </view>
   <image src="../../img/dialog_right.png" class="dialog_img"/>
 </view>
@@ -82,7 +88,7 @@
     <view class="dialog2_content">
       <view class="tickit_content"  id="t1">
         <view class="tickit_wrap tickit1">
-          <image src="../../img/tickit.png" class="tickit " mode="heightFix"></image>
+          <image src="../../img/tickit.png" class="tickit " ></image>
           <view class="tickit_txt_content">
             <view class="tickit_title">
               <text class="tickit_title1_style">武汉广电优惠券套餐</text>
@@ -92,14 +98,17 @@
             <text class="ticki_title tickit_title2_style">满100减20元</text>
             <text class="ticki_title tickit_title3_style">(任意套餐通用)</text>
           </view>
-          <text class="free_take_tickit">免费领取</text>
+          <view class="free_take_tickit">
+            <text class="free_take_tickit_text">免费\n领取</text>
+          </view>
+          
         </view>
         
         
       </view>
       <view class="tickit_content" id="t2">
         <view class="tickit_wrap tickit2">
-            <image src="../../img/tickit.png" class="tickit" mode="heightFix"></image>
+            <image src="../../img/tickit.png" class="tickit" ></image>
             <view class="tickit_txt_content">
               <view class="tickit_title">
                 <text class="tickit_title1_style">武汉广电优惠券套餐</text>
@@ -109,13 +118,18 @@
               <text class="ticki_title tickit_title2_style">订购享8.8折优惠</text>
               <text class="ticki_title tickit_title3_style">(任意套餐通用)</text>
              </view>
-             <text class="free_take_tickit">免费领取</text>
+            <view class="free_take_tickit">
+                <text class="free_take_tickit_text">免费\n领取</text>
+            </view>
          </view>
         
       </view>
     </view>
-    <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
-   <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>
+    <view class="bottom_btn">
+      <button bindtap="onclick_use_it" class="dialog_bt dialog_bt1" hover-class="dialog_bt1_hove">立即使用</button>
+       <button bindtap="onclick_continue_get" class="dialog_bt dialog_bt2" >继续领取</button>
+    </view>
+
   </view>
   <image src="../../img/dialog_right.png" class="dialog_img"/>
 
