@@ -6,7 +6,6 @@
     "pages/detail/detail",
     "pages/tvCard/tvcard",
     "pages/pay/pay",
-    "pages/redcard/redcard",
     "pages/pay/success/paySuccess",
     "pages/redPackage/red"
   ],

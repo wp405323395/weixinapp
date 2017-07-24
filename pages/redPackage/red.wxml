@@ -1,4 +1,22 @@
 <!--red.wxml-->
-<view class="container" style="background-color:green;">
+<view class="container">
+  <view class="red_card_fly_pic">
+    <image class="red_card_pic1" animation="{{animation_pc1}}" mode="widthFix" src="../../img/red_card_pic1.png"></image>
+    <image class="red_card_pic2" animation="{{animation_pc2}}" mode="widthFix" src="../../img/red_card_pic2.png"></image>
+    <image class="red_card_pic3" animation="{{animation_pc3}}" mode="widthFix" src="../../img/red_card_pic3.png"></image>
+    <image class="red_card_pic4" animation="{{animation_pc4}}" mode="widthFix" src="../../img/red_card_pic4.png"></image>
+  </view>
+  <image src="../../img/flower.png" class="flower_bg"></image>
+  <image src="../../img/shader.png" class="shader_bg"></image>
+  <view class="red_pack">
+    <image  src="../../img/red_part.png" class="red_part_bg" ></image>
+    <image bindtap="coinClick" animation="{{animation}}" class="red_package_get" src="../../img/red_package_get.png" mode="widthFix"></image>
+  </view>
+  <view class="not_coin_wrap">
+    <text class="red_card_text_note red_card_text_note1">注：完成套餐订购后即可获得返现</text>
+    <text class="red_card_text_note red_card_text_note2">截至日期 2018-1-1</text>
+    <image src="../../img/coins.png" class="coins_bg" mode="widthFix"></image>
+  </view>
   
+  <image src="../../img/red_package_num.png" class="red_package_num_bg" mode="widthFix"></image>
 </view>
