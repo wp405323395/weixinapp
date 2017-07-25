@@ -6,42 +6,46 @@ Page({
    */
   data: {
     animation:'',
-    animation_pc1:'',
-    animation_pc2: '',
-    animation_pc3: '',
-    animation_pc4: ''
+    animationContent:'',
+    ishid_red_package_content:true,
+    red_content_txt_front:'',
+    isHidden_bt:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.animation_pc1 = wx.createAnimation({
-      duration: 200, timingFunction: 'ease-out', delay: 100
-    });
-      this.animation_pc2 = wx.createAnimation({
-        duration: 200, timingFunction: 'ease-out', delay: 100
-      });
-    this.animation_pc3 = wx.createAnimation({
-      duration: 200, timingFunction: 'ease-out', delay: 100
-    });
-    this.animation_pc4 = wx.createAnimation({
-      duration: 200, timingFunction: 'ease-out', delay: 100
+    
+    this.animationContent = wx.createAnimation({
+      duration: 200, timingFunction: 'ease-out', delay: (3000+100+30+150+100)
     });
     this.animation = wx.createAnimation({
-      transformOrigin: 'left top 0',
+      transformOrigin: '50% 50% 0',
       success: function (res) {
         console.log(res)
       }
     })
   },
   coinClick:function(e){
-    this.animation.translateY(-45).step({ duration: 200, timingFunction: 'ease-out', delay: 100})
-    this.animation.translateY(400).step({ duration: 400, delay: 150, timingFunction:'ease-in' })
+    this.animation.rotateY(360*2).step({ duration: 3000, timingFunction: 'ease-out', delay: 100})
+    this.animation.opacity(0).step({ duration: 30, delay: 150, timingFunction:'ease-in' })
     this.setData({
+      ishid_red_package_content:false,
       animation: this.animation.export()
     })
-
+    let distance = -e.currentTarget.offsetTop *1.444444;
+    this.animationContent.translateY(distance).step();
+    this.setData({
+      animationContent: this.animationContent.export()
+    })
+    let that = this;
+    setTimeout(() => {
+      that.setData({
+        isHidden_bt: false,
+        red_content_txt_front: 'red_content_txt_front'
+      })
+    }, 3000 + 100 + 30 + 150 + 100 + 200 +100)
   },
 
   /**
@@ -55,16 +59,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.animation_pc1.translateY(400).step({ duration: 200, timingFunction: 'ease-out', delay: 1000 });
-    this.animation_pc2.translateY(400).step({ duration: 400, timingFunction: 'ease-in', delay: 3000, });
-    this.animation_pc3.translateY(400).step({ duration: 200, timingFunction: 'ease-out', delay: 4000 });
-    this.animation_pc4.translateY(400).step({ duration: 400, timingFunction: 'ease-in', delay: 500, });
-    this.setData({
-      animation_pc1: this.animation_pc1.export(),
-      animation_pc2: this.animation_pc2.export(),
-      animation_pc3: this.animation_pc3.export(),
-      animation_pc4: this.animation_pc4.export(),
-    })
+
   },
 
   /**
