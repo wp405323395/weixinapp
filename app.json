@@ -2,14 +2,15 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/me/me",
     "pages/detail/detail",
     "pages/tvCard/tvcard",
     "pages/pay/pay",
     "pages/pay/success/paySuccess",
     "pages/redPackage/red",
     "pages/mycoup/mycoup",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/myRedPackage/myRedPackage",
+    "pages/myOrder/myOrder"
   ],
   "window": {
     "navigationBarTextStyle": "black",

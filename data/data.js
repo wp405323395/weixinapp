@@ -240,8 +240,172 @@ var data = {
     'couponDescrip': '全场买二送一',
     'useCondition': '新品除外'
 
-  }]
-
+  }],
+  //-----------------------------------------------
+  redPackages_0:[{
+    id:1,
+    content:'返现红包50元',
+    describe:"完成套餐订购即可获得",
+    deadline:"2017-07-22"
+  }, 
+  {
+    id: 3,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  }],
+  redPackages_1: [
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  }],
+  redPackages_2: [{
+    id: 1,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  }, {
+    id: 2,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 3,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  },
+  {
+    id: 4,
+    content: '返现红包50元',
+    describe: "完成套餐订购即可获得",
+    deadline: "2017-07-22"
+  }],
+  //---------------------------------------------------------
+  myOrder:[
+    {
+      id:134,
+      date:'2017-3-5',
+      content:'直播A套餐',
+      discribe:'完成订单既可获取40元返现',
+      money:200
+    }, {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }
+    , {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }
+    , {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }
+    , {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }, {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }, {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }, {
+      id: 134,
+      date: '2017-3-5',
+      content: '直播A套餐',
+      discribe: '完成订单既可获取40元返现',
+      money: 200
+    }
+  ]
+  
 };
 
 

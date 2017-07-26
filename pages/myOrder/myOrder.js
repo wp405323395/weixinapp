@@ -1,26 +1,21 @@
-// me.js
-//获取应用实例
-var app = getApp()
+// myOrder.js
+var da = require('../../data/data.js').data;
+var data = da.myOrder;
+ 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    products: data
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    })
+  
   },
 
   /**
@@ -28,28 +23,6 @@ Page({
    */
   onReady: function () {
   
-  },
-  onClick:function(e){
-    switch (e.currentTarget.id) {
-      case "my_coup":
-        wx.navigateTo({
-          url: '../mycoup/mycoup',
-        })
-        break;
-      case "my_red_package":
-        wx.navigateTo({
-          url: '../myRedPackage/myRedPackage',
-        })
-        break;
-      case "my_order":
-        wx.navigateTo({
-          url: '../myOrder/myOrder',
-        })
-        break;
-      case "my_store":
-        break;
-    }
-
   },
 
   /**

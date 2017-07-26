@@ -22,3 +22,26 @@
     </view>
   </view>
 </template >
+
+
+<template name="redPackage">
+  <view class="list" bindtap="clickItem">
+    <view class="redPackage" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
+        <navigator id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
+          <view class="rePackage_wrap">
+            <image src="../../img/red_back.png" class="red_pack_background_img"></image>
+            <view class="red_package_content_wrap">
+              <text class="red_package_content">{{item.content}}</text>
+              <button class="red_package_btn" hidden="{{currentTab != 0}}">立即使用</button>
+            </view>
+            
+            <view class="red_text_wrap">
+              <text class="red_package_discribe">注：{{item.describe}}</text>
+              <text class="red_package_discribe">截至日期：{{item.deadline}}</text>
+            </view>
+
+          </view>
+        </navigator>
+    </view>
+  </view>
+</template >

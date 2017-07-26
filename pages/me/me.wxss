@@ -17,6 +17,10 @@
   left: 40rpx;
 
 }
+.me_banner{
+  height: 25%;
+  width: 100%;
+}
 .userinfo_nickName{
   position: relative;
   left: -70rpx;
@@ -35,11 +39,18 @@
 .my_coup{
   margin-top: 35rpx;
 }
+.title{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+   align-items: center;
+}
 .title_icon{
   width: 50rpx;
 }
 .title_text{
   margin-left: 40rpx;
+  display: inline-block;
 }
 .left_btn{
 width:25rpx;

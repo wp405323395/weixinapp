@@ -1,7 +1,7 @@
 <view class="container">
-  <image src="../../img/me_banner.png" mode="widthFix"/>
+  <image class="me_banner" src="../../img/me_banner.png"/>
   <view class="me_icon">
-     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" mod></image>
      <text class="userinfo_nickName">{{userInfo.nickName}}</text>
   </view>
   <view class="banner_part"></view>

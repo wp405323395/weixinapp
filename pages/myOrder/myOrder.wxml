@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="order_list">
+    <view class="order_item" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
+     <view class="margin-top:20rpx row">
+        <view class="date_lable boder_left">
+          <text class="time_lable">订单日期:</text>
+          <text>{{item.date}}</text>
+        </view>
+        <view class="caunt boder_right">
+          <text>金额:</text>
+          <text class="acount_font">{{item.money}}</text>
+          <text>元</text>
+        </view>
+     </view>
+
+ <view style="width:100%;height:1px;background:#d4d4d4"/>
+     <view class="row2 row">
+        <view class="dell_detail">
+          <text class="order_content_style boder_left">{{item.content}}</text>
+          <view class="date_lable boder_left">
+            <text>{{item.discribe}}</text>
+          </view>
+        </view>
+        <button class="dell_btn">重新支付</button>
+     </view> 
+
+    </view>
+  </view>
+</view>
