@@ -1,40 +1,59 @@
-.navbar{  
+/* me.wxss */
+.banner_part{
   width: 100%;
-  display: flex;  
-  justify-content: space-around;
-  background: #3fa5ed;
-  height: 80rpx;
-  border-bottom: 1rpx solid #D9D9D9;
-  position: fixed;
-  z-index: 10000;
-  top: 0;
-  left: 0;
-}  
- .list{
-  margin-top: 80rpx;
-} 
-  .item{
-  width: 25%;
-  position: relative;  
-  text-align: center;
-  color: #a1d8ff;
-  font-size: 0.8rem;
-}  
- .item.active{  
-  color: #ffffff;  
-  font-size: 0.8rem;
-}  
- .item.active:after{  
-  content: "";  
-  display: block;  
-  position: absolute;  
-  bottom: 0;  
-  left: 0;  
-  right: 0;  
-  height: 2rpx;  
-  background: #ffffff;  
-}  
-.nav_text{
-  height: 80rpx;
-  line-height: 80rpx;
+  background-color: white;
+  height: 150rpx;
+}
+.me_icon{
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+.userinfo-avatar{
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  top: -60rpx;
+  left: 40rpx;
+
+}
+.userinfo_nickName{
+  position: relative;
+  left: -70rpx;
+}
+.item{
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+   align-items:center;
+}
+.my_coup{
+  margin-top: 35rpx;
+}
+.title_icon{
+  width: 50rpx;
+}
+.title_text{
+  margin-left: 40rpx;
+}
+.left_btn{
+width:25rpx;
+height:25rpx;
+
+}
+.my_red_package{
+  margin-top: 1px;
+  margin-bottom: 35rpx;
+
+}
+.my_order{
+   margin-bottom: 35rpx;
+}
+.clicked_style{
+  background: darkgray;
 }

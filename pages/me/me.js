@@ -1,61 +1,90 @@
 // me.js
-var da = require('../../data/data.js').data;
-var data0 = da.xianshimiaosha;
-var data1 = da.zhinengtuijian;
-var data2 = da.wubaimishangquan;
+//获取应用实例
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navbar: ['未使用', '已使用', '已过期'],
-    currentTab: 0,
-    page0: { products: data0 },
-    page1: { products: data1 },
-    page2: { products: data2 }
+  
   },
-  navbarTap: function (e) {
-    var typeId = e.currentTarget.dataset.idx;
-    this.setData({
-      currentTab: typeId,
-    });
-    this.loadData(typeId);
-  },
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadData(0);
+    let that = this;
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
   },
-  loadData: function (typeId) {
-    switch (typeId) {
-      case 0:
-        this.setData({
-          page0: { products: data0 },
-          currentTab: 0,
-          hasData: true
-        });
-        break;
-      case 1:
-        this.setData({
-          page1: { products: data1 },
-          currentTab: 1,
-          hasData: true
-        });
-        break;
-      case 2:
-        this.setData({
-          page2: { products: data2 },
-          currentTab: 2,
-          hasData: true
-        });
-        break;
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+  onClick:function(e){
+    switch (e.currentTarget.id) {
+      case "my_coup":
+        wx.navigateTo({
+          url: '../mycoup/mycoup',
+        })
+        break;
+      case "my_red_package":
+        break;
+      case "my_order":
+        break;
+      case "my_store":
+        break;
     }
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
   }
-
-
 })

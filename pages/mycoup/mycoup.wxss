@@ -1,0 +1,41 @@
+.navbar{  
+  width: 100%;
+  display: flex;  
+  justify-content: space-around;
+  background: #3fa5ed;
+  height: 80rpx;
+  border-bottom: 1rpx solid #D9D9D9;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+}  
+ .list{
+  margin-top: 80rpx;
+} 
+  .item{
+  width: 25%;
+  position: relative;  
+  text-align: center;
+  color: #a1d8ff;
+  font-size: 0.8rem;
+}  
+ .item.active{  
+  color: #ffffff;  
+  font-size: 0.8rem;
+  border-bottom: 1px white solid;
+}  
+ .item.active:after{  
+  content: "";  
+  display: block;  
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  height: 2rpx;  
+  background: #ffffff;  
+}  
+.nav_text{
+  height: 80rpx;
+  line-height: 80rpx;
+}

@@ -7,7 +7,9 @@
     "pages/tvCard/tvcard",
     "pages/pay/pay",
     "pages/pay/success/paySuccess",
-    "pages/redPackage/red"
+    "pages/redPackage/red",
+    "pages/mycoup/mycoup",
+    "pages/me/me"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -14,7 +14,6 @@
 .red_pack{
   width: 75%;
   height:55.6%;
-
   position: absolute;
   top:0;
   left: 0;
