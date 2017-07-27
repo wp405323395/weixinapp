@@ -16,7 +16,7 @@
     <image  src="../../img/red_part.png" class="red_part_bg" ></image>
     <image bindtap="coinClick" animation="{{animation}}" class="red_package_get" src="../../img/red_package_get.png" mode="widthFix"></image>
    <view class="red_btn_bundle" hidden="{{isHidden_bt}}">
-       <button class="red_bt red_bt1">立即获取</button>
+       <button bindtap="onGetRedPackageClick" hover-class="get_btn_tap" class="red_bt red_bt1">立即获取</button>
       <button class="red_bt red_bt2">查看我的红包</button>
    </view>
 

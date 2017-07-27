@@ -191,3 +191,6 @@ padding-left: 8rpx;
   display: flex;
   flex-direction: column;
 }
+.get_btn_tap{
+  background-color: darkblue;
+}

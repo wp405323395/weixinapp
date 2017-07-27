@@ -27,6 +27,11 @@ Page({
       }
     })
   },
+  onGetRedPackageClick:function(e) {
+    wx.navigateTo({
+      url: '../choosePackages/choosePackages',
+    })
+  },
   coinClick:function(e){
     this.animation.rotateY(360*1).step({ duration: 2000, timingFunction: 'ease-out', delay: 100})
     this.animation.opacity(0).step({ duration: 30, delay: 150, timingFunction:'ease-in' })

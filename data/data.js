@@ -421,6 +421,59 @@ var data = {
       discribe: '',
       money: 200
     }
+  ],
+  //---------------------------------------------
+  choocePackages:[
+    {
+      id:11001,
+      packageName:'直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength:'1年',
+      price:288
+    },
+    {
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    }, {
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    }, {
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    }, {
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    }, {
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    },{
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    },{
+      id: 11001,
+      packageName: '直播套餐A-01',
+      discribe: '包含各种直播,安徽省的骄傲绝对节目套餐直播',
+      timeLength: '1年',
+      price: 288
+    }
   ]
   
 };

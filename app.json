@@ -11,7 +11,9 @@
     "pages/me/me",
     "pages/myRedPackage/myRedPackage",
     "pages/myOrder/myOrder",
-    "pages/business/business"
+    "pages/business/business",
+    "pages/choosePackages/choosePackages",
+    "pages/choosePackages/choosePackages"
   ],
   "window": {
     "navigationBarTextStyle": "black",
