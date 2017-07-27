@@ -18,7 +18,7 @@ Page({
   onLoad: function (options) {
     
     this.animationContent = wx.createAnimation({
-      duration: 200, timingFunction: 'ease-out', delay: (3000+100+30+150+100)
+      duration: 200, timingFunction: 'ease-out', delay: (2000+100+30+150+100)
     });
     this.animation = wx.createAnimation({
       transformOrigin: '50% 50% 0',
@@ -28,7 +28,7 @@ Page({
     })
   },
   coinClick:function(e){
-    this.animation.rotateY(360*2).step({ duration: 3000, timingFunction: 'ease-out', delay: 100})
+    this.animation.rotateY(360*1).step({ duration: 2000, timingFunction: 'ease-out', delay: 100})
     this.animation.opacity(0).step({ duration: 30, delay: 150, timingFunction:'ease-in' })
     this.setData({
       ishid_red_package_content:false,
@@ -45,7 +45,7 @@ Page({
         isHidden_bt: false,
         red_content_txt_front: 'red_content_txt_front'
       })
-    }, 3000 + 100 + 30 + 150 + 100 + 200 +100)
+    }, 2000 + 100 + 30 + 150 + 100 + 200 +100)
   },
 
   /**

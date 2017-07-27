@@ -1,4 +1,3 @@
- 
 var bannerHeight;
 var da = require('../../data/data.js').data;
 var data0 = da.xianshimiaosha;
@@ -8,9 +7,8 @@ var data3 = da.pingpairuzhu;
 Page({
   data: {
     imgUrls: [
-      '../../img/banner.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+      '../../img/banner2.jpg',
+      '../../img/banner.jpg'
     ],
     navbar: [{ img: '../../img/index_nav_time.png', img_li:'../../img/index_nav_time_li.png', text: '限时秒杀' }, 
       { img: '../../img/index_nav_good.png', img_li: '../../img/index_nav_good_li.png', text: '每日优选' }, 
@@ -29,12 +27,14 @@ Page({
   },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
-    //scene = '../tvCard/tvcard';
+    //scene = '../redPackage/red';
     if (scene != undefined && scene != 'undefined' && scene != '') {
       if (scene.indexOf("detail") >0){
         scene = '../detail/detail';
       } else if (scene.indexOf("tvCard") > 0) {
-        scene = '../tvCard/tvcard'
+        scene = '../tvCard/tvcard';
+      } else if (scene.indexOf("redPackage") > 0) {
+        scene = '../redPackage/red';
       }
       wx.showToast({
         title: scene

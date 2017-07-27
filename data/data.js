@@ -246,36 +246,36 @@ var data = {
     id:1,
     content:'现金红包10元',
     describe:"满100可用",
-    deadline:"2017-07-22"
+    deadline:"2017-10-22"
   }, 
   {
     id: 3,
-    content: '直播套餐8.8折',
+    content: '现金红包15元',
     describe: "完成套餐订购即可获得",
-    deadline: "2017-07-22"
+    deadline: "2017-10-22"
   },
   {
     id: 4,
     content: '返现红包50元',
     describe: "完成套餐订购即可获得",
-    deadline: "2017-07-22"
+    deadline: "2017-10-22"
   }, {
     id: 1,
     content: '现金红包10元',
     describe: "满100可用",
-    deadline: "2017-07-22"
+    deadline: "2017-10-22"
   },
   {
     id: 3,
-    content: '直播套餐8.8折',
+    content: '现金红包30元',
     describe: "完成套餐订购即可获得",
-    deadline: "2017-07-22"
+    deadline: "2017-10-22"
   },
   {
     id: 4,
     content: '返现红包50元',
     describe: "完成套餐订购即可获得",
-    deadline: "2017-07-22"
+    deadline: "2017-10-22"
   }],
   redPackages_1: [
   {
@@ -373,52 +373,52 @@ var data = {
       id:134,
       date:'2017-3-5',
       content:'高清套餐',
-      discribe:'完成订单既可获取40元返现',
+      discribe:'',
       money:100
     }, {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '完成订单既可获取5元返现',
       money: 50
     }
     , {
       id: 134,
       date: '2017-3-5',
       content: '家庭包A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '',
       money: 10
     }
     , {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '完成订单既可获取5元返现',
       money: 200
     }
     , {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '',
       money: 200
     }, {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '完成订单既可获取5元返现',
       money: 200
     }, {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '',
       money: 200
     }, {
       id: 134,
       date: '2017-3-5',
       content: '直播A套餐',
-      discribe: '完成订单既可获取40元返现',
+      discribe: '',
       money: 200
     }
   ]

@@ -21,12 +21,14 @@
   box-sizing: border-box;
   align-items: center;
 }
-row1{
-  height:60rpx;
+.row1{
+  height: 50rpx;
+}
+.row2{
+  margin:20rpx auto ;
 }
 
 .dell_btn{
-  height: 100%;
 background-color:#ed533f;
 color: white;
 font-size:0.7rem;
@@ -37,16 +39,13 @@ border-radius:3px;
 .date_lable{
   color: #999999;
   font-size: 0.8rem;
-  padding-top: 10rpx;
-  margin-bottom: 20rpx;
+  margin-top:5rpx;
+
 }
 .time_lable{
-  margin-right: 30rpx;
+  margin-right: 15rpx;
 }
 .caunt{
-  height: 100%;
-  padding-top: 20rpx;
-  padding-bottom: 10rpx;
   display:block;
   font-size:0.8rem;
 }
@@ -60,10 +59,11 @@ border-radius:3px;
 .order_content_style{
   font-size: 1.1rem;
   color: #333333;
-  margin-top: 25rpx;
   display: inline-block;
 
 }
 .acount_font{
   font-weight: 600;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }

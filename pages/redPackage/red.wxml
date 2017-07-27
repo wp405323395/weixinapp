@@ -31,14 +31,14 @@
     <text class="num_note num_note1">目前领取红包人数:</text>
     <text class="num_note num_note2">您的红包金额排名:</text>
     <view class="num_band">
-      <view class="num num1">
+      <view class="num num1" hidden="{{isHidden_bt}}">
         <text class="num_sty">5</text>
         <text class="num_sty">2</text>
         <text class="num_sty">3</text>
         <text class="num_sty">3</text>
         <text class="num_sty">3</text>
       </view>
-      <view class="num num2">
+      <view class="num num2" hidden="{{isHidden_bt}}">
         <text class="num_sty">0</text>
         <text class="num_sty">3</text>
         <text class="num_sty">2</text>
