@@ -10,7 +10,8 @@
     "pages/mycoup/mycoup",
     "pages/me/me",
     "pages/myRedPackage/myRedPackage",
-    "pages/myOrder/myOrder"
+    "pages/myOrder/myOrder",
+    "pages/business/business"
   ],
   "window": {
     "navigationBarTextStyle": "black",

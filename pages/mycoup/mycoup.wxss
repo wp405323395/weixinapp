@@ -18,11 +18,11 @@
   position: relative;  
   text-align: center;
   color: #a1d8ff;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }  
  .item.active{  
   color: #ffffff;  
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   border-bottom: 1px white solid;
 }  
  .item.active:after{  

@@ -11,10 +11,13 @@
           </view>
           <image class="product_img" src="{{item.imgUrl}}" mode="widthFix"></image>
           <view class="content_text">
+            <view class="content_bag_tag">
+              <image wx:if="{{currentTab == 1}}" src="../../img/coup_used_bg.png" class="coup_bg" mode="widthFix"></image>
+              <image wx:if="{{currentTab == 2}}" src="../../img/coup_timeout_bg.png" class="coup_bg" mode="widthFix"></image>
+            </view>
             <text class="text1">{{item.storeName}}</text>
             <view style="display:flex;flex-direction:row;justify-content:space-between;">
               <text class="text2">{{item.couponDescrip}}</text>
-              <image src="../../img/go_in.png" style="width: 17rpx; height: 17rpx;margin-right: 10rpx;" mode="widthFix"></image>
             </view>
             <text class="text3">{{item.useCondition}}</text>
           </view>
@@ -29,16 +32,19 @@
     <view class="redPackage" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
         <navigator id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
           <view class="rePackage_wrap">
-            <image src="../../img/red_back.png" class="red_pack_background_img"></image>
-            <view class="red_package_content_wrap">
-              <text class="red_package_content">{{item.content}}</text>
-              <button class="red_package_btn" hidden="{{currentTab != 0}}">立即使用</button>
-            </view>
+          <image wx:if="{{currentTab == 0}}" src="../../img/red_back0.png" class="red_pack_background_img"></image>
+          <image wx:if="{{currentTab == 1}}" src="../../img/red_back1.png" class="red_pack_background_img"></image>
+          <image wx:if="{{currentTab == 2}}" src="../../img/red_back2.png" class="red_pack_background_img"></image>
+
+          <view class="red_package_content_wrap">
+            <text class="red_package_content">{{item.content}}</text>
+            <button class="red_package_btn" hidden="{{currentTab != 0}}">立即使用</button>
+          </view>
             
-            <view class="red_text_wrap">
-              <text class="red_package_discribe">注：{{item.describe}}</text>
-              <text class="red_package_discribe">截至日期：{{item.deadline}}</text>
-            </view>
+          <view class="red_text_wrap">
+            <text class="red_package_discribe">注：{{item.describe}}</text>
+            <text class="red_package_discribe">截至日期：{{item.deadline}}</text>
+          </view>
 
           </view>
         </navigator>

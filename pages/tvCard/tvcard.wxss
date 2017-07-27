@@ -21,6 +21,7 @@ text{
 .nex_btn{
   margin:30px 10px;
   background-color:#3fa5ed;
+  color: white;
 
 }
 .nex_btn_tap{

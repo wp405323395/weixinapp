@@ -3,6 +3,7 @@
   width: 100%;
   background-color: white;
   height: 150rpx;
+  margin-top:-10rpx;
 }
 .me_icon{
   position: relative;
@@ -23,6 +24,7 @@
 .userinfo_nickName{
   position: relative;
   left: -90rpx;
+  top: -10rpx;
 }
 .item{
   width: 100%;
@@ -65,5 +67,5 @@ height:50rpx;
    margin-bottom: 35rpx;
 }
 .clicked_style{
-  background: darkgray;
+  background: #d4d4d4;
 }

@@ -1,0 +1,5 @@
+<!--business.wxml-->
+<view class="container">
+<image class="img" src="../../img/business.png" mode="scaleToFill"></image>
+</view>
+

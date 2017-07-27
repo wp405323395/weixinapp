@@ -7,13 +7,13 @@
 </view>
 <view class="container">
   <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
-    <template is="products" data="{{...page0}}" />
+    <template is="products" data="{{...page0,currentTab}}" />
   </view>
     <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
-    <template is="products" data="{{...page1}}" />
+    <template is="products" data="{{...page1,currentTab}}" />
   </view>
     <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
-    <template is="products" data="{{...page2}}" />
+    <template is="products" data="{{...page2,currentTab}}" />
   </view>
 
 </view>
