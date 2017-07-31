@@ -4,7 +4,7 @@
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>店铺名称</text>
     </view>
-    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
+    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
   </view>
     <view class="store_name">
     <view class="name_lable">
@@ -25,13 +25,13 @@
     <view class="name_lable">
       <text class="img_red_point">*</text>  <text>店铺电话</text>
     </view>
-    <input placeholder-class="holder_style" type="number" class="input_style" type="text" placeholder="请输入联系电话"/>
+    <input bindinput="bindInput_phone" placeholder-class="holder_style" type="number" class="input_style" placeholder="请输入联系电话"/>
   </view>
     <view class="store_name">
     <view class="name_lable">
       <text class="img_red_point">*</text>  <text>店铺联系人</text>
     </view>
-    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入联系人姓名"/>
+    <input bindinput="bindInput_personName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入联系人姓名"/>
   </view>
   <view class="store_name nomargin_bottom">
     <view class="name_lable">
@@ -40,27 +40,27 @@
     <view class="category">
       <view class="line" >
         <view data-kindid="0" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 0?'kind_active':'item_text'}}">生活服务类</text>
+          <text class=" {{type_index == 0?'kind_active':'item_text'}}">{{storeKind[0]}}</text>
         </view>
         <view data-kindid="1"  bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 1?'kind_active':'item_text'}}">餐饮美食类</text>
+          <text class=" {{type_index == 1?'kind_active':'item_text'}}">{{storeKind[1]}}</text>
         </view>
         <view data-kindid="2" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 2?'kind_active':'item_text'}}">水果副食类</text>
+          <text class=" {{type_index == 2?'kind_active':'item_text'}}">{{storeKind[2]}}</text>
         </view>
         <view data-kindid="3" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 3?'kind_active':'item_text'}}">休闲娱乐类</text>
+          <text class=" {{type_index == 3?'kind_active':'item_text'}}">{{storeKind[3]}}</text>
         </view>
       </view>
       <view class="line nomargin_bottom">
         <view data-kindid="4" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 4?'kind_active':'item_text'}}">运动健身类</text>
+          <text class=" {{type_index == 4?'kind_active':'item_text'}}">{{storeKind[4]}}</text>
         </view>
         <view data-kindid="5" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 5?'kind_active':'item_text'}}">酒店住宿类</text>
+          <text class=" {{type_index == 5?'kind_active':'item_text'}}">{{storeKind[5]}}</text>
         </view>
         <view data-kindid="6" bindtap="onKindClick" class="text">
-          <text class=" {{type_index == 6?'kind_active':'item_text'}}">其他类别</text>
+          <text class=" {{type_index == 6?'kind_active':'item_text'}}">{{storeKind[6]}}</text>
         </view>
       </view>
       
@@ -71,7 +71,7 @@
     <view class="name_lable">
       <text>店铺介绍</text>
     </view>
-    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺简介"/>
+    <input bindinput="bindInput_storIntro" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺简介"/>
   </view>
   <view class="store_name">
     <view class="name_lable nomargin_bottom">

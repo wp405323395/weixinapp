@@ -6,6 +6,20 @@ var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 var longClick;
 var longClick2;
 var imgList;
+var subObj = {
+  storeName: '',
+  storeAddr: {
+    latitude: 0.0,
+    longitude: 0.0,
+    addrStr: ''
+  },
+  storePhone: '',
+  storePersonName: '',
+  storeKind: '',
+  storeIntro: '',
+  storeImgs: ['', '', '']
+
+}
 Page({
   data: {
     imageList: [],
@@ -17,16 +31,17 @@ Page({
 
     countIndex: 2,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    isHidden_delete:true,
-    hasLocation:false
+    isHidden_delete: true,
+    hasLocation: false,
+    storeKind: ['生活服务类', '餐饮美食类', '水果副食类', '休闲娱乐类', '运动健身类', '酒店住宿类','其他类别']
   },
-  showDelete:function(e){
+  showDelete: function (e) {
     this.setData({
       isHidden_delete: false
     })
     longClick = true;
     longClick2 = true;
-    
+
   },
   sourceTypeChange: function (e) {
     this.setData({
@@ -46,7 +61,7 @@ Page({
   chooseImage: function () {
     var that = this
     if (this.data.imageList.length - 1 >= this.data.countIndex) {
-      return ;
+      return;
     }
     imgList = this.data.imageList;
     wx.chooseImage({
@@ -56,6 +71,7 @@ Page({
       success: function (res) {
         console.log(res)
         imgList = imgList.concat(res.tempFilePaths);
+        subObj.storeImgs = imgList;
         that.setData({
           imageList: imgList
         })
@@ -64,9 +80,9 @@ Page({
   },
   previewImage: function (e) {
     console.log("previewImage");
-    if (longClick){
+    if (longClick) {
       longClick = false;
-      return ;
+      return;
     } else {
       this.setData({
         isHidden_delete: true
@@ -77,13 +93,18 @@ Page({
         urls: this.data.imageList
       })
     }
-    
-  }, 
-  onChooceLocation: function(e) {
+
+  },
+  onChooceLocation: function (e) {
     var that = this;
     wx.chooseLocation({
       success: function (res) {
         console.log(res)
+        subObj.storeAddr = {
+          addrStr: res.address,
+          latitude: res.latitude,
+          longitude: res.longitude
+        }
         that.setData({
           hasLocation: true,
           location: formatLocation(res.longitude, res.latitude),
@@ -92,7 +113,7 @@ Page({
       }
     });
   },
-  deleteItem:function(e) {
+  deleteItem: function (e) {
     var current = e.target.dataset.src;
     var index = this.data.imageList.indexOf(current);
     this.data.imageList.splice(index, 1);
@@ -100,7 +121,7 @@ Page({
       imageList: this.data.imageList
     })
   },
-  on_addPic_wrap_click:function(e){
+  on_addPic_wrap_click: function (e) {
     if (longClick2) {
       longClick2 = false;
       return;
@@ -109,17 +130,34 @@ Page({
         isHidden_delete: true
       })
     }
-    
+
   },
-  onKindClick:function(e) {
+  onKindClick: function (e) {
     let id = e.currentTarget.dataset.kindid;
+    subObj.storeKind = this.data.storeKind[id];
     this.setData({
       type_index: id
     })
     console.log(e);
   },
-  submit:function(e){
-    console.log("----dddddddddddd");
+  bindInput_storName: function (e) {
+    let storName = e.detail.value;
+    subObj.storeName = storName;
+  },
+  bindInput_phone: function (e) {
+    let phone = e.detail.value;
+    subObj.storePhone = phone;
+  },
+  bindInput_personName: function (e) {
+    let personName = e.detail.value;
+    subObj.storePersonName = personName;
+  },
+  bindInput_storIntro: function (e) {
+    let storIntro = e.detail.value;
+    subObj.storeIntro = storIntro;
+  },
+  submit: function (e) {
+    console.log(subObj);
   }
 
 })
