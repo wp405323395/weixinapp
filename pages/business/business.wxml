@@ -1,5 +1,118 @@
 <!--business.wxml-->
 <view class="container">
-<image class="img" src="../../img/business.png" mode="scaleToFill"></image>
+  <view class="store_name first">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>店铺名称</text>
+    </view>
+    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
+  </view>
+    <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text>  <text>店铺地址</text>
+    </view>
+    <view class="chooce_location chooce_location_wrap" bindtap="onChooceLocation">
+      <block wx:if="{{hasLocation === false}}">
+        <text class="holder_style input_style chooce_location_text">点击右侧图标获取位置</text>
+      </block>
+      <block wx:if="{{hasLocation === true}}">
+        <text class="text_style input_style chooce_location_text">{{locationAddress}}</text>
+      </block>
+       <image class="chooce_img" src="../../img/get_position.png"></image>
+    </view>
+    
+  </view>
+    <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text>  <text>店铺电话</text>
+    </view>
+    <input placeholder-class="holder_style" type="number" class="input_style" type="text" placeholder="请输入联系电话"/>
+  </view>
+    <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text>  <text>店铺联系人</text>
+    </view>
+    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入联系人姓名"/>
+  </view>
+  <view class="store_name nomargin_bottom">
+    <view class="name_lable">
+      <text class="img_red_point">*</text>  <text>行业类别</text>
+    </view>
+    <view class="category">
+      <view class="line" >
+        <view data-kindid="0" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 0?'kind_active':'item_text'}}">生活服务类</text>
+        </view>
+        <view data-kindid="1"  bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 1?'kind_active':'item_text'}}">餐饮美食类</text>
+        </view>
+        <view data-kindid="2" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 2?'kind_active':'item_text'}}">水果副食类</text>
+        </view>
+        <view data-kindid="3" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 3?'kind_active':'item_text'}}">休闲娱乐类</text>
+        </view>
+      </view>
+      <view class="line nomargin_bottom">
+        <view data-kindid="4" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 4?'kind_active':'item_text'}}">运动健身类</text>
+        </view>
+        <view data-kindid="5" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 5?'kind_active':'item_text'}}">酒店住宿类</text>
+        </view>
+        <view data-kindid="6" bindtap="onKindClick" class="text">
+          <text class=" {{type_index == 6?'kind_active':'item_text'}}">其他类别</text>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+
+  <view class="store_name nomargin">
+    <view class="name_lable">
+      <text>店铺介绍</text>
+    </view>
+    <input placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺简介"/>
+  </view>
+  <view class="store_name">
+    <view class="name_lable nomargin_bottom">
+       <text class="img_red_point">*</text> <text>店铺照片</text>
+    </view>
+    <view class="image_upload">
+      <!-- -------------------------------------------------------------------- -->
+
+          <view class="weui-cell">
+            <view class="weui-cell__bd" bindtap="on_addPic_wrap_click">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">点击下方图标,添加3张店铺图片</view>
+                  <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image">
+                      <view class="weui-uploader__file imge_relative">
+                        <image bindlongtap="showDelete" class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                        <image bindtap="deleteItem" data-src="{{image}}" hidden="{{isHidden_delete}}" class="delete_img" src="../../img/delete_img.png"></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+      <!-- -------------------------------------------------------------------- -->
+    </view>
+  </view>
+<view hover-class="bottomAct" class="bottom_bt" bindtap="submit">
+    <text>申请认证</text>
+</view>
+
+
+  
+
 </view>
 
