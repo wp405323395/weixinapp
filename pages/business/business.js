@@ -158,6 +158,25 @@ Page({
   },
   submit: function (e) {
     console.log(subObj);
+    uploadImgs(subObj.storeImgs);
+  }, 
+  uploadImgs:function(arr){
+    if(arr.length != 0) {
+      wx.uploadFile({
+        url: 'http://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
+        filePath: arr[0],
+        name: 'file',
+        formData: {
+          'user': 'test'
+        },
+        success: function (res) {
+          var data = res.data
+          //do something
+          arr.splice(0, 1)
+          sendPhotos(arr)
+        }
+      })
+    }
   }
 
 })
