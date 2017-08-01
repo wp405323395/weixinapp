@@ -1,8 +1,10 @@
 // me.js
 var da = require('../../data/data.js').data;
-var data0 = da.xianshimiaosha;
-var data1 = da.zhinengtuijian;
-var data2 = da.wubaimishangquan;
+var requestEngin = require('../../netApi/requestModle.js');
+var config = require('../../config.js');
+var data0;
+var data1;
+var data2;
 Page({
 
   /**
@@ -20,6 +22,28 @@ Page({
     this.setData({
       currentTab: typeId,
     });
+    switch (typeId) {
+      case 0:
+        if (data0 != null && data0.length != 0) {
+          return;
+        }
+        break;
+      case 1:
+        if (data1 != null && data1.length != 0) {
+          return;
+        }
+        break;
+      case 2:
+        if (data2 != null && data2.length != 0) {
+          return;
+        }
+        break;
+      case 3:
+        if (data3 != null && data3.length != 0) {
+          return;
+        }
+        break;
+    }
     this.loadData(typeId);
   },
 
@@ -31,30 +55,47 @@ Page({
     this.loadData(0);
   },
   loadData: function (typeId) {
-    switch (typeId) {
-      case 0:
-        this.setData({
-          page0: { products: data0 },
-          currentTab: 0,
-          hasData: true
-        });
-        break;
-      case 1:
-        this.setData({
-          page1: { products: data1 },
-          currentTab: 1,
-          hasData: true
-        });
-        break;
-      case 2:
-        this.setData({
-          page2: { products: data2 },
-          currentTab: 2,
-          hasData: true
-        });
-        break;
+    var that = this;
+    new Promise((resolve,reject)=>{
+      requestEngin.request(config.mycoup, { type: typeId }, that.loadData, (success) => {
+        console.log(success);
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
 
-    }
+      })
+    }).then((value)=>{
+      switch (typeId) {
+        case 0:
+          data0 = value;
+          this.setData({
+            page0: { products: data0 },
+            currentTab: 0,
+            hasData: true
+          });
+          break;
+        case 1:
+          data1 = value;
+          this.setData({
+            page1: { products: data1 },
+            currentTab: 1,
+            hasData: true
+          });
+          break;
+        case 2:
+          data2 = value;
+          this.setData({
+            page2: { products: data2 },
+            currentTab: 2,
+            hasData: true
+          });
+          break;
+      }
+    },
+    (err)=>{
+
+    })
+    
+   
   }
 
 

@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "192.168.1.119"
+var host = "192.168.10.241"
 
 var config = {
 
@@ -15,7 +15,9 @@ var config = {
     srcUrl: `http://${host}/`,
     // 登录地址，用于建立会话
     loginUrl: `http://${host}/wappweb/mcwx/mc-wx!login`,
-
+    discoverUrl: `http://${host}/wappweb/mcwx/mc-wx!queryCouponList `,
+    mycoup: `http://${host}/wappweb/mcwx/mc-wx!queryWxCouponList`,
+    loadProduct: `http://${host}/wappweb/mcwx/mc-wx!queryCouponDetailById`,
     received_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUnuseCouponList`,
 
     used_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUsedCouponList`,

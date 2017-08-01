@@ -1,7 +1,9 @@
 // detail.js
-var da = require('../../data/data.js').data;
-var product = da.productDetail;
-var autoflag ;  
+var config = require('../../config.js');
+var requestEngin = require('../../netApi/requestModle.js');
+var product
+var autoflag ; 
+var idMap; 
 Page({
 
   /**
@@ -16,20 +18,14 @@ Page({
     isHidden:true,
     isHidden1:true,
     isHidden2:true,
-    imgUrls: [
-      '../../img/banner.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    product: product
+    product: product,
+    btnStr:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var productId = options.id;
-    console.log(productId);
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -39,6 +35,58 @@ Page({
           scrollViewHeight: res.screenHeight
         });
       }
+    });
+        //'id-','relaId-'
+    idMap = options.id.split('-');
+    this.loadProduct();
+  },
+  loadProduct: function (){
+    var that = this;
+    var key = idMap[0];
+    var value = idMap[1];
+    let param={};
+    if(key == 'id') {
+      param.id = value;
+    } else if (key == 'relaId') {
+      param.relaId = value;
+    }
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.loadProduct, param, that.loadProduct, (success) => {
+        console.log(success);
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
+        console.log(faild);
+      });
+    }).then((value)=>{
+      let btnStr;
+      if (key == 'id') {
+        switch (parseInt(value.receiveFlag)){
+          case 0:
+            btnStr='不可领取';
+          break;
+          case 1:
+            btnStr='立即领取';
+          break;
+        }
+      } else if (key == 'relaId') {
+        switch (parseInt(value.relaReceiveFlag)){
+          case 0:
+            btnStr = '立即使用'; 
+          break;
+          case 1:
+            btnStr = '已使用';
+          break;
+          case 2:
+            btnStr = '已过期'; 
+          break;
+        }
+      }
+      that.setData({
+        product: value,
+        btnStr: btnStr
+      });
+    },(err)=>{
+
     });
   },
   onClickRedpackage:function(e) {

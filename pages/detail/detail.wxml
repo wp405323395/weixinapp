@@ -48,7 +48,7 @@
   
 
   <view class="test_content">
-    <button bindtap="click" class="button" hover-class="navigator-hover" hover-stay-time="200">立即领取</button>
+    <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'}}" hover-stay-time="200" hidden="{{product.relaReceiveFlag == '0'}}">{{btnStr}}</button>
     <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">点击广电优惠券入口</button>
     <button bindtap="onClickRedpackage" class="button" hover-class="navigator-hover" hover-stay-time="200">抢红包</button>
   </view>

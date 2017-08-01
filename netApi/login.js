@@ -3,11 +3,11 @@ function my_login() {
   wx.checkSession({
     success: function () {
       //session 未过期，并且在本生命周期一直有效
-      //clientLogin()
+      //clientLogin();
     },
     fail: function () {
       //登录态过期
-      clientLogin() //重新登录
+      clientLogin(); //重新登录
     }
   });
 }

@@ -29,7 +29,15 @@ function formatLocation(longitude, latitude) {
   }
 }
 
+function textIsNotNull(str) {
+  if (str == null || str == undefined || str == '') {
+    return false;
+  }
+  return true;
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatLocation: formatLocation
+  formatLocation: formatLocation,
+  textIsNotNull: textIsNotNull
 }

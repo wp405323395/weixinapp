@@ -1,9 +1,11 @@
 var bannerHeight;
-var da = require('../../data/data.js').data;
-var data0 = da.xianshimiaosha;
-var data1 = da.zhinengtuijian;
-var data2 = da.wubaimishangquan;
-var data3 = da.pingpairuzhu;
+var config = require('../../config.js');
+var requestEngin = require('../../netApi/requestModle.js');
+
+var data0;
+var data1;
+var data2;
+var data3;
 Page({
   data: {
     imgUrls: [
@@ -61,44 +63,89 @@ Page({
     this.setData({
       currentTab: typeId,
     });
+    switch (typeId) {
+      case 0:
+        if (data0 != null && data0.length != 0) {
+          return;
+        }
+        break;
+      case 1:
+        if (data1 != null && data1.length != 0) {
+          return;
+        }
+        break;
+      case 2:
+        if (data2 != null && data2.length != 0) {
+          return;
+        }
+        break;
+      case 3:
+        if (data3 != null && data3.length != 0) {
+          return;
+        }
+        break;
+    }
     this.loadData(typeId);
   },
 
   loadData: function (typeId){
-    switch (typeId) {
-      case 0:
-        if (data0 == null || data0.length  == 0) break;
-        this.setData({
-          page0: { products: data0},
-          currentTab : 0,
-          hasData:true
-        });
-        break;
-      case 1:
-        if (data1 == null || data1.length == 0) break;
-        this.setData({
-          page1: { products: data1 },
-          currentTab : 1,
-          hasData: true
-        });
-        break;
-      case 2:
-        if (data2 == null || data2.length == 0) break;
-        this.setData({
-          page2: { products: data2 },
-          currentTab : 2,
-          hasData: true
-        });
-        break;
-      case 3:
-        if (data3 == null || data3.length == 0) break;
-        this.setData({
-          page3: { products: data3 },
-          currentTab : 3,
-          hasData: true
-        });
-        break;
-    }
+    
+    //url, data,reqMethod, requestSuccess, requestFail, requestComplete
+    var url = config.discoverUrl;
+    var self = this;
+    new Promise(function (resolve, reject) {
+      requestEngin.request(url, { type: typeId }, self.loadData, (success) => {
+        //success
+        console.log(success);
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
+        //faild
+        console.log(faild);
+        reject(faild);
+      });
+    }).then((value)=>{
+      switch (typeId) {
+        case 0:
+          data0 = value;
+          if (data0 == null || data0.length == 0) break;
+          this.setData({
+            page0: { products: data0 },
+            currentTab: 0,
+            hasData: true
+          });
+          break;
+        case 1:
+          data1 = value;
+          if (data1 == null || data1.length == 0) break;
+          this.setData({
+            page1: { products: data1 },
+            currentTab: 1,
+            hasData: true
+          });
+          break;
+        case 2:
+          data2 = value;
+          if (data2 == null || data2.length == 0) break;
+          this.setData({
+            page2: { products: data2 },
+            currentTab: 2,
+            hasData: true
+          });
+          break;
+        case 3:
+          data3 = value;
+          if (data3 == null || data3.length == 0) break;
+          this.setData({
+            page3: { products: data3 },
+            currentTab: 3,
+            hasData: true
+          });
+          break;
+      }
+    },
+    (err)=>{});
+    
+
   },
   clickItem:function(e) {
     var id = e.target.id;
