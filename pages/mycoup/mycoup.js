@@ -61,7 +61,7 @@ Page({
         console.log(success);
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
-
+        reject(faild);
       })
     }).then((value)=>{
       switch (typeId) {
