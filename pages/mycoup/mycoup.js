@@ -15,7 +15,10 @@ Page({
     currentTab: 0,
     page0: { products: data0 },
     page1: { products: data1 },
-    page2: { products: data2 }
+    page2: { products: data2 },
+    hasData0:true,
+    hasData1:true,
+    hasData2:true
   },
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;
@@ -67,6 +70,13 @@ Page({
       switch (typeId) {
         case 0:
           data0 = value;
+          if (data0 == null || data0.length == 0) {
+            this.setData({
+              currentTab: 0,
+              hasData0: false
+            });
+            break;
+          } 
           this.setData({
             page0: { products: data0 },
             currentTab: 0,
@@ -75,6 +85,13 @@ Page({
           break;
         case 1:
           data1 = value;
+          if (data1 == null || data1.length == 0) {
+            this.setData({
+              currentTab: 0,
+              hasData1: false
+            });
+            break;
+          } 
           this.setData({
             page1: { products: data1 },
             currentTab: 1,
@@ -83,6 +100,13 @@ Page({
           break;
         case 2:
           data2 = value;
+          if (data2 == null || data2.length == 0) {
+            this.setData({
+              currentTab: 0,
+              hasData2: false
+            });
+            break;
+          } 
           this.setData({
             page2: { products: data2 },
             currentTab: 2,

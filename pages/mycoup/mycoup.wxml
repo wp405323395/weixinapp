@@ -6,14 +6,14 @@
   </view>
 </view>
 <view class="container">
-  <view class="fragment" hidden="{{!hasData || currentTab!==0}}">
-    <template is="products" data="{{...page0,currentTab}}" />
+  <view class="fragment" hidden="{{currentTab!==0}}">
+    <template is="products" data="{{...page0,currentTab,hasdate:hasData0}}" />
   </view>
-    <view class="fragment" hidden="{{!hasData || currentTab!==1}}">
-    <template is="products" data="{{...page1,currentTab}}" />
+  <view class="fragment" hidden="{{currentTab!==1}}">
+    <template is="products" data="{{...page1,currentTab,hasdate:hasData1}}" />
   </view>
-    <view class="fragment" hidden="{{!hasData || currentTab!==2}}">
-    <template is="products" data="{{...page2,currentTab}}" />
+  <view class="fragment" hidden="{{currentTab!==2}}">
+    <template is="products" data="{{...page2,currentTab,hasdate:hasData2}}" />
   </view>
 
 </view>

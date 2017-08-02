@@ -109,3 +109,13 @@ overflow: hidden;
   color: white;
   font-size: 1rem;
 }
+.nodate_img{
+  width: 55%;
+}
+.nodate_wrap{
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

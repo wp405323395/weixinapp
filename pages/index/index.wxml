@@ -19,17 +19,17 @@
     </view>
   </view>
 
-  <view  hidden="{{!hasData || currentTab!==0}}">
-    <template is="products" data="{{...page0 ,isShowDownTime: true}}" />
+  <view  hidden="{{currentTab!==0}}">
+    <template is="products" data="{{...page0 ,isShowDownTime: true,hasdate:hasData0}}" />
   </view>
-  <view  hidden="{{!hasData || currentTab!==1}}">
-    <template is="products" data="{{...page1 ,isShowDownTime: false}}" />
+  <view  hidden="{{currentTab!==1}}">
+    <template is="products" data="{{...page1 ,isShowDownTime: false,hasdate:hasData1}}" />
   </view>
-  <view hidden="{{!hasData || currentTab!==2}}">
-    <template is="products" data="{{...page2, isShowDownTime: false}}" />
-  </view>
-  <view hidden="{{!hasData || currentTab!==3}}">
-    <template is="products" data="{{...page3, isShowDownTime: false}}" />
+  <view hidden="{{currentTab!==2}}">
+    <template is="products" data="{{...page2, isShowDownTime: false,hasdate:hasData2}}" />
+   </view>   <!-- hasData -->
+  <view hidden="{{currentTab!==3}}">
+    <template is="products" data="{{...page3, isShowDownTime: false,hasdate:hasData3}}" />
   </view>
 
 </view>

@@ -25,7 +25,11 @@ Page({
     page0: { products: data0},
     page1: { products: data1 },
     page2: { products: data2 },
-    page3: { products: data3 }
+    page3: { products: data3 },
+    hasData0:true,
+    hasData1:true,
+    hasData2:true,
+    hasData3:true
   },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
@@ -107,38 +111,62 @@ Page({
       switch (typeId) {
         case 0:
           data0 = value;
-          if (data0 == null || data0.length == 0) break;
+          if (data0 == null || data0.length == 0){
+            this.setData({
+              currentTab: 0,
+              hasData0: false
+            });
+            break;
+          }
           this.setData({
             page0: { products: data0 },
             currentTab: 0,
-            hasData: true
+            hasData0: true
           });
           break;
         case 1:
           data1 = value;
-          if (data1 == null || data1.length == 0) break;
+          if (data1 == null || data1.length == 0) { 
+            this.setData({
+              currentTab: 1,
+              hasData1: false
+            });
+            break;
+          } 
           this.setData({
             page1: { products: data1 },
             currentTab: 1,
-            hasData: true
+            hasData1: true
           });
           break;
         case 2:
           data2 = value;
-          if (data2 == null || data2.length == 0) break;
+          if (data2 == null || data2.length == 0){
+            this.setData({
+              currentTab: 2,
+              hasData2: false
+            });
+            break;
+          }
           this.setData({
             page2: { products: data2 },
             currentTab: 2,
-            hasData: true
+            hasData2: true
           });
           break;
         case 3:
           data3 = value;
-          if (data3 == null || data3.length == 0) break;
+          if (data3 == null || data3.length == 0){
+            this.setData({
+              currentTab: 3,
+              hasData3: false
+            });
+            break;
+          }
           this.setData({
             page3: { products: data3 },
             currentTab: 3,
-            hasData: true
+            hasData3: true
           });
           break;
       }
@@ -146,8 +174,5 @@ Page({
     (err)=>{});
     
 
-  },
-  clickItem:function(e) {
-    var id = e.target.id;
   }
 })

@@ -1,5 +1,5 @@
 <template name="products">
-  <view class="list" bindtap="clickItem">
+  <view class="list">
     <view class="product_item" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
         <navigator class="{{(idx+1) % 2 == 0 ? 'product_item_right':'product_item_left'}} product" id="{{item.id}}" url="../detail/detail?id={{(item.relaId == null || item.relaId == '') ? ('id-'+item.id):('relaId-'+item.relaId)}}" hover-class="navigator-hover" hover-stay-time="200">
           <view class="index_down_time" hidden="{{!isShowDownTime}}">
@@ -24,6 +24,10 @@
         </navigator>
     </view>
   </view>
+  <view class="nodate_wrap">
+    <image src="../../img/nodate.png" class="nodate_img" mode="widthFix" hidden="{{hasdate}}"/>
+  </view>
+  
 </template >
 
 
