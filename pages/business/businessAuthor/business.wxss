@@ -1,5 +1,5 @@
 /* business.wxss */
-@import "../../utils/weui.wxss";
+@import "../../../utils/weui.wxss";
 .store_name{
   width: 100%;
   margin:30rpx 0;
@@ -15,11 +15,8 @@
   padding-left: 25rpx;
 }
 .img_red_point{
-  width: 20rpx;
-  height: 20rpx;
   color: red;
   display: inline-block;
-  font-size:1.2rem;
   margin-right: 10rpx;
 }
 .input_style{
@@ -71,6 +68,7 @@
   height: 100rpx;
   line-height: 100rpx;
   color: white;
+  font-size: 1.2rem;
 }
 .bottomAct{
   background-color:#a1d8ff;

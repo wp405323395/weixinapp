@@ -11,8 +11,11 @@
     "pages/me/me",
     "pages/myRedPackage/myRedPackage",
     "pages/myOrder/myOrder",
-    "pages/business/business",
-    "pages/choosePackages/choosePackages"
+    "pages/business/businessAuthor/business",
+    "pages/choosePackages/choosePackages",
+    "pages/business/postCoup/postCoup",
+    "pages/business/index/index",
+    "pages/business/totalCoup/coups"
   ],
   "window": {
     "navigationBarTextStyle": "black",

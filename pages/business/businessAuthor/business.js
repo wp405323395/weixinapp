@@ -1,5 +1,5 @@
 // business.js
-var util = require('../../utils/util.js')
+var util = require('../../../utils/util.js')
 var formatLocation = util.formatLocation
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]

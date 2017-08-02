@@ -1,5 +1,33 @@
 
 var data = {
+  publicCoup:[
+    {
+      storeName:'小店',
+      couponDescrip:'特价水果8.8折',
+      useCondition:'全场通用',
+      totalCount:99,
+      usedCount:10,
+      receiveCount:55,
+      imgUrl: '../../../img/product5.png'
+    },
+    {
+      storeName: '小店',
+      couponDescrip: '特价水果8.8折',
+      useCondition: '全场通用',
+      totalCount: 99,
+      usedCount: 10,
+      receiveCount: 55,
+      imgUrl: '../../../img/product5.png'
+    }, {
+      storeName: '小店',
+      couponDescrip: '特价水果8.8折',
+      useCondition: '全场通用',
+      totalCount: 99,
+      usedCount: 10,
+      receiveCount: 55,
+      imgUrl: '../../../img/product5.png'
+    }
+    ],
   productDetail: {
     'id': 1001,   //优惠券id
     'relaId':1235,//优惠券挂载到人员的id。

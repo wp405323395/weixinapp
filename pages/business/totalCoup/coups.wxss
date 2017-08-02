@@ -1,0 +1,44 @@
+/* coups.wxss */
+.coups_wrap{
+  height: 200rpx;
+  padding: 35rpx;
+  background-color: white;
+  margin:12px auto;
+  display: flex;
+  flex-direction: row;
+}
+.coup_img{
+  width:170rpx;
+  
+}
+.detail_wrap{
+
+  display: flex;
+  flex-direction: column;
+
+}
+.coup_wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.go_in_style{
+  width: 60rpx;
+}
+.count_wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  width: 95%;
+  border-top: 1px #d4d4d4 dashed;
+  padding-right: 50rpx;
+  box-sizing: border-box;
+}
+.number_style{
+  color: red;
+}
+.right_content{
+  width: 100%;
+}

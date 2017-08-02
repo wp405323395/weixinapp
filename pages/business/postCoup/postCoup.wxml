@@ -1,0 +1,108 @@
+<!--postCoup.wxml-->
+<view class="container">
+
+  <view class="store_name first">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>优惠券名称</text>
+    </view>
+    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入优惠券名称"/>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>填写优惠信息</text>
+    </view>
+    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:全场8折;买二送一;试用券10元等"/>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>优惠券使用限制</text>
+    </view>
+    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable input_style">
+      <text class="img_red_point">*</text> <text>优惠券数量</text>
+    </view>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable input_style">
+      <text class="img_red_point">*</text> <text>使用截止时间</text>
+    </view>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>上传优惠产品照片</text>
+    </view>
+    <view class="image_upload">
+      <!-- -------------------------------------------------------------------- -->
+
+          <view class="weui-cell">
+            <view class="weui-cell__bd" bindtap="on_addPic_wrap_click">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">添加1张优惠券图片</view>
+                  <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image" wx:key="unique">
+                      <view class="weui-uploader__file imge_relative">
+                        <image bindlongtap="showDelete" class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                        <image bindtap="deleteItem" data-src="{{image}}" hidden="{{isHidden_delete}}" class="delete_img" src="../../../img/delete_img.png"></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+      <!-- -------------------------------------------------------------------- -->
+    </view>
+  </view>
+
+  <view class="store_name">
+    <view class="name_lable">
+      <text class="img_red_point">*</text> <text>已有店铺及产品照</text>
+    </view>
+    <view class="image_upload">
+      <!-- -------------------------------------------------------------------- -->
+
+          <view class="weui-cell">
+            <view class="weui-cell__bd" bindtap="on_addPic_wrap_click2">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">添加3张产品照</view>
+                  <view class="weui-uploader__info">{{imageList2.length}}/{{count[countIndex2]}}</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList2}}" wx:for-item="image" wx:key="unique">
+                      <view class="weui-uploader__file imge_relative">
+                        <image bindlongtap="showDelete2" class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage2"></image>
+                        <image bindtap="deleteItem2" data-src="{{image}}" hidden="{{isHidden_delete2}}" class="delete_img" src="../../../img/delete_img.png"></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage2"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+      <!-- -------------------------------------------------------------------- -->
+    </view>
+  </view>
+
+  <button class="submit" hover-class="bottomAct">发布</button>
+</view>

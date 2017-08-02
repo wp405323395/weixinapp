@@ -40,6 +40,12 @@ Page({
     idMap = options.id.split('-');
     this.loadProduct();
   },
+  onPhoneCall:function(e){
+    let phoneNumber = e.currentTarget.dataset.phonenumber;
+    wx.makePhoneCall({
+      phoneNumber: phoneNumber //仅为示例，并非真实的电话号码
+    })
+  },
   loadProduct: function (){
     var that = this;
     var key = idMap[0];

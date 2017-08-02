@@ -1,0 +1,23 @@
+/* index.wxss */
+.item{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  padding: 0 35rpx;
+  justify-content: space-between;
+  background-color: white;
+  align-items: center;
+
+}
+.margin_top{
+  margin-top: 20rpx;
+}
+.go_in_style{
+  width: 50rpx;
+}
+.space{
+  margin-bottom: 1px;
+}
+.clicked_style{
+  background: #d4d4d4;
+}

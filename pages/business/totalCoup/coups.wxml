@@ -1,0 +1,30 @@
+<!--coups.wxml-->
+<view class="container">
+  <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" class="coups_wrap">
+    <image class="coup_img" mode="widthFix" src="{{coup.imgUrl}}"></image>
+    <view class="right_content">
+      <view class="detail_wrap">
+        <text>{{coup.storeName}}</text>
+        <view class="coup_wrap">
+          <view>
+            <text>{{coup.couponDescrip}}</text>
+            <text>({{coup.useCondition}})</text>
+          </view>
+          <image src="../../../img/go_in.png" class="go_in_style" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="count_wrap">
+        <view class="total">
+          共<text class="number_style">{{coup.totalCount}}</text>张
+        </view>
+        <view class="total">
+          已领取<text class="number_style">{{coup.receiveCount}}</text>张
+        </view>
+        <view class="total">
+          已消费<text class="number_style">{{coup.usedCount}}</text>张
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

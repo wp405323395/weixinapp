@@ -1,6 +1,4 @@
-// me.js
-//获取应用实例
-var app = getApp()
+// index.js
 Page({
 
   /**
@@ -14,13 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    })
+  
   },
 
   /**
@@ -28,31 +20,6 @@ Page({
    */
   onReady: function () {
   
-  },
-  onClick:function(e){
-    switch (e.currentTarget.id) {
-      case "my_coup":
-        wx.navigateTo({
-          url: '../mycoup/mycoup',
-        })
-        break;
-      case "my_red_package":
-        wx.navigateTo({
-          url: '../myRedPackage/myRedPackage',
-        })
-        break;
-      case "my_order":
-        wx.navigateTo({
-          url: '../myOrder/myOrder',
-        })
-        break;
-      case "my_store":
-        wx.navigateTo({
-          url: '../business/businessAuthor/business',
-        })
-        break;
-    }
-
   },
 
   /**
@@ -96,9 +63,14 @@ Page({
   onShareAppMessage: function () {
   
   },
-  sendCoup:function(e){
+  onPostCoupClick:function(e){
     wx.navigateTo({
-      url: '../business/index/index',
+      url: '../postCoup/postCoup',
+    })
+  },
+  onMyCoupsClick:function(e){
+    wx.navigateTo({
+      url: '../totalCoup/coups',
     })
   }
 })

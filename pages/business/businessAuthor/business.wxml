@@ -6,7 +6,7 @@
     </view>
     <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
   </view>
-    <view class="store_name">
+  <view class="store_name">
     <view class="name_lable">
       <text class="img_red_point">*</text>  <text>店铺地址</text>
     </view>
@@ -17,8 +17,8 @@
       <block wx:if="{{hasLocation === true}}">
         <text class="text_style input_style chooce_location_text">{{locationAddress}}</text>
       </block>
-       <image class="chooce_img" src="../../img/get_position.png"></image>
-    </view>
+       <image class="chooce_img" src="../../../img/get_position.png"></image>
+  </view>
     
   </view>
     <view class="store_name">
@@ -92,7 +92,7 @@
                     <block wx:for="{{imageList}}" wx:for-item="image">
                       <view class="weui-uploader__file imge_relative">
                         <image bindlongtap="showDelete" class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                        <image bindtap="deleteItem" data-src="{{image}}" hidden="{{isHidden_delete}}" class="delete_img" src="../../img/delete_img.png"></image>
+                        <image bindtap="deleteItem" data-src="{{image}}" hidden="{{isHidden_delete}}" class="delete_img" src="../../../img/delete_img.png"></image>
                       </view>
                     </block>
                   </view>
