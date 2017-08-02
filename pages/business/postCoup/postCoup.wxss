@@ -64,3 +64,79 @@
   font-size: 0.8rem;
   color: red;
 }
+.coup_number{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 30rpx;
+}
+.number_wrap{
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+.temp_box{
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px #d4d4d4 solid;
+}
+.subtraction{
+  border-right: none;
+  background: #eeeeee;
+  border-top-left-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+}
+.subtraction::before{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 1px;
+  background-color: #666666;
+  margin-top:25rpx;
+  margin-left:  10rpx;
+}
+.numb{
+  border-right: none;
+  width: 80rpx;
+  overflow: hidden;
+}
+.plus{
+  background-color: #eeeeee;
+  border-top-right-radius:10rpx;
+  border-bottom-right-radius:10rpx;
+}
+.plus:before{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 1px;
+  background-color: #666666;
+  margin-top:25rpx;
+  margin-left:  10rpx;
+}
+.plus::after{
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30rpx;
+  background-color: #666666;
+  margin: -16rpx 25rpx;
+}
+.input_numb{
+  text-align: center;
+  color: #3fa5ed;
+}
+.down_img{
+  width: 50rpx;
+}
+.deadline_data_picker{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}

@@ -22,15 +22,28 @@
     <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
   </view>
 
-  <view class="store_name">
+  <view class="store_name number_wrap">
     <view class="name_lable input_style">
       <text class="img_red_point">*</text> <text>优惠券数量</text>
     </view>
+    <view class="coup_number">
+      <view bindtap="onSubClick" class="subtraction temp_box"/>
+      <view class="numb temp_box">
+        <input type="number" maxlength="4" class="input_numb" bindinput="bindKeyInput" value="{{inputValue}}"/>
+      </view>
+      <view  bindtap="onPlusClick" class="plus temp_box"/>
+    </view>
   </view>
 
-  <view class="store_name">
+  <view class="store_name number_wrap">
     <view class="name_lable input_style">
       <text class="img_red_point">*</text> <text>使用截止时间</text>
+    </view>
+    <view bindtap="onDataPickerClick" class="deadline_data_picker">
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="weui-input">{{date}}</view>
+      </picker>
+      <image class="down_img" src="../../../img/go_in.png" mode="widthFix"/>
     </view>
   </view>
 

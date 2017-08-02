@@ -1,4 +1,5 @@
 // postCoup.js
+var util = require('../../../utils/util.js');
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 var longClick;
@@ -32,7 +33,38 @@ Page({
     countIndex2:2,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     isHidden_delete: true,
-    isHidden_delete2:true
+    isHidden_delete2:true,
+    inputValue:0,
+    date: util.formatDay(new Date()),
+    time: '12:01'
+  },
+
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  onDataPickerClick:function(e){
+    
+  },
+  onSubClick: function (e) {
+    if (this.data.inputValue > 0) {
+      this.setData({
+        inputValue: --this.data.inputValue
+      });
+    }
+
+  },
+  onPlusClick:function(e){
+    if (this.data.inputValue<9999)
+    this.setData({
+      inputValue: ++this.data.inputValue
+    });
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
   },
 
   /**
