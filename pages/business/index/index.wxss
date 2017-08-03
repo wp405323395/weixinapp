@@ -7,13 +7,14 @@
   justify-content: space-between;
   background-color: white;
   align-items: center;
+  padding-right: 20rpx;
 
 }
 .margin_top{
   margin-top: 20rpx;
 }
 .go_in_style{
-  width: 50rpx;
+  width: 30rpx;
 }
 .space{
   margin-bottom: 1px;

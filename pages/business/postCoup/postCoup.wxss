@@ -9,11 +9,13 @@
 
 }
 .name_lable{
-  background-color: white;
-  margin-bottom: 1px;
-  padding-top: 1rpx;
-  padding-bottom: 5rpx;
-  padding-left: 25rpx;
+background-color:white;
+margin-bottom:1px;
+padding-left:25rpx;
+line-height:60rpx;
+height:60rpx;
+display:block;
+
 }
 .img_red_point{
   color: red;
@@ -26,6 +28,12 @@
 .input_style{
   background-color: white;
   padding: 30rpx;
+  padding-left: 50rpx;
+}
+.margin_five{
+  padding-left: 50rpx;
+}
+.single_line{
   padding-left: 25rpx;
 }
 .first{
@@ -78,8 +86,8 @@
   justify-content:space-between;
 }
 .temp_box{
-  width: 50rpx;
-  height: 50rpx;
+  width: 70rpx;
+  height: 70rpx;
   border: 1px #d4d4d4 solid;
 }
 .subtraction{
@@ -89,18 +97,21 @@
   border-bottom-left-radius:10rpx;
 }
 .subtraction::before{
-  content: '';
-  display: block;
-  width: 30rpx;
-  height: 1px;
-  background-color: #666666;
-  margin-top:25rpx;
-  margin-left:  10rpx;
+content:'';
+display:block;
+width:30rpx;
+height:1px;
+background-color:#666666;
+margin-top:35rpx;
+margin-left:20rpx;
+
 }
 .numb{
   border-right: none;
-  width: 80rpx;
+  width: 120rpx;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .plus{
   background-color: #eeeeee;
@@ -113,8 +124,10 @@
   width: 30rpx;
   height: 1px;
   background-color: #666666;
-  margin-top:25rpx;
-  margin-left:  10rpx;
+  margin-top:35rpx;
+  margin-left:20rpx;
+
+  
 }
 .plus::after{
   content: '';
@@ -122,19 +135,22 @@
   width: 1px;
   height: 30rpx;
   background-color: #666666;
-  margin: -16rpx 25rpx;
+  margin: -16rpx 34rpx;
 }
 .input_numb{
   text-align: center;
   color: #3fa5ed;
+  font-size: 1rem;
 }
 .down_img{
-  width: 50rpx;
+  width: 30rpx;
 }
 .deadline_data_picker{
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-right:20rpx;
+
 }
 .picker{
   padding: 19rpx 26rpx;

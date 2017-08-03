@@ -7,12 +7,15 @@
 .first{
   margin-top: 20rpx;
 }
+
 .name_lable{
-  background-color: white;
-  margin-bottom: 1px;
-  padding-top: 1rpx;
-  padding-bottom: 5rpx;
-  padding-left: 25rpx;
+background-color:white;
+margin-bottom:1px;
+padding-left:25rpx;
+line-height:60rpx;
+height:60rpx;
+display:block;
+
 }
 .img_red_point{
   color: red;
@@ -22,10 +25,15 @@
 .input_style{
   background-color: white;
   padding: 30rpx;
-  padding-left: 25rpx;
+  padding-left: 50rpx;
+}
+.margin_five{
+  padding-left: 50rpx;
 }
 .category{
   padding: 40rpx 0;
+  background-color: white;
+  margin-bottom: 30rpx;
 }
 
 .holder_style{
@@ -42,7 +50,7 @@
 }
 .line .text .item_text{
   border: 1rpx #666666 solid;
-  padding: 10rpx 5rpx;
+  padding: 10rpx 15rpx;
   font-size: 0.9rem;
   box-sizing: border-box;
   border-radius:6rpx;

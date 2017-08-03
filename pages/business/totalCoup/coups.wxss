@@ -1,44 +1,74 @@
 /* coups.wxss */
 .coups_wrap{
-  height: 200rpx;
-  padding: 35rpx;
+  height: 180rpx;
   background-color: white;
-  margin:12px auto;
+  margin:20rpx auto;
   display: flex;
   flex-direction: row;
 }
 .coup_img{
-  width:170rpx;
-  
+  width:128rpx;
+  height: 128rpx;
+  display: block;
+  margin: 26rpx 30rpx;
+  flex-shrink:0;
 }
 .detail_wrap{
-
+  position: absolute;
   display: flex;
   flex-direction: column;
-
+  width: 100%;
 }
 .coup_wrap{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top:8rpx;
+  width: 100%;
 
 }
 .go_in_style{
-  width: 60rpx;
+  width: 30rpx;
 }
 .count_wrap{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.8rem;
-  width: 95%;
+  width: 90%;
   border-top: 1px #d4d4d4 dashed;
   padding-right: 50rpx;
   box-sizing: border-box;
+  padding-top: 10rpx;
+  position: absolute;
+  bottom: -6rpx;
+  left:0;
+  color: #666666;
 }
 .number_style{
   color: red;
+  font-weight: 600;
+  margin: 0 5rpx;
 }
 .right_content{
   width: 100%;
+  height: 128rpx;
+  margin: 26rpx;
+  margin-left: 0;
+  position: relative;
+  margin-right: 20rpx;
+}
+.storeName{
+  color: #666666;
+  font-size: 0.8rem;
+}
+.couponDescrip{
+  color: #333333;
+  font-size: 1rem;
+  }
+
+.useCondition{
+  color: #999999;
+  font-size: 0.8rem;
+  margin-left: 20rpx;
 }

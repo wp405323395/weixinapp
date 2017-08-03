@@ -1,0 +1,44 @@
+<!--storeDetail.wxml-->
+<view class="container">
+  <view class="margin first_part_detail">
+    <text class="store_name first_part_item">百果园重难点</text>
+    <text class="store_detail new_store_detail first_part_item">新店开业</text>
+    <view class="photos">
+      <block wx:for="{{[1, 2, 3]}}">
+        <!-- <image class="img" src="{{item}}"></image> -->
+        <image class="img" src="../../../img/banner.jpg"></image>
+      </block>
+    </view>
+  </view>
+  <view class="margin second_part_detail">
+    <view class="phone_wrap">
+      <text class="store_detail">店铺地址</text>
+      <text class="values">天安门</text>
+    </view>
+    <view class="map_wrap">
+      <map
+        class="map" 
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+       markers="{{markers}}"
+       >
+      </map>
+    </view>
+    
+    <view class="phone_wrap" hover-class="clicked_style" bindtap="onPhoneCallClick">
+      <text class="store_detail">店铺电话</text>
+      <text class="values phoneNumner">1233333333</text>
+    </view>
+    <view class="space"></view>
+    <view class="phone_wrap">
+      <text class="store_detail">店铺联系人</text>
+      <text class="values">张三</text>
+    </view>
+  </view>
+  <view class="third_part_detail">
+    <view class="phone_wrap">
+       <text class="store_detail">所属行业</text>
+        <text class="values">生鲜水果类</text>
+      </view>
+  </view>
+</view>

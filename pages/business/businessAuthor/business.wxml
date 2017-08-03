@@ -80,7 +80,7 @@
     <view class="image_upload">
       <!-- -------------------------------------------------------------------- -->
 
-          <view class="weui-cell">
+          <view class="weui-cell margin_five">
             <view class="weui-cell__bd" bindtap="on_addPic_wrap_click">
               <view class="weui-uploader">
                 <view class="weui-uploader__hd">

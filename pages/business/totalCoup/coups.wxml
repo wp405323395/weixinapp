@@ -1,14 +1,14 @@
 <!--coups.wxml-->
 <view class="container">
   <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" class="coups_wrap">
-    <image class="coup_img" mode="widthFix" src="{{coup.imgUrl}}"></image>
+    <image class="coup_img" src="{{coup.imgUrl}}"></image>
     <view class="right_content">
       <view class="detail_wrap">
-        <text>{{coup.storeName}}</text>
+        <text class="storeName">{{coup.storeName}}</text>
         <view class="coup_wrap">
           <view>
-            <text>{{coup.couponDescrip}}</text>
-            <text>({{coup.useCondition}})</text>
+            <text class="couponDescrip">{{coup.couponDescrip}}</text>
+            <text class="useCondition">({{coup.useCondition}})</text>
           </view>
           <image src="../../../img/go_in.png" class="go_in_style" mode="widthFix"></image>
         </view>

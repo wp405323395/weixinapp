@@ -34,7 +34,7 @@
   flex-direction: row;
   justify-content:space-between;
   padding: 0 35rpx;
-  padding-right: 10rpx;
+  padding-right: 20rpx;
   box-sizing: border-box;
    align-items:center;
 }
@@ -55,8 +55,8 @@
   display: inline-block;
 }
 .left_btn{
-width:50rpx;
-height:50rpx;
+width:30rpx;
+height:30rpx;
 }
 .my_red_package{
   margin-top: 1px;

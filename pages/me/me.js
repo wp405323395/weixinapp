@@ -100,5 +100,10 @@ Page({
     wx.navigateTo({
       url: '../business/index/index',
     })
+  },
+  storeDetail:function(e){
+    wx.navigateTo({
+      url: '../detail/storeDetail/storeDetail',
+    })
   }
 })

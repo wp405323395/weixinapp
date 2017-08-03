@@ -23,7 +23,7 @@
   </view>
 
   <view class="store_name number_wrap">
-    <view class="name_lable input_style">
+    <view class="name_lable input_style single_line">
       <text class="img_red_point">*</text> <text>优惠券数量</text>
     </view>
     <view class="coup_number">
@@ -36,7 +36,7 @@
   </view>
 
   <view class="store_name number_wrap">
-    <view class="name_lable input_style">
+    <view class="name_lable input_style  single_line">
       <text class="img_red_point">*</text> <text>使用截止时间</text>
     </view>
     <view bindtap="onDataPickerClick" class="deadline_data_picker">
@@ -54,7 +54,7 @@
     <view class="image_upload">
       <!-- -------------------------------------------------------------------- -->
 
-          <view class="weui-cell">
+          <view class="weui-cell margin_five">
             <view class="weui-cell__bd" bindtap="on_addPic_wrap_click">
               <view class="weui-uploader">
                 <view class="weui-uploader__hd">
@@ -89,7 +89,7 @@
     <view class="image_upload">
       <!-- -------------------------------------------------------------------- -->
 
-          <view class="weui-cell">
+          <view class="weui-cell margin_five">
             <view class="weui-cell__bd" bindtap="on_addPic_wrap_click2">
               <view class="weui-uploader">
                 <view class="weui-uploader__hd">

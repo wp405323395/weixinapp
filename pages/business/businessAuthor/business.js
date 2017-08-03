@@ -33,7 +33,7 @@ Page({
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     isHidden_delete: true,
     hasLocation: false,
-    storeKind: ['生活服务类', '餐饮美食类', '水果副食类', '休闲娱乐类', '运动健身类', '酒店住宿类','其他类别']
+    storeKind: ['生活服务', '餐饮美食', '水果副食', '休闲娱乐', '运动健身', '酒店住宿','其他类别']
   },
   showDelete: function (e) {
     this.setData({
