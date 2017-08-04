@@ -41,14 +41,8 @@
     <text class="btn_delete_click" hidden="{{!product.isReceive}}" bindtap="btn_delete_click">删除</text>
   </view>
 
-  <view class="qr_code">
-    <image src="../../img/qr_code.png" class="qr_img"></image>
-    <text class="lable qr_text">使用时，向商家出示此二维码</text>
-  </view>
-  
-
   <view class="test_content">
-    <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'}}" hover-stay-time="200" hidden="{{product.relaReceiveFlag == '0'}}">{{btnStr}}</button>
+    <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
     <button bindtap="tvclick" class="button" hover-class="navigator-hover" hover-stay-time="200">点击广电优惠券入口</button>
     <button bindtap="onClickRedpackage" class="button" hover-class="navigator-hover" hover-stay-time="200">抢红包</button>
   </view>

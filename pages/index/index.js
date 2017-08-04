@@ -33,6 +33,10 @@ Page({
   },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
+    wx.setNavigationBarTitle({
+      title: scene
+    })
+    console.log("ww----"+scene);
     //scene = '../redPackage/red';
     if (scene != undefined && scene != 'undefined' && scene != '') {
       if (scene.indexOf("detail") >0){

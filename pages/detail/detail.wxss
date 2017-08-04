@@ -287,18 +287,3 @@ button {
   filter:Alpha(opacity=50);
 }
 
-.qr_code{
-  width: 100%;
-  display: flex;
-  flex-direction:column;
-   align-items: center;
-}
-.qr_img{
-  margin-top: 20rpx;
-  display: block;
-  width: 400rpx;
-  height: 400rpx;
-}
-.qr_text{
-  margin-top: 20rpx;
-}
