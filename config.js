@@ -19,6 +19,7 @@ var config = {
     useCoup: `http://${host}/wappweb/mcwx/mc-wx!useCoupon`,
     receiveCoup: `http://${host}/wappweb/mcwx/mc-wx!receiveCoupon`,
     received_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUnuseCouponList`,
+    deleteCoup: `http://${host}/wappweb/mcwx/mc-wx!delCoupon`,
 
     used_tickit_url: `http://${host}/wappweb/mcwx/mc-wx!queryUsedCouponList`,
     

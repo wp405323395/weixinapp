@@ -286,4 +286,18 @@ button {
   opacity: 0.5;
   filter:Alpha(opacity=50);
 }
+.delete_coup{
+  color: #999999;
+  border-bottom: 1px #999999 solid;
+  margin-top: 30rpx;
+  text-align: right;
+  display: inline-block;
+  position: absolute;
+  right: 25rpx;
+}
+.delete_coup_wrap{
+  width: 100%;
+  position: relative;
+  height: 0px;
+}
 

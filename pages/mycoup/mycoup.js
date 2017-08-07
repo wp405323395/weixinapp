@@ -13,6 +13,7 @@ Page({
   data: {
     navbar: ['未使用', '已使用', '已过期'],
     currentTab: 0,
+
     page0: { products: data0 },
     page1: { products: data1 },
     page2: { products: data2 },
@@ -56,6 +57,23 @@ Page({
    */
   onLoad: function (options) {
     this.loadData(0);
+  },
+  onShow:function(options) {
+    var that = this;
+    wx.getStorage({
+      key: 'needRefreshData',
+      success: function (res) {
+        console.log(res.data)
+        if(res.data === true){
+          that.loadData(that.data.currentTab);
+          wx.setStorage({
+            key: "needRefreshData",
+            data: false
+          })
+        }
+        
+      }
+    })
   },
   loadData: function (typeId) {
     var that = this;

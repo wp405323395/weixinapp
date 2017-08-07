@@ -38,6 +38,10 @@
 
   <view class="test_content">
     <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
+    <view  class="delete_coup_wrap" bindtap="deleteCoup" hover-class="navigator-hover"  hidden="{{product.relaId ==''||product.relaId == 'undefine'|| product.relaId == null }}">
+      <text class="delete_coup" >删除优惠券</text>
+    </view>
+    
   </view>
 
   <view bindtap="onclick_hide_dialog" class="boomBox" hidden="{{isHidden}}">

@@ -108,6 +108,7 @@ Page({
           return this.useCoup();
         }, (err) => { })
         .then(value => {
+          //>>>>>>>>>>>超出200米
           if (!value.relaReceiveFlag) {
             wx.showModal({
               content: value,
@@ -119,10 +120,16 @@ Page({
           if (value.relaReceiveFlag == '0') {
             value.receiveMemo = '立即使用';
           }
+          //<<<<<<<<<<超出200米
           idMap = ['relaId', value.relaId];
           this.setData({
             product: value
           });
+          try {
+            wx.setStorageSync('needRefreshData', true)
+          } catch (e) {
+          }
+          
         }, err => {
         });
     } else if (key == 'id') {
@@ -206,6 +213,34 @@ Page({
       isHidden1: true,
       isHidden2: true,
     });
+  },
+  deleteCoup:function(e){
+    var deleteCoupParam = {};
+    var key = idMap[0];
+    var val = idMap[1];
+    deleteCoupParam.relaId = val;
+    var that = this;
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.deleteCoup, deleteCoupParam, that.deleteCoup, (success) => {
+        if (!JSON.parse(success.data).retData) {
+          resolve(JSON.parse(success.data).retMsg);
+          return;
+        }
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
+      });
+    }).then(value=>{
+      try {
+        wx.setStorageSync('needRefreshData', true)
+      } catch (e) {
+      }
+      wx.navigateBack({
+        
+      })
+    },
+    err=>{
+
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

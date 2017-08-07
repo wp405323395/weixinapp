@@ -4,7 +4,7 @@
     <text class="store_name first_part_item">百果园重难点</text>
     <text class="store_detail new_store_detail first_part_item">新店开业</text>
     <view class="photos">
-      <block wx:for="{{[1, 2, 3]}}">
+      <block wx:for="{{[1, 2, 3]}}" wx:key='unique'>
         <!-- <image class="img" src="{{item}}"></image> -->
         <image class="img" src="../../../img/banner.jpg"></image>
       </block>
