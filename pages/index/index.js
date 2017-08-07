@@ -2,10 +2,6 @@ var bannerHeight;
 var config = require('../../config.js');
 var requestEngin = require('../../netApi/requestModle.js');
 
-var data0;
-var data1;
-var data2;
-var data3;
 Page({
   data: {
     imgUrls: [
@@ -22,10 +18,14 @@ Page({
     unShow:true,
     interval: 5000,
     duration: 1000,
-    page0: { products: data0},
-    page1: { products: data1 },
-    page2: { products: data2 },
-    page3: { products: data3 },
+    data0:null,
+    data1:null,
+    data2:null,
+    data3:null,
+    page0: { products: null},
+    page1: { products: null },
+    page2: { products: null },
+    page3: { products: null },
     hasData0:true,
     hasData1:true,
     hasData2:true,
@@ -73,22 +73,22 @@ Page({
     });
     switch (typeId) {
       case 0:
-        if (data0 != null && data0.length != 0) {
+        if (this.data.data0 != null && this.data.data0.length != 0) {
           return;
         }
         break;
       case 1:
-        if (data1 != null && data1.length != 0) {
+        if (this.data.data1 != null && this.data.data1.length != 0) {
           return;
         }
         break;
       case 2:
-        if (data2 != null && data2.length != 0) {
+        if (this.data.data2 != null && this.data.data2.length != 0) {
           return;
         }
         break;
       case 3:
-        if (data3 != null && data3.length != 0) {
+        if (this.data.data3 != null && this.data.data3.length != 0) {
           return;
         }
         break;
@@ -112,61 +112,65 @@ Page({
     }).then((value)=>{
       switch (typeId) {
         case 0:
-          data0 = value;
-          if (data0 == null || data0.length == 0){
+          this.data.data0 = value;
+          if (this.data.data0 == null || this.data.data0.length == 0){
             this.setData({
+              page0: { products: this.data.data0 },
               currentTab: 0,
               hasData0: false
             });
             break;
           }
           this.setData({
-            page0: { products: data0 },
+            page0: { products: this.data.data0 },
             currentTab: 0,
             hasData0: true
           });
           break;
         case 1:
-          data1 = value;
-          if (data1 == null || data1.length == 0) { 
+          this.data.data1 = value;
+          if (this.data.data1 == null || this.data.data1.length == 0) { 
             this.setData({
+              page1: { products: this.data.data1 },
               currentTab: 1,
               hasData1: false
             });
             break;
           } 
           this.setData({
-            page1: { products: data1 },
+            page1: { products: this.data.data1 },
             currentTab: 1,
             hasData1: true
           });
           break;
         case 2:
-          data2 = value;
-          if (data2 == null || data2.length == 0){
+          this.data.data2 = value;
+          if (this.data.data2 == null || this.data.data2.length == 0){
             this.setData({
+              page2: { products: this.data.data2 },
               currentTab: 2,
               hasData2: false
             });
             break;
           }
           this.setData({
-            page2: { products: data2 },
+            page2: { products: this.data.data2 },
             currentTab: 2,
             hasData2: true
           });
           break;
         case 3:
-          data3 = value;
-          if (data3 == null || data3.length == 0){
+          this.data.data3 = value;
+          if (this.data.data3 == null || this.data.data3.length == 0){
             this.setData({
+              page3: { products: this.data.data3 },
               currentTab: 3,
               hasData3: false
             });
             break;
           }
           this.setData({
-            page3: { products: data3 },
+            page3: { products: this.data.data3 },
             currentTab: 3,
             hasData3: true
           });

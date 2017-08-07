@@ -2,9 +2,7 @@
 var da = require('../../data/data.js').data;
 var requestEngin = require('../../netApi/requestModle.js');
 var config = require('../../config.js');
-var data0;
-var data1;
-var data2;
+
 Page({
 
   /**
@@ -13,10 +11,12 @@ Page({
   data: {
     navbar: ['未使用', '已使用', '已过期'],
     currentTab: 0,
-
-    page0: { products: data0 },
-    page1: { products: data1 },
-    page2: { products: data2 },
+    data0:null,
+    data1:null,
+    data2:null,
+    page0: { products: null },
+    page1: { products: null },
+    page2: { products: null },
     hasData0:true,
     hasData1:true,
     hasData2:true
@@ -28,17 +28,17 @@ Page({
     });
     switch (typeId) {
       case 0:
-        if (data0 != null && data0.length != 0) {
+        if (this.data.data0 != null && this.data.data0.length != 0) {
           return;
         }
         break;
       case 1:
-        if (data1 != null && data1.length != 0) {
+        if (this.data.data1 != null && this.data.data1.length != 0) {
           return;
         }
         break;
       case 2:
-        if (data2 != null && data2.length != 0) {
+        if (this.data.data2 != null && this.data.data2.length != 0) {
           return;
         }
         break;
@@ -86,48 +86,51 @@ Page({
     }).then((value)=>{
       switch (typeId) {
         case 0:
-          data0 = value;
-          if (data0 == null || data0.length == 0) {
+          this.data.data0 = value;
+          if (this.data.data0 == null || this.data.data0.length == 0) {
             this.setData({
+              page0: { products: this.data.data0 },
               currentTab: 0,
               hasData0: false
             });
             break;
           } 
           this.setData({
-            page0: { products: data0 },
+            page0: { products: this.data.data0 },
             currentTab: 0,
-            hasData: true
+            hasData0: true
           });
           break;
         case 1:
-          data1 = value;
-          if (data1 == null || data1.length == 0) {
+          this.data.data1 = value;
+          if (this.data.data1 == null || this.data.data1.length == 0) {
             this.setData({
+              page1: { products: this.data.data1 },
               currentTab: 1,
               hasData1: false
             });
             break;
           } 
           this.setData({
-            page1: { products: data1 },
+            page1: { products: this.data.data1 },
             currentTab: 1,
-            hasData: true
+            hasData1: true
           });
           break;
         case 2:
-          data2 = value;
-          if (data2 == null || data2.length == 0) {
+          this.data.data2 = value;
+          if (this.data.data2 == null || this.data.data2.length == 0) {
             this.setData({
+              page2: { products: this.data.data2 },
               currentTab: 2,
               hasData2: false
             });
             break;
           } 
           this.setData({
-            page2: { products: data2 },
+            page2: { products: this.data.data2 },
             currentTab: 2,
-            hasData: true
+            hasData2: true
           });
           break;
       }
