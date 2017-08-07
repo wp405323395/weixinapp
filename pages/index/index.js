@@ -104,11 +104,9 @@ Page({
     new Promise(function (resolve, reject) {
       requestEngin.request(url, { type: typeId }, self.loadData, (success) => {
         //success
-        console.log(success);
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
         //faild
-        console.log(faild);
         reject(faild);
       });
     }).then((value)=>{

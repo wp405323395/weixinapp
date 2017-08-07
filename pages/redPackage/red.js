@@ -23,7 +23,6 @@ Page({
     this.animation = wx.createAnimation({
       transformOrigin: '50% 50% 0',
       success: function (res) {
-        console.log(res)
       }
     })
   },

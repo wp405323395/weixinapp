@@ -8,18 +8,11 @@ var longClick22;
 storeImgs: ['', '', '']
 var imgList;
 var subObj = {
-  storeName: '',
-  storeAddr: {
-    latitude: 0.0,
-    longitude: 0.0,
-    addrStr: ''
-  },
-  storePhone: '',
-  storePersonName: '',
-  storeKind: '',
-  storeIntro: '',
-  storeImgs: ['', '', '']
-
+  couponName: '',
+  couponDescrip:'',
+  useCondition: '',
+  coupQuantity: 0,
+  deadline:''
 }
 Page({
 
@@ -34,37 +27,50 @@ Page({
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     isHidden_delete: true,
     isHidden_delete2:true,
-    inputValue:0,
-    date: util.formatDay(new Date()),
+    coupQuantity:0,
+    deadline: util.formatDay(new Date()),
     time: '12:01'
+  },
+  bindInput_coupName:function(e){
+    subObj.couponName = e.detail.value;
+  },
+  bindInput_couponDescrip:function(e){
+    subObj.couponDescrip = e.detail.value;
+  },
+  bindInput_useCondition: function (e) {
+    subObj.useCondition = e.detail.value;
   },
 
   bindDateChange: function (e) {
     this.setData({
-      date: e.detail.value
+      deadline: e.detail.value
     })
   },
   onDataPickerClick:function(e){
     
   },
   onSubClick: function (e) {
-    if (this.data.inputValue > 0) {
+    if (this.data.coupQuantity > 0) {
       this.setData({
-        inputValue: --this.data.inputValue
+        coupQuantity: --this.data.coupQuantity
       });
     }
 
   },
   onPlusClick:function(e){
-    if (this.data.inputValue<9999)
+    if (this.data.coupQuantity<9999)
     this.setData({
-      inputValue: ++this.data.inputValue
+      coupQuantity: ++this.data.coupQuantity
     });
   },
   bindKeyInput: function (e) {
     this.setData({
-      inputValue: e.detail.value
+      coupQuantity: e.detail.value
     })
+  },
+  submit:function(e){
+    subObj.coupQuantity = this.data.coupQuantity;
+    subObj.deadline = this.data.deadline;
   },
 
   /**
@@ -177,7 +183,7 @@ Page({
       sizeType: sizeType[this.data.sizeTypeIndex],
       count: this.data.count[this.data.countIndex],
       success: function (res) {
-        console.log(res)
+
         imgList = imgList.concat(res.tempFilePaths);
         subObj.storeImgs = imgList;
         that.setData({
@@ -187,7 +193,7 @@ Page({
     })
   },
   previewImage: function (e) {
-    console.log("previewImage");
+
     if (longClick) {
       longClick = false;
       return;
@@ -228,7 +234,6 @@ Page({
       sizeType: sizeType[this.data.sizeTypeIndex],
       count: this.data.count[this.data.countIndex2],
       success: function (res) {
-        console.log(res)
         imgList = imgList.concat(res.tempFilePaths);
         subObj.storeImgs = imgList;
         that.setData({
@@ -238,7 +243,6 @@ Page({
     })
   },
   previewImage2: function (e) {
-    console.log("previewImage");
     if (longClick) {
       longClick = false;
       return;

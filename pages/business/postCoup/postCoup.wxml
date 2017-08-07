@@ -5,21 +5,21 @@
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>优惠券名称</text>
     </view>
-    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入优惠券名称"/>
+    <input bindinput="bindInput_coupName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入优惠券名称"/>
   </view>
 
   <view class="store_name">
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>填写优惠信息</text>
     </view>
-    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:全场8折;买二送一;试用券10元等"/>
+    <input bindinput="bindInput_couponDescrip" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:全场8折;买二送一;试用券10元等"/>
   </view>
 
   <view class="store_name">
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>优惠券使用限制</text>
     </view>
-    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
+    <input bindinput="bindInput_useCondition" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
   </view>
 
   <view class="store_name number_wrap">
@@ -29,7 +29,7 @@
     <view class="coup_number">
       <view bindtap="onSubClick" class="subtraction temp_box"/>
       <view class="numb temp_box">
-        <input type="number" maxlength="4" class="input_numb" bindinput="bindKeyInput" value="{{inputValue}}"/>
+        <input type="number" maxlength="4" class="input_numb" bindinput="bindKeyInput" value="{{coupQuantity}}"/>
       </view>
       <view  bindtap="onPlusClick" class="plus temp_box"/>
     </view>
@@ -40,8 +40,8 @@
       <text class="img_red_point">*</text> <text>使用截止时间</text>
     </view>
     <view bindtap="onDataPickerClick" class="deadline_data_picker">
-      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-          <view class="weui-input">{{date}}</view>
+      <picker mode="date" value="{{deadline}}" bindchange="bindDateChange">
+          <view class="weui-input">{{deadline}}</view>
       </picker>
       <image class="down_img" src="../../../img/go_in.png" mode="widthFix"/>
     </view>
@@ -117,5 +117,5 @@
     </view>
   </view>
 
-  <button class="submit" hover-class="bottomAct">发布</button>
+  <button bindtap="submit" class="submit" hover-class="bottomAct">发布</button>
 </view>

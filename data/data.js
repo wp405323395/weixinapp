@@ -2,6 +2,7 @@
 var data = {
   publicCoup:[
     {
+      id:100,
       storeName:'小店',
       couponDescrip:'特价水果8.8折',
       useCondition:'全场通用',
@@ -11,6 +12,7 @@ var data = {
       imgUrl: '../../../img/product5.png'
     },
     {
+      id: 100,
       storeName: '小店',
       couponDescrip: '特价水果8.8折',
       useCondition: '全场通用',
@@ -19,6 +21,7 @@ var data = {
       receiveCount: 55,
       imgUrl: '../../../img/product5.png'
     }, {
+      id: 100,
       storeName: '小店',
       couponDescrip: '特价水果8.8折',
       useCondition: '全场通用',

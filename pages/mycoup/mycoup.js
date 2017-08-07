@@ -61,7 +61,6 @@ Page({
     var that = this;
     new Promise((resolve,reject)=>{
       requestEngin.request(config.mycoup, { type: typeId }, that.loadData, (success) => {
-        console.log(success);
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
         reject(faild);
@@ -87,7 +86,7 @@ Page({
           data1 = value;
           if (data1 == null || data1.length == 0) {
             this.setData({
-              currentTab: 0,
+              currentTab: 1,
               hasData1: false
             });
             break;
@@ -102,7 +101,7 @@ Page({
           data2 = value;
           if (data2 == null || data2.length == 0) {
             this.setData({
-              currentTab: 0,
+              currentTab: 2,
               hasData2: false
             });
             break;

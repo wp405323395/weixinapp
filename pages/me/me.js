@@ -105,5 +105,21 @@ Page({
     wx.navigateTo({
       url: '../detail/storeDetail/storeDetail',
     })
+  },
+  goTestModle:function(e){
+    console.log(e);
+    switch (e.currentTarget.id){
+      case '2':
+        wx.navigateTo({
+          url: '../tvCard/tvcard',
+        });
+      break;
+      case '3':
+        wx.navigateTo({
+          url: '../redPackage/red',
+        })
+      break;
+    }
+    
   }
 })

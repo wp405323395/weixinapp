@@ -8,11 +8,9 @@ var longClick2;
 var imgList;
 var subObj = {
   storeName: '',
-  storeAddr: {
-    latitude: 0.0,
-    longitude: 0.0,
-    addrStr: ''
-  },
+  latitude: 0.0,
+  longitude: 0.0,
+  addrStr: '',
   storePhone: '',
   storePersonName: '',
   storeKind: '',
@@ -69,7 +67,6 @@ Page({
       sizeType: sizeType[this.data.sizeTypeIndex],
       count: this.data.count[this.data.countIndex],
       success: function (res) {
-        console.log(res)
         imgList = imgList.concat(res.tempFilePaths);
         subObj.storeImgs = imgList;
         that.setData({
@@ -79,7 +76,7 @@ Page({
     })
   },
   previewImage: function (e) {
-    console.log("previewImage");
+
     if (longClick) {
       longClick = false;
       return;
@@ -99,12 +96,9 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (res) {
-        console.log(res)
-        subObj.storeAddr = {
-          addrStr: res.address,
-          latitude: res.latitude,
-          longitude: res.longitude
-        }
+        subObj.address,
+        subObj.latitude,
+        subObj.longitude
         that.setData({
           hasLocation: true,
           location: formatLocation(res.longitude, res.latitude),
@@ -138,7 +132,7 @@ Page({
     this.setData({
       type_index: id
     })
-    console.log(e);
+
   },
   bindInput_storName: function (e) {
     let storName = e.detail.value;
@@ -157,7 +151,7 @@ Page({
     subObj.storeIntro = storIntro;
   },
   submit: function (e) {
-    console.log(subObj);
+
     uploadImgs(subObj.storeImgs);
   }, 
   uploadImgs:function(arr){

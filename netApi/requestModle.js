@@ -23,6 +23,7 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       }
     });
   }
+  console.log(url);
   wx.request({
     url: url,
     data: data,
@@ -33,6 +34,7 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
     method: 'POST',
     dataType: 'txt',
     success: function (res) {
+      console.log(res);
       var responseData = JSON.parse(res.data);
       var response_code = responseData.retCode;
       if (response_code == 102) {
@@ -45,6 +47,7 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       }
     },
     fail: function (res) { 
+      console.log(res);
       wx.hideNavigationBarLoading();
       wx.hideToast();
       requestFail(res);

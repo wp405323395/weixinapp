@@ -67,10 +67,8 @@ Page({
     }
     new Promise((resolve, reject) => {
       requestEngin.request(config.loadProduct, param, that.loadProduct, (success) => {
-        console.log(success);
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
-        console.log(faild);
       });
     }).then((value) => {
       if (value.relaReceiveFlag == '0') {
@@ -83,14 +81,8 @@ Page({
 
     });
   },
-  onClickRedpackage: function (e) {
-    wx.navigateTo({
-      url: '../redPackage/red',
-    })
-  },
 
   click: function (e) {
-    console.log(this.data.product);
     var key = idMap[0];
     var value = idMap[1];
     let param = {};
@@ -131,9 +123,7 @@ Page({
           this.setData({
             product: value
           });
-          console.log(value);
         }, err => {
-          console.log(err);
         });
     } else if (key == 'id') {
       receiveParam = {};
@@ -156,17 +146,19 @@ Page({
     }
 
   },
+  onGotoDetail:function(e){
+    wx.navigateTo({
+      url: './storeDetail/storeDetail',
+    })
+  },
   receiveCoup: function () {
     var that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.receiveCoup, receiveParam, that.receiveCoup, (success) => {
-        console.log(success);
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
-        console.log(faild);
       });
     }).then(value => {
-      console.log(value);
       if (value.relaReceiveFlag == '0') {
         value.receiveMemo = '立即使用';
       }
@@ -175,29 +167,22 @@ Page({
         product: value
       });
     }, err => {
-      console.log(err);
     })
   },
   useCoup: function () {
     var that = this;
     return new Promise((resolve, reject) => {
       requestEngin.request(config.useCoup, useCoupParam, that.useCoup, (success) => {
-        console.log(success);
         if (!JSON.parse(success.data).retData) {
           resolve(JSON.parse(success.data).retMsg);
           return;
         }
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
-        console.log(faild);
       });
     })
   },
-  tvclick: function (e) {
-    wx.navigateTo({
-      url: '../tvCard/tvcard',
-    });
-  },
+
   onclick_use_it: function (e) {
     this.setData({
       isHidden1: true,
