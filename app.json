@@ -49,8 +49,8 @@
   "networkTimeout": {
     "request": 30000,
     "connectSocket": 30000,
-    "uploadFile": 30000,
-    "downloadFile": 30000
+    "uploadFile": 60000,
+    "downloadFile": 60000
   },
   "debug": false
 }

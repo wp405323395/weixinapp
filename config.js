@@ -6,6 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var host = "192.168.1.147"
+//var host = '39.108.84.154';
 var isHttps = false;
 var schema = isHttps ? 'https':'http';
 var config = {
@@ -28,13 +29,9 @@ var config = {
 
 
     used_tickit_url: `${schema}://${host}/wappweb/mcwx/mc-wx!queryUsedCouponList`,
-    
     queryWxUserCouponDetail: `${schema}://${host}/wappweb/mcwx/mc-wx!queryWxUserCouponDetail`,
-
-    // 测试的请求地址，用于测试会话
-    requestUrl: `https://${host}/wappweb/merchantcoupon/tv/merchant-coupon!test`,
+    uploadBusinessPic: `${schema}://${host}/wappweb/mcwx/file-upload!doUpload`
     
-    useCoupon: `${schema}://${host}/wappweb/mcwx/mc-wx!useCoupon`,
 
 };
 

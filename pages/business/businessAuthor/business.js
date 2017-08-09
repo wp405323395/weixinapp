@@ -157,17 +157,27 @@ Page({
     let that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.businessAuther, param, that.submit, (success) => {
-        resolve(JSON.parse(success.data).retCode);
+        resolve(JSON.parse(success.data));
       }, (faild) => {
         console.log(faild);
       });
     }).then((value) => {
-      if(value == '0') {
-        util.showTitleDialog('审核提交操作成功', '')
-        console.log('审核提交操作成功');
+      if (value.retCode == '0') {
+        util.showTitleDialog('审核提交操作成功', '');
+        return util.uploadimg({
+          url: config.uploadBusinessPic,//这里是你图片上传的接口
+          path: subObj.storeImgs//这里是选取的图片的地址数组
+        }, { id: value.id,type:0});
+      } else {
+        util.showTitleDialog('审核提交操作失败', '');
       }
      console.log(value);
     }, (err) => {
+      util.showTitleDialog('审核提交操作失败', '');
+    }).then(value=>{
+
+    },
+    err=>{
 
     });
     //this.uploadImgs(subObj.storeImgs);
