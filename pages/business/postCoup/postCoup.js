@@ -1,5 +1,7 @@
 // postCoup.js
 var util = require('../../../utils/util.js');
+var config = require('../../../config.js');
+var requestEngin = require('../../../netApi/requestModle.js');
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 var longClick;
@@ -71,6 +73,34 @@ Page({
   submit:function(e){
     subObj.coupQuantity = this.data.coupQuantity;
     subObj.deadline = this.data.deadline;
+    console.log(subObj);
+    let param = {};
+    let formData = {};
+    formData.couponName = subObj.couponName;
+    formData.couponIntro = subObj.couponDescrip;
+    formData.useCondition = subObj.useCondition;  //使用现在
+    formData.issueNum = subObj.coupQuantity;  //发放数量
+    formData.useEndTime = subObj.deadline;
+
+    param.formData = JSON.stringify(formData);
+    let that = this;
+
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.publishMercCoup, param, this.submit, (success) => {
+        resolve(JSON.parse(success.data).retCode);
+      }, (faild) => {
+        console.log(faild);
+      });
+    }).then((value) => {
+      if (value == '0') {
+        util.showTitleDialog('审核提交操作成功','')
+        console.log('审核提交操作成功');
+      }
+      console.log(value);
+    }, (err) => {
+
+    });
+    
   },
 
   /**

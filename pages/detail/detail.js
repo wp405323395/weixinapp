@@ -1,6 +1,7 @@
 // detail.js
 var config = require('../../config.js');
 var requestEngin = require('../../netApi/requestModle.js');
+var utils = require('../../utils/util.js');
 var product
 var autoflag;
 var idMap;
@@ -28,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    utils.getAuther('scope.writePhotosAlbum');
     var scene = decodeURIComponent(options.scene);
     var page = decodeURIComponent(options.page);
     console.log('scene::' + scene);
@@ -162,7 +164,7 @@ Page({
   },
   onGotoDetail:function(e){
     wx.navigateTo({
-      url: './storeDetail/storeDetail',
+      url: './storeDetail/storeDetail?storeId=' + this.data.product.storeId,
     })
   },
   receiveCoup: function () {

@@ -1,5 +1,7 @@
 // coups.js
 var data = require('../../../data/data.js').data;
+var config = require('../../../config.js');
+var requestEngin = require('../../../netApi/requestModle.js');
 var coups = data.publicCoup;
 Page({
 
@@ -14,7 +16,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    loadAllCoup();
+  },
+  loadAllCoup:function(e){
+    let that = this;
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.loadAllCoup, null, that.loadAllCoup, (success) => {
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
+        console.log(faild);
+      });
+    }).then((value) => {
+      console.log(value);
+    }, (err) => {
+
+    });
   },
 
   /**

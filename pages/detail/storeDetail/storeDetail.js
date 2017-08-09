@@ -1,10 +1,13 @@
 // storeDetail.js
+var config = require('../../../config.js');
+var requestEngin = require('../../../netApi/requestModle.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    storeId:'',
+    storeDetail:{},
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -27,14 +30,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options.storeId);
+    this.data.storeId = options.storeId;
+    this.loadStoreDetail();
+    
+    
+  },
+  loadStoreDetail:function(e){
+    var param = { id: this.data.storeId };
+    
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.queMercDetail, param, this.loadStoreDetail, (success) => {
+        resolve(JSON.parse(success.data).retData);
+      }, (faild) => {
+      });
+    }).then((value) => {
+      this.setData({
+        storeDetail: value,
+        markers: [{
+          latitude: value.latitude,
+          longitude: value.longitude,
+          name: 'T.I.T 创意园'
+        }],
+      });
+    }, (err) => {
+
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**

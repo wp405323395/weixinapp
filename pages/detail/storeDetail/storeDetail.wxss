@@ -16,7 +16,8 @@
   display: block;
 }
 .store_detail{
-
+  display: inline-block;
+  width: 200rpx;
   color: #666666;
 }
 .photos{
@@ -88,5 +89,6 @@
   color: #3fa5ed;
 }
 .new_store_detail{
+  width: 100%;
   color: #999999;
 }

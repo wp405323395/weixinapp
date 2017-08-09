@@ -15,8 +15,10 @@
     "pages/choosePackages/choosePackages",
     "pages/business/postCoup/postCoup",
     "pages/business/index/index",
-    "pages/business/totalCoup/coups",
-    "pages/detail/storeDetail/storeDetail"
+    "pages/detail/storeDetail/storeDetail",
+    "pages/business/totalCoup/coups"
+    
+
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -43,9 +43,43 @@ function textIsNotNull(str) {
   return true;
 }
 
+function showTitleDialog(title, content){
+    wx.showModal({
+      title: title,
+      content: content,
+      showCancel: false,
+      confirmText: "确定"
+    })
+}
+
+function getAuther(autherName) {
+  wx.getSetting({
+    success(res) {
+      if (!res.authSetting[autherName]) {
+        wx.authorize({
+          scope: autherName,
+          success() {
+          },
+          fail(){
+            wx.openSetting({
+              success: (res) => {
+                res.authSetting = {
+                  autherName: true
+                }
+              }
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
   textIsNotNull: textIsNotNull,
-  formatDay: formatDay
+  formatDay: formatDay,
+  showTitleDialog: showTitleDialog,
+  getAuther: getAuther
 }

@@ -1,5 +1,7 @@
 // business.js
 var util = require('../../../utils/util.js')
+var config = require('../../../config.js');
+var requestEngin = require('../../../netApi/requestModle.js');
 var formatLocation = util.formatLocation
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
@@ -10,10 +12,9 @@ var subObj = {
   storeName: '',
   latitude: 0.0,
   longitude: 0.0,
-  addrStr: '',
-  storePhone: '',
+  phone: '',
   storePersonName: '',
-  storeKind: '',
+  storeType: '',
   storeIntro: '',
   storeImgs: ['', '', '']
 
@@ -96,9 +97,9 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (res) {
-        subObj.address,
-        subObj.latitude,
-        subObj.longitude
+        subObj.addr = res.address ;
+        subObj.latitude = res.latitude;
+        subObj.longitude = res.longitude;
         that.setData({
           hasLocation: true,
           location: formatLocation(res.longitude, res.latitude),
@@ -128,7 +129,7 @@ Page({
   },
   onKindClick: function (e) {
     let id = e.currentTarget.dataset.kindid;
-    subObj.storeKind = this.data.storeKind[id];
+    subObj.storeType = id;
     this.setData({
       type_index: id
     })
@@ -140,7 +141,7 @@ Page({
   },
   bindInput_phone: function (e) {
     let phone = e.detail.value;
-    subObj.storePhone = phone;
+    subObj.phone = phone;
   },
   bindInput_personName: function (e) {
     let personName = e.detail.value;
@@ -151,8 +152,25 @@ Page({
     subObj.storeIntro = storIntro;
   },
   submit: function (e) {
+    let param = {};
+    param.formData = JSON.stringify(subObj);
+    let that = this;
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.businessAuther, param, that.submit, (success) => {
+        resolve(JSON.parse(success.data).retCode);
+      }, (faild) => {
+        console.log(faild);
+      });
+    }).then((value) => {
+      if(value == '0') {
+        util.showTitleDialog('审核提交操作成功', '')
+        console.log('审核提交操作成功');
+      }
+     console.log(value);
+    }, (err) => {
 
-    uploadImgs(subObj.storeImgs);
+    });
+    //this.uploadImgs(subObj.storeImgs);
   }, 
   uploadImgs:function(arr){
     if(arr.length != 0) {
