@@ -81,7 +81,7 @@
   display: inline-block;
   border: 1px #ed533f solid;
   border-radius: 30rpx;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #ed533f;
   padding: 3rpx 20rpx;
   margin-right: 10rpx;

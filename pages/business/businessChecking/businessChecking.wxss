@@ -39,6 +39,6 @@
   width: 100%;
 }
 .value{
-  display: inline-block;
-  width: 400rpx;
+  display: block;
+
 }
