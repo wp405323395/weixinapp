@@ -111,7 +111,7 @@ function uploadimg(data,formData) {
             data.i = i;
             data.success = success;
             data.fail = fail;
-            that.uploadimg(data);
+            that.uploadimg(data, formData);
           }
 
         }
