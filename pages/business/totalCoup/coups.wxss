@@ -72,3 +72,18 @@
   font-size: 0.8rem;
   margin-left: 20rpx;
 }
+
+.storeName{
+  display: flex;
+  justify-content: space-between;
+}
+.coup_status{
+  display: inline-block;
+  border: 1px #ed533f solid;
+  border-radius: 30rpx;
+  font-size: 0.8rem;
+  color: #ed533f;
+  padding: 3rpx 20rpx;
+  margin-right: 10rpx;
+
+}

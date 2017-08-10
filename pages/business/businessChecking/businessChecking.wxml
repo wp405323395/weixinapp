@@ -1,0 +1,29 @@
+<!--businessChecking.wxml-->
+<view class="container">
+  <view class="list">
+    <image class="img" src="../../../img/business_checking.png" mode="widthFix"></image>
+    <text class="checking_text">正在努力审核中...</text>
+    <view class="content">
+      <view class="item title">
+        <text class="lable lables">认证信息包括</text>
+      </view>
+      <view class="item">
+        <text class="lable">商铺名称:</text>
+        <text class="value">{{businessData.storeName}}</text>
+      </view>
+      <view class="item">
+        <text class="lable">商铺地址:</text>
+        <text class="value">{{businessData.addr}}</text>
+      </view>
+      <view class="item">
+        <text class="lable">联系人:</text>
+        <text class="value">{{businessData.connectPerson}}</text>
+      </view>
+      <view class="item">
+        <text class="lable">联系电话:</text>
+        <text class="value">{{businessData.phoneNum}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>

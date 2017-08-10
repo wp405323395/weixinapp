@@ -1,8 +1,27 @@
 // coups.js
-var data = require('../../../data/data.js').data;
 var config = require('../../../config.js');
 var requestEngin = require('../../../netApi/requestModle.js');
-var coups = data.publicCoup;
+var coups = [{
+  id: 100,
+  storeName: '小店',
+  couponDescrip: '特价水果8.8折',
+  useCondition: '全场通用',
+  totalCount: 99,
+  usedCount: 10,
+  receiveCount: 55,
+  imgUrl: '../../../img/product5.png',
+  coupStatus:0
+}, {
+  id: 100,
+  storeName: '小店',
+  couponDescrip: '特价水果8.8折',
+  useCondition: '全场通用',
+  totalCount: 99,
+  usedCount: 10,
+  receiveCount: 55,
+  imgUrl: '../../../img/product5.png',
+  coupStatus: 1
+}]
 Page({
 
   /**
@@ -16,7 +35,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    loadAllCoup();
+    this.loadAllCoup();
   },
   loadAllCoup:function(e){
     let that = this;
@@ -80,5 +99,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  onCoupClick:function(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: '../coupReview/coupReview?id=' + e.currentTarget.dataset.id,
+    })
   }
 })

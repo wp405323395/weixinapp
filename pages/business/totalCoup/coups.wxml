@@ -1,10 +1,17 @@
 <!--coups.wxml-->
 <view class="container">
-  <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" class="coups_wrap">
+  <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" bindtap="onCoupClick" data-id="{{coup.id}}" class="coups_wrap" hover-class="navigator-hover">
     <image class="coup_img" src="{{coup.imgUrl}}"></image>
     <view class="right_content">
       <view class="detail_wrap">
-        <text class="storeName">{{coup.storeName}}</text>
+        
+        <view class="storeName">
+          <text>{{coup.storeName}}</text>
+          <view hidden="{{coup.coupStatus != 1}}">
+            <text class="coup_status">{{coup.coupStatus == 1 ? '已过期':'xxx'}}</text>
+          </view>
+        </view>
+        
         <view class="coup_wrap">
           <view>
             <text class="couponDescrip">{{coup.couponDescrip}}</text>

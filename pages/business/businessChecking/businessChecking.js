@@ -1,11 +1,17 @@
-// index.js
+// businessChecking.js
+var businessData = {
+  storeName:'一个小店',
+  addr:'武汉市桥口区，长风乡，五大队',
+  connectPerson:'路人',
+  phoneNum:'18544332211'
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    businessData: businessData
   },
 
   /**
@@ -62,20 +68,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  onPostCoupClick:function(e){
-    wx.navigateTo({
-      url: '../postCoup/postCoup',
-    })
-  },
-  onMyCoupsClick:function(e){
-    wx.navigateTo({
-      url: '../totalCoup/coups',
-    })
-  },
-  onNoticeClick:function(e){
-    wx.navigateTo({
-      url: '../notice/notice',
-    })
   }
 })

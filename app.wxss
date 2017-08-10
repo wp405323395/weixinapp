@@ -120,3 +120,51 @@ overflow: hidden;
   justify-content: center;
   align-items: center;
 }
+.go_in{
+width:30rpx;
+height:30rpx;
+}
+/* -----------------------------------优惠券详情样式--------------------- */
+.swiper {
+  width: 100%;
+  margin: 0;
+}
+.introduce {
+  width: 100%;
+}
+.introduce>view:last-child {
+  margin-top: 35rpx;
+}
+.introduce_item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  background: #fff;
+  padding: 30rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+}
+
+.spacal {
+  margin-bottom: 35rpx;
+}
+.lable {
+  font-size: 1rem;
+  color: #333;
+}
+.details {
+  margin-top: 0;
+  padding-top: 0;
+  overflow: hidden;
+  width: 70%;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: right;
+  font-size: 0.9rem;
+  color: #666;
+}

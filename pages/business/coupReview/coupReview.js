@@ -1,11 +1,19 @@
-// index.js
+// coupReview.js
+var product = {
+  storeImgList:['../../../img/banner.png'],
+  storeIntro:'神奇的小店',
+  couponIntro:'真的是买一送一',
+  endTime:'2019-01-1',
+  storeAddr:'武汉寺门口',
+  storePhone:'18283838484'
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    product: product
   },
 
   /**
@@ -62,20 +70,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  onPostCoupClick:function(e){
-    wx.navigateTo({
-      url: '../postCoup/postCoup',
-    })
-  },
-  onMyCoupsClick:function(e){
-    wx.navigateTo({
-      url: '../totalCoup/coups',
-    })
-  },
-  onNoticeClick:function(e){
-    wx.navigateTo({
-      url: '../notice/notice',
-    })
   }
 })

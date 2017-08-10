@@ -35,16 +35,21 @@
     <image src="../../img/go_in.png" class="left_btn" ></image>
   </view>
   <!-- 发布优惠券   -->
-  <view class="sendCoup" bindtap="sendCoup">
-    <text>发布优惠券</text>
-  </view>
-  <view class="sendCoup" bindtap="storeDetail">
-    <text>小店详情</text>
-  </view>
-  <view class="sendCoup" bindtap="goTestModle" id="2">
-    <text>点击广电优惠券入口</text>
-  </view>
-  <view class="sendCoup" bindtap="goTestModle" id="3">
-    <text>抢红包</text>
-  </view>
+
+    <view class="sendCoup" data-id="0" bindtap="onTestClick">
+      <text>发布优惠券</text>
+    </view>
+    <view class="sendCoup" data-id="1" bindtap="onTestClick">
+      <text>小店详情</text>
+    </view>
+    <view class="sendCoup" data-id="2" bindtap="onTestClick">
+      <text>点击广电优惠券入口</text>
+    </view>
+    <view class="sendCoup" data-id="3" bindtap="onTestClick">
+      <text>抢红包</text>
+    </view>
+    <view class="sendCoup" data-id="4" bindtap="onTestClick">
+      <text>审核中</text>
+    </view>
+  
 </view>

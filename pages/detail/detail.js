@@ -13,11 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    indicatorDots: true,
-    autoplay: true,
     unShow: true,
-    interval: 5000,
-    duration: 1000,
     isHidden: true,
     isHidden1: true,
     isHidden2: true,

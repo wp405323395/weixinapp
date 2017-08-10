@@ -96,30 +96,33 @@ Page({
   onShareAppMessage: function () {
   
   },
-  sendCoup:function(e){
-    wx.navigateTo({
-      url: '../business/index/index',
-    })
-  },
-  storeDetail:function(e){
-    wx.navigateTo({
-      url: '../detail/storeDetail/storeDetail',
-    })
-  },
-  goTestModle:function(e){
-    console.log(e);
-    switch (e.currentTarget.id){
+  onTestClick:function(e){
+    switch (e.currentTarget.dataset.id) {
+      case '0':
+        wx.navigateTo({
+          url: '../business/index/index',
+        });
+        break;
+      case '1':
+        wx.navigateTo({
+          url: '../detail/storeDetail/storeDetail',
+        });
+        break;
       case '2':
         wx.navigateTo({
           url: '../tvCard/tvcard',
         });
-      break;
+        break;
       case '3':
         wx.navigateTo({
           url: '../redPackage/red',
         })
-      break;
+        break;
+      case '4':
+        wx.navigateTo({
+          url: '../business/businessChecking/businessChecking',
+        })
+        break;
     }
-    
   }
 })
