@@ -1,6 +1,6 @@
 <!--coups.wxml-->
 <view class="container">
-  <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" bindtap="onCoupClick" data-id="{{coup.id}}" class="coups_wrap" hover-class="navigator-hover">
+  <view wx:for="{{coups}}" wx:key="unique" wx:for-item="coup" bindtap="onCoupClick" data-id="{{coup.id}}" class="coups_wrap" hover-class="clicked_style">
     <image class="coup_img" src="{{coup.imgUrl}}"></image>
     <view class="right_content">
       <view class="detail_wrap">

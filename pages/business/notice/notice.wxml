@@ -1,6 +1,6 @@
 <!--notice.wxml-->
 <view class="container">
-  <view class="notice_wrap" wx:for="{{noticeList}}" wx:key="unique" bindtap="onItemClick" data-coupId="{{item.id}}" hover-class="navigator-hover">
+  <view class="notice_wrap" wx:for="{{noticeList}}" wx:key="unique" bindtap="onItemClick" data-index="{{index}}" data-coupId="{{item.id}}" hover-class="navigator-hover">
     <view class="yymmdd" hidden="{{item.isHiddenYYMMDD}}">
       <text>{{item.yymmdd}}</text>
     </view>
@@ -17,7 +17,7 @@
           <text>{{item.noticeStr}}</text>
         </view>
       </view>
-      <text class="unred_img"></text>
+      <text class="unred_img" hidden="{{item.isHasRead}}"></text>
       <image src="../../../img/go_in.png" class="go_in fl_part"></image>
     </view>
   </view>
