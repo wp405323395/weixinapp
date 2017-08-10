@@ -1,19 +1,24 @@
 <!--notice.wxml-->
 <view class="container">
-  <view class="listItem" wx:for="{{noticeList}}" wx:key="unique" bindtap="onItemClick" data-coupId="{{item.id}}" hover-class="navigator-hover">
-    <image src="{{item.statusIcon}}" class="coup_status"></image>
-
-    <view class="content">
-      <view class="time_wrap">
-        <text>2017-03-1  12:39</text>
-      </view>
-      <view class="notice_content">
-        <text>您发布的优惠券:</text>
-        <text class="coup_name"> "{{item.coupName}}" </text>
-        <text>{{item.noticeStr}}</text>
-      </view>
+  <view class="notice_wrap" wx:for="{{noticeList}}" wx:key="unique" bindtap="onItemClick" data-coupId="{{item.id}}" hover-class="navigator-hover">
+    <view class="yymmdd" hidden="{{item.isHiddenYYMMDD}}">
+      <text>{{item.yymmdd}}</text>
     </view>
-    <text class="unred_img"></text>
+    <view class="listItem">
+      <image src="{{item.statusIcon}}" class="coup_status"></image>
+
+      <view class="content">
+        <view class="time_wrap">
+          <text>{{item.minuteTime}}</text>
+        </view>
+        <view class="notice_content">
+          <text>您发布的优惠券:</text>
+          <text class="coup_name"> "{{item.coupName}}" </text>
+          <text>{{item.noticeStr}}</text>
+        </view>
+      </view>
+      <text class="unred_img"></text>
       <image src="../../../img/go_in.png" class="go_in fl_part"></image>
+    </view>
   </view>
 </view>

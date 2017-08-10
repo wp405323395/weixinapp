@@ -1,25 +1,32 @@
 // notice.js
+//var time1 = new Date().format("yyyy-MM-dd HH:mm:ss");   
 var noticeList = [{
+  id: '100',
+  submitTime: '2017-8-10  02:32:34',
+  coupName: '新鲜水果',
+  noticeStr: '已经成功发布，正在审核中',
+  coupStatus: '0'//0:审核中，1:审核通过,2:未通过,3:过期.
+},{
   id:'100',
-  submitTime:'2017-01-20  12:32',
+  submitTime:'2017-01-20  02:32:34',
   coupName:'新鲜水果',
   noticeStr:'已经成功发布，正在审核中',
   coupStatus:'0'//0:审核中，1:审核通过,2:未通过,3:过期.
 },{
     id: '100',
-    submitTime: '2017-01-20  12:32',
+    submitTime: '2017-01-20 12:32:20',
     coupName: '新鲜水果',
     noticeStr: '已经成功审核',
     coupStatus: '1'
   }, {
     id: '100',
-    submitTime: '2017-01-20  12:32',
+    submitTime: '2017-01-16 22:32:16',
     coupName: '新鲜水果',
     noticeStr: '未通过审核',
     coupStatus: '2'
 }, {
     id: '100',
-  submitTime: '2017-01-20  12:32',
+  submitTime: '2017-01-2 18:32:49',
   coupName: '新鲜水果',
   noticeStr: '已过期',
   coupStatus: '3'
@@ -36,6 +43,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let tileLine = [];
     noticeList.map(function(value,index,array){
 
         switch (value.coupStatus) {
@@ -52,7 +60,31 @@ Page({
             value.statusIcon = '../../../img/coup_status_timeout.png';
             break;
         }
+        var date = new Date(value.submitTime);
+        value.minuteTime = date.getHours()+":"+date.getMinutes();
+        var strDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        value.yymmdd = strDate;
+        tileLine.push(strDate);
+        value.isHiddenYYMMDD = true;
+        if(index >0) {
+          if (strDate != tileLine[index - 1]) {
+            value.isHiddenYYMMDD = false;
+          } else {
+            value.isHiddenYYMMDD = true;
+          }
+        } else {
+          var newDate = new Date();
+          var strnewDate = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate();
+          if (strnewDate != strDate) {
+            value.isHiddenYYMMDD = false;
+          } else {
+            value.isHiddenYYMMDD = true;
+          }
+        }
 
+        
+        
+        
     })
     
     this.setData({
