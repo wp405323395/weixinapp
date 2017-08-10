@@ -34,4 +34,9 @@
     </view>
 
   </view>
+
+    <view class="nodata" hidden="{{noData}}">
+    <image src="../../../img/notice_no_data.png" mode="widthFix" class="notice_no_data_style"></image>
+    <text class="notice_text">当前暂无信息</text>
+  </view>
 </view>

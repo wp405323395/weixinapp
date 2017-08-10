@@ -28,7 +28,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    coups: coups
+    coups: coups,
+    noData: true
   },
 
   /**
