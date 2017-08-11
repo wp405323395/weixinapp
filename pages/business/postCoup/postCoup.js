@@ -102,30 +102,23 @@ Page({
         }, { id: valueId, type: '11' });
       }
     }, (err) => {
-      wx.showToast({
-        title: '请求失败',
-        image: '../../../img/coup_status_fail.png',
-        icon: 'faild',
-        duration: 2000
-      })
-    }).then(value=>{
+      util.showTitleDialog('审核提交操作失败', '');
+    }).then((value)=>{
       console.log(value);
       return util.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });
-    },
-    err=>{
+    },(err)=>{
       wx.showToast({
         title: '图片上传失败',
         image: '../../../img/coup_status_fail.png',
         icon: 'faild',
         duration: 2000
       })
-    }).then(value=>{
+    }).then((value)=>{
       wx.hideNavigationBarLoading();
-    },
-    err=>{
+    },(err)=>{
       wx.showToast({
         title: '图片上传失败',
         image: '../../../img/coup_status_fail.png',

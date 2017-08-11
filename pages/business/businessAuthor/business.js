@@ -163,7 +163,6 @@ Page({
       });
     }).then((value) => {
       if (value.retCode == '0') {
-        util.showTitleDialog('审核提交操作成功', '');
         return util.uploadimg({
           url: config.uploadBusinessPic,//这里是你图片上传的接口
           path: subObj.storeImgs//这里是选取的图片的地址数组
@@ -173,11 +172,10 @@ Page({
       }
      console.log(value);
     }, (err) => {
-      util.showTitleDialog('审核提交操作失败', '');
-    }).then(value=>{
 
-    },
-    err=>{
+    }).then((value)=>{
+
+    },(err)=>{
 
     });
     //this.uploadImgs(subObj.storeImgs);

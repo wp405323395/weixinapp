@@ -125,13 +125,16 @@ function uploadimg(data, formData) {
         if (i == data.path.length) {  //当图片传完时，停止调用     
           console.log('执行完毕');
           console.log('成功：' + success + " 失败：" + fail);
-          resolve('success');
           wx.hideToast();
           wx.showToast({
             title: "成功上传(" + success + ")...",
             icon: "success",
-            duration: 1500
+            duration: 1500,
+            success:()=>{
+              resolve('success');
+            }
           });
+          
         } else {//若图片还没有传完，则继续调用函数
           data.i = i;
           data.success = success;
