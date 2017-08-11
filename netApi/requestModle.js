@@ -52,7 +52,11 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       console.log(res);
       wx.hideNavigationBarLoading();
       wx.hideToast();
-      xxxx
+      wx.showToast({
+        title: "请求失败。",
+        icon: "loading",
+        duration: 1500
+      });
       requestFail(res);
     },
     complete: function (res) { 
