@@ -129,11 +129,19 @@ function uploadimg(data, formData) {
           wx.showToast({
             title: "成功上传(" + success + ")...",
             icon: "success",
-            duration: 1500,
+            duration: 2000,
             success:()=>{
               resolve('success');
+              
             }
           });
+          setTimeout(()=>{
+            if(i >1) {
+              wx.navigateBack({
+              });
+            }
+
+          }, 2000)
           
         } else {//若图片还没有传完，则继续调用函数
           data.i = i;

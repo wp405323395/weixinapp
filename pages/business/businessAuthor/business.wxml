@@ -107,8 +107,8 @@
       <!-- -------------------------------------------------------------------- -->
     </view>
   </view>
-<view hover-class="bottomAct" class="bottom_bt" bindtap="submit">
-    <text>申请认证</text>
+<view hover-class="bottomAct" class="bottom_bt" bindtap="submit" >
+    <text>{{btnText}}</text>
 </view>
 
 

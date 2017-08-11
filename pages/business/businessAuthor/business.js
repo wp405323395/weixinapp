@@ -21,6 +21,8 @@ var subObj = {
 }
 Page({
   data: {
+    btnText: '申请认证',
+    clickAble: true,
     imageList: [],
     sourceTypeIndex: 2,
     sourceType: ['拍照', '相册', '拍照或相册'],
@@ -152,6 +154,9 @@ Page({
     subObj.storeIntro = storIntro;
   },
   submit: function (e) {
+    if (!this.data.clickAble) {
+      return ;
+    }
     let param = {};
     param.formData = JSON.stringify(subObj);
     let that = this;
@@ -163,10 +168,11 @@ Page({
       });
     }).then((value) => {
       if (value.retCode == '0') {
+        
         return util.uploadimg({
           url: config.uploadBusinessPic,
           path: subObj.storeImgs
-        }, { id: value.id,type:0});
+        }, { id: value.id, type: 0 });
       } else {
         util.showTitleDialog('审核提交操作失败', '');
       }
@@ -180,6 +186,9 @@ Page({
         console.log("--------" +err);
     });
    
+  },
+  multiImageCallback:function(){
+    
   }
 
 })

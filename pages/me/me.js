@@ -1,5 +1,7 @@
 // me.js
 //获取应用实例
+var requestEngin = require('../../netApi/requestModle.js');
+var config = require('../../config.js');
 var app = getApp()
 Page({
 
@@ -47,12 +49,32 @@ Page({
         })
         break;
       case "my_store":
-        wx.navigateTo({
-          url: '../business/businessAuthor/business',
-        })
+        this.validateBusiness();
+       
         break;
     }
 
+  },
+  validateBusiness:function() {
+    var that = this;
+    new Promise((resolve, reject) => {
+      requestEngin.request(config.queMercSettled, {}, that.validateBusiness, (success) => {
+        resolve(JSON.parse(success.data));
+      }, (faild) => {
+        reject(faild);
+      });
+    }).then(value=>{
+      if(value.id == null) {
+        wx.navigateTo({
+          url: '../business/businessAuthor/business',
+        })
+      } else if (value.retData.storeStatus == '0') {
+        wx.navigateTo({
+          url: '../business/businessChecking/businessChecking',
+        })
+      }
+    },
+    err=>{});
   },
 
   /**

@@ -26,11 +26,12 @@ var config = {
     businessAuther: `${schema}://${host}/wappweb/mcwx/merc-wx!doMercSettled`,
     queMercDetail: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercDetail`,
     publishMercCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!publishMercCoup`,
-
+    
 
     used_tickit_url: `${schema}://${host}/wappweb/mcwx/mc-wx!queryUsedCouponList`,
     queryWxUserCouponDetail: `${schema}://${host}/wappweb/mcwx/mc-wx!queryWxUserCouponDetail`,
-    uploadBusinessPic: `${schema}://${host}/wappweb/mcwx/file-upload!doUpload`
+    uploadBusinessPic: `${schema}://${host}/wappweb/mcwx/file-upload!doUpload`,
+    queMercSettled: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercSettled`
     
 
 };

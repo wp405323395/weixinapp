@@ -10,19 +10,20 @@ var longClick22;
 storeImgs: ['', '', '']
 let valueId;
 var imgList;
-var subObj = {
-  couponName: '',
-  couponDescrip:'',
-  useCondition: '',
-  coupQuantity: 0,
-  deadline:''
-}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    subObj: {
+      couponName: '',
+      couponDescrip: '',
+      useCondition: '',
+      coupQuantity: 0,
+      deadline: ''
+    },
     imageList: [],
     imageList2:[],
     countIndex: 0,
@@ -35,13 +36,13 @@ Page({
     time: '12:01'
   },
   bindInput_coupName:function(e){
-    subObj.couponName = e.detail.value;
+    this.data.subObj.couponName = e.detail.value;
   },
   bindInput_couponDescrip:function(e){
-    subObj.couponDescrip = e.detail.value;
+    this.data.subObj.couponDescrip = e.detail.value;
   },
   bindInput_useCondition: function (e) {
-    subObj.useCondition = e.detail.value;
+    this.data.subObj.useCondition = e.detail.value;
   },
 
   bindDateChange: function (e) {
@@ -72,16 +73,32 @@ Page({
     })
   },
   submit:function(e){
-    subObj.coupQuantity = this.data.coupQuantity;
-    subObj.deadline = this.data.deadline;
-    console.log(subObj);
+    if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage !=1) {
+      return ;
+    } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs!=3) {
+      return ;
+    } else if (this.data.subObj.couponName == undefined) {
+      return;
+    } else if (this.data.subObj.coupQuantity == 0){
+      return;
+    } else if (this.data.subObj.couponName == undefined){
+      return;
+    } else if (this.data.subObj.couponDescrip == undefined) {
+      return;
+    } else if (this.data.subObj.useCondition == undefined) {
+      return;
+    }
+
+    this.data.subObj.coupQuantity = this.data.coupQuantity;
+    this.data.subObj.deadline = this.data.deadline;
+    console.log(this.data.subObj);
     let param = {};
     let formData = {};
-    formData.couponName = subObj.couponName;
-    formData.couponIntro = subObj.couponDescrip;
-    formData.useCondition = subObj.useCondition;  //使用现在
-    formData.issueNum = subObj.coupQuantity;  //发放数量
-    formData.useEndTime = subObj.deadline;
+    formData.couponName = this.data.subObj.couponName;
+    formData.couponIntro = this.data.subObj.couponDescrip;
+    formData.useCondition = this.data.subObj.useCondition;  //使用现在
+    formData.issueNum = this.data.subObj.coupQuantity;  //发放数量
+    formData.useEndTime = this.data.subObj.deadline;
 
     param.formData = JSON.stringify(formData);
     let that = this;
@@ -98,7 +115,7 @@ Page({
         valueId = value.id;
         return util.uploadimg({
           url: config.uploadBusinessPic,//这里是你图片上传的接口
-          path: subObj.coupIconImage//这里是选取的图片的地址数组
+          path: this.data.subObj.coupIconImage//这里是选取的图片的地址数组
         }, { id: valueId, type: '11' });
       }
     }, (err) => {
@@ -107,7 +124,7 @@ Page({
       console.log(value);
       return util.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
-        path: subObj.storeImgs//这里是选取的图片的地址数组
+        path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });
     },(err)=>{
       wx.showToast({
@@ -241,7 +258,7 @@ Page({
       success: function (res) {
 
         imgList = imgList.concat(res.tempFilePaths);
-        subObj.coupIconImage = imgList;
+        that.data.subObj.coupIconImage = imgList;
         that.setData({
           imageList: imgList
         })
@@ -268,9 +285,11 @@ Page({
   },
   
   deleteItem: function (e) {
+    
     var current = e.target.dataset.src;
     var index = this.data.imageList.indexOf(current);
     this.data.imageList.splice(index, 1);
+    this.data.subObj.coupIconImage = this.data.imageList;
     this.setData({
       imageList: this.data.imageList
     })
@@ -291,7 +310,7 @@ Page({
       count: this.data.count[this.data.countIndex2],
       success: function (res) {
         imgList = imgList.concat(res.tempFilePaths);
-        subObj.storeImgs = imgList;
+        that.data.subObj.storeImgs = imgList;
         that.setData({
           imageList2: imgList
         })
@@ -320,6 +339,7 @@ Page({
     var current = e.target.dataset.src;
     var index = this.data.imageList2.indexOf(current);
     this.data.imageList2.splice(index, 1);
+    this.data.subObj.storeImgs = this.data.imageList2;
     this.setData({
       imageList2: this.data.imageList2
     })
