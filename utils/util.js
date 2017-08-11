@@ -91,7 +91,7 @@ function uploadimg(data, formData) {
   }
 
   return new Promise((resolve, reject) => {
-
+    
     wx.uploadFile({
       url: data.url,
       filePath: data.path[i],

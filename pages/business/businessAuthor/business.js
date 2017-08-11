@@ -159,23 +159,25 @@ Page({
       requestEngin.request(config.businessAuther, param, that.submit, (success) => {
         resolve(JSON.parse(success.data));
       }, (faild) => {
-        console.log(faild);
+        reject(faild);
       });
     }).then((value) => {
       if (value.retCode == '0') {
         return util.uploadimg({
-          url: config.uploadBusinessPic,//这里是你图片上传的接口
-          path: subObj.storeImgs//这里是选取的图片的地址数组
+          url: config.uploadBusinessPic,
+          path: subObj.storeImgs
         }, { id: value.id,type:0});
       } else {
         util.showTitleDialog('审核提交操作失败', '');
       }
     }, (err) => {
-
+      console.log('errerrerrerrerrerrerr');
     }).then((value)=>{
-
+      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     },(err)=>{
-
+      console.log('errerrerrerrerrerrerr');
+    }).catch(function (err) {
+        console.log("--------" +err);
     });
    
   }
