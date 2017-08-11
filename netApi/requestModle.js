@@ -53,7 +53,7 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       wx.hideNavigationBarLoading();
       wx.hideToast();
       wx.showToast({
-        title: "请求失败。",
+        title: "网络请求失败",
         icon: "loading",
         duration: 1500
       });
