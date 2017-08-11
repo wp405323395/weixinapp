@@ -43,13 +43,13 @@ function textIsNotNull(str) {
   return true;
 }
 
-function showTitleDialog(title, content){
-    wx.showModal({
-      title: title,
-      content: content,
-      showCancel: false,
-      confirmText: "确定"
-    })
+function showTitleDialog(title, content) {
+  wx.showModal({
+    title: title,
+    content: content,
+    showCancel: false,
+    confirmText: "确定"
+  })
 }
 
 function getAuther(autherName) {
@@ -60,7 +60,7 @@ function getAuther(autherName) {
           scope: autherName,
           success() {
           },
-          fail(){
+          fail() {
             wx.openSetting({
               success: (res) => {
                 res.authSetting = {
@@ -76,48 +76,73 @@ function getAuther(autherName) {
 }
 
 //多张图片上传
-function uploadimg(data,formData) {
+function uploadimg(data, formData) {
   var that = this,
     i = data.i ? data.i : 0,
     success = data.success ? data.success : 0,
     fail = data.fail ? data.fail : 0;
-    return new Promise((resolve,reject)=>{
-      wx.uploadFile({
-        url: data.url,
-        filePath: data.path[i],
-        name: 'fileData',
-        formData: formData,
-        success: (resp) => {
-          success++;
-          console.log(resp)
-          console.log(i);
-          //这里可能有BUG，失败也会执行这里
-        },
-        fail: (res) => {
-          reject(res);
-          fail++;
-          console.log('fail:' + i + "fail:" + fail);
-          
-        },
-        complete: () => {
-          console.log(i);
-          i++;
-          if (i == data.path.length) {  //当图片传完时，停止调用     
-            console.log('执行完毕');
-            console.log('成功：' + success + " 失败：" + fail);
-            resolve('success');
-          } else {//若图片还没有传完，则继续调用函数
-            console.log(i);
-            data.i = i;
-            data.success = success;
-            data.fail = fail;
-            that.uploadimg(data, formData);
-          }
-
-        }
-      });
+  if (i == 0) {
+    wx.hideToast();
+    wx.showToast({
+      title: "图片上传中...",
+      icon: "loading",
+      duration: 60000
     });
-  
+  }
+
+  return new Promise((resolve, reject) => {
+
+    wx.uploadFile({
+      url: data.url,
+      filePath: data.path[i],
+      name: 'fileData',
+      formData: formData,
+      success: (resp) => {
+        success++;
+        wx.hideToast();
+        wx.showToast({
+          title: "成功上传(" + success + ")...",
+          icon: "loading",
+          duration: 60000
+        });
+        console.log("success:" + success);
+        //这里可能有BUG，失败也会执行这里
+      },
+      fail: (res) => {
+        wx.hideToast();
+        wx.showToast({
+          title: "上传失败(" + i + ")...",
+          icon: "loading",
+          duration: 60000
+        });
+        reject(res);
+        fail++;
+        console.log('fail:' + i + "fail:" + fail);
+
+      },
+      complete: () => {
+        i++;
+        if (i == data.path.length) {  //当图片传完时，停止调用     
+          console.log('执行完毕');
+          console.log('成功：' + success + " 失败：" + fail);
+          resolve('success');
+          wx.hideToast();
+          wx.showToast({
+            title: "成功上传(" + success + ")...",
+            icon: "success",
+            duration: 1500
+          });
+        } else {//若图片还没有传完，则继续调用函数
+          data.i = i;
+          data.success = success;
+          data.fail = fail;
+          that.uploadimg(data, formData);
+        }
+
+      }
+    });
+  });
+
 }
 
 module.exports = {

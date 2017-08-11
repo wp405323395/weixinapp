@@ -12,6 +12,12 @@ function my_login() {
   });
 }
 function clientLogin(successFun,failedFun) {
+  wx.showNavigationBarLoading();
+  wx.showToast({
+    title: "loading",
+    icon: "loading",
+    duration: 30000
+  });
   wx.login({
     success: function (res) {
       if (res.code) {
@@ -34,12 +40,17 @@ function clientLogin(successFun,failedFun) {
             if(successFun != null) {
               successFun();
             }
+            wx.hideNavigationBarLoading();
+            wx.hideToast();
           },
 
           fail: function ({errMsg}) {
+            console.log('获取用户登录态失败！' + res.errMsg)
             if(failedFun != null) {
               failedFun();
             }
+            wx.hideNavigationBarLoading();
+            wx.hideToast();
           }
         })
       } else {

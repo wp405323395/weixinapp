@@ -39,6 +39,8 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       var response_code = responseData.retCode;
       if (response_code == 102) {
         console.log("身份失效");
+        wx.hideNavigationBarLoading();
+        wx.hideToast();
         loginJs.clientLogin(reqMethod);
       } else {
         wx.hideNavigationBarLoading();
@@ -50,10 +52,10 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       console.log(res);
       wx.hideNavigationBarLoading();
       wx.hideToast();
+      xxxx
       requestFail(res);
     },
     complete: function (res) { 
-       wx.hideNavigationBarLoading();
       // wx.hideToast();
        if (requestComplete != undefined) {
          requestComplete(res);

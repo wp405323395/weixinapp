@@ -8,6 +8,7 @@ var longClick;
 var longClick2;
 var longClick22;
 storeImgs: ['', '', '']
+let valueId;
 var imgList;
 var subObj = {
   couponName: '',
@@ -84,39 +85,53 @@ Page({
 
     param.formData = JSON.stringify(formData);
     let that = this;
-
+    
     new Promise((resolve, reject) => {
       requestEngin.request(config.publishMercCoup, param, this.submit, (success) => {
         resolve(JSON.parse(success.data));
       }, (faild) => {
+        reject(faild);
         console.log(faild);
       });
     }).then((value) => {
       if (value.retCode == '0') {
+        valueId = value.id;
         return util.uploadimg({
           url: config.uploadBusinessPic,//这里是你图片上传的接口
           path: subObj.coupIconImage//这里是选取的图片的地址数组
-        }, { id: value.id, type: '11' });
-
-        util.showTitleDialog('审核提交操作成功','')
-        console.log('审核提交操作成功');
+        }, { id: valueId, type: '11' });
       }
-      console.log(value);
     }, (err) => {
-
+      wx.showToast({
+        title: '请求失败',
+        image: '../../../img/coup_status_fail.png',
+        icon: 'faild',
+        duration: 2000
+      })
     }).then(value=>{
-
-    },
-    err=>{
+      console.log(value);
       return util.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: subObj.storeImgs//这里是选取的图片的地址数组
-      }, { id: value.id, type: '10' });
-    }).then(value=>{
-      
+      }, { id: valueId, type: '10' });
     },
     err=>{
-
+      wx.showToast({
+        title: '图片上传失败',
+        image: '../../../img/coup_status_fail.png',
+        icon: 'faild',
+        duration: 2000
+      })
+    }).then(value=>{
+      wx.hideNavigationBarLoading();
+    },
+    err=>{
+      wx.showToast({
+        title: '图片上传失败',
+        image: '../../../img/coup_status_fail.png',
+        icon: 'faild',
+        duration: 2000
+      })
     });
     
   },
