@@ -104,7 +104,7 @@ Page({
     let that = this;
     
     new Promise((resolve, reject) => {
-      requestEngin.request(config.publishMercCoup, param, this.submit, (success) => {
+      requestEngin.request(config.publishMercCoup, param, { callBy: that, method: that.submit, params: [] }, (success) => {
         resolve(JSON.parse(success.data));
       }, (faild) => {
         reject(faild);

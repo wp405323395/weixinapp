@@ -38,9 +38,9 @@ Page({
   },
   loadStoreDetail:function(e){
     var param = { id: this.data.storeId };
-    
+    var that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.queMercDetail, param, this.loadStoreDetail, (success) => {
+      requestEngin.request(config.queMercDetail, param, { callBy: that, method: that.loadStoreDetail, params: [] }, (success) => {
         resolve(JSON.parse(success.data).retData);
       }, (faild) => {
       });

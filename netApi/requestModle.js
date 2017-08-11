@@ -58,9 +58,13 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
         duration: 1500
       });
       requestFail(res);
+      //max_wang 
+      loginJs.clientLogin(reqMethod);
+      //max_wang
     },
     complete: function (res) { 
       // wx.hideToast();
+      wx.hideNavigationBarLoading();
        if (requestComplete != undefined) {
          requestComplete(res);
        }

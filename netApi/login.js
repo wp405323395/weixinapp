@@ -12,6 +12,8 @@ function my_login() {
   });
 }
 function clientLogin(successFun,failedFun) {
+  wx.hideNavigationBarLoading();
+  wx.hideToast();
   wx.showNavigationBarLoading();
   wx.showToast({
     title: "loading",
@@ -38,7 +40,7 @@ function clientLogin(successFun,failedFun) {
             } catch (e) {
             }
             if(successFun != null) {
-              successFun();
+              successFun.method.apply(successFun.callBy, successFun.params);
             }
             wx.hideNavigationBarLoading();
             wx.hideToast();
@@ -51,6 +53,11 @@ function clientLogin(successFun,failedFun) {
             }
             wx.hideNavigationBarLoading();
             wx.hideToast();
+            wx.showToast({
+              title: "获取用户登录态失败！",
+              icon: "loading",
+              duration: 1500
+            });
           }
         })
       } else {

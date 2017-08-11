@@ -161,7 +161,7 @@ Page({
     param.formData = JSON.stringify(subObj);
     let that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.businessAuther, param, that.submit, (success) => {
+      requestEngin.request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
         resolve(JSON.parse(success.data));
       }, (faild) => {
         reject(faild);
