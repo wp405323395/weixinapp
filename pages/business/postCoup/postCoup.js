@@ -87,17 +87,35 @@ Page({
 
     new Promise((resolve, reject) => {
       requestEngin.request(config.publishMercCoup, param, this.submit, (success) => {
-        resolve(JSON.parse(success.data).retCode);
+        resolve(JSON.parse(success.data));
       }, (faild) => {
         console.log(faild);
       });
     }).then((value) => {
-      if (value == '0') {
+      if (value.retCode == '0') {
+        return util.uploadimg({
+          url: config.uploadBusinessPic,//这里是你图片上传的接口
+          path: subObj.coupIconImage//这里是选取的图片的地址数组
+        }, { id: value.id, type: '11' });
+
         util.showTitleDialog('审核提交操作成功','')
         console.log('审核提交操作成功');
       }
       console.log(value);
     }, (err) => {
+
+    }).then(value=>{
+
+    },
+    err=>{
+      return util.uploadimg({
+        url: config.uploadBusinessPic,//这里是你图片上传的接口
+        path: subObj.storeImgs//这里是选取的图片的地址数组
+      }, { id: value.id, type: '10' });
+    }).then(value=>{
+      
+    },
+    err=>{
 
     });
     
@@ -215,7 +233,7 @@ Page({
       success: function (res) {
 
         imgList = imgList.concat(res.tempFilePaths);
-        subObj.storeImgs = imgList;
+        subObj.coupIconImage = imgList;
         that.setData({
           imageList: imgList
         })
