@@ -95,18 +95,17 @@ Page({
       return;
     }
     console.log(this.data.subObj);
-    
-    let couponName = this.data.subObj.couponName;
-    let couponIntro = this.data.subObj.couponDescrip;
-    let useCondition = this.data.subObj.useCondition;  //使用现在
-    let issueNum = this.data.subObj.coupQuantity;  //发放数量
-    let useEndTime = this.data.subObj.deadline;
-    let param = {};
-    param.formData = JSON.stringify({ couponName, couponIntro, useCondition, issueNum, useEndTime});
+    let exchangeParam = {
+      couponName : this.data.subObj.couponName,
+      couponIntro : this.data.subObj.couponDescrip,
+      useCondition : this.data.subObj.useCondition,
+      issueNum : this.data.subObj.coupQuantity,
+      useEndTime : this.data.subObj.deadline
+    }
     let that = this;
     
     new Promise((resolve, reject) => {
-      requestEngin.request(config.publishMercCoup, param, { callBy: that, method: that.submit, params: [] }, (success) => {
+      requestEngin.request(config.publishMercCoup, { formData: JSON.stringify(exchangeParam)}, { callBy: that, method: that.submit, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
