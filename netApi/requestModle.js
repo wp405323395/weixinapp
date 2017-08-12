@@ -38,7 +38,6 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       let responseData ;
       let response_code;
       try{
-        mmm.aaa = 2;
         responseData = JSON.parse(res.data);
         response_code = responseData.retCode;
       } catch(e){
