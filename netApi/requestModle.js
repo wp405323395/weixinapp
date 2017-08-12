@@ -35,8 +35,25 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
     dataType: 'txt',
     success: function (res) {
       console.log(res);
-      var responseData = JSON.parse(res.data);
-      var response_code = responseData.retCode;
+      let responseData ;
+      let response_code;
+      try{
+        mmm.aaa = 2;
+        responseData = JSON.parse(res.data);
+        response_code = responseData.retCode;
+      } catch(e){
+        requestFail('服务器错误的消息格式');
+        wx.hideNavigationBarLoading();
+        wx.hideToast();
+        wx.showToast({
+          title: '服务器错误的消息格式',
+          image: '../../../img/coup_status_fail.png',
+          icon: 'faild',
+          duration: 2000
+        })
+        return;
+      }
+
       if (response_code == 102) {
         console.log("身份失效");
         wx.hideNavigationBarLoading();
