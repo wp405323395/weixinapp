@@ -21,18 +21,29 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       }
     });
   }
+  let header = {
+    'Content-Type': 'application/json',
+    'userAgent': ua,
+    'Cookie': user_token
+  };
+  console.log('>>>>>>>>>>----request---->>>>>>>>>>');
+  console.log('链接~');
   console.log(url);
+  console.log('请求头~');
+  console.log(header);
+  console.log('请求体~');
+  console.log(data);
+  console.log('-----------------------------------');
   wx.request({
     url: url,
     data: data,
-    header: { 
-      'Content-Type': 'application/json',
-      'userAgent': ua,
-      'Cookie': user_token },
+    header: header,
     method: 'POST',
     dataType: 'txt',
     success: function (res) {
+      console.log('返回值~');
       console.log(res);
+      console.log('<<<<<<<<<<----response----<<<<<<<<<<');
       let responseData ;
       let response_code;
       try{
@@ -60,7 +71,9 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       }
     },
     fail: function (res) { 
+      console.log('返回值~');
       console.log(res);
+      console.log('<<<<<<<<<<----response----<<<<<<<<<<');
       util.showShortToast({
         title: "网络请求失败",
         icon: "loading"

@@ -63,7 +63,6 @@ Page({
     wx.getStorage({
       key: 'needRefreshData',
       success: function (res) {
-        console.log(res.data)
         if(res.data === true){
           that.loadData(that.data.currentTab);
           wx.setStorage({

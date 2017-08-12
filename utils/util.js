@@ -106,6 +106,11 @@ function uploadimg(data, formData) {
     success = data.success ? data.success : 0,
     fail = data.fail ? data.fail : 0;
   if (i == 0) {
+    console.log('####################################');
+    console.log('上传图片的url:::' + data.url );
+    console.log('上传图片请求参数~');
+    console.log(formData);
+    console.log('-------------------------------------');
     this.showToast({
       title: "图片上传中...",
       icon: "loading"
@@ -158,7 +163,7 @@ function uploadimg(data, formData) {
             }
 
           }, 2000)
-          
+          console.log('####################################');
         } else {//若图片还没有传完，则继续调用函数
           data.i = i;
           data.success = success;

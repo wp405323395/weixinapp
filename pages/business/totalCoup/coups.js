@@ -44,10 +44,10 @@ Page({
       requestEngin.request(config.loadAllCoup, null, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
-        console.log(faild);
+
       });
     }).then((value) => {
-      console.log(value);
+
     }, (err) => {
 
     });
@@ -102,7 +102,6 @@ Page({
   
   },
   onCoupClick:function(e) {
-    console.log(e);
     wx.navigateTo({
       url: '../coupReview/coupReview?id=' + e.currentTarget.dataset.id,
     })

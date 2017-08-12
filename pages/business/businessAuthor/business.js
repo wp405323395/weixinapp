@@ -177,13 +177,13 @@ Page({
         util.showTitleDialog('审核提交操作失败', '');
       }
     }, (err) => {
-      console.log('errerrerrerrerrerrerr');
+
     }).then((value)=>{
-      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+
     },(err)=>{
-      console.log('errerrerrerrerrerrerr');
+
     }).catch(function (err) {
-        console.log("--------" +err);
+
     });
    
   },

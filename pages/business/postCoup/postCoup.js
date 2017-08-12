@@ -94,7 +94,6 @@ Page({
       this.showError('优惠券使用约束不能为空');
       return;
     }
-    console.log(this.data.subObj);
     let exchangeParam = {
       couponName : this.data.subObj.couponName,
       couponIntro : this.data.subObj.couponDescrip,
@@ -109,7 +108,6 @@ Page({
         resolve(success);
       }, (faild) => {
         reject(faild);
-        console.log(faild);
       });
     }).then((value) => {
       if (value.retCode == '0') {
@@ -120,12 +118,10 @@ Page({
         }, { id: valueId, type: '11' });
       }
     }, (err) => {
-     console.log('请求失败');
     }).then((value)=>{
       if(value == undefined) {
         return null;
       }
-      console.log(value);
       return util.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
