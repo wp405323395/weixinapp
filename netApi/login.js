@@ -1,4 +1,5 @@
 const loginUrl = require('../config').loginUrl;
+const util = require('../utils/util');
 function my_login() {
   wx.checkSession({
     success: function () {
@@ -12,13 +13,9 @@ function my_login() {
   });
 }
 function clientLogin(successFun,failedFun) {
-  wx.hideNavigationBarLoading();
-  wx.hideToast();
-  wx.showNavigationBarLoading();
-  wx.showToast({
+  util.showToast({
     title: "loading",
-    icon: "loading",
-    duration: 30000
+    icon: "loading"
   });
   wx.login({
     success: function (res) {
@@ -39,11 +36,12 @@ function clientLogin(successFun,failedFun) {
               wx.setStorageSync('user_token', cookie)
             } catch (e) {
             }
+            wx.hideNavigationBarLoading();
+            wx.hideToast();
             if(successFun != null) {
               successFun.method.apply(successFun.callBy, successFun.params);
             }
-            wx.hideNavigationBarLoading();
-            wx.hideToast();
+
           },
 
           fail: function ({errMsg}) {
@@ -51,12 +49,9 @@ function clientLogin(successFun,failedFun) {
             if(failedFun != null) {
               failedFun();
             }
-            wx.hideNavigationBarLoading();
-            wx.hideToast();
-            wx.showToast({
+            util.showShortToast({
               title: "获取用户登录态失败！",
-              icon: "loading",
-              duration: 1500
+              icon: "loading"
             });
           }
         })

@@ -132,30 +132,27 @@ Page({
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });
     },(err)=>{
-      wx.showToast({
+      util.showShortToast({
         title: '图片上传失败',
         image: '../../../img/coup_status_fail.png',
-        icon: 'faild',
-        duration: 2000
+        icon: 'faild'
       })
     }).then((value)=>{
       wx.hideNavigationBarLoading();
     },(err)=>{
-      wx.showToast({
+      util.showShortToast({
         title: '图片上传失败',
         image: '../../../img/coup_status_fail.png',
-        icon: 'faild',
-        duration: 2000
+        icon: 'faild'
       })
     });
     
   },
   showError:function(str) {
-    wx.showToast({
+    util.showShortToast({
       title: str,
       image: '../../../img/coup_status_fail.png',
-      icon: 'faild',
-      duration: 2000
+      icon: 'faild'
     })
   },
 

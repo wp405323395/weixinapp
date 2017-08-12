@@ -52,6 +52,30 @@ function showTitleDialog(title, content) {
   })
 }
 
+function showToast(toastObj) {
+  wx.hideNavigationBarLoading();
+  wx.hideToast();
+  wx.showToast({
+    title: toastObj.title,
+    icon: toastObj.icon,
+    image: toastObj.image,
+    duration: toastObj.duration ?toastObj.duration:30000,
+    success: toastObj.success
+  });
+}
+
+function showShortToast(toastObj) {
+  wx.hideNavigationBarLoading();
+  wx.hideToast();
+  wx.showToast({
+    title: toastObj.title,
+    icon: toastObj.icon,
+    image: toastObj.image,
+    duration: toastObj.duration ? toastObj.duration : 2000,
+    success: toastObj.success
+  });
+}
+
 function getAuther(autherName) {
   wx.getSetting({
     success(res) {
@@ -82,16 +106,14 @@ function uploadimg(data, formData) {
     success = data.success ? data.success : 0,
     fail = data.fail ? data.fail : 0;
   if (i == 0) {
-    wx.hideToast();
-    wx.showToast({
+    this.showToast({
       title: "图片上传中...",
-      icon: "loading",
-      duration: 60000
+      icon: "loading"
     });
   }
 
   return new Promise((resolve, reject) => {
-    
+    let that = this;
     wx.uploadFile({
       url: data.url,
       filePath: data.path[i],
@@ -99,21 +121,17 @@ function uploadimg(data, formData) {
       formData: formData,
       success: (resp) => {
         success++;
-        wx.hideToast();
-        wx.showToast({
+        that.showToast({
           title: "成功上传(" + success + ")...",
-          icon: "loading",
-          duration: 60000
+          icon: "loading"
         });
         console.log("success:" + success);
         //这里可能有BUG，失败也会执行这里
       },
       fail: (res) => {
-        wx.hideToast();
-        wx.showToast({
+        that.showToast({
           title: "上传失败(" + i + ")...",
-          icon: "loading",
-          duration: 60000
+          icon: "loading"
         });
         reject(res);
         fail++;
@@ -126,13 +144,11 @@ function uploadimg(data, formData) {
           console.log('执行完毕');
           console.log('成功：' + success + " 失败：" + fail);
           wx.hideToast();
-          wx.showToast({
+          that.showShortToast({
             title: "成功上传(" + success + ")...",
             icon: "success",
-            duration: 2000,
             success:()=>{
-              resolve('success');
-              
+              resolve('success');  
             }
           });
           setTimeout(()=>{
@@ -163,5 +179,7 @@ module.exports = {
   formatDay: formatDay,
   showTitleDialog: showTitleDialog,
   getAuther: getAuther,
-  uploadimg: uploadimg
+  uploadimg: uploadimg,
+  showToast: showToast,
+  showShortToast: showShortToast
 }

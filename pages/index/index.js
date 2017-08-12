@@ -102,7 +102,7 @@ Page({
     var url = config.discoverUrl;
     var self = this;
     new Promise(function (resolve, reject) {
-      requestEngin.request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [] }, (success) => {
+      requestEngin.request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
         //success
         resolve(success.retData);
       }, (faild) => {

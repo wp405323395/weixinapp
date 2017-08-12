@@ -86,10 +86,9 @@ Page({
     let param = {};
     if (key == 'relaId') {
       new Promise((resolve, reject) => {
-        wx.showToast({
+        utils.showToast({
           title: "获取位置中...",
-          icon: "loading",
-          duration: 30000
+          icon: "loading"
         });
         wx.getLocation({
           type: 'wgs84',

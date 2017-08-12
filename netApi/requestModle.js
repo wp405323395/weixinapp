@@ -1,11 +1,9 @@
 const loginJs = require('./login.js');
 const util = require('../utils/util.js');
 var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
-  wx.showNavigationBarLoading();
-  wx.showToast({
+  util.showToast({
     title: "loading",
     icon: "loading",
-    duration: 30000
   });
   let user_token = wx.getStorageSync('user_token');
   let ua = wx.getStorageSync('user-agent');
@@ -42,13 +40,10 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
         response_code = responseData.retCode;
       } catch(e){
         requestFail('服务器错误的消息格式');
-        wx.hideNavigationBarLoading();
-        wx.hideToast();
-        wx.showToast({
+        util.showShortToast({
           title: '服务器错误的消息格式',
           image: '../../../img/coup_status_fail.png',
-          icon: 'faild',
-          duration: 2000
+          icon: 'faild'
         })
         return;
       }
@@ -66,12 +61,9 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
     },
     fail: function (res) { 
       console.log(res);
-      wx.hideNavigationBarLoading();
-      wx.hideToast();
-      wx.showToast({
+      util.showShortToast({
         title: "网络请求失败",
-        icon: "loading",
-        duration: 1500
+        icon: "loading"
       });
       requestFail(res);
     },
