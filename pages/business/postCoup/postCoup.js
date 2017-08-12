@@ -73,24 +73,27 @@ Page({
     })
   },
   submit:function(e){
-    if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage !=1) {
-      return ;
-    } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs!=3) {
-      return ;
-    } else if (this.data.subObj.couponName == undefined) {
-      return;
-    } else if (this.data.subObj.coupQuantity == 0){
-      return;
-    } else if (this.data.subObj.couponName == undefined){
-      return;
-    } else if (this.data.subObj.couponDescrip == undefined) {
-      return;
-    } else if (this.data.subObj.useCondition == undefined) {
-      return;
-    }
-
     this.data.subObj.coupQuantity = this.data.coupQuantity;
     this.data.subObj.deadline = this.data.deadline;
+    if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length !=1) {
+      this.showError('请选择优惠券图片');
+      return ;
+    } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs.length !=3) {
+      this.showError('店铺图片必须为三张');
+      return ;
+    } else if (!util.textIsNotNull(this.data.subObj.couponName)) {
+      this.showError('优惠券名称不能为空');
+      return;
+    } else if (this.data.subObj.coupQuantity == 0){
+      this.showError('优惠券数量不能为0');
+      return;
+    } else if (!util.textIsNotNull(this.data.subObj.couponDescrip)) {
+      this.showError('店优惠券描述不能为空');
+      return;
+    } else if (!util.textIsNotNull(this.data.subObj.useCondition)) {
+      this.showError('优惠券使用约束不能为空');
+      return;
+    }
     console.log(this.data.subObj);
     let param = {};
     let formData = {};
@@ -119,8 +122,11 @@ Page({
         }, { id: valueId, type: '11' });
       }
     }, (err) => {
-      util.showTitleDialog('审核提交操作失败', '');
+     console.log('请求失败');
     }).then((value)=>{
+      if(value == undefined) {
+        return null;
+      }
       console.log(value);
       return util.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
@@ -144,6 +150,14 @@ Page({
       })
     });
     
+  },
+  showError:function(str) {
+    wx.showToast({
+      title: str,
+      image: '../../../img/coup_status_fail.png',
+      icon: 'faild',
+      duration: 2000
+    })
   },
 
   /**
