@@ -13,10 +13,7 @@ function my_login() {
   });
 }
 function clientLogin(successFun,failedFun) {
-  util.showToast({
-    title: "loading",
-    icon: "loading"
-  });
+  util.showToast();
   wx.login({
     success: function (res) {
       if (res.code) {

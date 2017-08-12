@@ -1,10 +1,7 @@
 const loginJs = require('./login.js');
 const util = require('../utils/util.js');
 var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
-  util.showToast({
-    title: "loading",
-    icon: "loading",
-  });
+  util.showToast();
   let user_token = wx.getStorageSync('user_token');
   let ua = wx.getStorageSync('user-agent');
   if (!util.textIsNotNull(ua)) {
