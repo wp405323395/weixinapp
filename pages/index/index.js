@@ -104,7 +104,7 @@ Page({
     new Promise(function (resolve, reject) {
       requestEngin.request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [] }, (success) => {
         //success
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
         //faild
         reject(faild);

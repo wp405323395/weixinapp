@@ -45,7 +45,7 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
       } else {
         wx.hideNavigationBarLoading();
         wx.hideToast();
-        requestSuccess(res);
+        requestSuccess(responseData);
       }
     },
     fail: function (res) { 

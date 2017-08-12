@@ -79,7 +79,7 @@ Page({
     var that = this;
     new Promise((resolve,reject)=>{
       requestEngin.request(config.mycoup, { type: typeId }, { callBy: that, method: that.loadData, params: [typeId] }, (success) => {
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
         reject(faild);
       })

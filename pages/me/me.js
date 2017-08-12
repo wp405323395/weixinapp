@@ -59,7 +59,7 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.queMercSettled, {}, { callBy: that, method: that.validateBusiness, params: [] }, (success) => {
-        resolve(JSON.parse(success.data));
+        resolve(success);
       }, (faild) => {
         reject(faild);
       });

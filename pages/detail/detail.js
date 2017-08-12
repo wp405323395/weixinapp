@@ -65,7 +65,7 @@ Page({
     }
     new Promise((resolve, reject) => {
       requestEngin.request(config.loadProduct, param, { callBy: that, method: that.loadProduct, params: [] }, (success) => {
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
       });
     }).then((value) => {
@@ -167,7 +167,7 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.receiveCoup, receiveParam, { callBy: that, method: that.receiveCoup, params: [] }, (success) => {
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
       });
     }).then(value => {
@@ -185,11 +185,11 @@ Page({
     var that = this;
     return new Promise((resolve, reject) => {
       requestEngin.request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
-        if (!JSON.parse(success.data).retData) {
-          resolve(JSON.parse(success.data).retMsg);
+        if (!success.retData) {
+          resolve(success.retMsg);
           return;
         }
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
       });
     })
@@ -227,11 +227,11 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.deleteCoup, deleteCoupParam, { callBy: that, method: that.deleteCoup, params: [] }, (success) => {
-        if (!JSON.parse(success.data).retData) {
-          resolve(JSON.parse(success.data).retMsg);
+        if (!success.retData) {
+          resolve(success.retMsg);
           return;
         }
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
       });
     }).then(value=>{

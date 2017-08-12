@@ -162,7 +162,7 @@ Page({
     let that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
-        resolve(JSON.parse(success.data));
+        resolve(success);
       }, (faild) => {
         reject(faild);
       });

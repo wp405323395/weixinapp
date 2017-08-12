@@ -42,7 +42,7 @@ Page({
     let that = this;
     new Promise((resolve, reject) => {
       requestEngin.request(config.loadAllCoup, null, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
-        resolve(JSON.parse(success.data).retData);
+        resolve(success.retData);
       }, (faild) => {
         console.log(faild);
       });
