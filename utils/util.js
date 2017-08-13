@@ -52,7 +52,7 @@ function showTitleDialog(title, content) {
   })
 }
 
-function showToast(toastObj = { title: '加载中', icon:'loading', duration: 30000 }) {
+function showToast(toastObj = { title: '加载中', icon:'loading', duration: 20000 }) {
   wx.hideNavigationBarLoading();
   wx.hideToast();
   wx.showToast({
