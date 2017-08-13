@@ -2,6 +2,7 @@
 var util = require('../../../utils/util.js');
 var config = require('../../../config.js');
 var requestEngin = require('../../../netApi/requestModle.js');
+var uploadFileEngin = require('../../../netApi/uploadFiles.js');
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 var longClick;
@@ -112,7 +113,7 @@ Page({
     }).then((value) => {
       if (value.retCode == '0') {
         valueId = value.id;
-        return util.uploadimg({
+        return uploadFileEngin.uploadimg({
           url: config.uploadBusinessPic,//这里是你图片上传的接口
           path: this.data.subObj.coupIconImage//这里是选取的图片的地址数组
         }, { id: valueId, type: '11' });
@@ -122,7 +123,7 @@ Page({
       if(value == undefined) {
         return null;
       }
-      return util.uploadimg({
+      return uploadFileEngin.uploadimg({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });

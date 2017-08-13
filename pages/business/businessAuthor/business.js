@@ -2,6 +2,7 @@
 var util = require('../../../utils/util.js')
 var config = require('../../../config.js');
 var requestEngin = require('../../../netApi/requestModle.js');
+var uploadFileEngin = require('../../../netApi/uploadFiles.js');
 var formatLocation = util.formatLocation
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
@@ -169,7 +170,7 @@ Page({
     }).then((value) => {
       if (value.retCode == '0') {
         
-        return util.uploadimg({
+        return uploadFileEngin.uploadimg({
           url: config.uploadBusinessPic,
           path: subObj.storeImgs
         }, { id: value.id, type: 0 });
