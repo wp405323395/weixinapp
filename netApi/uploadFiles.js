@@ -53,20 +53,20 @@ function uploadimg(data, formData) {
       success: (resp) => {
         success++;
         util.showToast({
-          title: "成功上传(" + success + ")...",
+          title: `成功上传(${success})...`,
           icon: "loading"
         });
-        console.log("success:" + success);
+        console.log(`success:${success}`);
         //这里可能有BUG，失败也会执行这里
       },
       fail: (res) => {
         util.showToast({
-          title: "上传失败(" + i + ")...",
+          title: `上传失败(${i})...`,
           icon: "loading"
         });
         reject(res);
         fail++;
-        console.log('fail:' + i + "fail:" + fail);
+        console.log(`fail:${i}  fail:${fail}`);
         console.log('失败原因是~');
         console.log(res);
       },
@@ -74,10 +74,10 @@ function uploadimg(data, formData) {
         i++;
         if (i == data.path.length) {  //当图片传完时，停止调用     
           console.log('执行完毕');
-          console.log('成功：' + success + " 失败：" + fail);
+          console.log(`成功：${success} 失败：${fail}`);
           wx.hideToast();
           util.showShortToast({
-            title: "成功上传(" + success + ")...",
+            title: `成功上传(${success})...`,
             icon: "success",
             success: () => {
               resolve('success');
