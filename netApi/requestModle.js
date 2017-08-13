@@ -1,28 +1,9 @@
+import { Header } from './Header.js'    //引入类
 const loginJs = require('./login.js');
 const util = require('../utils/util.js');
 var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
   util.showToast();
-  let user_token = wx.getStorageSync('user_token');
-  let ua = wx.getStorageSync('user-agent');
-  if (!util.textIsNotNull(ua)) {
-    wx.getSystemInfo({
-      success: function (res) {
-        ua = {
-         model : res.model,
-         screenWidth : res.screenWidth,
-         screenHeight : res.screenHeight,
-         system : res.system,
-         version : res.version,
-         platform:'MCWX'
-        }
-      }
-    });
-  }
-  let header = {
-    'Content-Type': 'application/json',
-    'userAgent': ua,
-    'Cookie': user_token
-  };
+  var header = new Header('application/json').getHeader();
   console.log('>>>>>>>>>>----request---->>>>>>>>>>');
   console.log('链接~');
   console.log(url);

@@ -1,6 +1,6 @@
 var util = require('../utils/util');
+import { Header } from './Header.js'    //引入类
 
-let header;
 //多张图片上传
 function uploadimg(data, formData) {
   var that = this,
@@ -13,27 +13,7 @@ function uploadimg(data, formData) {
     console.log('上传图片请求参数~');
     console.log(formData);
     console.log('-------------------------------------');
-    let user_token = wx.getStorageSync('user_token');
-    let ua = wx.getStorageSync('user-agent');
-    if (!util.textIsNotNull(ua)) {
-      wx.getSystemInfo({
-        success: function (res) {
-          ua = {
-            model: res.model,
-            screenWidth: res.screenWidth,
-            screenHeight: res.screenHeight,
-            system: res.system,
-            version: res.version,
-            platform: 'MCWX'
-          }
-        }
-      });
-    }
-    header = {
-      'Content-Type': 'application/json',
-      'userAgent': ua,
-      'Cookie': user_token
-    };
+    let header = new Header('application/json').getHeader();
     console.log('请求头~');
     console.log(header);
     util.showToast({
@@ -43,7 +23,7 @@ function uploadimg(data, formData) {
   }
 
   return new Promise((resolve, reject) => {
-
+    let header = new Header('application/json').getHeader();
     wx.uploadFile({
       url: data.url,
       filePath: data.path[i],

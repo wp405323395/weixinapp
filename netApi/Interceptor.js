@@ -1,0 +1,8 @@
+class Interceptor{
+  onRequest() {
+
+  }
+  onResponse(){
+
+  }
+}
