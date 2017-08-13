@@ -19,8 +19,7 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
       for (let interceptor of interceptors) {
         interceptor.onResponse(url, header, data, res);
       }
-      
-      
+  
       let responseData;
       let response_code;
       try {
@@ -65,11 +64,6 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
     },
   })
 }
-
-
-
-
-
 
 module.exports = {
   request: request

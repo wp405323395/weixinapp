@@ -72,6 +72,10 @@ Page({
         wx.navigateTo({
           url: '../business/businessChecking/businessChecking',
         })
+      } else {
+        wx.navigateTo({
+          url: '../business/index/index',
+        })
       }
     },
     err=>{});
