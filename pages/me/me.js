@@ -1,6 +1,6 @@
 // me.js
 //获取应用实例
-var requestEngin = require('../../netApi/requestModle.js');
+import { RequestEngine } from '../../netApi/requestEngine.js';
 var config = require('../../config.js');
 var app = getApp()
 Page({
@@ -58,7 +58,7 @@ Page({
   validateBusiness:function() {
     var that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.queMercSettled, {}, { callBy: that, method: that.validateBusiness, params: [] }, (success) => {
+      new RequestEngine().request(config.queMercSettled, {}, { callBy: that, method: that.validateBusiness, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);

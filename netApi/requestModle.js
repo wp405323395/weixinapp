@@ -1,17 +1,14 @@
 import { Header } from './Header.js'    //引入类
 const loginJs = require('./login.js');
 const util = require('../utils/util.js');
-var request = function (url, data,reqMethod, requestSuccess, requestFail, requestComplete) {
+
+var request = function (url, data, reqMethod, requestSuccess, requestFail, requestComplete, interceptors) {
   util.showToast();
   var header = new Header('application/json').getHeader();
-  console.log('>>>>>>>>>>----request---->>>>>>>>>>');
-  console.log('链接~');
-  console.log(url);
-  console.log('请求头~');
-  console.log(header);
-  console.log('请求体~');
-  console.log(data);
-  console.log('-----------------------------------');
+  for(let interceptor of interceptors){
+    interceptor.onRequest(url, header, data);
+  }
+  
   wx.request({
     url: url,
     data: data,
@@ -19,15 +16,17 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
     method: 'POST',
     dataType: 'txt',
     success: function (res) {
-      console.log('返回值~');
-      console.log(res);
-      console.log('<<<<<<<<<<----response----<<<<<<<<<<');
-      let responseData ;
+      for (let interceptor of interceptors) {
+        interceptor.onResponse(url, header, data, res);
+      }
+      
+      
+      let responseData;
       let response_code;
-      try{
+      try {
         responseData = JSON.parse(res.data);
         response_code = responseData.retCode;
-      } catch(e){
+      } catch (e) {
         requestFail('服务器错误的消息格式');
         util.showShortToast({
           title: '服务器错误的消息格式',
@@ -48,25 +47,29 @@ var request = function (url, data,reqMethod, requestSuccess, requestFail, reques
         requestSuccess(responseData);
       }
     },
-    fail: function (res) { 
-      console.log('返回值~');
-      console.log(res);
-      console.log('<<<<<<<<<<----response----<<<<<<<<<<');
+    fail: function (res) {
+      for (let interceptor of interceptors) {
+        interceptor.onResponse(url, header, data, res);
+      }
       util.showShortToast({
         title: "网络请求失败",
         icon: "loading"
       });
       requestFail(res);
     },
-    complete: function (res) { 
-      // wx.hideToast();
+    complete: function (res) {
       wx.hideNavigationBarLoading();
-       if (requestComplete != undefined) {
-         requestComplete(res);
-       }
+      if (requestComplete != undefined) {
+        requestComplete(res);
+      }
     },
   })
 }
+
+
+
+
+
 
 module.exports = {
   request: request

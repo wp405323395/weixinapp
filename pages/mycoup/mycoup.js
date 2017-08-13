@@ -1,6 +1,6 @@
 // me.js
 var da = require('../../data/data.js').data;
-var requestEngin = require('../../netApi/requestModle.js');
+import { RequestEngine } from '../../netApi/requestEngine.js'; 
 var config = require('../../config.js');
 
 Page({
@@ -77,7 +77,7 @@ Page({
   loadData: function (typeId) {
     var that = this;
     new Promise((resolve,reject)=>{
-      requestEngin.request(config.mycoup, { type: typeId }, { callBy: that, method: that.loadData, params: [typeId] }, (success) => {
+      new RequestEngine().request(config.mycoup, { type: typeId }, { callBy: that, method: that.loadData, params: [typeId] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
         reject(faild);

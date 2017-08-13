@@ -1,6 +1,6 @@
 // storeDetail.js
 var config = require('../../../config.js');
-var requestEngin = require('../../../netApi/requestModle.js');
+import { RequestEngine } from '../../../netApi/requestEngine.js';
 Page({
   /**
    * 页面的初始数据
@@ -39,7 +39,7 @@ Page({
     var param = { id: this.data.storeId };
     var that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.queMercDetail, param, { callBy: that, method: that.loadStoreDetail, params: [] }, (success) => {
+      new RequestEngine().request(config.queMercDetail, param, { callBy: that, method: that.loadStoreDetail, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
       });

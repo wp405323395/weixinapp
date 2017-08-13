@@ -1,7 +1,7 @@
 // business.js
 var util = require('../../../utils/util.js')
 var config = require('../../../config.js');
-var requestEngin = require('../../../netApi/requestModle.js');
+import { RequestEngine } from '../../../netApi/requestEngine.js';  
 var uploadFileEngin = require('../../../netApi/uploadFiles.js');
 var formatLocation = util.formatLocation
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
@@ -162,7 +162,7 @@ Page({
     param.formData = JSON.stringify(subObj);
     let that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
+      new RequestEngine().request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);

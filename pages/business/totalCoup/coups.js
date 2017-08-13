@@ -1,6 +1,6 @@
 // coups.js
 var config = require('../../../config.js');
-var requestEngin = require('../../../netApi/requestModle.js');
+import { RequestEngine } from '../../../netApi/requestEngine.js';
 var coups = [{
   id: 100,
   storeName: '小店',
@@ -41,7 +41,7 @@ Page({
   loadAllCoup:function(e){
     let that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.loadAllCoup, null, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
+      new RequestEngine().request(config.loadAllCoup, null, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
 

@@ -1,6 +1,6 @@
 // detail.js
 var config = require('../../config.js');
-var requestEngin = require('../../netApi/requestModle.js');
+import { RequestEngine } from '../../netApi/requestEngine.js';
 var utils = require('../../utils/util.js');
 var product
 var autoflag;
@@ -64,7 +64,7 @@ Page({
       param.relaId = value;
     }
     new Promise((resolve, reject) => {
-      requestEngin.request(config.loadProduct, param, { callBy: that, method: that.loadProduct, params: [] }, (success) => {
+      new RequestEngine().request(config.loadProduct, param, { callBy: that, method: that.loadProduct, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
       });
@@ -165,7 +165,7 @@ Page({
   receiveCoup: function () {
     var that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.receiveCoup, receiveParam, { callBy: that, method: that.receiveCoup, params: [] }, (success) => {
+      new RequestEngine().request(config.receiveCoup, receiveParam, { callBy: that, method: that.receiveCoup, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
       });
@@ -183,7 +183,7 @@ Page({
   useCoup: function () {
     var that = this;
     return new Promise((resolve, reject) => {
-      requestEngin.request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
+      new RequestEngine().request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
         if (!success.retData) {
           resolve(success.retMsg);
           return;
@@ -225,7 +225,7 @@ Page({
     deleteCoupParam.relaId = val;
     var that = this;
     new Promise((resolve, reject) => {
-      requestEngin.request(config.deleteCoup, deleteCoupParam, { callBy: that, method: that.deleteCoup, params: [] }, (success) => {
+      new RequestEngine().request(config.deleteCoup, deleteCoupParam, { callBy: that, method: that.deleteCoup, params: [] }, (success) => {
         if (!success.retData) {
           resolve(success.retMsg);
           return;

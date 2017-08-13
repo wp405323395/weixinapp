@@ -1,7 +1,7 @@
 // postCoup.js
 var util = require('../../../utils/util.js');
 var config = require('../../../config.js');
-var requestEngin = require('../../../netApi/requestModle.js');
+import { RequestEngine } from '../../../netApi/requestEngine.js';
 var uploadFileEngin = require('../../../netApi/uploadFiles.js');
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
@@ -105,7 +105,7 @@ Page({
     let that = this;
     
     new Promise((resolve, reject) => {
-      requestEngin.request(config.publishMercCoup, { formData: JSON.stringify(exchangeParam)}, { callBy: that, method: that.submit, params: [] }, (success) => {
+      new RequestEngine().request(config.publishMercCoup, { formData: JSON.stringify(exchangeParam)}, { callBy: that, method: that.submit, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);

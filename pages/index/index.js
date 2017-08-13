@@ -1,7 +1,6 @@
 var bannerHeight;
 var config = require('../../config.js');
-var requestEngin = require('../../netApi/requestModle.js');
-
+import { RequestEngine } from '../../netApi/requestEngine.js' ;   //引入类
 Page({
   data: {
     imgUrls: [
@@ -102,7 +101,7 @@ Page({
     var url = config.discoverUrl;
     var self = this;
     new Promise(function (resolve, reject) {
-      requestEngin.request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
+      new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
         //success
         resolve(success.retData);
       }, (faild) => {
