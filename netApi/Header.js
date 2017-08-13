@@ -17,6 +17,10 @@ class Header {
             version: res.version,
             platform: 'MCWX'
           }
+          wx.setStorage({
+            key: 'user-agent',
+            data: ua,
+          })
         }
       });
     }
