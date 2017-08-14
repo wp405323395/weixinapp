@@ -24,6 +24,22 @@ class LogInterceptor extends Interceptor{
     console.log(totalTime);
     console.log('<<<<<<<<<<----response----<<<<<<<<<<');
   }
+
+  onServiceError(url, header, data, res) {
+    console.log('服务器错误，返回值~');
+    console.log(res);
+    console.log('<<<<<<<<<<----response----<<<<<<<<<<');
+  }
+  onAutherErrorResponse(url, header, data, res) {
+    console.log('Auther错误，返回值~');
+    console.log(res);
+    console.log('<<<<<<<<<<----response----<<<<<<<<<<');
+  }
+  onFaildResponse(url, header, data, res) {
+    console.log('请求错误，返回值~');
+    console.log(res);
+    console.log('<<<<<<<<<<----response----<<<<<<<<<<');
+  }
 }
 
 export { LogInterceptor }

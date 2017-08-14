@@ -1,6 +1,7 @@
 const requestModle = require('./requestModle.js');
 import { Interceptor } from './interceptor/Interceptor.js'    //引入类
 import { LogInterceptor } from './interceptor/LogInterceptor.js'    //引入类
+import { RequestStatusInterceptor } from './interceptor/RequestStatusInterceptor.js'
 class RequestEngine {
   constructor() {
     this.interceptors = []
@@ -19,7 +20,9 @@ class RequestEngine {
   request(url, data, reqMethod, requestSuccess, requestFail, requestComplete) {
     //此处添加拦截器。
     let logInterceptor = new LogInterceptor();
+    let status = new RequestStatusInterceptor();
     this.addInterceptor(logInterceptor);
+    this.addInterceptor(status);
      requestModle.request(url, data, reqMethod, requestSuccess, requestFail, requestComplete, this.interceptors);
   }
 
