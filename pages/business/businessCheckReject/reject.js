@@ -1,18 +1,39 @@
 // reject.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    reject:{
+      reason:'店铺信息不能通过审核'
+    }
+  },
+  onCheckAgain:function(e){
+    wx.navigateTo({
+      url: '../businessAuthor/business',
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.loadData();
+  },
+  loadData:function(){
+    let that  = this;
+    wx.getStorage({
+      key: 'rejectReason',
+      success: function(res) {
+        that.setData({
+          reject: {
+            reason: res.data
+          }
+        });
+      },
+    })
   },
 
   /**

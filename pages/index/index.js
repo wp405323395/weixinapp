@@ -70,7 +70,7 @@ Page({
     setTimeout(()=>{
       this.loadData(0);
     },500);
-    
+    this.refreshSecond();
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;
@@ -100,6 +100,34 @@ Page({
         break;
     }
     this.loadData(typeId);
+    
+  },
+  refreshSecond:function(){
+    setTimeout(() => {
+      let products = this.data.page0.products;
+      if(products != null) {
+        for (let product of products) {
+          if (isNaN(product.timeLeft)) {
+            product.timeLeft = parseInt(product.timeLeft);
+          }
+          product.timeLeft = product.timeLeft-1000;
+          product.timeLeftSecond = this.formatDuring(product.timeLeft);
+        }
+        this.setData({
+          page0: this.data.page0
+        });
+      }
+      
+      this.refreshSecond();
+    },1000);
+  },
+  formatDuring:function(mss) {
+    let days = parseInt(mss / (1000 * 60 * 60 * 24));
+    let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = parseInt((mss % (1000 * 60)) / 1000);
+    let time = (days*24 + hours) + ":" + minutes + ":" + seconds;
+    return time;
   },
 
   loadData: function (typeId){

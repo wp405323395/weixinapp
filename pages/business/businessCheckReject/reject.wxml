@@ -1,2 +1,19 @@
 <!--reject.wxml-->
-<text>reject.wxml</text>
+<view class="container">
+  <view class="wrap">
+    <image class="reject_img" src="../../../img/reject.png" mode="widthFix"> </image>
+    <view class="check_again">
+      <text class="lable">当前认证未通过审核，</text>
+      <!-- view class="item my_coup" id="my_coup" hover-class="clicked_style" bindtap="onClick" -->
+      <view class="lable check" hover-class="hovclass" bindtap="onCheckAgain">
+        <text>请重新认证</text>
+      </view>
+      
+    </view>
+    <view class="reject_reason">
+      <text class="reject_lable">审核未通过原因：</text>
+      <text class="reject_reason_text">{{reject.reason}}</text>
+    </view>
+  </view>
+  
+</view>

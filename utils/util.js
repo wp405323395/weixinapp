@@ -52,15 +52,15 @@ function showTitleDialog(title, content) {
   })
 }
 
-function showToast(toastObj = { title: '加载中', icon:'loading', duration: 20000 }) {
+function showToast({ title = '加载中', icon = 'loading', image, duration = 20000 ,success}={}) {
   wx.hideNavigationBarLoading();
   wx.hideToast();
   wx.showToast({
-    title: toastObj.title,
-    icon: toastObj.icon,
-    image: toastObj.image,
-    duration: toastObj.duration ?toastObj.duration:30000,
-    success: toastObj.success
+    title: title,
+    icon: icon,
+    image: image,
+    duration: duration ?duration:30000,
+    success: success
   });
 }
 
