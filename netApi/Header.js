@@ -5,6 +5,16 @@ class Header {
   }
 
   getHeader() {
+    let ua = this._getUa();
+    let user_token = wx.getStorageSync('user_token');
+    return {
+      'Content-Type': this.contentType,
+      'userAgent': ua,
+      'Cookie': user_token
+    };
+  }
+
+  _getUa(){
     let ua = wx.getStorageSync('user-agent');
     if (!util.textIsNotNull(ua)) {
       wx.getSystemInfo({
@@ -24,12 +34,7 @@ class Header {
         }
       });
     }
-    let user_token = wx.getStorageSync('user_token');
-    return {
-      'Content-Type': this.contentType,
-      'userAgent': ua,
-      'Cookie': user_token
-    };
+    return ua;
   }
 }
 
