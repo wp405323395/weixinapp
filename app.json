@@ -19,7 +19,8 @@
     "pages/business/totalCoup/coups",
     "pages/business/businessChecking/businessChecking",
     "pages/business/notice/notice",
-    "pages/business/coupReview/coupReview"
+    "pages/business/coupReview/coupReview",
+    "pages/business/businessCheckReject/reject"
   ],
   "window": {
     "navigationBarTextStyle": "black",

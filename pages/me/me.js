@@ -72,7 +72,11 @@ Page({
         wx.navigateTo({
           url: '../business/businessChecking/businessChecking',
         })
-      } else {
+      } else if (value.retData.storeStatus == '2'){
+        wx.navigateTo({
+          url: '../business/businessCheckReject/reject',
+        })
+      } else if(value.retData.storeStatus == '1') {
         wx.navigateTo({
           url: '../business/index/index',
         })
