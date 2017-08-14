@@ -45,7 +45,10 @@ Page({
     });
     //'id-','relaId-'
     idMap = options.id.split('-');
-    this.loadProduct();
+    setTimeout(()=>{
+      this.loadProduct();
+    },500);
+    
   },
   onPhoneCall: function (e) {
     let phoneNumber = e.currentTarget.dataset.phonenumber;

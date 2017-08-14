@@ -30,6 +30,10 @@ Page({
     hasData2:true,
     hasData3:true
   },
+  onPullDownRefresh: function(){
+    this.loadData(this.data.currentTab);
+    wx.stopPullDownRefresh()
+  },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
     wx.setNavigationBarTitle({
@@ -63,7 +67,10 @@ Page({
         });
       }
     });
-    this.loadData(0);
+    setTimeout(()=>{
+      this.loadData(0);
+    },500);
+    
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;

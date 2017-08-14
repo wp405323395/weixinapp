@@ -56,7 +56,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadData(0);
+    setTimeout(()=>{
+      this.loadData(0);
+    },500);
+    
   },
   onShow:function(options) {
     var that = this;

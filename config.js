@@ -6,7 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 //var host = "192.168.1.134"
-var host = '39.108.84.154';
+var host = 'www.maywidehb.com';
 var isHttps = true;
 var schema = isHttps ? 'https':'http';
 var config = {
