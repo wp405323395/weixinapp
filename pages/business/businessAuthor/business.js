@@ -118,6 +118,7 @@ Page({
     this.setData({
       imageList: this.data.imageList
     })
+    subObj.storeImgs = this.data.imageList;
   },
   on_addPic_wrap_click: function (e) {
     if (longClick2) {
@@ -162,18 +163,24 @@ Page({
     })
   },
   submit: function (e) {
-    if (!util.textIsNotNull(subObj.storeName)){
+    if (!subObj.storeImgs || subObj.storeImgs.length != 3) {
+      this.showError('店铺图片必须为三张');
+      return;
+    } else if (!util.textIsNotNull(subObj.storeName)){
       this.showError('店名不能为空');
+      return ;
     } else if (!util.textIsNotNull(subObj.addr)) {
       this.showError('店铺地址不能为空');
+      return;
     } else if (!util.textIsNotNull(subObj.phone)) {
       this.showError('电话不能为空');
+      return;
     } else if (!util.textIsNotNull(subObj.storePersonName)) {
       this.showError('店铺负责人不能为空');
-    } else if (!util.textIsNotNull(subObj.storeTypef)){
+      return;
+    } else if (!util.textIsNotNull(subObj.storeType)){
       this.showError('店铺类型不能为空');
-    } else if (subObj.storeImgs || subObj.storeImgs.length != 3){
-      this.showError('店铺图片必须为三张');
+      return;
     }
     if (!this.data.clickAble) {
       return ;
@@ -182,11 +189,11 @@ Page({
     param.formData = JSON.stringify(subObj);
     let that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
-        resolve(success);
-      }, (faild) => {
-        reject(faild);
-      });
+      // new RequestEngine().request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
+      //   resolve(success);
+      // }, (faild) => {
+      //   reject(faild);
+      // });
     }).then((value) => {
       if (value.retCode == '0') {
         
