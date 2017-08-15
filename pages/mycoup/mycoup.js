@@ -86,6 +86,10 @@ Page({
         reject(faild);
       })
     }).then((value)=>{
+      if(value.length > 40) {
+        let length = value.length;
+        value.splice(40, length);
+      }
       switch (typeId) {
         case 0:
           this.data.data0 = value;
