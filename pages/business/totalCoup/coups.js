@@ -29,7 +29,7 @@ Page({
    */
   data: {
     coups: null,
-    noData: true
+    hasData: true
   },
 
   /**
@@ -50,6 +50,12 @@ Page({
 
       });
     }).then((value) => {
+       if(value == null || value == undefined || value.length == 0) {
+         this.setData({
+           hasData:false
+         });
+         return ;
+       }
         let coups = new Array;
         for (var coup of value) {
           
