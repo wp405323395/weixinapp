@@ -30,9 +30,7 @@ Page({
     var page = decodeURIComponent(options.page);
     console.log('scene::' + scene);
     console.log('page::' + page);
-    wx.setNavigationBarTitle({
-      title: scene
-    })
+
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

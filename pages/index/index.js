@@ -36,9 +36,6 @@ Page({
   },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
-    wx.setNavigationBarTitle({
-      title: scene
-    })
     console.log("ww----"+scene);
     //scene = '../redPackage/red';
     if (scene != undefined && scene != 'undefined' && scene != '') {
@@ -70,7 +67,7 @@ Page({
     setTimeout(()=>{
       this.loadData(0);
     },500);
-    this.refreshSecond();
+    //this.refreshSecond();
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;
@@ -136,14 +133,18 @@ Page({
     var url = config.discoverUrl;
     var self = this;
     new Promise(function (resolve, reject) {
+      console.log("*******iphone 66666");
       new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
         //success
+        console.log("**********resolve");
         resolve(success.retData);
       }, (faild) => {
         //faild
+        console.log("**********reject");
         reject(faild);
       });
     }).then((value)=>{
+      console.log("**************iphone 66666");
       if (value.length > 40) {
         let length = value.length;
         value.splice(40, length);
@@ -215,7 +216,9 @@ Page({
           break;
       }
     },
-    (err)=>{});
+    (err)=>{
+      console.log("*********iphone eeeee");
+    });
     
 
   }
