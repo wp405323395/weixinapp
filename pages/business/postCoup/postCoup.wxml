@@ -49,7 +49,7 @@
 
   <view class="store_name">
     <view class="name_lable">
-      <text class="img_red_point">*</text> <text>上传优惠产品照片</text>
+      <text class="img_red_point">*</text> <text>上传优惠券介绍图片</text>
     </view>
     <view class="image_upload">
       <!-- -------------------------------------------------------------------- -->
@@ -84,7 +84,7 @@
 
   <view class="store_name">
     <view class="name_lable">
-      <text class="img_red_point">*</text> <text>已有店铺及产品照</text>
+      <text class="img_red_point">*</text> <text>上传优惠券详情图片</text>
     </view>
     <view class="image_upload">
       <!-- -------------------------------------------------------------------- -->
