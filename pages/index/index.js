@@ -67,7 +67,7 @@ Page({
     setTimeout(()=>{
       this.loadData(0);
     },500);
-    //this.refreshSecond();
+    this.refreshSecond();
   }, 
   navbarTap: function (e) {
     var typeId = e.currentTarget.dataset.idx;

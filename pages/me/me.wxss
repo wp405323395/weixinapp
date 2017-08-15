@@ -69,3 +69,6 @@ height:30rpx;
 .clicked_style{
   background: #d4d4d4;
 }
+#my_store{
+  margin-top: 1rpx;
+}

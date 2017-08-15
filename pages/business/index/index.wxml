@@ -9,11 +9,11 @@
     <text>已发布优惠券</text>
     <image class="go_in_style" src="../../../img/go_in.png" mode="widthFix"/>
   </view>
-  <view class="item" hover-class="clicked_style" bindtap="onNoticeClick">
+  <!-- <view class="item" hover-class="clicked_style" bindtap="onNoticeClick">
     <view>
       <text>通知</text>
       <text class="red_point_notice"></text>
     </view>
     <image class="go_in_style" src="../../../img/go_in.png" mode="widthFix"/>
-  </view>
+  </view> -->
 </view>

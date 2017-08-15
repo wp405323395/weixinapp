@@ -13,20 +13,20 @@
     <image src="../../img/go_in.png" class="left_btn"></image>
   </view>
 
-  <view class="item my_red_package" id="my_red_package" hover-class="clicked_style" bindtap="onClick">
+  <!-- <view class="item my_red_package" id="my_red_package" hover-class="clicked_style" bindtap="onClick">
     <view class="title">
       <image mode="widthFix" src="../../img/my_red_package.png" class="title_icon"/>
       <text class="title_text">我的红包</text>
     </view>
     <image src="../../img/go_in.png" class="left_btn" ></image>
-  </view>
-  <view class="item my_order" id="my_order" hover-class="clicked_style" bindtap="onClick">
+  </view> -->
+  <!-- <view class="item my_order" id="my_order" hover-class="clicked_style" bindtap="onClick">
       <view class="title">
       <image mode="widthFix" src="../../img/my_order.png" class="title_icon"/>
       <text class="title_text">我的订单</text>
     </view>
     <image src="../../img/go_in.png" class="left_btn" ></image>
-  </view>
+  </view> -->
   <view class="item" id="my_store" hover-class="clicked_style" bindtap="onClick">
       <view class="title">
       <image mode="widthFix" src="../../img/my_store.png" class="title_icon"/>
@@ -36,11 +36,11 @@
   </view>
   <!-- 发布优惠券   -->
 
-    <view class="sendCoup" data-id="2" bindtap="onTestClick">
+    <!-- <view class="sendCoup" data-id="2" bindtap="onTestClick">
       <text>点击广电优惠券入口</text>
     </view>
     <view class="sendCoup" data-id="3" bindtap="onTestClick">
       <text>抢红包</text>
-    </view>
+    </view> -->
   
 </view>
