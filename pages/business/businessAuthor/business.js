@@ -154,7 +154,27 @@ Page({
     let storIntro = e.detail.value;
     subObj.storeIntro = storIntro;
   },
+  showError: function (str) {
+    util.showShortToast({
+      title: str,
+      image: '../../../img/coup_status_fail.png',
+      icon: 'faild'
+    })
+  },
   submit: function (e) {
+    if (!util.textIsNotNull(subObj.storeName)){
+      this.showError('店名不能为空');
+    } else if (!util.textIsNotNull(subObj.addr)) {
+      this.showError('店铺地址不能为空');
+    } else if (!util.textIsNotNull(subObj.phone)) {
+      this.showError('电话不能为空');
+    } else if (!util.textIsNotNull(subObj.storePersonName)) {
+      this.showError('店铺负责人不能为空');
+    } else if (!util.textIsNotNull(subObj.storeTypef)){
+      this.showError('店铺类型不能为空');
+    } else if (subObj.storeImgs || subObj.storeImgs.length != 3){
+      this.showError('店铺图片必须为三张');
+    }
     if (!this.data.clickAble) {
       return ;
     }

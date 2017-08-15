@@ -18,7 +18,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let that = this;
+    wx.getStorage({
+      key: 'checkingStore',
+      success: function(res) {
+        that.setData({
+          businessData:{
+            storeName: res.data.storeName,
+            addr: res.data.addr,
+            connectPerson: res.data.storePersonName,
+            phoneNum: res.data.phone
+          }
+        });
+      },
+    })
   },
 
   /**

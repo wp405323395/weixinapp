@@ -301,9 +301,6 @@ Page({
     })
   },
 
-
-
-
   chooseImage2: function () {
     var that = this
     if (this.data.imageList2.length - 1 >= this.data.countIndex2) {

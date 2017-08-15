@@ -69,6 +69,7 @@ Page({
           url: '../business/businessAuthor/business',
         })
       } else if (value.retData.storeStatus == '0') {
+        wx.setStorageSync('checkingStore', value.retData);
         wx.navigateTo({
           url: '../business/businessChecking/businessChecking',
         })
