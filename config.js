@@ -8,10 +8,12 @@
 //var host = "192.168.1.100"
 var host = 'www.maywidehb.com';
 var isHttps = true;
+var isDebug = true;
 var schema = isHttps ? 'https':'http';
 var config = {
     // 下面的地址配合云端 Server 工作
     host,
+    isDebug,
     srcUrl: `${schema}://${host}/`,
     // 登录地址，用于建立会话
     loginUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!login`,
