@@ -20,6 +20,16 @@
     </view>
     <view style="width:100%;height:1px;background:#eeeeee"></view>
     <view class="introduce_item ">
+      <text class="lable">剩余张数</text>
+      <text class="details">{{product.remainderNum}}</text>
+    </view>
+    <view style="width:100%;height:1px;background:#eeeeee"></view>
+    <view class="introduce_item ">
+      <text class="lable">每人限领</text>
+      <text class="details">{{product.eachLimit}}</text>
+    </view>
+    <view style="width:100%;height:1px;background:#eeeeee"></view>
+    <view class="introduce_item ">
       <text class="lable">截止时间</text>
       <text class="details">{{product.endTime}}</text>
     </view>

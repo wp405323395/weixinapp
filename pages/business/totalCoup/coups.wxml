@@ -7,8 +7,8 @@
         
         <view class="storeName">
           <text>{{coup.coupName}}</text>
-          <view hidden="{{coup.coupStatus != 1}}">
-            <text class="coup_status">{{coup.coupStatus == 1 ? '已过期':'xxx'}}</text>
+          <view hidden="{{coup.coupStatus == 1}}">
+            <text class="coup_status">{{coup.coupStatus == 0 ? '审核中':'审核不通过'}}</text>
           </view>
         </view>
         

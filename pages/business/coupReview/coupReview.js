@@ -1,26 +1,51 @@
 // coupReview.js
-var product = {
-  storeImgList:['../../../img/banner.png'],
-  storeIntro:'神奇的小店',
-  couponIntro:'真的是买一送一',
-  endTime:'2019-01-1',
-  storeAddr:'武汉寺门口',
-  storePhone:'18283838484'
-}
+var utils = require('../../../utils/util.js');
+var config = require('../../../config.js');
+import { RequestEngine } from '../../../netApi/requestEngine.js';
+// var product = {
+//   storeImgList:['../../../img/banner.png'],
+//   storeIntro:'神奇的小店',
+//   couponIntro:'真的是买一送一',
+//   endTime:'2019-01-1',
+//   storeAddr:'武汉寺门口',
+//   storePhone:'18283838484'
+// }
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    product: product
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let coupId = options.id;
+    setTimeout(()=>{
+      this.loadCoupById(coupId);
+    },500)
+  },
+  loadCoupById:function(id){
+    var that = this;
+    let param = {};
+    param.id = id;
+    
+    new Promise((resolve, reject) => {
+      new RequestEngine().request(config.loadProduct, param, { callBy: that, method: that.loadCoupById, params: [id] }, (success) => {
+        resolve(success.retData);
+      }, (faild) => {
+      });
+    }).then(value=>{
+      this.setData({
+        product: value
+      });
+    },
+    err=>{
+
+    })
   },
 
   /**
