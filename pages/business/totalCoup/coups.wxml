@@ -6,7 +6,7 @@
       <view class="detail_wrap">
         
         <view class="storeName">
-          <text>{{coup.storeName}}</text>
+          <text class="couponDescrip">{{coup.couponDescrip}}</text>
           <view hidden="{{coup.coupStatus != 1}}">
             <text class="coup_status">{{coup.coupStatus == 1 ? '已过期':'xxx'}}</text>
           </view>
@@ -14,12 +14,12 @@
         
         <view class="coup_wrap">
           <view>
-            <text class="couponDescrip">{{coup.couponDescrip}}</text>
             <text class="useCondition">({{coup.useCondition}})</text>
           </view>
-          <image src="../../../img/go_in.png" class="go_in_style" mode="widthFix"></image>
+          
         </view>
       </view>
+      
       <view class="count_wrap">
         <view class="total">
           共<text class="number_style">{{coup.totalCount}}</text>张
@@ -31,6 +31,8 @@
           已消费<text class="number_style">{{coup.usedCount}}</text>张
         </view>
       </view>
+      <image src="../../../img/go_in.png" class="go_in_style"></image>
+   
     </view>
 
   </view>

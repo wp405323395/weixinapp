@@ -17,7 +17,7 @@
             
           </view>
           
-          <image class="product_img" src="{{item.imgUrl}}" mode="widthFix"></image>
+          <image class="product_img" src="{{item.imgUrl}}"></image>
           <view class="content_text">
             <view class="content_bag_tag">
               <image wx:if="{{currentTab == 1}}" src="../../img/coup_used_bg.png" class="coup_bg" mode="widthFix"></image>

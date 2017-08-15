@@ -1,34 +1,33 @@
 // coups.js
 var config = require('../../../config.js');
 import { RequestEngine } from '../../../netApi/requestEngine.js';
-var coups = [{
-  id: 100,
-  storeName: '小店',
-  couponDescrip: '特价水果8.8折',
-  useCondition: '全场通用',
-  totalCount: 99,
-  usedCount: 10,
-  receiveCount: 55,
-  imgUrl: '../../../img/product5.png',
-  coupStatus:0
-}, {
-  id: 100,
-  storeName: '小店',
-  couponDescrip: '特价水果8.8折',
-  useCondition: '全场通用',
-  totalCount: 99,
-  usedCount: 10,
-  receiveCount: 55,
-  imgUrl: '../../../img/product5.png',
-  coupStatus: 1
-}]
+// var coups = [{
+//   id: 100,
+//   storeName: '小店',
+//   couponDescrip: '特价水果8.8折',
+//   useCondition: '全场通用',
+//   totalCount: 99,
+//   usedCount: 10,
+//   receiveCount: 55,
+//   imgUrl: '../../../img/product5.png',
+//   coupStatus:0
+// }, {
+//   id: 100,
+//   couponDescrip: '特价水果8.8折',
+//   useCondition: '全场通用',
+//   totalCount: 99,
+//   usedCount: 10,
+//   receiveCount: 55,
+//   imgUrl: '../../../img/product5.png',
+//   coupStatus: 1
+// }]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    coups: coups,
+    coups: null,
     noData: true
   },
 
@@ -51,27 +50,29 @@ Page({
         for (var coup of value) {
           
           let { 
-            id: id,
-            couponName: couponName, 
-            couponIntro: couponIntro, 
+            id: id, 
+            couponIntro: couponDescrip, 
             useCondition: useCondition, 
-            issueNum: totalNum, 
-            usedNum: usedNum, 
-            receivedNum: receivedNum, 
-            imgurl: imgurl, 
-            couponStatus: couponStatus,
+            issueNum: totalCount, 
+            usedNum: usedCount, 
+            receivedNum: receiveCount, 
+            imgurl: imgUrl, 
+            couponStatus: coupStatus,
           } = coup;
-          let cp = { couponName, 
-            couponIntro, 
+          let cp = {
+            id,
+            couponDescrip, 
             useCondition, 
-            totalNum, 
-            usedNum, 
-            receivedNum,
-            imgurl, 
-            couponStatus, 
-            coupId};
+            totalCount, 
+            usedCount, 
+            receiveCount, 
+            imgUrl,
+            coupStatus, };
           coups.push(cp);
         }
+        this.setData({
+          coups: coups
+        });
     }, (err) => {
 
     });

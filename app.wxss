@@ -42,7 +42,7 @@ overflow: hidden;
 }
 .list .product_item  .product_img {
   width:100%;
-  height: 360rpx;
+  height: 340rpx;
 }
 
 .navigator-hover{
@@ -106,9 +106,11 @@ overflow: hidden;
 .index_down_time_text{
   position: absolute;
   right: 16rpx;
-  top: 10rpx;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  height: 55rpx;
+  line-height: 55rpx;
+
 }
 .remainderNum{
 color:#ed533f;
@@ -118,12 +120,17 @@ margin: 0 10rpx;
 .reminderNumWrap{
 position:absolute;
 right:16rpx;
-top:270rpx;
+top:280rpx;
 color:black;
 font-size:0.8rem;
-padding:5rpx 20rpx;
-border-radius:20rpx;
+height:45rpx;
+padding-left: 20rpx;
+padding-right: 20rpx;
+border-radius:45rpx;
 background:white;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .nodate_img{
   width: 55%;
