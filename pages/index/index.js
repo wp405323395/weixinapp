@@ -107,7 +107,10 @@ Page({
           if (isNaN(product.timeLeft)) {
             product.timeLeft = parseInt(product.timeLeft);
           }
-          product.timeLeft = product.timeLeft-1000;
+          let tim = product.timeLeft - 1000;
+          tim = tim > 0 ? tim:0;
+          product.timeLeft = tim;
+          
           product.timeLeftSecond = this.formatDuring(product.timeLeft);
         }
         this.setData({
