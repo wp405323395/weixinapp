@@ -20,19 +20,15 @@
   width: 100%;
 }
 .coup_wrap{
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top:8rpx;
   width: 100%;
 
 }
 .go_in_style{
   width: 30rpx;
-  height: 30rpx;
-  position: absolute;
-  bottom: -10rpx;
-  padding-top: 10rpx;
-  padding-right: 10rpx;
-  right: 0;
 }
 .count_wrap{
   display: flex;
@@ -45,7 +41,7 @@
   box-sizing: border-box;
   padding-top: 10rpx;
   position: absolute;
-  bottom: -10rpx;
+  bottom: -6rpx;
   left:0;
   color: #666666;
 }
@@ -74,7 +70,7 @@
 .useCondition{
   color: #999999;
   font-size: 0.8rem;
-
+  margin-left: 20rpx;
 }
 
 .storeName{

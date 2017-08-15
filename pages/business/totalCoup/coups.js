@@ -3,7 +3,7 @@ var config = require('../../../config.js');
 import { RequestEngine } from '../../../netApi/requestEngine.js';
 // var coups = [{
 //   id: 100,
-//   storeName: '小店',
+//   coupName: '小店',
 //   couponDescrip: '特价水果8.8折',
 //   useCondition: '全场通用',
 //   totalCount: 99,
@@ -13,6 +13,7 @@ import { RequestEngine } from '../../../netApi/requestEngine.js';
 //   coupStatus:0
 // }, {
 //   id: 100,
+//      coupName:
 //   couponDescrip: '特价水果8.8折',
 //   useCondition: '全场通用',
 //   totalCount: 99,
@@ -54,7 +55,7 @@ Page({
           
           let { 
             id: id, 
-            couponIntro: couponDescrip, 
+            couponName: coupName, 
             useCondition: useCondition, 
             issueNum: totalCount, 
             usedNum: usedCount, 
@@ -64,7 +65,7 @@ Page({
           } = coup;
           let cp = {
             id,
-            couponDescrip, 
+            coupName, 
             useCondition, 
             totalCount, 
             usedCount, 

@@ -5,7 +5,7 @@
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>优惠券名称</text>
     </view>
-    <input bindinput="bindInput_coupName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入优惠券名称"/>
+    <input bindinput="bindInput_coupName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例：某某超市护肤品优惠"/>
   </view>
 
   <view class="store_name">
