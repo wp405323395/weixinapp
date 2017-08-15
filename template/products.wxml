@@ -9,7 +9,12 @@
             </view>
           </view>
           <view hidden="{{item.remainderNum == null}}">
-            <text class="remainderNum">{{item.remainderNum}}</text>
+            <view class="reminderNumWrap">
+              <text>仅剩</text>
+              <text class="remainderNum">{{item.remainderNum}}</text>
+              <text>张</text>
+            </view>
+            
           </view>
           
           <image class="product_img" src="{{item.imgUrl}}" mode="widthFix"></image>

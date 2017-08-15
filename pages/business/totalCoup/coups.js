@@ -41,13 +41,37 @@ Page({
   loadAllCoup:function(e){
     let that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.loadAllCoup, null, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
+      new RequestEngine().request(config.loadAllCoup, {}, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
         resolve(success.retData);
       }, (faild) => {
 
       });
     }).then((value) => {
-
+        let coups = new Array;
+        for (var coup of value) {
+          
+          let { 
+            id: id,
+            couponName: couponName, 
+            couponIntro: couponIntro, 
+            useCondition: useCondition, 
+            issueNum: totalNum, 
+            usedNum: usedNum, 
+            receivedNum: receivedNum, 
+            imgurl: imgurl, 
+            couponStatus: couponStatus,
+          } = coup;
+          let cp = { couponName, 
+            couponIntro, 
+            useCondition, 
+            totalNum, 
+            usedNum, 
+            receivedNum,
+            imgurl, 
+            couponStatus, 
+            coupId};
+          coups.push(cp);
+        }
     }, (err) => {
 
     });
