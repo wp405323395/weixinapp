@@ -1,13 +1,13 @@
 <!--confirm.wxml-->
 <view class="container">
   <view class="title_serch_wrap">
-    <image class="scan" src="../../../img/scan.png"></image>
+    <image bindtap="onScanClick" class="scan" src="../../../img/scan.png"></image>
     <view class="input_wrap">
       <image class="search" src="../../../img/search.png"></image>
       <input class="input" placeholder="输入姓名/手机号/身份证号/智能卡号" auto-focus/>
     </view>
     <view class="cancle_wrap">
-      <text class="cancle">取消</text>
+      <text bindtap="onCancleClick" class="cancle">取消</text>
     </view>
   </view>
   <view class="promote">
