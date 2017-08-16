@@ -40,8 +40,11 @@
   color: #333333;
   font-size: 1rem;
   margin-bottom:10rpx;
+  padding: 5rpx 10rpx;
 
-
+}
+.price{
+  margin-right: 100rpx;
 }
 .item_content{
   z-index: 10000;

@@ -11,8 +11,8 @@
             <text class="package_name">{{item.packageName}}</text>
             <text class="discribe">套餐介绍：{{item.discribe}}</text>
             <view class="time_price">
-              <text class="time_price">订购周期:{{item.timeLength}}</text>
-              <text class="time_price">价格:{{item.price}}</text>
+              <text class="">订购周期:{{item.timeLength}}</text>
+              <text class="price">价格:{{item.price}}</text>
             </view>
           </view>
         </view>
