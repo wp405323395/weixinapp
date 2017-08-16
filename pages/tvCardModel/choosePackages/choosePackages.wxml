@@ -1,26 +1,32 @@
 <!--choosePackages.wxml-->
 <view class="container">
-  <view class="package_list">
-    <view class="package_item" wx:for="{{list}}" wx:key="unique">
-      <view class="row_item">
-        <view class="package_wrap">
-          <view class="image_container">
-            <image src="../../../img/chooce_package.png" class="image_style" />
-          </view>
-          <view class="item_content">
-            <text class="package_name">{{item.packageName}}</text>
-            <text class="discribe">套餐介绍：{{item.discribe}}</text>
-            <view class="time_price">
-              <text class="">订购周期:{{item.timeLength}}</text>
-              <text class="price">价格:{{item.price}}</text>
+  <view class="all_wrap">
+
+    <scroll-view scroll-y class="package_list">
+      <view class="package_item" wx:for="{{list}}" wx:key="unique">
+        <view class="row_item">
+          <view class="package_wrap">
+            <view class="image_container">
+              <image src="../../../img/chooce_package.png" class="image_style" />
+            </view>
+            <view class="item_content">
+              <text class="package_name">{{item.packageName}}</text>
+              <text class="discribe">套餐介绍：{{item.discribe}}</text>
+              <view class="time_price">
+                <text class="">订购周期:{{item.timeLength}}</text>
+                <text class="price">价格:{{item.price}}</text>
+              </view>
             </view>
           </view>
+
+          <checkbox class="checkbox_style" value="" checked="false" />
         </view>
 
-        <checkbox class="checkbox_style" value="" checked="false" />
+
       </view>
-
-
+    </scroll-view>
+    <view class="bottom_bt">
+      <button class="btn">确认</button>
     </view>
   </view>
 </view>
