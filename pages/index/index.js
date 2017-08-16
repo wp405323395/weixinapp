@@ -221,7 +221,9 @@ Page({
     },
     (err)=>{
       console.log("*********iphone eeeee");
-      }).catch(error => console.log('----iphon6---'+error));
+      }).catch(
+        error => console.log('----iphon6---'+error)
+        );
     
 
   }

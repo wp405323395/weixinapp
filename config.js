@@ -34,8 +34,9 @@ var config = {
     queryWxUserCouponDetail: `${schema}://${host}/wappweb/mcwx/mc-wx!queryWxUserCouponDetail`,
     uploadBusinessPic: `${schema}://${host}/wappweb/mcwx/file-upload!doUpload`,
     queMercSettled: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercSettled`,
-    loadAllCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercCoupListByStoreid`
+    loadAllCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercCoupListByStoreid`,
 
+    loadTVCardInfoByCardNumber: `${schema}://${host}/wappweb/mcwx/order!queryUserInfo`
 };
 
 

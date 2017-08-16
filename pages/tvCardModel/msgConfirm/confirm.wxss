@@ -1,0 +1,48 @@
+/* confirm.wxss */
+.title_serch_wrap{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 128rpx;
+  align-items: center;
+  margin-top: 1px;
+}
+.input{
+  height: 64rpx;
+  width: 100%;
+  background-color: #eeeeee;
+  font-size: 0.8rem;
+}
+.input_wrap{
+  width: 100%;
+  display: flex;
+  background-color: #eeeeee;
+  border-radius: 8rpx;
+  border: 1px #d4d4d4 solid;
+}
+
+.scan{
+  width: 48rpx;
+  height: 44rpx;
+  margin: auto 30rpx ;
+  flex-shrink:0;
+}
+.search {
+  width: 32rpx;
+  height: 33rpx;
+  margin: auto 10rpx;
+  flex-shrink:0;
+}
+.cancle_wrap{
+  flex-shrink:0;
+}
+.cancle{
+  margin: auto 30rpx;
+}
+.promote{
+  padding:15rpx 30rpx;
+  color: #999999;
+  font-size: 0.7rem;
+}
+

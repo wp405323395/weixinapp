@@ -22,9 +22,22 @@ text{
   margin:30px 10px;
   background-color:#3fa5ed;
   color: white;
-
+  margin-bottom: 15rpx;
 }
 .nex_btn_tap{
   opacity: 0.5;
   padding-top: 5rpx;
+}
+.err_hove{
+  padding-top: 3rpx;
+}
+.msg_err_wrap{
+  color: #ed3f3f;
+}
+.msg_error{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  padding: 0;
+  text-decoration: underline;
 }

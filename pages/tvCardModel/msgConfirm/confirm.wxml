@@ -1,0 +1,16 @@
+<!--confirm.wxml-->
+<view class="container">
+  <view class="title_serch_wrap">
+    <image class="scan" src="../../../img/scan.png"></image>
+    <view class="input_wrap">
+      <image class="search" src="../../../img/search.png"></image>
+      <input class="input" placeholder="输入姓名/手机号/身份证号/智能卡号" auto-focus/>
+    </view>
+    <view class="cancle_wrap">
+      <text class="cancle">取消</text>
+    </view>
+  </view>
+  <view class="promote">
+    <text class="promote_text">注:通过左侧按钮可扫描智能卡背面条形码</text>
+  </view>
+</view>

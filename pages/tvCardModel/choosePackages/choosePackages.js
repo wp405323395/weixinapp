@@ -1,5 +1,5 @@
 // choosePackages.js
-var da = require('../../data/data.js').data;
+var da = require('../../../data/data.js').data;
 var list = da.choocePackages;
 Page({
 

@@ -98,8 +98,8 @@ text,.cell1{
 
 }
 .lit_left{
-  width:9px;
-  height:16.2857px;
+  width:30rpx;
+  height:30rpx;
 
 }
 .pay_way{

@@ -18,6 +18,11 @@ Page({
       isWeiXin:isWeiXin
     });
   },
+  onChoocePackage:function(){
+    wx.navigateTo({
+      url: '../choosePackages/choosePackages',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

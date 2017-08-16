@@ -142,7 +142,7 @@ Page({
         break;
       case '2':
         wx.navigateTo({
-          url: '../tvCard/tvcard',
+          url: '../tvCardModel/tvCardIndex/tvcard',
         });
         break;
       case '3':
