@@ -11,7 +11,7 @@ Page({
     minusStatus: 'disabled',
     payInfo:null,
     cardNumberSelectHidden:true,
-    cardNumberSelect:0,
+    cardNumberSelect:-1,
   },
   onWeixinClick:function(e) {
     isWeiXin = !isWeiXin;
