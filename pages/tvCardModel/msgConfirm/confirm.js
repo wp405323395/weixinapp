@@ -1,4 +1,7 @@
 // confirm.js
+import { RequestEngine } from '../../../netApi/requestEngine.js';
+var config = require('../../../config.js');
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -14,6 +17,14 @@ Page({
   onLoad: function (options) {
   
   },
+  onSearchClick:function() {
+    let inputValue = this.data.inputValue;
+    if (util.textIsNotNull(inputValue)) {
+      this.serchUser(inputValue);
+    }
+    
+    
+  },
   onScanClick:function() {
     wx.scanCode({
       success: (res) => {
@@ -22,7 +33,56 @@ Page({
     })
 
   },
+  onSelected:function(e){
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../pay/pay?custid=' + id
+    })
+  },
+  serchUser:function(inputValue) {
+    var that = this;
+    new Promise((resolve, reject) => {
+      wx.getLocation({
+        type: 'wgs84',
+        success: function (res) {
+          var latitude = res.latitude
+          var longitude = res.longitude
+          var speed = res.speed
+          var accuracy = res.accuracy
+          resolve();
+        }
+      })
+    }).then(value=>{
+      var param = JSON.stringify({
+        querparam: inputValue
+      })
+      return new Promise((resolve, reject) => {
+        new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.serchUser, params: [inputValue] }, (success) => {
+          resolve(success);
+        }, (faild) => {
+          reject(faild);
+        });
+      });
+    }).then(value => {
+      let custList = value.retData.custList;
+      this.setData({
+        custList: custList
+      });
+     }).catch(err => {
+       
+      });
+    
+  },
+  onValueEvent: function (e){
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
   onCancleClick:function(){
+    this.setData({
+      inputValue: '',
+      custList:null
+    })
     
   },
 

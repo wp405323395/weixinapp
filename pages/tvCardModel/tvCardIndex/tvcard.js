@@ -1,8 +1,9 @@
 // tvcard.js
 import { RequestEngine } from '../../../netApi/requestEngine.js';
 var config = require('../../../config.js');
+var util = require('../../../utils/util.js');
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -14,11 +15,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('scan------' ,options); 
-    let tvCardNum = options.querparam;
-    setTimeout(()=>{
-      this.loadTvCardInfo(tvCardNum);
-    },500);
+    //let scene = options.scene
+    let scene = '11112222-4444-667778';
+    let tvCardNum = this.getCardInfo(scene);
+    if (util.textIsNotNull(tvCardNum)) {
+      setTimeout(() => {
+        this.loadTvCardInfo(tvCardNum);
+      }, 500);
+    }
+    
+  }, 
+  getCardInfo: function (tvCardInfo) {
+    if (!util.textIsNotNull(tvCardInfo)) {
+      this.setData({
+        cardInfo:{
+          tvCardNumber:'当前信息为空',
+          custname: '当前信息为空',
+          addr:'当前信息为空'
+
+        }
+      });
+
+      return null;
+     
+    }
+    let prarams = tvCardInfo.split("-");
+    if (prarams == null || prarams.length != 3) {
+      this.setData({
+        cardInfo: {
+          tvCardNumber: '当前信息为空',
+          custname: '当前信息为空',
+          addr: '当前信息为空'
+
+        }
+      });
+      return null;
+    }
+    let tvCardNum = prarams[2];
+    let qrKind = prarams[0];
+    let serviceID = prarams[1];
+    this.setData({
+      tvCardNum: tvCardNum,
+      qrKind: qrKind,
+      serviceID: serviceID
+    });
+    return tvCardNum;
   },
   loadTvCardInfo:function(cardNum) {
     var that = this;
@@ -43,8 +84,11 @@ Page({
     })
   },
   click:function(e){
+    let tvCardNum = this.data.tvCardNum;
+    let custid = this.data.custid;
+    let serviceID = this.data.serviceID;
     wx.navigateTo({
-      url: '../pay/pay',
+      url: '../pay/pay?tvCardNum=' + tvCardNum + '&custid=' + custid + '&serviceID=' + serviceID
     })
   },
 

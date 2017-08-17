@@ -21,7 +21,7 @@ text,.cell1{
 
 /*主容器*/  
 .stepper {  
-    width:200rpx;
+    width:250rpx;
     display: flex;
     flex-direction:row ;
     height: 50rpx;  

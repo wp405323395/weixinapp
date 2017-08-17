@@ -2,7 +2,7 @@
 <view class="container">
    <view class="item hav">
     <text>智能卡号</text> 
-    <text>{{cardInfo.servs.keyno}}</text>   
+    <text>{{cardInfo.tvCardNumber}}</text>   
   </view>
 
   <view class="item">
@@ -14,7 +14,7 @@
     <text>{{cardInfo.addr}}</text>   
   </view> 
 
-  <!-- <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap" disabled="{{cardInfo == null || cardInfo.servs == null || cardInfo.servs.keyno}}">下一步</button> -->
+  <!-- <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap" disabled="{{cardInfo == null || cardInfo.tvCardNumber == null}}">下一步</button> -->
   <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">下一步</button>
   <view bindtap="onMsgConfirm" class="msg_err_wrap" hover-class="err_hove">
     <text class="msg_error">无法匹配卡号信息或信息有误</text>

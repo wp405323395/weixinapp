@@ -1,16 +1,15 @@
 // pay.js
+import { RequestEngine } from '../../../netApi/requestEngine.js';
+var config = require('../../../config.js');
+var util = require('../../../utils/util.js');
 var isWeiXin = true;
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     isWeiXin: isWeiXin,
-    // input默认是1  
     num: 1,
-    // 使用data数据对象设置样式名  
-    minusStatus: 'disabled'  
+    minusStatus: 'disabled',
+    payInfo:null
   },
   onWeixinClick:function(e) {
     isWeiXin = !isWeiXin;
@@ -24,11 +23,52 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    let custid = options.custid;
+    let tvCardNum = options.tvCardNum;
+    let serviceID = options.serviceID;
+    this.setData({
+      scanCardInfo:{
+        custid: custid, tvCardNum: tvCardNum, serviceID: serviceID
+      }
+    });
+    if (!util.textIsNotNull(tvCardNum)) {
+      setTimeout(() => {
+        this.loadCards(custid, tvCardNum, serviceID);
+      }, 500)
+    }
+    
+  },
+  loadCards: function (custid, tvCardNum, serviceID) {
+    let that = this;
+    new Promise ((resolve , reject)=> {
+      let formData = JSON.stringify({
+        querparam: custid 
+      });
+      new RequestEngine().request(config.queryOrderKeyno, { formData: formData }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    }).then(value=>{
+      let cardsNumber = value.tvCardNumber;
+      this.setData({
+        searchPerson:{
+          cardsNumber
+        }
+      });
+      
+    }).catch(err=>{
+
+    });
+    
+  },
+  onSelectCard:function(){
+    if (this.data.scanCardInfo.tvCardNum) {
+        return ;
+    } 
+    let numbers = this.data.searchPerson.cardsNumber;
+    console.log(numbers);
   },
   payClick:function(e){
     wx.navigateTo({
@@ -36,38 +76,31 @@ Page({
     })
   }, 
 
-  /* 点击减号 */
   bindMinus: function () {
     var num = this.data.num;
-    // 如果大于1时，才可以减  
     if (num > 1) {
       num--;
     }
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
     var minusStatus = num <= 1 ? 'disabled' : 'normal';
-    // 将数值与状态写回  
     this.setData({
       num: num,
       minusStatus: minusStatus
     });
   },
-  /* 点击加号 */
+
   bindPlus: function () {
     var num = this.data.num;
-    // 不作过多考虑自增1  
     num++;
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
     var minusStatus = num < 1 ? 'disabled' : 'normal';
-    // 将数值与状态写回  
     this.setData({
       num: num,
       minusStatus: minusStatus
     });
   },
-  /* 输入框事件 */
+
   bindManual: function (e) {
     var num = e.detail.value;
-    // 将数值与状态写回  
+
     this.setData({
       num: num
     });

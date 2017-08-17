@@ -7,6 +7,8 @@
   height: 128rpx;
   align-items: center;
   margin-top: 1px;
+  margin-bottom:1rpx;
+
 }
 .input{
   height: 64rpx;
@@ -20,6 +22,8 @@
   background-color: #eeeeee;
   border-radius: 8rpx;
   border: 1px #d4d4d4 solid;
+  margin-right:30rpx;
+
 }
 
 .scan{
@@ -34,11 +38,15 @@
   margin: auto 10rpx;
   flex-shrink:0;
 }
-.cancle_wrap{
-  flex-shrink:0;
-}
+
 .cancle{
-  margin: auto 30rpx;
+margin-right:20rpx;
+width:32rpx;
+height:32rpx;
+flex-shrink:0;
+margin-top:14rpx;
+
+
 }
 .promote{
   padding:15rpx 30rpx;
@@ -46,4 +54,36 @@
   font-size: 0.7rem;
   border-top: 1px #d4d4d4 solid;
 }
+.customList{
+  display: flex;
+  flex-direction: column;
 
+}
+.customItem{
+  margin-bottom:1px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding:20rpx 30rpx;
+
+}
+.icon{
+  width:44rpx;
+  height:44rpx;
+  margin-top: 5rpx;
+}
+.cu_value{
+  margin-left: 20rpx;
+}
+.item0{
+  margin-bottom: 10rpx;
+  font-size: 1rem;
+}
+.dark{
+  color: #999999;
+  margin-left: 10rpx;
+}
+.item1{
+  color: #999999;
+  font-size: 0.8rem;
+}

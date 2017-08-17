@@ -1,6 +1,13 @@
 <!--pay.wxml-->
 <view class="container">
   <view class="pa_wrap">
+    <view class="tvCardNumber_wrap" bindtap="onSelectCard" class="item">
+      <text>智能卡号</text>
+      <view style="padding-right:20rpx;">
+        <text>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:(searchPerson.cardsNumber[0]?searchPerson.cardsNumber[0]:'请选择智能卡号')}}</text>
+        <image src="../../../img/go_in.png" class="lit_left" ></image>
+      </view>
+    </view>
     <view bindtap="onChoocePackage" class="item">
       <text>选择套餐</text>
 
