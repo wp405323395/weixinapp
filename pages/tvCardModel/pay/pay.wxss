@@ -18,6 +18,28 @@ text,.cell1{
 .pa_wrap{
   margin:10px 0;
 }
+.clicked_style{
+    background: #d4d4d4;
+}
+.select_position{
+  position: relative;
+  height: 0px;
+}
+.select_wrap{
+  position: absolute;
+  background: white;
+  border: 1px #d4d4d4 solid;
+  top: -1px;
+  right: 30rpx;
+  z-index: 10000;
+}
+.item_card_number{
+  display: inline-block;
+  margin: auto 20rpx;
+}
+.options{
+  border-bottom: 1px #d4d4d4 solid;
+}
 
 /*主容器*/  
 .stepper {  

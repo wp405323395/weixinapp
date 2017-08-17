@@ -9,7 +9,9 @@ Page({
     isWeiXin: isWeiXin,
     num: 1,
     minusStatus: 'disabled',
-    payInfo:null
+    payInfo:null,
+    cardNumberSelectHidden:true,
+    cardNumberSelect:0,
   },
   onWeixinClick:function(e) {
     isWeiXin = !isWeiXin;
@@ -63,12 +65,25 @@ Page({
     });
     
   },
+  onCardNumberSelectOptionClick:function(e) {
+    let id = parseInt(e.currentTarget.id);
+    this.setData({
+      cardNumberSelect:id,
+      cardNumberSelectHidden: !this.data.cardNumberSelectHidden
+    });
+    
+  },
   onSelectCard:function(){
     if (this.data.scanCardInfo.tvCardNum) {
+
         return ;
-    } 
-    let numbers = this.data.searchPerson.cardsNumber;
-    console.log(numbers);
+
+    }
+
+    this.setData({
+      cardNumberSelectHidden: !this.data.cardNumberSelectHidden
+    });
+    
   },
   payClick:function(e){
     wx.navigateTo({

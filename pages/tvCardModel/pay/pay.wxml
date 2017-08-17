@@ -1,13 +1,21 @@
 <!--pay.wxml-->
 <view class="container">
   <view class="pa_wrap">
-    <view class="tvCardNumber_wrap" bindtap="onSelectCard" class="item">
+    <view hover-stay-time="{{40}}" hover-class="clicked_style" class="tvCardNumber_wrap" bindtap="onSelectCard" class="item">
       <text>智能卡号</text>
       <view style="padding-right:20rpx;">
-        <text>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:(searchPerson.cardsNumber[0]?searchPerson.cardsNumber[0]:'请选择智能卡号')}}</text>
+        <text>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:(searchPerson.cardsNumber[cardNumberSelect]?searchPerson.cardsNumber[cardNumberSelect]:'请选择智能卡号')}}</text>
         <image src="../../../img/go_in.png" class="lit_left" ></image>
       </view>
     </view>
+    <view hidden="{{cardNumberSelectHidden}}" class="select_position">
+        <view class="select_wrap">
+          <!-- <view class="options" wx:for="{{searchPerson.cardsNumber}}" wx:key="unique"> -->
+          <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}"  bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{searchPerson.cardsNumber}}" wx:key="unique">
+            <text class="item_card_number">{{item}}</text>
+          </view>
+        </view>
+      </view>
     <view bindtap="onChoocePackage" class="item">
       <text>选择套餐</text>
 
