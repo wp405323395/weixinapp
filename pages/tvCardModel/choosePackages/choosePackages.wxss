@@ -1,86 +1,57 @@
 /* choosePackages.wxss */
-.package_list{
+.packageList_wrap{
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
 }
-.package_item{
-  width: 100%;
-  height:200rpx;
-  margin-top: 30rpx;
+.packageName{
+font-size:1.2rem;
+display:inline-block;
+margin-left:30rpx;
+margin-bottom:30rpx;
+color: #333333;
+
 
 }
-.image_container{
-  width: 100%;
-  height: 0;
-  position: relative;
+.detail0{
+display:flex;
+flex-direction:row;
+margin-left:30rpx;
+margin-bottom:20rpx;
+color: #666666;
 }
-.image_style{
-  position: relative;
+.px1{
   width: 100%;
-  height: 200rpx;
+  background-color: #d4d4d4;
+  height: 1px;
 }
-.package_name{
-  display: block;
-  color: white;
-  font-size: 1.2rem;
-  margin-top:10rpx;
+.packageItem{
+margin-top:35rpx;
+background-color:white;
+width:90%;
+padding:30rpx 0rpx;
+border-radius:7rpx;
+box-shadow:0px 2px 5px #c3ced5;
+}
+.clicked_style{
+    background: #d4d4d4;
+}
+.intro{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+}
+.intro_wrap{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top:-15rpx;
 
 }
-.discribe{
-  display: block;
-  color: white;
-  font-size: 0.5rem;
+.num{
+  margin: auto 15rpx;
+  color: #e82f2f
 }
-.time_price{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: white;
-  color: #333333;
-  font-size: 1rem;
-  margin-bottom:10rpx;
-  padding: 5rpx 10rpx;
-
-}
-.price{
-  margin-right: 100rpx;
-}
-.item_content{
-  z-index: 10000;
-  position: relative;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200rpx;
-}
-.row_item{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-}
-.checkbox_style{
-  flex-shrink:0;
-  margin-right: 0;
-  margin-left: 20rpx;
-}
-.package_wrap{
-  width: 100%;
-}
-.all_wrap{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.bottom_bt{
-  flex-shrink:0;
-  height: 100rpx;
-}
-.btn{
-  color: #3fa5ed;
+.nian{
+  margin-right: 30rpx;
 }

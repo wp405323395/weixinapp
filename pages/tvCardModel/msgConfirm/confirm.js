@@ -42,16 +42,17 @@ Page({
   serchUser:function(inputValue) {
     var that = this;
     new Promise((resolve, reject) => {
-      wx.getLocation({
-        type: 'wgs84',
-        success: function (res) {
-          var latitude = res.latitude
-          var longitude = res.longitude
-          var speed = res.speed
-          var accuracy = res.accuracy
-          resolve();
-        }
-      })
+      resolve();
+      // wx.getLocation({
+      //   type: 'wgs84',
+      //   success: function (res) {
+      //     var latitude = res.latitude
+      //     var longitude = res.longitude
+      //     var speed = res.speed
+      //     var accuracy = res.accuracy
+      //     resolve();
+      //   }
+      // })
     }).then(value=>{
       var param = JSON.stringify({
         querparam: inputValue

@@ -37,7 +37,7 @@ function formatLocation(longitude, latitude) {
 }
 
 function textIsNotNull(str) {
-  if (str == null || str == undefined || str == '') {
+  if (str == null || str == undefined || str == '' || str == "undefined") {
     return false;
   }
   return true;

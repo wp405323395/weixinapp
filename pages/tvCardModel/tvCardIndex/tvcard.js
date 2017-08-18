@@ -15,8 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //let scene = options.scene
-    let scene = '11112222-4444-667778';
+    let scene = options.scene
+    //let scene = '11112222-4444-667778';
     let tvCardNum = this.getCardInfo(scene);
     if (util.textIsNotNull(tvCardNum)) {
       setTimeout(() => {
