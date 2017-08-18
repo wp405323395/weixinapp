@@ -36,7 +36,6 @@ var config = {
     queMercSettled: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercSettled`,
     loadAllCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercCoupListByStoreid`,
 
-    loadTVCardInfoByCardNumber: `${schema}://${host}/wappweb/mcwx/order!queryCustInfo`,
     queryCustInfo: `${schema}://${host}/wappweb/mcwx/order!queryCustInfo`,
     queryOrderKeyno: `${schema}://${host}/wappweb/mcwx/order!queryOrderKeyno`,
     querySalesList: `${schema}://${host}/wappweb/mcwx/order!querySalesList`,

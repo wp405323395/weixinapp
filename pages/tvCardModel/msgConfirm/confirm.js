@@ -16,8 +16,6 @@ Page({
     if (util.textIsNotNull(inputValue)) {
       this.serchUser(inputValue);
     }
-
-
   },
   onScanClick: function () {
     wx.scanCode({

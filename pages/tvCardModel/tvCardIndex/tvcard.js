@@ -31,7 +31,6 @@ Page({
       }
     })
     
-    //let scene = '11112222-4444-667778';
     let tvCardNum = this.getCardInfo(scene);
     if (util.textIsNotNull(tvCardNum)) {
       setTimeout(() => {
@@ -75,7 +74,10 @@ Page({
   loadTvCardInfo:function(cardNum) {
     var that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.loadTVCardInfoByCardNumber, { querparam: cardNum}, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
+      var param = JSON.stringify({
+        querparam: cardNum
+      })
+      new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
