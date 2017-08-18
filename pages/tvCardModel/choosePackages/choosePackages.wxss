@@ -39,8 +39,9 @@ box-shadow:0px 2px 5px #c3ced5;
 .intro{
 display: -webkit-box;
 -webkit-box-orient: vertical;
--webkit-line-clamp: 3;
+-webkit-line-clamp: 2;
 overflow: hidden;
+color: #999999;
 }
 .intro_wrap{
   margin-left: 30rpx;
@@ -54,4 +55,7 @@ overflow: hidden;
 }
 .nian{
   margin-right: 30rpx;
+}
+.show_all{
+  color: #999999;
 }

@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isHasMore:[]
   },
 
   /**
@@ -19,10 +19,17 @@ Page({
     let tvCardNumber = options.tvCardNumber;
     let serviceID = options.serviceID;
     let qrKind = options.qrKind;
-    
+    let ifif = 'asdfasdfasdf'.substring(0,10);
     setTimeout(() => {
       this.loadPackage(custid, tvCardNumber, serviceID, qrKind);
     }, 500);
+  },
+  showMore:function(e){
+    let id = parseInt(e.currentTarget.id);
+    this.data.salesList[id].isShowMore = !this.data.salesList[id].isShowMore;
+    this.setData({
+      salesList: this.data.salesList
+    });
   },
   loadPackage: function (custid, tvCardNumber, serviceID, qrKind) {
     let that = this;

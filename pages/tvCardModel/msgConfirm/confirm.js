@@ -54,8 +54,11 @@ Page({
       //   }
       // })
     }).then(value=>{
+      // var param = JSON.stringify({
+      //   querparam: inputValue
+      // })
       var param = JSON.stringify({
-        querparam: inputValue
+        querparam: '8270104048104497'
       })
       return new Promise((resolve, reject) => {
         new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.serchUser, params: [inputValue] }, (success) => {

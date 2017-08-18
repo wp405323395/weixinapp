@@ -61,7 +61,7 @@
     <text class="item">更多支付方式</text>
   </view>
   <view class="footer">
-    <text class="pay_intro"> 需要支付金额 10元</text>
+    <text class="pay_intro"> 需要支付金额 {{selectPackage.price*num}}元</text>
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn" >立即支付</view>
   </view>
 </view>
