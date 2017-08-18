@@ -26,10 +26,22 @@ Page({
    */
   onLoad: function (options) {
     utils.getAuther('scope.writePhotosAlbum');
-    var scene = decodeURIComponent(options.scene);
-    var page = decodeURIComponent(options.page);
-    console.log('scene::' + scene);
-    console.log('page::' + page);
+    var scene = decodeURIComponent(options.scene)
+    
+    if (scene == undefined) {
+      scene = '没有码信息'
+    }
+    wx.showModal({
+      title: '优惠券详情',
+      content: scene,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
 
     var that = this;
     wx.getSystemInfo({

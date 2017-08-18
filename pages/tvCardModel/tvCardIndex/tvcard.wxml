@@ -15,7 +15,7 @@
   </view> 
 
   <!-- <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap" disabled="{{cardInfo == null || cardInfo.tvCardNumber == null}}">下一步</button> -->
-  <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">下一步</button>
+  <button disabled="{{cardInfo.tvCardNumber == '当前信息为空'}}" bindtap="click" class="nex_btn" hover-class="nex_btn_tap">下一步</button>
   <view bindtap="onMsgConfirm" class="msg_err_wrap" hover-class="err_hove">
     <text class="msg_error">无法匹配卡号信息或信息有误</text>
   </view>

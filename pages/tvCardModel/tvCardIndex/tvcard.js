@@ -15,7 +15,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let scene = options.scene
+    var scene = decodeURIComponent(options.scene)
+    if (scene == undefined) {
+      scene = '没有码信息'
+    }
+    wx.showModal({
+      title: '扫码信息',
+      content: scene,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    
     //let scene = '11112222-4444-667778';
     let tvCardNum = this.getCardInfo(scene);
     if (util.textIsNotNull(tvCardNum)) {
@@ -32,21 +47,17 @@ Page({
           tvCardNumber:'当前信息为空',
           custname: '当前信息为空',
           addr:'当前信息为空'
-
         }
       });
-
       return null;
-     
     }
-    let prarams = tvCardInfo.split("-");
+    let prarams = tvCardInfo.split("~");
     if (prarams == null || prarams.length != 3) {
       this.setData({
         cardInfo: {
           tvCardNumber: '当前信息为空',
           custname: '当前信息为空',
           addr: '当前信息为空'
-
         }
       });
       return null;
