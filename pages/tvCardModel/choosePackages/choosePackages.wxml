@@ -11,8 +11,7 @@
          <text>价格</text>
          <text class="num">{{item.price}}</text>
          <text>元</text>
-         <!-- <text class="orignprice">原价：{{item.origprice}}元</text> -->
-        <text class="orignprice">原价:300元</text>
+         <text class="orignprice">原价：{{item.origprice}}元</text>
         </view>
       </view>
       
