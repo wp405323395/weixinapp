@@ -32,6 +32,7 @@ Page({
     })
     
     let tvCardNum = this.getCardInfo(scene);
+    this.tvCardNum = tvCardNum;
     if (util.textIsNotNull(tvCardNum)) {
       setTimeout(() => {
         this.loadTvCardInfo(tvCardNum);
@@ -75,9 +76,9 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       var param = JSON.stringify({
-        tvCardNumber: this.setData.tvCardNum,
-        serviceID: this.setData.serviceID,
-        qrKind: this.setData.qrKind
+        tvCardNumber: that.setData.tvCardNum,
+        serviceID: that.setData.serviceID,
+        qrKind: that.setData.qrKind
       })
       new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
         resolve(success);
@@ -99,11 +100,22 @@ Page({
     })
   },
   click:function(e){
+
     let tvCardNum = this.data.tvCardNum;
-    let custid = this.data.custid;
+    let custid = this.data.cardInfo.custid;
     let serviceID = this.data.serviceID;
+    if (util.textIsNull(custid)) {
+      wx.showModal({
+        title: "获取用户信息失败，尝试下拉刷新页面获取信息",
+        showCancel: false,
+        confirmText: "确定"
+      })
+      return;
+    }
+    let url = '../pay/pay?tvCardNum=' + tvCardNum + '&custid=' + custid + '&serviceID=' + serviceID;
+    console.log("page_url:::::::", url)
     wx.navigateTo({
-      url: '../pay/pay?tvCardNum=' + tvCardNum + '&custid=' + custid + '&serviceID=' + serviceID
+      url: url
     })
   },
 
@@ -154,5 +166,14 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  onPullDownRefresh: function () {
+    
+    if (util.textIsNull(this.tvCardNum)) {
+      wx.stopPullDownRefresh();
+    } else {
+      this.loadTvCardInfo(tvCardNum);
+    }
+    wx.stopPullDownRefresh()
   }
 })

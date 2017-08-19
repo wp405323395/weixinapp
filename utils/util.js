@@ -43,6 +43,13 @@ function textIsNotNull(str) {
   return true;
 }
 
+function textIsNull(str) {
+  if (str == null || str == undefined || str == '' || str == "undefined") {
+    return true;
+  }
+  return false;
+}
+
 function showTitleDialog(title, content) {
   wx.showModal({
     title: title,
@@ -107,5 +114,6 @@ module.exports = {
   showTitleDialog: showTitleDialog,
   getAuther: getAuther,
   showToast: showToast,
-  showShortToast: showShortToast
+  showShortToast: showShortToast,
+  textIsNull: textIsNull
 }

@@ -18,8 +18,12 @@ Page({
     }
   },
   onScanClick: function () {
+    let that = this;
     wx.scanCode({
       success: (res) => {
+        let cardNumber = res.result;
+        that.serchUser(cardNumber);
+        console.log(cardNumber)
         console.log(res)
       }
     })

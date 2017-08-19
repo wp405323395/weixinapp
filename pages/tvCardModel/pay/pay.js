@@ -11,7 +11,7 @@ Page({
     minusStatus: 'disabled',
     cardNumberSelectHidden: true,
     cardNumberSelect: -1,
-    tvCardAnimationData: {},
+    tvCardAnimationData: {}
   },
   onWeixinClick: function (e) {
     isWeiXin = !isWeiXin;
@@ -37,6 +37,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options);
     let custid = options.custid;
     let tvCardNum = options.tvCardNum;
     let serviceID = options.serviceID;
@@ -138,11 +139,7 @@ Page({
       })
       return;
     } else if (!util.textIsNotNull(that.custid)) {
-      wx.showModal({
-        title: "请您先下拉刷新您的订单",
-        showCancel: false,
-        confirmText: "确定"
-      })
+
       return;
     } else if (!util.textIsNotNull(that.data.selectPackage.salescode)){
       wx.showModal({
