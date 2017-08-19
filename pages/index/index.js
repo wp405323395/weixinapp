@@ -6,8 +6,8 @@ import { Header } from '../../netApi/Header.js'
 Page({
   data: {
     imgUrls: [
-      '../../img/banner2.jpg',
-      '../../img/banner.jpg'
+      `${config.srcUrl}banner/banner.jpg`,
+      `${config.srcUrl}banner/banner2.jpg`
     ],
     navbar: [{ img: '../../img/index_nav_time.png', img_li:'../../img/index_nav_time_li.png', text: '限时秒杀' }, 
       { img: '../../img/index_nav_good.png', img_li: '../../img/index_nav_good_li.png', text: '每日优选' }, 

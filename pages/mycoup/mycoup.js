@@ -1,5 +1,4 @@
 // me.js
-var da = require('../../data/data.js').data;
 import { RequestEngine } from '../../netApi/requestEngine.js'; 
 var config = require('../../config.js');
 
