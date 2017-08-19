@@ -65,7 +65,7 @@ Page({
         reject(faild);
       });
     }).then(value=>{
-      let cardInfo = value.custList[0];
+      let cardInfo = value.retData.custList[0];
       this.setData({
         cardInfo: cardInfo
       });
@@ -79,11 +79,7 @@ Page({
     })
   },
   click:function(e){
-
-    let tvCardNum = this.data.tvCardNum;
-    let custid = this.data.cardInfo.custid;
-    let serviceID = this.data.serviceID;
-    if (util.textIsNull(custid)) {
+    if (util.textIsNull(this.custid)) {
       wx.showModal({
         title: "获取用户信息失败，尝试下拉刷新页面获取信息",
         showCancel: false,
@@ -91,7 +87,7 @@ Page({
       })
       return;
     }
-    let url = '../pay/pay?tvCardNum=' + tvCardNum + '&custid=' + custid + '&serviceID=' + serviceID;
+    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.custid + '&serviceID=' + this.serviceID;
     console.log("page_url:::::::", url)
     wx.navigateTo({
       url: url
@@ -151,7 +147,7 @@ Page({
     if (util.textIsNull(this.tvCardNum)) {
       wx.stopPullDownRefresh();
     } else {
-      this.loadTvCardInfo(tvCardNum);
+      this.loadTvCardInfo(this.tvCardNum);
     }
     wx.stopPullDownRefresh()
   }
