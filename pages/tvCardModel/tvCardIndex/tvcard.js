@@ -75,7 +75,9 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       var param = JSON.stringify({
-        querparam: cardNum
+        tvCardNumber: this.setData.tvCardNum,
+        serviceID: this.setData.serviceID,
+        qrKind: this.setData.qrKind
       })
       new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
         resolve(success);
