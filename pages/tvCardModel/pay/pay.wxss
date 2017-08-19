@@ -9,8 +9,8 @@
   border-bottom: 1px solid #d4d4d4;
 }
 .lable{
-  font-size: 0.6rem;
-
+  font-size: 0.7rem;
+  color: #999999;
 }
 text,.cell1{
   padding: 25rpx;

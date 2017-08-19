@@ -2,11 +2,10 @@
 import { RequestEngine } from '../../../netApi/requestEngine.js';
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
-var isWeiXin = true;
 
 Page({
   data: {
-    isWeiXin: isWeiXin,
+    isWeiXin: true,
     num: 1,
     minusStatus: 'disabled',
     cardNumberSelectHidden: true,
@@ -14,9 +13,17 @@ Page({
     tvCardAnimationData: {}
   },
   onWeixinClick: function (e) {
-    isWeiXin = !isWeiXin;
+
     this.setData({
-      isWeiXin: isWeiXin
+      isWeiXin: !this.data.isWeiXin,
+      isBookPayment:false
+    });
+  },
+  onBookPaymentClick:function(e) {
+
+    this.setData({
+      isBookPayment: !this.data.isBookPayment,
+      isWeiXin:false
     });
   },
   onChoocePackage: function () {
@@ -90,10 +97,16 @@ Page({
       });
     }).then(value => {
       let cardsNumber = value.retData;
+      if (cardsNumber.length > 0) {
+        this.data.cardNumberSelect = 0;
+        this.tvCardNum = cardsNumber[0];
+      }
+      
       this.setData({
         searchPerson: {
-          cardsNumber
-        }
+          cardsNumber: cardsNumber,
+        },
+        cardNumberSelect: this.data.cardNumberSelect
       });
 
     }).catch(err => {

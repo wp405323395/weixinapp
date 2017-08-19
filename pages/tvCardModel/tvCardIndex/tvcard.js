@@ -16,20 +16,6 @@ Page({
    */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene)
-    if (scene == undefined) {
-      scene = '没有码信息'
-    }
-    wx.showModal({
-      title: '扫码信息',
-      content: scene,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
     
     let tvCardNum = this.getCardInfo(scene);
     this.tvCardNum = tvCardNum;
@@ -44,9 +30,9 @@ Page({
     if (!util.textIsNotNull(tvCardInfo)) {
       this.setData({
         cardInfo:{
-          tvCardNumber:'当前信息为空',
-          custname: '当前信息为空',
-          addr:'当前信息为空'
+          tvCardNumber:'无此信息',
+          custname: '无此信息',
+          addr:'无此信息'
         }
       });
       return null;
@@ -55,9 +41,9 @@ Page({
     if (prarams == null || prarams.length != 3) {
       this.setData({
         cardInfo: {
-          tvCardNumber: '当前信息为空',
-          custname: '当前信息为空',
-          addr: '当前信息为空'
+          tvCardNumber: '无此信息',
+          custname: '无此信息',
+          addr: '无此信息'
         }
       });
       return null;
