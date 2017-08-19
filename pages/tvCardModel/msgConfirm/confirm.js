@@ -23,6 +23,9 @@ Page({
       success: (res) => {
         let cardNumber = res.result;
         that.serchUser(cardNumber);
+        that.setData({
+          inputValue: cardNumber
+        })
         console.log(cardNumber)
         console.log(res)
       }
