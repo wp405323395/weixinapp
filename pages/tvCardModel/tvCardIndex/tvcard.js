@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
+    scene = '21~1117~8270102535892285';
     this.getCardInfo(scene);
     if (util.textIsNotNull(this.tvCardNum)) {
       setTimeout(() => {
@@ -79,7 +80,7 @@ Page({
     })
   },
   click:function(e){
-    if (util.textIsNull(this.custid)) {
+    if (util.textIsNull(this.data.cardInfo.custid)) {
       wx.showModal({
         title: "获取用户信息失败，尝试下拉刷新页面获取信息",
         showCancel: false,
@@ -87,7 +88,7 @@ Page({
       })
       return;
     }
-    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.custid + '&serviceID=' + this.serviceID;
+    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID;
     console.log("page_url:::::::", url)
     wx.navigateTo({
       url: url
