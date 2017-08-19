@@ -15,19 +15,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.scene)
-    
-    let tvCardNum = this.getCardInfo(scene);
-    this.tvCardNum = tvCardNum;
-    if (util.textIsNotNull(tvCardNum)) {
+    var scene = decodeURIComponent(options.scene);
+    this.getCardInfo(scene);
+    if (util.textIsNotNull(this.tvCardNum)) {
       setTimeout(() => {
-        this.loadTvCardInfo(tvCardNum);
+        this.loadTvCardInfo(this.tvCardNum);
       }, 500);
     }
     
   }, 
   getCardInfo: function (tvCardInfo) {
-    if (!util.textIsNotNull(tvCardInfo)) {
+    if (util.textIsNull(tvCardInfo)) {
       this.setData({
         cardInfo:{
           tvCardNumber:'无此信息',
@@ -48,23 +46,18 @@ Page({
       });
       return null;
     }
-    let tvCardNum = prarams[2];
-    let qrKind = prarams[0];
-    let serviceID = prarams[1];
-    this.setData({
-      tvCardNum: tvCardNum,
-      qrKind: qrKind,
-      serviceID: serviceID
-    });
-    return tvCardNum;
+    this.tvCardNum = prarams[2];
+    this.qrKind = prarams[0];
+    this.serviceID = prarams[1];
+    return this.tvCardNum;
   },
   loadTvCardInfo:function(cardNum) {
     var that = this;
     new Promise((resolve, reject) => {
       var param = JSON.stringify({
-        tvCardNumber: that.setData.tvCardNum,
-        serviceID: that.setData.serviceID,
-        qrKind: that.setData.qrKind
+        tvCardNumber: that.tvCardNum,
+        serviceID: that.serviceID,
+        qrKind: that.qrKind
       })
       new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
         resolve(success);
