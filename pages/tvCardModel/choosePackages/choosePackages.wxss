@@ -51,11 +51,20 @@ color: #999999;
 }
 .num{
   margin: auto 15rpx;
-  color: #e82f2f
+  color: #e82f2f;
 }
 .nian{
-  margin-right: 30rpx;
+  margin-right: 35rpx;
 }
 .show_all{
   color: #999999;
+}
+.orignprice{
+color:#e82f2f;
+margin-left:40rpx;
+font-size:0.7rem;
+display:inline-block;
+margin-top:5rpx;
+text-decoration:line-through;
+
 }

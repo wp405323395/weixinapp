@@ -12,7 +12,7 @@ Page({
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
     // scene = '20~219~8270102533142253';
-    // scene = '21~1110~8270102533395091';
+     scene = '21~1110~8270102533395091';
     this.getCardInfo(scene);
     if (util.textIsNotNull(this.tvCardNum)) {
       setTimeout(() => {
