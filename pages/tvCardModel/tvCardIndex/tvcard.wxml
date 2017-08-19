@@ -1,5 +1,6 @@
 <!--tvcard.wxml-->
 <view class="container">
+<view hidden="{{hidd0&&!cardInfo.tvCardNumber}}">
    <view class="item hav">
     <text>智能卡号</text> 
     <text>{{cardInfo.tvCardNumber}}</text>   
@@ -14,10 +15,17 @@
     <text>{{cardInfo.addr}}</text>   
   </view> 
 
-  <button disabled="{{cardInfo.tvCardNumber == '无此信息'}}" bindtap="click" class="nex_btn" hover-class="nex_btn_tap">下一步</button>
-  <view bindtap="onMsgConfirm" class="msg_err_wrap" hover-class="err_hove">
-    <text class="msg_error">无法匹配卡号信息或信息有误</text>
-  </view>
+  <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">既时订购立马观看</button>
+
+</view>
+<view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
+    <image src="../../../img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
+    <view class="text_wrap">
+      <text>当前未匹配到卡号?</text>
+      <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索</text>
+    </view>
+</view>
+
   
 
 </view>

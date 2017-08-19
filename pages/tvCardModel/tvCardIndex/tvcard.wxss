@@ -23,6 +23,7 @@ text{
   background-color:#3fa5ed;
   color: white;
   margin-bottom: 15rpx;
+  font-size:1rem;
 }
 .nex_btn_tap{
   opacity: 0.5;
@@ -40,4 +41,21 @@ text{
   width: 100%;
   padding: 0;
   text-decoration: underline;
+}
+.scan_no_cardId{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.no_data_img{
+  width: 280rpx;
+  margin-top: 150rpx;
+  margin-bottom: 60rpx;
+}
+.text_wrap{
+  color: #999999;
+}
+.link_text{
+color: #3fa5ed;
+text-decoration:underline;
 }

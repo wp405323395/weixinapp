@@ -3,47 +3,34 @@ import { RequestEngine } from '../../../netApi/requestEngine.js';
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 Page({
-  
-  /**
-   * 页面的初始数据
-   */
+
   data: {
-  
+    hidd0:false,
+    hidd1:true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
+    // scene = '20~219~8270102533142253';
+    // scene = '21~1110~8270102533395091';
     this.getCardInfo(scene);
     if (util.textIsNotNull(this.tvCardNum)) {
       setTimeout(() => {
         this.loadTvCardInfo(this.tvCardNum);
       }, 500);
+    } else {
+      this.setData({
+        hidd0:true,
+        hidd1:false
+      });
     }
-    
   }, 
   getCardInfo: function (tvCardInfo) {
     if (util.textIsNull(tvCardInfo)) {
-      this.setData({
-        cardInfo:{
-          tvCardNumber:'无此信息',
-          custname: '无此信息',
-          addr:'无此信息'
-        }
-      });
       return null;
     }
     let prarams = tvCardInfo.split("~");
     if (prarams == null || prarams.length != 3) {
-      this.setData({
-        cardInfo: {
-          tvCardNumber: '无此信息',
-          custname: '无此信息',
-          addr: '无此信息'
-        }
-      });
       return null;
     }
     this.tvCardNum = prarams[2];
@@ -88,59 +75,12 @@ Page({
       return;
     }
     let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID;
-    console.log("page_url:::::::", url)
     wx.navigateTo({
       url: url
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-  
   },
   onPullDownRefresh: function () {
     
