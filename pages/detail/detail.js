@@ -2,6 +2,7 @@
 var config = require('../../config.js');
 import { RequestEngine } from '../../netApi/requestEngine.js';
 var utils = require('../../utils/util.js');
+import { Header } from '../../netApi/Header.js'  
 var product
 var autoflag;
 var idMap;
@@ -20,21 +21,29 @@ Page({
     product: product,
     btnStr: ''
   },
+  uploadQrInfo: function (scene) {
+    var header = new Header('application/x-www-form-urlencoded').getHeader();
+    let ur = config.uploadQrInfo + scene;
+    console.log('上传二维码信息：：url:' + ur);
+    wx.request({
+      header: header,
+      url: ur
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     utils.getAuther('scope.writePhotosAlbum');
-    var scene = decodeURIComponent(options.scene)
-    if (!util.textIsNull(scene)) {
+    var scene = decodeURIComponent(options.scene);
+    if (!utils.textIsNull(scene)) {
       this.qrInfo = utils.splice(scene);
       setTimeout(() => {
         this.uploadQrInfo(scene);
       }, 500);
     }
-    
-
+  
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

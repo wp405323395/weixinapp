@@ -2,6 +2,7 @@ var bannerHeight;
 var config = require('../../config.js');
 import { RequestEngine } from '../../netApi/requestEngine.js' ;   //引入类
 var util = require('../../utils/util.js');
+import { Header } from '../../netApi/Header.js'  
 Page({
   data: {
     imgUrls: [
@@ -36,8 +37,12 @@ Page({
     wx.stopPullDownRefresh()
   },
   uploadQrInfo: function (scene){
+    var header = new Header('application/x-www-form-urlencoded').getHeader();
+    let ur = config.uploadQrInfo + scene;
+    console.log('上传二维码信息：：url:' + ur);
     wx.request({
-      url: config.uploadQrInfo + scene,
+      header: header,
+      url: ur
     })
   },
   onLoad:function(options) {
