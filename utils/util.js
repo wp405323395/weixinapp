@@ -106,6 +106,30 @@ function getAuther(autherName) {
   })
 }
 
+/**
+ * 0位：二维码来源
+ * 1位：智能卡号码
+ * 2位：优惠券id
+ */
+function splice(optionsScene){
+  var params = optionsScene.split("~");
+  var qrInfo ={};
+  for (let [index, elem] of params.entries()) {
+    switch(index) {
+      case 0:
+        qrInfo.qrkind = elem;
+      break;
+      case 1:
+        qrInfo.cardId = elem;
+      break;
+      case 2:
+        qrInfo.couponId = elem;
+      break;
+    }
+  }
+  return qrInfo;
+}
+
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
@@ -115,5 +139,6 @@ module.exports = {
   getAuther: getAuther,
   showToast: showToast,
   showShortToast: showShortToast,
-  textIsNull: textIsNull
+  textIsNull: textIsNull,
+  splice: splice
 }

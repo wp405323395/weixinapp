@@ -1,6 +1,7 @@
 var bannerHeight;
 var config = require('../../config.js');
 import { RequestEngine } from '../../netApi/requestEngine.js' ;   //引入类
+var util = require('../../utils/util.js');
 Page({
   data: {
     imgUrls: [
@@ -34,26 +35,19 @@ Page({
     this.loadData(this.data.currentTab);
     wx.stopPullDownRefresh()
   },
+  uploadQrInfo: function (scene){
+    wx.request({
+      url: config.uploadQrInfo + scene,
+    })
+  },
   onLoad:function(options) {
     var scene = decodeURIComponent(options.scene);
-    console.log("ww----"+scene);
-    //scene = '../redPackage/red';
-    if (scene != undefined && scene != 'undefined' && scene != '') {
-      if (scene.indexOf("detail") >0){
-        scene = '../detail/detail';
-      } else if (scene.indexOf("tvCard") > 0) {
-        scene = '../tvCard/tvcard';
-      } else if (scene.indexOf("redPackage") > 0) {
-        scene = '../redPackage/red';
-      }
-      wx.showToast({
-        title: scene
-      })
-      wx.navigateTo({
-        url: scene,
-      })
+    if (!util.textIsNull(scene)){
+      setTimeout(() => {
+        this.uploadQrInfo(scene);
+      }, 500);
     }
-   
+    
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

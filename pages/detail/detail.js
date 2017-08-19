@@ -27,21 +27,13 @@ Page({
   onLoad: function (options) {
     utils.getAuther('scope.writePhotosAlbum');
     var scene = decodeURIComponent(options.scene)
-    
-    if (scene == undefined) {
-      scene = '没有码信息'
+    if (!util.textIsNull(scene)) {
+      this.qrInfo = utils.splice(scene);
+      setTimeout(() => {
+        this.uploadQrInfo(scene);
+      }, 500);
     }
-    wx.showModal({
-      title: '优惠券详情',
-      content: scene,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+    
 
     var that = this;
     wx.getSystemInfo({
@@ -53,8 +45,12 @@ Page({
         });
       }
     });
-    //'id-','relaId-'
-    idMap = options.id.split('-');
+    if (this.qrInfo && this.qrInfo.couponId) {
+      idMap = ['id', this.qrInfo.couponId];
+    } else {
+      //'id-','relaId-'
+      idMap = options.id.split('-');
+    }
     setTimeout(()=>{
       this.loadProduct();
     },500);

@@ -39,7 +39,8 @@ var config = {
     queryCustInfo: `${schema}://${host}/wappweb/mcwx/order!queryCustInfo`,
     queryOrderKeyno: `${schema}://${host}/wappweb/mcwx/order!queryOrderKeyno`,
     querySalesList: `${schema}://${host}/wappweb/mcwx/order!querySalesList`,
-    doOrder: `${schema}://${host}/wappweb/mcwx/order!doOrder`
+    doOrder: `${schema}://${host}/wappweb/mcwx/order!doOrder`,
+    uploadQrInfo: `${schema}://${host}/wappweb/mcwx/mc-wx!saveCardidOpenid?scene=`,
 };
 
 
