@@ -11,8 +11,8 @@ Page({
 
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
-    // scene = '20~219~8270102533142253';
-     scene = '21~1110~8270102533395091';
+     //scene = '20~219~8270102533142253';
+     //scene = '21~1110~8270102533395091';
     this.getCardInfo(scene);
     if (util.textIsNotNull(this.tvCardNum)) {
       setTimeout(() => {
@@ -74,7 +74,7 @@ Page({
       })
       return;
     }
-    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID;
+    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind;
     wx.navigateTo({
       url: url
     })

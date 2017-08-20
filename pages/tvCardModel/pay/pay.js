@@ -48,6 +48,7 @@ Page({
     let custid = options.custid;
     let tvCardNum = options.tvCardNum;
     let serviceID = options.serviceID;
+    let qrKind = options.qrKind;
     this.setData({
       scanCardInfo: {
         custid: custid, tvCardNum: tvCardNum, serviceID: serviceID
@@ -59,7 +60,7 @@ Page({
     });
     this.animation.rotate(90).step();
 
-    if (!util.textIsNotNull(tvCardNum)) {
+    if (util.textIsNull(tvCardNum)) {
       setTimeout(() => {
         this.loadCards(custid, tvCardNum, serviceID);
       }, 500)
@@ -67,7 +68,7 @@ Page({
     this.tvCardNum = tvCardNum;
     this.custid = custid;
     this.serviceID = serviceID;
-
+    this.qrKind = qrKind;
   },
   onShow: function () {
     let that = this;

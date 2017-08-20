@@ -33,14 +33,17 @@ Page({
 
   },
   onSelected: function (e) {
-    let id = e.currentTarget.dataset.id
+    let item = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../pay/pay?custid=' + id
+      url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber
     })
   },
   serchUser: function (inputValue) {
     var that = this;
     new Promise((resolve, reject) => {
+      wx.showLoading({
+        title: '正在定位中',
+      })
       wx.getLocation({
         type: 'wgs84',
         success: function (res) {
@@ -49,9 +52,11 @@ Page({
           var speed = res.speed
           var accuracy = res.accuracy
           resolve(latitude + '-' + longitude);
+          wx.hideLoading();
         },
         fail: function (err) {
           resolve('');
+          wx.hideLoading();
         }
       })
     }).then(value => {

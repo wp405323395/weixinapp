@@ -15,7 +15,7 @@
     <text>{{cardInfo.addr}}</text>   
   </view> 
 
-  <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">既时订购立马观看</button>
+  <button bindtap="click" class="nex_btn" hover-class="nex_btn_tap">即时订购立马观看</button>
 
 </view>
 <view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">

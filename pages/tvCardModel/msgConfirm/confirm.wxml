@@ -15,7 +15,7 @@
     <text class="promote_text">注:通过左侧按钮可扫描智能卡背面条形码</text>
   </view>
   <view class="customList">
-    <view class="customItem" bindtap="onSelected" data-id="{{item.custid}}" wx:for="{{custList}}" wx:key="unique">
+    <view class="customItem" bindtap="onSelected" data-id="{{item}}" wx:for="{{custList}}" wx:key="unique">
       <image class="icon" src="../../../img/person_icon.png"></image>
       <view class="cu_value">
         <view class="item0">
