@@ -49,7 +49,7 @@ text{
 }
 .no_data_img{
   width: 280rpx;
-  margin-top: 150rpx;
+  margin-top: 100rpx;
   margin-bottom: 60rpx;
 }
 .text_wrap{

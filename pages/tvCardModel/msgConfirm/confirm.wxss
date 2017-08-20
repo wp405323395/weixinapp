@@ -87,3 +87,15 @@ margin-top:14rpx;
   color: #999999;
   font-size: 0.8rem;
 }
+.notice_detail{
+  display: flex;
+  flex-direction: column;
+}
+.lable_warning{
+  display: inline-block;
+}
+.notice_lable {
+  display: flex;
+  flex-direction: row;
+  color: #e82f2f;
+}
