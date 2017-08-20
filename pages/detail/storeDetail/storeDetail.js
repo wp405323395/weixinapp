@@ -1,6 +1,6 @@
 // storeDetail.js
 var config = require('../../../config.js');
-import { RequestEngine } from '../../../netApi/requestEngine.js';
+import RequestEngine from '../../../netApi/requestEngine.js';
 Page({
   /**
    * 页面的初始数据

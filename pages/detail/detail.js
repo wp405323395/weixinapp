@@ -1,8 +1,8 @@
 // detail.js
 var config = require('../../config.js');
-import { RequestEngine } from '../../netApi/requestEngine.js';
+import RequestEngine from '../../netApi/requestEngine.js';
 var utils = require('../../utils/util.js');
-import { Header } from '../../netApi/Header.js'  
+import Header from '../../netApi/Header.js'  
 var product
 var autoflag;
 var idMap;

@@ -1,8 +1,8 @@
 const requestModle = require('./requestModle.js');
 const config = require('../config.js');
-import { Interceptor } from './interceptor/Interceptor.js'    //引入类
-import { LogInterceptor } from './interceptor/LogInterceptor.js'    //引入类
-import { RequestStatusInterceptor } from './interceptor/RequestStatusInterceptor.js'
+import Interceptor from './interceptor/Interceptor.js'    //引入类
+import LogInterceptor from './interceptor/LogInterceptor.js'    //引入类
+import RequestStatusInterceptor from './interceptor/RequestStatusInterceptor.js'
 class RequestEngine {
   constructor(isShowProgress = true) {
     this.interceptors = [],
@@ -36,6 +36,4 @@ class RequestEngine {
 
 }
 
-export {
-  RequestEngine
-}
+export default RequestEngine

@@ -1,6 +1,6 @@
 // coups.js
 var config = require('../../../config.js');
-import { RequestEngine } from '../../../netApi/requestEngine.js';
+import RequestEngine from '../../../netApi/requestEngine.js';
 // var coups = [{
 //   id: 100,
 //   coupName: '小店',

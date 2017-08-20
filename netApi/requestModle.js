@@ -1,4 +1,4 @@
-import { Header } from './Header.js'    //引入类
+import Header from './Header.js'    //引入类
 const loginJs = require('./login.js');
 
 var request = function (url, data, reqMethod, requestSuccess, requestFail, requestComplete, interceptors) {

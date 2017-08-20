@@ -1,4 +1,4 @@
-import { Interceptor } from './Interceptor.js'  
+import Interceptor from './Interceptor.js'  
 const util = require('../../utils/util.js');
 class RequestStatusInterceptor extends Interceptor{
   constructor() {
@@ -30,6 +30,4 @@ class RequestStatusInterceptor extends Interceptor{
     });
   }
 }
-export{
-  RequestStatusInterceptor
-}
+export default  RequestStatusInterceptor

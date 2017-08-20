@@ -1,6 +1,6 @@
 // me.js
 //获取应用实例
-import { RequestEngine } from '../../netApi/requestEngine.js';
+import RequestEngine from '../../netApi/requestEngine.js';
 var config = require('../../config.js');
 var app = getApp()
 Page({

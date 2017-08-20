@@ -1,5 +1,5 @@
 var util = require('../utils/util');
-import { Header } from './Header.js'    //引入类
+import Header from './Header.js'    //引入类
 
 //多张图片上传
 function uploadimg(data, formData) {

@@ -1,5 +1,5 @@
 // me.js
-import { RequestEngine } from '../../netApi/requestEngine.js'; 
+import RequestEngine from '../../netApi/requestEngine.js'; 
 var config = require('../../config.js');
 
 Page({

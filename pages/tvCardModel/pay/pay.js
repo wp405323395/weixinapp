@@ -1,5 +1,5 @@
 // pay.js
-import { RequestEngine } from '../../../netApi/requestEngine.js';
+import RequestEngine from '../../../netApi/requestEngine.js';
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 

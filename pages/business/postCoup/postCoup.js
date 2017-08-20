@@ -1,7 +1,7 @@
 // postCoup.js
 var util = require('../../../utils/util.js');
 var config = require('../../../config.js');
-import { RequestEngine } from '../../../netApi/requestEngine.js';
+import RequestEngine from '../../../netApi/requestEngine.js';
 var uploadFileEngin = require('../../../netApi/uploadFiles.js');
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]

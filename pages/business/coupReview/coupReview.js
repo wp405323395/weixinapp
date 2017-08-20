@@ -1,7 +1,7 @@
 // coupReview.js
 var utils = require('../../../utils/util.js');
 var config = require('../../../config.js');
-import { RequestEngine } from '../../../netApi/requestEngine.js';
+import RequestEngine from '../../../netApi/requestEngine.js';
 // var product = {
 //   storeImgList:['../../../img/banner.png'],
 //   storeIntro:'神奇的小店',

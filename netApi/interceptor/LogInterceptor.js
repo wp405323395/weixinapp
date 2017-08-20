@@ -1,4 +1,4 @@
-import { Interceptor } from './Interceptor.js'    //引入类
+import Interceptor from './Interceptor.js'    //引入类
 class LogInterceptor extends Interceptor{
   constructor() {
     super();
@@ -35,4 +35,4 @@ class LogInterceptor extends Interceptor{
   }
 }
 
-export { LogInterceptor }
+export default LogInterceptor
