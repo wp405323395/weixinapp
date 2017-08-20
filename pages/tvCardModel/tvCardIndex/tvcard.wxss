@@ -17,6 +17,7 @@ text{
 }
 .hav{
   margin:20rpx 0;
+  margin-top: 0;
 }
 .nex_btn{
   margin:30px 10px;
