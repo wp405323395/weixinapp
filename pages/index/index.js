@@ -3,7 +3,7 @@ var config = require('../../config.js');
 import RequestEngine from '../../netApi/requestEngine.js' ;   //引入类
 var util = require('../../utils/util.js');
 import Header from '../../netApi/Header.js'  
-var Promise = require('../../libs/es6-promise').Promise;
+var Promise = require('../../libs/es6-promise.js').Promise;
 Page({
   data: {
     imgUrls: [

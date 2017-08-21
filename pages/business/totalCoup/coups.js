@@ -1,7 +1,7 @@
 // coups.js
 var config = require('../../../config.js');
 import RequestEngine from '../../../netApi/requestEngine.js';
-var Promise = require('../../../libs/es6-promise').Promise;
+var Promise = require('../../../libs/es6-promise.js').Promise;
 // var coups = [{
 //   id: 100,
 //   coupName: '小店',
