@@ -21,15 +21,16 @@
 }
 
 .lable{
-  width: 160rpx;
+  width: 170rpx;
   color: #999999;
   display: inline-block;
+  flex-shrink:0;
 }
 .lables {
   width: 300rpx;
 }
 .item{
-  margin-bottom: 12rpx;
+  margin-bottom: 25rpx;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -40,5 +41,6 @@
 }
 .value{
   display: block;
+  margin-top:7rpx;
 
 }
