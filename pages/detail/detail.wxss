@@ -6,6 +6,11 @@
   background: white;
 }
 
+.button::after{
+-webkit-transform:scale(0);
+transform:scale(0);
+}
+
 .boomBox {
   position: fixed;
   z-index: 100;

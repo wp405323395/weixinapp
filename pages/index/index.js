@@ -126,7 +126,11 @@ Page({
     let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = parseInt((mss % (1000 * 60)) / 1000);
-    let time = (days*24 + hours) + ":" + minutes + ":" + seconds;
+    let totalHours = days * 24 + hours;
+    let h = totalHours > 10 ? totalHours :('0' + totalHours);
+    let m = minutes > 10 ? minutes : ('0' + minutes);
+    let s = seconds > 10 ? seconds : ('0' + seconds);
+    let time = h + ":" + m + ":" + s;
     return time;
   },
 
