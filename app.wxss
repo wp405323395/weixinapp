@@ -135,13 +135,14 @@ opacity: 0.9;
 }
 .nodate_img{
   width: 55%;
+  margin-top: 80rpx;
 }
 .nodate_wrap{
   width: 100%;
-  height: 400rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .go_in{
 width:30rpx;
@@ -209,4 +210,9 @@ display:flex;
   color: #5b4b2d;
   display: inline-block;
   padding: 0rpx;
+}
+.no_data_text{
+  color: #d4d4d4;
+  margin-top: 60rpx;
+  font-size:1.1rem;
 }

@@ -32,8 +32,9 @@
         </navigator>
     </view>
   </view>
-  <view class="nodate_wrap">
-    <image src="../../img/nodate.png" class="nodate_img" mode="widthFix" hidden="{{hasdate}}"/>
+  <view class="nodate_wrap" hidden="{{hasdate}}">
+    <image src="../../img/nodate.png" class="nodate_img" mode="widthFix"/>
+    <text class="no_data_text">当前暂无优惠券</text>
   </view>
   
 </template >
