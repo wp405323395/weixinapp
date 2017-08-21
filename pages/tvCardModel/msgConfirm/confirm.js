@@ -1,5 +1,6 @@
 // confirm.js
 import RequestEngine from '../../../netApi/requestEngine.js';
+var Promise = require('../../../libs/es6-promise').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 Page({

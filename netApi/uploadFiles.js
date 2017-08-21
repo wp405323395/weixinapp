@@ -1,6 +1,6 @@
 var util = require('../utils/util');
 import Header from './Header.js'    //引入类
-
+var Promise = require('../libs/es6-promise').Promise;
 //多张图片上传
 function uploadimg(data, formData) {
   var that = this,

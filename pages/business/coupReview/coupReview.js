@@ -2,6 +2,7 @@
 var utils = require('../../../utils/util.js');
 var config = require('../../../config.js');
 import RequestEngine from '../../../netApi/requestEngine.js';
+var Promise = require('../../../libs/es6-promise').Promise;
 // var product = {
 //   storeImgList:['../../../img/banner.png'],
 //   storeIntro:'神奇的小店',

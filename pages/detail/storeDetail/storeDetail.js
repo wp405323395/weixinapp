@@ -1,6 +1,7 @@
 // storeDetail.js
 var config = require('../../../config.js');
 import RequestEngine from '../../../netApi/requestEngine.js';
+var Promise = require('../../../libs/es6-promise').Promise;
 Page({
   /**
    * 页面的初始数据
