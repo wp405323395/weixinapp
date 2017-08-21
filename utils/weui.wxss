@@ -397,7 +397,7 @@ icon {
           flex: 1;
 }
 .weui-uploader__info {
-  color: #B2B2B2;
+  color: #999999;
 }
 .weui-uploader__bd {
   margin-bottom: -4px;

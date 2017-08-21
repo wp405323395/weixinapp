@@ -68,10 +68,12 @@
   </view>
 
   <view class="store_name nomargin">
-    <view class="name_lable">
+    <view class="name_lable textara">
       <text>店铺介绍</text>
+      <text class="not_numvv">{{hasInputNum}}/100</text>
     </view>
-    <input bindinput="bindInput_storIntro" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺简介"/>
+    <textarea maxlength="{{100}}" bindinput="bindInput_storIntro" placeholder-class="holder_style" class="textarea_style" type="text" placeholder="请输入店铺简介"/>
+    
   </view>
   <view class="store_name">
     <view class="name_lable nomargin_bottom">

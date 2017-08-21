@@ -15,7 +15,7 @@
     <view class="notice_lable">
       <text class="lable_warning">注：</text>
       <view class="notice_detail">
-      <text>1.搜索框支持，姓名/手机号/身份证号/智能卡号搜索</text>
+      <text>1.搜索框支持"姓名/手机号/身份证号/智能卡号"搜索</text>
       <text>2.左侧扫一扫智能卡背面的条形码可获取账号信息</text>
     </view>
     </view>

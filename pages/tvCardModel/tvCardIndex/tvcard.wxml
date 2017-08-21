@@ -23,7 +23,7 @@
 <view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
     <image src="../../../img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
     <view class="text_wrap">
-      <text>您的微信号暂未绑定有限电视账号</text>
+      <text>您的微信号暂未绑定有线电视账号</text>
     </view>
           <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处绑定!</text>
 </view>

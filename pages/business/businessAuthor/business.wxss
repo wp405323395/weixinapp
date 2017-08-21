@@ -22,10 +22,27 @@ display:block;
   display: inline-block;
   margin-right: 10rpx;
 }
+.textarea_style{
+  background-color: white;
+  padding-left: 50rpx;
+  padding: 30rpx;
+  width: 100%;
+  box-sizing:border-box;
+}
 .input_style{
   background-color: white;
   padding: 30rpx;
   padding-left: 50rpx;
+}
+.textara {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.not_numvv{
+  margin-right:30rpx;
+  color:#999999;
+
 }
 .margin_five{
   padding-left: 50rpx;

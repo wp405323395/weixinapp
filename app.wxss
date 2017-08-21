@@ -158,6 +158,7 @@ height:30rpx;
 }
 .introduce>view:last-child {
   margin-top: 35rpx;
+  margin-bottom:35rpx;
 }
 .introduce_item {
   width: 100%;
@@ -215,4 +216,15 @@ display:flex;
   color: #d4d4d4;
   margin-top: 60rpx;
   font-size:1.1rem;
+}
+.go_in_detail{
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.introl_style{
+  text-align: left;
+  width: 60%;
+  margin-left:50rpx;
+
 }

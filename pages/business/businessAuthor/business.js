@@ -23,6 +23,7 @@ var subObj = {
 }
 Page({
   data: {
+    hasInputNum:0,
     btnText: '申请认证',
     clickAble: true,
     imageList: [],
@@ -155,6 +156,9 @@ Page({
   bindInput_storIntro: function (e) {
     let storIntro = e.detail.value;
     subObj.storeIntro = storIntro;
+    this.setData({
+      hasInputNum: storIntro.length
+    });
   },
   showError: function (str) {
     util.showShortToast({
