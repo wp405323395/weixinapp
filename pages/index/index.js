@@ -127,9 +127,9 @@ Page({
     let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = parseInt((mss % (1000 * 60)) / 1000);
     let totalHours = days * 24 + hours;
-    let h = totalHours > 10 ? totalHours :('0' + totalHours);
-    let m = minutes > 10 ? minutes : ('0' + minutes);
-    let s = seconds > 10 ? seconds : ('0' + seconds);
+    let h = totalHours > 9 ? totalHours :('0' + totalHours);
+    let m = minutes > 9 ? minutes : ('0' + minutes);
+    let s = seconds > 9 ? seconds : ('0' + seconds);
     let time = h + ":" + m + ":" + s;
     return time;
   },
