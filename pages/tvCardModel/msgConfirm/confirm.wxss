@@ -40,7 +40,7 @@
   font-family: "iconfont" !important;
 }
 .search::after{
-  content: "\e620";
+  content: "\e632";
 }
 
 .cancle::after{
