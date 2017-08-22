@@ -144,9 +144,11 @@ opacity: 0.9;
   align-items: center;
   flex-direction: column;
 }
-.go_in{
+.go_in::after{
 width:30rpx;
 height:30rpx;
+content: "\003E";
+color: #d4d4d4;
 }
 /* -----------------------------------优惠券详情样式--------------------- */
 .swiper {

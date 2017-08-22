@@ -37,17 +37,28 @@
   height: 33rpx;
   margin: auto 10rpx;
   flex-shrink:0;
+
 }
 
-.cancle{
+.cancle::after{
 margin-right:20rpx;
 width:32rpx;
 height:32rpx;
 flex-shrink:0;
 margin-top:14rpx;
+content:"\2715";
+background-color:#d4d4d4;
+color:white;
+border-radius:40rpx;
+display:inline-block;
+padding:7rpx;
+text-align:center;
+line-height:32rpx;
 
 
 }
+
+
 .promote{
   padding:15rpx 30rpx;
   color: #999999;

@@ -7,7 +7,8 @@
       <text>智能卡号</text>
       <view style="padding-right:20rpx;">
         <text>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardNumberSelect != -1 &&searchPerson.cardsNumber[cardNumberSelect])?searchPerson.cardsNumber[cardNumberSelect]:'请选择智能卡号')}}</text>
-        <image animation="{{tvCardAnimationData}}" src="../../../img/go_in.png" class="lit_left" ></image>
+
+        <view animation="{{tvCardAnimationData}}" class="go_in"></view>
       </view>
     </view>
     <view hidden="{{cardNumberSelectHidden}}" class="select_position">
@@ -22,7 +23,7 @@
 
       <view style="padding-right:20rpx;">
         <text>{{selectPackage.salesname?selectPackage.salesname:'请选择套餐'}}</text>
-        <image src="../../../img/go_in.png" class="lit_left" ></image>
+        <view class="go_in"></view>
       </view>
 
     </view>
@@ -44,7 +45,7 @@
   <view class="item pa_wrap">
     <text>当前可用优惠券</text>
     <view style="margin-right:20rpx;"><text style="color: #3fa5ed">暂无优惠</text>
-    <image src="../../../img/go_in.png" class="lit_left" ></image>
+     <view class="go_in"></view>
     </view>
     
   </view>

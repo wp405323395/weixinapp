@@ -13,7 +13,7 @@
     <view class="introduce_item spacal" bindtap="onGotoDetail" hover-class="navigator-hover">
       <text class="lable">店铺介绍</text>
       <text class="introl_style details">{{product.storeIntro}}</text>
-      <image class="go_in_detail" src="../../img/go_in.png"></image>
+      <view class="go_in"></view>
     </view>
     <view class="introduce_item ">
       <text class="lable">活动介绍</text>

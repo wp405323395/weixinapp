@@ -3,17 +3,17 @@
  <!-- <view class="item my_order" id="my_order" hover-class="clicked_style" bindtap="onClick"> -->
   <view class="item margin_top space" hover-class="clicked_style" bindtap="onPostCoupClick">
     <text>发布优惠券</text>
-    <image class="go_in_style" src="../../../img/go_in.png" mode="widthFix"/>
+    <view class="go_in"></view>
   </view>
   <view class="item space" hover-class="clicked_style" bindtap="onMyCoupsClick">
     <text>已发布优惠券</text>
-    <image class="go_in_style" src="../../../img/go_in.png" mode="widthFix"/>
+    <view class="go_in"></view>
   </view>
   <!-- <view class="item" hover-class="clicked_style" bindtap="onNoticeClick">
     <view>
       <text>通知</text>
       <text class="red_point_notice"></text>
     </view>
-    <image class="go_in_style" src="../../../img/go_in.png" mode="widthFix"/>
+    <view class="go_in"></view>
   </view> -->
 </view>

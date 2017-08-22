@@ -6,7 +6,7 @@
       <image class="search" src="../../../img/search.png"></image>
       <input value="{{inputValue}}" class="input" bindinput="onValueEvent" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
       
-        <image src="../../../img/clean_input.png" bindtap="onCancleClick" class="cancle"></image>
+        <view bindtap="onCancleClick" class="cancle"></view>
       
     </view>
     

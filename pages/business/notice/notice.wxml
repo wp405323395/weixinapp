@@ -18,7 +18,7 @@
         </view>
       </view>
       <text class="unred_img" hidden="{{item.isHasRead}}"></text>
-      <image src="../../../img/go_in.png" class="go_in fl_part"></image>
+      <view class="go_in"></view>
     </view>
   </view>
 

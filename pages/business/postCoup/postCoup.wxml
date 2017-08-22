@@ -43,7 +43,7 @@
       <picker mode="date" value="{{deadline}}" bindchange="bindDateChange">
           <view class="weui-input">{{deadline}}</view>
       </picker>
-      <image class="down_img" src="../../../img/go_in.png" mode="widthFix"/>
+      <view class="go_in"></view>
     </view>
   </view>
 

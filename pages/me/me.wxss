@@ -54,9 +54,11 @@
   margin-left: 25rpx;
   display: inline-block;
 }
-.left_btn{
-width:30rpx;
-height:30rpx;
+.left_btn::after{
+  content: "\003E";
+  width:30rpx;
+  height:30rpx;
+  color: #d4d4d4;
 }
 .my_red_package{
   margin-top: 1px;
