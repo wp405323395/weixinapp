@@ -37,7 +37,10 @@
   height: 33rpx;
   margin: auto 10rpx;
   flex-shrink:0;
-
+  font-family: "iconfont" !important;
+}
+.search::after{
+  content: "\e620";
 }
 
 .cancle::after{

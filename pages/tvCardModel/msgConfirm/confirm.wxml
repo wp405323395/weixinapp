@@ -3,7 +3,7 @@
   <view class="title_serch_wrap">
     <image bindtap="onScanClick" class="scan" src="../../../img/scan.png"></image>
     <view class="input_wrap">
-      <image class="search" src="../../../img/search.png"></image>
+      <view class="search"></view>
       <input value="{{inputValue}}" class="input" bindinput="onValueEvent" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
       
         <view bindtap="onCancleClick" class="cancle"></view>
