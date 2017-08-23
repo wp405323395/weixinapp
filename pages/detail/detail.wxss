@@ -68,18 +68,24 @@ transform:scale(0);
 
 button {
   width: 100%;
-  height: 50px;
+
   background: white;
   border-radius: 0;
   color: #ef2020;
-  flex-shrink: 0;
-  border-top:1px #d4d4d4 solid;
-
+  border-top:1px #eeeeee solid;
+  flex-grow:1;
 
 }
+
+button[disabled][type="default"], wx-button[disabled]:not([type]) {
+color:rgba(0, 0, 0, 0.3);
+background-color: white;
+
+}
+
 .scroll_type{
   width: 100%;
-  height: 90%;
+  height: 92%;
 }
 
 .dialog {
