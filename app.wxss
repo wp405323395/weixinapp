@@ -238,3 +238,6 @@ display:flex;
   margin-left:50rpx;
 
 }
+.detail_import{
+  color:#3fa5ed;
+}

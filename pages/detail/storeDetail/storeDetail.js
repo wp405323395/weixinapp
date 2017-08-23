@@ -107,8 +107,9 @@ Page({
   
   },
   onPhoneCallClick:function(e) {
+    var that = this;
     wx.makePhoneCall({
-      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      phoneNumber: that.data.storeDetail.phone //仅为示例，并非真实的电话号码
     })
   }
 })
