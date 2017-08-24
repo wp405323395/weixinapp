@@ -15,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    qrImgUrl:"../../../img/loading.gif",
     unShow: true,
     isHidden: true,
     isHidden1: true,
@@ -178,22 +179,30 @@ Page({
   //   }
 
   // },
- 
+  showQr:function(qrUrl){
+    this.setData({
+      isHidden:false,
+      qrImgUrl: qrUrl
+    });
+
+  },
   click: function (e) {
     var key = idMap[0];
     var value = idMap[1];
     var that = this;
-    
-
+  
     if (key == 'relaId') {
       new Promise((resolve, reject) => {
         new RequestEngine().request(config.useCouponByWxCode, { relaId: value}, { callBy: that, method: that.click, params: [] }, (success) => {
-          resolve(success.retData);
+          resolve(success);
         }, (faild) => {
         });
       })
         .then((value) => {
-         
+          if (value.retCode=='0') {
+            let qrUrl = value.retData.wxcodeurl;
+            this.showQr(qrUrl);
+          }
         }, (err) => { })
         .then(value => {
           if (value.retCode == '0') {

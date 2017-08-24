@@ -12,9 +12,16 @@
       <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
 
     </view>
-    
+
 
   <view bindtap="onclick_hide_dialog" class="boomBox" hidden="{{isHidden}}">
+  </view>
+  <view class="qr_wrap" hidden="{{isHidden}}">
+    <view class="qr_wrap_inner">
+        <image src="{{qrImgUrl}}" class="qr_img"></image>
+        <text>请将此二维码展示给商家,完成扫码</text>
+    </view>
+    
   </view>
 
   <view class="dialog_border dialog dialog1" hidden="{{isHidden1}}">
