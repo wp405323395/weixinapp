@@ -183,14 +183,11 @@ Page({
     var key = idMap[0];
     var value = idMap[1];
     var that = this;
-    let subObj = {};
-    subObj.relaId = value;
-    let param = {};
-    param.formData = JSON.stringify(subObj);
+    
 
     if (key == 'relaId') {
       new Promise((resolve, reject) => {
-        new RequestEngine().request(config.useCouponByWxCode, param, { callBy: that, method: that.click, params: [] }, (success) => {
+        new RequestEngine().request(config.useCouponByWxCode, { relaId: value}, { callBy: that, method: that.click, params: [] }, (success) => {
           resolve(success.retData);
         }, (faild) => {
         });
