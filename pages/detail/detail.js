@@ -98,83 +98,126 @@ Page({
 
     });
   },
+  //按照200米范围是否能消费的逻辑。
+  // click: function (e) {
+  //   var key = idMap[0];
+  //   var value = idMap[1];
+  //   let param = {};
+  //   if (key == 'relaId') {
+  //     new Promise((resolve, reject) => {
+  //       utils.showToast({
+  //         title: "获取位置中...",
+  //         icon: "loading"
+  //       });
+  //       wx.getLocation({
+  //         type: 'wgs84',
+  //         success: function (res) {
+  //           wx.hideToast(); 
+  //           resolve(res);
+  //         },
+  //         fail: function (err) {
+  //           wx.hideToast();
+  //           reject(err);
+  //         }
+  //       })
+  //     })
+  //       .then((value) => {
+  //         var key = idMap[0];
+  //         var val = idMap[1];
+  //         useCoupParam = {};
+  //         useCoupParam.relaId = val;
+  //         useCoupParam.latitude = value.latitude;
+  //         useCoupParam.longitude = value.longitude;
+  //         return this.useCoup();
+  //       }, (err) => { })
+  //       .then(value => {
+  //         //>>>>>>>>>>>超出200米
+  //         if (!value.relaReceiveFlag) {
+  //           wx.showModal({
+  //             content: value,
+  //             confirmText: "确定",
+  //             cancelText: "取消"
+  //           })
+  //           return;
+  //         }
+  //         //<<<<<<<<<<超出200米
+  //         wx.showToast({
+  //           icon: "success",
+  //           title: "成功使用",
+  //           mask: true
+  //         })
+  //         idMap = ['relaId', value.relaId];
+  //         this.setData({
+  //           product: value
+  //         });
+  //         try {
+  //           wx.setStorageSync('needRefreshData', true)
+  //         } catch (e) {
+  //         }
+          
+  //       }, err => {
+  //       });
+  //   } else if (key == 'id') {
+  //     receiveParam = {};
+  //     receiveParam.id = value;
+  //     this.receiveCoup();
+  //   }
+  //   return;
 
+  //   autoflag = !autoflag;
+  //   if (autoflag) {
+  //     this.setData({
+  //       isHidden: false,
+  //       isHidden2: false
+  //     });
+  //   } else {
+  //     this.setData({
+  //       isHidden: false,
+  //       isHidden1: false
+  //     });
+  //   }
+
+  // },
+ 
   click: function (e) {
     var key = idMap[0];
     var value = idMap[1];
+    var that = this;
+    let subObj = {};
+    subObj.relaId = value;
     let param = {};
+    param.formData = JSON.stringify(subObj);
+
     if (key == 'relaId') {
       new Promise((resolve, reject) => {
-        utils.showToast({
-          title: "获取位置中...",
-          icon: "loading"
+        new RequestEngine().request(config.useCouponByWxCode, param, { callBy: that, method: that.click, params: [] }, (success) => {
+          resolve(success.retData);
+        }, (faild) => {
         });
-        wx.getLocation({
-          type: 'wgs84',
-          success: function (res) {
-            wx.hideToast(); 
-            resolve(res);
-          },
-          fail: function (err) {
-            wx.hideToast();
-            reject(err);
-          }
-        })
       })
         .then((value) => {
-          var key = idMap[0];
-          var val = idMap[1];
-          useCoupParam = {};
-          useCoupParam.relaId = val;
-          useCoupParam.latitude = value.latitude;
-          useCoupParam.longitude = value.longitude;
-          return this.useCoup();
+         
         }, (err) => { })
         .then(value => {
-          //>>>>>>>>>>>超出200米
-          if (!value.relaReceiveFlag) {
-            wx.showModal({
-              content: value,
-              confirmText: "确定",
-              cancelText: "取消"
+          if (value.retCode == '0') {
+            wx.showToast({
+              icon: "success",
+              title: "成功使用",
+              mask: true
             })
-            return;
-          }
-          //<<<<<<<<<<超出200米
-          wx.showToast({
-            icon: "success",
-            title: "成功使用",
-            mask: true
-          })
-          idMap = ['relaId', value.relaId];
-          this.setData({
-            product: value
-          });
+          } 
+         
           try {
             wx.setStorageSync('needRefreshData', true)
           } catch (e) {
           }
-          
+
         }, err => {
         });
     } else if (key == 'id') {
       receiveParam = {};
       receiveParam.id = value;
       this.receiveCoup();
-    }
-    return;
-
-    autoflag = !autoflag;
-    if (autoflag) {
-      this.setData({
-        isHidden: false,
-        isHidden2: false
-      });
-    } else {
-      this.setData({
-        isHidden: false,
-        isHidden1: false
-      });
     }
 
   },
