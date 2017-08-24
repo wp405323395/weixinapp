@@ -140,10 +140,12 @@ Page({
             })
             return;
           }
-          if (value.relaReceiveFlag == '0') {
-            value.receiveMemo = '立即使用';
-          }
           //<<<<<<<<<<超出200米
+          wx.showToast({
+            icon: "success",
+            title: "成功使用",
+            mask: true
+          })
           idMap = ['relaId', value.relaId];
           this.setData({
             product: value
