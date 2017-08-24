@@ -189,6 +189,11 @@ Page({
       }, (faild) => {
       });
     }).then(value => {
+      wx.showToast({
+          icon: "success",
+          title: "领取成功",
+          mask:true
+       })
       if (value.relaReceiveFlag == '0') {
         value.receiveMemo = '立即使用';
       }
