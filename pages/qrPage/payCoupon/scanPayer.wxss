@@ -4,6 +4,7 @@
   flex-wrap: nowrap;
   flex-direction: column;
   align-items:center ;
+  text-align: center;
 }
 .iknow_btn{
   margin-top: 30px;
@@ -22,5 +23,20 @@
   box-sizing: border-box;
 }
 .okimage::after{
-  content: '\2713'
+  content: '\2713';
+}
+.faildimage{
+  margin-top: 60px;
+  width: 250rpx;
+  height: 250rpx;
+  margin-bottom: 20px;
+  background-color: #3fa5ed;
+  border-radius: 250rpx;
+  font-size: 5rem;
+  color: red;
+  text-align: center;
+  box-sizing: border-box;
+}
+.faildimage::after{
+  content: '\2716';
 }

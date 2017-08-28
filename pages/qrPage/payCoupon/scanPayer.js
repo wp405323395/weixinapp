@@ -23,15 +23,18 @@ Page({
           reject(faild);
         })
       }).then(value => {
+        this.setData({
+          isHidden: false
+        });
+        
         if (value.retCode == '0') {
           this.setData({
-            isHidden: false
+            shoped_faild: false
           });
         } else {
-          wx.showModal({
-            title: '消费失败',
-            showCancel: false
-          })
+          this.setData({
+            shoped_faild: true
+          });
         }
       }).catch(err => {
         wx.showModal({
@@ -46,7 +49,7 @@ Page({
    */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
-    
+    scene = "ssssss";
     if (util.textIsNull(scene)) {
       wx.showModal({
         title: '提示',
