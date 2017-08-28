@@ -23,7 +23,8 @@
     "pages/business/businessCheckReject/reject",
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/qrPage/payCoupon/scanPayer",
-    "pages/business/personManager/persons"
+    "pages/business/personManager/persons",
+    "pages/qrPage/storeOwnerAddPerson/addPersonScan"
   ],
   "window": {
     "navigationBarTextStyle": "black",

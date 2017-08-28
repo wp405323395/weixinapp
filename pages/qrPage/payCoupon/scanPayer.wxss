@@ -5,38 +5,44 @@
   flex-direction: column;
   align-items:center ;
   text-align: center;
+  color:#666666;
+
 }
 .iknow_btn{
   margin-top: 30px;
   background-color: #f9eede;
 }
-.okimage{
+.ret_img{
   margin-top: 60px;
   width: 250rpx;
   height: 250rpx;
   margin-bottom: 20px;
-  background-color: #3fa5ed;
   border-radius: 250rpx;
-  font-size: 5rem;
-  color: white;
+  font-size:4rem;
+  padding-top:35rpx;
   text-align: center;
   box-sizing: border-box;
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.okimage{
+  background-color: #3fa5ed;
+  color: white;
+
 }
 .okimage::after{
-  content: '\2713';
+  content: '\e645';
 }
 .faildimage{
-  margin-top: 60px;
-  width: 250rpx;
-  height: 250rpx;
-  margin-bottom: 20px;
-  background-color: #3fa5ed;
-  border-radius: 250rpx;
-  font-size: 5rem;
-  color: red;
-  text-align: center;
-  box-sizing: border-box;
+
+  background-color: #d4d4d4;
+  
+  color: #eeeeee;
+  
 }
 .faildimage::after{
-  content: '\2716';
+  content: '\e641';
 }
