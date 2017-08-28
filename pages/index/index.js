@@ -14,7 +14,7 @@ Page({
       { img: '../../img/index_nav_good.png', img_li: '../../img/index_nav_good_li.png', text: '每日优选' }, 
       { img: '../../img/index_nav_circle.png', img_li: '../../img/index_nav_circle_li.png',  text: '500米商圈' }, 
       { img: '../../img/index_nav_brand.png', img_li: '../../img/index_nav_brand_li.png',text: '品牌入驻' }],
-    currentTab: 0,
+    currentTab: 1,
     indicatorDots: true,
     autoplay: true,
     unShow:true,
@@ -65,7 +65,7 @@ Page({
       }
     });
     setTimeout(()=>{
-      this.loadData(0);
+      this.loadData(1);
     },500);
     this.refreshSecond();
   }, 
