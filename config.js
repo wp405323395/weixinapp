@@ -42,6 +42,8 @@ var config = {
     doOrder: `${schema}://${host}/wappweb/mcwx/order!doOrder`,
     uploadQrInfo: `${schema}://${host}/wappweb/mcwx/mc-wx!saveCardidOpenid?scene=`,
     useCouponByWxCode: `${schema}://${host}/wappweb/mcwx/mc-wx!useCouponByWxCode`,
+    mercSureUseCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!mercSureUseCoup`,
+    queMercAssistListByStoreid: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercAssistListByStoreid`
 };
 
 

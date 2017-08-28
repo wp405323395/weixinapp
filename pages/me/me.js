@@ -156,6 +156,11 @@ Page({
           url: '../business/businessChecking/businessChecking',
         })
         break;
+      case '5':
+        wx.navigateTo({
+          url: '../qrPage/payCoupon/scanPayer',
+        })
+        break;
     }
   }
 })

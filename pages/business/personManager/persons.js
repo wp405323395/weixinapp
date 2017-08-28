@@ -1,18 +1,33 @@
-// index.js
+// persons.js
+var util = require('../../../utils/util.js')
+var config = require('../../../config.js');
+import RequestEngine from '../../../netApi/requestEngine.js';  
+var Promise = require('../../../libs/es6-promise.js').Promise;
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
   
   },
-
+  loadPersons:function(){
+    var that = this;
+    new Promise((resolve,reject)=>{ 
+      new RequestEngine().request(config.queMercAssistListByStoreid, { }, { callBy: that, method: that.loadPersons, params: [] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      })
+    }).then(value => {
+      let list = value.retData;
+    }).catch(err => { });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.loadPersons();
   },
 
   /**
@@ -62,25 +77,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  onPostCoupClick:function(e){
-    wx.navigateTo({
-      url: '../postCoup/postCoup',
-    })
-  },
-  onMyCoupsClick:function(e){
-    wx.navigateTo({
-      url: '../totalCoup/coups',
-    })
-  },
-  onNoticeClick:function(e){
-    wx.navigateTo({
-      url: '../notice/notice',
-    })
-  },
-  onManagerClick:function(e) {
-    wx.navigateTo({
-      url: '../personManager/persons',
-    })
   }
 })

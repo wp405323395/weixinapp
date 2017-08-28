@@ -21,7 +21,9 @@
     "pages/business/notice/notice",
     "pages/business/coupReview/coupReview",
     "pages/business/businessCheckReject/reject",
-    "pages/tvCardModel/msgConfirm/confirm"
+    "pages/tvCardModel/msgConfirm/confirm",
+    "pages/qrPage/payCoupon/scanPayer",
+    "pages/business/personManager/persons"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,9 @@
+<!--scanPayer.wxml-->
+<view class="container">
+  <view hidden="{{isHidden}}">
+    <view class="okimage"></view>
+    <text>订单支付成功</text>
+    <button bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
+  </view>
+  
+</view>
