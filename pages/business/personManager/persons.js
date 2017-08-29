@@ -13,6 +13,15 @@ Page({
     qrImgUrl: "../../../img/loading.gif"
   },
   loadPersons:function(){
+    try {
+      var assisttype = wx.getStorageSync('assisttype');
+      //0:店长 1：店员 2：普通用户
+      this.setData({
+        assisttype: assisttype
+      });
+    } catch (e) {
+      // Do something when catch error
+    }
     var that = this;
     new Promise((resolve,reject)=>{ 
       new RequestEngine().request(config.queMercAssistListByStoreid, { }, { callBy: that, method: that.loadPersons, params: [] }, (success) => {

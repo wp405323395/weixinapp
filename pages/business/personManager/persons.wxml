@@ -9,7 +9,7 @@
     
   </view>
 
-  <view class="add_person" bindtap="onAddPersonClick" hover-class="bottomAct"> 
+  <view hidden="assisttype != '0'" class="add_person" bindtap="onAddPersonClick" hover-class="bottomAct"> 
     <view>添加员工</view>
   </view>
 

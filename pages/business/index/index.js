@@ -12,7 +12,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    try {
+      var assisttype = wx.getStorageSync('assisttype');
+      //0:店长 1：店员 2：普通用户
+      this.setData({
+        assisttype: assisttype
+      });
+    } catch (e) {
+      // Do something when catch error
+    }
   },
 
   /**

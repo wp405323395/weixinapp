@@ -11,13 +11,30 @@ Page({
   data: {
     isHidden: true
   },
-  loadScanQr: function (scene) {
+  analysisQr: function (scene) {
+    let that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        var userInfo = res.userInfo
+        var nickName = userInfo.nickName
+        var avatarUrl = userInfo.avatarUrl
+        var gender = userInfo.gender //性别 0：未知、1：男、2：女
+        var province = userInfo.province
+        var city = userInfo.city
+        var country = userInfo.country
+        that.loadScanQrStep1(userInfo, scene);
+      }
+    })
+    
+  },
+  loadScanQrStep1: function (userInfo, scene){
     var that = this;
     new Promise((resolve, reject) => {
       var param = JSON.stringify({
-        scene: scene
+        scene: scene,
+        userInfo: userInfo
       })
-      new RequestEngine().request(config.addStoreAssit, { formData: param }, { callBy: that, method: that.loadScanQr, params: [scene] }, (success) => {
+      new RequestEngine().request(config.addStoreAssit, { formData: param }, { callBy: that, method: that.loadScanQrStep1, params: [userInfo, scene] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -48,7 +65,7 @@ Page({
    */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
-
+    scene = "xxxxxxxxxxxxxx";
     if (util.textIsNull(scene)) {
       wx.showModal({
         title: '二维码信息有误',
@@ -59,7 +76,7 @@ Page({
         faild: true
       });
     } else {
-      this.loadScanQr(scene);
+      this.analysisQr(scene);
     }
   },
 

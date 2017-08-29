@@ -56,16 +56,17 @@ Page({
     }
 
   },
-  validateBusiness:function() {
+
+  validateBusinessStep1: function (userInfo) {
     var that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.queMercSettled, {}, { callBy: that, method: that.validateBusiness, params: [] }, (success) => {
+      new RequestEngine().request(config.queMercSettled, { formData: JSON.stringify(userInfo) }, { callBy: that, method: that.validateBusinessStep1, params: [userInfo] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
-    }).then(value=>{
-      if(value.id == null) {
+    }).then(value => {
+      if (value.id == null) {
         wx.navigateTo({
           url: '../business/businessAuthor/business',
         })
@@ -74,18 +75,43 @@ Page({
         wx.navigateTo({
           url: '../business/businessChecking/businessChecking',
         })
-      } else if (value.retData.storeStatus == '2'){
+      } else if (value.retData.storeStatus == '2') {
         wx.setStorageSync("rejectReason", value.retData.reason);
         wx.navigateTo({
           url: '../business/businessCheckReject/reject',
         })
-      } else if(value.retData.storeStatus == '1') {
+      } else if (value.retData.storeStatus == '1') {
         wx.navigateTo({
           url: '../business/index/index',
         })
       }
+      if (!value.retData || !value.retData.assisttype) {
+        return;
+      }
+      let assisttype = value.retData.assisttype;
+      //0:店长 1：店员 2：普通用户
+      wx.setStorage({
+        key: 'assisttype',
+        data: assisttype
+      })
     },
-    err=>{});
+      err => { });
+  },
+  validateBusiness:function() {
+    let that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        var userInfo = res.userInfo
+        var nickName = userInfo.nickName
+        var avatarUrl = userInfo.avatarUrl
+        var gender = userInfo.gender //性别 0：未知、1：男、2：女
+        var province = userInfo.province
+        var city = userInfo.city
+        var country = userInfo.country
+        that.validateBusinessStep1(userInfo);
+      }
+    })
+    
   },
 
   /**
