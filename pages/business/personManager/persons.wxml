@@ -1,23 +1,27 @@
 <!--persons.wxml-->
 <view class="container">
-  <view class="person_list" wx:for="{{personList}}" wx:key="unique">
-    <image class="avarImgUrl" src="{{item.avatarurl}}"></image>
-    <text class="nickName">{{item.nickname}}</text>
-    <view class="bug" hidden="{{item.assisttype != '0'}}">
-      <text class="nickName owner" >(店长)</text>
+  <view class="person_list" wx:for="{{personList}}" wx:key="unique" data-idx="{{index}}">
+    <view class="person_list_inner">
+      <image class="avarImgUrl" src="{{item.avatarurl}}"></image>
+      <text class="nickName">{{item.nickname}}</text>
+      <view class="bug" hidden="{{item.assisttype != '0'}}">
+        <text class="nickName owner">(店长)</text>
+      </view>
     </view>
-    
+
+    <image hidden="{{item.assisttype == '0' || index == 0 }}" class="delete" data-id="{{item.id}}" bindtap="onDeleteClick" src="{{item.avatarurl}}"></image>
+
   </view>
 
-  <view hidden="assisttype != '0'" class="add_person" bindtap="onAddPersonClick" hover-class="bottomAct"> 
+  <view hidden="assisttype != '0'" class="add_person" bindtap="onAddPersonClick" hover-class="bottomAct">
     <view>添加员工</view>
   </view>
 
-  <view class="boomBox" hidden="{{isHidden}}"/>
+  <view class="boomBox" hidden="{{isHidden}}" />
   <view class="qr_wrap" hidden="{{isHidden}}">
     <view class="qr_wrap_inner">
-        <image src="{{qrImgUrl}}" class="qr_img"></image>
-        <text>请将此二维码展示给店员,完成扫码</text>
+      <image src="{{qrImgUrl}}" class="qr_img"></image>
+      <text>请将此二维码展示给店员,完成扫码</text>
     </view>
     <text bindtap="onClose" class="close_dialog"></text>
   </view>

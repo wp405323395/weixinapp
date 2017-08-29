@@ -7,10 +7,21 @@ margin-bottom:1px;
 display: flex;
 align-content: center;
 flex-direction: row;
+justify-content: space-between;
 }
 .person_list:first-child{
   margin-top: 1px;
   margin-bottom: 35rpx;
+}
+.person_list_inner{
+align-items:center;
+display: flex;
+flex-direction: row;
+}
+.delete{
+  width:60rpx;
+height:60rpx;
+align-self:flex-end;
 }
 .avarImgUrl{
 width:60rpx;

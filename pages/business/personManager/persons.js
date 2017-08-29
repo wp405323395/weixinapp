@@ -12,6 +12,52 @@ Page({
     isHidden:true,
     qrImgUrl: "../../../img/loading.gif"
   },
+  deletePerson:function(id){
+    let that = this;
+    new Promise((resolve, reject) => {
+      new RequestEngine().request(config.delAssistbyAssistid, { formData: JSON.stringify({ assistid:id})}, { callBy: that, method: that.deletePerson, params: [id] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      })
+    }).then(value=>{
+      if (value.retCode=='0') {
+        let removeIndex = 0;
+        for (let person of this.data.personList) {
+          if(person.id == id) {
+            removeIndex++;
+          }
+        }
+        if (removeIndex !=0) {
+          this.data.personList.splice(removeIndex - 1, 0);
+          this.setData({
+            personList: this.data.personList
+          });
+        }
+        
+      }
+      console.log(value);
+      
+     
+    }).catch(err=>{});
+  },
+  onDeleteClick:function(event) {
+    let id = event.currentTarget.dataset.id;
+    let that = this;
+    wx.showModal({
+      content: "确定要删除该用户吗？",
+      confirmText: "确定",
+      cancelText: "取消",
+      success: function (res) {
+        if (res.confirm) {
+          that.deletePerson(id);
+        } else if (res.cancel) {
+          
+        }
+      }
+    })
+    console.log(event);
+  },
   loadPersons:function(){
     try {
       var assisttype = wx.getStorageSync('assisttype');

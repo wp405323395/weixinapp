@@ -126,7 +126,7 @@ Page({
         var province = userInfo.province
         var city = userInfo.city
         var country = userInfo.country
-        that.validateBusinessStep1(userInfo);
+        that.validateBusinessStep1(res);
       }
     })
     
