@@ -73,6 +73,11 @@ Page({
       phoneNumber: phoneNumber //仅为示例，并非真实的电话号码
     })
   },
+  onClose: function () {
+    this.setData({
+      isHidden: true
+    });
+  },
   loadProduct: function () {
     var that = this;
     var key = idMap[0];

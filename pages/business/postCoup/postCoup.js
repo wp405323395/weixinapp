@@ -26,6 +26,11 @@ Page({
       coupQuantity: 0,
       deadline: ''
     },
+    sourceTypeIndex: 2,
+    sourceType: ['拍照', '相册', '拍照或相册'],
+
+    sizeTypeIndex: 2,
+    sizeType: ['压缩', '原图', '压缩或原图'],
     imageList: [],
     imageList2:[],
     countIndex: 0,
@@ -220,6 +225,7 @@ Page({
 
   },
   on_addPic_wrap_click2:function(e) {
+    console.log('外围点击了。');
     if (longClick22) {
       longClick22 = false;
       return;
@@ -303,20 +309,33 @@ Page({
   },
 
   chooseImage2: function () {
+    console.log("点击了+号");
     var that = this
     if (this.data.imageList2.length - 1 >= this.data.countIndex2) {
       return;
     }
-    imgList = this.data.imageList2;
-    wx.chooseImage({
-      sourceType: sourceType[this.data.sourceTypeIndex],
-      sizeType: sizeType[this.data.sizeTypeIndex],
-      count: this.data.count[this.data.countIndex2],
+     imgList = this.data.imageList2;
+     wx.chooseImage({
+       sourceType: sourceType[this.data.sourceTypeIndex],
+       sizeType: sizeType[this.data.sizeTypeIndex],
+    //   count: this.data.count[this.data.countIndex2],
+    //   success: function (res) {
+    //     imgList = imgList.concat(res.tempFilePaths);
+    //     that.data.subObj.storeImgs = imgList;
+    //     that.setData({
+    //       imageList2: imgList
+    //     })
+    //   }
+    // })
+
+
+      count: this.data.count[this.data.countIndex],
       success: function (res) {
+
         imgList = imgList.concat(res.tempFilePaths);
-        that.data.subObj.storeImgs = imgList;
+        that.data.subObj.coupIconImage = imgList;
         that.setData({
-          imageList2: imgList
+          imageList: imgList
         })
       }
     })

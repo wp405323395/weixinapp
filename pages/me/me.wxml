@@ -45,5 +45,8 @@
     <view class="sendCoup" data-id="5" bindtap="onTestClick">
       <text>微信扫码确认支付进入界面</text>
     </view>
+        <view class="sendCoup" data-id="6" bindtap="onTestClick">
+      <text>店员扫描店主，加店员</text>
+    </view>
   
 </view>

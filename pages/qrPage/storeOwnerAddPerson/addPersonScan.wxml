@@ -1,2 +1,12 @@
 <!--addPersonScan.wxml-->
-<text>addPersonScan.wxml</text>
+<view class="container">
+  <view hidden="{{isHidden}}">
+    <view hidden="{{faild}}" class="ret_img okimage"></view>
+    <view hidden="{{!faild}}" class="ret_img faildimage"></view>
+    <text hidden="{{faild}}">店员加入成功</text>
+    <text hidden="{{!faild}}">店员加入失败</text>
+    <button hidden="{{faild}}" bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
+  </view>
+  
+</view>
+

@@ -90,3 +90,10 @@
 .clicked_style{
   background: #d4d4d4;
 }
+
+.no_data_text {
+color:#d4d4d4;
+margin-top:60rpx;
+font-size:1.1rem;
+
+}

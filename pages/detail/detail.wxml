@@ -21,7 +21,7 @@
         <image src="{{qrImgUrl}}" class="qr_img"></image>
         <text>请将此二维码展示给商家,完成扫码</text>
     </view>
-    
+    <text bindtap="onClose" class="close_dialog"></text>
   </view>
 
   <view class="dialog_border dialog dialog1" hidden="{{isHidden1}}">

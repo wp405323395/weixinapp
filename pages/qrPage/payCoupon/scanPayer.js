@@ -51,10 +51,13 @@ Page({
     var scene = decodeURIComponent(options.scene);
     if (util.textIsNull(scene)) {
       wx.showModal({
-        title: '提示',
-        content: '二维码信息有误',
-        showCancel:false
+        title: '二维码信息有误',
+        showCancel: false
       })
+      this.setData({
+        isHidden: false,
+        faild: true
+      });
     } else {
       this.loadScanQr(scene);
     }

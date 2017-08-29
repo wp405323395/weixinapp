@@ -311,3 +311,18 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
   margin-bottom:40rpx;
 
 }
+.close_dialog{
+  font-size: 1rem;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  border: #999999 2px solid;
+  color: #999999;
+  text-align: center;
+  display:inline-block;
+  margin-top:40rpx;
+
+}
+.close_dialog::after{
+  content: '\2715';
+}

@@ -43,7 +43,10 @@ var config = {
     uploadQrInfo: `${schema}://${host}/wappweb/mcwx/mc-wx!saveCardidOpenid?scene=`,
     useCouponByWxCode: `${schema}://${host}/wappweb/mcwx/mc-wx!useCouponByWxCode`,
     mercSureUseCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!mercSureUseCoup`,
-    queMercAssistListByStoreid: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercAssistListByStoreid`
+    queMercAssistListByStoreid: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercAssistListByStoreid`,
+    
+    addStoreAssit: `${schema}://${host}/wappweb/mcwx/merc-wx!addStoreAssit`,
+    createStoreAssistCode: `${schema}://${host}/wappweb/mcwx/merc-wx!createStoreAssistCode`
 };
 
 

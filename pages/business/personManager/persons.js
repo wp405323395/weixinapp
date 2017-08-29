@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    isHidden:true,
+    qrImgUrl: "../../../img/loading.gif"
   },
   loadPersons:function(){
     var that = this;
@@ -21,7 +22,35 @@ Page({
       })
     }).then(value => {
       let list = value.retData;
+      this.setData({
+        personList: list
+      });
     }).catch(err => { });
+  },
+  onClose:function(){
+    this.setData({
+      isHidden: true
+    });
+  },
+  onAddPersonClick:function(){
+    this.setData({
+      isHidden:false
+    });
+    var that = this;
+    new Promise((resolve,reject)=>{
+      new RequestEngine().request(config.createStoreAssistCode, {}, { callBy: that, method: that.onAddPersonClick, params: [] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      })
+    }).then(value=>{
+      if (value.retCode == '0') {
+        this.setData({
+          qrImgUrl: value.retData.wxcodeurl
+      });
+      }
+      
+    }).catch(err=>{})
   },
   /**
    * 生命周期函数--监听页面加载

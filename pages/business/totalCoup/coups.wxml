@@ -38,5 +38,6 @@
 
   <view class="nodate_wrap">
     <image src="../../../img/nodate.png" class="nodate_img" mode="widthFix" hidden="{{hasData}}"/>
+    <text hidden="{{hasData}}" class="no_data_text">暂无已发布优惠券</text>
   </view>
 </view>

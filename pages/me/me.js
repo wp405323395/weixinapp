@@ -161,6 +161,11 @@ Page({
           url: '../qrPage/payCoupon/scanPayer',
         })
         break;
+      case '6':
+        wx.navigateTo({
+          url: '../qrPage/storeOwnerAddPerson/addPersonScan',
+        })
+        break;
     }
   }
 })

@@ -1,18 +1,66 @@
 // addPersonScan.js
+import RequestEngine from '../../../netApi/requestEngine.js';
+var Promise = require('../../../libs/es6-promise.js').Promise;
+var config = require('../../../config.js');
+var util = require('../../../utils/util.js'); 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    isHidden: true
   },
-
+  loadScanQr: function (scene) {
+    var that = this;
+    new Promise((resolve, reject) => {
+      var param = JSON.stringify({
+        scene: scene
+      })
+      new RequestEngine().request(config.addStoreAssit, { formData: param }, { callBy: that, method: that.loadScanQr, params: [scene] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      })
+    }).then(value => {
+      this.setData({
+        isHidden: false
+      });
+      if (value.retCode == '0') {
+        this.setData({
+          faild: false
+        });
+      } else {
+        this.setData({
+          faild: true
+        });
+      }
+    }).catch(err => {
+      wx.showModal({
+        title: '提示',
+        content: err,
+        showCancel: false
+      })
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var scene = decodeURIComponent(options.scene);
+
+    if (util.textIsNull(scene)) {
+      wx.showModal({
+        title: '二维码信息有误',
+        showCancel: false
+      })
+      this.setData({
+        isHidden: false,
+        faild: true
+      });
+    } else {
+      this.loadScanQr(scene);
+    }
   },
 
   /**
