@@ -9,7 +9,7 @@
       </view>
     </view>
 
-    <image hidden="{{item.assisttype == '0' || index == 0 }}" class="delete" data-id="{{item.id}}" bindtap="onDeleteClick" src="{{item.avatarurl}}"></image>
+    <view hidden="{{item.assisttype == '0' || index == 0 }}" class="delete" data-id="{{item.id}}" bindtap="onDeleteClick"></view>
 
   </view>
 

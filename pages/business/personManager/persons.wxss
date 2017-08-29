@@ -19,9 +19,20 @@ display: flex;
 flex-direction: row;
 }
 .delete{
-  width:60rpx;
+width:60rpx;
 height:60rpx;
 align-self:flex-end;
+font-size: 1rem;
+text-align: center;
+color: #eeeeee;
+font-family:"iconfont" !important;
+font-style:normal;
+-webkit-font-smoothing: antialiased;
+-webkit-text-stroke-width: 0.2px;
+-moz-osx-font-smoothing: grayscale;
+}
+.delete::after{
+  content: '\e646;'
 }
 .avarImgUrl{
 width:60rpx;
