@@ -12,6 +12,23 @@ Page({
     isHidden: true
   },
   analysisQr: function (scene) {
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+            },
+            fail() {
+              wx.openSetting({
+                success: (res) => {
+                }
+              })
+            }
+          })
+        }
+      }
+    })
     let that = this;
     wx.getUserInfo({
       success: function (res) {
@@ -65,7 +82,7 @@ Page({
    */
   onLoad: function (options) {
     var scene = decodeURIComponent(options.scene);
-    scene = "xxxxxxxxxxxxxx";
+    
     if (util.textIsNull(scene)) {
       wx.showModal({
         title: '二维码信息有误',

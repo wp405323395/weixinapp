@@ -8,9 +8,9 @@
   background-color: white;
   align-items: center;
   padding-right: 20rpx;
-
+  margin-top: 1px;
 }
-.margin_top{
+.container>view:first-child{
   margin-top: 20rpx;
 }
 .go_in_style{

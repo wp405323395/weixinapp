@@ -56,7 +56,7 @@ Page({
       })
       this.setData({
         isHidden: false,
-        faild: true
+        shoped_faild: true
       });
     } else {
       this.loadScanQr(scene);

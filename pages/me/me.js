@@ -98,6 +98,24 @@ Page({
       err => { });
   },
   validateBusiness:function() {
+    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+            },
+            fail(){
+              wx.openSetting({
+                success: (res) => {
+                }
+              })
+            }
+          })
+        }
+      }
+    })
     let that = this;
     wx.getUserInfo({
       success: function (res) {

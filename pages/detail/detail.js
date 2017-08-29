@@ -37,7 +37,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    utils.getAuther('scope.writePhotosAlbum');
     var scene = decodeURIComponent(options.scene);
     if (!utils.textIsNull(scene)) {
       this.qrInfo = utils.splice(scene);
@@ -250,6 +249,11 @@ Page({
           title: "领取成功",
           mask:true
        })
+      setTimeout(() => {
+        wx.navigateBack({
+
+        })
+      }, 1000);
       if (value.relaReceiveFlag == '0') {
         value.receiveMemo = '立即使用';
       }
