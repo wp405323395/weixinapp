@@ -225,7 +225,6 @@ Page({
 
   },
   on_addPic_wrap_click2:function(e) {
-    console.log('外围点击了。');
     if (longClick22) {
       longClick22 = false;
       return;
@@ -309,7 +308,6 @@ Page({
   },
 
   chooseImage2: function () {
-    console.log("点击了+号");
     var that = this
     if (this.data.imageList2.length - 1 >= this.data.countIndex2) {
       return;
@@ -318,27 +316,16 @@ Page({
      wx.chooseImage({
        sourceType: sourceType[this.data.sourceTypeIndex],
        sizeType: sizeType[this.data.sizeTypeIndex],
-    //   count: this.data.count[this.data.countIndex2],
-    //   success: function (res) {
-    //     imgList = imgList.concat(res.tempFilePaths);
-    //     that.data.subObj.storeImgs = imgList;
-    //     that.setData({
-    //       imageList2: imgList
-    //     })
-    //   }
-    // })
-
-
-      count: this.data.count[this.data.countIndex],
-      success: function (res) {
-
-        imgList = imgList.concat(res.tempFilePaths);
-        that.data.subObj.coupIconImage = imgList;
+       count: this.data.count[this.data.countIndex2],
+       success: function (res) {
+         imgList = imgList.concat(res.tempFilePaths);
+        that.data.subObj.storeImgs = imgList;
         that.setData({
-          imageList: imgList
+          imageList2: imgList
         })
       }
     })
+
   },
   previewImage2: function (e) {
     if (longClick) {
