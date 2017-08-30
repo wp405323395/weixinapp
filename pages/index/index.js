@@ -3,7 +3,7 @@ var config = require('../../config.js');
 import RequestEngine from '../../netApi/requestEngine.js' ;   //引入类
 var util = require('../../utils/util.js');
 import Header from '../../netApi/Header.js'  
-var Promise = require('../../libs/es6-promise.js').Promise;
+var MyPromise = require('../../libs/bluebird.js');
 Page({
   data: {
     imgUrls: [
@@ -139,7 +139,7 @@ Page({
     //url, data,reqMethod, requestSuccess, requestFail, requestComplete
     var url = config.discoverUrl;
     var self = this;
-    new Promise(function (resolve, reject) {
+    new MyPromise(function (resolve, reject) {
       new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
         //success
         resolve(success.retData);
