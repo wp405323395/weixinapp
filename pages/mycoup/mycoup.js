@@ -61,6 +61,10 @@ Page({
     },500);
     
   },
+  onPullDownRefresh: function () {
+    this.loadData(this.data.currentTab);
+    wx.stopPullDownRefresh()
+  },
   onShow:function(options) {
     var that = this;
     wx.getStorage({
@@ -147,6 +151,7 @@ Page({
     
    
   }
+
 
 
 })
