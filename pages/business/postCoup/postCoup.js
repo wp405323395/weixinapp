@@ -24,6 +24,7 @@ Page({
       couponDescrip: '',
       useCondition: '',
       coupQuantity: 0,
+      coupLimiteQuantity:1,
       deadline: ''
     },
     sourceTypeIndex: 2,
@@ -39,6 +40,7 @@ Page({
     isHidden_delete: true,
     isHidden_delete2:true,
     coupQuantity:0,
+    coupLimiteQuantity:1,
     deadline: util.formatDay(new Date()),
     time: '12:01'
   },
@@ -68,19 +70,38 @@ Page({
     }
 
   },
+  onLimiteSubClick:function(e){
+    if (this.data.coupLimiteQuantity > 0) {
+      this.setData({
+        coupLimiteQuantity: --this.data.coupLimiteQuantity
+      });
+    }
+  },
   onPlusClick:function(e){
     if (this.data.coupQuantity<9999)
     this.setData({
       coupQuantity: ++this.data.coupQuantity
     });
   },
+  onLimitePlusClick:function(e){
+    if (this.data.coupLimiteQuantity < 999)
+      this.setData({
+        coupLimiteQuantity: ++this.data.coupLimiteQuantity
+      });
+  },
   bindKeyInput: function (e) {
     this.setData({
       coupQuantity: e.detail.value
     })
   },
+  bindLimiteKeyInput: function (e){
+    this.setData({
+      coupLimiteQuantity: e.detail.value
+    })
+  },
   submit:function(e){
     this.data.subObj.coupQuantity = this.data.coupQuantity;
+    this.data.subObj.coupLimiteQuantity = this.data.coupLimiteQuantity;
     this.data.subObj.deadline = this.data.deadline;
     if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length !=1) {
       this.showError('请选择优惠券图片');
@@ -94,6 +115,9 @@ Page({
     } else if (this.data.subObj.coupQuantity == 0){
       this.showError('优惠券数量不能为0');
       return;
+    } else if (this.data.subObj.coupLimiteQuantity == 0){
+      this.showError('没人限领不能为0');
+      return;
     } else if (!util.textIsNotNull(this.data.subObj.couponDescrip)) {
       this.showError('店优惠券描述不能为空');
       return;
@@ -106,6 +130,7 @@ Page({
       couponIntro : this.data.subObj.couponDescrip,
       useCondition : this.data.subObj.useCondition,
       issueNum : this.data.subObj.coupQuantity,
+      eachLimit : this.data.subObj.coupLimiteQuantity,
       useEndTime : this.data.subObj.deadline
     }
     let that = this;

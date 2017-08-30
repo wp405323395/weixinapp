@@ -35,6 +35,19 @@
     </view>
   </view>
 
+    <view class="store_name number_wrap">
+    <view class="name_lable input_style single_line">
+      <text class="img_red_point">*</text> <text>没人限领</text>
+    </view>
+    <view class="coup_number">
+      <view bindtap="onLimiteSubClick" class="subtraction temp_box"/>
+      <view class="numb temp_box">
+        <input type="number" maxlength="3" class="input_numb" bindinput="bindLimiteKeyInput" value="{{coupLimiteQuantity}}"/>
+      </view>
+      <view  bindtap="onLimitePlusClick" class="plus temp_box"/>
+    </view>
+  </view>
+
   <view class="store_name number_wrap">
     <view class="name_lable input_style  single_line">
       <text class="img_red_point">*</text> <text>使用截止时间</text>
