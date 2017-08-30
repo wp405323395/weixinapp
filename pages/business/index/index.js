@@ -72,9 +72,31 @@ Page({
   
   },
   onPostCoupClick:function(e){
-    wx.navigateTo({
-      url: '../postCoup/postCoup',
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              wx.navigateTo({
+                url: '../postCoup/postCoup',
+              })
+            },
+            fail() {
+              wx.openSetting({
+                success: (res) => {
+                }
+              })
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '../postCoup/postCoup',
+          })
+        }
+      }
     })
+   
   },
   onMyCoupsClick:function(e){
     wx.navigateTo({

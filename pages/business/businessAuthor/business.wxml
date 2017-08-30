@@ -25,7 +25,7 @@
     <view class="name_lable">
       <text class="img_red_point">*</text>  <text>店铺电话</text>
     </view>
-    <input bindinput="bindInput_phone" placeholder-class="holder_style" type="number" class="input_style" placeholder="请输入联系电话"/>
+    <input bindinput="bindInput_phone" maxlength="11" placeholder-class="holder_style" type="number" class="input_style" placeholder="请输入联系电话"/>
   </view>
     <view class="store_name">
     <view class="name_lable">

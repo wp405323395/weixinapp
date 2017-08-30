@@ -67,9 +67,31 @@ Page({
       });
     }).then(value => {
       if (value.id == null) {
-        wx.navigateTo({
-          url: '../business/businessAuthor/business',
+        wx.getSetting({
+          success(res) {
+            if (!res.authSetting['scope.userLocation']) {
+              wx.authorize({
+                scope: 'scope.userLocation',
+                success() {
+                  wx.navigateTo({
+                    url: '../business/businessAuthor/business',
+                  })
+                },
+                fail() {
+                  wx.openSetting({
+                    success: (res) => {
+                    }
+                  })
+                }
+              })
+            } else {
+              wx.navigateTo({
+                url: '../business/businessAuthor/business',
+              })
+            }
+          }
         })
+        
       } else if (value.retData.storeStatus == '0') {
         wx.setStorageSync('checkingStore', value.retData);
         wx.navigateTo({

@@ -19,7 +19,7 @@ Page({
     covers: [{
       latitude: 23.099994,
       longitude: 113.344520,
-      iconPath: '../../../img/go_in.png'
+      iconPath: ''
     }, {
       latitude: 23.099994,
       longitude: 113.304520,

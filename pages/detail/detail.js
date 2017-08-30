@@ -15,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    qrImgUrl:"../../../img/loading.gif",
+    qrImgUrl:"https://www.maywidehb.com/banner/loading.gif",
     unShow: true,
     isHidden: true,
     isHidden1: true,

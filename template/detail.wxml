@@ -43,7 +43,7 @@
     <view style="width:100%;height:1px;background:#eeeeee"></view>
     <view class="introduce_item">
       <text class="lable">联系方式</text>
-      <text bindtap="onPhoneCall" data-phonenumber="{{product.storePhone}}" class="details">{{product.storePhone}}</text>
+      <text bindtap="onPhoneCall" data-phonenumber="{{product.storePhone}}" class="details detail_import">{{product.storePhone}}</text>
     </view>
   </view>
 </template>

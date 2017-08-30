@@ -10,7 +10,7 @@ Page({
    */
   data: {
     isHidden:true,
-    qrImgUrl: "../../../img/loading.gif"
+    qrImgUrl: "https://www.maywidehb.com/banner/loading.gif"
   },
   deletePerson:function(id){
     let that = this;
@@ -57,15 +57,7 @@ Page({
     console.log(event);
   },
   loadPersons:function(){
-    try {
-      var assisttype = wx.getStorageSync('assisttype');
-      //0:店长 1：店员 2：普通用户
-      this.setData({
-        assisttype: assisttype
-      });
-    } catch (e) {
-      // Do something when catch error
-    }
+    
     var that = this;
     new Promise((resolve,reject)=>{ 
       new RequestEngine().request(config.queMercAssistListByStoreid, { }, { callBy: that, method: that.loadPersons, params: [] }, (success) => {
@@ -81,6 +73,7 @@ Page({
     }).catch(err => { });
   },
   onClose:function(){
+    this.loadPersons();
     this.setData({
       isHidden: true
     });

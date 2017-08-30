@@ -17,7 +17,7 @@
             <text class="couponDescrip">{{coup.couponDescrip}}</text>
             <text class="useCondition">({{coup.useCondition}})</text>
           </view>
-          <image src="../../../img/go_in.png" class="go_in_style" mode="widthFix"></image>
+          <view class="left_btn"></view>
         </view>
       </view>
       <view class="count_wrap">

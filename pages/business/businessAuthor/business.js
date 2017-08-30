@@ -167,6 +167,14 @@ Page({
       icon: 'faild'
     })
   },
+  checkPhone: function (phone){ 
+    
+    if(!(/^1[34578]\d{9}$/.test(phone))){ 
+      return false;
+    } else {
+      return true;
+    }
+  },
   submit: function (e) {
     if (!subObj.storeImgs || subObj.storeImgs.length != 3) {
       this.showError('店铺图片必须为三张');
@@ -180,7 +188,11 @@ Page({
     } else if (!util.textIsNotNull(subObj.phone)) {
       this.showError('电话不能为空');
       return;
-    } else if (!util.textIsNotNull(subObj.storePersonName)) {
+    } else if (!this.checkPhone(subObj.phone)){
+      this.showError('您输入的电话号码有误');
+      return;
+    }
+     else if (!util.textIsNotNull(subObj.storePersonName)) {
       this.showError('店铺负责人不能为空');
       return;
     } else if (!util.textIsNotNull(subObj.storeType)){

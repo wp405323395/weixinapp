@@ -27,6 +27,12 @@
   width: 100%;
 
 }
+.left_btn::after{
+  content: "\003E";
+  width:30rpx;
+  height:30rpx;
+  color: #d4d4d4;
+}
 .go_in_style{
   width: 30rpx;
 }

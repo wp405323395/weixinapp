@@ -1,6 +1,6 @@
 <!--red.wxml-->
 <view class="container">
-  <image src="../../img/flower.png" class="flower_bg"></image>
+  <image src="https://www.maywidehb.com/banner/flower.png " class="flower_bg"></image>
   <image src="../../img/shader.png" class="shader_bg"></image>
   <view class="red_pack">
     <view class="red_content_txt_wrap">
