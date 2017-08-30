@@ -140,18 +140,14 @@ Page({
     var url = config.discoverUrl;
     var self = this;
     new Promise(function (resolve, reject) {
-      console.log("*******iphone 66666");
       new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
         //success
-        console.log("**********resolve");
         resolve(success.retData);
       }, (faild) => {
         //faild
-        console.log("**********reject");
         reject(faild);
       });
     }).then((value)=>{
-      console.log("**************iphone 66666");
       if (value.length > 40) {
         let length = value.length;
         value.splice(40, length);
@@ -224,10 +220,8 @@ Page({
       }
     },
     (err)=>{
-      console.log("*********iphone eeeee");
-      }).catch(
-        error => console.log('----iphon6---'+error)
-        );
+     
+      });
     
 
   }

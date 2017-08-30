@@ -24,21 +24,19 @@ Page({
       if (value.retCode=='0') {
         let removeIndex = 0;
         for (let person of this.data.personList) {
+          removeIndex++;
           if(person.id == id) {
-            removeIndex++;
+            break;
           }
         }
         if (removeIndex !=0) {
-          this.data.personList.splice(removeIndex - 1, 0);
+          this.data.personList.splice(removeIndex - 1, 1);
           this.setData({
             personList: this.data.personList
           });
         }
         
       }
-      console.log(value);
-      
-     
     }).catch(err=>{});
   },
   onDeleteClick:function(event) {
