@@ -50,8 +50,7 @@
 .allwrap {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+
 }
 
 .bottom_text {
@@ -69,7 +68,9 @@ button {
   border-radius: 0;
   color: #ef2020;
   border-top: 1px #eee solid;
-  flex-grow: 1;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
 }
 
 button[disabled][type="default"], wx-button[disabled]:not([type]) {
@@ -326,4 +327,8 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
 }
 .close_dialog::after{
   content: '\2715';
+}
+.depends{
+  height: 1px;
+  margin-bottom: 130rpx;
 }

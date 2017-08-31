@@ -107,6 +107,8 @@ overflow: hidden;
   right: 0;
   color: white;
   font-size: 0.9rem;
+  padding-top: 3rpx;
+  padding-bottom: 3rpx;
   line-height: 55rpx;
   display: inline-block;
   box-sizing: border-box;

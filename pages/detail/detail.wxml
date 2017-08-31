@@ -2,13 +2,12 @@
 <import src="../../template/detail.wxml" />
 <view class="container">
     <view class="allwrap">
-      <scroll-view scroll-y class="scroll_type">
+     
         <template is="detail" data="{{product}}" />
         <view  class="delete_coup_wrap" bindtap="deleteCoup" hover-class="navigator-hover"  hidden="{{product.relaId ==''||product.relaId == 'undefine'|| product.relaId == null }}">
           <text class="delete_coup" >删除优惠券</text>
         </view>
-      </scroll-view>
-      
+      <view class="depends"></view>
       <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
 
     </view>
