@@ -17,7 +17,7 @@
     </view>
     <view class="introduce_item ">
       <text class="lable">优惠详情</text>
-      <text class="details detail_import">{{product.couponIntro}}</text>
+      <text class="details maxLength detail_import">{{product.couponIntro}}</text>
     </view>
 
     <view style="width:100%;height:1px;background:#eeeeee"></view>
