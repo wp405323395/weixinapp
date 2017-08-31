@@ -127,17 +127,19 @@ display:block;
   background: white;
 }
 .chooce_img{
-height:48rpx;
-width:160rpx;
+
 align-content:flex-end;
-margin-right: 25rpx;
+margin-right:25rpx;
+font-size:0.75rem;
+color:#999999;
 }
 .chooce_img::before{
   content: '\e6a2';
   color: red;
+  margin-right:5rpx;
 }
 .chooce_location_text{
-  width: 70%;
+  width: 60%;
 }
 .chooce_location_wrap{
   display: flex;
