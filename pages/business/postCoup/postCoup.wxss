@@ -166,3 +166,8 @@ box-sizing:border-box;
 width: 100%;
 
 }
+.wordsCount{
+  text-align: right;
+  padding:10rpx 35rpx;
+  background: white;
+}

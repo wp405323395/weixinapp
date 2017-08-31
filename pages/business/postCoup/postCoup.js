@@ -27,6 +27,7 @@ Page({
       coupLimiteQuantity:1,
       deadline: ''
     },
+    wordsCount:0,
     sourceTypeIndex: 2,
     sourceType: ['拍照', '相册', '拍照或相册'],
 
@@ -49,6 +50,9 @@ Page({
   },
   bindInput_couponDescrip:function(e){
     this.data.subObj.couponDescrip = e.detail.value;
+    this.setData({
+      wordsCount: e.detail.value.length
+    });
   },
   bindInput_useCondition: function (e) {
     this.data.subObj.useCondition = e.detail.value;
