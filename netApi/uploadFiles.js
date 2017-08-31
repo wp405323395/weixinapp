@@ -116,8 +116,7 @@ function uploadFils(data, formData) {
   Promise.all(tasks).then(values=>{
     wx.hideToast();
     wx.showModal({
-      title: '提示',
-      content: '素材上传成功',
+      title: '已提交审核',
       success: function (res) {
         wx.navigateBack({
         })
@@ -127,8 +126,7 @@ function uploadFils(data, formData) {
     
   }).catch(err=>{
     wx.showModal({
-      title: '提示',
-      content: '素材上传失败，可重新上传',
+      title: '素材上传失败，可重新上传',
       success: function (res) {
         if (res.confirm) {
           
