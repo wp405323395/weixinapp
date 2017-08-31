@@ -4,7 +4,7 @@
     <view class="name_lable">
       <text  maxlength="10" class="img_red_point">*</text> <text>店铺名称</text>
     </view>
-    <input bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
+    <input maxlength='10' bindinput="bindInput_storName" placeholder-class="holder_style" class="input_style" type="text" placeholder="请输入店铺名称"/>
   </view>
   <view class="store_name">
     <view class="name_lable">
