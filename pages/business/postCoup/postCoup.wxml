@@ -5,7 +5,7 @@
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>优惠券名称</text>
     </view>
-    <input bindinput="bindInput_coupName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例：某某超市护肤品优惠"/>
+    <input maxlength="8" bindinput="bindInput_coupName" placeholder-class="holder_style" class="input_style" type="text" placeholder="例：某某超市护肤品优惠"/>
   </view>
 
   <view class="store_name">
@@ -19,7 +19,7 @@
     <view class="name_lable">
       <text class="img_red_point">*</text> <text>优惠券使用限制</text>
     </view>
-    <input bindinput="bindInput_useCondition" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
+    <input maxlength="10" bindinput="bindInput_useCondition" placeholder-class="holder_style" class="input_style" type="text" placeholder="例:仅限某类商品；满减等"/>
   </view>
 
   <view class="store_name number_wrap">
