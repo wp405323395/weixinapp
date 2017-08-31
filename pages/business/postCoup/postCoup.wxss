@@ -156,3 +156,13 @@ margin-left:20rpx;
   padding: 19rpx 26rpx;
   background-color: #FFFFFF;
 }
+.textarear_style{
+  background-color:white;
+margin-bottom:1px;
+padding-left:50rpx;
+padding-right: 30rpx;
+display:block;
+box-sizing:border-box;
+width: 100%;
+
+}

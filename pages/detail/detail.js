@@ -99,6 +99,9 @@ Page({
       that.setData({
         product: value,
       });
+      wx.setNavigationBarTitle({
+        title: value.storeName
+      })
     }, (err) => {
 
     });

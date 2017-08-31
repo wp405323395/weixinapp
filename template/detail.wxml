@@ -16,7 +16,7 @@
       <view class="go_in"></view>
     </view>
     <view class="introduce_item ">
-      <text class="lable">活动介绍</text>
+      <text class="lable">优惠详情</text>
       <text class="details detail_import">{{product.couponIntro}}</text>
     </view>
 

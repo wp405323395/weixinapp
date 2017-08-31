@@ -3,9 +3,9 @@
   <view hidden="{{isHidden}}">
     <view hidden="{{shoped_faild}}" class="ret_img okimage"></view>
     <view hidden="{{!shoped_faild}}" class="ret_img faildimage"></view>
-    <text hidden="{{shoped_faild}}">订单支付成功</text>
-    <text hidden="{{!shoped_faild}}">订单支付失败</text>
-    <button hidden="{{shoped_faild}}" bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
+    <text hidden="{{shoped_faild}}">优惠券消费成功</text>
+    <text hidden="{{!shoped_faild}}">优惠券消费失败</text>
+    
   </view>
   
 </view>

@@ -23,7 +23,7 @@ Page({
       couponName: '',
       couponDescrip: '',
       useCondition: '',
-      coupQuantity: 0,
+      coupQuantity: 1,
       coupLimiteQuantity:1,
       deadline: ''
     },
@@ -39,7 +39,7 @@ Page({
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     isHidden_delete: true,
     isHidden_delete2:true,
-    coupQuantity:0,
+    coupQuantity:1,
     coupLimiteQuantity:1,
     deadline: util.formatDay(new Date()),
     time: '12:01'
@@ -63,7 +63,7 @@ Page({
     
   },
   onSubClick: function (e) {
-    if (this.data.coupQuantity > 0) {
+    if (this.data.coupQuantity > this.data.coupLimiteQuantity) {
       this.setData({
         coupQuantity: --this.data.coupQuantity
       });
@@ -84,7 +84,7 @@ Page({
     });
   },
   onLimitePlusClick:function(e){
-    if (this.data.coupLimiteQuantity < 999)
+    if (this.data.coupLimiteQuantity < this.data.coupQuantity )
       this.setData({
         coupLimiteQuantity: ++this.data.coupLimiteQuantity
       });
@@ -99,11 +99,20 @@ Page({
       coupLimiteQuantity: e.detail.value
     })
   },
+   isInteger:function(obj) {
+    return obj% 1 === 0
+  },
   submit:function(e){
     this.data.subObj.coupQuantity = this.data.coupQuantity;
     this.data.subObj.coupLimiteQuantity = this.data.coupLimiteQuantity;
     this.data.subObj.deadline = this.data.deadline;
-    if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length !=1) {
+    if (!this.isInteger(this.data.subObj.coupQuantity)) {
+      this.showError('优惠券必须为整数');
+      return;
+    } else if (!this.isInteger(this.data.subObj.coupLimiteQuantity)){
+      this.showError('优惠券必须为整数');
+      return;
+    } else if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length !=1) {
       this.showError('请选择优惠券图片');
       return ;
     } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs.length !=3) {
@@ -116,7 +125,10 @@ Page({
       this.showError('优惠券数量不能为0');
       return;
     } else if (this.data.subObj.coupLimiteQuantity == 0){
-      this.showError('没人限领不能为0');
+      this.showError('每人限领不能为0');
+      return;
+    } else if (this.data.subObj.coupLimiteQuantity > this.data.subObj.coupQuantity) {
+      this.showError('每人限领不能超过总数');
       return;
     } else if (!util.textIsNotNull(this.data.subObj.couponDescrip)) {
       this.showError('店优惠券描述不能为空');
