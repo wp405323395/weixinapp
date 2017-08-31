@@ -4,8 +4,7 @@
         <navigator class="{{(idx+1) % 2 == 0 ? 'product_item_right':'product_item_left'}} product" id="{{item.id}}" url="../detail/detail?id={{(item.relaId == null || item.relaId == '') ? ('id-'+item.id):('relaId-'+item.relaId)}}" hover-class="navigator-hover" hover-stay-time="200">
           <view class="index_down_time" hidden="{{!isShowDownTime}}">
             <view class="index_down_time_content">
-              <image class="index_down_time_img" src="../../img/index_down_time.png"></image>
-              <text class="index_down_time_text">{{item.timeLeftSecond}}</text>
+              <text>{{item.timeLeftSecond}}</text>
             </view>
           </view>
           <view hidden="{{item.remainderNum == null}}">

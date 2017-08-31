@@ -17,7 +17,7 @@
       <block wx:if="{{hasLocation === true}}">
         <text class="text_style input_style chooce_location_text">{{locationAddress}}</text>
       </block>
-       <image class="chooce_img" src="../../../img/get_position.png"></image>
+       <text class="iconfont chooce_img">获取地址</text>
   </view>
     
   </view>

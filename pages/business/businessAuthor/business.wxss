@@ -132,6 +132,10 @@ width:160rpx;
 align-content:flex-end;
 margin-right: 25rpx;
 }
+.chooce_img::before{
+  content: '\e6a2';
+  color: red;
+}
 .chooce_location_text{
   width: 70%;
 }
