@@ -12,7 +12,11 @@ Page({
   },
   onCheckAgain:function(e){
     wx.navigateTo({
-      url: '../businessAuthor/business',
+      url: '../businessAuthor/business?rejectStoreId=' + this.data.reject.rejectStoreId
+    })
+    wx.setStorage({
+      key: 'rejectReason',
+      data: '',
     })
   },
 
@@ -29,7 +33,8 @@ Page({
       success: function(res) {
         that.setData({
           reject: {
-            reason: res.data
+            reason: res.data.rejectReason,
+            rejectStoreId: res.data.rejectStoreId
           }
         });
       },

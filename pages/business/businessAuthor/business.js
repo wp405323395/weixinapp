@@ -81,8 +81,10 @@ Page({
       }
     })
   },
+  onLoad: function (options) {
+    this.rejectStoreId = options.rejectStoreId;
+  },
   previewImage: function (e) {
-
     if (longClick) {
       longClick = false;
       return;
@@ -203,6 +205,7 @@ Page({
       return ;
     }
     let param = {};
+    subObj.id = this.rejectStoreId;
     param.formData = JSON.stringify(subObj);
     let that = this;
     new Promise((resolve, reject) => {

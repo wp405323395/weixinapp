@@ -98,7 +98,7 @@ Page({
           url: '../business/businessChecking/businessChecking',
         })
       } else if (value.retData.storeStatus == '2') {
-        wx.setStorageSync("rejectReason", value.retData.reason);
+        wx.setStorageSync("rejectReason", { rejectReason: value.retData.reason, rejectStoreId: value.retData.id});
         wx.navigateTo({
           url: '../business/businessCheckReject/reject',
         })
