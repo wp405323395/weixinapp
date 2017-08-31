@@ -35,7 +35,7 @@
 
 }
 .okimage::after{
-  content: '\e645';
+  content: '\e72e';
 }
 .faildimage{
 
@@ -45,5 +45,5 @@
   
 }
 .faildimage::after{
-  content: '\e641';
+  content: '\e723';
 }
