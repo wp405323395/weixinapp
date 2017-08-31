@@ -84,6 +84,63 @@ function uploadimg(data, formData) {
 
 }
 
+
+function uploadFils(data, formData) {
+  let tasks = [];
+  let header = new Header('application/json').getHeader();
+  util.showToast({
+    title: `上传中...`,
+    icon: "loading"
+  });
+  for(let path of data.path) {
+    let pro = new Promise((resolve,reject)=>{
+      wx.uploadFile({
+        url: data.url,
+        filePath: path,
+        name: 'fileData',
+        header: header,
+        formData: formData,
+        success: (resp) => {
+          resolve();
+        },
+        fail: (res) => {
+          reject(res);
+        },
+        complete: () => {
+          
+        }
+      })
+    });
+    tasks.push(pro);
+  } 
+  Promise.all(tasks).then(values=>{
+    wx.hideToast();
+    wx.showModal({
+      title: '提示',
+      content: '素材上传成功',
+      success: function (res) {
+        wx.navigateBack({
+        })
+      },
+      showCancel:false
+    })
+    
+  }).catch(err=>{
+    wx.showModal({
+      title: '提示',
+      content: '素材上传失败，可重新上传',
+      success: function (res) {
+        if (res.confirm) {
+          
+        } else if (res.cancel) {
+          
+        }
+      },
+    })
+  });
+}
+
 module.exports = {
-  uploadimg: uploadimg
+  uploadimg: uploadimg,
+  uploadFils: uploadFils
 }

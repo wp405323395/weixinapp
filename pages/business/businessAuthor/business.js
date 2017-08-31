@@ -212,21 +212,14 @@ Page({
         reject(faild);
       });
     }).then((value) => {
-      if (value.retCode == '0') {
-        
-        return uploadFileEngin.uploadimg({
+      if (value.retCode == '0') {        
+        return uploadFileEngin.uploadFils({
           url: config.uploadBusinessPic,
           path: subObj.storeImgs
         }, { id: value.id, type: 0 });
       } else {
         util.showTitleDialog('审核提交操作失败', '');
       }
-    }, (err) => {
-
-    }).then((value)=>{
-
-    },(err)=>{
-
     }).catch(function (err) {
 
     });

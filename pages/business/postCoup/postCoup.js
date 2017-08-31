@@ -161,31 +161,21 @@ Page({
           path: this.data.subObj.coupIconImage//这里是选取的图片的地址数组
         }, { id: valueId, type: '11' });
       }
-    }, (err) => {
     }).then((value)=>{
       if(value == undefined) {
         return null;
       }
-      return uploadFileEngin.uploadimg({
+      uploadFileEngin.uploadFils({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });
-    },(err)=>{
-      util.showShortToast({
-        title: '图片上传失败',
-        image: '../../../img/coup_status_fail.png',
-        icon: 'faild'
-      })
-    }).then((value)=>{
-      wx.hideNavigationBarLoading();
-    },(err)=>{
-      util.showShortToast({
-        title: '图片上传失败',
-        image: '../../../img/coup_status_fail.png',
-        icon: 'faild'
-      })
-    });
-    
+    }).catch(err => {
+     util.showShortToast({
+       title: '图片上传失败',
+       image: '../../../img/coup_status_fail.png',
+       icon: 'faild'
+     });
+    })
   },
   showError:function(str) {
     util.showShortToast({
