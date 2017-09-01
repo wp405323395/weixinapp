@@ -128,13 +128,9 @@ function uploadFils(data, formData) {
     wx.showModal({
       title: '素材上传失败，可重新上传',
       success: function (res) {
-        if (res.confirm) {
-          
-        } else if (res.cancel) {
-          
-        }
       },
     })
+    showCancel: false
   });
 }
 

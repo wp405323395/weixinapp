@@ -205,6 +205,7 @@ color: #d4d4d4;
 }
 .maxLength{
     -webkit-line-clamp: 7;
+    text-align: left;
 }
 .warning_title{
 background-color:#ffdb9b;
