@@ -9,13 +9,15 @@
   </view>
 
   <view class="store_name">
-    <view class="name_lable">
-      <text class="img_red_point">*</text> <text>填写优惠信息</text>
+    <view class="name_lable2">
+      <view>
+        <text class="img_red_point">*</text>
+        <text>填写优惠信息</text>
+      </view>
+      <text class='number_input'>{{wordsCount}}/100</text>
     </view>
     <textarea maxlength="100" bindinput="bindInput_couponDescrip" placeholder-class="holder_style" class="textarear_style input_style" type="text" placeholder="例:全场8折;买二送一;试用券10元等"/>
-    <view class="wordsCount">
-      <text>{{wordsCount}}/100</text>
-    </view>
+
   </view>
 
   <view class="store_name">

@@ -253,10 +253,10 @@ Page({
           mask:true
        })
       setTimeout(() => {
-        wx.navigateBack({
-
+        wx.switchTab({
+          url: '../index/index'
         })
-      }, 1000);
+      }, 2000);
       if (value.relaReceiveFlag == '0') {
         value.receiveMemo = '立即使用';
       }

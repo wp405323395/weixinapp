@@ -318,8 +318,8 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
   width: 50rpx;
   height: 50rpx;
   border-radius: 50rpx;
-  border: #999999 2px solid;
-  color: #999999;
+  border: white 2px solid;
+  color: white;
   text-align: center;
   display:inline-block;
   margin-top:40rpx;
