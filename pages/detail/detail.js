@@ -260,19 +260,19 @@ Page({
     }, err => {
     })
   },
-  useCoup: function () {
-    var that = this;
-    return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
-        if (!success) {
-          resolve(success.retMsg);
-          return;
-        }
-        resolve(success);
-      }, (faild) => {
-      });
-    })
-  },
+  // useCoup: function () {
+  //   var that = this;
+  //   return new Promise((resolve, reject) => {
+  //     new RequestEngine().request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
+  //       if (!success) {
+  //         resolve(success.retMsg);
+  //         return;
+  //       }
+  //       resolve(success);
+  //     }, (faild) => {
+  //     });
+  //   })
+  // },
 
   onclick_use_it: function (e) {
     this.setData({
@@ -306,12 +306,9 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.deleteCoup, deleteCoupParam, { callBy: that, method: that.deleteCoup, params: [] }, (success) => {
-        if (!success) {
-          resolve(success.retMsg);
-          return;
-        }
         resolve(success);
       }, (faild) => {
+        reject(faild);
       });
     }).then(value => {
       try {
@@ -321,10 +318,7 @@ Page({
       wx.navigateBack({
 
       })
-    },
-      err => {
-
-      })
+    }).catch(err=>{});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
