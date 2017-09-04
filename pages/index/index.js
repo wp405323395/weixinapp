@@ -47,7 +47,12 @@ Page({
     })
   },
   onLoad:function(options) {
-    var scene = decodeURIComponent(options.scene);
+    var scene = decodeURIComponent(options.q);
+    if (util.textIsNull(scene)) {
+      var scene = decodeURIComponent(options.scene);
+    } else {
+      scene = scene.split("scene=")[1];
+    }
     if (!util.textIsNull(scene)){
       setTimeout(() => {
         this.uploadQrInfo(scene);

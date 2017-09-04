@@ -11,7 +11,12 @@ Page({
   },
 
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.scene);
+    var scene = decodeURIComponent(options.q);
+    if(util.textIsNull(scene)) {
+      var scene = decodeURIComponent(options.scene);
+    } else {
+      scene = scene.split("scene=")[1];
+    }
      //scene = '20~219~8270102533142253';
      //scene = '21~1110~8270102533395091';
     this.getCardInfo(scene);

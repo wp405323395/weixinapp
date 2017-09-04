@@ -37,7 +37,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.scene);
+    var scene = decodeURIComponent(options.q);
+    if (util.textIsNull(scene)) {
+      var scene = decodeURIComponent(options.scene);
+    } else {
+      scene = scene.split("scene=")[1];
+    }
     if (!utils.textIsNull(scene)) {
       this.qrInfo = utils.splice(scene);
       setTimeout(() => {
