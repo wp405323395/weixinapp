@@ -42,18 +42,18 @@ Page({
   loadTvCardInfo:function(cardNum) {
     var that = this;
     new Promise((resolve, reject) => {
-      var param = JSON.stringify({
+      var param = {
         tvCardNumber: that.tvCardNum,
         serviceID: that.serviceID,
         qrKind: that.qrKind
-      })
-      new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
+      };
+      new RequestEngine().request(config.queryCustInfo, param, { callBy: that, method: that.loadTvCardInfo, params: [cardNum] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
     }).then(value=>{
-      let cardInfo = value.retData.custList[0];
+      let cardInfo = value.custList[0];
       this.setData({
         cardInfo: cardInfo
       });

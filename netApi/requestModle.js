@@ -4,10 +4,10 @@ const loginJs = require('./login.js');
 var request = function (url, data, reqMethod, requestSuccess, requestFail, requestComplete, interceptors) {
   
   var header = new Header('application/json').getHeader();
-  for(let interceptor of interceptors){
+  for (let interceptor of interceptors) {
     interceptor.onRequest(url, header, data);
   }
-  
+  data = { formData: JSON.stringify(data) };
   wx.request({
     url: url,
     data: data,
@@ -23,7 +23,7 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
         response_code = responseData.retCode;
       } catch (e) {
         for (let interceptor of interceptors) {
-          interceptor.onServiceError(url, header, data, res);
+          interceptor.onServiceError(url, header, responseData);
         }
         requestFail('服务器错误的消息格式');
         return;
@@ -31,22 +31,27 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
 
       if (response_code == 102) {
         for (let interceptor of interceptors) {
-          interceptor.onAutherErrorResponse(url, header, data, res);
+          interceptor.onAutherErrorResponse(url, header, responseData);
         }
         console.log("身份失效");
         loginJs.clientLogin(reqMethod);
+      } else if (response_code == '0') {
+        for (let interceptor of interceptors) {
+          interceptor.onResponse(url, header, responseData);
+        }
+        requestSuccess(responseData.retData);
       } else {
         for (let interceptor of interceptors) {
-          interceptor.onResponse(url, header, data, res);
+          interceptor.onFaildResponse(url, header, responseData);
         }
-        requestSuccess(responseData);
+        requestFail(responseData.retMsg);
       }
     },
     fail: function (res) {
       for (let interceptor of interceptors) {
-        interceptor.onFaildResponse(url, header, data, res);
+        interceptor.onFaildResponse(url, header, { retMsg:"网络请求失败"});
       }
-      requestFail(res);
+      requestFail("网络请求失败");
     },
     complete: function (res) {
       wx.hideNavigationBarLoading();

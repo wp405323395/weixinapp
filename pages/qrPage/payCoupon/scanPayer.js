@@ -14,10 +14,7 @@ Page({
   loadScanQr: function (scene) {
     var that = this;
       new Promise((resolve,reject)=>{
-        var param = JSON.stringify({
-          scene: scene
-        })
-        new RequestEngine().request(config.mercSureUseCoup, { formData: param }, { callBy: that, method: that.loadScanQr, params: [scene] }, (success) => {
+        new RequestEngine().request(config.mercSureUseCoup, { scene: scene }, { callBy: that, method: that.loadScanQr, params: [scene] }, (success) => {
           resolve(success);
         }, (faild) => {
           reject(faild);
@@ -26,17 +23,13 @@ Page({
         this.setData({
           isHidden: false
         });
-        
-        if (value.retCode == '0') {
           this.setData({
             shoped_faild: false
           });
-        } else {
-          this.setData({
-            shoped_faild: true
-          });
-        }
       }).catch(err => {
+        this.setData({
+          shoped_faild: true
+        });
         wx.showModal({
           title: '提示',
           content: err,

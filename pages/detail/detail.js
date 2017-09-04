@@ -3,7 +3,7 @@ var config = require('../../config.js');
 import RequestEngine from '../../netApi/requestEngine.js';
 var Promise = require('../../libs/es6-promise.js').Promise;
 var utils = require('../../utils/util.js');
-import Header from '../../netApi/Header.js'  
+import Header from '../../netApi/Header.js'
 var product
 var autoflag;
 var idMap;
@@ -15,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    qrImgUrl:"https://www.maywidehb.com/banner/loading.gif",
+    qrImgUrl: "https://www.maywidehb.com/banner/loading.gif",
     unShow: true,
     isHidden: true,
     isHidden1: true,
@@ -44,7 +44,7 @@ Page({
         this.uploadQrInfo(scene);
       }, 500);
     }
-  
+
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -61,10 +61,10 @@ Page({
       //'id-','relaId-'
       idMap = options.id.split('-');
     }
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loadProduct();
-    },500);
-    
+    }, 500);
+
   },
   onPhoneCall: function (e) {
     let phoneNumber = e.currentTarget.dataset.phonenumber;
@@ -89,7 +89,7 @@ Page({
     }
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.loadProduct, param, { callBy: that, method: that.loadProduct, params: [] }, (success) => {
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
       });
     }).then((value) => {
@@ -162,7 +162,7 @@ Page({
   //           wx.setStorageSync('needRefreshData', true)
   //         } catch (e) {
   //         }
-          
+
   //       }, err => {
   //       });
   //   } else if (key == 'id') {
@@ -186,9 +186,9 @@ Page({
   //   }
 
   // },
-  showQr:function(qrUrl){
+  showQr: function (qrUrl) {
     this.setData({
-      isHidden:false,
+      isHidden: false,
       qrImgUrl: qrUrl
     });
 
@@ -197,29 +197,24 @@ Page({
     var key = idMap[0];
     var value = idMap[1];
     var that = this;
-  
+
     if (key == 'relaId') {
       new Promise((resolve, reject) => {
-        new RequestEngine().request(config.useCouponByWxCode, { relaId: value}, { callBy: that, method: that.click, params: [] }, (success) => {
+        new RequestEngine().request(config.useCouponByWxCode, { relaId: value }, { callBy: that, method: that.click, params: [] }, (success) => {
           resolve(success);
         }, (faild) => {
         });
       })
         .then((value) => {
-          if (value.retCode=='0') {
-            let qrUrl = value.retData.wxcodeurl;
-            this.showQr(qrUrl);
-          }
+          let qrUrl = value.wxcodeurl;
+          this.showQr(qrUrl);
         }, (err) => { })
         .then(value => {
-          if (value.retCode == '0') {
-            wx.showToast({
-              icon: "success",
-              title: "成功使用",
-              mask: true
-            })
-          } 
-         
+          wx.showToast({
+            icon: "success",
+            title: "成功使用",
+            mask: true
+          })
           try {
             wx.setStorageSync('needRefreshData', true)
           } catch (e) {
@@ -234,7 +229,7 @@ Page({
     }
 
   },
-  onGotoDetail:function(e){
+  onGotoDetail: function (e) {
     wx.navigateTo({
       url: './storeDetail/storeDetail?storeId=' + this.data.product.storeId,
     })
@@ -243,15 +238,15 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.receiveCoup, receiveParam, { callBy: that, method: that.receiveCoup, params: [] }, (success) => {
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
       });
     }).then(value => {
       wx.showToast({
-          icon: "success",
-          title: "领取成功",
-          mask:true
-       })
+        icon: "success",
+        title: "领取成功",
+        mask: true
+      })
       setTimeout(() => {
         wx.switchTab({
           url: '../index/index'
@@ -271,11 +266,11 @@ Page({
     var that = this;
     return new Promise((resolve, reject) => {
       new RequestEngine().request(config.useCoup, useCoupParam, { callBy: that, method: that.useCoup, params: [] }, (success) => {
-        if (!success.retData) {
+        if (!success) {
           resolve(success.retMsg);
           return;
         }
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
       });
     })
@@ -305,7 +300,7 @@ Page({
       isHidden2: true,
     });
   },
-  deleteCoup:function(e){
+  deleteCoup: function (e) {
     var deleteCoupParam = {};
     var key = idMap[0];
     var val = idMap[1];
@@ -313,25 +308,25 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.deleteCoup, deleteCoupParam, { callBy: that, method: that.deleteCoup, params: [] }, (success) => {
-        if (!success.retData) {
+        if (!success) {
           resolve(success.retMsg);
           return;
         }
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
       });
-    }).then(value=>{
+    }).then(value => {
       try {
         wx.setStorageSync('needRefreshData', true)
       } catch (e) {
       }
       wx.navigateBack({
-        
+
       })
     },
-    err=>{
+      err => {
 
-    })
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

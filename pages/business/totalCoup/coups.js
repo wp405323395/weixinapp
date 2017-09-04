@@ -46,7 +46,7 @@ Page({
     let that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.loadAllCoup, {}, { callBy: that, method: that.loadAllCoup, params: [] }, (success) => {
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
 
       });

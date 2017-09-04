@@ -12,25 +12,24 @@ class LogInterceptor extends Interceptor{
     console.log('请求体=>', data);
     console.log('-----------------------------------');
   }
-  onResponse(url, header, data, res) {
+  onResponse(url, header, data) {
     this.responseTime = new Date();
     let totalTime = this.responseTime - this.requestStartTime; 
-    let da = JSON.parse(res.data);
-    console.log('返回值=>', da);
+    console.log('返回值=>', data);
     console.log('请求总耗时=>', totalTime);
     console.log('<<<<<<<<<<----response----<<<<<<<<<<');
   }
 
-  onServiceError(url, header, data, res) {
-    console.log('服务器错误，返回值=>', res);
+  onServiceError(url, header, data) {
+    console.log('服务器错误，返回值=>', data);
     console.log('<<<<<<<<<<----response----<<<<<<<<<<');
   }
-  onAutherErrorResponse(url, header, data, res) {
-    console.log('Auther错误，返回值=>', res);
+  onAutherErrorResponse(url, header, data) {
+    console.log('Auther错误，返回值=>', data);
     console.log('<<<<<<<<<<----response----<<<<<<<<<<');
   }
-  onFaildResponse(url, header, data, res) {
-    console.log('请求错误，返回值=>', res);
+  onFaildResponse(url, header, data) {
+    console.log('请求错误，返回值=>', data);
     console.log('<<<<<<<<<<----response----<<<<<<<<<<');
   }
 }

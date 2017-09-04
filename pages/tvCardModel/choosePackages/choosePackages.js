@@ -35,10 +35,7 @@ Page({
   loadPackage: function (custid, tvCardNumber, serviceID, qrKind) {
     let that = this;
     new Promise((resolve, reject)=>{
-      let formData = JSON.stringify({
-        custid, tvCardNumber, serviceID, qrKind
-      });
-      new RequestEngine().request(config.querySalesList, { formData: formData }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
+      new RequestEngine().request(config.querySalesList, { custid, tvCardNumber, serviceID, qrKind}, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -46,7 +43,7 @@ Page({
     }).then(value=>{
       id: 11001,
       this.setData({ 
-        salesList: value.retData.salesList
+        salesList: value.salesList
         });
     }).catch(err=>{})
    

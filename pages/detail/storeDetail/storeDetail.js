@@ -41,7 +41,7 @@ Page({
     var that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.queMercDetail, param, { callBy: that, method: that.loadStoreDetail, params: [] }, (success) => {
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
       });
     }).then((value) => {

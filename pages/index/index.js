@@ -135,14 +135,12 @@ Page({
   },
 
   loadData: function (typeId){
-    
-    //url, data,reqMethod, requestSuccess, requestFail, requestComplete
     var url = config.discoverUrl;
     var self = this;
     new MyPromise(function (resolve, reject) {
-      new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [typeId] }, (success) => {
+      new RequestEngine().request(url, { type: typeId }, { callBy: self, method: self.loadData, params: [arguments] }, (success) => {
         //success
-        resolve(success.retData);
+        resolve(success);
       }, (faild) => {
         //faild
         reject(faild);

@@ -60,7 +60,7 @@ Page({
   validateBusinessStep1: function (userInfo) {
     var that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.queMercSettled, { formData: JSON.stringify(userInfo) }, { callBy: that, method: that.validateBusinessStep1, params: [userInfo] }, (success) => {
+      new RequestEngine().request(config.queMercSettled, userInfo, { callBy: that, method: that.validateBusinessStep1, params: [userInfo] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -92,25 +92,25 @@ Page({
           }
         })
         
-      } else if (value.retData.storeStatus == '0') {
-        wx.setStorageSync('checkingStore', value.retData);
+      } else if (value.storeStatus == '0') {
+        wx.setStorageSync('checkingStore', value);
         wx.navigateTo({
           url: '../business/businessChecking/businessChecking',
         })
-      } else if (value.retData.storeStatus == '2') {
-        wx.setStorageSync("rejectReason", { rejectReason: value.retData.reason, rejectStoreId: value.retData.id});
+      } else if (value.storeStatus == '2') {
+        wx.setStorageSync("rejectReason", { rejectReason: value.reason, rejectStoreId: value.id});
         wx.navigateTo({
           url: '../business/businessCheckReject/reject',
         })
-      } else if (value.retData.storeStatus == '1') {
+      } else if (value.storeStatus == '1') {
         wx.navigateTo({
           url: '../business/index/index',
         })
       }
-      if (!value.retData || !value.retData.assisttype) {
+      if (!value || !value.assisttype) {
         return;
       }
-      let assisttype = value.retData.assisttype;
+      let assisttype = value.assisttype;
       //0:店长 1：店员 2：普通用户
       wx.setStorage({
         key: 'assisttype',

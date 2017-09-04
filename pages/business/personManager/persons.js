@@ -15,13 +15,12 @@ Page({
   deletePerson:function(id){
     let that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.delAssistbyAssistid, { formData: JSON.stringify({ assistid:id})}, { callBy: that, method: that.deletePerson, params: [id] }, (success) => {
+      new RequestEngine().request(config.delAssistbyAssistid, { assistid:id}, { callBy: that, method: that.deletePerson, params: [id] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       })
     }).then(value=>{
-      if (value.retCode=='0') {
         let removeIndex = 0;
         for (let person of this.data.personList) {
           removeIndex++;
@@ -35,8 +34,7 @@ Page({
             personList: this.data.personList
           });
         }
-        
-      }
+
     }).catch(err=>{});
   },
   onDeleteClick:function(event) {
@@ -66,7 +64,7 @@ Page({
         reject(faild);
       })
     }).then(value => {
-      let list = value.retData;
+      let list = value;
       this.setData({
         personList: list
       });
@@ -90,12 +88,10 @@ Page({
         reject(faild);
       })
     }).then(value=>{
-      if (value.retCode == '0') {
         this.setData({
-          qrImgUrl: value.retData.wxcodeurl
+          qrImgUrl: value.wxcodeurl
       });
-      }
-      
+
     }).catch(err=>{})
   },
 

@@ -204,27 +204,20 @@ Page({
     if (!this.data.clickAble) {
       return ;
     }
-    let param = {};
-    subObj.id = this.rejectStoreId;
-    param.formData = JSON.stringify(subObj);
     let that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.businessAuther, param, { callBy: that, method:that.submit,params:[]}, (success) => {
+      new RequestEngine().request(config.businessAuther, { id: rejectStoreId}, { callBy: that, method:that.submit,params:[]}, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
     }).then((value) => {
-      if (value.retCode == '0') {        
         return uploadFileEngin.uploadFils({
           url: config.uploadBusinessPic,
           path: subObj.storeImgs
         }, { id: value.id, type: 0 });
-      } else {
-        util.showTitleDialog('审核提交操作失败', '');
-      }
     }).catch(function (err) {
-
+      util.showTitleDialog('err', '');
     });
    
   },

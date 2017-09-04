@@ -21,7 +21,7 @@ function clientLogin(successFun,failedFun) {
         wx.request({
           url: loginUrl,
           data: {
-            loginCode: res.code
+            formData: JSON.stringify({ loginCode: res.code})
           },
           method: 'POST',
           header: {

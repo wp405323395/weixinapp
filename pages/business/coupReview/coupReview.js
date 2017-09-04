@@ -31,12 +31,9 @@ Page({
   },
   loadCoupById:function(id){
     var that = this;
-    let param = {};
-    param.id = id;
-    
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.loadProduct, param, { callBy: that, method: that.loadCoupById, params: [id] }, (success) => {
-        resolve(success.retData);
+      new RequestEngine().request(config.loadProduct, {id:id}, { callBy: that, method: that.loadCoupById, params: [arguments] }, (success) => {
+        resolve(success);
       }, (faild) => {
       });
     }).then(value=>{

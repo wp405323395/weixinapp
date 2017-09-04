@@ -89,16 +89,13 @@ Page({
   loadCards: function (custid, tvCardNum, serviceID) {
     let that = this;
     new Promise((resolve, reject) => {
-      let formData = JSON.stringify({
-        custid: custid
-      });
-      new RequestEngine().request(config.queryOrderKeyno, { formData: formData }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
+      new RequestEngine().request(config.queryOrderKeyno, { custid: custid }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
     }).then(value => {
-      let cardsNumber = value.retData;
+      let cardsNumber = value;
       if (cardsNumber.length > 0) {
         this.data.cardNumberSelect = 0;
         this.tvCardNum = cardsNumber[0];
@@ -174,15 +171,15 @@ Page({
       if(!that.data.selectPackage) {
         return ;
       }
-      let formData = JSON.stringify({
+      let param = {
         custid: that.custid,
         tvCardNumber: that.tvCardNum,
         salestype: that.data.selectPackage.salestype,//类型 0订购产品;1营销方案订购
         salescode: that.data.selectPackage.salescode,//产品编码
         count: that.data.selectPackage.count,//套餐倍数
         unit: that.data.selectPackage.unit,//订购单位 0：天；1：月；2：年
-      });
-      new RequestEngine().request(config.doOrder, { formData: formData }, { callBy: that, method: that.pay, params: [] }, (success) => {
+      };
+      new RequestEngine().request(config.doOrder, param, { callBy: that, method: that.pay, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);

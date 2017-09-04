@@ -8,24 +8,24 @@ class RequestStatusInterceptor extends Interceptor{
   onRequest(url, header, data) {
     util.showToast();
   }
-  onResponse(url, header, data, res) {
+  onResponse(url, header, data) {
     wx.hideNavigationBarLoading();
     wx.hideToast();
   }
-  onServiceError(err) {
+  onServiceError(url, header, data) {
     util.showShortToast({
       title: '服务器错误的消息格式',
       image: '../../../img/coup_status_fail.png',
       icon: 'faild'
     })
   }
-  onAutherErrorResponse(err) {
+  onAutherErrorResponse(url, header, data) {
     wx.hideNavigationBarLoading();
     wx.hideToast();
   }
-  onFaildResponse(err) {
+  onFaildResponse(url, header, data) {
     util.showShortToast({
-      title: "网络请求失败",
+      title: data.retMsg,
       icon: "loading"
     });
   }

@@ -24,31 +24,31 @@ Page({
       couponDescrip: '',
       useCondition: '',
       coupQuantity: 1,
-      coupLimiteQuantity:1,
+      coupLimiteQuantity: 1,
       deadline: ''
     },
-    wordsCount:0,
+    wordsCount: 0,
     sourceTypeIndex: 2,
     sourceType: ['拍照', '相册', '拍照或相册'],
 
     sizeTypeIndex: 2,
     sizeType: ['压缩', '原图', '压缩或原图'],
     imageList: [],
-    imageList2:[],
+    imageList2: [],
     countIndex: 0,
-    countIndex2:2,
+    countIndex2: 2,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     isHidden_delete: true,
-    isHidden_delete2:true,
-    coupQuantity:1,
-    coupLimiteQuantity:1,
+    isHidden_delete2: true,
+    coupQuantity: 1,
+    coupLimiteQuantity: 1,
     deadline: util.formatDay(new Date()),
     time: '12:01'
   },
-  bindInput_coupName:function(e){
+  bindInput_coupName: function (e) {
     this.data.subObj.couponName = e.detail.value;
   },
-  bindInput_couponDescrip:function(e){
+  bindInput_couponDescrip: function (e) {
     this.data.subObj.couponDescrip = e.detail.value;
     this.setData({
       wordsCount: e.detail.value.length
@@ -63,8 +63,8 @@ Page({
       deadline: e.detail.value
     })
   },
-  onDataPickerClick:function(e){
-    
+  onDataPickerClick: function (e) {
+
   },
   onSubClick: function (e) {
     if (this.data.coupQuantity > this.data.coupLimiteQuantity) {
@@ -74,21 +74,21 @@ Page({
     }
 
   },
-  onLimiteSubClick:function(e){
+  onLimiteSubClick: function (e) {
     if (this.data.coupLimiteQuantity > 0) {
       this.setData({
         coupLimiteQuantity: --this.data.coupLimiteQuantity
       });
     }
   },
-  onPlusClick:function(e){
-    if (this.data.coupQuantity<9999)
-    this.setData({
-      coupQuantity: ++this.data.coupQuantity
-    });
+  onPlusClick: function (e) {
+    if (this.data.coupQuantity < 9999)
+      this.setData({
+        coupQuantity: ++this.data.coupQuantity
+      });
   },
-  onLimitePlusClick:function(e){
-    if (this.data.coupLimiteQuantity < this.data.coupQuantity )
+  onLimitePlusClick: function (e) {
+    if (this.data.coupLimiteQuantity < this.data.coupQuantity)
       this.setData({
         coupLimiteQuantity: ++this.data.coupLimiteQuantity
       });
@@ -98,37 +98,37 @@ Page({
       coupQuantity: e.detail.value
     })
   },
-  bindLimiteKeyInput: function (e){
+  bindLimiteKeyInput: function (e) {
     this.setData({
       coupLimiteQuantity: e.detail.value
     })
   },
-   isInteger:function(obj) {
-    return obj% 1 === 0
+  isInteger: function (obj) {
+    return obj % 1 === 0
   },
-  submit:function(e){
+  submit: function (e) {
     this.data.subObj.coupQuantity = this.data.coupQuantity;
     this.data.subObj.coupLimiteQuantity = this.data.coupLimiteQuantity;
     this.data.subObj.deadline = this.data.deadline;
     if (!this.isInteger(this.data.subObj.coupQuantity)) {
       this.showError('优惠券必须为整数');
       return;
-    } else if (!this.isInteger(this.data.subObj.coupLimiteQuantity)){
+    } else if (!this.isInteger(this.data.subObj.coupLimiteQuantity)) {
       this.showError('优惠券必须为整数');
       return;
-    } else if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length !=1) {
+    } else if (this.data.subObj.coupIconImage == undefined || this.data.subObj.coupIconImage.length != 1) {
       this.showError('请选择优惠券图片');
-      return ;
-    } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs.length !=3) {
+      return;
+    } else if (this.data.subObj.storeImgs == undefined || this.data.subObj.storeImgs.length != 3) {
       this.showError('店铺图片必须为三张');
-      return ;
+      return;
     } else if (!util.textIsNotNull(this.data.subObj.couponName)) {
       this.showError('优惠券名称不能为空');
       return;
-    } else if (this.data.subObj.coupQuantity == 0){
+    } else if (this.data.subObj.coupQuantity == 0) {
       this.showError('优惠券数量不能为0');
       return;
-    } else if (this.data.subObj.coupLimiteQuantity == 0){
+    } else if (this.data.subObj.coupLimiteQuantity == 0) {
       this.showError('每人限领不能为0');
       return;
     } else if (this.data.subObj.coupLimiteQuantity > this.data.subObj.coupQuantity) {
@@ -142,31 +142,31 @@ Page({
       return;
     }
     let exchangeParam = {
-      couponName : this.data.subObj.couponName,
-      couponIntro : this.data.subObj.couponDescrip,
-      useCondition : this.data.subObj.useCondition,
-      issueNum : this.data.subObj.coupQuantity,
-      eachLimit : this.data.subObj.coupLimiteQuantity,
-      useEndTime : this.data.subObj.deadline
+      couponName: this.data.subObj.couponName,
+      couponIntro: this.data.subObj.couponDescrip,
+      useCondition: this.data.subObj.useCondition,
+      issueNum: this.data.subObj.coupQuantity,
+      eachLimit: this.data.subObj.coupLimiteQuantity,
+      useEndTime: this.data.subObj.deadline
     }
     let that = this;
-    
+
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.publishMercCoup, { formData: JSON.stringify(exchangeParam)}, { callBy: that, method: that.submit, params: [] }, (success) => {
+      new RequestEngine().request(config.publishMercCoup, exchangeParam, { callBy: that, method: that.submit, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
     }).then((value) => {
-      if (value.retCode == '0') {
-        valueId = value.id;
-        return uploadFileEngin.uploadimg({
-          url: config.uploadBusinessPic,//这里是你图片上传的接口
-          path: this.data.subObj.coupIconImage//这里是选取的图片的地址数组
-        }, { id: valueId, type: '11' });
-      }
-    }).then((value)=>{
-      if(value == undefined) {
+
+      valueId = value.id;
+      return uploadFileEngin.uploadimg({
+        url: config.uploadBusinessPic,//这里是你图片上传的接口
+        path: this.data.subObj.coupIconImage//这里是选取的图片的地址数组
+      }, { id: valueId, type: '11' });
+
+    }).then((value) => {
+      if (value == undefined) {
         return null;
       }
       uploadFileEngin.uploadFils({
@@ -174,14 +174,14 @@ Page({
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
       }, { id: valueId, type: '10' });
     }).catch(err => {
-     util.showShortToast({
-       title: '图片上传失败',
-       image: '../../../img/coup_status_fail.png',
-       icon: 'faild'
-     });
+      util.showShortToast({
+        title: '图片上传失败',
+        image: '../../../img/coup_status_fail.png',
+        icon: 'faild'
+      });
     })
   },
-  showError:function(str) {
+  showError: function (str) {
     util.showShortToast({
       title: str,
       image: '../../../img/coup_status_fail.png',
@@ -193,57 +193,57 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
-  }, 
+
+  },
   on_addPic_wrap_click: function (e) {
     if (longClick2) {
       longClick2 = false;
@@ -255,7 +255,7 @@ Page({
     }
 
   },
-  on_addPic_wrap_click2:function(e) {
+  on_addPic_wrap_click2: function (e) {
     if (longClick22) {
       longClick22 = false;
       return;
@@ -316,7 +316,7 @@ Page({
     } else {
       this.setData({
         isHidden_delete: true,
-        isHidden_delete2:true
+        isHidden_delete2: true
       })
       var current = e.target.dataset.src
       wx.previewImage({
@@ -326,9 +326,9 @@ Page({
     }
 
   },
-  
+
   deleteItem: function (e) {
-    
+
     var current = e.target.dataset.src;
     var index = this.data.imageList.indexOf(current);
     this.data.imageList.splice(index, 1);
@@ -343,13 +343,13 @@ Page({
     if (this.data.imageList2.length - 1 >= this.data.countIndex2) {
       return;
     }
-     imgList = this.data.imageList2;
-     wx.chooseImage({
-       sourceType: sourceType[this.data.sourceTypeIndex],
-       sizeType: sizeType[this.data.sizeTypeIndex],
-       count: this.data.count[this.data.countIndex2],
-       success: function (res) {
-         imgList = imgList.concat(res.tempFilePaths);
+    imgList = this.data.imageList2;
+    wx.chooseImage({
+      sourceType: sourceType[this.data.sourceTypeIndex],
+      sizeType: sizeType[this.data.sizeTypeIndex],
+      count: this.data.count[this.data.countIndex2],
+      success: function (res) {
+        imgList = imgList.concat(res.tempFilePaths);
         that.data.subObj.storeImgs = imgList;
         that.setData({
           imageList2: imgList

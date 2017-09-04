@@ -62,17 +62,14 @@ Page({
       })
     }).then(value => {
       return new Promise((resolve, reject) => {
-        var param = JSON.stringify({
-          querparam: inputValue + '|' + value
-        })
-        new RequestEngine().request(config.queryCustInfo, { formData: param }, { callBy: that, method: that.serchUser, params: [inputValue] }, (success) => {
+        new RequestEngine().request(config.queryCustInfo, { querparam: inputValue + '|' + value }, { callBy: that, method: that.serchUser, params: [inputValue] }, (success) => {
           resolve(success);
         }, (faild) => {
           reject(faild);
         });
       });
     }).then(value => {
-      let custList = value.retData.custList;
+      let custList = value.custList;
       this.setData({
         custList: custList
       });

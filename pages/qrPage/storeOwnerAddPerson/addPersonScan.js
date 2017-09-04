@@ -47,11 +47,7 @@ Page({
   loadScanQrStep1: function (userInfo, scene){
     var that = this;
     new Promise((resolve, reject) => {
-      var param = JSON.stringify({
-        scene: scene,
-        userInfo: userInfo
-      })
-      new RequestEngine().request(config.addStoreAssit, { formData: param }, { callBy: that, method: that.loadScanQrStep1, params: [userInfo, scene] }, (success) => {
+      new RequestEngine().request(config.addStoreAssit, {scene: scene,userInfo: userInfo}, { callBy: that, method: that.loadScanQrStep1, params: [userInfo, scene] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -60,16 +56,13 @@ Page({
       this.setData({
         isHidden: false
       });
-      if (value.retCode == '0') {
         this.setData({
           faild: false
         });
-      } else {
-        this.setData({
-          faild: true
-        });
-      }
     }).catch(err => {
+      this.setData({
+        faild: true
+      });
       wx.showModal({
         title: '提示',
         content: err,
