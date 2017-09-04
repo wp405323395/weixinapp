@@ -2,7 +2,7 @@
 var config = require('../../config.js');
 import RequestEngine from '../../netApi/requestEngine.js';
 var Promise = require('../../libs/es6-promise.js').Promise;
-var utils = require('../../utils/util.js');
+var util = require('../../utils/util.js');
 import Header from '../../netApi/Header.js'
 var product
 var autoflag;
@@ -43,8 +43,8 @@ Page({
     } else {
       scene = scene.split("scene=")[1];
     }
-    if (!utils.textIsNull(scene)) {
-      this.qrInfo = utils.splice(scene);
+    if (!util.textIsNull(scene)) {
+      this.qrInfo = util.splice(scene);
       setTimeout(() => {
         this.uploadQrInfo(scene);
       }, 500);
@@ -118,7 +118,7 @@ Page({
   //   let param = {};
   //   if (key == 'relaId') {
   //     new Promise((resolve, reject) => {
-  //       utils.showToast({
+  //       util.showToast({
   //         title: "获取位置中...",
   //         icon: "loading"
   //       });
