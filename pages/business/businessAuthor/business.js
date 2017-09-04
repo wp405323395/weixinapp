@@ -205,8 +205,9 @@ Page({
       return ;
     }
     let that = this;
+    subObj.id = this.rejectStoreId;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.businessAuther, { id: rejectStoreId}, { callBy: that, method:that.submit,params:[]}, (success) => {
+      new RequestEngine().request(config.businessAuther, subObj, { callBy: that, method:that.submit,params:[]}, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -217,7 +218,7 @@ Page({
           path: subObj.storeImgs
         }, { id: value.id, type: 0 });
     }).catch(function (err) {
-      util.showTitleDialog('err', '');
+      util.showTitleDialog(err, '');
     });
    
   },
