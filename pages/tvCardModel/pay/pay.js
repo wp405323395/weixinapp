@@ -50,6 +50,11 @@ Page({
     let tvCardNum = options.tvCardNum;
     let serviceID = options.serviceID;
     let qrKind = options.qrKind;
+    //--------------------
+    this.addr = options.addr;
+    this.custname = options.custname;
+    this.mobile = options.mobile;
+    //--------------------
     this.setData({
       scanCardInfo: {
         custid: custid, tvCardNum: tvCardNum, serviceID: serviceID
@@ -178,6 +183,9 @@ Page({
         salescode: that.data.selectPackage.salescode,//产品编码
         count: that.data.selectPackage.count,//套餐倍数
         unit: that.data.selectPackage.unit,//订购单位 0：天；1：月；2：年
+        addr : this.addr,
+        custname : this.custname,
+        mobile : this.mobile
       };
       new RequestEngine().request(config.doOrder, param, { callBy: that, method: that.pay, params: [] }, (success) => {
         resolve(success);

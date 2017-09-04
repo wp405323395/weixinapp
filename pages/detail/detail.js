@@ -213,20 +213,13 @@ Page({
         .then((value) => {
           let qrUrl = value.wxcodeurl;
           this.showQr(qrUrl);
-        }, (err) => { })
+        })
         .then(value => {
-          wx.showToast({
-            icon: "success",
-            title: "成功使用",
-            mask: true
-          })
           try {
             wx.setStorageSync('needRefreshData', true)
           } catch (e) {
           }
-
-        }, err => {
-        });
+        }).catch(err=>{});
     } else if (key == 'id') {
       receiveParam = {};
       receiveParam.id = value;

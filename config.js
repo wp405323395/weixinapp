@@ -5,9 +5,9 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "192.168.1.192"
-//var host = 'www.maywidehb.com';
-var isHttps = false;
+//var host = "192.168.1.192"
+var host = 'www.maywidehb.com';
+var isHttps = true;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';
 var config = {
@@ -17,7 +17,7 @@ var config = {
     srcUrl: `${schema}://${host}/`,
     // 登录地址，用于建立会话
     loginUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!login`,
-    discoverUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!queryCouponList `,
+    discoverUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!queryCouponList`,
     mycoup: `${schema}://${host}/wappweb/mcwx/mc-wx!queryWxCouponList`,
     loadProduct: `${schema}://${host}/wappweb/mcwx/mc-wx!queryCouponDetailById`,
     useCoup: `${schema}://${host}/wappweb/mcwx/mc-wx!useCoupon`,
