@@ -32,7 +32,7 @@ Page({
   loadCoupById:function(id){
     var that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.loadProduct, {id:id}, { callBy: that, method: that.loadCoupById, params: [arguments] }, (success) => {
+      new RequestEngine().request(config.loadProduct, { id: id }, { callBy: that, method: that.loadCoupById, params: [id] }, (success) => {
         resolve(success);
       }, (faild) => {
       });

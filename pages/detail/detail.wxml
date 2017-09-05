@@ -4,11 +4,16 @@
     <view class="allwrap">
      
         <template is="detail" data="{{product}}" />
+        <button class='introduce_item introduce_item2' open-type="share" hover-class="navigator-hover">
+           <text>赠送优惠券</text>
+           <view class="go_in"></view>
+        </button>
+        
         <view  class="delete_coup_wrap" bindtap="deleteCoup" hover-class="navigator-hover"  hidden="{{product.relaId ==''||product.relaId == 'undefine'|| product.relaId == null }}">
           <text class="delete_coup" >删除优惠券</text>
         </view>
       <view class="depends"></view>
-      <button bindtap="click" class="button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
+      <button bindtap="click" class="use_coup_button" hover-class="navigator-hover" disabled="{{product.receiveFlag != '1'&&product.relaReceiveFlag != '0'}}" hover-stay-time="200">{{product.receiveMemo}}</button>
 
     </view>
 

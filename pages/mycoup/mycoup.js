@@ -84,7 +84,7 @@ Page({
   loadData: function (typeId) {
     var that = this;
     new Promise((resolve,reject)=>{
-      new RequestEngine().request(config.mycoup, { type: typeId }, { callBy: that, method: that.loadData, params: [arguments] }, (success) => {
+      new RequestEngine().request(config.mycoup, { type: typeId }, { callBy: that, method: that.loadData, params: [typeId] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);

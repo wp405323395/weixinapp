@@ -62,12 +62,14 @@
   text-align: left;
 }
 
-button {
+button{
   width: 100%;
   background: white;
   border-radius: 0;
   color: #ef2020;
   border-top: 1px #eee solid;
+}
+.use_coup_button{
   position: fixed;
   z-index: 999;
   bottom: 0;
@@ -304,6 +306,7 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
   height: 70rpx;
 }
 
+
 .qr_img{
   width:90%;
   height: 80%;
@@ -331,4 +334,11 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
 .depends{
   height: 1px;
   margin-bottom: 130rpx;
+}
+
+.introduce_item2 {
+  color:#333;
+  padding: 10rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
 }
