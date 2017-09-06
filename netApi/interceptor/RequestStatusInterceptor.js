@@ -24,9 +24,10 @@ class RequestStatusInterceptor extends Interceptor{
     wx.hideToast();
   }
   onFaildResponse(url, header, data) {
-    util.showShortToast({
+    util.showToast({
       title: data.retMsg,
-      icon: "loading"
+      icon: "loading" ,
+      duration:10000
     });
   }
 }

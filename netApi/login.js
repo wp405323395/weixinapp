@@ -13,7 +13,7 @@ function my_login() {
   });
 }
 function clientLogin(successFun,failedFun) {
-  util.showToast();
+  util.showToast({ title :'微信身份识别中...'});
   wx.login({
     success: function (res) {
       if (res.code) {

@@ -4,7 +4,7 @@
     <view class="allwrap">
      
         <template is="detail" data="{{product}}" />
-        <button class='introduce_item introduce_item2' open-type="share" hover-class="navigator-hover">
+        <button class='introduce_item introduce_item2' hidden="{{'0' != product.relaReceiveFlag}}" open-type="share" hover-class="navigator-hover">
            <text>赠送优惠券</text>
            <view class="go_in"></view>
         </button>
