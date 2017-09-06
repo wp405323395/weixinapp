@@ -5,9 +5,9 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-//var host = "192.168.1.192"
-var host = 'www.maywidehb.com';
-var isHttps = true;
+var host = "192.168.1.109:8080"
+//var host = 'www.maywidehb.com';
+var isHttps = false;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';
 var config = {
@@ -48,6 +48,8 @@ var config = {
     addStoreAssit: `${schema}://${host}/wappweb/mcwx/merc-wx!addStoreAssit`,
     createStoreAssistCode: `${schema}://${host}/wappweb/mcwx/merc-wx!createStoreAssistCode`,
     delAssistbyAssistid: `${schema}://${host}/wappweb/mcwx/merc-wx!delAssistbyAssistid`,
+    giveAwayCoupon: `${schema}://${host}/wappweb/mcwx/mc-wx!giveAwayCoupon`,
+    gainGiveAwayCoupon: `${schema}://${host}/wappweb/mcwx/mc-wx!gainGiveAwayCoupon`,
 };
 
 

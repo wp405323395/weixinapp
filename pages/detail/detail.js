@@ -37,17 +37,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.q);
-    if (util.textIsNull(scene)) {
-      var scene = decodeURIComponent(options.scene);
+    let relaId_from_share = options.shareCoup_coupId
+    this.relaId_from_share = relaId_from_share;
+    if (util.textIsNotNull(relaId_from_share)) {
+      idMap = ['id', options.id];
     } else {
-      scene = scene.split("scene=")[1];
-    }
-    if (!util.textIsNull(scene)) {
-      this.qrInfo = util.splice(scene);
-      setTimeout(() => {
-        this.uploadQrInfo(scene);
-      }, 500);
+      var scene = decodeURIComponent(options.q);
+      if (util.textIsNull(scene)) {
+        var scene = decodeURIComponent(options.scene);
+      } else {
+        scene = scene.split("scene=")[1];
+      }
+      if (!util.textIsNull(scene)) {
+        this.qrInfo = util.splice(scene);
+        setTimeout(() => {
+          this.uploadQrInfo(scene);
+        }, 500);
+      }
+      if (this.qrInfo && this.qrInfo.couponId) {
+        idMap = ['id', this.qrInfo.couponId];
+      } else {
+        //'id-','relaId-'
+        idMap = options.id.split('-');
+      }
     }
 
     var that = this;
@@ -60,16 +72,37 @@ Page({
         });
       }
     });
-    if (this.qrInfo && this.qrInfo.couponId) {
-      idMap = ['id', this.qrInfo.couponId];
-    } else {
-      //'id-','relaId-'
-      idMap = options.id.split('-');
-    }
+   
     setTimeout(() => {
       this.loadProduct();
     }, 500);
 
+  },
+  getShareCoupon: function (relaId_from_share){
+    let that = this;
+    new Promise((resolve,reject)=>{
+      new RequestEngine().request(config.gainGiveAwayCoupon, { relaId: relaId_from_share}, { callBy: that, method: that.getShareCoupon, params: [relaId_from_share] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+      });
+    }).then(value=>{
+      wx.showToast({
+        icon: "success",
+        title: "领取成功",
+        mask: true
+      })
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../index/index'
+        })
+      }, 2000);
+    }).catch(err=>{
+      wx.showToast({
+        icon: "fail",
+        title: err,
+        mask: true
+      })
+    })
   },
   onPhoneCall: function (e) {
     let phoneNumber = e.currentTarget.dataset.phonenumber;
@@ -200,32 +233,38 @@ Page({
 
   },
   click: function (e) {
-    var key = idMap[0];
-    var value = idMap[1];
-    var that = this;
+    //领取赠送优惠券
+    if (util.textIsNotNull(this.relaId_from_share)) {
+      this.getShareCoupon(this.relaId_from_share);
+    } else {
+      var key = idMap[0];
+      var value = idMap[1];
+      var that = this;
 
-    if (key == 'relaId') {
-      new Promise((resolve, reject) => {
-        new RequestEngine().request(config.useCouponByWxCode, { relaId: value }, { callBy: that, method: that.click, params: [] }, (success) => {
-          resolve(success);
-        }, (faild) => {
-        });
-      })
-        .then((value) => {
-          let qrUrl = value.wxcodeurl;
-          this.showQr(qrUrl);
+      if (key == 'relaId') {
+        new Promise((resolve, reject) => {
+          new RequestEngine().request(config.useCouponByWxCode, { relaId: value }, { callBy: that, method: that.click, params: [] }, (success) => {
+            resolve(success);
+          }, (faild) => {
+          });
         })
-        .then(value => {
-          try {
-            wx.setStorageSync('needRefreshData', true)
-          } catch (e) {
-          }
-        }).catch(err=>{});
-    } else if (key == 'id') {
-      receiveParam = {};
-      receiveParam.id = value;
-      this.receiveCoup();
+          .then((value) => {
+            let qrUrl = value.wxcodeurl;
+            this.showQr(qrUrl);
+          })
+          .then(value => {
+            try {
+              wx.setStorageSync('needRefreshData', true)
+            } catch (e) {
+            }
+          }).catch(err => { });
+      } else if (key == 'id') {
+        receiveParam = {};
+        receiveParam.id = value;
+        this.receiveCoup();
+      }
     }
+    
 
   },
   onGotoDetail: function (e) {
@@ -367,22 +406,41 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    let id = this.data.product.id;
+    let that = this;
     if (res.from === 'button') {
+      new Promise((resolve,reject)=>{
+        new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId}, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
+          resolve(success);
+        }, (faild) => {
+          reject(faild);
+        });
+      }).then(value=>{
+        
+      }).catch(err=>{
+
+      })
       // 来自页面内转发按钮
-      console.log(res.target);
-      return {
-        title: '送你一张优惠券，快来领取',
-        path: 'pages/detail/detail?shareCoup_coupId=' + id,
-        imageUrl:'https://www.maywidehb.com/banner/complimentary.png',
-        success: function (res) {
-          // 转发成功
-        },
-        fail: function (res) {
-          // 转发失败
-        }
-      }
+      // console.log(res.target);
+      
     }
+    return {
+          title: '送你一张优惠券，快来领取',
+          path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=" + that.data.product.id,
+          imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
+          success: function (res) {
+            try {
+              wx.setStorageSync('needRefreshData', true)
+            } catch (e) {
+            }
+            wx.navigateBack({
+
+            })
+          },
+          fail: function (res) {
+            // 转发失败
+          }
+        }
     
   }
+  
 })
