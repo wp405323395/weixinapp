@@ -252,3 +252,32 @@ display:flex;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.customItem{
+  margin-bottom:1px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding:20rpx 30rpx;
+
+}
+.icon{
+  width:44rpx;
+  height:44rpx;
+  margin-top: 5rpx;
+}
+.cu_value{
+  margin-left: 20rpx;
+}
+.item0{
+  margin-bottom: 10rpx;
+  font-size: 1rem;
+}
+
+.dark{
+  color: #999999;
+  margin-left: 10rpx;
+}
+.item1{
+  color: #999999;
+  font-size: 0.8rem;
+}

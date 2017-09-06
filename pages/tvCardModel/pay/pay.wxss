@@ -136,6 +136,9 @@ text,.cell1{
   height: 75rpx;
 
 }
+.go_in{
+  display: inline-block;
+}
 .bottom_logo{
   width: 100%;
   position: fixed;

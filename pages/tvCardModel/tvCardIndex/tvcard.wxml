@@ -27,6 +27,28 @@
       <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
 
 </view>
+<view hidden="{{hidd2}}">
+<view class='text_note'>
+  <text class='note'>当前共有</text>
+  <text class='note_blue'>{{custList.length}}</text>
+  <text class='note'>条有线电视账号记录</text>
+</view>
+  <view class="customList">
+    <view class="customItem" bindtap="onSelected" data-id="{{item}}" wx:for="{{custList}}" wx:key="unique">
+      <image class="icon" src="../../../img/person_icon.png"></image>
+      <view class="cu_value">
+        <view class="item0">
+          <text>{{item.custname}}</text>
+          <text class="dark">({{item.mobile}})</text>
+        </view>
+        <view class="item1">
+          <text>地址：</text>
+          <text>{{item.addr}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 <view class='bottom_logo'>
 <image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
 </view>

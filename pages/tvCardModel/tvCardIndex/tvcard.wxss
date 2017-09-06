@@ -74,3 +74,15 @@ text-decoration:underline;
   bottom:120rpx;
   text-align: center;
 }
+.text_note{
+  background-color: #eeeeee;
+  padding: 20rpx 5rpx;
+}
+.note{
+  color: #999999;
+}
+.note_blue{
+  color: #3fa5ed;
+  padding-left: 2rpx;
+  padding-right: 2rpx;
+}

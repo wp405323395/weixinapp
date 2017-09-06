@@ -7,7 +7,8 @@ Page({
 
   data: {
     hidd0:false,
-    hidd1:true
+    hidd1:true,
+    hidd2:true,
   },
 
   onLoad: function (options) {
@@ -20,17 +21,54 @@ Page({
      //scene = '20~219~8270102533142253';
      //scene = '21~1110~8270102533395091';
     this.getCardInfo(scene);
-    if (util.textIsNotNull(this.tvCardNum)) {
-      setTimeout(() => {
-        this.loadTvCardInfo(this.tvCardNum);
-      }, 500);
-    } else {
-      this.setData({
-        hidd0:true,
-        hidd1:false
-      });
-    }
+    setTimeout(() => {
+        if (util.textIsNotNull(this.tvCardNum)) {
+          this.loadTvCardInfo(this.tvCardNum);
+        } else {
+          this.loadRecordHistory();
+        }
+    }, 500);
+    
   }, 
+  onSelected: function (e) {
+    let item = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile
+    })
+  },
+  loadRecordHistory:function(){
+    let that = this;
+    new Promise((resolve, reject) => {
+      new RequestEngine().request(config.queCustInfoByOpenid, {}, { callBy: that, method: that.loadRecordHistory, params: [] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    }).then(value => {
+      if(value != null) {
+        let cardList = value.custInfolist;
+        this.setData({
+          hidd0: true,
+          hidd1: true,
+          hidd2:false,
+          custList: cardList
+        });
+      } else {
+        this.setData({
+          hidd0: true,
+          hidd1: false,
+          hidd2: true
+        });
+      }
+    }).catch(err => { 
+      this.setData({
+        hidd0: true,
+        hidd1: false,
+        hidd2: true
+      });
+    })
+    
+  },
   getCardInfo: function (tvCardInfo) {
     if (util.textIsNull(tvCardInfo)) {
       return null;
