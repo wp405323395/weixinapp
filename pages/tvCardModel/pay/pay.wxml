@@ -1,7 +1,6 @@
 <!--pay.wxml-->
-<import src="../../../template/guangdian.wxml" />
 <view class="container">
-<template is="guangdian"/>
+
   <view class="pa_wrap">
     <view hover-stay-time="{{40}}" hover-class="clicked_style" class="tvCardNumber_wrap" bindtap="onSelectCard" class="item">
       <text>智能卡号</text>
@@ -77,4 +76,7 @@
     <text class="pay_intro"> 需要支付金额 {{selectPackage?selectPackage.price*num:0}}元</text>
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn" >立即支付</view>
   </view>
+  <view class='bottom_logo'>
+<image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+</view>
 </view>

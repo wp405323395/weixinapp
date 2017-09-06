@@ -68,3 +68,15 @@ margin-top:5rpx;
 text-decoration:line-through;
 
 }
+.logo_style{
+  width: 303rpx;
+  height: 75rpx;
+
+}
+.bottom_logo{
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  bottom:120rpx;
+  text-align: center;
+}

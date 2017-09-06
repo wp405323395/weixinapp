@@ -47,6 +47,8 @@ text{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+
 }
 .no_data_img{
   width: 280rpx;
@@ -59,4 +61,16 @@ text{
 .link_text{
 color: #3fa5ed;
 text-decoration:underline;
+}
+.logo_style{
+  width: 303rpx;
+  height: 75rpx;
+
+}
+.bottom_logo{
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  bottom:120rpx;
+  text-align: center;
 }

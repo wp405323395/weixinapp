@@ -1,7 +1,5 @@
 <!--tvcard.wxml-->
-<import src="../../../template/guangdian.wxml" />
 <view class="container">
-<template is="guangdian"/>
 <view hidden="{{hidd0&&!cardInfo.tvCardNumber}}">
    <view class="item hav">
     <text>智能卡号</text> 
@@ -21,11 +19,17 @@
 
 </view>
 <view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
-    <image src="../../../img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
-    <view class="text_wrap">
-      <text>您的微信号暂无有线电视账号记录</text>
-    </view>
-          <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
+   
+      <image src="https://www.maywidehb.com/banner/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
+      <view class="text_wrap">
+        <text>您的微信号暂无有线电视账号记录</text>
+      </view>
+      <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
+
 </view>
+<view class='bottom_logo'>
+<image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+</view>
+
 </view>
 
