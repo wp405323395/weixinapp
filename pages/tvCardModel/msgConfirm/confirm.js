@@ -12,8 +12,8 @@ Page({
   onLoad: function (options) {
 
   },
-  onSearchClick: function () {
-    let inputValue = this.data.inputValue;
+  onSearchClick: function (event) {
+    let inputValue = event.detail.value;
     if (util.textIsNotNull(inputValue)) {
       this.serchUser(inputValue);
     }
@@ -78,11 +78,7 @@ Page({
     });
 
   },
-  onValueEvent: function (e) {
-    this.setData({
-      inputValue: e.detail.value
-    })
-  },
+
   onCancleClick: function () {
     this.setData({
       inputValue: '',
