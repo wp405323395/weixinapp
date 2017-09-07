@@ -33,7 +33,7 @@
   <text class='note_blue'>{{custList.length}}</text>
   <text class='note'>条有线电视账号记录</text>
 </view>
-  <view class="customList">
+
     <view class="customItem" bindtap="onSelected" data-id="{{item}}" wx:for="{{custList}}" wx:key="unique">
       <image class="icon" src="../../../img/person_icon.png"></image>
       <view class="cu_value">
@@ -47,7 +47,8 @@
         </view>
       </view>
     </view>
-  </view>
+
+    <button class="nex_btn" hover-class="nex_btn_tap" bindtap='onSearchMore'>搜索新账号</button>
 </view>
 <view class='bottom_logo'>
 <image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>

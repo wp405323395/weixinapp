@@ -177,6 +177,13 @@ Page({
       return true;
     }
   },
+  checkTel:function(tel){    
+    if(!/^(\d3, 4 |\d{3,4}-|\s) ?\d{7, 14 } $ /.test(tel)){
+      return false;
+    }
+    return true;
+  },  
+    
   submit: function (e) {
     if (!subObj.storeImgs || subObj.storeImgs.length != 3) {
       this.showError('店铺图片必须为三张');
@@ -190,11 +197,10 @@ Page({
     } else if (!util.textIsNotNull(subObj.phone)) {
       this.showError('电话不能为空');
       return;
-    } else if (!this.checkPhone(subObj.phone)){
+    } else if (!this.checkPhone(subObj.phone) || !this.checkTel(subObj.phone)){
       this.showError('您输入的电话号码有误');
       return;
-    }
-     else if (!util.textIsNotNull(subObj.storePersonName)) {
+    } else if (!util.textIsNotNull(subObj.storePersonName)) {
       this.showError('店铺负责人不能为空');
       return;
     } else if (!util.textIsNotNull(subObj.storeType)){

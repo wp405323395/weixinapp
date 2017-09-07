@@ -85,7 +85,7 @@ function uploadimg(data, formData) {
 }
 
 
-function uploadFils(data, formData) {
+function uploadFils(data, formData, callBack) {
   let tasks = [];
   let header = new Header('application/json').getHeader();
   util.showToast({
@@ -123,8 +123,14 @@ function uploadFils(data, formData) {
       },
       showCancel:false
     })
+    if (callBack) {
+      callBack.success();
+    }
     
   }).catch(err=>{
+    if (callBack) {
+      callBack.faild();
+    }
     wx.showModal({
       title: '素材上传失败，可重新上传',
       success: function (res) {

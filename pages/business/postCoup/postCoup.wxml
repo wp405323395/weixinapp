@@ -135,5 +135,5 @@
     </view>
   </view>
 
-  <button bindtap="submit" class="submit" hover-class="bottomAct">发布</button>
+  <button bindtap="submit" class="submit" disabled='{{publishDisable}}' hover-class="bottomAct">发布</button>
 </view>

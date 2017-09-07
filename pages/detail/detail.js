@@ -289,14 +289,15 @@ Page({
         wx.switchTab({
           url: '../index/index'
         })
-      }, 2000);
-      if (value.relaReceiveFlag == '0') {
-        value.receiveMemo = '立即使用';
-      }
-      idMap = ['relaId', value.relaId];
-      that.setData({
-        product: value
-      });
+      }, 1500);
+      //  if (value.relaReceiveFlag == '0') {
+      //    //这里依旧显示是因为服务端返回的是--已领取
+      //    value.receiveMemo = '立即领取';
+      //  }
+      // idMap = ['relaId', value.relaId];
+      // that.setData({
+      //   product: value
+      // });
     }, err => {
     })
   },

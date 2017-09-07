@@ -33,8 +33,14 @@ Page({
   onLoad: function (options) {
     this.data.storeId = options.storeId;
     this.loadStoreDetail();
-    
-    
+
+  },
+  onShowImg:function(events){
+    let imgSrc = events.currentTarget.dataset.src;
+    wx.previewImage({
+      current: imgSrc, // 当前显示图片的http链接
+      urls: this.data.storeDetail.storeImgList // 需要预览的图片http链接列表
+    })
   },
   loadStoreDetail:function(e){
     var param = { id: this.data.storeId };

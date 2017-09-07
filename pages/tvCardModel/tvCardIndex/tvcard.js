@@ -30,6 +30,11 @@ Page({
     }, 500);
     
   }, 
+  onSearchMore:function(){
+    wx.navigateTo({
+      url: '../msgConfirm/confirm',
+    })
+  },
   onSelected: function (e) {
     let item = e.currentTarget.dataset.id
     wx.navigateTo({

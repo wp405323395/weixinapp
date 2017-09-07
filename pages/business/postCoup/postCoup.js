@@ -107,10 +107,18 @@ Page({
     return obj % 1 === 0
   },
   submit: function (e) {
+    if (this.isRequesting) {
+      return ;
+    }
     this.data.subObj.coupQuantity = this.data.coupQuantity;
     this.data.subObj.coupLimiteQuantity = this.data.coupLimiteQuantity;
     this.data.subObj.deadline = this.data.deadline;
-    if (!this.isInteger(this.data.subObj.coupQuantity)) {
+    let date = new Date();
+    let de = new Date(this.data.subObj.deadline);
+    if (de < date) {
+      this.showError('请设置正确的截至日期，不支持当天');
+      return;
+    } else if (!this.isInteger(this.data.subObj.coupQuantity)) {
       this.showError('优惠券必须为整数');
       return;
     } else if (!this.isInteger(this.data.subObj.coupLimiteQuantity)) {
@@ -152,6 +160,10 @@ Page({
     let that = this;
 
     new Promise((resolve, reject) => {
+      that.isRequesting = true;
+      that.setData({
+        publishDisable:true
+      });
       new RequestEngine().request(config.publishMercCoup, exchangeParam, { callBy: that, method: that.submit, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
@@ -172,8 +184,22 @@ Page({
       uploadFileEngin.uploadFils({
         url: config.uploadBusinessPic,//这里是你图片上传的接口
         path: this.data.subObj.storeImgs//这里是选取的图片的地址数组
-      }, { id: valueId, type: '10' });
+      }, { id: valueId, type: '10' }, {
+          success:function(){
+            
+          },
+          faild:function(){
+            that.isRequesting = false;
+            that.setData({
+              publishDisable: false
+            });
+          }
+      });
     }).catch(err => {
+      that.isRequesting = false;
+      that.setData({
+        publishDisable: false
+      });
       util.showShortToast({
         title: '图片上传失败',
         image: '../../../img/coup_status_fail.png',

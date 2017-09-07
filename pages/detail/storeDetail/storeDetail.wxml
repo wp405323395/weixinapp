@@ -4,9 +4,9 @@
     <text class="store_name first_part_item">{{storeDetail.storeName}}</text>
     <text class="store_detail new_store_detail first_part_item">{{storeDetail.storeIntro}}</text>
     <view class="photos">
-      <block wx:for="{{storeImgList}}" wx:key='unique'>
+      <block wx:for="{{storeDetail.storeImgList}}" wx:key='unique'>
         <!-- <image class="img" src="{{item}}"></image> -->
-        <image class="img" src="{{item}}"></image>
+        <image bindtap='onShowImg' data-src='{{item}}' class="img" src="{{item}}"></image>
       </block>
     </view>
   </view>
