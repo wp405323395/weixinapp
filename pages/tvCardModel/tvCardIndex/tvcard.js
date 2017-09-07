@@ -50,21 +50,24 @@ Page({
         reject(faild);
       });
     }).then(value => {
+      let hidd0 = true;
+      let hidd1 = false;
+      let hidd2 = true;
       if(value != null) {
         let cardList = value.custInfolist;
-        this.setData({
-          hidd0: true,
-          hidd1: true,
-          hidd2:false,
-          custList: cardList
-        });
+        if(cardList.length == 0) {
+          hidd0 = true; hidd1 = false; hidd2 = true;
+        } else {
+          hidd0 = true; hidd1 = true; hidd2 = false;
+        }
       } else {
-        this.setData({
-          hidd0: true,
-          hidd1: false,
-          hidd2: true
-        });
+        hidd0 = true; hidd1 = false; hidd2 = true;
       }
+      this.setData({
+        hidd0: hidd0,
+        hidd1: hidd1,
+        hidd2: hidd2
+      });
     }).catch(err => { 
       this.setData({
         hidd0: true,
