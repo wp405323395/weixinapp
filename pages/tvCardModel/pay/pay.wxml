@@ -52,7 +52,7 @@
     <text class="item lable" >选择支付方式</text>
     <view bindtap="onWeixinClick" hover-stay-time="50" hover-class="clickDown" class="item">
       <view class="cell1">
-        <image class="pay_lable_img" src="../../../img/weixinpay.png"/>
+        <image class="pay_lable_img" src="https://www.maywidehb.com/banner/weixinpay.png"/>
         <text>微信支付</text>
       </view>
       

@@ -1,7 +1,7 @@
 <!--red.wxml-->
 <view class="container">
   <image src="https://www.maywidehb.com/banner/flower.png " class="flower_bg"></image>
-  <image src="../../img/shader.png" class="shader_bg"></image>
+  <image src="https://www.maywidehb.com/banner/shader.png" class="shader_bg"></image>
   <view class="red_pack">
     <view class="red_content_txt_wrap">
       <view class="red_content_txt {{red_content_txt_front}}" animation="{{animationContent}}" hidden="{{ishid_red_package_content}}" >
@@ -27,7 +27,7 @@
   </view>
   
   <view class="num_dir">
-    <image src="../../img/red_package_num.png" class="red_package_num_bg" mode="widthFix"></image>
+    <image src="https://www.maywidehb.com/banner/red_package_num.png" class="red_package_num_bg" mode="widthFix"></image>
     <text class="num_note num_note1">目前领取红包人数:</text>
     <text class="num_note num_note2">您的红包金额排名:</text>
     <view class="num_band">

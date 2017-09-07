@@ -19,8 +19,8 @@
           <image class="product_img" src="{{item.imgUrl}}"></image>
           <view class="content_text">
             <view class="content_bag_tag">
-              <image wx:if="{{currentTab == 1}}" src="../../img/coup_used_bg.png" class="coup_bg" mode="widthFix"></image>
-              <image wx:if="{{currentTab == 2}}" src="../../img/coup_timeout_bg.png" class="coup_bg" mode="widthFix"></image>
+              <image wx:if="{{currentTab == 1}}" src="https://www.maywidehb.com/banner/coup_used_bg.png" class="coup_bg" mode="widthFix"></image>
+              <image wx:if="{{currentTab == 2}}" src="https://www.maywidehb.com/banner/coup_timeout_bg.png" class="coup_bg" mode="widthFix"></image>
             </view>
             <text class="text1">{{item.storeName}}</text>
             <view style="display:flex;flex-direction:row;justify-content:space-between;">
@@ -44,9 +44,9 @@
     <view class="redPackage" wx:for="{{products}}"  wx:for-index="idx" wx:key="unique">
         <navigator id="{{item.id}}" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" hover-stay-time="200">
           <view class="rePackage_wrap">
-          <image wx:if="{{currentTab == 0}}" src="../../img/red_back0.png" class="red_pack_background_img"></image>
-          <image wx:if="{{currentTab == 1}}" src="../../img/red_back1.png" class="red_pack_background_img"></image>
-          <image wx:if="{{currentTab == 2}}" src="../../img/red_back2.png" class="red_pack_background_img"></image>
+          <image wx:if="{{currentTab == 0}}" src="https://www.maywidehb.com/banner/red_back0.png" class="red_pack_background_img"></image>
+          <image wx:if="{{currentTab == 1}}" src="https://www.maywidehb.com/banner/red_back1.png" class="red_pack_background_img"></image>
+          <image wx:if="{{currentTab == 2}}" src="https://www.maywidehb.com/banner/red_back2.png" class="red_pack_background_img"></image>
 
           <view class="red_package_content_wrap">
             <text class="red_package_content">{{item.content}}</text>

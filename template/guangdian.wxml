@@ -1,6 +1,0 @@
-<template name="guangdian">
-<view class="warning_title">
-  <image src="../../../img/warnning.png" class="wanning"></image>
-  <text class="title_text">缴费单位：湖北广电网络收视费</text>
-</view>
-</template>
