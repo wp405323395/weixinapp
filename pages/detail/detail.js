@@ -409,17 +409,7 @@ Page({
   onShareAppMessage: function (res) {
     let that = this;
     if (res.from === 'button') {
-      new Promise((resolve,reject)=>{
-        new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId}, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
-          resolve(success);
-        }, (faild) => {
-          reject(faild);
-        });
-      }).then(value=>{
-        
-      }).catch(err=>{
-
-      })
+      
       // 来自页面内转发按钮
       // console.log(res.target);
       
@@ -429,6 +419,17 @@ Page({
           path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=" + that.data.product.id,
           imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
           success: function (res) {
+            new Promise((resolve, reject) => {
+              new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId }, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
+                resolve(success);
+              }, (faild) => {
+                reject(faild);
+              });
+            }).then(value => {
+
+            }).catch(err => {
+
+            })
             try {
               wx.setStorageSync('needRefreshData', true)
             } catch (e) {
