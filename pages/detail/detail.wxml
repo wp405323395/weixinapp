@@ -5,7 +5,7 @@
      
         <template is="detail" data="{{product}}" />
         <button class='introduce_item introduce_item2' hidden="{{'0' != product.relaReceiveFlag}}" open-type="share" >
-           <text>赠送优惠券</text>
+           <text>赠送给好友</text>
            <view class="go_in"></view>
         </button>
         

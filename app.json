@@ -27,10 +27,11 @@
     "pages/qrPage/storeOwnerAddPerson/addPersonScan"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#3385ff",
     "navigationBarTitleText": "优惠券",
-    "navigationBarBackgroundColor": "#ffffff",
-    "backgroundColor": "#ffffff"
+    "navigationBarTextStyle": "#ffffff",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#3385ff"
   },
   "tabBar": {
     "color": "#999999",

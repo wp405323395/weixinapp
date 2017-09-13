@@ -40,7 +40,7 @@ Page({
     let relaId_from_share = options.shareCoup_coupId
     this.relaId_from_share = relaId_from_share;
     if (util.textIsNotNull(relaId_from_share)) {
-      idMap = ['id', options.id];
+      idMap = ['relaId', relaId_from_share];
     } else {
       var scene = decodeURIComponent(options.q);
       if (util.textIsNull(scene)) {
