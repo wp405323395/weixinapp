@@ -189,22 +189,6 @@ Page({
   
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    return {
-      title: '自定义转发标题',
-      path: 'pages/me/me',
-      success: function (res) {
-        
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
-  },
   onTestClick:function(e){
     switch (e.currentTarget.dataset.id) {
       case '0':
