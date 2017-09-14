@@ -126,7 +126,7 @@ Page({
       })
       return;
     }
-    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind;
+    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + this.data.cardInfo.addr + "&custname=" + this.data.cardInfo.custname + "&mobile=" + this.data.cardInfo.mobile;
     wx.navigateTo({
       url: url
     })
