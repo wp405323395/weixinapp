@@ -19,14 +19,14 @@ class Header {
     if (!util.textIsNotNull(ua)) {
       wx.getSystemInfo({
         success: function (res) {
-          ua = {
+          ua = JSON.stringify({
             model: res.model,
             screenWidth: res.screenWidth,
             screenHeight: res.screenHeight,
             system: res.system,
             version: res.version,
             platform: 'MCWX'
-          }
+          });
           wx.setStorage({
             key: 'user-agent',
             data: ua,
