@@ -29,6 +29,7 @@ Page({
     console.log('上传二维码信息：：url:' + ur);
     wx.request({
       header: header,
+      method:'GET',
       url: ur
     })
   },
@@ -44,7 +45,7 @@ Page({
     } else {
       var scene = decodeURIComponent(options.q);
       if (util.textIsNull(scene)) {
-        var scene = decodeURIComponent(options.scene);
+        scene = decodeURIComponent(options.scene);
       } else {
         scene = scene.split("scene=")[1];
       }
