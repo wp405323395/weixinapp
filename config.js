@@ -16,7 +16,7 @@ var config = {
     isDebug,
     srcUrl: `${schema}://${host}/`,
     // 登录地址，用于建立会话
-    loginUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!login`,
+    loginUrl: `${schema}://${host}/wappweb/qrwx/wx-order!login`,
     discoverUrl: `${schema}://${host}/wappweb/mcwx/mc-wx!queryCouponList`,
     mycoup: `${schema}://${host}/wappweb/mcwx/mc-wx!queryWxCouponList`,
     loadProduct: `${schema}://${host}/wappweb/mcwx/mc-wx!queryCouponDetailById`,

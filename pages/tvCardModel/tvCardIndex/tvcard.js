@@ -66,7 +66,8 @@ Page({
       this.setData({
         hidd0: hidd0,
         hidd1: hidd1,
-        hidd2: hidd2
+        hidd2: hidd2,
+        custList: value.custInfolist
       });
     }).catch(err => { 
       this.setData({
