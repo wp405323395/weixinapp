@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/tvCardModel/tvCardIndex/tvcard",
-	"pages/tvCardModel/choosePackages/choosePackages",
-	"pages/tvCardModel/msgConfirm/confirm",
+	  "pages/tvCardModel/choosePackages/choosePackages",
+	  "pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
     "pages/tvCardModel/pay/success/paySuccess"
   ],

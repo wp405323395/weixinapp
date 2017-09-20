@@ -36,10 +36,6 @@ var config = {
     queMercSettled: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercSettled`,
     loadAllCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!queMercCoupListByStoreid`,
 
-    queryCustInfo: `${schema}://${host}/wappweb/mcwx/order!queryCustInfo`,
-    queryOrderKeyno: `${schema}://${host}/wappweb/mcwx/order!queryOrderKeyno`,
-    querySalesList: `${schema}://${host}/wappweb/mcwx/order!querySalesList`,
-    doOrder: `${schema}://${host}/wappweb/mcwx/order!doOrder`,
     uploadQrInfo: `${schema}://${host}/wappweb/mcwx/mc-wx!saveCardidOpenid?scene=`,
     useCouponByWxCode: `${schema}://${host}/wappweb/mcwx/mc-wx!useCouponByWxCode`,
     mercSureUseCoup: `${schema}://${host}/wappweb/mcwx/merc-wx!mercSureUseCoup`,
@@ -50,7 +46,13 @@ var config = {
     delAssistbyAssistid: `${schema}://${host}/wappweb/mcwx/merc-wx!delAssistbyAssistid`,
     giveAwayCoupon: `${schema}://${host}/wappweb/mcwx/mc-wx!giveAwayCoupon`,
     gainGiveAwayCoupon: `${schema}://${host}/wappweb/mcwx/mc-wx!gainGiveAwayCoupon`,
-    queCustInfoByOpenid: `${schema}://${host}/wappweb/mcwx/order!queCustInfoByOpenid`,
+
+
+    querySalesList: `${schema}://${host}/wappweb/qrwx/wx-order!querySalesList`,
+    queryCustInfo: `${schema}://${host}/wappweb/qrwx/wx-order!queryCustInfo`,
+    doOrder: `${schema}://${host}/wappweb/qrwx/wx-order!doOrder`,
+    queryOrderKeyno: `${schema}://${host}/wappweb/qrwx/wx-order!queryOrderKeyno`,
+    queCustInfoByOpenid: `${schema}://${host}/wappweb/qrwx/wx-order!queCustInfoByOpenid`,
 };
 
 
