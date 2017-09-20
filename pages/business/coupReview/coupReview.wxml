@@ -1,3 +1,0 @@
-<!--coupReview.wxml-->
-<import src="../../../template/detail.wxml" />
-<template is="detail" data="{{product}}" />

@@ -1,34 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/detail/detail",
     "pages/tvCardModel/tvCardIndex/tvcard",
+	"pages/tvCardModel/choosePackages/choosePackages",
+	"pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
-    "pages/tvCardModel/pay/success/paySuccess",
-    "pages/redPackage/red",
-    "pages/mycoup/mycoup",
-    "pages/me/me",
-    "pages/myRedPackage/myRedPackage",
-    "pages/myOrder/myOrder",
-    "pages/business/businessAuthor/business",
-    "pages/tvCardModel/choosePackages/choosePackages",
-    "pages/business/postCoup/postCoup",
-    "pages/business/index/index",
-    "pages/detail/storeDetail/storeDetail",
-    "pages/business/totalCoup/coups",
-    "pages/business/businessChecking/businessChecking",
-    "pages/business/notice/notice",
-    "pages/business/coupReview/coupReview",
-    "pages/business/businessCheckReject/reject",
-    "pages/tvCardModel/msgConfirm/confirm",
-    "pages/qrPage/payCoupon/scanPayer",
-    "pages/business/personManager/persons",
-    "pages/qrPage/storeOwnerAddPerson/addPersonScan"
+    "pages/tvCardModel/pay/success/paySuccess"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "优惠券",
+    "navigationBarTitleText": "扫码续费",
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#ffffff"
   },
