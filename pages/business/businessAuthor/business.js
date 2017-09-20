@@ -177,12 +177,12 @@ Page({
       return true;
     }
   },
-  checkTel:function(tel){    
-    if(!/^(\d3, 4 |\d{3,4}-|\s) ?\d{7, 14 } $ /.test(tel)){
+  checkTel: function (tel) {
+    if (!/^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/.test(tel)) {
       return false;
     }
     return true;
-  },  
+  },   
     
   submit: function (e) {
     if (!subObj.storeImgs || subObj.storeImgs.length != 3) {
