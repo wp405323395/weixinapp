@@ -36,7 +36,7 @@ Page({
   onSelected: function (e) {
     let item = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname+"&mobile="+item.mobile
+      url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile + "&city=" + item.city
     })
   },
   serchUser: function (inputValue) {

@@ -25,7 +25,7 @@ class RequestStatusInterceptor extends Interceptor{
   }
   onFaildResponse(url, header, data) {
     util.showToast({
-      title: data.retMsg,
+      title: data.retMsg == null ? '服务器未返回错误原因' : data.retMsg,
       icon: "loading" ,
       duration:10000
     });

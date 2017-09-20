@@ -54,6 +54,7 @@ Page({
     this.addr = options.addr;
     this.custname = options.custname;
     this.mobile = options.mobile;
+    this.city = options.city;
     //--------------------
     this.setData({
       scanCardInfo: {
@@ -158,6 +159,13 @@ Page({
     } else if (!util.textIsNotNull(that.custid)) {
 
       return;
+    } else if (!that.data.selectPackage) {
+      wx.showModal({
+        title: "请您先选择套餐",
+        showCancel: false,
+        confirmText: "确定"
+      })
+      return;
     } else if (!util.textIsNotNull(that.data.selectPackage.salescode)){
       wx.showModal({
         title: "请您先选择套餐",
@@ -172,10 +180,6 @@ Page({
   pay: function () {
     let that = this;
     new Promise((resolve, reject) => {
-      
-      if(!that.data.selectPackage) {
-        return ;
-      }
       let param = {
         custid: that.custid,
         tvCardNumber: that.tvCardNum,
@@ -185,7 +189,8 @@ Page({
         unit: that.data.selectPackage.unit,//订购单位 0：天；1：月；2：年
         addr : this.addr,
         custname : this.custname,
-        mobile : this.mobile
+        mobile : this.mobile,
+        city:this.city
       };
       new RequestEngine().request(config.doOrder, param, { callBy: that, method: that.pay, params: [] }, (success) => {
         resolve(success);
