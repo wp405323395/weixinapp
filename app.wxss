@@ -264,6 +264,7 @@ display:flex;
   width:44rpx;
   height:44rpx;
   margin-top: 5rpx;
+  flex-shrink:0;
 }
 .cu_value{
   margin-left: 20rpx;
