@@ -16,3 +16,7 @@
   height: 90px;
   margin-bottom: 20px;
 }
+.note_text{
+  width: 70%;
+  text-align: center;
+}

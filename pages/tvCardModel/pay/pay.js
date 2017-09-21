@@ -203,7 +203,7 @@ Page({
       })
     }).catch(err=>{
       wx.showModal({
-        title: "支付失败",
+        title: "支付失败,如有疑问请拨打客服电话96516",
         showCancel: false,
         confirmText: "取消"
       })
