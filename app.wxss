@@ -282,3 +282,7 @@ display:flex;
   color: #999999;
   font-size: 0.8rem;
 }
+.logo_style{
+  width: 405rpx;
+  height: 75rpx;
+}

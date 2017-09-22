@@ -179,6 +179,7 @@ Page({
   },
   pay: function () {
     let that = this;
+    let reqUrl = this.data.isWeiXin?config.wxPay:config.doOrder;
     new Promise((resolve, reject) => {
       let param = {
         custid: that.custid,
@@ -192,15 +193,35 @@ Page({
         mobile : this.mobile,
         city:this.city
       };
-      new RequestEngine().request(config.doOrder, param, { callBy: that, method: that.pay, params: [] }, (success) => {
+      new RequestEngine().request(reqUrl, param, { callBy: that, method: that.pay, params: [] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
       });
     }).then(value=>{
-      wx.navigateTo({
-        url: 'success/paySuccess',
-      })
+      if (this.data.isWeiXin) {
+        wx.requestPayment({
+          'timeStamp': value.timeStamp,
+          'nonceStr': value.nonceStr,
+          'package': value.package,
+          'signType': value.signType,
+          'paySign': value.paySign,
+          'success': function (res) {
+            console.log('支付结果',res);
+            wx.navigateTo({
+              url: 'success/paySuccess',
+            })
+          },
+          'fail': function (res) {
+            console.log('支付失败', res);
+          }
+        })
+      } else {
+        wx.navigateTo({
+          url: 'success/paySuccess',
+        })
+      }
+      
     }).catch(err=>{
       wx.showModal({
         title: "支付失败,如有疑问请拨打客服电话96516",

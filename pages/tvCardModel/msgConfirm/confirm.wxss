@@ -86,11 +86,7 @@ content:"\2715";
   flex-direction: row;
   color: #e82f2f;
 }
-.logo_style{
-  width: 303rpx;
-  height: 75rpx;
 
-}
 .bottom_logo{
   width: 100%;
   position: fixed;

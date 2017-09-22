@@ -68,11 +68,7 @@ margin-top:5rpx;
 text-decoration:line-through;
 
 }
-.logo_style{
-  width: 303rpx;
-  height: 75rpx;
 
-}
 .bottom_logo{
   width: 100%;
   position: fixed;

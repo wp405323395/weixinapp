@@ -62,11 +62,7 @@ text{
 color: #3fa5ed;
 text-decoration:underline;
 }
-.logo_style{
-  width: 303rpx;
-  height: 75rpx;
 
-}
 .bottom_logo{
   width: 100%;
   position: fixed;

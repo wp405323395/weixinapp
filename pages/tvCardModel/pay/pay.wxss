@@ -132,8 +132,7 @@ text,.cell1{
   width: 100%;
 }
 .logo_style{
-  width: 303rpx;
-  height: 75rpx;
+
   z-index: -1;
 }
 .go_in{
