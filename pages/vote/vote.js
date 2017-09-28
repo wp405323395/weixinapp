@@ -5,64 +5,68 @@ Page({
    * 页面的初始数据
    */
   data: {
+    submitEnable:false,
+    inputTxt:'',
     clearChecked:false,
     animationData: {},
     focusIndex:0,
     persons: [{id:'bb',url:'https://www.maywidehb.com/banner/reject.png'},
-      { id: 'ccc', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '123qw33', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12er333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '1233r3', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '123t33', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12t333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
       { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
       { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' }],
     questionList: [
-      {questionId: '1', question: '表现如何', answers: [{ id: 'A', answer_text: '优秀' }, { id: 'B', answer_text: '优秀' }, { id: 'C', answer_text: '优秀' }, { id: 'D',answer_text: '优秀' }]},
-      { questionId: '2', question: '表现如何', answers: [{ id: 'A', answer_text: '优秀' }, { id: 'B', answer_text: '优秀' }, { id: 'C', answer_text: '优秀' }, { id: 'D', answer_text: '优秀' }] },
-      { questionId: '3', question: '表现如何', answers: [{ id: 'A', answer_text: '优秀' }, { id: 'B', answer_text: '优秀' }, { id: 'C', answer_text: '优秀' }, { id: 'D', answer_text: '优秀' }] },
-      { questionId: '4', question: '表现如何', answers: [{ id: 'A', answer_text: '优秀' }, { id: 'B', answer_text: '优秀' }, { id: 'C', answer_text: '优秀' }, { id: 'D', answer_text: '优秀' }] },
-      { questionId: '5', question: '表现如何', answers: [{ id: 'A', answer_text: '优秀' }, { id: 'B', answer_text: '优秀' }, { id: 'C', answer_text: '优秀' }, { id: 'D', answer_text: '优秀' }] },
+      { questionId: '1', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D',answer_text: '优秀' }]},
     ]
   },
   onNextClick:function(){
-    this.setData({
-      clearChecked: false
-    });
-    console.log(this.answers);
-    if (this.answers == undefined || this.answers.size == 0) {
+    if (this.answers == undefined || this.answers.size != this.data.questionList.length) {
       wx.showModal({
-        title: "请答完题",
+        title: "有未完成的选题",
         showCancel: false,
         confirmText: "确定"
       });
       return ;
     }
+
     let personId = this.data.persons[this.data.focusIndex].id;
-    let submitObj = { personId: personId , answers: [...this.answers] };
-    console.log(submitObj);
-    if (this.answers != undefined) {
-      this.answers.clear()
+    let answerArray = [...this.answers];
+    let answersObj = new Array();
+    for (let answer of answerArray) {
+      answersObj.push({ questionId: answer[0], answerId: answer[1]});
     }
+    let submitObj = { personId: personId, answers: answersObj, comment: this.commons};
+    console.log(submitObj);
+    
 
     //------------------------
     //发起网络请求,暂时还没写。假数据在日志中可以看见，就是 submitObj
     //------------------------
-
-    this.data.focusIndex++;
-    if (this.data.persons.length-1 < this.data.focusIndex) {
-      return ;
+    if (this.data.focusIndex+1 ==  this.data.persons.length) {
+      //答题结束
+      wx.showModal({
+        title: "投票结束",
+        showCancel: false,
+        confirmText: "确定",
+        success: function(){
+          wx.navigateBack({
+          })
+        }
+      });
+      this.setData({
+        submitEnable: true
+      });
+      return;
     }
+    if (this.answers != undefined) {
+      this.answers.clear()
+    }
+    this.commons = undefined;
+    this.animation.translate(-50 * (this.data.focusIndex+1), 0).step();
     this.setData({
-      focusIndex: this.data.focusIndex
-    });
-    this.animation.translate(-55 * this.data.focusIndex, 0).step();
-    this.setData({
+      focusIndex: this.data.focusIndex + 1,
+      clearChecked: false,
+      inputTxt: '',
       animationData: this.animation.export()
-    })
-   
-
+    });
   },
   radioChange: function(e) {
     let checked = e.detail.value;
@@ -80,7 +84,7 @@ Page({
   
   },
   commonInput:function(e) {
-    console.log(e.detail.value);
+    this.commons = e.detail.value;
   },
 
   /**

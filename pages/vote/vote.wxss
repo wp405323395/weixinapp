@@ -10,9 +10,9 @@
   display: block;
 }
 .person_icon{
-  width: 100rpx;
-  height: 100rpx;
-  margin: 15rpx;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
   margin-bottom: 0rpx;
 }
 .focus{

@@ -17,13 +17,13 @@
         <text>{{questionItem.question}}</text>
      </view>
        <radio-group class='answer' bindchange="radioChange">
-          <radio checked='{{clearChecked}}' class='checkbox_style' value="{{questionItem.questionId+'-'+item.id}}" wx:key="unique" wx:for="{{questionItem.answers}}">{{item.answer_text}}</radio>
+          <radio checked='{{clearChecked}}' class='checkbox_style' value="{{questionItem.questionId+'-'+item.answerId}}" wx:key="unique" wx:for="{{questionItem.answers}}">{{item.answer_text}}</radio>
       </radio-group>
     </view>
     <view class='commons'>
-      <input type='text' bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
+      <input type='text' value="{{inputTxt}}" bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
     </view>
-      <button bindtap='onNextClick' class='next_person'> 下一位</button>
+      <button bindtap='onNextClick' disabled='{{submitEnable}}' class='next_person'> 下一位</button>
   </view>
 
 </view>
