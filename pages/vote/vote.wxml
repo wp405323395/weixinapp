@@ -1,2 +1,29 @@
 <!--pages/vote/vote.wxml-->
-<text>pages/vote/vote.wxml</text>
+<view class="container">
+   <view class='person_header'>
+    <text class='lable_person'>被考核人:</text>
+    <view class='imgs' >
+      <image animation="{{animationData}}" class='{{index==focusIndex?"focus":"person_icon"}}' wx:for="{{persons}}" src='{{item.url}}' wx:key="unique"></image>
+    </view>
+    
+  </view> 
+  <view class='img_page'></view>
+  <view class='background_page'>
+    <view class='vote_title_background'>
+      <text class='vote_title'>考核标题</text>
+    </view>
+     <view class='question_list' wx:key="{{questionItem.question}}" wx:for-item="questionItem" wx:for="{{questionList}}">
+     <view class='question'>
+        <text>{{questionItem.question}}</text>
+     </view>
+       <radio-group class='answer' bindchange="radioChange">
+          <radio class='checkbox_style' value="{{questionItem.questionId+'-'+item.id}}" wx:key="unique" wx:for="{{questionItem.answers}}">{{item.answer_text}}</radio>
+      </radio-group>
+    </view>
+    <view class='commons'>
+      <input type='text' bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
+    </view>
+      <button bindtap='onNextClick' class='next_person'> 下一位</button>
+  </view>
+
+</view>
