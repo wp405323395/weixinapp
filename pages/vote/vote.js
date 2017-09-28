@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    clearChecked:false,
     animationData: {},
     focusIndex:0,
     persons: [{id:'bb',url:'https://www.maywidehb.com/banner/reject.png'},
@@ -26,6 +27,9 @@ Page({
     ]
   },
   onNextClick:function(){
+    this.setData({
+      clearChecked: false
+    });
     console.log(this.answers);
     if (this.answers == undefined || this.answers.size == 0) {
       wx.showModal({
@@ -41,6 +45,7 @@ Page({
     if (this.answers != undefined) {
       this.answers.clear()
     }
+
     //------------------------
     //发起网络请求
     //------------------------
