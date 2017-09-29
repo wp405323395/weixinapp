@@ -98,7 +98,6 @@
 .answer{
   display: flex;
   flex-direction: column;
-  background-color: yellow;
 }
 .checkbox_style{
   display: inline-block;
@@ -113,7 +112,6 @@
 .question{
   padding: 20rpx;
   padding-left: 0;
-  background-color: greenyellow;
 }
 .commons{
   margin: 40rpx;
