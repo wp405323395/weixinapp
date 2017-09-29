@@ -46,6 +46,9 @@
   position: fixed;
   z-index: 1000; 
   width: 100%;
+  background-image: url('https://www.maywidehb.com/banner/vote_content_background.png');
+  background-repeat: no-repeat;
+  background-size:  100%;
 }
 .imgs{
   position: fixed;
