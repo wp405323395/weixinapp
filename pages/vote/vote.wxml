@@ -23,7 +23,7 @@
     <view class='commons'>
       <input type='text' value="{{inputTxt}}" bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
     </view>
-      <button bindtap='onNextClick' disabled='{{submitEnable}}' class='next_person'> 下一位</button>
+      <button bindtap='onNextClick' disabled='{{submitEnable}}' class='next_person'>下一位</button>
   </view>
 
 </view>

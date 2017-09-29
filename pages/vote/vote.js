@@ -12,9 +12,18 @@ Page({
     focusIndex:0,
     persons: [{id:'bb',url:'https://www.maywidehb.com/banner/reject.png'},
       { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
+      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
+      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
+      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
+      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
+      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
       { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' }],
     questionList: [
       { questionId: '1', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D',answer_text: '优秀' }]},
+
+      { questionId: '2', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D', answer_text: '优秀' }] },
+
+      { questionId: '3', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D', answer_text: '优秀' }] },
     ]
   },
   onNextClick:function(){
@@ -77,44 +86,29 @@ Page({
     }
     this.answers.set(detail[0],detail[1]);
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-  
+
   },
   commonInput:function(e) {
     this.commons = e.detail.value;
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
   
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-    var animation = wx.createAnimation({
+    this.animation = wx.createAnimation({
       duration: 1000,
       timingFunction: 'ease',
     })
-
-    this.animation = animation;
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+
   onPullDownRefresh: function () {
   
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
     wx.showShareMenu({
       withShareTicket: true
