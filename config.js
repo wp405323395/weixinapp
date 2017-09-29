@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "192.168.1.161:8080"
+var host = "192.168.1.118:8080"
 //var host = 'www.maywidehb.com';
 var isHttps = false;
 var isDebug = true;
@@ -54,6 +54,10 @@ var config = {
     wxPay: `${schema}://${host}/wappweb/qrwx/wx-order!wxPay`,
     queryOrderKeyno: `${schema}://${host}/wappweb/qrwx/wx-order!queryOrderKeyno`,
     queCustInfoByOpenid: `${schema}://${host}/wappweb/qrwx/wx-order!queCustInfoByOpenid`,
+    
+    listCandidate: `${schema}://${host}/wappweb/vot/vot-wx!listCandidate`,
+    listWxQuestion: `${schema}://${host}/wappweb/vot/vot-wx!listWxQuestion`,
+    doVot: `${schema}://${host}/wappweb/vot/vot-wx!doVot`,
 };
 
 

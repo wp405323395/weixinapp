@@ -14,14 +14,30 @@
   height: 40px;
   margin: 5px;
   margin-bottom: 0rpx;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 40rpx;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-shrink:0;
+}
+.personName{
+  display: inline-block;
+  color: #7052df;
 }
 .focus{
+  flex-shrink:0;
   width: 110rpx;
   height: 110rpx;
   margin: 15rpx;
   margin-bottom: 0rpx;
   border: 1px black solid;
   border-radius: 55rpx;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 .person_header{
   height: 200rpx;
@@ -35,7 +51,8 @@
   width: 100%;
   overflow-x: scroll;
   white-space: nowrap;
-
+  display: flex;
+  align-items: flex-end;
 }
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
  ::-webkit-scrollbar  

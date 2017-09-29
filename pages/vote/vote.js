@@ -1,3 +1,7 @@
+import RequestEngine from '../../netApi/requestEngine.js';
+var Promise = require('../../libs/es6-promise.js').Promise;
+var config = require('../../config.js');
+var util = require('../../utils/util.js');
 // pages/vote/vote.js
 Page({
 
@@ -10,24 +14,92 @@ Page({
     clearChecked:false,
     animationData: {},
     focusIndex:0,
-    persons: [{id:'bb',url:'https://www.maywidehb.com/banner/reject.png'},
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' },
-      { id: '12333', url: 'https://www.maywidehb.com/banner/reject.png' }],
-    questionList: [
-      { questionId: '1', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D',answer_text: '优秀' }]},
+    persons: []
+  },
+  onLoad: function (options) {
+    this.ablevote =  options.ablevote;
+    if (!util.textIsNull(this.ablevote)) {
+      if (this.ablevote == 1) {
+        this.projectedId = options.projectedId;
+      } else if (this.ablevote == 0) {
+        wx.showModal({
+            title: "此群组不可投票",
+            showCancel: false,
+            confirmText: "确定"
+          });
+      return ;
+      }
+    } else {
+      this.scene = decodeURIComponent(options.q);
+      if (util.textIsNull(this.scene)) {
+        this.scene = decodeURIComponent(options.scene);
+      } else {
+        this.scene = this.scene.split("scene=")[1];
+      }
+      this.scene = '60~projectedId'
+      this.sceneArr = this.scene.split('~');
+      if (this.sceneArr.length == 2) {
+        this.projectedId = this.sceneArr[1];
+        this.qrcode = this.sceneArr[0];
+      }
+    }
+    
+    this.loadPerson(this.projectedId);
+    this.loadQuestions(this.projectedId);
+  },
+  doVote: function (submitObj) {
+    new RequestEngine().request(config.doVot, {doVotInfo: submitObj}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
+      if (this.data.focusIndex + 1 == this.data.persons.length) {
+        //答题结束
+        wx.showModal({
+          title: "投票结束",
+          showCancel: false,
+          confirmText: "确定",
+          success: function () {
+            wx.navigateBack({
+            })
+          }
+        });
+        this.setData({
+          submitEnable: true
+        });
+        return;
+      }
+      if (this.answers != undefined) {
+        this.answers.clear()
+      }
+      this.commons = undefined;
+      this.animation.translate(-50 * (this.data.focusIndex + 1), 0).step();
+      this.setData({
+        focusIndex: this.data.focusIndex + 1,
+        clearChecked: false,
+        inputTxt: '',
+        animationData: this.animation.export()
+      });
+    }, (faild) => {
 
-      { questionId: '2', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D', answer_text: '优秀' }] },
+    });
+  },
+  loadQuestions: function (projectedId) {
+    new RequestEngine().request(config.listWxQuestion, { id: '20' }, { callBy: this, method: this.loadQuestions, params: [projectedId] }, (success) => {
+      this.setData({
+        questionList: success
+      });
+    }, (faild) => {
 
-      { questionId: '3', question: '表现如何', answers: [{ answerId: 'A', answer_text: '优秀' }, { answerId: 'B', answer_text: '优秀' }, { answerId: 'C', answer_text: '优秀' }, { answerId: 'D', answer_text: '优秀' }] },
-    ]
+    });
   },
   onNextClick:function(){
-    if (this.answers == undefined || this.answers.size != this.data.questionList.length) {
+    if (this.ablevote == 0) {
+      wx.showModal({
+        title: "此群组不可投票",
+        showCancel: false,
+        confirmText: "确定"
+      });
+      return;
+    }
+    
+    if (this.answers == undefined || this.data.questionList == undefined || this.answers.size != this.data.questionList.questionList.length) {
       wx.showModal({
         title: "有未完成的选题",
         showCancel: false,
@@ -36,46 +108,21 @@ Page({
       return ;
     }
 
+    //candidateId:给谁发起投票的personId
     let personId = this.data.persons[this.data.focusIndex].id;
     let answerArray = [...this.answers];
     let answersObj = new Array();
     for (let answer of answerArray) {
-      answersObj.push({ questionId: answer[0], answerId: answer[1]});
+      answersObj.push({ topicId: answer[0], optionId: answer[1]});
     }
-    let submitObj = { personId: personId, answers: answersObj, comment: this.commons};
+    let submitObj = {candidateId: personId, doVotTopicList: answersObj, commentText: this.commons, projectedId: '20'};
     console.log(submitObj);
-    
 
     //------------------------
     //发起网络请求,暂时还没写。假数据在日志中可以看见，就是 submitObj
+    this.doVote(submitObj);
     //------------------------
-    if (this.data.focusIndex+1 ==  this.data.persons.length) {
-      //答题结束
-      wx.showModal({
-        title: "投票结束",
-        showCancel: false,
-        confirmText: "确定",
-        success: function(){
-          wx.navigateBack({
-          })
-        }
-      });
-      this.setData({
-        submitEnable: true
-      });
-      return;
-    }
-    if (this.answers != undefined) {
-      this.answers.clear()
-    }
-    this.commons = undefined;
-    this.animation.translate(-50 * (this.data.focusIndex+1), 0).step();
-    this.setData({
-      focusIndex: this.data.focusIndex + 1,
-      clearChecked: false,
-      inputTxt: '',
-      animationData: this.animation.export()
-    });
+    
   },
   radioChange: function(e) {
     let checked = e.detail.value;
@@ -86,9 +133,14 @@ Page({
     }
     this.answers.set(detail[0],detail[1]);
   },
-
-  onLoad: function (options) {
-
+  loadPerson: function (projectedId){
+    new RequestEngine().request(config.listCandidate, { id: '20' }, { callBy: this, method: this.loadPerson, params: [projectedId] }, (success) => {
+      this.setData({
+        persons: success.votEmployees
+      });
+    }, (faild) => {
+      
+    });
   },
   commonInput:function(e) {
     this.commons = e.detail.value;
@@ -113,9 +165,13 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+    let ablevote = 1;
+    if (util.textIsNull(this.qrcode)) {
+      ablevote = 0;
+    }
     return {
       title: '自定义转发标题',
-      path: '/pages/vote/vote',
+      path: '/pages/vote/vote?ablevote=' + ablevote + '&projectedId=' + this.projectedId,
       success: function (res) {
         // 转发成功
       },
