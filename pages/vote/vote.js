@@ -70,7 +70,7 @@ Page({
     });
   },
   doVote: function (submitObj) {
-    new RequestEngine().request(config.doVot, {doVotInfo: submitObj}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
+    new RequestEngine().request(config.doVot, { doVotInfo: submitObj, userInfo: this.userInfo}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
       if (this.data.focusIndex + 1 == this.data.persons.length) {
         //答题结束
         wx.showModal({
@@ -142,7 +142,41 @@ Page({
 
     //------------------------
     //发起网络请求,暂时还没写。假数据在日志中可以看见，就是 submitObj
-    this.doVote(submitObj);
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+            },
+            fail() {
+              wx.openSetting({
+                success: (res) => {
+                  res.authSetting = {
+                    "scope.userInfo": true
+                  }
+                }
+              })
+            }
+          })
+        } else {
+          wx.getUserInfo({
+            success: function (res) {
+              var userInfo = res.userInfo
+              var nickName = userInfo.nickName
+              var avatarUrl = userInfo.avatarUrl
+              var gender = userInfo.gender //性别 0：未知、1：男、2：女
+              that.userInfo = userInfo;
+              that.doVote(submitObj);
+            }
+          })
+          
+        }
+      }
+    })
+    
     //------------------------
     
   },
