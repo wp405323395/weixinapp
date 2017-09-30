@@ -118,7 +118,7 @@
 }
 .commons{
   margin: 40rpx;
-  border: 1px black solid;
+  border: 1px #7052df solid;
   padding: 20rpx;
   overflow: hidden;
 }

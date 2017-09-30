@@ -18,14 +18,14 @@ Page({
   },
   onLoad: function (options) {
     this.ablevote =  options.ablevote;
-    if (!util.textIsNull(this.ablevote)) {
+    if (typeof this.ablevote === 'number') {
       if (this.ablevote == 1) {
         this.projectedId = options.projectedId;
       } else if (this.ablevote == 0) {
         wx.showModal({
             title: "此群组不可投票",
             showCancel: false,
-            confirmText: "确定"
+            confirmText: "确定",
           });
       return ;
       }
@@ -36,16 +36,38 @@ Page({
       } else {
         this.scene = this.scene.split("scene=")[1];
       }
-      this.scene = '60~projectedId'
+      this.scene = '60~20'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];
         this.qrcode = this.sceneArr[0];
       }
     }
+    this.loadData();
     
-    this.loadPerson(this.projectedId);
-    this.loadQuestions(this.projectedId);
+  },
+  loadData:function(){
+    new Promise((resolve,reject)=>{
+      new RequestEngine().request(config.isHadVot, { id: this.projectedId }, { callBy: this, method: this.loadData, params: [this.projectedId] }, (success) => {
+        if (success == '0') {
+          resolve(success);
+        } else if (success == '1'){
+          //已经评论了
+          reject('您已经投过票了');
+        }
+      }, (faild) => {
+        reject(faild);
+      });
+    }).then(value=>{
+      this.loadPerson(this.projectedId);
+      this.loadQuestions(this.projectedId);
+    }).catch(err=>{
+      wx.showModal({
+        title: err,
+        showCancel: false,
+        confirmText: "确定",
+      });
+    });
   },
   doVote: function (submitObj) {
     new RequestEngine().request(config.doVot, {doVotInfo: submitObj}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
@@ -81,7 +103,7 @@ Page({
     });
   },
   loadQuestions: function (projectedId) {
-    new RequestEngine().request(config.listWxQuestion, { id: '20' }, { callBy: this, method: this.loadQuestions, params: [projectedId] }, (success) => {
+    new RequestEngine().request(config.listWxQuestion, { id: projectedId }, { callBy: this, method: this.loadQuestions, params: [projectedId] }, (success) => {
       this.setData({
         questionList: success
       });
@@ -115,7 +137,7 @@ Page({
     for (let answer of answerArray) {
       answersObj.push({ topicId: answer[0], optionId: answer[1]});
     }
-    let submitObj = {candidateId: personId, doVotTopicList: answersObj, commentText: this.commons, projectedId: '20'};
+    let submitObj = { candidateId: personId, doVotTopicList: answersObj, commentText: this.commons, projectedId: this.projectedId};
     console.log(submitObj);
 
     //------------------------
@@ -134,7 +156,7 @@ Page({
     this.answers.set(detail[0],detail[1]);
   },
   loadPerson: function (projectedId){
-    new RequestEngine().request(config.listCandidate, { id: '20' }, { callBy: this, method: this.loadPerson, params: [projectedId] }, (success) => {
+    new RequestEngine().request(config.listCandidate, { id: projectedId }, { callBy: this, method: this.loadPerson, params: [projectedId] }, (success) => {
       this.setData({
         persons: success.votEmployees
       });

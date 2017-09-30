@@ -5,10 +5,10 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "192.168.1.118:8080"
-//var host = 'www.maywidehb.com';
-var isHttps = false;
-var isDebug = true;
+//var host = "192.168.43.136:8080"
+var host = 'www.htrnpay.cn';
+var isHttps = true;
+var isDebug = false;
 var schema = isHttps ? 'https':'http';
 var config = {
     // 下面的地址配合云端 Server 工作
@@ -58,6 +58,7 @@ var config = {
     listCandidate: `${schema}://${host}/wappweb/vot/vot-wx!listCandidate`,
     listWxQuestion: `${schema}://${host}/wappweb/vot/vot-wx!listWxQuestion`,
     doVot: `${schema}://${host}/wappweb/vot/vot-wx!doVot`,
+    isHadVot: `${schema}://${host}/wappweb/vot/vot-wx!isHadVot`,
 };
 
 

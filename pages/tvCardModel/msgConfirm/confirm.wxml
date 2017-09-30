@@ -4,7 +4,7 @@
     <image bindtap="onScanClick" class="scan" src="../../../img/scan.png"></image>
     <view class="input_wrap">
       <view class="search"></view>
-      <input type="text" class="input" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
+      <input type="text" class="input" value="{{inputValue}}" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
       <view bindtap="onCancleClick" class="cancle"></view>
     </view>
     
