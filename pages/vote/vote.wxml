@@ -19,7 +19,7 @@
         <text>{{questionItem.question}}</text>
      </view>
        <radio-group class='answer' bindchange="radioChange">
-          <radio checked='{{clearChecked}}' class='checkbox_style' value="{{questionItem.questionId+'-'+item.answerId}}" wx:key="unique" wx:for="{{questionItem.answers}}">{{item.answertext}}</radio>
+          <radio checked='{{clearChecked}}' class='checkbox_style' value="{{questionItem.questionId+'-'+item.answerId}}" wx:key="unique" wx:for="{{questionItem.answers}}"><text class="option_text">{{item.answertext}}</text></radio>
       </radio-group>
     </view>
     <view class='commons'>

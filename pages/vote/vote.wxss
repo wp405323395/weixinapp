@@ -12,34 +12,35 @@
   display: block;
 }
 .person_icon{
-  width: 40px;
-  height: 40px;
+  opacity: 0.6;
+  flex-shrink:0;
+  width: 90rpx;
+  height: 90rpx;
   margin: 5px;
   margin-bottom: 0rpx;
-  background-color: white;
-  border: 1px black solid;
-  border-radius: 40rpx;
+  border-radius: 45rpx;
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-shrink:0;
+  background-color: black;
+  color: #999999;
 }
 .personName{
   display: inline-block;
-  color: #7052df;
 }
 .focus{
   flex-shrink:0;
-  width: 110rpx;
-  height: 110rpx;
+  width: 90rpx;
+  height: 90rpx;
   margin: 15rpx;
   margin-bottom: 0rpx;
-  border: 1px black solid;
-  border-radius: 55rpx;
+  opacity: 0.9;
+  border-radius: 45rpx;
   background-color: white;
   align-items: center;
   justify-content: center;
   display: flex;
+  color: #7052df;
 }
 .person_header{
   height: 200rpx;
@@ -92,7 +93,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 50rpx auto;
+  margin: 30rpx auto;
+  margin-bottom: 15rpx;
 }
 .vote_title{
 
@@ -105,12 +107,15 @@
 .checkbox_style{
   display: inline-block;
   margin-bottom: 30rpx;
-  text-indent:20rpx;
 }
+
+.option_text{
+  margin-left: 10rpx;
+} 
 .question_list{
   margin-left: 30rpx;
   margin-right: 30rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
 }
 .question{
   padding: 20rpx;
@@ -118,7 +123,8 @@
 }
 .commons{
   margin: 40rpx;
-  border: 1px #7052df solid;
+  margin-top: 20rpx;
+  border: 1px #999999 solid;
   padding: 20rpx;
   overflow: hidden;
 }
