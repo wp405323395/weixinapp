@@ -10,9 +10,10 @@
   margin-top: 20rpx;
   color: white;
   display: block;
+  font-size: 0.7rem;
 }
 .person_icon{
-  opacity: 0.6;
+  opacity: 0.3;
   flex-shrink:0;
   width: 90rpx;
   height: 90rpx;
@@ -23,24 +24,27 @@
   justify-content: center;
   display: flex;
   background-color: black;
-  color: #999999;
+  color: white;
+  font-size: 0.7rem;
 }
 .personName{
   display: inline-block;
 }
 .focus{
+  font-weight: 600;
   flex-shrink:0;
-  width: 90rpx;
-  height: 90rpx;
+  width: 110rpx;
+  height: 110rpx;
   margin: 15rpx;
   margin-bottom: 0rpx;
   opacity: 0.9;
-  border-radius: 45rpx;
+  border-radius: 55rpx;
   background-color: white;
   align-items: center;
   justify-content: center;
   display: flex;
   color: #7052df;
+  font-size: 0.7rem;
 }
 .person_header{
   height: 200rpx;
@@ -137,4 +141,12 @@
   margin-left: 30rpx;
   margin-right: 30rpx;
   color: white;
+}
+.logo_section{
+  display: flex;
+}
+.logo_img{
+  width: 369rpx;
+  height: 35rpx;
+  margin: 30rpx auto;
 }
