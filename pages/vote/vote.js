@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nexBtnText: '下一位',
     submitEnable:false,
     inputTxt:'',
     clearChecked:false,
@@ -17,8 +18,9 @@ Page({
     persons: []
   },
   onLoad: function (options) {
+    this.votting = false;
     this.ablevote =  options.ablevote;
-    if (typeof this.ablevote === 'number') {
+    if (!isNaN(this.ablevote)) {
       if (this.ablevote == 1) {
         this.projectedId = options.projectedId;
       } else if (this.ablevote == 0) {
@@ -36,7 +38,7 @@ Page({
       } else {
         this.scene = this.scene.split("scene=")[1];
       }
-      this.scene = '60~20'
+       this.scene = '60~15'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];
@@ -70,6 +72,7 @@ Page({
     });
   },
   doVote: function (submitObj) {
+    this.votting = true;
     new RequestEngine().request(config.doVot, { doVotInfo: submitObj, userInfo: this.userInfo}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
       if (this.data.focusIndex + 1 == this.data.persons.length) {
         //答题结束
@@ -98,8 +101,9 @@ Page({
         inputTxt: '',
         animationData: this.animation.export()
       });
+      this.votting = false;
     }, (faild) => {
-
+      this.votting = false;
     });
   },
   loadQuestions: function (projectedId) {
@@ -128,6 +132,14 @@ Page({
         confirmText: "确定"
       });
       return ;
+    }
+    if(this.votting) {
+      return ;
+    }
+    if (this.data.questionList.questionList.length - this.answers.size == 1) {
+      this.setData({
+        nexBtnText: '提交'
+      });
     }
 
     //candidateId:给谁发起投票的personId
@@ -191,7 +203,12 @@ Page({
   },
   loadPerson: function (projectedId){
     new RequestEngine().request(config.listCandidate, { id: projectedId }, { callBy: this, method: this.loadPerson, params: [projectedId] }, (success) => {
+      let nexBtnText = '下一位';
+      if (success.votEmployees.length == 1) {
+        nexBtnText = '提交';
+      }
       this.setData({
+        nexBtnText: nexBtnText,
         persons: success.votEmployees
       });
     }, (faild) => {
@@ -213,10 +230,6 @@ Page({
     })
   },
 
-  onPullDownRefresh: function () {
-  
-  },
-
   onShareAppMessage: function () {
     wx.showShareMenu({
       withShareTicket: true
@@ -226,7 +239,7 @@ Page({
       ablevote = 0;
     }
     return {
-      title: '自定义转发标题',
+      title: '广电投票平台',
       path: '/pages/vote/vote?ablevote=' + ablevote + '&projectedId=' + this.projectedId,
       success: function (res) {
         // 转发成功
