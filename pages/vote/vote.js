@@ -38,7 +38,7 @@ Page({
       } else {
         this.scene = this.scene.split("scene=")[1];
       }
-       //this.scene = '60~60'
+       this.scene = '60~70'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];
@@ -72,7 +72,6 @@ Page({
     });
   },
   doVote: function (submitObj) {
-    this.votting = true;
     new RequestEngine().request(config.doVot, { doVotInfo: submitObj, userInfo: this.userInfo}, { callBy: this, method: this.loadQuestions, params: [ submitObj] }, (success) => {
       if (this.data.focusIndex + 1 == this.data.persons.length) {
         //答题结束
@@ -94,7 +93,7 @@ Page({
         this.answers.clear()
       }
       this.commons = undefined;
-      this.animation.translate(-58 * (this.data.focusIndex + 1), 0).step();
+      this.animation.translate(-53 * (this.data.focusIndex + 1), 0).step();
       this.setData({
         focusIndex: this.data.focusIndex + 1,
         clearChecked: false,
@@ -121,6 +120,10 @@ Page({
     });
   },
   onNextClick:function(){
+    if (this.votting) {
+      return;
+    }
+    this.votting = true;
     if (this.ablevote == 0) {
       wx.showModal({
         title: "此群组不可投票",
@@ -136,12 +139,9 @@ Page({
         showCancel: false,
         confirmText: "确定"
       });
+      this.votting = false;
       return ;
     }
-    if(this.votting) {
-      return ;
-    }
-
     //candidateId:给谁发起投票的personId
     let personId = this.data.persons[this.data.focusIndex].id;
     let answerArray = [...this.answers];
@@ -164,6 +164,7 @@ Page({
               // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
             },
             fail() {
+              this.votting = false;
               wx.openSetting({
                 success: (res) => {
                   res.authSetting = {
@@ -182,6 +183,9 @@ Page({
               var gender = userInfo.gender //性别 0：未知、1：男、2：女
               that.userInfo = userInfo;
               that.doVote(submitObj);
+            },
+            fail: function(){
+              this.votting = false;
             }
           })
           
@@ -234,6 +238,7 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+
     let ablevote = 1;
     if (util.textIsNull(this.qrcode)) {
       ablevote = 0;

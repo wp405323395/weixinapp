@@ -83,7 +83,7 @@
 .background_page{
   background-color: white;
   overflow: auto;
-  margin-top: 250rpx;
+  margin-top: 245rpx;
   margin-left: 30rpx;
   margin-right: 30rpx;
   padding-bottom: 30rpx;
