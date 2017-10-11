@@ -28,7 +28,7 @@
       <button bindtap='onNextClick' disabled='{{submitEnable}}' class='next_person'>{{nexBtnText}}</button>
 
     <view class='logo_section'>
-     <image class='logo_img' src='../../../img/logo_vote.png'></image>
+     <image class='logo_img' src='../../img/logo_vote.png'></image>
     </view>
     
       

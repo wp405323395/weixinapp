@@ -146,7 +146,8 @@
   display: flex;
 }
 .logo_img{
-  width: 369rpx;
-  height: 35rpx;
-  margin: 30rpx auto;
+  width: 355rpx;
+  height: 20rpx;
+  margin: 80rpx auto;
+
 }
