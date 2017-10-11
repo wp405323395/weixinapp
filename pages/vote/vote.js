@@ -38,7 +38,7 @@ Page({
       } else {
         this.scene = this.scene.split("scene=")[1];
       }
-       //this.scene = '60~50'
+       //this.scene = '60~60'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];
@@ -94,13 +94,18 @@ Page({
         this.answers.clear()
       }
       this.commons = undefined;
-      this.animation.translate(-60 * (this.data.focusIndex + 1), 0).step();
+      this.animation.translate(-58 * (this.data.focusIndex + 1), 0).step();
       this.setData({
         focusIndex: this.data.focusIndex + 1,
         clearChecked: false,
         inputTxt: '',
         animationData: this.animation.export()
       });
+      if (this.data.persons.length - this.data.focusIndex == 1) {
+        this.setData({
+          nexBtnText: '提交'
+        });
+      }
       this.votting = false;
     }, (faild) => {
       this.votting = false;
@@ -135,11 +140,6 @@ Page({
     }
     if(this.votting) {
       return ;
-    }
-    if (this.data.questionList.questionList.length - this.answers.size == 1) {
-      this.setData({
-        nexBtnText: '提交'
-      });
     }
 
     //candidateId:给谁发起投票的personId

@@ -7,9 +7,9 @@
         <text class="personName">{{item.name}}</text>
       </view>
     </view>
-    
+    <view class='img_page'></view>
   </view> 
-  <view class='img_page'></view>
+  
   <view class='background_page'>
     <view class='vote_title_background'>
       <text class='vote_title'>{{questionList.projectName}}</text>
@@ -22,8 +22,8 @@
           <radio checked='{{clearChecked}}' class='checkbox_style' value="{{questionItem.questionId+'-'+item.answerId}}" wx:key="unique" wx:for="{{questionItem.answers}}"><text class="option_text">{{item.answertext}}</text></radio>
       </radio-group>
     </view>
-    <view class='commons'>
-      <input type='text' value="{{inputTxt}}" bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
+    <view hidden="{{questionList.iscommented == '0'}}" class='commons'>
+      <input maxlength='100' type='text' value="{{inputTxt}}" bindinput="commonInput" placeholder="发表对此人的评论" class='text_ar'></input>
     </view>
       <button bindtap='onNextClick' disabled='{{submitEnable}}' class='next_person'>{{nexBtnText}}</button>
 

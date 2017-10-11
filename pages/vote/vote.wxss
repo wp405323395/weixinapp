@@ -33,12 +33,12 @@
 .focus{
   font-weight: 600;
   flex-shrink:0;
-  width: 110rpx;
-  height: 110rpx;
-  margin: 15rpx;
+  width: 56px;
+  height: 56px;
+  margin: 8px;
   margin-bottom: 0rpx;
   opacity: 0.9;
-  border-radius: 55rpx;
+  border-radius: 56px;
   background-color: white;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,7 @@
   font-size: 0.7rem;
 }
 .person_header{
-  height: 200rpx;
+  height: 240rpx;
   position: fixed;
   z-index: 1000; 
   width: 100%;
@@ -71,7 +71,7 @@
     background-color: rgba(0, 0, 0, 0);  
 }   
 .img_page{
-  margin-top: 200rpx;
+  margin-top: 170rpx;
   height: 34rpx;
   margin-bottom: 0;
   margin-left: 30rpx;
@@ -83,7 +83,7 @@
 .background_page{
   background-color: white;
   overflow: auto;
-  margin-top: -10rpx;
+  margin-top: 250rpx;
   margin-left: 30rpx;
   margin-right: 30rpx;
   padding-bottom: 30rpx;
@@ -101,7 +101,8 @@
   margin-bottom: 15rpx;
 }
 .vote_title{
-
+  margin-left: 50rpx;
+  margin-right:50rpx;
 
 }
 .answer{
@@ -115,6 +116,8 @@
 
 .option_text{
   margin-left: 10rpx;
+  font-size: 0.8rem;
+  
 } 
 .question_list{
   margin-left: 30rpx;
@@ -131,16 +134,21 @@
   border: 1px #999999 solid;
   padding: 20rpx;
   overflow: hidden;
+  margin-left:32rpx;
+  margin-right:32rpx;
+
 }
 .text_ar{
   width: 100%;
 }
 .next_person{
-  background-color: #7052df;
-  margin-bottom: 30rpx;
-  margin-left: 30rpx;
-  margin-right: 30rpx;
-  color: white;
+  background-color:#7052df;
+  margin-bottom:30rpx;
+  margin-left:30rpx;
+  margin-right:30rpx;
+  color:white;
+  margin-top:80rpx;
+
 }
 .logo_section{
   display: flex;
@@ -148,6 +156,6 @@
 .logo_img{
   width: 355rpx;
   height: 20rpx;
-  margin: 80rpx auto;
-
+  margin: 20rpx auto;
+  margin-top: 40rpx;
 }
