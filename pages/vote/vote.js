@@ -38,7 +38,7 @@ Page({
       } else {
         this.scene = this.scene.split("scene=")[1];
       }
-       this.scene = '60~70'
+       //this.scene = '60~70'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];

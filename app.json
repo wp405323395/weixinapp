@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/vote/vote",
-    "pages/tvCardModel/tvCardIndex/tvcard",
     
+    "pages/tvCardModel/tvCardIndex/tvcard",
+    "pages/vote/vote",
     "pages/tvCardModel/choosePackages/choosePackages",
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
