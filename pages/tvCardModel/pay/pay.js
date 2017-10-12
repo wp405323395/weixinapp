@@ -76,6 +76,27 @@ Page({
     this.custid = custid;
     this.serviceID = serviceID;
     this.qrKind = qrKind;
+    setTimeout(() => {
+      this.loadPackage(custid, tvCardNum, serviceID, qrKind);
+    }, 500);
+  },
+  loadPackage: function (custid, tvCardNumber, serviceID, qrKind) {
+    let that = this;
+    new Promise((resolve, reject) => {
+      new RequestEngine().request(config.querySalesList, { custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    }).then(value => {
+      if (value.salesList && value.salesList.length != 0)  {
+        that.setData({
+          selectPackage: value.salesList[0]
+        });
+      }
+     
+    }).catch(err => { })
+
   },
   onShow: function () {
     let that = this;
@@ -128,6 +149,7 @@ Page({
       cardNumberSelectHidden: !this.data.cardNumberSelectHidden,
       tvCardAnimationData: this.animation.export()
     });
+    this.loadPackage(this.custid, id, this.serviceID, this.qrKind);
 
   },
   onSelectCard: function () {

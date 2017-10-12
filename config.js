@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-//var host = "192.168.43.136:8080"
+//var host = "192.168.1.145:8080"
 var host = 'www.htrnpay.cn';
 var isHttps = true;
 var isDebug = true;
