@@ -18,6 +18,9 @@ Page({
     persons: []
   },
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true //要求小程序返回分享目标信息
+    })
     this.votting = false;
     this.ablevote =  options.ablevote;
     if (!isNaN(this.ablevote)) {

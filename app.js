@@ -1,13 +1,22 @@
 //app.js
 const myLogin = require('netApi/login');
 App({
-  onLaunch: function() {
+  onLaunch: function(ops) {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     myLogin.my_login();
-    
+
+    if (ops.scene == 1044) {
+      console.log(ops.shareTicket)
+      wx.getShareInfo({
+        shareTicket: ops.shareTicket,
+        complete(res) {
+          console.log(res)
+        }
+      })
+    }
   },
 
   getUserInfo: function(cb) {
