@@ -137,6 +137,7 @@ function getScene(options) {
   // import DES3 from './DES3.js'
   var DES3 = require('./DES3.js');
 
+
   var scene = decodeURIComponent(options.q);
   if (this.textIsNull(scene)) {
     scene = decodeURIComponent(options.scene);
