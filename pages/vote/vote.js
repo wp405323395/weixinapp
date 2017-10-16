@@ -35,13 +35,15 @@ Page({
       return ;
       }
     } else {
-      this.scene = decodeURIComponent(options.q);
-      if (util.textIsNull(this.scene)) {
-        this.scene = decodeURIComponent(options.scene);
-      } else {
-        this.scene = this.scene.split("scene=")[1];
-      }
+      // this.scene = decodeURIComponent(options.q);
+      // if (util.textIsNull(this.scene)) {
+      //   this.scene = decodeURIComponent(options.scene);
+      // } else {
+      //   this.scene = this.scene.split("scene=")[1];
+      // }
        //this.scene = '60~70'
+      this.scene = util.getScene(options)
+
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];

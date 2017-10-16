@@ -3,6 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
+
 Page({
 
   data: {
@@ -12,14 +13,17 @@ Page({
   },
 
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.q);
-    if(util.textIsNull(scene)) {
-      var scene = decodeURIComponent(options.scene);
-    } else {
-      scene = scene.split("scene=")[1];
-    }
-     //scene = '20~219~8270102533142253';
-     //scene = '21~1110~8270102533395091';
+    // var scene = decodeURIComponent(options.q);
+    // if(util.textIsNull(scene)) {
+    //   var scene = decodeURIComponent(options.scene);
+    // } else {
+    //   scene = scene.split("scene=")[1];
+    // }
+    //  //scene = '20~219~8270102533142253';
+    //  scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
+    // scene = DES3.decrypt(scene);
+
+    var scene = util.getScene(options)
     this.getCardInfo(scene);
     setTimeout(() => {
         if (util.textIsNotNull(this.tvCardNum)) {

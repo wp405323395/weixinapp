@@ -130,6 +130,25 @@ function splice(optionsScene){
   return qrInfo;
 }
 
+/**
+ * 二维码信息处理
+ */
+function getScene(options) {
+  // import DES3 from './DES3.js'
+  var DES3 = require('./DES3.js');
+
+  var scene = decodeURIComponent(options.q);
+  if (this.textIsNull(scene)) {
+    scene = decodeURIComponent(options.scene);
+  } else {
+    scene = scene.split("scene=")[1];
+  }
+  //scene = '20~219~8270102533142253';
+  // scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
+  scene = DES3.decrypt(scene);
+  return scene;
+}
+
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
@@ -140,5 +159,7 @@ module.exports = {
   showToast: showToast,
   showShortToast: showShortToast,
   textIsNull: textIsNull,
-  splice: splice
+  splice: splice,
+  splice: splice,
+  getScene:getScene
 }
