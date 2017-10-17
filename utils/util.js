@@ -132,8 +132,10 @@ function splice(optionsScene){
 
 /**
  * 二维码信息处理
+ * options
+ * flag 是否需要解密，默认不需要
  */
-function getScene(options) {
+function getScene(options,flag) {
   // import DES3 from './DES3.js'
   var DES3 = require('./DES3.js');
 
@@ -143,9 +145,25 @@ function getScene(options) {
   } else {
     scene = scene.split("scene=")[1];
   }
-  //scene = '20~219~8270102533142253';
-  // scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
-  scene = DES3.decrypt(scene);
+  //scene = '8270102533142253';
+  //scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
+  //scene = DES3.encrypt('20~219~8270102533142253');
+
+  //判断下，如果scene 包含~ 或者长度小于12 不需要解密
+  //或者flag 为true 则强制需要解密
+
+  if (this.textIsNull(scene)) {
+    return scene;
+  }else  if (flag || (scene.length > 11 && scene.indexOf('~')<0)){
+    try {
+      scene = DES3.decrypt(scene);
+    } catch (err) {
+      console.log('错误 解密原文: ' + scene)
+      console.log(err.name + ': ' + +err.message)
+    } finally {
+    }
+  }
+
   return scene;
 }
 

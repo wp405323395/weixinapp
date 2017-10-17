@@ -223,7 +223,8 @@ function pad(key) {
 
 
 function stringToHex(c) {
-  var d = "0x";
+  //var d = "0X";
+  var d = "";
   var b = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
   for (var a = 0; a < c.length; a++) {
     d += b[c.charCodeAt(a) >> 4] + b[c.charCodeAt(a) & 15]
@@ -233,7 +234,7 @@ function stringToHex(c) {
 
 function hexToString(b) {
   var c = "";
-  for (var a = (b.substr(0, 2) == "0x") ? 2 : 0; a < b.length; a += 2) {
+  for (var a = (b.substr(0, 2) == "0X") ? 2 : 0; a < b.length; a += 2) {
     c += String.fromCharCode(parseInt(b.substr(a, 2), 16))
   }
   return c
@@ -257,5 +258,6 @@ var DES3 = {
   }
 };
 module.exports = {
-  decrypt: DES3.decrypt
+  decrypt: DES3.decrypt,
+  encrypt: DES3.encrypt
 }
