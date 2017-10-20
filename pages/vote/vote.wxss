@@ -47,6 +47,7 @@
   font-size: 0.7rem;
 }
 .person_header{
+  top: 0;
   height: 240rpx;
   position: fixed;
   z-index: 1000; 
@@ -82,7 +83,6 @@
 }
 .background_page{
   background-color: white;
-  overflow: auto;
   margin-top: 245rpx;
   margin-left: 30rpx;
   margin-right: 30rpx;
@@ -154,8 +154,8 @@
   display: flex;
 }
 .logo_img{
-  width: 355rpx;
-  height: 20rpx;
+  width: 591rpx;
+  height: 24rpx;
   margin: 20rpx auto;
   margin-top: 40rpx;
 }

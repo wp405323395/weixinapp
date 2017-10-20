@@ -41,9 +41,9 @@ Page({
       // } else {
       //   this.scene = this.scene.split("scene=")[1];
       // }
-       //this.scene = '60~70'
+       
       this.scene = util.getScene(options)
-
+      //this.scene = '60~121'
       this.sceneArr = this.scene.split('~');
       if (this.sceneArr.length == 2) {
         this.projectedId = this.sceneArr[1];
@@ -166,10 +166,11 @@ Page({
           wx.authorize({
             scope: 'scope.userInfo',
             success() {
+              that.votting = false;
               // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
             },
             fail() {
-              this.votting = false;
+              that.votting = false;
               wx.openSetting({
                 success: (res) => {
                   res.authSetting = {
@@ -190,7 +191,7 @@ Page({
               that.doVote(submitObj);
             },
             fail: function(){
-              this.votting = false;
+              that.votting = false;
             }
           })
           

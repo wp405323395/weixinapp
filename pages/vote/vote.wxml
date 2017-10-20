@@ -1,5 +1,5 @@
 <!--pages/vote/vote.wxml-->
-<view class="container">
+<!-- <view class="container"> -->
    <view class='person_header'>
     <text class='lable_person'>被考核人:</text>
     <view class='imgs' >
@@ -34,4 +34,4 @@
       
   </view>
 
-</view>
+<!-- </view> -->
