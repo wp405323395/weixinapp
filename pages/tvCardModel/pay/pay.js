@@ -74,10 +74,10 @@ Page({
     }
     this.tvCardNum = tvCardNum;
     this.custid = custid;
-    this.serviceID = serviceID == undefined ? 'undefined' : serviceID;
-    this.qrKind = qrKind == undefined ? 'undefined' : qrKind ;
+    this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
+    this.qrKind = (qrKind == undefined ? 'undefined' : qrKind) ;
     setTimeout(() => {
-      this.loadPackage(custid, tvCardNum, serviceID, qrKind);
+      this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind);
     }, 500);
   },
   loadPackage: function (custid, tvCardNumber, serviceID, qrKind) {
