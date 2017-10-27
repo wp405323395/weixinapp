@@ -74,8 +74,8 @@ Page({
     }
     this.tvCardNum = tvCardNum;
     this.custid = custid;
-    this.serviceID = serviceID;
-    this.qrKind = qrKind;
+    this.serviceID = serviceID == undefined ? 'undefined' : serviceID;
+    this.qrKind = qrKind == undefined ? 'undefined' : qrKind ;
     setTimeout(() => {
       this.loadPackage(custid, tvCardNum, serviceID, qrKind);
     }, 500);
