@@ -416,39 +416,51 @@ Page({
       
       // 来自页面内转发按钮
       // console.log(res.target);
-      
-    }
-    return {
-          title: '送你一张优惠券，快来领取',
-          path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=id-" + that.data.product.id,
-          imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
-          success: function (res) {
-            if (!util.textIsNull(that.data.product.relaId)){
-              new Promise((resolve, reject) => {
-                new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId }, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
-                  resolve(success);
-                }, (faild) => {
-                  reject(faild);
-                });
-              }).then(value => {
+      return {
+        title: '送你一张优惠券，快来领取',
+        path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=id-" + that.data.product.id,
+        imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
+        success: function (res) {
+          if (!util.textIsNull(that.data.product.relaId)) {
+            new Promise((resolve, reject) => {
+              new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId }, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
+                resolve(success);
+              }, (faild) => {
+                reject(faild);
+              });
+            }).then(value => {
 
-              }).catch(err => {
-
-              })
-            }
-            
-            try {
-              wx.setStorageSync('needRefreshData', true)
-            } catch (e) {
-            }
-            wx.navigateBack({
+            }).catch(err => {
 
             })
-          },
-          fail: function (res) {
-            // 转发失败
           }
+
+          try {
+            wx.setStorageSync('needRefreshData', true)
+          } catch (e) {
+          }
+          wx.navigateBack({
+
+          })
+        },
+        fail: function (res) {
+          // 转发失败
         }
+      }
+    } else {
+      return {
+        title: '送你一张优惠券，快来领取',
+        path: 'pages/detail/detail?id=id-' + that.data.product.id,
+        imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
+        success: function (res) {
+          
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
+    }
+
     
   }
   
