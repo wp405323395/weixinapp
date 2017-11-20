@@ -40,6 +40,7 @@ Page({
   onLoad: function (options) {
     let relaId_from_share = options.shareCoup_coupId
     this.relaId_from_share = relaId_from_share;
+    this.id = options.id;
     if (util.textIsNotNull(relaId_from_share)) {
       idMap = ['relaId', relaId_from_share];
     } else {
@@ -419,20 +420,23 @@ Page({
     }
     return {
           title: '送你一张优惠券，快来领取',
-          path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=" + that.data.product.id,
+          path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=id-" + that.data.product.id,
           imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
           success: function (res) {
-            new Promise((resolve, reject) => {
-              new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId }, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
-                resolve(success);
-              }, (faild) => {
-                reject(faild);
-              });
-            }).then(value => {
+            if (!util.textIsNull(that.data.product.relaId)){
+              new Promise((resolve, reject) => {
+                new RequestEngine().request(config.giveAwayCoupon, { relaId: that.data.product.relaId }, { callBy: that, method: that.onShareAppMessage, params: [res] }, (success) => {
+                  resolve(success);
+                }, (faild) => {
+                  reject(faild);
+                });
+              }).then(value => {
 
-            }).catch(err => {
+              }).catch(err => {
 
-            })
+              })
+            }
+            
             try {
               wx.setStorageSync('needRefreshData', true)
             } catch (e) {
