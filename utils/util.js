@@ -130,6 +130,43 @@ function splice(optionsScene){
   return qrInfo;
 }
 
+/**
+ * 二维码信息处理
+ * options
+ * flag 是否需要解密，默认不需要
+ */
+function getScene(options, flag) {
+  // import DES3 from './DES3.js'
+  var DES3 = require('./DES3.js');
+
+  var scene = decodeURIComponent(options.q);
+  if (this.textIsNull(scene)) {
+    scene = decodeURIComponent(options.scene);
+  } else {
+    scene = scene.split("scene=")[1];
+  }
+  //scene = '8270102533142253';
+  //scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
+  //scene = DES3.encrypt('20~219~8270102533142253');
+  // scene = 'FA7F3CB10D9A8E42AD0C214A98A67F95';
+  //判断下，如果scene 包含~ 或者长度小于12 不需要解密
+  //或者flag 为true 则强制需要解密
+
+  if (this.textIsNull(scene)) {
+    return scene;
+  } else if (flag || (scene.length > 11 && scene.indexOf('~') < 0)) {
+    try {
+      scene = DES3.decrypt(scene);
+    } catch (err) {
+      console.log('错误 解密原文: ' + scene)
+      console.log(err.name + ': ' + +err.message)
+    } finally {
+    }
+  }
+
+  return scene;
+}
+
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
@@ -140,5 +177,6 @@ module.exports = {
   showToast: showToast,
   showShortToast: showShortToast,
   textIsNull: textIsNull,
-  splice: splice
+  splice: splice,
+  getScene: getScene
 }

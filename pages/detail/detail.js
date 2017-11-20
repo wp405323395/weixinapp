@@ -43,12 +43,14 @@ Page({
     if (util.textIsNotNull(relaId_from_share)) {
       idMap = ['relaId', relaId_from_share];
     } else {
-      var scene = decodeURIComponent(options.q);
-      if (util.textIsNull(scene)) {
-        scene = decodeURIComponent(options.scene);
-      } else {
-        scene = scene.split("scene=")[1];
-      }
+      // var scene = decodeURIComponent(options.q);
+      // if (util.textIsNull(scene)) {
+      //   scene = decodeURIComponent(options.scene);
+      // } else {
+      //   scene = scene.split("scene=")[1];
+      // }
+      var scene = util.getScene(options)
+
       if (!util.textIsNull(scene)) {
         this.qrInfo = util.splice(scene);
         setTimeout(() => {
