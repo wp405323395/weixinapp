@@ -332,7 +332,7 @@ button[disabled][type="default"], wx-button[disabled]:not([type]) {
   content: '\2715';
 }
 .depends{
-  height: 1px;
+  height: 100rpx;
   margin-bottom: 130rpx;
 }
 
