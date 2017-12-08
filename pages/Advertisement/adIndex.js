@@ -1,6 +1,7 @@
 // pages/Advertisement/adIndex.js
 import RequestEngine from '../../netApi/requestEngine.js';
 var config = require('../../config.js');
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -19,9 +20,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var relation = '41';
-    var relation = '1';
-    let qrid = '43';
+    // var relation = '41';
+    // var qrid = '43';
+    let scene = util.getScene(options);
+    var relation = scene.split('~')[1];
+    var qrid = scene.split('~')[2];
     this.relation = relation;
     this.qrid = qrid;
     this.loadPage(relation);
@@ -59,6 +62,10 @@ Page({
     if (!this.data.timend) {
       return;
     }
+    if (this.requesting) {
+      return;
+    }
+    this.requesting = true;
     new RequestEngine().request(config.canTrySee, { qrid: this.qrid }, { callBy: this, method: this.btnClick, params: [] }, (success) => {
       
     }, (faild) => {

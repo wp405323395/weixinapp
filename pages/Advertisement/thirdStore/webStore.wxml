@@ -1,2 +1,2 @@
- <web-view src="https://www.maywidehb.com/advert/ad.html"></web-view> 
+ <web-view src="{{storeUrl}}"></web-view> 
 

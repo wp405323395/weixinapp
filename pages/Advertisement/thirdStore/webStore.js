@@ -1,11 +1,12 @@
 // pages/Advertisement/thirdStore/webStore.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    storeUrl:''
   },
 
   /**
@@ -13,7 +14,9 @@ Page({
    */
   onLoad: function (options) {
     let url = options.url;
-    console.log('fkkkkkkkkkk--', url);
+    this.setData({
+      storeUrl: url
+    });
   },
 
   /**

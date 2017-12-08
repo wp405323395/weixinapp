@@ -5,10 +5,11 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-//var host = "192.168.1.199:8015"
+
 var host = 'www.maywidehb.com';
+//var host = "192.168.1.199:8015"
 var isHttps = (host == 'www.maywidehb.com')?true:false;
-var isDebug = true;
+var isDebug = false;
 var schema = isHttps ? 'https':'http';
 var srcHost = 'https://www.maywidehb.com/'
 var config = {
