@@ -1,0 +1,21 @@
+<view class='time' hidden='{{true}}'>
+<text class='time_record'>广告剩余时长<text class='second_count'>10</text>秒</text>
+</view>
+<image class='ad_img' src="{{adImgUrl}}"></image>
+<view class='btn_section'>
+  <view class='btn_background'>
+    <view bindtap="btnClick" class='btn' style="background-color:{{click_btn_color}}">
+      <text class='main_text' style="color:{{text_color}}">马上试看 <text hidden='{{timend}}'>{{downTime}}s</text></text>
+      <text class='detail_text' style="color:{{text_color}}">恭喜获得试看时间{{seetime}}分钟</text>
+    </view>
+  </view>
+</view>
+
+<!-- 
+<view class='btn_section'>
+  <view class='btn_background'>
+    <view class='btn' style="background-color:{{click_btn_color}}">
+      <text class='main_text' style="color:{{text_color}}">{{downTime}}{{promtext}}</text>
+    </view>
+  </view>
+</view> -->

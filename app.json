@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/Advertisement/adIndex",
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/tvCardModel/tvCardIndex/tvcard",
@@ -24,7 +25,8 @@
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/qrPage/payCoupon/scanPayer",
     "pages/business/personManager/persons",
-    "pages/qrPage/storeOwnerAddPerson/addPersonScan"
+    "pages/qrPage/storeOwnerAddPerson/addPersonScan",
+    "pages/Advertisement/thirdStore/webStore"
   ],
   "window": {
     "navigationBarTextStyle": "black",

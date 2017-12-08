@@ -1,0 +1,72 @@
+/* pages/Advertisement/adIndex.wxss */
+.ad_img{
+  width: 100%;
+  height: 100%;
+}
+.time{
+  height: 0px;
+  position: relative;
+}
+.time_record{
+  position: absolute;
+  right: 20rpx;
+  display: block;
+  top: 20rpx;
+  background-color: rgba(255,255,255,0.6);
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  border-radius: 25rpx;
+  width: 280rpx;
+  text-align: center;
+  color: #666666;
+}
+.second_count{
+  color: black;
+  font-size: 38rpx;
+  display: inline-block;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+}
+.btn_section{
+  height: 0px;
+  position: relative;
+}
+.btn_background{
+  position: absolute;
+  height: 300rpx;
+  width: 100%;
+  top: -300rpx;
+  background: -webkit-linear-gradient(bottom, transparent , rgba(0,0,0,0.5)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom, transparent, rgba(0,0,0,0.5)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom, transparent, rgba(0,0,0,0.5)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom, transparent , rgba(0,0,0,0.5)); /* 标准的语法 */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.btn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(153,153,153,0.9);
+  border-radius: 10rpx;
+  color: white;
+  height: 100rpx;
+  width: 85%;
+  margin-top: 120rpx;
+  justify-content: center;
+}
+.btn:active{
+  transform: translateY(5px);
+}
+.main_text{
+  font-size: 36rpx;
+  display: inline-block;
+  color: rgb(212, 212, 212);
+}
+.detail_text{
+  font-size: 28rpx;
+  color: rgb(212, 212, 212);
+}
