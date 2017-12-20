@@ -201,6 +201,10 @@ Page({
   },
   pay: function () {
     let that = this;
+    if (this.isPaying) {
+      return;
+    }
+    this.isPaying = true;
     let reqUrl = this.data.isWeiXin?config.wxPay:config.doOrder;
     new Promise((resolve, reject) => {
       let param = {
@@ -229,22 +233,26 @@ Page({
           'signType': value.signType,
           'paySign': value.paySign,
           'success': function (res) {
+            this.isPaying = false;
             console.log('支付结果',res);
             wx.navigateTo({
               url: 'success/paySuccess',
             })
           },
           'fail': function (res) {
+            this.isPaying = false;
             console.log('支付失败', res);
           }
         })
       } else {
+        this.isPaying = false;
         wx.navigateTo({
           url: 'success/paySuccess',
         })
       }
       
     }).catch(err=>{
+      this.isPaying = false;
       wx.showModal({
         title: "支付失败,如有疑问请拨打客服电话96516",
         showCancel: false,
