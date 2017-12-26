@@ -1,0 +1,30 @@
+/* pages/yuandanproject/contributionsuccess/contributionsuccess.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 100%;
+  padding-top: 100rpx;
+}
+.pic{
+  width: 230rpx;
+  height: 230rpx;
+  margin-bottom: 30rpx;
+}
+
+  .success{
+    font-size: 50rpx;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10rpx;
+    color: #ff6332;
+  }
+  .note{
+    color: #666666;
+  }
+  .goto_detail{
+    margin-top: 100rpx;
+    color: red;
+    text-decoration: underline;
+    font-size: 25rpx;
+  }

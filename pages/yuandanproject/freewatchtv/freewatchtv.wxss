@@ -1,0 +1,30 @@
+/* pages/yuandanproject/freewatchtv/freewatchtv.wxss */
+.pic{
+  width: 100%;
+  height: 100%;
+}
+.bottom{
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.free_watchtv{
+ width: 100%;
+ background-color: #999999;
+ color: white;
+ border-radius: 0;
+}
+.push_page{
+ width: 100%;
+ color: white;
+ background-color: #ff6333;
+ border-radius: 0;
+}
+.see_tv_button{
+  width: 240rpx;
+  height: 240rpx;
+}

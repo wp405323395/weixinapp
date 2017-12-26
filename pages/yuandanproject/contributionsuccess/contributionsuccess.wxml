@@ -1,0 +1,9 @@
+<!--pages/yuandanproject/contributionsuccess/contributionsuccess.wxml-->
+
+<view class="container">
+  
+  <image  class='pic' src='../../../img/test_gongyi.png'></image>
+  <text class='success'>捐款成功</text>
+  <text class='note'>感谢您参加本次问卷调查，同时获得100个积分</text>
+  <text class='goto_detail' bindtap='gotoseeTv'>进入积分兑换页面换取时长免费看电视>></text>
+</view>

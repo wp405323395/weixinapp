@@ -1,0 +1,8 @@
+<!--pages/yuandanproject/freewatchtv/freewatchtv.wxml-->
+<view class="container">
+  <view class='bottom'>
+    <image bindtap='freeWatchTv' class='see_tv_button' src='../../../img/test_see_tv.png'></image>
+  </view>
+  <image class='pic' src='https://www.maywidehb.com/advert/free_see_tv.png'></image>
+
+</view>
