@@ -63,7 +63,7 @@ Page({
   onShareAppMessage: function () {
     let that = this;
     return {
-      title: '拼单',
+      title: '3人成团广电节目包优惠购，快来参与把',
       path: 'pages/yuandanproject4/mypingdan/mypingdan?qrid' + this.qrid,
       success: function (res) {
         // 转发成功

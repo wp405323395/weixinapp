@@ -86,7 +86,7 @@ Page({
   onShareAppMessage: function () {
     let that = this;
     return {
-      title: '拼单',
+      title: '我刚抢了一个红包，你也来试下吧',
       path: 'pages/yuandanproject4/redpackage/red?qrid' + this.qrid,
       success: function (res) {
         // 转发成功
