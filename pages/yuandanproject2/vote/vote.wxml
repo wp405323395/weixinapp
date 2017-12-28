@@ -3,7 +3,7 @@
 <view class="container">
   <image hidden='{{ishiddenToast}}' class='toast' src='../../../img/test_toast.png'></image>
   <view class='bottom'>
-    <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button>
+    <!-- <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button> -->
     <button class='push_page' bindtap='gotocontribution'>提交问卷</button>
   </view>
   <image class='pic' src='https://www.maywidehb.com/advert/vote.png'></image>

@@ -12,6 +12,18 @@
   width: 100%;
   justify-content: center;
 }
+.top{
+  /* width:100%; */
+  height: 301rpx;
+  margin-left: 15rpx;
+  margin-right: 20rpx;
+  /* position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0; */
+}
 .free_watchtv{
  width: 100%;
  background-color: #999999;
@@ -27,4 +39,73 @@
 .see_tv_button{
   width: 240rpx;
   height: 240rpx;
+}
+.see_head{
+  width: 100%;
+  height: 301rpx;
+}
+.see_tail{
+  width: 100%;
+  height: 204rpx;
+}
+
+.six{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 1300rpx;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.btn1{
+  background-image: url("https://www.maywidehb.com/advert/free_1.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
+}
+.btn2{
+  background-image: url("https://www.maywidehb.com/advert/free_2.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-right: 20rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
+}
+.btn3{
+  background-image: url("https://www.maywidehb.com/advert/free_3.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
+}
+.btn4{
+  background-image: url("https://www.maywidehb.com/advert/free_4.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-right: 20rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
+}
+.btn5{
+  background-image: url("https://www.maywidehb.com/advert/free_5.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
+}
+.btn6{
+  background-image: url("https://www.maywidehb.com/advert/free_6.png");
+  background-size: 100%;
+  margin-left: 15rpx;
+  margin-right: 20rpx;
+  margin-bottom: 15rpx;
+  width: 350rpx;
+  height: 380rpx;
 }

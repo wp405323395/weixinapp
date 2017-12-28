@@ -4,9 +4,10 @@
   flex-direction: column;
   align-items:center;
   width: 100%;
-  padding-top: 100rpx;
+  /* padding-top: 100rpx; */
 }
 .pic{
+  margin-top: 90rpx;
   width: 230rpx;
   height: 230rpx;
   margin-bottom: 30rpx;
@@ -16,15 +17,28 @@
     font-size: 50rpx;
     font-weight: 500;
     display: block;
-    margin-bottom: 10rpx;
+    margin-bottom: 20rpx;
     color: #ff6332;
   }
   .note{
     color: #666666;
+    /* margin-left: 100rpx;
+    margin-right: 100rpx; */
+  }
+  .note2{
+    color: #666666;
+    /* margin-left: 100rpx;
+    margin-right: 100rpx; */
   }
   .goto_detail{
-    margin-top: 100rpx;
+    margin-top: 60rpx;
     color: red;
     text-decoration: underline;
-    font-size: 25rpx;
+    /* font-size: 25rpx; */
+  }
+  .tabs{
+    position:absolute;
+    bottom:0;
+    color: #666666;
+    margin-bottom: 60rpx; 
   }

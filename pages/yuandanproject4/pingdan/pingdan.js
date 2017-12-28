@@ -61,13 +61,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    let that = this;
     return {
       title: '拼单',
       path: 'pages/yuandanproject4/mypingdan/mypingdan?qrid' + this.qrid,
       success: function (res) {
         // 转发成功
         wx.navigateTo({
-          url: '../pingdansuccess/pingdansuccess?qrid=' + this.qrid,
+          url: '../pingdansuccess/pingdansuccess?qrid=' + that.qrid,
         })
       },
       fail: function (res) {

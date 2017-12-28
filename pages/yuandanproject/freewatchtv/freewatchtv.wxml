@@ -1,8 +1,31 @@
 <!--pages/yuandanproject/freewatchtv/freewatchtv.wxml-->
-<view class="container">
+<!-- <view class="container">
   <view class='bottom'>
     <image bindtap='freeWatchTv' class='see_tv_button' src='../../../img/test_see_tv.png'></image>
   </view>
   <image class='pic' src='https://www.maywidehb.com/advert/free_see_tv.png'></image>
 
+</view> -->
+
+<view class="container">
+  <view class='bottom'>
+    <image bindtap='freeWatchTv' class='see_tail' src='https://www.maywidehb.com/advert/free_see_tail.png'></image>
+  </view>
+  <view class="top">
+    <image class='see_head' src='https://www.maywidehb.com/advert/free_see_head.png'></image>
+  </view>
+  <view class="six">
+    <view class='btn1' bindtap='gotocontribution'>
+    </view>
+    <view class='btn3' bindtap='gotoadvert'>
+    </view>
+    <view class='btn5' bindtap='gotocoupon'>
+    </view>
+    <view class='btn2' bindtap='gotovote'>
+    </view>
+    <view class='btn4' bindtap='gotored'>
+    </view>
+    <view class='btn6' bindtap='gototvpackage'>
+    </view>
+  </view>
 </view>

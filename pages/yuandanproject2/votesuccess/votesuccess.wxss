@@ -4,27 +4,33 @@
   flex-direction: column;
   align-items:center;
   width: 100%;
-  padding-top: 100rpx;
 }
 .pic{
   width: 230rpx;
   height: 230rpx;
   margin-bottom: 30rpx;
+  margin-top : 90rpx;
 }
 
   .success{
     font-size: 50rpx;
     font-weight: 500;
     display: block;
-    margin-bottom: 10rpx;
-    color: #ff6332;
+    margin-bottom: 20rpx;
+    color: black;
   }
   .note{
     color: #666666;
   }
   .goto_detail{
-    margin-top: 100rpx;
+    margin-top: 60rpx;
     color: red;
     text-decoration: underline;
-    font-size: 25rpx;
+    /* font-size: 50rpx; */
+  }
+  .tabs{
+    position:absolute;
+    bottom:0;
+    color: #666666;
+    margin-bottom: 60rpx; 
   }

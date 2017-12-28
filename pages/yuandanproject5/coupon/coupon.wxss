@@ -1,4 +1,4 @@
-/* pages/yuandanproject/contribution/contribution.wxss */
+/* pages/yuandanproject5/coupon/coupon.wxss */
 .pic{
   width: 100%;
   height: 100%;
@@ -20,7 +20,7 @@
 .push_page{
  width: 100%;
  color: white;
- background-color: #1690d3;
+ background-color: #ff6333;
  border-radius: 0;
 }
 .toast{

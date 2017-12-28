@@ -21,19 +21,19 @@ Page({
     var qrid = scene.split('~')[2];
     this.relation = relation;
     this.qrid = qrid;
-    setTimeout(() => {
-      this.setData({
-        ishiddenToast: false,
-        isDisable: false
-      });
-      setTimeout(() => {
-        this.setData({
-          ishiddenToast: true,
-          isDisable: false
-        })
-      }, 4000);
+    // setTimeout(() => {
+    //   this.setData({
+    //     ishiddenToast: false,
+    //     isDisable: false
+    //   });
+    //   setTimeout(() => {
+    //     this.setData({
+    //       ishiddenToast: true,
+    //       isDisable: false
+    //     })
+    //   }, 4000);
 
-    }, 3000);
+    // }, 3000);
   },
 
 

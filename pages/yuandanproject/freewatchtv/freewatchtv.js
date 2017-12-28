@@ -79,5 +79,42 @@ Page({
       }, (requestComplete) => {
 
     });
+  },
+
+  gotocontribution : function(){
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject/contribution/contribution?qrid=' + that.qrid,
+    })
+  },
+  gotovote : function () {
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject2/vote/vote?qrid=' + that.qrid,
+    })
+  },
+  gotoadvert : function () {
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject3/ad/ad?qrid=' + that.qrid,
+    })
+  },
+  gotocoupon : function(){
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject5/coupon/coupon?qrid=' + that.qrid,
+    })
+  },
+  gototvpackage : function () {
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject6/tvpackage/tvpackage?qrid=' + that.qrid,
+    })
+  },
+  gotored : function () {
+    let that = this;
+    wx.navigateTo({
+      url: '../../yuandanproject4/redpackage/red?qrid=' + that.qrid,
+    })
   }
 })
