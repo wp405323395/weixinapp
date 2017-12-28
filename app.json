@@ -37,8 +37,7 @@
     "pages/yuandanproject4/paySuccess/paySuccess",
     "pages/yuandanproject4/pingdan/pingdan",
     "pages/yuandanproject4/pingdansuccess/pingdansuccess",
-    "pages/yuandanproject4/mypingdan/mypingdan",
-    "pages/yuandanproject4/red/red"
+    "pages/yuandanproject4/mypingdan/mypingdan"
   ],
   "window": {
     "navigationBarTextStyle": "black",

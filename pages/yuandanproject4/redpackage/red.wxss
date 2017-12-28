@@ -28,3 +28,43 @@
   height: 70rpx;
   background-size: 170rpx 70rpx;
 }
+.red{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.maywidehb.com/advert/kaiqihongbao.png');
+  background-size: 100% 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn_group{
+  display: flex;
+  direction: row;
+  height: 80rpx;
+
+  margin-top: 770rpx;
+}
+.goto_pingdan{
+  background-color: yellow;
+  color: #f45327;
+  font-weight: 600;
+  width: 160rpx;
+  margin-right: 20rpx;
+  border-radius: 80rpx;
+}
+.goto_share{
+  font-weight: 600; 
+  background-color: #f45327;
+  color: yellow;
+  width: 160rpx;
+  border-radius: 80rpx;
+  border: 1px solid yellow;
+}
+.delete{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 50rpx;
+}

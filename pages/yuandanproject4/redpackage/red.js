@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    isClose:false
   },
 
   /**
@@ -74,8 +74,39 @@ Page({
     })
   },
   ping: function(){
+    this.setData({
+      isClose: true
+    });
     wx.navigateTo({
       url: '../pingdan/pingdan?qrid=' + this.qrid,
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '拼单',
+      path: 'pages/yuandanproject4/mypingdan/mypingdan?qrid' + this.qrid,
+      success: function (res) {
+        // 转发成功
+        wx.navigateTo({
+          url: '../pingdansuccess/pingdansuccess?qrid=' + this.qrid,
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
+  share: function () {
+    this.setData({
+      isClose: true
+    });
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+  close:function(){
+    this.setData({
+      isClose:true
+    });
   }
 })
