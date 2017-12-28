@@ -1,8 +1,5 @@
 {
   "pages": [
-    "pages/yuandanproject/freewatchtv/freewatchtv",
-    "pages/yuandanproject6/tvpackage/tvpackage",
-    "pages/yuandanproject5/coupon/coupon",
     "pages/yuandanproject4/redpackage/red",
     "pages/index/index",
     "pages/Advertisement/adIndex",
@@ -31,6 +28,7 @@
     "pages/business/personManager/persons",
     "pages/qrPage/storeOwnerAddPerson/addPersonScan",
     "pages/Advertisement/thirdStore/webStore",
+    "pages/yuandanproject/freewatchtv/freewatchtv",
     "pages/yuandanproject/contributionsuccess/contributionsuccess",
     "pages/yuandanproject2/votesuccess/votesuccess",
     "pages/yuandanproject/contribution/contribution",

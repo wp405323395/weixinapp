@@ -87,12 +87,10 @@ Page({
     let that = this;
     return {
       title: '拼单',
-      path: 'pages/yuandanproject4/mypingdan/mypingdan?qrid' + this.qrid,
+      path: 'pages/yuandanproject4/redpackage/red?qrid' + this.qrid,
       success: function (res) {
         // 转发成功
-        wx.navigateTo({
-          url: '../pingdansuccess/pingdansuccess?qrid=' + this.qrid,
-        })
+        that.close();
       },
       fail: function (res) {
         // 转发失败
