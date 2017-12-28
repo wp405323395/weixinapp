@@ -1,0 +1,5 @@
+<!--pages/yuandanproject4/paySuccess/paySuccess.wxml-->
+<view class="container">
+  <image mode="widthFix" class='img' src='https://www.maywidehb.com/advert/pay_success.png'></image>
+  <button bindtap='seeTv'>观看电视</button>
+</view>

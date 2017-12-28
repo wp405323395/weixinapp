@@ -1,0 +1,6 @@
+<!--pages/yuandanproject4/pingdansuccess/pingdansuccess.wxml-->
+
+<view class="container">
+  <image mode="widthFix" class='img' src='https://www.maywidehb.com/advert/pingdan_success.png'></image>
+  <button bindtap='seeTv'>观看电视</button>
+</view>

@@ -1,0 +1,17 @@
+<!--pages/yuandanproject4/redpackage/red.wxml-->
+<view class="container">
+  <view class='button_pannel'>
+    <view class='pannel'>
+      <button bindtap='buy' class='btn'></button>
+      <button bindtap='ping' class='btn1'></button>
+    </view>
+    <view class='pannel'>
+      <button bindtap='buy' class='btn'></button>
+      <button bindtap='ping' class='btn1'></button>
+    </view>
+    <view class='pannel'>
+      <button bindtap='buy' class='btn'></button>
+      <button bindtap='ping' class='btn1'></button>
+    </view>
+  </view>
+</view>

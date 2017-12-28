@@ -7,7 +7,7 @@
 
 
 var host = 'www.maywidehb.com';
-//var host = "192.168.1.166:8015"
+var host = "192.168.1.181:8015"
 var isHttps = (host == 'www.maywidehb.com')?true:false;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';

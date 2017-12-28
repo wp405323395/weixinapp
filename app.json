@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/yuandanproject4/redpackage/red",
     "pages/index/index",
     "pages/Advertisement/adIndex",
     "pages/logs/logs",
@@ -31,10 +31,14 @@
     "pages/yuandanproject/freewatchtv/freewatchtv",
     "pages/yuandanproject/contributionsuccess/contributionsuccess",
     "pages/yuandanproject2/votesuccess/votesuccess",
-
     "pages/yuandanproject/contribution/contribution",
     "pages/yuandanproject2/vote/vote",
-    "pages/yuandanproject3/ad/ad"
+    "pages/yuandanproject3/ad/ad",
+    "pages/yuandanproject4/paySuccess/paySuccess",
+    "pages/yuandanproject4/pingdan/pingdan",
+    "pages/yuandanproject4/pingdansuccess/pingdansuccess",
+    "pages/yuandanproject4/mypingdan/mypingdan",
+    "pages/yuandanproject4/red/red"
   ],
   "window": {
     "navigationBarTextStyle": "black",

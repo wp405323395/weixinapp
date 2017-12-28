@@ -1,0 +1,30 @@
+/* pages/yuandanproject4/redpackage/red.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.maywidehb.com/advert/pindanshouye.png');
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.button_pannel{
+  transform: translateY(580rpx);
+}
+.pannel{
+  display: flex;
+  flex-direction: row;
+  margin-left: 265rpx;
+  width: 400rpx;
+  margin-bottom: 145rpx;
+}
+.btn{
+  background-image: url('https://www.maywidehb.com/advert/dandugoumai.png');
+  width: 170rpx;
+  height: 70rpx;
+  background-size: 170rpx 70rpx;
+}
+.btn1{
+  background-image: url('https://www.maywidehb.com/advert/pintuan.png');
+  width: 170rpx;
+  height: 70rpx;
+  background-size: 170rpx 70rpx;
+}

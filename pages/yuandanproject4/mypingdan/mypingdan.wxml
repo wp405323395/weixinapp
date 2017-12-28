@@ -1,0 +1,4 @@
+<!--pages/yuandanproject4/mypingdan/mypingdan.wxml-->
+<view class="container">
+  <button bindtap='pingdan'>一键拼单</button>
+</view>

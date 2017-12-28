@@ -1,0 +1,14 @@
+/* pages/yuandanproject4/pingdan/pingdan.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.maywidehb.com/advert/pingdan.png');
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+button{
+  transform: translateY(350rpx);
+  width: 400rpx;
+  background-color: #ec4b2b;
+  color: white;
+}
