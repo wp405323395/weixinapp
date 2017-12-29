@@ -17,7 +17,7 @@ Page({
     var relation = scene.split('~')[1];
     var qrid = scene.split('~')[2];
     this.relation = relation;
-    this.qrid = 325;
+    this.qrid = qrid;
   },
 
   /**

@@ -84,37 +84,37 @@ Page({
   gotocontribution : function(){
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject/contribution/contribution?qrid=' + that.qrid,
+      url: '../../yuandanproject/contribution/contribution?scene=11~3~' + that.qrid,
     })
   },
   gotovote : function () {
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject2/vote/vote?qrid=' + that.qrid,
+      url: '../../yuandanproject2/vote/vote?scene=11~3~' + that.qrid,
     })
   },
   gotoadvert : function () {
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject3/ad/ad?qrid=' + that.qrid,
+      url: '../../yuandanproject3/ad/ad?scene=11~3~' + that.qrid,
     })
   },
   gotocoupon : function(){
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject5/coupon/coupon?qrid=' + that.qrid,
+      url: '../../yuandanproject5/coupon/coupon?scene=11~3~' + that.qrid,
     })
   },
   gototvpackage : function () {
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject6/tvpackage/tvpackage?qrid=' + that.qrid,
+      url: '../../yuandanproject6/tvpackage/tvpackage?scene=11~3~' + that.qrid,
     })
   },
   gotored : function () {
     let that = this;
     wx.navigateTo({
-      url: '../../yuandanproject4/redpackage/red?qrid=' + that.qrid,
+      url: '../../yuandanproject4/redpackage/red?scene=11~3~' + that.qrid,
     })
   }
 })

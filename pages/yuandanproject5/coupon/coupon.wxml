@@ -4,7 +4,7 @@
   <image hidden='{{ishiddenToast}}' class='toast' src='../../../img/test_toast.png'></image>
   <view class='bottom'>
     <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button>
-    <button class='push_page' bindtap='gotocontribution'>付费观看</button>
+    <button class='push_page' bindtap='gotocoupon'>立即领取</button>
   </view>
   <image class='pic' src='https://www.maywidehb.com/advert/free_coupon.png'></image>
 
