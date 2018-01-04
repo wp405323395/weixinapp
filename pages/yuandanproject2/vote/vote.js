@@ -8,6 +8,36 @@ Page({
    * 页面的初始数据
    */
   data: {
+    items: [
+      { name: '1', value: '特别关注' },
+      { name: '2', value: '一般关注' },
+      { name: '3', value: '不关注' },
+    ],
+    items2: [
+      { name: '1', value: '就业' },
+      { name: '2', value: '教育' },
+      { name: '3', value: '社保' },
+    ],
+    items3: [
+      { name: '1', value: '非常好' },
+      { name: '2', value: '一般' },
+      { name: '3', value: '较差' },
+    ],
+    items4: [
+      { name: '1', value: '非常好' },
+      { name: '2', value: '一般' },
+      { name: '3', value: '较差' },
+    ],
+    items5: [
+      { name: '1', value: '行政法规、政策、决策文件类' },
+      { name: '2', value: '国民经济和社会发展、专项规划类' },
+      { name: '3', value: '财政预算决算、“三公”经费类' },
+    ],
+    items6: [
+      { name: '1', value: '了解办事流程' },
+      { name: '2', value: '下载相关资料' },
+      { name: '3', value: '办理具体业务不关注' },
+    ],
     ishiddenToast: true,
     isDisable: true
   },

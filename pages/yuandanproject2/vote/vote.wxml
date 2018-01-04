@@ -6,6 +6,68 @@
     <!-- <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button> -->
     <button class='push_page' bindtap='gotocontribution'>提交问卷</button>
   </view>
-  <image class='pic' src='https://www.maywidehb.com/advert/vote.png'></image>
+  <image class='pic' src='https://www.maywidehb.com/yuandanproject/vote.png'></image>
+  <view class='bm'>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        1.您平时是否会关注民生问题？
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        2.您认为下列民生问题中哪一项最重要？
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items2}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        3.您感觉政府在民生推广方面做得怎么样？
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items3}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        4.您主要是通过什么渠道获得政府信息的？
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items4}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        5.您比较关注或者最希望了解的是哪些方面的
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items5}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='bm_vote1'>
+      <view class='votetitle'>
+        6.您通过网上办事服务想达到哪些目的？
+      </view>
+      <radio-group class="radio-group" scroll-y="true">
+        <label class="radio" wx:for="{{items6}}" wx:key="key">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
 
 </view>

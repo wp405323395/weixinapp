@@ -1,7 +1,7 @@
 /* pages/yuandanproject5/coupon/coupon.wxss */
 .pic{
   width: 100%;
-  height: 100%;
+  height: 666rpx;
 }
 .bottom{
   position: fixed;

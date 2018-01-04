@@ -8,6 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    contributionImgList: [
+      'https://www.maywidehb.com/yuandanproject/coupon_1.png',
+      'https://www.maywidehb.com/yuandanproject/coupon_2.png',
+      'https://www.maywidehb.com/yuandanproject/coupon_3.png'
+    ],
     ishiddenToast: true,
     isDisable: true
   },

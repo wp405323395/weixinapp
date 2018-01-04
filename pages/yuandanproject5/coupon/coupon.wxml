@@ -1,12 +1,21 @@
 <!--pages/yuandanproject5/coupon/coupon.wxml-->
 <!-- <text>pages/yuandanproject5/coupon/coupon.wxml</text> -->
 <view class="container">
+  <view class="swiper" style="height:700rpx;width: 100%;">
+    <swiper indicator-dots="{{true}}" circular="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" style="height:700rpx;">
+      <block wx:for="{{contributionImgList}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" style="height:700rpx;width: 100%;" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
   <image hidden='{{ishiddenToast}}' class='toast' src='../../../img/test_toast.png'></image>
   <view class='bottom'>
     <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button>
     <button class='push_page' bindtap='gotocoupon'>立即领取</button>
   </view>
-  <image class='pic' src='https://www.maywidehb.com/advert/free_coupon.png'></image>
+  <image class='pic' src='https://www.maywidehb.com/yuandanproject/coupon.png'></image>
 
 </view>
 
