@@ -1,0 +1,29 @@
+/* pages/yuandanproject3/adorder/adorder.wxss */
+.pic{
+  width: 100%;
+  height: 1214rpx;
+}
+.bottom{
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.push_page{
+  width: 100%;
+  height: 90rpx;
+  background-image: url("https://www.maywidehb.com/yuandanproject/adprice.png");
+  background-size: 100%; 
+}
+.toast{
+  position: fixed;
+  top: 200rpx;
+  left: 100rpx;
+  width: 560rpx;
+  height: 200rpx;
+}
+.price{
+  background-image: url("https://www.maywidehb.com/yuandanproject/adprice.png");
+}

@@ -1,0 +1,9 @@
+<!--pages/yuandanproject3/adorder/adorder.wxml-->
+<view class="container">
+  <view class='bottom'>
+    <view class='push_page' bindtap='gotoordersuccess'></view>
+  </view> 
+  <image class='pic' src='https://www.maywidehb.com/yuandanproject/adorder3.png'></image>
+  <view style="height:20rpx; margin-top:60rpx"></view>
+</view>
+

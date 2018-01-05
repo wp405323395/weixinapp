@@ -8,6 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    contributionImgList: [
+      'https://www.maywidehb.com/yuandanproject/ad_1.png',
+      'https://www.maywidehb.com/yuandanproject/ad_2.png',
+      'https://www.maywidehb.com/yuandanproject/ad_3.png'
+    ],
     ishiddenToast: true,
     isDisable: true
   },
@@ -21,6 +26,7 @@ Page({
     var qrid = scene.split('~')[2];
     this.relation = relation;
     this.qrid = qrid;
+    // this.qrid = 325;
     setTimeout(() => {
       this.setData({
         ishiddenToast: false,
@@ -93,18 +99,10 @@ Page({
       url: '../../yuandanproject/freewatchtv/freewatchtv?qrid=' + that.qrid,
     })
   },
-  gotocontribution: function () {
+  gotoorder: function () {
     let that = this;
-    wx.navigateToMiniProgram({
-      appId: 'wxce0945b006f54c3a',
-      path: 'pages/tvCardModel/tvCardIndex/tvcard?qrid=' + this.qrid,
-      extraData: {
-        foo: 'bar'
-      },
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
-      }
+    wx.navigateTo({
+      url: '../adorder/adorder?qrid=' + that.qrid,
     })
   }
 })
