@@ -45,11 +45,8 @@ Page({
   },
   loadDate: function (productId) {
     let that = this;
-    new Promise((resolve,reject)=>{
-      resolve();
-    }).then(value=>{
-      return that.loadWxInfo();
-    }).then(value=>{
+    this.loadWxInfo()
+    .then(value=>{
       return that.loadMergeOrderByProductId(productId);
     }).then(value=>{
       that.setData({
