@@ -90,10 +90,38 @@ Page({
 
   },
 
+  // gotoseeTv: function () {
+  //   let that = this;
+  //   wx.navigateTo({
+  //     url: '../../yuandanproject/freewatchtv/freewatchtv?qrid=' + that.qrid,
+  //   })
+  // },
   gotoseeTv: function () {
-    let that = this;
-    wx.navigateTo({
-      url: '../../yuandanproject/freewatchtv/freewatchtv?qrid=' + that.qrid,
-    })
+    new RequestEngine().request(config.canTrySee, { qrid: this.qrid }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
+      wx.showToast({
+        title: '成功',
+        icon: 'succes',
+        duration: 2000,
+        mask: true
+      })
+    }, (faild) => {
+
+    }, (requestComplete) => {
+
+    });
   },
+
+  gotoorder:function(){
+    wx.navigateToMiniProgram({
+      appId: 'wxce0945b006f54c3a',
+      path: 'pages/tvCardModel/tvCardIndex/tvcard?scene=21~1110~8270104364308466',
+      extraData: {
+        foo: 'bar'
+      },
+      envVersion: 'release',
+      success(res) {
+        // 打开成功
+      }
+    })
+  }
 })
