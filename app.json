@@ -1,10 +1,14 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/yuandanproject5/coupon/coupon",
     "pages/yuandanproject4/redpackage/red",
     "pages/yuandanproject4/mypingdan/mypingdan",
     "pages/yuandanproject4/pingdan/pingdan",
-    "pages/index/index",
+    "pages/yuandanproject5/couponsuccess/couponsuccess",
     "pages/Advertisement/adIndex",
+    "pages/yuandanproject3/adorder/adorder",
+    "pages/yuandanproject3/adordersuccess/adordersuccess",
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/tvCardModel/tvCardIndex/tvcard",

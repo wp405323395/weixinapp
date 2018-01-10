@@ -6,8 +6,8 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 
-//var host = 'www.maywidehb.com';
-var host = "192.168.1.118:8080"
+var host = 'www.maywidehb.com';
+// var host = "192.168.1.158:8015"
 var isHttps = (host == 'www.maywidehb.com')?true:false;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';

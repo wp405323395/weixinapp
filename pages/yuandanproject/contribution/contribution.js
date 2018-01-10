@@ -92,11 +92,25 @@ Page({
   onShareAppMessage: function () {
   
   },
-  gotoseeTv: function(){
-    let that = this;
-    wx.navigateTo({
-      url: '../freewatchtv/freewatchtv?qrid=' + that.qrid,
-    })
+  // gotoseeTv: function(){
+  //   let that = this;
+  //   wx.navigateTo({
+  //     url: '../freewatchtv/freewatchtv?qrid=' + that.qrid,
+  //   })
+  // },
+  gotoseeTv: function () {
+    new RequestEngine().request(config.canTrySee, { qrid: this.qrid }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
+      wx.showToast({
+        title: '成功',
+        icon: 'succes',
+        duration: 2000,
+        mask: true
+      })
+    }, (faild) => {
+
+    }, (requestComplete) => {
+
+    });
   },
   gotocontribution:function(){
     let that = this;
