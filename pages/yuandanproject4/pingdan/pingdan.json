@@ -1,1 +1,4 @@
-{}
+{
+    "navigationBarTitleText": "拼单",
+    "enablePullDownRefresh": true
+}

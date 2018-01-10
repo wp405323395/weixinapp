@@ -6,8 +6,8 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 
-var host = 'www.maywidehb.com';
-// var host = "192.168.1.132:8015"
+//var host = 'www.maywidehb.com';
+var host = "192.168.1.200:8080"
 var isHttps = (host == 'www.maywidehb.com')?true:false;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';
@@ -55,6 +55,10 @@ var config = {
     queCustInfoByOpenid: `${schema}://${host}/wappweb/mcwx/order!queCustInfoByOpenid`,
     gainADInfo: `${schema}://${host}/wappweb/ad/ad!gainADInfo`,
     canTrySee: `${schema}://${host}/wappweb/ad/ad!canTrySee`,
+    queryProduct: `${schema}://${host}/wappweb/mergeorder/merge-order!queryProduct`, 
+    queryMergeOrderByProductId: `${schema}://${host}/wappweb/mergeorder/merge-order!queryMergeOrderByProductId`, 
+    queryMergeOrderMembers:`${schema}://${host}/wappweb/mergeorder/merge-order!queryMergeOrderMembers`, 
+    joininMergeOrder:      `${schema}://${host}/wappweb/mergeorder/merge-order!joininMergeOrder`, 
 };
 
 

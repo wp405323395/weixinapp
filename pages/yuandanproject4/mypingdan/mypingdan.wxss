@@ -2,7 +2,7 @@
 .container{
   width: 100%;
   height: 100%;
-  background-image: url('https://www.maywidehb.com/advert/my_pingdan.png');
+  background-image: url('https://www.maywidehb.com/advert/my_pingdan1.png');
   background-size: 100% 100%;
   overflow: hidden;
 }
@@ -10,6 +10,35 @@ button{
 
   background-color: #ec4b2b;
   color: white;
-  margin-top: 510rpx;
+  margin-top: 20rpx;
   width: 400rpx;
+}
+.avtor{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 110rpx;
+  margin-left: 25rpx;
+}
+.persons{
+  margin-top: 315rpx;
+  margin-left: 165rpx;
+  height: 110rpx;
+
+}
+.time{
+  display: flex;
+  justify-content: center;
+}
+.time-text{
+  margin-top: 50rpx;
+  font-size: 32rpx;
+}
+.tt{
+  font-weight: 600;
+}
+.t{
+  font-weight: 600;
+  color: red;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }

@@ -1,4 +1,11 @@
 <!--pages/yuandanproject4/pingdan/pingdan.wxml-->
 <view class="container">
-  <button open-type="share" bindtap='share'>邀请好友参与拼单</button>
+  <view class='downtime'>  
+    <text class='downtime_text'>{{hours}}:{{minutes}}:{{seconds}}</text>
+  </view>
+  <view class='persons'>
+    <image src="{{item.avatarurl}}" class='avtor' wx:for="{{avctor}}" wx:for-index="index" wx:for-item="item"></image>
+  </view>
+  <button hidden='{{(avctor.length==3)}}' open-type="share" bindtap='share'>邀请好友参与拼单</button>
+  <button hidden='{{(avctor.length!=3)}}' bindtap='share'>拼单成功</button>
 </view>
