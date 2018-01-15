@@ -6,7 +6,8 @@ var util = require('../../../utils/util.js');
 Page({
 
   data: {
-
+    isHasdate:true,
+    isCannotinput:false
   },
 
   onLoad: function (options) {
@@ -39,7 +40,13 @@ Page({
       url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile + "&city=" + item.city
     })
   },
+  isCannotinput(isCannoteInput){
+    this.setData({
+      isCannotinput: isCannoteInput
+    });
+  },
   serchUser: function (inputValue) {
+    this.isCannotinput(true);
     var that = this;
     new Promise((resolve, reject) => {
       wx.showLoading({
@@ -69,12 +76,25 @@ Page({
         });
       });
     }).then(value => {
-      let custList = value.custList;
+      let custList = null;
+      if (value) {
+        custList = value.custList;
+        if (custList && custList.length > 0) {
+          this.setData({
+            isHasdate: true
+          });
+        } 
+      } else {
+        this.setData({
+          isHasdate:false
+        })
+      }
       this.setData({
-        custList: custList
+        custList: custList,
+        isCannotinput:false
       });
     }).catch(err => {
-
+      this.isCannotinput(false);
     });
 
   },

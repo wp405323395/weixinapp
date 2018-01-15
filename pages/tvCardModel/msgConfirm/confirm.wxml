@@ -4,7 +4,7 @@
     <image bindtap="onScanClick" class="scan" src="../../../img/scan.png"></image>
     <view class="input_wrap">
       <view class="search"></view>
-      <input type="text" class="input" value="{{inputValue}}" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
+      <input disabled='{{isCannotinput}}' type="text" class="input" value="{{inputValue}}" confirm-type="search" placeholder="根据下方提示输入相关信息" focus="{{true}}" bindconfirm="onSearchClick"/>
       <view bindtap="onCancleClick" class="cancle"></view>
     </view>
     
@@ -33,6 +33,10 @@
       </view>
     </view>
   </view>
+<view class='nodate_wrap' hidden='{{isHasdate}}'>
+  <image class='nodate' src='../../../img/nodate.png'></image>
+  <text class='nodate_text'>没有搜索到任何数据</text>
+</view>
 <view class='bottom_logo'>
 <image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
 </view>
