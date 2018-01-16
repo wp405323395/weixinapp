@@ -6,42 +6,13 @@ var util = require('../../../utils/util.js');
 
 Page({
   data: {
-    isWeiXin: true,
-    num: 1,
-    minusStatus: 'disabled',
     cardNumberSelectHidden: true,
     cardNumberSelect: -1,
-    tvCardAnimationData: {}
-  },
-  onWeixinClick: function (e) {
-
-    this.setData({
-      isWeiXin: !this.data.isWeiXin,
-      isBookPayment:false
-    });
-  },
-  onBookPaymentClick:function(e) {
-
-    this.setData({
-      isBookPayment: !this.data.isBookPayment,
-      isWeiXin:false
-    });
-  },
-  onChoocePackage: function () {
-    if (util.textIsNotNull(this.tvCardNum) || this.data.cardNumberSelect != -1) {
-      let that = this;
-      wx.navigateTo({
-        url: `../choosePackages/choosePackages?custid=${that.custid}&tvCardNumber=${that.tvCardNum}&serviceID=${that.serviceID}&qrKind=${that.qrKind}`,
-      })
-    } else {
-      wx.showModal({
-        title: "请您先选择智能卡号",
-        showCancel: false,
-        confirmText: "确定"
-      })
-
-    }
-
+    tvCardAnimationData: {},
+    packages:[],
+    coupQuantity:1,
+    currentPackageSelect:undefined,
+    isHiddenToast: true
   },
 
   onLoad: function (options) {
@@ -58,7 +29,11 @@ Page({
     //--------------------
     this.setData({
       scanCardInfo: {
-        custid: custid, tvCardNum: tvCardNum, serviceID: serviceID
+        custid: custid,
+        tvCardNum: tvCardNum,
+        serviceID: serviceID,
+        custname: options.custname,
+        addr: options.addr
       }
     });
     this.animation = wx.createAnimation({
@@ -91,27 +66,27 @@ Page({
     }).then(value => {
       if (value.salesList && value.salesList.length != 0)  {
         that.setData({
-          selectPackage: value.salesList[0]
+          packages: value.salesList,
+          currentPackageSelect: value.salesList[0]
         });
+
       }
      
     }).catch(err => { })
 
   },
-  onShow: function () {
-    let that = this;
-    wx.getStorage({
-      key: 'packageDetail',
-      success: function (res) {
-        that.setData({
-          selectPackage: res.data
-        });
-        wx.setStorage({
-          key: 'packageDetail',
-          data: '',
-        })
-      },
-    })
+  select:function(event){
+    let itemselect = event.target.dataset.itemselect
+    if (this.data.currentPackageSelect && this.data.currentPackageSelect.salescode == itemselect.salescode) {
+      this.setData({
+        currentPackageSelect:undefined
+      });
+    } else {
+      this.setData({
+        currentPackageSelect: itemselect
+      });
+    }
+
   },
   loadCards: function (custid, tvCardNum, serviceID) {
     let that = this;
@@ -181,14 +156,14 @@ Page({
     } else if (!util.textIsNotNull(that.custid)) {
 
       return;
-    } else if (!that.data.selectPackage) {
+    } else if (!that.data.currentPackageSelect) {
       wx.showModal({
         title: "请您先选择套餐",
         showCancel: false,
         confirmText: "确定"
       })
       return;
-    } else if (!util.textIsNotNull(that.data.selectPackage.salescode)){
+    } else if (!util.textIsNotNull(that.data.currentPackageSelect.salescode)){
       wx.showModal({
         title: "请您先选择套餐",
         showCancel: false,
@@ -205,15 +180,15 @@ Page({
       return;
     }
     that.isPaying = true;
-    let reqUrl = this.data.isWeiXin?config.wxPay:config.doOrder;
+    let reqUrl = config.wxPay
     new Promise((resolve, reject) => {
       let param = {
         custid: that.custid,
         tvCardNumber: that.tvCardNum,
-        salestype: that.data.selectPackage.salestype,//类型 0订购产品;1营销方案订购
-        salescode: that.data.selectPackage.salescode,//产品编码
-        count: that.data.selectPackage.count,//套餐倍数
-        unit: that.data.selectPackage.unit,//订购单位 0：天；1：月；2：年
+        salestype: that.data.currentPackageSelect.salestype,//类型 0订购产品;1营销方案订购
+        salescode: that.data.currentPackageSelect.salescode,//产品编码
+        count: that.data.currentPackageSelect.count,//套餐倍数
+        unit: that.data.currentPackageSelect.unit,//订购单位 0：天；1：月；2：年
         addr : this.addr,
         custname : this.custname,
         mobile : this.mobile,
@@ -225,7 +200,6 @@ Page({
         reject(faild);
       });
     }).then(value=>{
-      if (this.data.isWeiXin) {
         wx.requestPayment({
           'timeStamp': value.timeStamp,
           'nonceStr': value.nonceStr,
@@ -244,13 +218,6 @@ Page({
             console.log('支付失败', res);
           }
         })
-      } else {
-        that.isPaying = false;
-        wx.navigateTo({
-          url: 'success/paySuccess',
-        })
-      }
-      
     }).catch(err=>{
       that.isPaying = false;
       wx.showModal({
@@ -261,34 +228,31 @@ Page({
     });
     
   },
-
-  bindMinus: function () {
-    var num = this.data.num;
-    if (num > 1) {
-      num--;
+  onSubClick: function (e) {
+    if (this.data.coupQuantity > 1 && this.data.currentPackageSelect && e.currentTarget.dataset.tappackage.salescode == this.data.currentPackageSelect.salescode ) {
+      this.setData({
+        coupQuantity: --this.data.coupQuantity
+      });
     }
-    var minusStatus = num <= 1 ? 'disabled' : 'normal';
+  },
+  onPlusClick: function (e) {
+    if (this.data.currentPackageSelect && e.currentTarget.dataset.tappackage.salescode == this.data.currentPackageSelect.salescode) {
+      this.setData({
+        coupQuantity: ++this.data.coupQuantity
+      });
+    }
+
+  },
+  showPackageInfo(e){
+    let selectPackageDetail = e.currentTarget.dataset.selectpackage;
     this.setData({
-      num: num,
-      minusStatus: minusStatus
+      selectPackageDetail: selectPackageDetail,
+      isHiddenToast:false
     });
   },
-
-  bindPlus: function () {
-    var num = this.data.num;
-    num++;
-    var minusStatus = num < 1 ? 'disabled' : 'normal';
+  closeToast(){
     this.setData({
-      num: num,
-      minusStatus: minusStatus
-    });
-  },
-
-  bindManual: function (e) {
-    var num = e.detail.value;
-
-    this.setData({
-      num: num
+      isHiddenToast: true
     });
   }
 })

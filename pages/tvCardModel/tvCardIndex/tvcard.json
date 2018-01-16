@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "有线电视缴费",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+      "navigationBarBackgroundColor": "#0387FE",
+    "navigationBarTextStyle": "white"
 }

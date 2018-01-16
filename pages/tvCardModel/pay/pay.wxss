@@ -1,6 +1,7 @@
 /* pay.wxss */
 .item{
-  width: 100%;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -8,16 +9,18 @@
   align-items: center;
   border-bottom: 1px solid #d4d4d4;
 }
-.lable{
-  font-size: 0.7rem;
-  color: #999999;
+
+
+.text-padding, .cell1{
+  padding: 15rpx;
+  padding-left: 0;
+  padding-right: 0;
 }
-text,.cell1{
-  padding: 25rpx;
-}
+
 .pa_wrap{
-  margin:10px 0;
-  margin-top: 0;
+  margin:15rpx;
+  background: white;
+  border-radius: 10rpx;
 }
 .clicked_style{
     background: #d4d4d4;
@@ -44,45 +47,6 @@ text,.cell1{
   border-bottom: 1px #d4d4d4 solid;
 }
 
-/*主容器*/  
-.stepper {  
-    width:250rpx;
-    display: flex;
-    flex-direction:row ;
-    height: 50rpx;  
-    align-items:center;
-    /*给主容器设一个边框*/  
-    border: 1px solid #ccc;  
-    border-radius: 3px;  
-    margin-right: 20rpx;
-}  
-  
-/*加号和减号*/  
-.stepper text {  
-    width: 35rpx;  
-    text-align: center;   
-}  
-  
-/*数值*/  
-.stepper input {  
-    color: #3fa5ed;
-    width: 60rpx;  
-    height: 100%;
-    line-height: 40rpx;  
-    margin: 0 auto;  
-    text-align: center;  
-    font-size: 12px;  
-    /*给中间的input设置左右边框即可*/  
-    border-left: 1px solid #ccc;  
-    border-right: 1px solid #ccc;  
-}  
-  
-/*普通样式*/  
-.stepper .normal{  
-    color: black;  
-}  
-  
-/*禁用样式*/  
 .footer{
   width: 100%;
   height: 100rpx;
@@ -102,7 +66,7 @@ text,.cell1{
   width: 300rpx;
   background-color: #ff302c;
   color: white;
-  line-height: 120rpx;
+  line-height: 100rpx;
 }
 .pay_btn_press{
   background-color: #d52c28;
@@ -125,11 +89,16 @@ text,.cell1{
 .lit_left{
   width:30rpx;
   height:30rpx;
-
 }
 .pay_way{
   overflow: hidden;
-  width: 100%;
+  margin: 15rpx;
+
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  border-radius: 10rpx;
+  background-color: white;
+  margin-top: 30rpx;
 }
 .logo_style{
 
@@ -144,4 +113,239 @@ text,.cell1{
   z-index: 99;
   bottom:120rpx;
   text-align: center;
+}
+.package-select{
+  height: 350rpx;
+  white-space: nowrap;
+  display: flex;
+  background-color: #eeeeee;
+  margin-bottom: 40rpx;
+}
+
+.package-pannel{
+  width: 640rpx;
+  height: 100%;
+  background: #eeeeee;
+  border: 20rpx solid #eeeeee;
+  border-radius: 15rpx;
+  box-sizing: content-box;
+
+  display: inline-block;
+  margin-right: 20rpx;
+}
+.package-content{
+  background-color: white;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  width: 100%;
+  height: 100%;
+
+}
+.package-content-title{
+  background-color: #6394c7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.package-content-title-text{
+  color: white;
+  margin: 5rpx;
+  font-size: 35rpx;
+  display: inline-block;
+}
+.package-content-money{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding:10rpx 15rpx;
+}
+.package-content-money-price-now{
+  font-size: 50rpx;
+  color: red;
+  font-weight: 500;
+}
+.package-content-money-price-now::before{
+  content: '\00A5';
+  font-size:35rpx;
+  color: red;
+}
+.package-content-money-number{
+  display: flex;
+  flex-direction: row;
+}
+.package-content-money-price-old{
+  color: #999999;
+  font-size: 25rpx;
+  text-decoration:line-through;
+  display: inline-block;
+  margin-left: 15rpx;
+}
+.package-content-money-lable{
+    font-size: 25rpx;
+    margin-right: 10rpx;
+}
+.divide-line{
+  height: 1px;
+  background-color:  #999999;
+  margin:10rpx;
+}
+.package-content-detail{
+
+}
+.package-content-detail-text{
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 18rpx; 
+  line-height: 45rpx;
+  color: #999999;
+  font-size: 28rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+   overflow: hidden;
+   white-space:pre-line;
+}
+.more-info{
+  text-align: right;
+  display: block;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  text-decoration: underline;
+}
+.coup_number{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 0;
+}
+.subtraction{
+  border-right: none;
+  background: #eeeeee;
+  border-top-left-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+}
+.subtraction::before{
+content:'';
+display:block;
+width:30rpx;
+height:1px;
+background-color:#666666;
+margin-top:25rpx;
+margin-left:12rpx;
+
+}
+.temp_box{
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px #d4d4d4 solid;
+}
+.numb{
+  border-right: none;
+  width: 80rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.input_numb{
+  text-align: center;
+  color: #333333;
+  font-size:35rpx;
+}
+.plus{
+  background-color: #eeeeee;
+  border-top-right-radius:10rpx;
+  border-bottom-right-radius:10rpx;
+}
+.plus:before{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 1px;
+  background-color: #666666;
+  margin-top:25rpx;
+  margin-left:12rpx;
+}
+.plus::after{
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30rpx;
+  background-color: #666666;
+  margin: -14rpx 26rpx;
+}
+.dell-all{
+  padding-left: 30rpx;
+}
+.pay_intro{
+  color: #e42b2b;
+  font-size: 35rpx;
+  display: block;
+  padding: 0;
+  margin-top: 5rpx;
+
+}
+.packageName{
+  color: #999999;
+  font-size: 23rpx;
+  display: block;
+  padding: 0;
+  margin-top: 5rpx;
+}
+.lable{
+  font-size: 0.7rem;
+  color: #999999;
+  padding-bottom: 0;
+}
+.toast-close{
+  width: 150rpx;
+  height: 150rpx;
+}
+.toast{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 100000;
+}
+.toast-packagedetail{
+  padding: 20rpx;
+  width: 600rpx;
+  height: 800rpx;
+  background-color: white;
+  overflow: scroll;
+  border-radius: 10rpx;
+}
+.toast-packagedetail-title{
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: 600;
+  display: block;
+}
+.toast-packagedetail-lable{
+  margin-top: 30rpx;
+  color: #666666;
+  display: block;
+  font-size: 35rpx;
+}
+.toast-packagedetail-detail{
+  margin-top: 30rpx;
+  color:#666666; 
+  display: block;
+  line-height: 50rpx;
+  font-size: 30rpx;
 }

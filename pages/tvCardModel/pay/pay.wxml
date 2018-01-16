@@ -2,10 +2,10 @@
 <view class="container">
 
   <view class="pa_wrap">
-    <view hover-stay-time="{{40}}" hover-class="clicked_style" class="tvCardNumber_wrap" bindtap="onSelectCard" class="item">
-      <text>智能卡号</text>
+    <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
+      <text class='text-padding'>智能卡号</text>
       <view style="padding-right:20rpx;">
-        <text>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardNumberSelect != -1 &&searchPerson.cardsNumber[cardNumberSelect])?searchPerson.cardsNumber[cardNumberSelect]:'请选择智能卡号')}}</text>
+        <text class='text-padding'>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardNumberSelect != -1 &&searchPerson.cardsNumber[cardNumberSelect])?searchPerson.cardsNumber[cardNumberSelect]:'请选择智能卡号')}}</text>
 
         <view animation="{{tvCardAnimationData}}" class="go_in"></view>
       </view>
@@ -13,70 +13,96 @@
     <view hidden="{{cardNumberSelectHidden}}" class="select_position">
         <view class="select_wrap">
           <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}"  bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{searchPerson.cardsNumber}}" wx:key="unique">
-            <text class="item_card_number">{{item}}</text>
+            <text class="item_card_number text-padding">{{item}}</text>
           </view>
         </view>
       </view>
-    <view hover-stay-time="{{40}}" hover-class="clicked_style"  bindtap="onChoocePackage" class="item">
-      <text>选择套餐</text>
-
-      <view style="padding-right:20rpx;">
-        <text>{{selectPackage.salesname?selectPackage.salesname:'请选择套餐'}}</text>
-        <view class="go_in"></view>
-      </view>
-
-    </view>
-
     <view class="item">
-      <text>选择订购周期（{{selectPackage.unit=='0'?'天':(selectPackage.unit=='1'?'月':'年')}}）</text>
-      <!-- 主容器 -->
-      <view class="stepper">
-        <!-- 减号 -->
-        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
-        <!-- 数值 -->
-        <input type="number" disabled="{{true}}" bindchange="bindManual" value="{{num}}" />
-        <!-- 加号 -->
-        <text class="normal" bindtap="bindPlus">+</text>
+      <text class='text-padding'>姓名</text>
+      <view style="padding-right:20rpx;">
+        <text class='text-padding'>{{scanCardInfo.custname}}</text>
       </view>
     </view>
-  </view>
-
-  <view class="item pa_wrap">
-    <text>当前可用优惠券</text>
-    <view style="margin-right:20rpx;"><text style="color: #3fa5ed">暂无优惠</text>
-     <view class="go_in"></view>
+    <view class="item" style='border:none;'>
+      <text class='text-padding' style=' display: inline-block;width:200rpx;'>地址</text>
+      <view style="padding-right:20rpx;margin-left:100rpx;">
+        <text class='text-padding' style='display:inline-block; padding-top:20rpx;padding-bottom:20rpx;'>{{scanCardInfo.addr}}</text>
+      </view>
     </view>
     
   </view>
+<text class="text-padding item lable" style='background-color:transparent;border:none;margin-bottom:0;'>选择套餐</text>
+
+
+<scroll-view class='package-select' scroll-x style="width: 100%;">
+    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class='package-pannel'>
+      <view class='package-content'>
+        <view class='package-content-title'>
+          <text class='package-content-title-text text-padding'>{{item.salesname}}</text>
+           <radio value="r1" class='package-content-title-checkbox' bindtap='select' data-itemselect='{{item}}' checked="{{currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}"/> 
+          
+        </view>
+        <view class='package-content-money'>
+          <view class='package-content-money-price'>
+            <text class='package-content-money-price-now text-padding'>{{item.price}}</text>
+            <text class='package-content-money-price-old text-padding'>原价:￥{{item.origprice}}</text>
+          </view>
+          <view class='package-content-money-number'>
+            <text class='package-content-money-lable text-padding'>订购周期/{{item.unit == 1?'月':'年'}}:</text>
+
+            <view class="coup_number">
+              <view data-tappackage='{{item}}' bindtap="onSubClick" class="subtraction temp_box"/>
+                <view class="numb temp_box">
+                    <input disabled="{{true}}" type="number" min='1' maxlength="3" class="input_numb" value="{{coupQuantity}}"/>
+              </view>
+              <view  data-tappackage='{{item}}' bindtap="onPlusClick" class="plus temp_box"/>
+            </view>
+
+          </view>
+        </view>
+        <view class='divide-line'></view>
+        <view class='package-content-detail'>
+          <text  class='package-content-detail-text'>{{item.salesintro}}</text>
+          <text class='more-info' data-selectpackage='{{item}}' bindtap='showPackageInfo'>查看详情</text>
+        </view>
+      </view>
+    </view>
+
+</scroll-view>
+
+
+<text class="item lable" style='background-color:transparent;border:none;margin-bottom:0;'>选择支付方式</text>
   <view class="pay_way">
-    <text class="item lable" >选择支付方式</text>
-    <view bindtap="onWeixinClick" hover-stay-time="50" hover-class="clickDown" class="item">
+    <view style='border:none;' class="item">
       <view class="cell1">
         <image class="pay_lable_img" src="https://www.maywidehb.com/banner/weixinpay.png"/>
         <text>微信支付</text>
       </view>
       
       <label class="radio radio_layout">
-        <radio value="r1" checked="{{isWeiXin}}"/>
+        <radio value="r1" checked="{{true}}"/>
       </label>
     </view>
-    <view bindtap="onBookPaymentClick" hover-stay-time="50" hover-class="clickDown" class="item">
-      <view class="cell1">
-        <image class="pay_lable_img" src="../../../img/book_payment.png"/>
-        <text>账本支付</text>
-      </view>
-      
-      <label class="radio radio_layout">
-        <radio value="r1" checked="{{isBookPayment}}"/>
-      </label>
-    </view>
-    <text class="item">更多支付方式</text>
+
   </view>
   <view class="footer">
-    <text class="pay_intro"> 需要支付金额 {{selectPackage?selectPackage.price*num:0}}元</text>
+    <view class='dell-all'>
+      <text class="pay_intro"> 总金额:  {{currentPackageSelect?currentPackageSelect.price*coupQuantity:0}}元</text>
+      <text class='packageName'>已选套餐:  {{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'(订购周期/'+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
+    </view>
+    
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn" >立即支付</view>
   </view>
   <view class='bottom_logo'>
 <image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+</view>
+<view class='toast' hidden='{{isHiddenToast}}'>
+  <view class='toast-packagedetail'>
+    <text class='toast-packagedetail-title'>{{selectPackageDetail.salesname}}</text>
+    <text class='toast-packagedetail-lable'>套餐介绍：</text>
+    <text class='toast-packagedetail-detail'>{{selectPackageDetail.salesintro}}</text>
+    
+  </view>
+  <image bindtap='closeToast' class='toast-close' src='../../../img/delete_img.png'></image>
 </view>
 </view>

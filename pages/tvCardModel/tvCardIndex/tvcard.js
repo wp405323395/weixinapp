@@ -7,7 +7,7 @@ var util = require('../../../utils/util.js');
 Page({
 
   data: {
-    hidd0:false,
+
     hidd1:true,
     hidd2:true,
   },
@@ -54,28 +54,26 @@ Page({
         reject(faild);
       });
     }).then(value => {
-      let hidd0 = true;
+
       let hidd1 = false;
       let hidd2 = true;
       if(value != null) {
         let cardList = value.custInfolist;
         if(cardList.length == 0) {
-          hidd0 = true; hidd1 = false; hidd2 = true;
+          hidd1 = false; hidd2 = true;
         } else {
-          hidd0 = true; hidd1 = true; hidd2 = false;
+          hidd1 = true; hidd2 = false;
         }
       } else {
-        hidd0 = true; hidd1 = false; hidd2 = true;
+        hidd1 = false; hidd2 = true;
       }
       this.setData({
-        hidd0: hidd0,
         hidd1: hidd1,
         hidd2: hidd2,
         custList: value.custInfolist
       });
     }).catch(err => { 
       this.setData({
-        hidd0: true,
         hidd1: false,
         hidd2: true
       });
@@ -97,6 +95,8 @@ Page({
   },
   loadTvCardInfo:function(cardNum) {
     var that = this;
+    //-------------------------------------------------------------------
+
     new Promise((resolve, reject) => {
       var param = {
         tvCardNumber: that.tvCardNum,
@@ -110,11 +110,17 @@ Page({
       });
     }).then(value=>{
       let cardInfo = value.custList[0];
-      this.setData({
-        cardInfo: cardInfo
-      });
+      let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + cardInfo.addr + "&custname=" + cardInfo.custname + "&mobile=" + cardInfo.mobile;
+      wx.navigateTo({
+        url: url
+      })
     }).catch(err=>{
-
+        wx.showModal({
+          title: "获取用户信息失败，尝试下拉刷新页面获取信息",
+          showCancel: false,
+          confirmText: "确定"
+        })
+        return;
     });
   },
   onMsgConfirm:function(e){
@@ -122,21 +128,6 @@ Page({
       url: '../msgConfirm/confirm',
     })
   },
-  click:function(e){
-    if (util.textIsNull(this.data.cardInfo.custid)) {
-      wx.showModal({
-        title: "获取用户信息失败，尝试下拉刷新页面获取信息",
-        showCancel: false,
-        confirmText: "确定"
-      })
-      return;
-    }
-    let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + this.data.cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + this.data.cardInfo.addr + "&custname=" + this.data.cardInfo.custname + "&mobile=" + this.data.cardInfo.mobile;
-    wx.navigateTo({
-      url: url
-    })
-  },
-
   onShareAppMessage: function () {
   },
   onPullDownRefresh: function () {

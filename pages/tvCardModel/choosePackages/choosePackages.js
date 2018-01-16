@@ -20,7 +20,6 @@ Page({
     let tvCardNumber = options.tvCardNumber;
     let serviceID = options.serviceID;
     let qrKind = options.qrKind;
-    let ifif = 'asdfasdfasdf'.substring(0,10);
     setTimeout(() => {
       this.loadPackage(custid, tvCardNumber, serviceID, qrKind);
     }, 500);
