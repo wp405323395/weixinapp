@@ -9,6 +9,9 @@
   align-items: center;
   border-bottom: 1px solid #d4d4d4;
 }
+.containner-spacetop{
+  height: 15rpx;
+}
 
 
 .text-padding, .cell1{
@@ -19,6 +22,7 @@
 
 .pa_wrap{
   margin:15rpx;
+  margin-top: 0;
   background: white;
   border-radius: 10rpx;
 }

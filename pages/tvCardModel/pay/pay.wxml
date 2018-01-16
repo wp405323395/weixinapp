@@ -1,6 +1,6 @@
 <!--pay.wxml-->
 <view class="container">
-
+<view class='containner-spacetop'></view>
   <view class="pa_wrap">
     <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
       <text class='text-padding'>智能卡号</text>
