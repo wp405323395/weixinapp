@@ -110,7 +110,7 @@ Page({
       });
     }).then(value=>{
       let cardInfo = value.custList[0];
-      let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + cardInfo.addr + "&custname=" + cardInfo.custname + "&mobile=" + cardInfo.mobile;
+      let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + cardInfo.addr + "&custname=" + cardInfo.custname + "&mobile=" + cardInfo.mobile + "&city=" + cardInfo.city;
       wx.navigateTo({
         url: url
       })
