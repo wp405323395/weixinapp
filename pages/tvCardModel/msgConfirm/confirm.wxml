@@ -35,7 +35,7 @@
   </view>
 <view class='nodate_wrap' hidden='{{isHasdate}}'>
   <image class='nodate' src='../../../img/nodate.png'></image>
-  <text class='nodate_text'>没有搜索到任何数据</text>
+
 </view>
 <view class='bottom_logo'>
 <image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
