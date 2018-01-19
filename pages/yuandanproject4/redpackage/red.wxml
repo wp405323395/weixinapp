@@ -5,9 +5,17 @@
       <button bindtap='buy' class='btn'></button>
       <button bindtap='ping' data-name="{{1}}" class="btn1 {{prod1 ? 'pingdaning' : ''}}"></button>
     </view>
-    <view class='pannel'>
+    <view class='pannel2'>
+      <view class = 'btr1'>
       <button bindtap='buy' class='btn'></button>
-      <button bindtap='ping' data-name="{{2}}" class="btn1 {{prod2 ? 'pingdaning' : ''}}"></button>
+      <view><image src="../../../img/pindan.png" class = 'pindan2'></image></view>
+      </view>
+      <view class = 'btr2'>
+        <button bindtap='ping' data-name="{{2}}" class="btn1 {{prod2 ? 'pingdaning' : ''}}"></button>
+        <view class='pindantext' bindtap = 'jiarupingdan'>
+          <text>加入拼单></text>
+        </view>
+      </view>
     </view>
     <view class='pannel'>
       <button bindtap='buy' class='btn'></button>
@@ -20,6 +28,5 @@
     <button bindtap='ping(1)' class='goto_pingdan'>去拼单</button>
     <button open-type="share" bindtap='share' class='goto_share'>分享</button>
   </view>
-
   <image bindtap='close' src="../../../img/delete_img.png" class='delete'></image>
 </view>

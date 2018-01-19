@@ -1,13 +1,17 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/yuandanproject5/coupon/coupon",
     "pages/yuandanproject4/redpackage/red",
+    "pages/index/index",
+    "pages/yuandanproject/contribution/contribution",
+    "pages/yuandanproject6/tvpackage/tvpackage",
+    "pages/yuandanproject2/vote/vote",
+    "pages/yuandanproject5/coupon/coupon",
+    "pages/yuandanproject3/ad/ad",
+    "pages/yuandanproject3/adorder/adorder",
     "pages/yuandanproject4/mypingdan/mypingdan",
     "pages/yuandanproject4/pingdan/pingdan",
     "pages/yuandanproject5/couponsuccess/couponsuccess",
     "pages/Advertisement/adIndex",
-    "pages/yuandanproject3/adorder/adorder",
     "pages/yuandanproject3/adordersuccess/adordersuccess",
     "pages/logs/logs",
     "pages/detail/detail",
@@ -37,14 +41,9 @@
     "pages/yuandanproject/freewatchtv/freewatchtv",
     "pages/yuandanproject/contributionsuccess/contributionsuccess",
     "pages/yuandanproject2/votesuccess/votesuccess",
-    "pages/yuandanproject/contribution/contribution",
-    "pages/yuandanproject2/vote/vote",
-    "pages/yuandanproject3/ad/ad",
     "pages/yuandanproject4/paySuccess/paySuccess",
-    
-    "pages/yuandanproject4/pingdansuccess/pingdansuccess"
-
-    
+    "pages/yuandanproject4/pingdansuccess/pingdansuccess",
+    "pages/yuandanproject4/mypindan2/mypindan"
   ],
   "window": {
     "navigationBarTextStyle": "black",

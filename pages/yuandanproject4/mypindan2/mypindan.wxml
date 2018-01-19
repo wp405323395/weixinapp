@@ -1,0 +1,10 @@
+<!--pages/yuandanproject4/mypingdan/mypingdan.wxml-->
+<view class="container">
+  <view class='persons'>
+    <image src="../../../img/pindan.png" class='avtor'></image>
+  </view>
+  <view class='time'>
+    <text class='time-text'>仅剩<text class='t'>1</text>个名额,<text class='tt'>{{hours}}:{{minutes}}:{{seconds}}</text>后结束</text>
+  </view>
+  <button bindtap='pingdan'>一键拼单</button>
+</view>

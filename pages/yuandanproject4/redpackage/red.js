@@ -25,6 +25,7 @@ Page({
     var qrid = scene.split('~')[2];
     this.relation = relation;
     this.qrid = qrid;
+    // this.qrid = 213;
     //this.loadDate();
   },
   loadDate: function (){
@@ -137,6 +138,12 @@ Page({
       })
     // }
 
+  },
+  jiarupingdan : function (){
+    wx.navigateTo({
+      url: '../mypindan2/mypindan?qrid=' + this.qrid,
+    })
+    // }
   },
   onShareAppMessage: function () {
     let that = this;

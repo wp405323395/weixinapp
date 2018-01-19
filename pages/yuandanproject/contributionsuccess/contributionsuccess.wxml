@@ -5,7 +5,7 @@
   <image  class='pic' src='../../../img/test_gongyi.png'></image>
   <text class='success'>捐款成功</text>
   <text class='note'>感谢您为《准孤儿的营养午餐》捐款<text class='goto_detail'>100</text>元</text>
-  <text class='note2'>，获得100积分</text>
+  <text class='note2'>，获得30分钟试看时长</text>
   <text class='goto_detail' bindtap='gotoseeTv'>点击免费看电视</text>
   <text class='tabs'>湖北广电&诚毅软件联合实验室提供技术支持</text>
 </view>

@@ -4,7 +4,7 @@
   
   <image  class='pic' src='https://www.maywidehb.com/advert/vot_success.png'></image>
    <text class='success'>提交成功</text>
-  <text class='note'>感谢您参加本次问卷调查，同时获得100个积分</text> 
+  <text class='note'>感谢您参加本次问卷调查，同时获得30分钟试看时长</text> 
   <text class='goto_detail' bindtap='gotoseeTv'>点击免费看电视</text>
   <text class='tabs'>湖北广电&诚毅软件联合实验室提供技术支持</text>
 </view>

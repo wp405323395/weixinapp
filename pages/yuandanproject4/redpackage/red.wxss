@@ -2,28 +2,36 @@
 .container{
   width: 100%;
   height: 100%;
-  background-image: url('https://www.maywidehb.com/advert/pindanshouye.png');
+  background-image: url('https://www.maywidehb.com/advert/pindanshouye1.png');
   background-size: 100% 100%;
   overflow: hidden;
 }
 .button_pannel{
-  transform: translateY(580rpx);
+  transform: translateY(550rpx);
 }
 .pannel{
   display: flex;
   flex-direction: row;
   margin-left: 265rpx;
   width: 400rpx;
-  margin-bottom: 145rpx;
+  margin-bottom: 165rpx;
+}
+.pannel2{
+  display: flex;
+  flex-direction: row;
+  margin-left: 265rpx;
+  width: 400rpx;
+  margin-bottom: 121rpx;
+  margin-top: -30rpx;
 }
 .btn{
-  background-image: url('https://www.maywidehb.com/advert/dandugoumai.png');
+  background-image: url('https://www.maywidehb.com/advert/dandugoumai1.png');
   width: 170rpx;
   height: 70rpx;
   background-size: 170rpx 70rpx;
 }
 .btn1{
-  background-image: url('https://www.maywidehb.com/advert/pintuan.png');
+  background-image: url('https://www.maywidehb.com/advert/pintuan1.png');
   width: 170rpx;
   height: 70rpx;
   background-size: 170rpx 70rpx;
@@ -75,4 +83,22 @@
   width: 200rpx;
   height: 200rpx;
   margin-top: 50rpx;
+}
+.pindan2{
+  width: 172rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+.pindantext{
+  font-size: 30rpx;
+  color: red;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  text-decoration:underline;
+}
+.btr1{
+  margin-left: 15rpx;
+}
+.btr2{
+  margin-left: 30rpx;
 }
