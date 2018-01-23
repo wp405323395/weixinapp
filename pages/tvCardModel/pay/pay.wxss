@@ -84,6 +84,7 @@
   height: 25px;
   position: relative;
   top: 8rpx;
+  margin-right: 10rpx;
 }
 .radio_layout{
   margin: auto 0;
@@ -119,7 +120,7 @@
   text-align: center;
 }
 .package-select{
-  height: 350rpx;
+  height: 370rpx;
   white-space: nowrap;
   display: flex;
   background-color: #eeeeee;
@@ -196,7 +197,7 @@
 }
 .divide-line{
   height: 1px;
-  background-color:  #999999;
+  background-color: #d4d4d4;
   margin:10rpx;
 }
 .package-content-detail{
@@ -254,6 +255,7 @@ margin-left:12rpx;
 }
 .numb{
   border-right: none;
+  border-left: none;
   width: 80rpx;
   overflow: hidden;
   display: flex;
@@ -300,9 +302,13 @@ margin-left:12rpx;
 .packageName{
   color: #999999;
   font-size: 23rpx;
-  display: block;
   padding: 0;
-  margin-top: 5rpx;
+  margin-top: 4rpx;
+  display: inline-block;   
+  white-space: nowrap;   
+  overflow: hidden; 
+  width: 400rpx;  
+  text-overflow:ellipsis; 
 }
 .lable{
   font-size: 0.7rem;
@@ -320,7 +326,7 @@ margin-left:12rpx;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, .5);

@@ -187,7 +187,7 @@ Page({
         tvCardNumber: that.tvCardNum,
         salestype: that.data.currentPackageSelect.salestype,//类型 0订购产品;1营销方案订购
         salescode: that.data.currentPackageSelect.salescode,//产品编码
-        count: that.data.currentPackageSelect.count,//套餐倍数
+        count: that.data.coupQuantity,//套餐倍数
         unit: that.data.currentPackageSelect.unit,//订购单位 0：天；1：月；2：年
         addr : this.addr,
         custname : this.custname,
