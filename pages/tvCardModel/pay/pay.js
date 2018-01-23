@@ -77,15 +77,15 @@ Page({
   },
   select:function(event){
     let itemselect = event.target.dataset.itemselect
-    if (this.data.currentPackageSelect && this.data.currentPackageSelect.salescode == itemselect.salescode) {
-      this.setData({
-        currentPackageSelect:undefined
-      });
-    } else {
+    // if (this.data.currentPackageSelect && this.data.currentPackageSelect.salescode == itemselect.salescode) {
+    //   this.setData({
+    //     currentPackageSelect:undefined
+    //   });
+    // } else {
       this.setData({
         currentPackageSelect: itemselect
       });
-    }
+    // }
 
   },
   loadCards: function (custid, tvCardNum, serviceID) {
