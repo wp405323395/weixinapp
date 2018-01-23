@@ -1,0 +1,24 @@
+<view class="container">
+  <image src='https://maywidehb.com/advert/banner.jpg' class='banner'></image>
+  <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic1.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+  <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic2.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+  <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic3.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+  <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic4.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+    <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic1.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+    <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic2.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+  <view class='pic' style="background-image: url('https://maywidehb.com/advert/pic3.jpg')">
+    <button bindtap='click' style="background-image: url('https://maywidehb.com/advert/pic5.png')"></button>
+  </view>
+</view>

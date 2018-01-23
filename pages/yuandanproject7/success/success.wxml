@@ -1,0 +1,5 @@
+<!--pages/yuandanproject7/success/success.wxml-->
+<view class="container">
+  <image class='success' src='../../../img/success.png'></image>
+  <text bindtap='click'>免费看电视</text>
+</view>

@@ -70,12 +70,7 @@ Page({
     return new Promise((resolve,reject)=>{
       wx.getUserInfo({
         success: function (res) {
-          let userInfo = res;
-          new RequestEngine().request(config.queMercSettled, userInfo, { callBy: that, method: that.loadWxInfo, params: [userInfo] }, (success) => {
-            resolve(success);
-          }, (faild) => {
-            reject(faild);
-          });
+          resolve(res);
         }
       })
     });
