@@ -88,7 +88,7 @@
   <view class="footer">
     <view class='dell-all'>
       <text class="pay_intro"> 总金额:  {{currentPackageSelect?currentPackageSelect.price*coupQuantity:0}}元</text>
-      <text class='packageName'>已选套餐:  {{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'(订购周期/'+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
+      <text class='packageName'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
     </view>
     
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn" >立即支付</view>

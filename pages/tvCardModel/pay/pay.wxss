@@ -125,6 +125,7 @@
   display: flex;
   background-color: #eeeeee;
   margin-bottom: 40rpx;
+  overflow-x: scroll;
 }
 
 .package-pannel{

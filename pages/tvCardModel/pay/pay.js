@@ -51,14 +51,16 @@ Page({
     this.custid = custid;
     this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
     this.qrKind = (qrKind == undefined ? 'undefined' : qrKind) ;
-    setTimeout(() => {
-      this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind);
-    }, 500);
+    if (!util.textIsNull(tvCardNum)) {
+      setTimeout(() => {
+        this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
+      }, 500);
+    }
   },
-  loadPackage: function (custid, tvCardNumber, serviceID, qrKind) {
+  loadPackage: function (custid, tvCardNumber, serviceID, qrKind,city) {
     let that = this;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(config.querySalesList, { custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
+      new RequestEngine().request(config.querySalesList, { city,custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
@@ -109,6 +111,7 @@ Page({
         },
         cardNumberSelect: this.data.cardNumberSelect
       });
+      this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind,this.city);
 
     }).catch(err => {
 
@@ -124,7 +127,7 @@ Page({
       cardNumberSelectHidden: !this.data.cardNumberSelectHidden,
       tvCardAnimationData: this.animation.export()
     });
-    this.loadPackage(this.custid, id, this.serviceID, this.qrKind);
+    this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind,this.city);
 
   },
   onSelectCard: function () {
