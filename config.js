@@ -7,8 +7,8 @@
 
 var host = "192.168.2.104:8015"
 //var host = 'www.htrnpay.cn';
-var isHttps = false;
-var isDebug = true;
+var isHttps = ('www.htrnpay.cn' == host);
+var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';
 var config = {
     // 下面的地址配合云端 Server 工作
