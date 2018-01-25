@@ -25,7 +25,7 @@
 </view>
 <view class='red' hidden='{{isClose}}'>
   <view class='btn_group'>
-    <button bindtap='ping(1)' class='goto_pingdan'>去拼单</button>
+    <button bindtap='ping' data-name="{{3}}" class='goto_pingdan'>去拼单</button>
     <button open-type="share" bindtap='share' class='goto_share'>分享</button>
   </view>
   <image bindtap='close' src="../../../img/delete_img.png" class='delete'></image>
