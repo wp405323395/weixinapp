@@ -1,9 +1,5 @@
 {
   "pages": [
-
-    "pages/yuandanproject4/redpackage/red",
-    "pages/yuandanproject4/mypingdan/mypingdan",
-    "pages/yuandanproject4/pingdan/pingdan",
     "pages/index/index",
     "pages/Advertisement/adIndex",
     "pages/logs/logs",
@@ -40,7 +36,10 @@
     "pages/yuandanproject4/paySuccess/paySuccess",
     "pages/yuandanproject4/pingdansuccess/pingdansuccess",
     "pages/yuandanproject7/success/success",
-    "pages/yuandanproject7/jiazheng/index"
+    "pages/yuandanproject7/jiazheng/index",
+    "pages/yuandanproject4/redpackage/red",
+    "pages/yuandanproject4/mypingdan/mypingdan",
+    "pages/yuandanproject4/pingdan/pingdan"
   ],
   "window": {
     "navigationBarTextStyle": "black",
