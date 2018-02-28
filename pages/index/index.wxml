@@ -1,0 +1,3 @@
+<!--pages/index/index.wxml-->
+
+<web-view class='webviewxx' src="{{loginUrl}}"></web-view>
