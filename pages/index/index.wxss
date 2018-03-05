@@ -5,7 +5,11 @@
   background-color: darkblue;
 }
 .webviewxx{
+  width: 300rpx;
+  height: 400rpx;
+}
+.getroot{
   width: 100%;
-  height: 100%;
-  background-color: yellow;
+  height: 300rpx;
+  background-color: green;
 }

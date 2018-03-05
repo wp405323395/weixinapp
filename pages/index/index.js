@@ -16,37 +16,35 @@ Page({
     wx.login({
       success: function (res) {
         if (res.code) {
-          let wxcode = res.code;
-          wx.getUserInfo({
-            success: function (res) {
-              var userInfo = res.userInfo;
-              
-              userInfo = that.encode(JSON.stringify(userInfo));
-              //base64编码中url不能识别的字符替换掉，后台会按照同样规则替换会真是数据
-              userInfo = userInfo.replace('+','_');
-              userInfo = userInfo.replace('/', '-');
-              let loginUrl = "http://localhost:8025/mobile/checkWXlogin.htm?"
-                + "encodeUserInfo=" + userInfo + "&"
-                + "wxCode=" + wxcode + "&url=/mobile/customercenter.htm&code=";
-              that.setData({
-                loginUrl: loginUrl
-              });
-
-            }
-          })
+          that.wxcode = res.code;
+          that.loginStore();
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
-        // if (res.code) {
-        //   let loginUrl = "http://localhost:8025/mobile/checkWXlogin.htm?wxCode=" + res.code+"&url=/mobile/customercenter.htm&code=";
-        //   that.setData({
-        //     loginUrl: loginUrl
-        //   });
-        // } else {
-        //   console.log('获取用户登录态失败！' + res.errMsg)
-        // }
+
       }
     });
+  },
+  loginStore: function (){
+    let that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        var userInfo = res.userInfo;
+
+        userInfo = that.encode(JSON.stringify(userInfo));
+        //base64编码中url不能识别的字符替换掉，后台会按照同样规则替换会真是数据
+        userInfo = userInfo.replace('+','_');
+        userInfo = userInfo.replace('/', '-');
+        let loginUrl = "http://localhost:8025/mobile/checkWXlogin.htm?"
+          + "encodeUserInfo=" + userInfo + "&"
+          + "wxCode=" + that.wxcode + "&url=/mobile/customercenter.htm&code=";
+        that.setData({
+          loginUrl: loginUrl
+        });
+
+      },
+
+    })
   },
   _utf8_encode : function (string) {
     string = string.replace(/\r\n/g, "\n");
