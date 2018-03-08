@@ -12,6 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setStorage({
+      key: 'mmm',
+      data: 'kkkk',
+    })
     let that = this;
     wx.login({
       success: function (res) {
@@ -100,8 +104,18 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+    let status = wx.getStorageSync("status");
+    if(status == 1) {
+      this.setData({
+        loginUrl:'javascript:jsbridgeCallback();'
+      });
+    }else if (status == 2) {
+      this.setData({
+        loginUrl: 'javascript:jsbridgeCallbackFail();'
+      });
+    }
+    wx.setStorageSync("status", undefined);
   },
 
   /**
