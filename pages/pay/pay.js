@@ -42,7 +42,7 @@ Page({
         //通过page.setData方法使index的webview 重新加载url  有点类似于后台刷新页面
         //此处有点类似小程序通过加载URL的方式回调通知后端 该订单支付成功。后端逻辑不做赘述。
         prevPage.setData({
-          url: "http://localhost:8025" + pathback + "/paysucccesswx.htm",
+          url: "https://www.juzijumi.com" + pathback + "/paysucccesswx.htm",
         }),
           //小程序主动返回到上一个页面。即从wxpay page到index page。此时index page的webview已经重新加载了url 了
           //微信小程序的page 也有栈的概念navigateBack 相当于页面出栈的操作
@@ -62,9 +62,9 @@ Page({
         console.log("prevPage---->");
         console.log(prevPage);
         console.log("准备修改数据");
-        console.log("http://localhost:8025" + pathback + "/customer/detail-" + orderId + ".html");
+        console.log("https://www.juzijumi.com/mobile" + pathback + "/customer/detail-" + orderId + ".html");
         prevPage.setData({
-          url: "http://localhost:8025" + pathback + "/customer/detail-"+orderId+".html",
+          url: "https://www.juzijumi.com/mobile" + pathback + "/customer/detail-"+orderId+".html",
         }),
         console.log("准备结束页面")
         wx.navigateBack(); 
