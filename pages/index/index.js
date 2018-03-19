@@ -12,6 +12,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.callBackUrl = undefined;
+    if (options.callBackUrl){
+      this.callBackUrl = decodeURIComponent(options.callBackUrl);
+    }
+    
+
+    // this.productId = "7152";
     wx.setStorage({
       key: 'mmm',
       data: 'kkkk',
@@ -39,10 +46,14 @@ Page({
         //base64编码中url不能识别的字符替换掉，后台会按照同样规则替换会真是数据
         userInfo = userInfo.replace('+','_');
         userInfo = userInfo.replace('/', '-');
-        let loginUrl = "https://www.juzijumi.com/mobile/checkWXlogin.htm?"
-        // let loginUrl = "http://localhost:8025/mobile/checkWXlogin.htm?"
-          + "encodeUserInfo=" + userInfo + "&"
-          + "wxCode=" + that.wxcode + "&url=/mobile/customercenter.htm&code=";
+        
+        let loginUrl = undefined;
+        if (that.callBackUrl) {
+        } else {
+          that.callBackUrl = "https://www.juzijumi.com/mobile/checkWXlogin.htm?url=/mobile/customercenter.htm&code=";
+        }
+        loginUrl = that.callBackUrl + "&encodeUserInfo=" + userInfo + "&"
+          + "wxCode=" + that.wxcode;
         that.setData({
           loginUrl: loginUrl
         });

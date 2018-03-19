@@ -1,4 +1,9 @@
 // pages/root/root.js
+// confirm.js
+import RequestEngine from '../../netApi/requestEngine.js';
+var Promise = require('../../libs/es6-promise.js').Promise;
+var config = require('../../config.js');
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -12,7 +17,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getRoot();
+    let qrid = options.qrid;
+    qrid = '4';
+    this.loadQrInfo(qrid);
+    
+  },
+  loadQrInfo: function (qrid){
+    let that = this;
+    new RequestEngine().request(config.qrDetail+"?qrid="+qrid, { qrid: qrid }, { callBy: that, method: that.loadQrInfo, params: [qrid] }, (success) => {
+      that.callBackUrl = encodeURIComponent(JSON.parse(success).callBackUrl);
+      this.getRoot();
+    }, (faild) => {
+      
+    });
   },
   getRoot: function(){
     let that = this;
@@ -22,6 +39,9 @@ Page({
           wx.authorize({
             scope: 'scope.userInfo',
             success() {
+              wx.navigateTo({
+                url: "../index/index?callBackUrl=" + that.callBackUrl,
+              })
             },
             fail() {
               wx.openSetting({
@@ -33,10 +53,11 @@ Page({
         }
       }
     });
+
     wx.getUserInfo({
       success: function (res) {
         wx.navigateTo({
-          url: "../index/index",
+          url: "../index/index?callBackUrl=" + that.callBackUrl,
         })
       },
       fail: function (res) {
