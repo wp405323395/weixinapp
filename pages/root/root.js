@@ -18,8 +18,13 @@ Page({
    */
   onLoad: function (options) {
     let qrid = options.qrid;
-    qrid = '4';
-    this.loadQrInfo(qrid);
+    //qrid = '4';
+    if(qrid) {
+      this.loadQrInfo(qrid);
+    } else {
+      this.getRoot();
+    }
+    
     
   },
   loadQrInfo: function (qrid){

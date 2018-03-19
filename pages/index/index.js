@@ -48,7 +48,7 @@ Page({
         userInfo = userInfo.replace('/', '-');
         
         let loginUrl = undefined;
-        if (that.callBackUrl) {
+        if (that.callBackUrl && that.callBackUrl != 'undefined') {
         } else {
           that.callBackUrl = "https://www.juzijumi.com/mobile/checkWXlogin.htm?url=/mobile/customercenter.htm&code=";
         }
