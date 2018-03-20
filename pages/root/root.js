@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     let qrid = options.qrid;
-    //qrid = '4';
+    qrid = '4';
     if(qrid) {
       this.loadQrInfo(qrid);
     } else {

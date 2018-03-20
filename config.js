@@ -8,7 +8,7 @@
 //var host = "192.168.2.104:8015"
 //var host = 'www.htrnpay.cn';
 http://120.79.229.253:8081/que/queByQrid
-var host = "192.168.0.102:8025";
+var host = "localhost:8025";
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';

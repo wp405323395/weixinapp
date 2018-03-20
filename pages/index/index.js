@@ -16,13 +16,7 @@ Page({
     if (options.callBackUrl){
       this.callBackUrl = decodeURIComponent(options.callBackUrl);
     }
-    
-
     // this.productId = "7152";
-    wx.setStorage({
-      key: 'mmm',
-      data: 'kkkk',
-    })
     let that = this;
     wx.login({
       success: function (res) {
