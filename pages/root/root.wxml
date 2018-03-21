@@ -1,2 +1,0 @@
-<!--pages/root/root.wxml-->
-<button hidden='{{isHiddenRoot}}' bindtap='getRoot'>获取用户信息权限</button>

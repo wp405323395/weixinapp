@@ -22,7 +22,22 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "qrid",
+					"pathName": "pages/index/index",
+					"query": "qrid=4",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "聊天置顶的小程序",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1027"
+				}
+			]
 		}
 	}
 }

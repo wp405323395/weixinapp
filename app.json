@@ -1,18 +1,12 @@
 {
   "pages": [
-    "pages/root/root",
-    "pages/pay/pay",
-    "pages/tvCardModel/tvCardIndex/tvcard",
-    "pages/vote/vote",
-    "pages/tvCardModel/msgConfirm/confirm",
-    "pages/tvCardModel/pay/pay",
-    "pages/tvCardModel/pay/success/paySuccess",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/pay/pay"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "扫码续费",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#0387FE",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "欢饮进入",
     "backgroundColor": "#ffffff"
   },
   "networkTimeout": {

@@ -1,5 +1,6 @@
 //app.js
 const myLogin = require('netApi/login');
+console.log(App);
 App({
   onLaunch: function(ops) {
     //调用API从本地缓存中获取数据

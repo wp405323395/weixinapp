@@ -1,4 +1,7 @@
 // pages/index/index.js
+var config = require("../../config.js");
+import RequestEngine from '../../netApi/requestEngine.js';
+var Promise = require('../../libs/es6-promise.js').Promise;
 Page({
 
   /**
@@ -13,10 +16,14 @@ Page({
    */
   onLoad: function (options) {
     this.callBackUrl = undefined;
-    if (options.callBackUrl){
-      this.callBackUrl = decodeURIComponent(options.callBackUrl);
+    this.qrid = options.qrid;
+    if (this.qrid) {
+      this.loadQrInfo(this.qrid);
+    } else {
+      this.getRoot();
     }
-    // this.productId = "7152";
+  },
+  storeLogin: function(){
     let that = this;
     wx.login({
       success: function (res) {
@@ -29,6 +36,45 @@ Page({
 
       }
     });
+  },
+  loadQrInfo: function (qrid) {
+    let that = this;
+    new RequestEngine().request(config.qrDetail + "?qrid=" + qrid, { qrid: qrid }, { callBy: that, method: that.loadQrInfo, params: [qrid] }, (success) => {
+      that.callBackUrl = JSON.parse(success).callBackUrl;
+      that.getRoot();
+    }, (faild) => {
+
+    });
+  },
+  getRoot: function () {
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              that.storeLogin();
+            },
+            fail() {
+              wx.openSetting({
+                success: (res) => {
+                }
+              })
+            }
+          })
+        }
+      }
+    });
+
+    wx.getUserInfo({
+      success: function (res) {
+        that.storeLogin();
+      },
+      fail: function (res) {
+        
+      }
+    })
   },
   loginStore: function (){
     let that = this;
@@ -44,16 +90,14 @@ Page({
         let loginUrl = undefined;
         if (that.callBackUrl && that.callBackUrl != 'undefined') {
         } else {
-          that.callBackUrl = "https://www.juzijumi.com/mobile/checkWXlogin.htm?url=/mobile/customercenter.htm&code=";
+          that.callBackUrl = config.schema + "://" + config.host+"/mobile/checkWXlogin.htm?url=/mobile/customercenter.htm&code=";
         }
         loginUrl = that.callBackUrl + "&encodeUserInfo=" + userInfo + "&"
           + "wxCode=" + that.wxcode;
         that.setData({
           loginUrl: loginUrl
         });
-
       },
-
     })
   },
   _utf8_encode : function (string) {
@@ -71,7 +115,6 @@ Page({
         utftext += String.fromCharCode(((c >> 6) & 63) | 128);
         utftext += String.fromCharCode((c & 63) | 128);
       }
-
     }
     return utftext;
   } ,
@@ -104,7 +147,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -128,14 +170,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
