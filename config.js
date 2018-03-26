@@ -5,7 +5,7 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-//var host = "192.168.2.104:8015"
+// var host = "192.168.2.107:8180"
 var host = 'www.htrnpay.cn';
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
@@ -59,6 +59,7 @@ var config = {
     listWxQuestion: `${schema}://${host}/wappweb/vot/vot-wx!listWxQuestion`,
     doVot: `${schema}://${host}/wappweb/vot/vot-wx!doVot`,
     isHadVot: `${schema}://${host}/wappweb/vot/vot-wx!isHadVot`,
+    queQrcodePutById: `${schema}://${host}/wappweb/qrwx/qrcode!queQrcodePutById`,
 };
 
 

@@ -12,7 +12,7 @@ Page({
     hidd2:true,
   },
 
-  onLoad: function (options) {
+ /* onLoad: function (options) {
     // var scene = decodeURIComponent(options.q);
     // if(util.textIsNull(scene)) {
     //   var scene = decodeURIComponent(options.scene);
@@ -33,7 +33,25 @@ Page({
         }
     }, 500);
     
-  }, 
+  }, */
+
+  /*qrid查询*/
+  onLoad: function (options) {
+    var src = decodeURIComponent(options.q)
+    let that=this;
+    var scene = util.getScene(options, function (scene){
+      that.getCardInfo(scene);
+      setTimeout(() => {
+        if (util.textIsNotNull(that.tvCardNum)) {
+          that.loadTvCardInfo(that.tvCardNum);
+        } else {
+          that.loadRecordHistory();
+        }
+      }, 500);
+    })
+  },
+
+  
   onSearchMore:function(){
     wx.navigateTo({
       url: '../msgConfirm/confirm',

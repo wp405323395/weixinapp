@@ -195,7 +195,8 @@ Page({
         addr : this.addr,
         custname : this.custname,
         mobile : this.mobile,
-        city:this.city
+        city:this.city,
+        serviceid: this.serviceID
       };
       new RequestEngine().request(reqUrl, param, { callBy: that, method: that.pay, params: [] }, (success) => {
         resolve(success);

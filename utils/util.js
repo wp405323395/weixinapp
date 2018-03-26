@@ -135,6 +135,12 @@ function splice(optionsScene){
  * options
  * flag 是否需要解密，默认不需要
  */
+function getScene(options, callback, flag) {
+  var qrutil = require('../qrutil/qrutil.js');
+  return qrutil.getScene(options, callback, flag);
+}
+/**
+ *
 function getScene(options,flag) {
   // import DES3 from './DES3.js'
   var DES3 = require('./DES3.js');
@@ -166,7 +172,7 @@ function getScene(options,flag) {
 
   return scene;
 }
-
+ */
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
