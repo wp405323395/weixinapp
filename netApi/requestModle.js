@@ -35,7 +35,7 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
         }
         console.log("身份失效");
         loginJs.clientLogin(reqMethod);
-      } else if (response_code == '1') {
+      } else if (response_code == '0') {
         for (let interceptor of interceptors) {
           interceptor.onResponse(url, header, responseData);
         }

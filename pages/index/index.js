@@ -153,10 +153,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
+    let that = this;
     let status = wx.getStorageSync("status");
     if(status == 1) {
       this.setData({
-        loginUrl:'javascript:jsbridgeCallback();'
+        loginUrl: 'javascript:jsbridgeCallback('+that.qrid+');'
       });
     }else if (status == 2) {
       this.setData({
