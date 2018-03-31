@@ -39,11 +39,13 @@ function getScene(options, callback, flag) {
     var request = require('../qrutil/qrutil.js');
     qrid = DES3.encrypt(qrid);
     let url = config.queQrcodePutById + "?qrid=" + qrid;
-    new RequestEngine().request(url, {}, {}, (success) => {
-      callback(success);
-    }, (faild) => {
-      console.log(faild);
-    });
+    new Promise((resolve, reject) => {
+      new RequestEngine().request(url, {}, {}, (success) => {
+        callback(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    })
   }else{
     if (util.textIsNull(scene)) {
 
