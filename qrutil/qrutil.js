@@ -40,7 +40,7 @@ function getScene(options, callback, flag) {
     qrid = DES3.encrypt(qrid);
     let url = config.queQrcodePutById + "?qrid=" + qrid;
     new Promise((resolve, reject) => {
-      new RequestEngine().request(url, {}, {}, (success) => {
+      new RequestEngine().request(url, {}, { callBy: this, method: this.getScene, params: [options, callback, flag] }, (success) => {
         callback(success);
       }, (faild) => {
         reject(faild);
