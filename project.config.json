@@ -34,8 +34,8 @@
 				{
 					"id": 0,
 					"name": "元旦的项目",
-					"pathName": "pages/yuandanproject/freewatchtv/freewatchtv",
-					"query": "q=\"https://www.maywidehb.com/wx1/test5/?qrid=514604\"",
+					"pathName": "pages/yuandanproject6/tvpackage/tvpackage",
+					"query": "",
 					"scene": "1011"
 				}
 			]
