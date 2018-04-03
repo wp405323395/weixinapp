@@ -1,0 +1,19 @@
+/* pages/index/index.wxss */
+.title{
+  width: 100%;
+  height:300rpx;
+  background-color: darkblue;
+}
+.webviewxx{
+  width: 300rpx;
+  height: 400rpx;
+}
+.getroot{
+  width: 100%;
+  height: 300rpx;
+  background-color: green;
+}
+.web-view-apearence{
+  width: 100%;
+  height: 100%
+}

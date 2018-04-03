@@ -21,11 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let scene = util.getScene(options);
-    var relation = scene.split('~')[1];
-    var qrid = scene.split('~')[2];
-    this.relation = relation;
-    this.qrid = qrid;
+    if (options.q) {
+      this.qrid = options.q.split("?")[1].split("=")[1];
+    }
     setTimeout(()=>{
       this.setData({
         ishiddenToast : false,
