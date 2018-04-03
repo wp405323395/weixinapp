@@ -90,7 +90,7 @@ Page({
         let loginUrl = undefined;
         if (that.callBackUrl && that.callBackUrl != 'undefined') {
         } else {
-          that.callBackUrl = config.schema + "://" + config.host+"/mobile/checkWXlogin.htm?url=/mobile/customercenter.htm&code=";
+          that.callBackUrl = config.schema + "://" + config.host +"/mobile/checkWXlogin.htm?url=/mobile/main.html&code=";
         }
         loginUrl = that.callBackUrl + "&encodeUserInfo=" + userInfo + "&"
           + "wxCode=" + that.wxcode;
