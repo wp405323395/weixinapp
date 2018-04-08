@@ -21,9 +21,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.q) {
-      this.qrid = options.q.split("?")[1].split("=")[1];
+    var qrid = decodeURIComponent(options.q);
+    if (util.textIsNull(qrid)) {
+      var qrid = decodeURIComponent(options.qrid);
+    } else {
+      qrid = qrid.split("qrid=")[1];
     }
+    this.qrid = qrid;
     setTimeout(() => {
       this.setData({
         ishiddenToast: false,
@@ -95,7 +99,7 @@ Page({
   //   })
   // },
   gotoseeTv: function () {
-    new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype:2 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
+    new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype:1 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
       wx.showToast({
         title: '成功',
         icon: 'succes',

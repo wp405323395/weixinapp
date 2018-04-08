@@ -24,18 +24,22 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
 					"name": "元旦的项目",
-					"pathName": "pages/yuandanproject6/tvpackage/tvpackage",
-					"query": "",
+					"pathName": "pages/yuandanproject7/jiazheng/index",
+					"query": "qrid=515007",
 					"scene": "1011"
 				}
 			]

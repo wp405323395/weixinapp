@@ -71,7 +71,7 @@ Page({
   },
   freeWatchTv: function () {
     let that = this;
-    new RequestEngine().request(config.canTrySee, { qrid: this.qrid }, { callBy: this, method: this.freeWatchTv, params: [] }, (success) => {
+    new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2  }, { callBy: this, method: this.freeWatchTv, params: [] }, (success) => {
       wx.showToast({
         title: '成功',
         icon: 'succes',
