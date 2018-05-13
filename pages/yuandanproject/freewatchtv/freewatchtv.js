@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.qrid = options.qrid;
+    this.isclick = 1;
   },
 
   /**
@@ -67,18 +68,21 @@ Page({
   
   },
   freeWatchTv: function(){
-    new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.freeWatchTv, params: []        }, (success) => {
-      wx.showToast({
-        title: '成功',
-        icon: 'succes',
-        duration: 2000,
-        mask: true
-      })
+    if (this.isclick){
+      new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.freeWatchTv, params: [] }, (success) => {
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 2000,
+          mask: true
+        })
       }, (faild) => {
 
       }, (requestComplete) => {
 
-    });
+      });
+      this.isclick = 0;
+    }
   },
 
   gotocontribution : function(){

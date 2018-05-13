@@ -33,12 +33,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "元旦的项目",
-					"pathName": "pages/yuandanproject7/jiazheng/index",
+					"pathName": "pages/yuandanproject4/redpackage/red",
 					"query": "qrid=515007",
 					"scene": "1011"
 				}

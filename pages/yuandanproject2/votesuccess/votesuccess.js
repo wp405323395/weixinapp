@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.qrid = options.qrid;
+    this.isclick = 1;
   },
 
   /**
@@ -73,17 +74,20 @@ Page({
   //   })
   // }
   gotoseeTv: function () {
-    new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype:2 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
-      wx.showToast({
-        title: '成功',
-        icon: 'succes',
-        duration: 2000,
-        mask: true
-      })
-    }, (faild) => {
+    if (this.isclick){
+      new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 2000,
+          mask: true
+        })
+      }, (faild) => {
 
-    }, (requestComplete) => {
+      }, (requestComplete) => {
 
-    });
+      });
+      this.isclick = 0;
+    }
   }
 })

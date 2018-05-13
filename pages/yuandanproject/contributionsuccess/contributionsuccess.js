@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.isclick = 1;
     this.qrid = options.qrid;
   },
 
@@ -73,18 +74,22 @@ Page({
   //   })
   // }
   gotoseeTv: function () {
-    new RequestEngine().request(config.canTrySee, { qrid: this.qrid,optype:2 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
-      wx.showToast({
-        title: '成功',
-        icon: 'succes',
-        duration: 2000,
-        mask: true
-      })
-    }, (faild) => {
+    if (this.isclick){
+      new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.gotoseeTv, params: [] }, (success) => {
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 2000,
+          mask: true
+        })
+      }, (faild) => {
 
-    }, (requestComplete) => {
+      }, (requestComplete) => {
 
-    });
+      });
+      this.isclick = 0;
+    }
+    
   }
 
 })

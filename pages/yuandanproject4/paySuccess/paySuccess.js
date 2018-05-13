@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.isclick = 1;
     this.qrid = options.qrid;
   },
 
@@ -67,7 +68,10 @@ Page({
   
   },
   seeTv:function(){
-    this.freeWatchTv();
+    if (this.isclick){
+      this.freeWatchTv();
+      this.isclick = 0;
+    }
   },
   freeWatchTv: function () {
     new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.freeWatchTv, params: [] }, (success) => {

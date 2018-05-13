@@ -17,6 +17,7 @@ Page({
   onLoad: function (options) {
     this.qrid = options.qrid;
     console.log('dffffffffffff--->', this.qrid);
+    this.isclick = 1;
   },
 
   /**
@@ -68,7 +69,10 @@ Page({
   
   },
   click:function(){
-    this.freeWatchTv();
+    if (this.isclick){
+      this.freeWatchTv();
+      this.isclick = 0;
+    }
   },
   freeWatchTv: function () {
     new RequestEngine().request(config.canTrySee, { qrid: this.qrid, optype: 2 }, { callBy: this, method: this.freeWatchTv, params: [] }, (success) => {
