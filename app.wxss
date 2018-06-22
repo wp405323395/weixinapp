@@ -1,10 +1,10 @@
-@font-face {
-  font-family: 'iconfont';  /* project id 392713 */
-  src: url('//at.alicdn.com/t/font_392713_rf442mmgewvr6bt9.eot');
-  src: url('//at.alicdn.com/t/font_392713_rf442mmgewvr6bt9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_392713_rf442mmgewvr6bt9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_392713_rf442mmgewvr6bt9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_392713_rf442mmgewvr6bt9.svg#iconfont') format('svg');
+@import "./stylesheet.wxss";
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 page{
   width: 100%;
@@ -13,6 +13,12 @@ page{
   font-size: 32rpx;
   font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 } 
+.space_line{
+  height: 1px;
+  background-color: #d4d4d4;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
 .container {
   background-color: #eeeeee;
   height: 100%;

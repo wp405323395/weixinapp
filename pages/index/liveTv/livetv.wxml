@@ -1,0 +1,30 @@
+<!--pages/index/liveTv/livetv.wxml-->
+<view class='my_channel'>
+  <text class='my_channel_lable'>我的频道</text>
+  <view class='my_channel_wrap'>
+    <view class='channel_item_wrap' wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+      <image class='channel_icon' src='../../../img/my_coup.png'></image>
+      <text>南方电视</text>
+    </view>
+    
+  </view>
+</view>
+<view class='space_line'></view>
+<view class='other_channel'>
+  <text class='my_channel_lable'>其他频道</text>
+  <view class='select_group' bindtap='selectKind'>
+    <text id='0' class='{{kindSelect == 0 ? "item_select" : ""}}'>所有</text>
+    <text id='1' class='{{kindSelect == 1 ? "item_select" : ""}}'>电视剧</text>
+    <text id='2' class='{{kindSelect == 2 ? "item_select" : ""}}'>电影</text>
+    <text id='3' class='{{kindSelect == 3 ? "item_select" : ""}}'>综艺</text>
+  </view>
+</view>
+<view class='other_channel_wrap'>
+  <view wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName" class='channel_item_wrap'>
+    <text class='other_wrap_lable'>中央电视台</text>
+    <image class='other_channel_img' src='../../../img/my_coup.png'></image>
+    <text class='other_wrap_lable channel_desc'>2018年斯诺克大赛卡卡卡</text>
+    <text class='other_wrap_lable time_desc'>16:30-18:50</text>
+  </view>
+</view>
+

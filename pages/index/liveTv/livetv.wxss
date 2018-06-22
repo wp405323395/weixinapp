@@ -1,0 +1,87 @@
+/* pages/index/liveTv/livetv.wxss */
+.my_channel_wrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.my_channel_lable{
+  text-align: left;
+  margin-left: 20rpx;
+  display: inline-block;
+  font-size: 45rpx;
+}
+.channel_icon{
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.channel_item_wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30rpx;
+  text-align: left;
+}
+.space_line{
+  height: 1px;
+  background-color: #d4d4d4;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+.my_channel, .other_channel{
+  text-align: left;
+  background-color: white;
+}
+.other_channel{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.select_group{
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.select_group>text{
+  display: inline-block;
+  border: 1px solid #d4d4d4;
+  border-right: none;
+  text-align: center;
+  width: 110rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+.select_group>text:last-child{
+  border-right: 1px solid #d4d4d4;
+}
+.item_select{
+  background: #999999;
+  color: white;
+}
+.other_channel_wrap{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap ;
+  background-color: white;
+}
+.other_channel_img{
+  width: 190rpx;
+  height: 190rpx;
+}
+.other_wrap_lable{
+  display: block;
+  text-align: left;
+  width: 100%;
+  max-width: 190rpx;
+  margin-bottom: 10rpx;
+   text-overflow:ellipsis; white-space:nowrap; overflow:hidden; 
+}
+.channel_desc{
+  font-size: 28rpx;
+}
+.time_desc{
+  font-size: 24rpx;
+}

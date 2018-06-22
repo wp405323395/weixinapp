@@ -1,12 +1,13 @@
 {
   "pages": [
-
+    "pages/index/index",
     "pages/tvCardModel/tvCardIndex/tvcard",
     "pages/vote/vote",
     "pages/tvCardModel/msgConfirm/confirm",
-        "pages/tvCardModel/pay/pay",
-    "pages/tvCardModel/pay/success/paySuccess"
-    
+    "pages/tvCardModel/pay/pay",
+    "pages/tvCardModel/pay/success/paySuccess",
+    "pages/search/search"
+   
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,34 @@
+/* pages/index/topiczone/topiczone.wxss */
+.topic_item>image{
+  width: 700rpx;
+  height: 350rpx;
+  margin: 0;
+  padding: 0;
+}
+.topic_item{
+  margin-bottom: 30rpx;
+}
+.topic_list{
+  padding-top: 30rpx;
+  background: white;
+}
+.desc_wrap_re{
+  position: relative;
+  height: 1px;
+  width: 100%;
+}
+ .desc_wrap{
+  width: 700rpx;
+  height: 70rpx;
+  left: 25rpx;
+  position: absolute;
+  top: -80rpx;
+  background: rgba(0, 0, 0, .5);
+  box-sizing: border-box;
+  text-align: left;
+  padding: 20rpx;
+} 
+.desc_wrap>text{
+  color: white;
+  text-overflow:ellipsis; white-space:nowrap; overflow:hidden; 
+}

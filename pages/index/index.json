@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "视家",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "white",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "livetv":"./liveTv/livetv",
+    "videoreco":"./videoReco/videoreco",
+    "topiczone":"./topiczone/topiczone"
+  }
+}
