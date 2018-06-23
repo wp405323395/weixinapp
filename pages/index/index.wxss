@@ -5,17 +5,20 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
 }
 .search_edit{
-  background: #eeeeee;
   display: flex;
+  flex-direction: row;
+  background: #eeeeee;
   width: 550rpx;
-  flex-direction: row; 
   border-radius: 50rpx ;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   margin-bottom: 20rpx;
-  padding:15rpx 40rpx;
+  padding:0 40rpx;
   overflow:hidden;
+  height: 80rpx;
+  line-height: 80rpx;
 }
  .search_edit::before{
   font-family: "iconfont";
@@ -23,17 +26,29 @@
   font-size: 40rpx;
   color: black;
   font-weight: 500;
-  transform: translateX(-20rpx)
+  display: inline-block;
+  margin-right: 30rpx;
 }
-.search_edit::after{
-    font-family: "iconfont";
+.voice::before{
+  font-family: "iconfont";
   content: "\e687";
   font-size: 40rpx;
   color: black;
   font-weight: 500;
- z-index: 1;
-  transform: translateX(20rpx);
-} 
+  z-index: 1;
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.voice{
+  display: inline-block;
+  background-color: #eeeeee;
+  height:80rpx;
+  width: 80rpx;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
 
 
 
@@ -41,10 +56,11 @@
 .topTabSwiper:after{content: ""; clear: both;display: block;}
 .tabBorer{border-bottom: 1px solid black; color: black; font-weight: 600}
 .swiper{width: 100%;}
-.swiper_con{text-align: center; width: 100%; height: 100%; }
+.swiper_con{background-color: white; text-align: center; width: 100%; height: 100%; }
 .topTabSwiper{
   background: white;
-  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+-moz-box-shadow:0px 5px 5px #eeeeee; -webkit-box-shadow:0px 5px 5px #eeeeee; box-shadow:0px 5px 5px #eeeeee;
 }
 
 

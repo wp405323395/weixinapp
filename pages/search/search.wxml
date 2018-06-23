@@ -1,13 +1,13 @@
 <!--pages/search/search.wxml-->
 <view class='input_arear'>
   <text class='search_icon'></text> 
-  <input placeholder='帮你快速寻找剧集和电影'></input>
-  <text class='voice_icon'></text>
-  <text>取消</text>
+  <input value="{{searchinput}}" bindconfirm="searchVideo" confirm-type="search" focus="true" placeholder='帮你快速寻找剧集和电影'></input>
+  <text bindtap='voiceBtn' class='voice_icon'></text>
+  <text bindtap='cancleSearch'>取消</text>
 </view>
 <view class='search_history'>
   <text class='lable'>我的搜索历史</text>
-  <view class='search_history_wrap' wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+  <view class='search_history_wrap' wx:key="idx" wx:key="{{idx}}" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='history_item'>
       <text>权利的游戏</text>
       <text>x</text>
@@ -18,7 +18,7 @@
 
 <view class='search_history'>
   <text class='lable'>热门搜索</text>
-  <view class='search_history_wrap' wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+  <view class='search_history_wrap' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='history_item'>
       <text>权利的游戏</text>
       <text>x</text>

@@ -62,5 +62,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  searchVideo:function(e){
+    //todo: 搜索事件
+    console.log(e.detail.value);
+  },
+  cancleSearch:function(){
+    this.setData({
+      searchinput:''
+    });
+  },
+  voiceBtn:function(){
+    wx.navigateTo({
+      url: '../voiceSearch/voiceSearch',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
+  
 })

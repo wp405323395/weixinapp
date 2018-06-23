@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
+  margin-top: 30rpx;
 }
 .my_channel_lable{
   text-align: left;
@@ -14,13 +15,25 @@
   width: 130rpx;
   height: 130rpx;
   border-radius: 50%;
+  margin-bottom: 20rpx;
 }
 .channel_item_wrap{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30rpx;
   text-align: left;
+  width: 25%;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+.other_channel_item_wrap{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  width: 33%;
+  height: 350rpx;
+
 }
 .space_line{
   height: 1px;
@@ -81,7 +94,38 @@
 }
 .channel_desc{
   font-size: 28rpx;
+  margin-top: 10rpx;
 }
 .time_desc{
   font-size: 24rpx;
+  color: #999999;
+}
+.over_worlds_hidden{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  width: 70%;
+  text-align: center;
+}
+.add_icon::before{
+   content: "+";
+   font-size: 110rpx;
+   display: inline-block;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   color: #999999;
+}
+.add_icon{
+  background: #f7f7f7;
+}
+.delete_icon::before{
+  content: "\2013";
+   font-size: 100rpx;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   color: red;
+   float: left;
+   opacity: 1;
 }

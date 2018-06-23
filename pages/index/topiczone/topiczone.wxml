@@ -1,6 +1,6 @@
 <!--pages/index/topiczone/topiczone.wxml-->
 <view class='topic_list'>
-  <view class='topic_item' wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+  <view class='topic_item' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
     <image mode="scaleToFill" src='../../../img/video.jpg'></image>
     <view class="desc_wrap_re">
       <view class="desc_wrap">

@@ -14,7 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    kindSelect:0
+    kindSelect:0,
+    isShowDelete:false
   },
 
   /**
@@ -27,6 +28,31 @@ Component({
       this.setData({
         kindSelect:id
       });
+      //todo: 切换频道类型，切换数据
+    },
+    addChannel:function(){
+      //todo: 添加电视台
+    },
+    showDelete:function(){
+      this.setData({
+        isShowDelete:true
+      });
+    },
+
+    despatchClick:function(e){
+      if(e.target.id == "10105") {
+          if(this.data.isShowDelete) {
+            console.log("开始删除应用");
+            //todo: 删除我的频道
+          } else {
+            console.log("点击进入播放台");
+            //todo: 播放频道
+          }
+      } else {
+        this.setData({
+          isShowDelete:false
+        });
+      }
     }
   }
 })

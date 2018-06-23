@@ -5,7 +5,7 @@
   "navigationBarTextStyle": "black",
   "usingComponents": {
     "livetv":"./liveTv/livetv",
-    "videoreco":"./videoReco/videoreco",
+    "videoreco":"./hotvideo/videoreco",
     "topiczone":"./topiczone/topiczone"
   }
 }

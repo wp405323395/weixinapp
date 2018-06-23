@@ -8,13 +8,11 @@
 .input_arear>input{
    background-color: #eeeeee;
    display: inline-block;
-   width: 450rpx;
-   border-radius: 10rpx ;
-   padding:10rpx 0;
-   padding-left: 80rpx;
-   margin: 30rpx;
-   margin-left: 0;
-   padding-right: 60rpx;
+   width: 420rpx;
+   height: 80rpx;
+   line-height: 80rpx;
+   padding-left: 30rpx;
+   padding-right: 30rpx;
 }
 .search_icon::before{
   display: inline-block;
@@ -23,18 +21,29 @@
   font-size: 40rpx;
   color: black;
   font-weight: 500;
-  transform: translateX(60rpx)
+   line-height: 80rpx;
+   height: 80rpx;
+   margin-left: 30rpx;
+   background-color:  #eeeeee;
+   padding-left: 20rpx;
+   border-top-left-radius: 10rpx;
+   border-bottom-left-radius: 10rpx;
 }
+
 .voice_icon::before{
-  position: absolute;
+  display: inline-block;
   font-family: "iconfont";
   content: "\e687";
   font-size: 40rpx;
   color: black;
   font-weight: 500;
-  right: 150rpx;
-  top: 35rpx;
-  
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #eeeeee;
+  padding-right: 20rpx;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  margin-right: 30rpx;
 }
 .search_history{
   background-color: white;

@@ -1,5 +1,5 @@
 <!--pages/index/videoReco/videoreco.wxml-->
-<view class='video_wrap' wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+<view class='video_wrap' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
 <video class='video_style' src='../../MY_VIDEO.mp4' controls page-gesture show-center-play-btn objectFit="contain">
 </video>
 </view>

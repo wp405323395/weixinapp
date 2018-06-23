@@ -1,5 +1,6 @@
 <view class='search'>
   <input disabled='disabled' bindtap='gotoSearch' class='search_edit' type='text' placeholder='帮你快速寻找剧集和电影' confirm-type='search'></input>
+  <text bindtap='voicebtn' class='voice'></text>
 </view>
 
 <view class='topTabSwiper'>

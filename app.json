@@ -6,8 +6,8 @@
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
     "pages/tvCardModel/pay/success/paySuccess",
-    "pages/search/search"
-   
+    "pages/search/search",
+    "pages/voiceSearch/voiceSearch"
   ],
   "window": {
     "navigationBarTextStyle": "black",
