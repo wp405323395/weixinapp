@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/tvCardModel/tvCardIndex/tvcard",
     "pages/tvCardModel/msgConfirm/confirm",
@@ -9,14 +8,38 @@
     "pages/search/search",
     "pages/voiceSearch/voiceSearch",
     "pages/channelcenter/channelcenter",
-    "pages/topic/topicdetail/topicdetail"
-    
+    "pages/topic/topicdetail/topicdetail",
+    "pages/interactive/interactive",
+    "pages/me/me"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "img/my_order.png",
+        "selectedIconPath": "img/my_order.png"
+      },
+      { 
+        "pagePath": "pages/interactive/interactive",
+        "text": "互动",
+        "iconPath": "img/my_order.png",
+        "selectedIconPath": "img/my_order.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "img/my_order.png",
+        "selectedIconPath": "img/my_order.png"
+      }
+    ]
+  },
   "window": {
+    "navigationBarBackgroundColor": "white",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "扫码续费",
-    "navigationBarBackgroundColor": "#ffffff",
-    "backgroundColor": "#ffffff"
+    "navigationBarTitleText": "微信接口功能演示",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "white"
   },
   "networkTimeout": {
     "request": 20000,
