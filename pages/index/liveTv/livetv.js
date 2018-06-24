@@ -29,9 +29,17 @@ Component({
         kindSelect:id
       });
       //todo: 切换频道类型，切换数据
+      console.log("开始切换频道类型");
     },
     addChannel:function(){
       //todo: 添加电视台
+      console.log("开始添加频道");
+      wx.navigateTo({
+        url: '../channelcenter/channelcenter',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
     },
     showDelete:function(){
       this.setData({
@@ -41,11 +49,12 @@ Component({
 
     despatchClick:function(e){
       if(e.target.id == "10105") {
+          let channelid = e.target.dataset.channelid;
           if(this.data.isShowDelete) {
-            console.log("开始删除应用");
+            console.log("开始删除频道 channelid= "+ channelid);
             //todo: 删除我的频道
           } else {
-            console.log("点击进入播放台");
+            console.log("点击进入播放台channelid= " + channelid);
             //todo: 播放频道
           }
       } else {

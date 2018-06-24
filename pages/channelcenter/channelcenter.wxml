@@ -1,0 +1,14 @@
+<!--pages/channelcenter/channelcenter.wxml-->
+<view  wx:for="{{[1,2,3]}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName">
+<view class='title'>
+  <text>热门频道</text>
+</view>
+<view class='space_line line'></view>
+<view class='channel_wrap'>
+  <view class='channel_item' wx:for="{{[1,2,3,4,5,56]}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName" >
+    <image class='channel_icon' src='../../img/my_coup.png'></image>
+    <text class='channel_name'>浙江卫视</text>
+    <text bindtap='addChannel' data-channelid='{{idx}}' class='channel_add'>+</text>
+  </view>
+</view>
+</view>

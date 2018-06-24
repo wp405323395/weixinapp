@@ -1,0 +1,47 @@
+/* pages/channelcenter/channelcenter.wxss */
+.title{
+  padding: 30rpx;
+  font-size: 38rpx;
+}
+.line{
+  margin: 0;
+}
+.channel_icon{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin-bottom: 15rpx;
+}
+.channel_name{
+  color: #999999;
+  display: block;
+  font-size: 24rpx;
+
+}
+.channel_wrap{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+
+}
+.channel_item{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.channel_add{
+  display: block;
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 100rpx;
+  border: 1px solid #d4d4d4;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-top: 7rpx;
+  color: #999999;
+}
