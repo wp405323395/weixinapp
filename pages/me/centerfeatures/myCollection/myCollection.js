@@ -1,4 +1,5 @@
 // pages/me/centerfeatures/myCollection/myCollection.js
+import videoController from "../../../../template/video.js"
 Page({
 
   /**
@@ -12,7 +13,12 @@ Page({
       url:"../../MY_VIDEO.mp4"
     }
   },
-
+  like: videoController.like,
+  msg: videoController.msg,
+  star: videoController.star,
+  share: videoController.share,
+  play: videoController.play,
+  showOnTv: videoController.showOnTv,
   /**
    * 生命周期函数--监听页面加载
    */

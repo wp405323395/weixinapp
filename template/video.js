@@ -10,6 +10,12 @@ var videoController = {
   },
   share:function(){
     console.log("share");
+  },
+  play:function(){
+    console.log("play");
+  },
+  showOnTv:function(){
+    console.log("showOnTv");
   }
 }
 export default videoController;

@@ -1,4 +1,5 @@
 // pages/topic/topicdetail/topicdetail.js
+import videoController from '../../../template/video.js';
 Page({
 
   /**
@@ -18,7 +19,12 @@ Page({
     
     //todo ： 加载专区信息
   },
-
+  like: videoController.like,
+  msg: videoController.msg,
+  star: videoController.star,
+  share: videoController.share, 
+  play: videoController.play,
+  showOnTv: videoController.showOnTv,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

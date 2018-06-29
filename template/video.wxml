@@ -1,9 +1,23 @@
 <template name="video">
 <view class='video_wrap'>
-  <video class='video_style' src='/MY_VIDEO.mp4' controls page-gesture show-center-play-btn objectFit="contain">
+  <video wx:if="{{false}}" class='video_style' src='/MY_VIDEO.mp4' controls page-gesture show-center-play-btn objectFit="contain">
   </video>
+  <view wx:else class='video_style' mode='aspectFit' src=''>
+    <view class='info_wrap'>
+      <text class='video_introduce'>非常好看的电视剧情非常好看的电视剧情非常好看的电视剧情非常好看的电视剧情</text>
+      <view bindtap='play' class='play_btn_wrap'>
+        <text class='play_btn'> </text>
+      </view>
+      <view class='video_count_footer'>
+        <text>12323次播放量</text>
+        <text>34:00</text>
+      </view>
+    </view>
+    <image class='vido_pic'></image>
+
+  </view>
   <view class='controller_section'>
-    <image mode='aspectFit' class='show_on_tv_btn' src='/img/show_on_tv.png'></image>
+    <image bindtap='showOnTv' mode='aspectFit' class='show_on_tv_btn' src='/img/show_on_tv.png'></image>
     <view class='controller_wrap'>
       <view bindtap='like' class='like'></view>
       <view bindtap='msg' class='msg'></view>
@@ -13,3 +27,4 @@
   </view>
 </view>
 </template>
+

@@ -27,6 +27,8 @@ Component({
     like: videoController.like,
     msg:videoController.msg,
     star:videoController.star,
-    share:videoController.share
+    share:videoController.share,
+    play:videoController.play,
+    showOnTv: videoController.showOnTv
   }
 })
