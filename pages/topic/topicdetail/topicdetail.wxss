@@ -1,1 +1,21 @@
 /* pages/topic/topicdetail/topicdetail.wxss */
+@import '/pages/index/topiczone/topiczone.wxss';
+@import '/template/video.wxss'
+.topic_list2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desc_wrap2{
+  background-color: white;
+  position: static;
+  margin-bottom: 30rpx;
+}
+
+.desc_wrap2>text{
+  display: inline;
+  color: #333333;
+  text-overflow:ellipsis;
+  white-space:pre-wrap;
+  overflow:hidden;
+}

@@ -126,4 +126,14 @@ Page({
       url: 'centerfeatures/feedback/feedback',
     })
   },
+  bindUser:function(){
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        let cardNum = res.result;
+        //todo: 发起绑定卡的请求。
+        console.log(res);
+      }
+    })
+  }
 })

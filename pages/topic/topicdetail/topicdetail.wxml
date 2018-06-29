@@ -1,2 +1,15 @@
 <!--pages/topic/topicdetail/topicdetail.wxml-->
-<text>pages/topic/topicdetail/topicdetail.wxml</text>
+<view class='topic_list topic_list2'>
+  <view class='topic_item'>
+    <image bindtap='gotoTopic' data-topicid='{{idx}}' mode="scaleToFill" src='../../../img/video.jpg'></image>
+   
+      <view class="desc_wrap desc_wrap2">
+        <text>2018俄罗斯世界asdfasdfadsfdsafsfd的事发生的发送打算地方阿斯蒂芬阿道夫杯专题</text>
+      </view>
+  </view>
+</view>
+<import src="/template/video.wxml"/>
+<view wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+  <template is="video" data="{{...item}}"></template>
+</view>
+
