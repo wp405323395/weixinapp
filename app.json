@@ -18,20 +18,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "发现",
-        "iconPath": "img/my_order.png",
-        "selectedIconPath": "img/my_order.png"
+        "iconPath": "img/find_dark.png",
+        "selectedIconPath": "img/find_light.png"
       },
       {
         "pagePath": "pages/interactive/interactive",
         "text": "互动",
-        "iconPath": "img/my_order.png",
-        "selectedIconPath": "img/my_order.png"
+        "iconPath": "img/interactive_dark.png",
+        "selectedIconPath": "img/interactive_light.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
-        "iconPath": "img/my_order.png",
-        "selectedIconPath": "img/my_order.png"
+        "iconPath": "img/me_dark.png",
+        "selectedIconPath": "img/me_light.png"
       }
     ]
   },
