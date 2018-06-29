@@ -1,16 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/tvCardModel/tvCardIndex/tvcard",
-    "pages/tvCardModel/msgConfirm/confirm",
-    "pages/tvCardModel/pay/pay",
-    "pages/tvCardModel/pay/success/paySuccess",
     "pages/search/search",
     "pages/voiceSearch/voiceSearch",
     "pages/channelcenter/channelcenter",
     "pages/topic/topicdetail/topicdetail",
     "pages/interactive/interactive",
-    "pages/me/me"
+    "pages/me/centerfeatures/watchHistory/watchHistory",
+    "pages/me/me",
+    "pages/me/centerfeatures/myDevices/myDevices",
+    "pages/me/centerfeatures/myCollection/myCollection",
+    "pages/me/centerfeatures/question/question",
+    "pages/me/centerfeatures/feedback/feedback"
   ],
   "tabBar": {
     "list": [
@@ -20,7 +21,7 @@
         "iconPath": "img/my_order.png",
         "selectedIconPath": "img/my_order.png"
       },
-      { 
+      {
         "pagePath": "pages/interactive/interactive",
         "text": "互动",
         "iconPath": "img/my_order.png",

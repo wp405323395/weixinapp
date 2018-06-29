@@ -1,11 +1,16 @@
-// pages/index/index.js
+// pages/me/centerfeatures/myCollection/myCollection.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentData: 0,
+    item: {
+      index: 0,
+      msg: 'this is a template',
+      time: '2016-09-15',
+      url:"../../MY_VIDEO.mp4"
+    }
   },
 
   /**
@@ -13,38 +18,6 @@ Page({
    */
   onLoad: function (options) {
   
-  },
-  bindchange: function (e) {
-    const that = this;
-    that.setData({
-      currentData: e.detail.current
-    })
-  },
-  gotoSearch:function() {
-    wx.navigateTo({
-      url: '../search/search',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  //点击切换，滑块index赋值
-  checkCurrent: function (e) {
-    const that = this;
-
-    if (that.data.currentData === e.target.dataset.current) {
-      return false;
-    } else {
-
-      that.setData({
-        currentData: e.target.dataset.current
-      })
-    }
-  },
-  voicebtn:function(event){
-    wx.navigateTo({
-      url: '../voiceSearch/voiceSearch'
-    })
   },
 
   /**

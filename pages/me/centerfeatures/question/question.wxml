@@ -1,0 +1,10 @@
+<!--pages/me/centerfeatures/question/question.wxml-->
+<view>
+  为何连不上电视？
+</view>
+<view>
+  如何绑定?
+</view>
+<view>
+  如何关注频道?
+</view>

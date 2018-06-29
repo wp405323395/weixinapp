@@ -1,6 +1,0 @@
-<!--paySuccess.wxml-->
-<view class="container">
-  <image class="okimage" src="https://www.maywidehb.com/banner/pay_success.png"/>
-  <text class='note_text'>支付成功，请耐心等待系统开通，如有疑问请拨打客服电话96516</text>
-  <button bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
-</view>

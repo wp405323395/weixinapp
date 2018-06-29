@@ -1,7 +1,2 @@
 /* pages/index/videoReco/videoreco.wxss */
-.video_wrap{
-  padding: 30rpx;
-}
-.video_style{
-  width: 700rpx;
-}
+@import "/template/video.wxss";

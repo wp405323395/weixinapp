@@ -1,0 +1,96 @@
+/* pages/me/centerfeatures/watchHistory/watchHistory.wxss */
+.header{
+  padding: 30rpx 0 ;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.space_margin{
+  width: 100%;
+  height: 25rpx;
+  background-color:#eeeeee;
+}
+.basestyle{
+  width: 130rpx;  
+  height: 60rpx;
+  display: block;
+  text-align: center;
+  line-height: 60rpx;
+  box-sizing: border-box;
+}
+.selectstyle{
+  background-color: black;
+  color: white;
+}
+.unselectstyle{
+  color: #333333;
+  border: 1px solid #333333;
+}
+.video_icon{
+  width: 320rpx;
+  height: 200rpx;
+  background-color: yellow;
+}
+.video_content{
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.tv_content{
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  justify-content: space-between;
+}
+.video_content_body{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+}
+.tv_content_body{
+  margin-left: 0;
+}
+.continue_button{
+  margin: 0;
+  font-size: 34rpx;
+  margin-top: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 230rpx;
+  display: inline-block;
+}
+.video_content_body>text{
+  margin-bottom: 10rpx;
+}
+.title{
+  color: #333333;
+  font-size: 36rpx;
+}
+.time{
+  color: #666666;
+  font-size: 30rpx;
+}
+.video_header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.header_time{
+  color: #333333;
+  font-size: 30rpx;
+}
+.delete::before{
+  font-family: "iconfont";
+  content: "\e645";
+  font-size: 40rpx;
+  color: #999999;
+}
+.line_space{
+  width: 100%;
+  height: 1px;
+  background-color: #eeeeee;
+  margin-top: 30rpx;
+}

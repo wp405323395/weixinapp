@@ -1,5 +1,8 @@
-<!--pages/index/videoReco/videoreco.wxml-->
-<import src="../../../template/video.wxml"/>
+<!--pages/me/centerfeatures/myCollection/myCollection.wxml-->
+<import src="../../../../template/video.wxml"/>
+<view class='my_collection'>
 <view wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
   <template is="video" data="{{...item}}"></template>
 </view>
+</view>
+

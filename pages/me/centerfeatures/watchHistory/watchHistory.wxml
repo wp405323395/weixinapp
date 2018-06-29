@@ -1,0 +1,40 @@
+<!--pages/me/centerfeatures/watchHistory/watchHistory.wxml-->
+<view class='header'>
+  <text bindtap='toggleTap' class="basestyle {{isliving?'selectstyle':'unselectstyle'}}">视频</text>
+  <text  bindtap='toggleTap' class="basestyle {{!isliving?'selectstyle':'unselectstyle'}}">直播</text>
+</view>
+<view class='space_margin'></view>
+<view class='video' wx:if="{{isliving}}">
+  <view  wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class='video_header'>
+      <text class='header_time'>1小时前</text>
+      <text class='delete'></text>
+    </view>
+    <view class='video_content'>
+      <image class='video_icon'></image>
+      <view class='video_content_body'>
+        <text class='title'>NBA总决赛</text>
+        <text class='time'>观看时长:01:30:50</text>
+        <button class='continue_button'>继续观看</button>
+      </view>
+    </view>
+    <view class='line_space'></view>
+  </view>
+  
+</view>
+<view class='tv' wx:else>
+   <view  wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class='video_header'>
+      <text class='header_time'>1小时前</text>
+      <text class='delete'></text>
+    </view>
+    <view  class='tv_content'>
+      <view class='video_content_body tv_content_body'>
+        <text class='title'>湖南卫视</text>
+        <text class='time'>观看时长01：30：54</text>
+      </view>
+      <button class='continue_button'>继续观看</button>
+    </view>
+    <view class='line_space'></view>
+   </view>
+</view>

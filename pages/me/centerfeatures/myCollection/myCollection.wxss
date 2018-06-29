@@ -1,0 +1,5 @@
+/* pages/me/centerfeatures/myCollection/myCollection.wxss */
+@import "/template/video.wxss";
+.my_collection{
+  padding-top: 30rpx;
+}

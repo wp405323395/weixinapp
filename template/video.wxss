@@ -1,0 +1,59 @@
+/* video模板 */
+.video_wrap{
+  padding: 30rpx;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.video_style{
+  width: 700rpx;
+}
+
+.show_on_tv_btn{
+  width: 342rpx;
+  margin: 0;
+  padding: 0;
+  height: 62rpx;
+}
+.controller_section{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.like::before{
+  height: 70rpx;
+  line-height: 70rpx;
+  font-family: "iconfont";
+  content: "\e643";
+  
+}
+.msg::before{
+    height: 70rpx;
+  line-height: 70rpx;
+  font-family: "iconfont";
+  content: "\e6ad";
+}
+.star::before{
+    height: 70rpx;
+  line-height: 70rpx;
+  font-family: "iconfont";
+  content: "\e696";
+}
+.share::before{
+    height: 70rpx;
+  line-height: 70rpx;
+  font-family: "iconfont";
+  content: "\e6a5";
+}
+.controller_wrap{
+    height: 70rpx;
+  line-height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 36rpx;
+}
+.controller_wrap>view{
+  padding-left: 30rpx;
+}

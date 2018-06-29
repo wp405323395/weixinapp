@@ -11,7 +11,12 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    item: {
+      index: 0,
+      msg: 'this is a template',
+      time: '2016-09-15',
+      url:'../../MY_VIDEO.mp4'
+    }
   },
 
   /**
