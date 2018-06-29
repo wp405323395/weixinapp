@@ -1,14 +1,14 @@
 <template name="video">
 <view class='video_wrap'>
-  <video class='video_style' src='{{item.url}}' controls page-gesture show-center-play-btn objectFit="contain">
+  <video class='video_style' src='/MY_VIDEO.mp4' controls page-gesture show-center-play-btn objectFit="contain">
   </video>
   <view class='controller_section'>
     <image mode='aspectFit' class='show_on_tv_btn' src='/img/show_on_tv.png'></image>
     <view class='controller_wrap'>
-      <view class='like'></view>
-      <view class='msg'></view>
-      <view class='star'></view>
-      <view class='share'></view>
+      <view bindtap='like' class='like'></view>
+      <view bindtap='msg' class='msg'></view>
+      <view bindtap='star' class='star'></view>
+      <view bindtap='share' class='share'></view>
     </view>
   </view>
 </view>
