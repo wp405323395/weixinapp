@@ -9,7 +9,5 @@
   </view>
 </view>
 <import src="/template/video.wxml"/>
-<view wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
-  <template is="video" data="{{...item}}"></template>
-</view>
+<template is="video" data="{{items}}"></template>
 

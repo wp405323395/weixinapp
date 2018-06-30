@@ -12,23 +12,53 @@ Component({
    * 组件的初始数据
    */
   data: {
-    item: {
+    items: [{
       index: 0,
-      msg: 'this is a template',
+      msg: 'ahahahahahah',
       time: '2016-09-15',
       url:'../../MY_VIDEO.mp4'
-    }
+    },{
+      index: 0,
+      msg: 'ahahahahahah',
+      time: '2016-09-15',
+      url: '../../MY_VIDEO.mp4'
+      },{
+        index: 0,
+        msg: 'ahahahahahah',
+        time: '2016-09-15',
+        url: '../../MY_VIDEO.mp4'
+    },{
+      index: 0,
+      msg: 'ahahahahahah',
+      time: '2016-09-15',
+      url: '../../MY_VIDEO.mp4'
+    }]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    like: videoController.like,
-    msg:videoController.msg,
-    star:videoController.star,
-    share:videoController.share,
-    play:videoController.play,
-    showOnTv: videoController.showOnTv
+    like:function(e) {
+      videoController.like(e,this);
+    },
+    msg:function(e){
+      videoController.msg(e,this);
+    }, 
+    star:function(e){
+      videoController.star(e,this);
+    },
+    share:function(e){
+      videoController.share(e,this);
+    },
+    play:function(e){
+      videoController.play(e,this);
+    },
+    showOnTv: function(e){
+      videoController.showOnTv(e,this);
+    },
+    onVideoEnd:function(e){
+      videoController.onVideoEnd(e, this);
+    }
   }
 })

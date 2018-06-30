@@ -31,7 +31,11 @@
   line-height: 70rpx;
   font-family: "iconfont";
   content: "\e643";
-  
+}
+.liking::before{
+  font-family: "iconfont";
+  content: "\e6cd";
+  color: yellowgreen;
 }
 .msg::before{
     height: 70rpx;
@@ -44,6 +48,11 @@
   line-height: 70rpx;
   font-family: "iconfont";
   content: "\e696";
+}
+.staring::before{
+    font-family: "iconfont";
+  content: "\e6c9";
+  color: yellowgreen;
 }
 .share::before{
     height: 70rpx;
@@ -78,6 +87,7 @@
   color: white;
   width: 90%;
   text-overflow:ellipsis; white-space:nowrap; overflow:hidden; 
+  text-align: left;
 }
 .play_btn_wrap{
   position: absolute;

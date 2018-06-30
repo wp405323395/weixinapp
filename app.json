@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/search/search",
     "pages/voiceSearch/voiceSearch",
@@ -11,7 +12,9 @@
     "pages/me/centerfeatures/myDevices/myDevices",
     "pages/me/centerfeatures/myCollection/myCollection",
     "pages/me/centerfeatures/question/question",
+    "pages/videodetail/detail/detail",
     "pages/me/centerfeatures/feedback/feedback"
+    
   ],
   "tabBar": {
     "list": [

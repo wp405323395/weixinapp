@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    items:[{},{}]
   
   },
 
@@ -19,12 +19,27 @@ Page({
     
     //todo ： 加载专区信息
   },
-  like: videoController.like,
-  msg: videoController.msg,
-  star: videoController.star,
-  share: videoController.share, 
-  play: videoController.play,
-  showOnTv: videoController.showOnTv,
+  like: function (e) {
+    videoController.like(e, this);
+  },
+  msg: function (e) {
+    videoController.msg(e, this)
+  },
+  star: function (e) {
+    videoController.star(e, this);
+  },
+  share: function (e) {
+    videoController.share(e, this);
+  },
+  play: function (e) {
+    videoController.play(e, this);
+  },
+  showOnTv: function (e) {
+    videoController.showOnTv(e, this);
+  },
+  onVideoEnd: function (e) {
+    videoController.onVideoEnd(e, this);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
