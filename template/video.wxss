@@ -60,6 +60,14 @@
   font-family: "iconfont";
   content: "\e6a5";
 }
+.share{
+  background-color: white;
+  border: none;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 0;
+  position: static;
+}
 .controller_wrap{
     height: 70rpx;
   line-height: 70rpx;

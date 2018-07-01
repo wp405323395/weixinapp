@@ -17,12 +17,20 @@ padding-top:0;
   margin-top: 20rpx;
 }
 .video_control>.video_title{
-  font-size: 40rpx;
+  font-size: 45rpx;
   margin-bottom: 10rpx;
   color: #333333;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 .video_control>.video_detail {
   color: #666666;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3; 
 }
 .controller_wrap>text:nth-child(even){
   padding-right: 35rpx;
@@ -117,6 +125,10 @@ padding-top:0;
   content: "\e677";
   margin-left: 10rpx;
 }
+.zaning::after{
+  font-family: "iconfont";
+  content: "\e6ce";
+}
 .common_item>.common_detail>.common{
  color: #666666;
  margin-top: 20rpx;
@@ -150,4 +162,8 @@ padding-top:0;
   height: 65rpx;
   padding-left: 30rpx;
   border-radius: 10rpx;
+}
+.recommend_video_wrap{
+  margin-top: 0;
+  padding-top: 0;
 }

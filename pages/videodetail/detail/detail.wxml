@@ -3,8 +3,8 @@
 <template is="video" data="{{items,hidecontroller}}"></template>
 <view class='detail_cotent'>
   <view class='video_control'>
-    <text class='video_title'>标题标题</text>
-    <text class='video_detail'>内容简介</text>
+    <text class='video_title'>标题标题做多一行，标题标题做多一行，标题标题做多一行，标题标题做多一行，标题标题做多一行，</text>
+    <text class='video_detail'>内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号</text>
   </view>
   <view class='controller_wrap'>
     <text class="like {{true?'liking':''}}"></text>
@@ -16,8 +16,11 @@
     <text class='share'></text>
     <text class=''>123</text>
   </view>
+</view>
+<view class='line'></view>
+<view class='detail_cotent recommend_video_wrap'>
   <view class='recommend_video'>
-    <view class='video_wrap_item'  wx:key="idx" wx:for="{{[1,2,3]}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class='video_wrap_item' data-index='{{idx}}' bindtap='openVideo' wx:key="idx" wx:for="{{[1,2,3]}}" wx:for-index="idx" wx:for-item="itemName">
       <image class='img' src=''></image>
       <view class='detail'>
         <text>这个是标题最多两行</text>
@@ -38,7 +41,7 @@
     <view class='common_detail'>
       <view class='header_wrap'>
         <text class='name'>王老五</text>
-        <text class='zan'>32</text>
+        <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text>
       </view>
       <text class='common'>评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。</text>
       <text class='time'>6月7日</text>

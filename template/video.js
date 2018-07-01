@@ -16,7 +16,9 @@ var videoController = {
     console.log("star");
   },
   share: function (e, context){
+    let msg = context.data.items[e.currentTarget.dataset.index].msg;
     console.log("share");
+    console.log(msg);
   },
   play: function (e, context){
     context.data.items[e.currentTarget.dataset.index].playing = true;

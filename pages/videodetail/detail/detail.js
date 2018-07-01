@@ -30,6 +30,13 @@ Page({
   onVideoEnd: function (e) {
     videoController.onVideoEnd(e, this);
   },
+  zan:function(e){
+    console.log(e.currentTarget.dataset.index);
+  },
+  openVideo:function(e){
+    console.log(e.currentTarget.dataset.index);
+    
+  },
 
   /**
    * 生命周期函数--监听页面加载
