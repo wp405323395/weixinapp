@@ -12,12 +12,20 @@ const wxRequest = {
     wx.showLoading({
       title: '加载中',
     });
+    try {
+      var token = wx.getStorageSync('token')
+      if (token) {
+        // Do something with return value
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
     wx.request({
       url: url, //仅为示例，并非真实的接口地址
       data: data,
       header: {
         'content-type': 'application/json', // 默认值
-        'token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidWlkIjoxLCJleHAiOjE1MzI4NTQ3OTV9.WpWkBQ1rPgvPdRU4rsvsPJGzcfTtpv6j08r7qKSR83B-BKky4uxPEIcoravG9QafemMgcMUxueea1n_7fOqwcQ'
+        'token': token
       },
       success: function (res) {
         wx.hideLoading();
