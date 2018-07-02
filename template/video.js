@@ -26,10 +26,19 @@ var videoController = {
     }
   },
   play: function (e, context){
-    context.data.items[e.currentTarget.dataset.index].playing = true;
-    context.data.items[e.currentTarget.dataset.index].isEnd = false;
+    let index = e.currentTarget.dataset.index
+    let itmes = context.data.items;
+    for (let i = 0; i < itmes.length; i++) {
+      if (i == index){
+        itmes[index].playing = true;
+        itmes[index].isEnd = false;
+      }else {
+        itmes[i].playing = false;
+      }
+    }
+
     context.setData({
-      items: context.data.items
+      items: itmes
     });
   },
   showOnTv: function (e, context){

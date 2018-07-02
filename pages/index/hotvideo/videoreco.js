@@ -14,17 +14,17 @@ Component({
   data: {
     items: [{
       index: 0,
-      msg: 'ahahahahahah',
+      msg: '首付士大夫邸士大夫士大夫士大夫士大夫发的说法',
       time: '2016-09-15',
       url:'../../MY_VIDEO.mp4'
     },{
       index: 0,
-      msg: 'ahahahahahah',
+      msg: '威风威风违反违反违反违反违反违反违反我',
       time: '2016-09-15',
       url: '../../MY_VIDEO.mp4'
       },{
         index: 0,
-        msg: 'ahahahahahah',
+        msg: '飞飞飞无法无法否认个人格沟通过通过人格而非而非违反',
         time: '2016-09-15',
         url: '../../MY_VIDEO.mp4'
     },{
