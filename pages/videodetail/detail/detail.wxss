@@ -32,11 +32,8 @@ padding-top:0;
   -webkit-box-orient:vertical;
   -webkit-line-clamp:3; 
 }
-.controller_wrap>text:nth-child(even){
+.controller_wrap>text{
   padding-right: 35rpx;
-}
-.controller_wrap>text:nth-child(odd){
-  padding-right: 10rpx;
 }
 .detail_cotent{
   padding: 30rpx;
@@ -166,4 +163,8 @@ padding-top:0;
 .recommend_video_wrap{
   margin-top: 0;
   padding-top: 0;
+}
+.share_detail{
+  margin-left: 0;
+  padding-left: 0;
 }

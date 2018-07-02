@@ -1,9 +1,6 @@
 var videoController = {
   like:function(e, context){
-    context.data.items[e.currentTarget.dataset.index].msg = '点了我';
-    context.setData({
-      items: context.data.items
-    });
+    console.log("like");
   },
   msg: function (e, context){
     let videoid = context.data.items[e.currentTarget.dataset.index].id;

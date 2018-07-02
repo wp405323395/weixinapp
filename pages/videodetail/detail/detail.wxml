@@ -7,14 +7,10 @@
     <text class='video_detail'>内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号</text>
   </view>
   <view class='controller_wrap'>
-    <text class="like {{true?'liking':''}}"></text>
-    <text class=''>24</text>
-    <text class='msg'></text>
-    <text class=''>34</text>
-    <text class="star {{true?'staring':''}}"></text>
-    <text class=''>54</text>
-    <text class='share'></text>
-    <text class=''>123</text>
+    <text bindtap='like' data-index='{{1}}' class="like {{true?'liking':''}}">24</text>
+    <text class='msg'>34</text>
+    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">54</text>
+    <button open-type="share" data-index='{{1}}' class='share share_detail'>123</button>
   </view>
 </view>
 <view class='line'></view>
