@@ -27,6 +27,7 @@ var videoController = {
   },
   play: function (e, context){
     context.data.items[e.currentTarget.dataset.index].playing = true;
+    context.data.items[e.currentTarget.dataset.index].isEnd = false;
     context.setData({
       items: context.data.items
     });
@@ -36,6 +37,7 @@ var videoController = {
   },
   onVideoEnd: function(e, context){
     context.data.items[e.currentTarget.dataset.index].playing = false;
+    context.data.items[e.currentTarget.dataset.index].isEnd = true;
     context.setData({
       items: context.data.items
     });

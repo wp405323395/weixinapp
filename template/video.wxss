@@ -105,6 +105,16 @@
   text-align: center;
   width: 100%;
 }
+.play_btn_wrap_end{
+  top: 70rpx;
+}
+.show_on_tv_end{
+  top: 220rpx;
+}
+.show_on_tv_end>image{
+  width: 380rpx;
+  height: 80rpx;
+}
 .play_btn::before{
   font-family: "iconfont";
   content: "\e624";
@@ -130,3 +140,4 @@
   line-height: 40rpx;
   height: 40rpx;
 }
+

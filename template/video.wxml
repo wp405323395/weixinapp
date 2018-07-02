@@ -3,7 +3,18 @@
   <view class='video_wrap'>
   <video autoplay bindended="onVideoEnd"  data-index='{{idx}}'  wx:if="{{itemName.playing}}" class='video_style' src='/MY_VIDEO.mp4' controls page-gesture show-center-play-btn objectFit="contain">
   </video>
-  <view wx:else class='video_style' mode='aspectFit' src=''>
+  <view wx:elif="{{itemName.isEnd}}" class='video_style'>
+    <view class='info_wrap'>
+      <view bindtap='play' data-index='{{idx}}' class='play_btn_wrap play_btn_wrap_end'>
+        <text class='play_btn'> </text>
+      </view>
+      <view bindtap='showOnTv' data-index='{{idx}}' class='play_btn_wrap show_on_tv_end'>
+        <image  mode='aspectFit' src='/img/show_on_tv2.png'></image>
+      </view>
+    </view>
+    <image mode='aspectFit' src='' class='vido_pic'></image>
+  </view>
+  <view wx:else class='video_style'>
     <view class='info_wrap'>
       <text class='video_introduce'>{{itemName.msg}}</text>
       <view bindtap='play' data-index='{{idx}}' class='play_btn_wrap'>
@@ -14,7 +25,7 @@
         <text>34:00</text>
       </view>
     </view>
-    <image class='vido_pic'></image>
+    <image mode='aspectFit' src='' class='vido_pic'></image>
 
   </view>
   <view class='controller_section' wx:if="{{!hidecontroller}}">
