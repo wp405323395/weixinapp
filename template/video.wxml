@@ -23,7 +23,7 @@
       <view bindtap='like' data-index='{{idx}}' class="like {{true?'liking':''}}"></view>
       <view bindtap='msg' data-index='{{idx}}' class='msg'></view>
       <view bindtap='star' data-index='{{idx}}' class="star {{true?'staring':''}}"></view>
-      <button bindtap='share' open-type="share" data-index='{{idx}}' class='share'></button>
+      <button open-type="share" data-index='{{idx}}' class='share'></button>
     </view>
   </view>
 </view>

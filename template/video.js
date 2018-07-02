@@ -16,9 +16,17 @@ var videoController = {
     console.log("star");
   },
   share: function (e, context){
-    let msg = context.data.items[e.currentTarget.dataset.index].msg;
-    console.log("share");
-    console.log(msg);
+    console.log("携带的关键数据是，" + e.target.dataset.index);
+    return {
+      title: "fffffffffff",
+      path: '/page/user?id=' + e.target.dataset.index,
+      success: function (res) {
+        var shareTickets = res.shareTickets;
+        if (shareTickets.length == 0) {
+          return false;
+        }
+      }
+    }
   },
   play: function (e, context){
     context.data.items[e.currentTarget.dataset.index].playing = true;

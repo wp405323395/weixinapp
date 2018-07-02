@@ -28,9 +28,6 @@ Page({
   star: function (e) {
     videoController.star(e, this);
   },
-  share: function (e) {
-    videoController.share(e, this);
-  },
   play: function (e) {
     videoController.play(e, this);
   },
@@ -86,6 +83,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return videoController.share(e, this);
   }
 })

@@ -1,4 +1,5 @@
 // pages/index/index.js
+import videoController from '../../template/video.js'
 Page({
 
   /**
@@ -93,16 +94,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
-    console.log("携带的关键数据是，"+e.target.dataset.index);
-    return {
-      title: "fffffffffff",
-      path: '/page/user?id=' + e.target.dataset.index,
-      success: function (res) {
-        var shareTickets = res.shareTickets;
-        if (shareTickets.length == 0) {
-          return false;
-        }
-      }
-    }
+    return videoController.share(e,this);
   }
 })
