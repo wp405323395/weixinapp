@@ -35,7 +35,7 @@
 .liking::before{
   font-family: "iconfont";
   content: "\e6cd";
-  color: yellowgreen;
+  
 }
 .msg::before{
     height: 70rpx;
@@ -52,7 +52,6 @@
 .staring::before{
     font-family: "iconfont";
   content: "\e6c9";
-  color: yellowgreen;
 }
 .share::before{
     height: 70rpx;
@@ -71,11 +70,12 @@
   border: none;
 }
 .controller_wrap{
-    height: 70rpx;
+  height: 70rpx;
   line-height: 70rpx;
   display: flex;
   flex-direction: row;
   font-size: 36rpx;
+  color: #adadad;
 }
 .controller_wrap>view{
   padding-left: 30rpx;

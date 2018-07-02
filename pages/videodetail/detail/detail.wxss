@@ -121,10 +121,12 @@ padding-top:0;
   font-family: "iconfont";
   content: "\e677";
   margin-left: 10rpx;
+  color: #666666;
 }
 .zaning::after{
   font-family: "iconfont";
   content: "\e6ce";
+  color: #666666;
 }
 .common_item>.common_detail>.common{
  color: #666666;

@@ -8,7 +8,7 @@
       <text id='10105' data-channelid='{{idx}}' class='over_worlds_hidden'>南方电视</text>
     </view>
     <view wx:if="{{!isShowDelete}}" class='channel_item_wrap' bindtap='addChannel'>
-          <image class='channel_icon add_icon' ></image>
+          <text class='channel_icon add_icon' ></text>
           <text class='over_worlds_hidden'>添加频道</text>
     </view>
     
