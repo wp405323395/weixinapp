@@ -8,16 +8,16 @@
 
 </view>
 <view class='items'>
-    <text bindtap='myDevices'>我的设备</text>
+    <navigator url="centerfeatures/myDevices/myDevices" hover-class="navigator-hover">我的设备</navigator>
+    
   <view class='space_line'></view>
-    <text bindtap='watchHistory'>收看历史</text>
+    <navigator url="centerfeatures/watchHistory/watchHistory" hover-class="navigator-hover">收看历史</navigator>
   <view class='space_line'></view>
-    <text bindtap='myCollection'>我的收藏</text>
+    <navigator url="centerfeatures/myCollection/myCollection" hover-class="navigator-hover">我的收藏</navigator>
   <view class='space_line'></view>
-    <text bindtap='question'>疑难解答</text>
+    <navigator url="centerfeatures/question/question" hover-class="navigator-hover">疑难解答</navigator>
   <view class='space_line'></view>
-    <text bindtap='feedback'>意见反馈</text>
-
+    <navigator url="centerfeatures/feedback/feedback" hover-class="navigator-hover">意见反馈</navigator>
 
 </view>
 

@@ -1,4 +1,5 @@
 // pages/me/me.js
+import { netApi, wxRequest} from '../../netapi.js'
 var app = getApp();
 Page({
 
@@ -101,39 +102,17 @@ Page({
   onShareAppMessage: function () {
   
   },
-  myDevices:function(){
-    wx.navigateTo({
-      url: 'centerfeatures/myDevices/myDevices',
-    })
-  },
-  watchHistory: function () {
-    wx.navigateTo({
-      url: 'centerfeatures/watchHistory/watchHistory',
-    })
-  },
-  myCollection: function () {
-    wx.navigateTo({
-      url: 'centerfeatures/myCollection/myCollection',
-    })
-  },
-  question: function () {
-    wx.navigateTo({
-      url: 'centerfeatures/question/question',
-    })
-  },
-  feedback: function () {
-    wx.navigateTo({
-      url: 'centerfeatures/feedback/feedback',
-    })
-  },
+
   bindUser:function(){
-    wx.scanCode({
-      onlyFromCamera: true,
-      success: (res) => {
-        let cardNum = res.result;
-        //todo: 发起绑定卡的请求。
-        console.log(res);
-      }
-    })
+    console.log('请求的链接是 = '+netApi.loginUrl);
+    wxRequest.request(netApi.loginUrl,{'mm':22}, (res)=>{},(res)=>{});
+    // wx.scanCode({
+    //   onlyFromCamera: true,
+    //   success: (res) => {
+    //     let cardNum = res.result;
+    //     //todo: 发起绑定卡的请求。
+    //     console.log(res);
+    //   }
+    // })
   }
 })
