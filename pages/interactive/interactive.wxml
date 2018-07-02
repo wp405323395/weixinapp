@@ -1,2 +1,4 @@
 <!--pages/interactive/interactive.wxml-->
-<text>pages/interactive/interactive.wxml</text>
+<view class='content'>
+  <image mode='aspectFit' src='../../img/hudong.png'></image>
+</view>

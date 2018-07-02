@@ -1,1 +1,10 @@
 /* pages/interactive/interactive.wxss */
+.content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.content>image{
+  padding-top: 120rpx;
+  width: 55%;
+}
