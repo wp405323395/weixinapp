@@ -1,4 +1,5 @@
 //app.js
+import { netApi} from 'netapi.js'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -13,17 +14,19 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://test.com/onLogin',
+            url: `http://${netApi.host}/api/oauth/miniapp/login`,
             data: {
               code: res.code
             },
-            success:data=>{
-              let token = data.token;//假设拿到token
-              token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidWlkIjoxLCJleHAiOjE1MzI4NTQ3OTV9.WpWkBQ1rPgvPdRU4rsvsPJGzcfTtpv6j08r7qKSR83B-BKky4uxPEIcoravG9QafemMgcMUxueea1n_7fOqwcQ';
-              try {
-                wx.setStorageSync('token', token);
-              } catch (e) {
+            success:resp=>{
+              if (resp.data.success) {
+                let token = resp.data.token;//假设拿到token
+                try {
+                  wx.setStorageSync('token', token);
+                } catch (e) {
+                }
               }
+             
             }
           })
         } else {
@@ -39,6 +42,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              this.globalData.userres = res;
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -54,6 +58,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userres :null
   }
 })
