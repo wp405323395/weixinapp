@@ -7,22 +7,16 @@ var schema = isHttps?'https':'http';
 const netApi = {
   host,
   schema,
-  info:`${schema}://${host}/api/oauth/miniapp/info`,
+  login: `${schema}://${host}/api/oauth/miniapp/login`,
+  info:  `${schema}://${host}/api/oauth/miniapp/info`,
 
 };
 const wxRequest = {
-  request: (url,data,success,fail) =>{
+  request(url,data,success,fail){
     wx.showLoading({
       title: '加载中',
     });
-    try {
-      var token = wx.getStorageSync('token')
-      if (token) {
-        // Do something with return value
-      }
-    } catch (e) {
-      // Do something when catch error
-    }
+    let token = Processing.getToken();
     let contentType = (url == netApi.info ? 'application/x-www-form-urlencoded' :'application/json');
     wx.request({
       url: url, //仅为示例，并非真实的接口地址
@@ -46,6 +40,20 @@ const wxRequest = {
       }
     })
   } 
+}
+var Processing = {
+  getToken(){
+    let token;
+    try {
+      token = wx.getStorageSync('token')
+      if (token) {
+        // Do something with return value
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
+    return token;
+  }
 }
 export {
   netApi,

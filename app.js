@@ -14,7 +14,7 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: `http://${netApi.host}/api/oauth/miniapp/login`,
+            url: netApi.login,
             data: {
               code: res.code
             },
@@ -26,7 +26,6 @@ App({
                 } catch (e) {
                 }
               }
-             
             }
           })
         } else {
