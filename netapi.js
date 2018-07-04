@@ -43,11 +43,7 @@ const wxRequest = {
       },
       fail: function (res) {
         wx.hideLoading();
-        wx.showToast({
-          title: '网络请求失败',
-          icon: 'none',
-          duration: 2000
-        });
+
         failed(res);
       }
     })

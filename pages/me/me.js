@@ -112,16 +112,25 @@ Page({
   },
 
   bindUser:function(){
-    console.log('请求的链接是 = ' + netApi.bindCard);
-    wxRequest.restfulRequest(netApi.bindCard, {'cardId':'323232323232323'}, (res)=>{
-    },(res)=>{});
-    // wx.scanCode({
-    //   onlyFromCamera: true,
-    //   success: (res) => {
-    //     let cardNum = res.result;
-    //     //todo: 发起绑定卡的请求。
-    //     console.log(res);
-    //   }
-    // })
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        let cardNum = res.result;
+        // 发起绑定卡的请求。
+        wxRequest.restfulRequest(netApi.bindCard, { 'cardId': cardNum }, (res) => {
+          wx.showToast({
+            title: '绑定成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }, (res) => {
+          wx.showToast({
+            title: '绑定失败',
+            icon: 'none',
+            duration: 2000
+          });
+        });
+      }
+    })
   }
 })
