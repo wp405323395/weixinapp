@@ -13,9 +13,7 @@ const netApi = {
 };
 const wxRequest = {
   request(url,data,success,fail){
-    wx.showLoading({
-      title: '加载中',
-    });
+    Processing.showLoading();
     let token = Processing.getToken();
     let contentType = (url == netApi.info ? 'application/x-www-form-urlencoded' :'application/json');
     wx.request({
@@ -53,6 +51,11 @@ var Processing = {
       // Do something when catch error
     }
     return token;
+  },
+  showLoading(){
+    wx.showLoading({
+      title: '加载中',
+    });
   }
 }
 export {

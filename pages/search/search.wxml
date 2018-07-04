@@ -1,28 +1,35 @@
 <!--pages/search/search.wxml-->
 <view class='input_arear'>
-  <text class='search_icon'></text> 
+  <text class='search_icon'></text>
   <input value="{{searchinput}}" bindconfirm="searchVideo" confirm-type="search" focus="true" placeholder='帮你快速寻找剧集和电影'></input>
   <text bindtap='voiceBtn' class='voice_icon'></text>
   <text bindtap='cancleSearch'>取消</text>
 </view>
 <view class='search_history'>
-  <text class='lable'>我的搜索历史</text>
+  <view class='search_history_head'>
+    <text class='lable'>我的搜索历史</text>
+    <button class='delete_all'>全部删除</button>
+  </view>
+  
   <view class='search_history_wrap' wx:key="idx" wx:key="{{idx}}" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='history_item'>
-      <text>权利的游戏</text>
-      <text>x</text>
+      <text>权利游戏</text>
+      <text class='delet_btn'></text>
     </view>
     <view class='space_line'></view>
   </view>
 </view>
 
+<view class='devide_line'></view>
 <view class='search_history'>
-  <text class='lable'>热门搜索</text>
-  <view class='search_history_wrap' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
-    <view class='history_item'>
-      <text>权利的游戏</text>
-      <text>x</text>
+  <view class='hot_search_lable'>
+    <image src='../../img/hot.png' mode="scaleToFill"></image>
+    <text class='lable'>热门搜索</text>
+  </view>
+
+  <view class='hot_history_wrap'>
+    <view class='hot_item' wx:key="idx" wx:for="{{[1,4,3,3,2]}}" wx:for-index="idx" wx:for-item="itemName">
+      权利游戏
     </view>
-    <view class='space_line'></view>
   </view>
 </view>
