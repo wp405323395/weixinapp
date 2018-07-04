@@ -112,8 +112,9 @@ Page({
   },
 
   bindUser:function(){
-    console.log('请求的链接是 = '+netApi.loginUrl);
-    wxRequest.request(netApi.loginUrl,{'mm':22}, (res)=>{},(res)=>{});
+    console.log('请求的链接是 = ' + netApi.bindCard);
+    wxRequest.restfulRequest(netApi.bindCard, {'cardId':'323232323232323'}, (res)=>{
+    },(res)=>{});
     // wx.scanCode({
     //   onlyFromCamera: true,
     //   success: (res) => {

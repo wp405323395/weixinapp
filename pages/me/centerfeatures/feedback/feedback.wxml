@@ -1,5 +1,7 @@
 <!--pages/me/centerfeatures/feedback/feedback.wxml-->
-<textarea placeholder='说点什么?'>
-</textarea>
-<input type='number' placeholder='请输入您的手机号或微信号'></input>
-<button>发送</button>
+<form bindsubmit='submit'>
+  <textarea bindfocus="inputFocus" class="{{isContentEmpty?'is_error':''}}" name="textarea" placeholder='说点什么?'>
+  </textarea>
+  <input bindfocus="inputFocus" class="{{isNotPhone?'is_error':''}}" maxlength='{{11}}' name="number" type='number' placeholder='请输入您的手机号或微信号'></input>
+  <button form-type="submit">发送</button>
+</form>

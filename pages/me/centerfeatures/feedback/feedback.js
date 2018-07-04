@@ -1,11 +1,13 @@
 // pages/me/centerfeatures/feedback/feedback.js
+import {netApi, wxRequest} from '../../../../netapi.js';
+import util from '../../../../utils/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+
   },
 
   /**
@@ -62,5 +64,40 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  submit:function(e){
+    let isPhone = util.isPoneAvailable(e.detail.value.number);
+    let contentLength = e.detail.value.textarea.length;
+    if (!isPhone) {
+      this.setData({
+        isNotPhone:true
+      });
+      return ;
+    } else if (contentLength == 0) {
+      this.setData({
+        isContentEmpty: true
+      });
+      return ;
+    }
+
+      let data = {
+        contact: e.detail.value.number,
+        description: e.detail.value.textarea
+      }
+      wxRequest.request(netApi.feedback, data, success => {
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000
+        });
+      }, fail => {
+      });
+    },
+  inputFocus:function(){
+    this.setData({
+      isContentEmpty: false,
+      isNotPhone: false
+    });
   }
+    
 })

@@ -15,3 +15,6 @@ textarea{
   margin:10rpx 30rpx;
   padding: 30rpx;
 }
+.is_error{
+  border-color: red;
+}
