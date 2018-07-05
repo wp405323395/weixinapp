@@ -1,2 +1,16 @@
 <!--pages/me/centerfeatures/myDevices/myDevices.wxml-->
-<text>pages/me/centerfeatures/myDevices/myDevices.wxml</text>
+<view class='context'>
+  <view class='cards_wrap'>
+    <view class='items' wx:key="idx" wx:for="{{[1,2]}}" wx:for-index="idx" wx:for-item="itemName">
+      <text>123123123123123</text>
+      <radio></radio>
+    </view>
+  </view>
+  <view class='add_more_wrap'>
+    <view>
+      <text class='lable'>添加设备</text>
+      <text class='lable_des'>扫描智能卡背面条码，完成添加</text>
+    </view>
+    <text class='scan_qr'></text>
+  </view>
+</view>

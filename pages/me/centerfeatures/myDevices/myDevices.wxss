@@ -1,1 +1,53 @@
 /* pages/me/centerfeatures/myDevices/myDevices.wxss */
+.context{
+  background-color: #eeeeee;
+  height: 100%;
+}
+.devide_line{
+  background-color: #eeeeee;
+  height: 30rpx;
+  width: 100%;
+}
+.cards_wrap{
+  padding: 20rpx 0;
+}
+.cards_wrap>.items{
+  background-color: white;
+  background-origin: border-box;
+}
+.cards_wrap>.items{
+  color: #333333;
+  font-size: 36rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.lable{
+  font-size: 40rpx;
+  color: #333333;
+  display: block;
+  margin-bottom: 5rpx;
+}
+.lable_des{
+  font-size: 30rpx;
+  color: #999999;
+  display: block;
+}
+.scan_qr::before{
+  font-family: "iconfont";
+  content: "\e649";
+  color: #333333;
+  font-size: 55rpx;
+  font-weight: 600;
+}
+.add_more_wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding:20rpx 30rpx;
+}
