@@ -44,7 +44,7 @@ Page({
   },
   voicebtn: function (event) {
     wx.navigateTo({
-      url: '../voiceSearch/voiceSearch'
+      url: '../search/voiceSearch/voiceSearch'
     })
   },
 

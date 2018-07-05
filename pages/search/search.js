@@ -74,7 +74,7 @@ Page({
   },
   voiceBtn:function(){
     wx.navigateTo({
-      url: '../voiceSearch/voiceSearch',
+      url: '../search/voiceSearch/voiceSearch',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

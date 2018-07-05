@@ -1,4 +1,4 @@
-// pages/voiceSearch/voiceSearch.js
+
 Page({
 
   /**

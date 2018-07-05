@@ -1,20 +1,35 @@
 {
   "pages": [
-    
     "pages/index/index",
-    "pages/search/search",
-    "pages/voiceSearch/voiceSearch",
     "pages/channelcenter/channelcenter",
     "pages/topic/topicdetail/topicdetail",
     "pages/interactive/interactive",
-    "pages/me/centerfeatures/watchHistory/watchHistory",
-    "pages/me/me",
-    "pages/me/centerfeatures/myDevices/myDevices",
-    "pages/me/centerfeatures/myCollection/myCollection",
-    "pages/me/centerfeatures/question/question",
-    "pages/videodetail/detail/detail",
-    "pages/me/centerfeatures/feedback/feedback"
-    
+    "pages/me/me"
+  ],
+  "subPackages":[
+    {
+      "root": "pages/me/centerfeatures/",
+      "pages":[
+        "feedback/feedback",
+        "question/question",
+        "myCollection/myCollection",
+        "myDevices/myDevices",
+        "watchHistory/watchHistory"
+      ]
+    },
+    {
+      "root": "pages/videodetail/",
+      "pages": [
+        "detail/detail"
+      ]
+    },
+    {
+      "root":"pages/search/",
+      "pages":[
+        "search",
+        "voiceSearch/voiceSearch"
+      ]
+    }
   ],
   "tabBar": {
     "list": [
