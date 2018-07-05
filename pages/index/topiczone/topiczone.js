@@ -1,4 +1,5 @@
 // pages/index/topiczone/topiczone.js
+import { wxRequest, netApi} from '../../../netapi.js'
 Component({
   /**
    * 组件的属性列表
@@ -13,6 +14,14 @@ Component({
   data: {
 
   },
+  attached: function () {
+    wxRequest.request(netApi.topic, {current:0}, successed=>{
+      console.log(successed);
+    }, failed=>{
+      console.log(failed);
+    });
+  },
+
 
   /**
    * 组件的方法列表

@@ -1,34 +1,44 @@
+
 var host = "maywide.free.ngrok.cc";
-var host = "170.10.2.154";
+var host = "192.168.2.126:8080";
 var isHttps = ("maywide.free.ngrok.cc" == host);
 var isHttps = false;
 var schema = isHttps?'https':'http';
-
+var retryTimes = 3;
+//wxRequest,netApi
 const netApi = {
   host,
   schema,
-  login: `${schema}://${host}/api/oauth/miniapp/login`,//登录
-  info:  `${schema}://${host}/api/oauth/miniapp/info`,//上传用户信息
-  feedback: `${schema}://${host}/misa-service/api/feedback`,//用户反馈
-  bindCard: `${schema}://${host}/misa-service/api/user/device/{cardId}/bind`//绑定卡号
+  login: {url: `${schema}://${host}/api/oauth/miniapp/login`,
+          method:'POST'},//登录
+  info:  {url:`${schema}://${host}/api/oauth/miniapp/info`,
+          method:'POST'},//上传用户信息
+  feedback: {url:`${schema}://${host}/misa-service/api/feedback`,
+              method:'POST'},//用户反馈
+  bindCard: {url:`${schema}://${host}/misa-service/api/user/device/{cardId}/bind`,
+              method:'POST'},//绑定卡号
+  topic: {url:`${schema}://${host}/misa-service/api/topic`,
+              method:'GET'} //专题列表
 
 };
 const wxRequest = {
-  restfulRequest(url, data, success, fail){
+  retryCount:0,
+  restfulRequest(api, data, success, fail){
     for(let key in data) {
-      url = url.replace(new RegExp(`{${key}}`),data[key]);
+      api.url = api.url.replace(new RegExp(`{${key}}`),data[key]);
     }
-    console.log("restful-> "+url);
-    this.request(url, {}, success, fail);
+    console.log("restful-> "+api.url);
+    this.request(api, {}, success, fail);
   },
-  request(url, data, successed, failed) {
+  request(api, data, successed, failed) {
+    let that = this;
     Processing.showLoading();
     let token = Processing.getToken();
-    let contentType = (url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
+    let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
     wx.request({
-      url: url, //仅为示例，并非真实的接口地址
+      url: api.url, //仅为示例，并非真实的接口地址
       data: data,
-      method: 'POST',
+      method: api.method,
       header: {
         'content-type': contentType,
         Authorization: `Bearer ${token}`
@@ -38,7 +48,12 @@ const wxRequest = {
         if (resp.data.success) {
           successed(resp.data.data);
         } else {
-          failed(resp.data.message);
+          if (resp.data.invalid_token) {
+            //token失效，重新登录。
+            Processing.wxLogin(that, api, data, successed, failed);
+          } else {
+            failed(resp.data.message);
+          }
         }
       },
       fail: function (res) {
@@ -73,6 +88,42 @@ var Processing = {
     wx.showLoading({
       title: '加载中',
     });
+  },
+  wxLogin(context, api, data, successed, failed){
+    // 登录
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: netApi.login.url,
+            data: {
+              code: res.code
+            },
+            success: resp => {
+              if (resp.data.success) {
+                let token = resp.data.token;//假设拿到token
+                try {
+                  wx.setStorageSync('token', token);
+                } catch (e) {
+                }
+                retryCount++
+                if (context.retryCount < retryTimes) {
+                  context.request(api, data, successed, failed);
+                } else {
+                  wx.showToast({
+                    title: '超过自动重新登录次数。',
+                  })
+                }
+              }
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   }
 }
 export {

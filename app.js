@@ -14,7 +14,7 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: netApi.login,
+            url: netApi.login.url,
             data: {
               code: res.code
             },
