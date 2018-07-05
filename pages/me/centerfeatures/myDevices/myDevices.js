@@ -62,5 +62,8 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  radioChange:function(e){
+    console.log(e);
   }
 })

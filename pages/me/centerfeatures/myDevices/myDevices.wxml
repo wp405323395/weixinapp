@@ -3,7 +3,7 @@
   <view class='cards_wrap'>
     <view class='items' wx:key="idx" wx:for="{{[1,2]}}" wx:for-index="idx" wx:for-item="itemName">
       <text>123123123123123</text>
-      <radio></radio>
+      <switch checked='{{false}}'  bindchange='radioChange' data-index='idx' ></switch>
     </view>
   </view>
   <view class='add_more_wrap'>
