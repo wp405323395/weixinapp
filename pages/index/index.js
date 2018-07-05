@@ -89,8 +89,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log("feeeeeeeeeeeeeeeeeeefffffffffffffffffff");
-    topicComponent.__proto__.initData();
+    console.log();
+    if (this.data.currentData == 2) {
+      topicComponent.__proto__.initData();
+    }
   },
 
   /**
