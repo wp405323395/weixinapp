@@ -1,7 +1,7 @@
 <!--pages/index/topiczone/topiczone.wxml-->
 <view class='topic_list'>
   <view class='topic_item' wx:key="idx" wx:for="{{items}}" wx:for-index="idx" wx:for-item="item">
-    <image bindtap='gotoTopic' data-topicid='{{idx}}' mode="scaleToFill" src='{{item.poster}}'></image>
+    <image bindtap='gotoTopic' data-topicid='{{item.id}}' mode="scaleToFill" src='{{item.poster}}'></image>
     <view class="desc_wrap_re">
       <view class="desc_wrap">
         <text>{{item.title}}</text>

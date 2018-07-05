@@ -1,6 +1,7 @@
 // pages/index/topiczone/topiczone.js
 import { wxRequest, netApi} from '../../../netapi.js'
 let context;
+let pageNum = 0;
 Component({
   /**
    * 组件的属性列表
@@ -35,11 +36,13 @@ Component({
       })
     },
     initData:function(){
-      wxRequest.request(netApi.topic, { current: 0 }, successed => {
-        console.log(successed);
-        context.setData({
-          items: context.data.items.concat(successed)
-        });
+      wxRequest.request(netApi.topic, { current: pageNum }, successed => {
+        pageNum++;
+        if (successed) {
+          context.setData({
+            items: context.data.items.concat(successed)
+          });
+        }
 
       }, failed => {
         console.log(failed);

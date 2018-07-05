@@ -18,7 +18,15 @@ const netApi = {
   bindCard: {url:`${schema}://${host}/misa-service/api/user/device/{cardId}/bind`,
               method:'POST'},//绑定卡号
   topic: {url:`${schema}://${host}/misa-service/api/topic`,
-              method:'GET'} //专题列表
+              method:'GET'}, //专题列表
+  topicById: {
+    url: `${schema}://${host}/misa-service/api/topic/{id}`,
+    method: 'GET'
+  }, //专题列表
+  topicDetail: {
+    url: `${schema}://${host}/misa-service/api/topic_video/detail`,
+    method: 'GET'
+  }, //专题详情
 
 };
 const wxRequest = {

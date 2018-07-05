@@ -1,10 +1,10 @@
 <!--pages/topic/topicdetail/topicdetail.wxml-->
 <view class='topic_list topic_list2'>
   <view class='topic_item'>
-    <image bindtap='gotoTopic' data-topicid='{{idx}}' mode="scaleToFill" src='../../../img/video.jpg'></image>
+    <image bindtap='gotoTopic' data-topicid='{{topicDetail.id}}' mode="scaleToFill" src='{{topicDetail.poster}}'></image>
    
       <view class="desc_wrap desc_wrap2">
-        <text>2018俄罗斯世界asdfasdfadsfdsafsfd的事发生的发送打算地方阿斯蒂芬阿道夫杯专题</text>
+        <text>{{topicDetail.title}}</text>
       </view>
   </view>
 </view>

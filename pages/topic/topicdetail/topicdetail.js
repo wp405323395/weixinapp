@@ -1,21 +1,25 @@
 // pages/topic/topicdetail/topicdetail.js
 import videoController from '../../../template/video.js';
+import { wxRequest, netApi } from '../../../netapi.js'
+let pageNum = 0;
+let context;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items:[{},{}]
-  
+    items:[],
+    topicDetail:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let topicId = options.topicId;
-    console.log("专区id = "+ topicId);
+    context = this;
+    this.loadTopicDetail(options);
+    this.loadItems(options);
     
     //todo ： 加载专区信息
   },
@@ -84,5 +88,34 @@ Page({
    */
   onShareAppMessage: function (e) {
     return videoController.share(e, this);
+  },
+  loadTopicDetail: function (options){
+    let topicId = options.topicId;
+    console.log("专区id = " + topicId);
+    wxRequest.restfulRequest(netApi.topicById, { id: topicId }, successed => {
+      if (successed) {
+        context.setData({
+          topicDetail: successed
+        });
+      }
+
+    }, failed => {
+      console.log(failed);
+    });
+  },
+  loadItems: function (options){
+    let topicId = options.topicId;
+    console.log("专区id = " + topicId);
+    wxRequest.request(netApi.topicDetail, { current: pageNum, topicId: topicId }, successed => {
+      pageNum++;
+      if (successed) {
+        context.setData({
+          items: context.data.items.concat(successed)
+        });
+      }
+
+    }, failed => {
+      console.log(failed);
+    });
   }
 })
