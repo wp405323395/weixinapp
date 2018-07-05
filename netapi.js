@@ -108,7 +108,7 @@ var Processing = {
                   wx.setStorageSync('token', token);
                 } catch (e) {
                 }
-                retryCount++
+                context.retryCount++;
                 if (context.retryCount < retryTimes) {
                   context.request(api, data, successed, failed);
                 } else {

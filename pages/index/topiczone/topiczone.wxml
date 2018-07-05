@@ -1,10 +1,10 @@
 <!--pages/index/topiczone/topiczone.wxml-->
 <view class='topic_list'>
-  <view class='topic_item' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
-    <image bindtap='gotoTopic' data-topicid='{{idx}}' mode="scaleToFill" src='../../../img/video.jpg'></image>
+  <view class='topic_item' wx:key="idx" wx:for="{{items}}" wx:for-index="idx" wx:for-item="item">
+    <image bindtap='gotoTopic' data-topicid='{{idx}}' mode="scaleToFill" src='{{item.poster}}'></image>
     <view class="desc_wrap_re">
       <view class="desc_wrap">
-        <text>2018俄罗斯世界杯专题</text>
+        <text>{{item.title}}</text>
       </view>
     </view>
   </view>

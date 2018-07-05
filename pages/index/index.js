@@ -1,5 +1,6 @@
 // pages/index/index.js
 import videoController from '../../template/video.js'
+let topicComponent;
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    topicComponent = this.selectComponent("#topic");
+    console.log(topicComponent);
   },
   bindchange: function (e) {
     const that = this;
@@ -87,7 +89,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("feeeeeeeeeeeeeeeeeeefffffffffffffffffff");
+    topicComponent.__proto__.initData();
   },
 
   /**
@@ -95,5 +98,8 @@ Page({
    */
   onShareAppMessage: function (e) {
     return videoController.share(e,this);
-  }
+  },
+  
+    
+
 })

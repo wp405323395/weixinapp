@@ -1,27 +1,24 @@
 // pages/index/topiczone/topiczone.js
 import { wxRequest, netApi} from '../../../netapi.js'
+let context;
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    items:[]
   },
   attached: function () {
-    wxRequest.request(netApi.topic, {current:0}, successed=>{
-      console.log(successed);
-    }, failed=>{
-      console.log(failed);
-    });
+    context = this;
+    this.initData();
   },
-
 
   /**
    * 组件的方法列表
@@ -36,6 +33,17 @@ Component({
         fail: function(res) {},
         complete: function(res) {},
       })
+    },
+    initData:function(){
+      wxRequest.request(netApi.topic, { current: 0 }, successed => {
+        console.log(successed);
+        context.setData({
+          items: context.data.items.concat(successed)
+        });
+
+      }, failed => {
+        console.log(failed);
+      });
     }
   }
 })

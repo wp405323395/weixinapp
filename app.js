@@ -7,33 +7,33 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: netApi.login.url,
-            data: {
-              code: res.code
-            },
-            success:resp=>{
-              if (resp.data.success) {
-                let token = resp.data.token;//假设拿到token
-                try {
-                  wx.setStorageSync('token', token);
-                } catch (e) {
-                }
-              }
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+    // // 登录
+    // wx.login({
+    //   success: res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     if (res.code) {
+    //       //发起网络请求
+    //       wx.request({
+    //         url: netApi.login.url,
+    //         data: {
+    //           code: res.code
+    //         },
+    //         success:resp=>{
+    //           if (resp.data.success) {
+    //             let token = resp.data.token;//假设拿到token
+    //             try {
+    //               wx.setStorageSync('token', token);
+    //             } catch (e) {
+    //             }
+    //           }
+    //         }
+    //       })
+    //     } else {
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
         
-      }
-    })
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {

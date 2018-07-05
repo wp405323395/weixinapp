@@ -23,7 +23,7 @@
   <!-- 直播频道《《《《 -->
   <view hidden='{{currentData != 2}}'>
     <view class='swiper_con'>
-      <topiczone></topiczone>
+      <topiczone id="topic"></topiczone>
     </view>
   </view>  
 </view>
