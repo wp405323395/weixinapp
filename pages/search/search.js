@@ -107,7 +107,9 @@ Page({
         channelList: success.channelList.splice(0,3),
         videoList: success.videoList.splice(0, 3)
       });
-      context.insertStorage(e.detail.value);
+      if (videoListAll.length >0) {
+        context.insertStorage(e.detail.value);
+      }
     }, failed=>{
 
     });

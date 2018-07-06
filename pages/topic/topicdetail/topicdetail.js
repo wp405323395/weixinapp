@@ -18,8 +18,10 @@ Page({
    */
   onLoad: function (options) {
     context = this;
-    this.loadTopicDetail(options);
-    this.loadItems(options);
+    let topicId = options.topicId;
+    console.log('接受过来的topicid = ' + topicId);
+    this.loadTopicDetail(topicId);
+    this.loadItems(topicId);
     
     //todo ： 加载专区信息
   },
@@ -89,9 +91,7 @@ Page({
   onShareAppMessage: function (e) {
     return videoController.share(e, this);
   },
-  loadTopicDetail: function (options){
-    let topicId = options.topicId;
-    console.log("专区id = " + topicId);
+  loadTopicDetail: function (topicId){
     wxRequest.restfulRequest(netApi.topicById, { id: topicId }, successed => {
       if (successed) {
         context.setData({
@@ -103,8 +103,7 @@ Page({
       console.log(failed);
     });
   },
-  loadItems: function (options){
-    let topicId = options.topicId;
+  loadItems: function (topicId){
     if(pageNum == -1) {
       return ;
     }

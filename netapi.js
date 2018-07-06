@@ -40,11 +40,12 @@ const netApi = {
 const wxRequest = {
   retryCount:0,
   restfulRequest(api, data, success, fail){
+    let api2 = { url: api.url, method:api.method};
     for(let key in data) {
-      api.url = api.url.replace(new RegExp(`{${key}}`),data[key]);
+      api2.url = api2.url.replace(new RegExp(`{${key}}`),data[key]);
     }
-    console.log("restful-> "+api.url);
-    this.request(api, {}, success, fail);
+    console.log("restful-> " + api2.url);
+    this.request(api2, {}, success, fail);
   },
   request(api, data, successed, failed) {
     let that = this;
