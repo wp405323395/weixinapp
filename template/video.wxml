@@ -12,28 +12,29 @@
         <image  mode='aspectFit' src='/img/show_on_tv2.png'></image>
       </view>
     </view>
-    <image mode='aspectFit' src='' class='vido_pic'></image>
+    <image mode='aspectFit' src='{{itemName.poster}}' class='vido_pic'></image>
   </view>
   <view wx:else class='video_style'>
     <view class='info_wrap'>
-      <text class='video_introduce'>{{itemName.msg}}</text>
+      <text class='video_introduce'>{{itemName.title}}</text>
       <view bindtap='play' data-index='{{idx}}' class='play_btn_wrap'>
         <text class='play_btn'> </text>
       </view>
       <view class='video_count_footer'>
-        <text>12323次播放量</text>
-        <text>34:00</text>
+        <text>{{itemName.watchCount}}次播放量</text>
+         <text>{{parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60))?parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60)):'00'+':'+((itemName.duration % (1000 * 60)) / 1000)}}</text> 
+       
       </view>
     </view>
-    <image mode='aspectFit' src='' class='vido_pic'></image>
+    <image mode='aspectFit' src='{{itemName.poster}}' class='vido_pic'></image>
 
   </view>
   <view class='controller_section' wx:if="{{!hidecontroller}}">
     <image bindtap='showOnTv'  data-index='{{idx}}' mode='aspectFit' class='show_on_tv_btn' src='/img/show_on_tv.png'></image>
     <view class='controller_wrap'>
-      <view bindtap='like' data-index='{{idx}}' class="like {{true?'liking':''}}"></view>
+      <view bindtap='like' data-index='{{idx}}' class="like {{itemName.isLike?'liking':''}}"></view>
       <view bindtap='msg' data-index='{{idx}}' class='msg'></view>
-      <view bindtap='star' data-index='{{idx}}' class="star {{true?'staring':''}}"></view>
+      <view bindtap='star' data-index='{{idx}}' class="star {{itemName.isFavorite?'staring':''}}"></view>
       <button open-type="share" data-index='{{idx}}' class='share'></button>
     </view>
   </view>

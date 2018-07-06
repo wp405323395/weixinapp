@@ -1,6 +1,6 @@
 
 var host = "maywide.free.ngrok.cc";
-var host = "192.168.2.126:8080";
+var host = "39.108.84.154:8080";
 var isHttps = ("maywide.free.ngrok.cc" == host);
 var isHttps = false;
 var schema = isHttps?'https':'http';
@@ -13,7 +13,7 @@ const netApi = {
           method:'POST'},//登录
   info:  {url:`${schema}://${host}/api/oauth/miniapp/info`,
           method:'POST'},//上传用户信息
-  feedback: {url:`${schema}://${host}/misa-service/api/feedback`,
+  feedback: {url:`${schema}://${host}/misa-service/api/my/feedback`,
               method:'POST'},//用户反馈
   bindCard: {url:`${schema}://${host}/misa-service/api/user/device/{cardId}/bind`,
               method:'POST'},//绑定卡号
@@ -27,6 +27,14 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/topic_video/detail`,
     method: 'GET'
   }, //专题详情
+  loadHotSearch:{
+    url: `${schema}://${host}/misa-service/api/user/search_recommend_history/all`,
+    method:'GET'
+  },//加载热门搜索
+  search:{
+    url: `${schema}://${host}/misa-service/api/search`,
+    method:'GET'
+  }
 
 };
 const wxRequest = {

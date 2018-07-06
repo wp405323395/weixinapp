@@ -5,31 +5,54 @@
   <text bindtap='voiceBtn' class='voice_icon'></text>
   <text bindtap='cancleSearch'>取消</text>
 </view>
-<view class='search_history'>
-  <view class='search_history_head'>
-    <text class='lable'>我的搜索历史</text>
-    <button class='delete_all'>全部删除</button>
-  </view>
-  
-  <view class='search_history_wrap' wx:key="idx" wx:key="{{idx}}" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
-    <view class='history_item'>
-      <text>权利游戏</text>
-      <text class='delet_btn'></text>
+<view wx:if="{{showRecomend}}">
+  <view class='search_history'>
+    <view class='search_history_head'>
+      <text class='lable'>我的搜索历史</text>
+      <button bindtap='deleteAllHistory' class='delete_all'>全部删除</button>
     </view>
-    <view class='space_line'></view>
+
+    <view class='search_history_wrap' wx:key="idx" wx:key="{{idx}}" wx:for="{{historys}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class='history_item'>
+        <text>{{itemName}}</text>
+        <text  bindtap='deleteHistory' data-index='{{idx}}'  class='delet_btn'></text>
+      </view>
+      <view class='space_line'></view>
+    </view>
+  </view>
+
+  <view class='devide_line'></view>
+  <view class='search_history'>
+    <view class='hot_search_lable'>
+      <image src='../../img/hot.png' mode="scaleToFill"></image>
+      <text class='lable'>热门搜索</text>
+    </view>
+
+    <view class='hot_history_wrap'>
+      <view class='hot_item' wx:key="idx" wx:for="{{hotSearchItems}}" wx:for-index="idx" wx:for-item="itemName">
+        {{itemName.keyword}}
+      </view>
+    </view>
   </view>
 </view>
-
-<view class='devide_line'></view>
-<view class='search_history'>
-  <view class='hot_search_lable'>
-    <image src='../../img/hot.png' mode="scaleToFill"></image>
-    <text class='lable'>热门搜索</text>
+<view wx:else>
+  <view class='video_list'>
+    <view class='video_item'  wx:key="idx" wx:for="{{videoList}}" wx:for-index="idx" wx:for-item="itemName">
+      <image src='{{itemName.poster}}' mode='aspectFit' style='background-color:yellow;'></image>
+      <view class='video_detail'>
+        <text class='title'>{{itemName.title}}</text>
+        <text class='watch_count'>{{itemName.watchCount}}次播放</text>
+      </view>
+    </view>
+     <view wx:if="{{videoCount>3}}" bindtap='loadMore' class='video_more'>
+      <text>加载更多</text>
+    </view> 
   </view>
-
-  <view class='hot_history_wrap'>
-    <view class='hot_item' wx:key="idx" wx:for="{{[1,4,3,3,2]}}" wx:for-index="idx" wx:for-item="itemName">
-      权利游戏
+  <view class='line_devide'></view>
+  <view class='channel_list'>
+    <view class='channel_item' wx:key="idx" wx:for="{{channelList}}" wx:for-index="idx" wx:for-item="itemName">
+      <text>{{itemName.channelName}}:{{itemName.programName}}</text>
+      <button>换台</button>
     </view>
   </view>
 </view>

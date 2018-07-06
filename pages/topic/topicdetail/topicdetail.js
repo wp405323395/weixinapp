@@ -1,7 +1,7 @@
 // pages/topic/topicdetail/topicdetail.js
 import videoController from '../../../template/video.js';
 import { wxRequest, netApi } from '../../../netapi.js'
-let pageNum = 0;
+let pageNum = 1;
 let context;
 Page({
 
@@ -105,10 +105,15 @@ Page({
   },
   loadItems: function (options){
     let topicId = options.topicId;
-    console.log("专区id = " + topicId);
+    if(pageNum == -1) {
+      return ;
+    }
     wxRequest.request(netApi.topicDetail, { current: pageNum, topicId: topicId }, successed => {
-      pageNum++;
       if (successed) {
+        pageNum++;
+        if (successed.length == 0) {
+          pageNum = -1;
+        }
         context.setData({
           items: context.data.items.concat(successed)
         });
