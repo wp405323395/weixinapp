@@ -6,7 +6,7 @@
   <text bindtap='cancleSearch'>取消</text>
 </view>
 <view wx:if="{{showRecomend}}">
-  <view class='search_history'>
+  <view class='search_history' wx:if='{{historys.length != 0}}'>
     <view class='search_history_head'>
       <text class='lable'>我的搜索历史</text>
       <button bindtap='deleteAllHistory' class='delete_all'>全部删除</button>
@@ -21,7 +21,7 @@
     </view>
   </view>
 
-  <view class='devide_line'></view>
+  <view wx:if='{{historys.length != 0}}' class='devide_line'></view>
   <view class='search_history'>
     <view class='hot_search_lable'>
       <image src='../../img/hot.png' mode="scaleToFill"></image>

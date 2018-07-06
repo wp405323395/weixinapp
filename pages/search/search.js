@@ -26,7 +26,12 @@ Page({
       key: 'searchs',
       success: function(res) {
         searchHistory = res.data;
-        let historys = searchHistory.split('||-||');
+        let historys;
+        if (searchHistory.length == 0) {
+          historys = [];
+        } else {
+          historys = searchHistory.split('||-||');
+        }
         context.setData({
           historys: historys
         });
