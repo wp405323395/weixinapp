@@ -7,7 +7,7 @@
 <view class='video' wx:if="{{isliving}}">
   <view  wx:key="idx" wx:for="{{videos}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='video_header'>
-      <text class='header_time'>1小时前</text>
+      <text class='header_time'>{{itemName.timebefore}}前</text>
       <text class='delete'></text>
     </view>
     <view class='video_content'>
@@ -23,15 +23,15 @@
   
 </view>
 <view class='tv' wx:else>
-   <view  wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
+   <view  wx:key="idx" wx:for="{{channels}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='video_header'>
-      <text class='header_time'>1小时前</text>
+      <text class='header_time'>{{itemName.timebefore}}前</text>
       <text class='delete'></text>
     </view>
     <view  class='tv_content'>
       <view class='video_content_body tv_content_body'>
-        <text class='title'>湖南卫视</text>
-        <text class='time'>观看时长01：30：54</text>
+        <text class='title'>{{itemName.channel.name}}</text>
+        <text class='time'>观看时长{{itemName.timeRecord}}</text>
       </view>
       <button class='continue_button'>继续观看</button>
     </view>

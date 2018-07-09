@@ -51,6 +51,10 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/my/history/watch/video`,
     method: 'GET'
   },//我的 收看历史（视频）
+  watchChannelHistory:{
+    url: `${schema}://${host}/misa-service/api/my/history/watch/channel`,
+    method: 'GET'
+  },//直播历史列表
   
 
 

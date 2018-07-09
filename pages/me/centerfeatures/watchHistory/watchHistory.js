@@ -8,7 +8,8 @@ Page({
    */
   data: {
     isliving:true,
-    videos:[]
+    videos:[],
+    channels:[]
   },
 
   /**
@@ -17,11 +18,24 @@ Page({
   onLoad: function (options) {
     context = this;
     this.videos();
+    this.channels();
+  },
+  channels:function(){
+    wxRequest.request(netApi.watchChannelHistory, null, success => {
+      for (let time of success) {
+        time.timeRecord = context.formatDuring(time.endTime - time.startTime);
+        time.timebefore = context.formatDuring2(new Date().getTime() - time.lastWatchTime);
+      }
+      context.setData({
+        channels: success
+      });
+    }, faild => { });
   },
   videos:function(){
     wxRequest.request(netApi.watchVideoHistory,null,success=>{
       for(let time of success) {
         time.timeRecord  = context.formatDuring(time.endTime - time.startTime);
+        time.timebefore = context.formatDuring2(new Date().getTime() - time.lastWatchTime);
       }
       context.setData({
         videos: success
@@ -34,12 +48,18 @@ Page({
     var seconds = (mss % (1000 * 60)) / 1000;
     return  hours + ":" + minutes + ":"+seconds;
   },
-  formatDuring2: function (mss) {
+  formatDuring2:function(mss){
     var days = parseInt(mss / (1000 * 60 * 60 * 24));
     var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = (mss % (1000 * 60)) / 1000;
-    return hours + ":" + minutes + ":" + seconds;
+    if(days) {
+      return days + "天"
+    } else if (hours) {
+      return hours + "小时"
+    } else if(minutes) {
+      return minutes + "分钟";
+    }
   },
 
   /**
