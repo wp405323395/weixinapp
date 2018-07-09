@@ -108,6 +108,27 @@ Page({
       devices: context.data.devices
     });
   },
+  unbind:function(e){
+    let index = e.currentTarget.dataset.index;
+    let cardId = context.data.devices[index].cardId;
+    wx.showModal({
+      title: '提示',
+      content: `确认要解绑${cardId}这张卡吗？`  ,
+      success: function (res) {
+        if (res.confirm) {
+          wxRequest.restfulRequest(netApi.unbind, { cardId: cardId}, success => {
+            context.data.devices.splice(index,1);
+            context.setData({
+              devices:context.data.devices
+            })
+          }, faild => {
+          });
+        } else if (res.cancel) {
+         
+        }
+      }
+    })
+  },
   submit:function(e){
     console.log(context.data.devices);
     wxRequest.request(netApi.modifyDevices, context.data.devices,success=>{

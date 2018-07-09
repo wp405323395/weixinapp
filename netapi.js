@@ -42,7 +42,11 @@ const netApi = {
   modifyDevices: {
     url: `${schema}://${host}/misa-service/api/my/device`,
     method: 'POST'
-  }//我的设备修改
+  },//我的设备修改
+  unbind:{
+    url: `${schema}://${host}/misa-service/api/my/device/{cardId}/unbind`,
+    method: 'POST'
+  }
 
 
 };
