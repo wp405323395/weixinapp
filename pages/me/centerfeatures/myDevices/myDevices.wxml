@@ -1,11 +1,5 @@
 <!--pages/me/centerfeatures/myDevices/myDevices.wxml-->
 <view class='context'>
-  <view class='cards_wrap'>
-    <view class='items' wx:key="idx" wx:for="{{[1,2]}}" wx:for-index="idx" wx:for-item="itemName">
-      <text>123123123123123</text>
-      <switch checked='{{false}}'  bindchange='radioChange' data-index='idx' ></switch>
-    </view>
-  </view>
   <view class='add_more_wrap'>
     <view>
       <text class='lable'>添加设备</text>
@@ -13,4 +7,21 @@
     </view>
     <text class='scan_qr'></text>
   </view>
+  <view class='cards_wrap'>
+    <view class='items' wx:key="idx" wx:for="{{devices}}" wx:for-index="idx" wx:for-item="itemName">
+      <view>
+        <view class='cardid_wrap'>
+          <input focus wx:if='{{itemName.isModifing}}' data-index='{{idx}}' bindinput='nameInput' value='{{itemName.name}}'></input>
+          <text wx:else>{{itemName.name}}</text>
+          <image wx:if='{{!itemName.isModifing}}' bindtap='modifyName' data-index='{{idx}}' class="modify" src='../../../../img/modify.png'></image>
+        </view>
+        <text class='cardid_style'>{{itemName.cardId}}</text>
+      </view>
+
+
+      <switch checked='{{itemName.default}}' bindchange='radioChange' data-index='{{idx}}'></switch>
+    </view>
+    <button class='submit' wx:if='{{isSubmitShow}}' bindtap='submit' type='primary'>确认保存</button>
+  </view>
+
 </view>

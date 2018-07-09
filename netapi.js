@@ -34,7 +34,16 @@ const netApi = {
   search:{
     url: `${schema}://${host}/misa-service/api/search`,
     method:'GET'
-  }
+  },//搜索
+  device:{
+    url: `${schema}://${host}/misa-service/api/my/device`,
+    method:'GET'
+  },//我的设备列表
+  modifyDevices: {
+    url: `${schema}://${host}/misa-service/api/my/device`,
+    method: 'POST'
+  }//我的设备修改
+
 
 };
 const wxRequest = {
