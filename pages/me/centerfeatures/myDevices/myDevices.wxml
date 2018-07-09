@@ -8,8 +8,8 @@
     <text class='scan_qr'></text>
   </view>
   <view class='cards_wrap'>
-    <view class='items' wx:key="idx" wx:for="{{devices}}" wx:for-index="idx" wx:for-item="itemName">
-      <view bindlongtap='unbind' data-index='{{idx}}'>
+    <view bindlongtap='unbind' data-index='{{idx}}' class='items' wx:key="idx" wx:for="{{devices}}" wx:for-index="idx" wx:for-item="itemName">
+      <view>
         <view class='cardid_wrap'>
           <input focus wx:if='{{itemName.isModifing}}' data-index='{{idx}}' bindinput='nameInput' value='{{itemName.name}}'></input>
           <text wx:else>{{itemName.name}}</text>

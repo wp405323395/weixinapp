@@ -46,7 +46,12 @@ const netApi = {
   unbind:{
     url: `${schema}://${host}/misa-service/api/my/device/{cardId}/unbind`,
     method: 'POST'
-  }
+  },//解绑设备
+  watchVideoHistory:{
+    url: `${schema}://${host}/misa-service/api/my/history/watch/video`,
+    method: 'GET'
+  },//我的 收看历史（视频）
+  
 
 
 };

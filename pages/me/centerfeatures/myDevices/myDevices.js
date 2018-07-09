@@ -132,6 +132,14 @@ Page({
   submit:function(e){
     console.log(context.data.devices);
     wxRequest.request(netApi.modifyDevices, context.data.devices,success=>{
+      for (let device of context.data.devices) {
+        device.isModifing = false;
+      }
+
+      context.setData({
+        devices: context.data.devices,
+        isSubmitShow:false
+      })
     },faild=>{
     });
   }
