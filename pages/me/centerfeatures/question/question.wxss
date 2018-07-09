@@ -1,1 +1,10 @@
 /* pages/me/centerfeatures/question/question.wxss */
+
+.question ,.answer{
+  padding: 20rpx;
+}
+.answer{
+  background-color: #eeeeee;
+  padding-left: 50rpx;
+  color: #999999;
+}

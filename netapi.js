@@ -58,8 +58,20 @@ const netApi = {
   deleteHistory:{
     url: `${schema}://${host}/misa-service/api/my/history/watch/{id}`,
     method:'DELETE'
-  }
-  
+  },//删除收看历史
+  favoriteVideo:{
+    url: `${schema}://${host}/misa-service/api/my/favorite/video`,
+    method:'GET'
+  },//我的收藏
+  questioon: {
+    url: `${schema}://${host}/misa-service/api/faq`,
+    method: 'GET'
+  },//疑难解答
+  deleteFavoriteVideo:{
+    url: `${schema}://${host}/misa-service/api/my/favorite/video/{videoId}`,
+    method: 'DELETE'
+  },//删除收藏视频
+
 
 
 };

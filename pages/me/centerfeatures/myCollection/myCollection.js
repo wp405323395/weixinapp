@@ -1,17 +1,13 @@
 // pages/me/centerfeatures/myCollection/myCollection.js
 import videoController from "../../../../template/video.js"
+import { netApi, wxRequest } from '../../../../netapi.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [{
-      index: 0,
-      msg: 'this is a template',
-      time: '2016-09-15',
-      url:"../../MY_VIDEO.mp4"
-    }]
+    items: []
   },
   like: function (e) {
     videoController.like(e, this);
@@ -35,7 +31,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wxRequest.request(netApi.favoriteVideo,null,success=>{
+      this.setData({
+        items:success
+      });
+    },faild=>{});
+    items
   },
 
   /**

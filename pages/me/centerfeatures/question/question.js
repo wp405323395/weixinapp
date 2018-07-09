@@ -1,25 +1,31 @@
 // pages/me/centerfeatures/question/question.js
+import { wxRequest,netApi} from '../../../../netapi.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    questions:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wxRequest.request(netApi.questioon, null, success => {
+      this.setData({
+        questions: success
+      });
+      
+    }, faild => { });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
