@@ -8,7 +8,7 @@
   <view  wx:key="idx" wx:for="{{videos}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='video_header'>
       <text class='header_time'>{{itemName.timebefore}}前</text>
-      <text class='delete'></text>
+      <text bindtap='deleteHistory' data-id='{{itemName.id}}' class='delete'></text>
     </view>
     <view class='video_content'>
       <image class='video_icon' src='{{itemName.video.poster}}'></image>
@@ -26,7 +26,7 @@
    <view  wx:key="idx" wx:for="{{channels}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='video_header'>
       <text class='header_time'>{{itemName.timebefore}}前</text>
-      <text class='delete'></text>
+      <text bindtap='deleteHistory' data-id='{{itemName.id}}' class='delete'></text>
     </view>
     <view  class='tv_content'>
       <view class='video_content_body tv_content_body'>

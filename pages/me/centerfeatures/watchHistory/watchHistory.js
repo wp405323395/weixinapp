@@ -110,6 +110,12 @@ Page({
   onShareAppMessage: function () {
   
   },
+  deleteHistory:function(e) {
+    let id = e.currentTarget.dataset.id;
+    wxRequest.restfulRequest(netApi.deleteHistory, { id:id}, success => {
+      context.onLoad();
+    }, faild => { });
+  },
   toggleTap:function(){
     this.setData({
       isliving: !this.data.isliving

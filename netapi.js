@@ -55,6 +55,10 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/my/history/watch/channel`,
     method: 'GET'
   },//直播历史列表
+  deleteHistory:{
+    url: `${schema}://${host}/misa-service/api/my/history/watch/{id}`,
+    method:'DELETE'
+  }
   
 
 
