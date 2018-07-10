@@ -102,14 +102,15 @@ Page({
     });
     wxRequest.request(netApi.search, { key: e.detail.value,'from':'index'}, success=>{
       videoListAll = success.videoList;
+      if (videoListAll.length > 0) {
+        context.insertStorage(e.detail.value);
+      }
       context.setData({
         videoCount: success.videoList.length,
         channelList: success.channelList.splice(0,3),
         videoList: success.videoList.splice(0, 3)
       });
-      if (videoListAll.length >0) {
-        context.insertStorage(e.detail.value);
-      }
+
     }, failed=>{
 
     });
