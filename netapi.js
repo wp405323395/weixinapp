@@ -64,7 +64,7 @@ const netApi = {
     method:'GET'
   },//我的收藏
   questioon: {
-    url: `${schema}://${host}/misa-service/api/faq`,
+    url: `${schema}://${host}/misa-service/api/faq/all`,
     method: 'GET'
   },//疑难解答
   deleteFavoriteVideo:{
