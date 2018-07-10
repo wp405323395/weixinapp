@@ -22,7 +22,7 @@ Page({
     const that = this;
     that.setData({
       currentData: e.detail.current
-    })
+    });
   },
   gotoSearch: function () {
     wx.navigateTo({
@@ -43,6 +43,17 @@ Page({
       that.setData({
         currentData: e.target.dataset.current
       })
+    }
+    switch (e.target.dataset.current) {
+      case '0':
+
+        break;
+      case '1':
+        liveChannelComponent.__proto__.onLoadData();
+        break;
+      case '2':
+        topicComponent.__proto__.onLoadData();
+        break;
     }
   },
   voicebtn: function (event) {

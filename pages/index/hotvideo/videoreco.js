@@ -39,6 +39,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onLoadData: function () {
+
+    },
     like:function(e) {
       videoController.like(e,this);
     },

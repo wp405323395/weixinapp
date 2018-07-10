@@ -9,22 +9,24 @@ Component({
   properties: {
     
   },
-
+  attached: function () {
+    context = this;
+  },
   /**
    * 组件的初始数据
    */
   data: {
     items:[]
   },
-  attached: function () {
-    context = this;
-    this.initData();
-  },
+
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onLoadData: function () {
+      this.initData();
+    },
     gotoTopic:function(e) {
       let topicId = e.target.dataset.topicid;
       console.log("进入专题 id = "+ topicId);

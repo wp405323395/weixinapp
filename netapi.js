@@ -123,11 +123,6 @@ var Processing = {
     }
     return token;
   },
-  showLoading(){
-    wx.showLoading({
-      title: '加载中',
-    });
-  },
   wxLogin(context, api, data, successed, failed){
     // 登录
     wx.login({
@@ -165,7 +160,9 @@ var Processing = {
     })
   },
   req(that, api, data, successed, failed) {
-    this.showLoading();
+    wx.showLoading({
+      title: '加载中',
+    });
     let token = Processing.getToken();
     let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
     wx.request({
