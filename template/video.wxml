@@ -22,7 +22,7 @@
       </view>
       <view class='video_count_footer'>
         <text>{{itemName.watchCount}}次播放量</text>
-         <text>{{parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60))?parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60)):'00'+':'+((itemName.duration % (1000 * 60)) / 1000)}}</text> 
+         <text>{{itemName.duration}}</text>
        
       </view>
     </view>

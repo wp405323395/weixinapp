@@ -22,10 +22,13 @@ const isPoneAvailable = str =>{
     return true;
   }
 }
+
+
+function add0(m) { return m < 10 ? '0' + m : m }
 const formartTime = mss=>{
-  var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = (mss % (1000 * 60)) / 1000;
+  var hours = add0(parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+  var minutes = add0(parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)));
+  var seconds = add0((mss % (1000 * 60)) / 1000);
   if(hours) {
     return `${hours}:${minutes}:${seconds}`;
   } else if(minutes) {
@@ -34,10 +37,11 @@ const formartTime = mss=>{
     return `00:00:${seconds}`;
   }
 }
+
 const formartTime2 = mss => {
-  var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = (mss % (1000 * 60)) / 1000;
+  var hours = add0(parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+  var minutes = add0(parseInt((mss % (1000 * 60 * 60)) / (1000 * 60)));
+  var seconds = add0((mss % (1000 * 60)) / 1000);
   if (hours) {
     return `${hours}:${minutes}`;
   } else if (minutes) {

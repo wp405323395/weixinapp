@@ -1,6 +1,7 @@
 // pages/topic/topicdetail/topicdetail.js
 import videoController from '../../../template/video.js';
 import { wxRequest, netApi } from '../../../netapi.js'
+import util from '../../../utils/util.js'
 let pageNum = 1;
 let context;
 Page({
@@ -112,6 +113,9 @@ Page({
         pageNum++;
         if (successed.length == 0) {
           pageNum = -1;
+        }
+        for (let item of successed) {
+          item.duration = util.formartTime(item.duration);
         }
         context.setData({
           items: context.data.items.concat(successed)
