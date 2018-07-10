@@ -117,7 +117,7 @@ Page({
       success: (res) => {
         let cardNum = res.result;
         // 发起绑定卡的请求。
-        wxRequest.restfulRequest(netApi.bindCard, { 'cardId': cardNum }, (res) => {
+        wxRequest.request(netApi.bindCard, { 'cardId': cardNum }, (res) => {
           wx.showToast({
             title: '绑定成功',
             icon: 'success',

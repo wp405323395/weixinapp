@@ -77,7 +77,7 @@ Page({
     console.log("添加电视台channelid = " + channelid);
     //todo： 添加电视台。
     
-    wxRequest.restfulRequest(netApi.addUserFavoriteChannel, { channelId: channelid},success=>{
+    wxRequest.request(netApi.addUserFavoriteChannel, { channelId: channelid},success=>{
       context.queChannelListByTag();
     },faild=>{
 

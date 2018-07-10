@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     context = this;
-    wxRequest.restfulRequest(netApi.device,null,success=>{
+    wxRequest.request(netApi.device,null,success=>{
       this.setData({
         devices: success
       });
@@ -116,7 +116,7 @@ Page({
       content: `确认要解绑${cardId}这张卡吗？`  ,
       success: function (res) {
         if (res.confirm) {
-          wxRequest.restfulRequest(netApi.unbind, { cardId: cardId}, success => {
+          wxRequest.request(netApi.unbind, { cardId: cardId}, success => {
             context.data.devices.splice(index,1);
             context.setData({
               devices:context.data.devices

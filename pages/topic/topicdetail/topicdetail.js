@@ -92,7 +92,7 @@ Page({
     return videoController.share(e, this);
   },
   loadTopicDetail: function (topicId){
-    wxRequest.restfulRequest(netApi.topicById, { id: topicId }, successed => {
+    wxRequest.request(netApi.topicById, { id: topicId }, successed => {
       if (successed) {
         context.setData({
           topicDetail: successed

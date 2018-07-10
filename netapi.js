@@ -93,54 +93,18 @@ const netApi = {
   },//删除收藏视频
 
 
-
 };
 const wxRequest = {
   retryCount:0,
-  restfulRequest(api, data, success, fail){
-    let api2 = { url: api.url, method:api.method};
-    for(let key in data) {
-      api2.url = api2.url.replace(new RegExp(`{${key}}`),data[key]);
+  request(api, data, successed, failed){
+    if (api.url.indexOf('{') > 0 && api.url.indexOf('}')>0) {
+      Processing.restfulRequest(this,api, data, successed, failed)
+    } else {
+      Processing.req(this,api, data, successed, failed);
     }
-    console.log("restful-> " + api2.url);
-    this.request(api2, {}, success, fail);
   },
-  request(api, data, successed, failed) {
-    let that = this;
-    Processing.showLoading();
-    let token = Processing.getToken();
-    let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
-    wx.request({
-      url: api.url, //仅为示例，并非真实的接口地址
-      data: data,
-      method: api.method,
-      header: {
-        'content-type': contentType,
-        Authorization: `Bearer ${token}`
-      },
-      success: resp => {
-        wx.hideLoading();
-        if (resp.data.success) {
-          successed(resp.data.data);
-        } else {
-          if (resp.data.invalid_token) {
-            //token失效，重新登录。
-            Processing.wxLogin(that, api, data, successed, failed);
-          } else {
-            failed(resp.data.message);
-          }
-        }
-      },
-      fail: function (res) {
-        wx.hideLoading();
-
-        failed(res);
-      }
-    })
-  }
+  
 }
-
-
 
 
 
@@ -199,7 +163,47 @@ var Processing = {
         }
       }
     })
-  }
+  },
+  req(that, api, data, successed, failed) {
+    this.showLoading();
+    let token = Processing.getToken();
+    let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
+    wx.request({
+      url: api.url, //仅为示例，并非真实的接口地址
+      data: data,
+      method: api.method,
+      header: {
+        'content-type': contentType,
+        Authorization: `Bearer ${token}`
+      },
+      success: resp => {
+        wx.hideLoading();
+        if (resp.data.success) {
+          successed(resp.data.data);
+        } else {
+          if (resp.data.invalid_token) {
+            //token失效，重新登录。
+            Processing.wxLogin(that, api, data, successed, failed);
+          } else {
+            failed(resp.data.message);
+          }
+        }
+      },
+      fail: function (res) {
+        wx.hideLoading();
+
+        failed(res);
+      }
+    })
+  },
+  restfulRequest(that, api, data, success, fail) {
+    let api2 = { url: api.url, method: api.method };
+    for (let key in data) {
+      api2.url = api2.url.replace(new RegExp(`{${key}}`), data[key]);
+    }
+    console.log("restful-> " + api2.url);
+    this.req(that, api2, {}, success, fail);
+  },
 }
 export {
   netApi,

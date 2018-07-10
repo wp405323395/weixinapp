@@ -112,7 +112,7 @@ Page({
   },
   deleteHistory:function(e) {
     let id = e.currentTarget.dataset.id;
-    wxRequest.restfulRequest(netApi.deleteHistory, { id:id}, success => {
+    wxRequest.request(netApi.deleteHistory, { id:id}, success => {
       context.onLoad();
     }, faild => { });
   },

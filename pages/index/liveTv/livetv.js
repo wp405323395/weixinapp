@@ -33,7 +33,7 @@ Component({
    */
   methods: {
     queCurProListByType:function(tag){
-      wxRequest.restfulRequest(netApi.queCurProListByType, { type: tag},success=>{
+      wxRequest.request(netApi.queCurProListByType, { type: tag},success=>{
         for(let channel of success) {
           channel.watchTime = (util.formartTime2(channel.endTime) +'-'+ util.formartTime2(channel.startTime));
         }
@@ -80,7 +80,7 @@ Component({
           if(this.data.isShowDelete) {
             console.log("开始删除频道 channelid= "+ channelid);
             //todo: 删除我的频道
-            wxRequest.restfulRequest(netApi.delMyChannel, { channelId:channelid}, success=>{
+            wxRequest.request(netApi.delMyChannel, { channelId:channelid}, success=>{
               context.initData();
             },faild=>{});
           } else {
