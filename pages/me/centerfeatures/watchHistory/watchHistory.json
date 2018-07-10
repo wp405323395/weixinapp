@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "收看历史",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "white",
+  "navigationBarTextStyle": "black"
+}

@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "疑难解答",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "white",
+  "navigationBarTextStyle": "black"
+}

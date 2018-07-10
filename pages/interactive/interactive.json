@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "互动",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "white",
+  "navigationBarTextStyle": "black"
+  }
