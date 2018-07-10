@@ -1,11 +1,15 @@
 // pages/index/hotvideo/videoreco.js
 import videoController from '../../../template/video.js'
+let context;
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
 
+  },
+  attached: function () {
+    context = this;
   },
 
   /**
