@@ -1,20 +1,29 @@
 // pages/channelcenter/channelcenter.js
+import { wxRequest, netApi } from '../../netapi.js'
+var context;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    channelGroups:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    context = this;
+    context.queChannelListByTag();
   },
-
+  queChannelListByTag:function(){
+    wxRequest.request(netApi.queChannelListByTag,null, success=>{
+      context.setData({
+        channelGroups: success
+      });
+    },faild=>{});
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,5 +76,11 @@ Page({
     let channelid = e.target.dataset.channelid;
     console.log("添加电视台channelid = " + channelid);
     //todo： 添加电视台。
+    
+    wxRequest.restfulRequest(netApi.addUserFavoriteChannel, { channelId: channelid},success=>{
+      context.queChannelListByTag();
+    },faild=>{
+
+    });
   }
 })

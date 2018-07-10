@@ -1,6 +1,7 @@
 // pages/index/index.js
 import videoController from '../../template/video.js'
 let topicComponent;
+let liveChannelComponent;
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     topicComponent = this.selectComponent("#topic");
-    console.log(topicComponent);
+    liveChannelComponent = this.selectComponent("#liveChannel");
   },
   bindchange: function (e) {
     const that = this;
@@ -82,7 +83,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if (this.data.currentData == 1) {
+      liveChannelComponent.__proto__.initData();
+      wx.stopPullDownRefresh();
+    }
   },
 
   /**

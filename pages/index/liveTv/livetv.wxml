@@ -2,10 +2,10 @@
 <view bindtap='despatchClick' class='my_channel'>
   <text class='my_channel_lable'>我的频道</text>
   <view class='my_channel_wrap'>
-    <view id='10105' data-channelid='{{idx}}' bindlongpress='showDelete' class='channel_item_wrap' wx:key="idx" wx:for="{{[1,2,3,4,5,56]}}" wx:for-index="idx" wx:for-item="itemName">
-      <image id='10105' data-channelid='{{idx}}' class="channel_icon"   src='../../../img/my_coup.png'></image>
-      <text id='10105' data-channelid='{{idx}}' class="{{isShowDelete?'delete_icon':''}}"></text>
-      <text id='10105' data-channelid='{{idx}}' class='over_worlds_hidden'>南方电视</text>
+    <view id='10105' data-channelid='{{itemName.channelId}}' bindlongpress='showDelete' class='channel_item_wrap' wx:key="idx" wx:for="{{myChannels}}" wx:for-index="idx" wx:for-item="itemName">
+      <image id='10105' data-channelid='{{itemName.channelId}}' class="channel_icon"   src='{{itemName.logo}}'></image>
+      <text id='10105' data-channelid='{{itemName.channelId}}' class="{{isShowDelete?'delete_icon':''}}"></text>
+      <text id='10105' data-channelid='{{itemName.channelId}}' class='over_worlds_hidden'>{{itemName.channelName}}</text>
     </view>
     <view wx:if="{{!isShowDelete}}" class='channel_item_wrap' bindtap='addChannel'>
           <text class='channel_icon add_icon' ></text>
@@ -25,11 +25,11 @@
   </view>
 </view>
 <view class='other_channel_wrap' bindtap='despatchClick'>
-  <view wx:for="{{[1,2,3,4,5,56]}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName" class='other_channel_item_wrap'>
-    <text class='other_wrap_lable'>中央电视台</text>
-    <image id='10105' data-channelid='{{idx}}' class='other_channel_img' src='../../../img/my_coup.png'></image>
-    <text class='other_wrap_lable channel_desc'>2018年斯诺克大赛卡卡卡</text>
-    <text class='other_wrap_lable time_desc'>16:30-18:50</text>
+  <view wx:for="{{otherChannels}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName" class='other_channel_item_wrap'>
+    <text class='other_wrap_lable'>{{itemName.channelName}}</text>
+    <image id='10105' data-channelid='{{idx}}' class='other_channel_img' src='{{itemName.channelLogo}}'></image>
+    <text class='other_wrap_lable channel_desc'>{{itemName.desc}}</text>
+    <text class='other_wrap_lable time_desc'>{{itemName.watchTime}}</text>
   </view>
 </view>
 

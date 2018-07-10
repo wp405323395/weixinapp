@@ -22,8 +22,33 @@ const isPoneAvailable = str =>{
     return true;
   }
 }
+const formartTime = mss=>{
+  var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = (mss % (1000 * 60)) / 1000;
+  if(hours) {
+    return `${hours}:${minutes}:${seconds}`;
+  } else if(minutes) {
+    return `00:${minutes}:${seconds}`;
+  }else{
+    return `00:00:${seconds}`;
+  }
+}
+const formartTime2 = mss => {
+  var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = (mss % (1000 * 60)) / 1000;
+  if (hours) {
+    return `${hours}:${minutes}`;
+  } else if (minutes) {
+    return `00:${minutes}`;
+  }
+}
+
 
 module.exports = {
   formatTime: formatTime,
-  isPoneAvailable: isPoneAvailable
+  isPoneAvailable: isPoneAvailable,
+  formartTime2: formartTime2,
+  formartTime: formartTime
 }

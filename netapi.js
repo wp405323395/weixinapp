@@ -67,6 +67,26 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/faq`,
     method: 'GET'
   },//疑难解答
+  userFavoriteChannel:{
+    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/que`,
+    method:'GET'
+  },//查询我的频道列表
+  delMyChannel:{
+    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/del/{channelId}`,
+    method:'POST'
+  },//删除我关注的频道
+  queCurProListByType:{
+    url: `${schema}://${host}/misa-service/api/channelProgram/queCurProListByType/{type}`,
+    method: 'POST'
+  },//分类查询频道列表
+  queChannelListByTag:{
+    url: `${schema}://${host}/misa-service/api/channel/queChannelListByTag`,
+    method:'GET'
+  },//添加频道
+  addUserFavoriteChannel:{
+    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/add/{channelId}`,
+    method: 'POST'
+  },//添加频道到我的频道
   deleteFavoriteVideo:{
     url: `${schema}://${host}/misa-service/api/my/favorite/video/{videoId}`,
     method: 'DELETE'
