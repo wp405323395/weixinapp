@@ -36,7 +36,6 @@ Page({
         items:success
       });
     },faild=>{});
-    items
   },
 
   /**

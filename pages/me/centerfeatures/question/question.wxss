@@ -8,3 +8,6 @@
   padding-left: 50rpx;
   color: #999999;
 }
+.question{
+  font-size: 38rpx;
+}
