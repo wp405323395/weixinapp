@@ -73,5 +73,5 @@
   color: #999999;
 }
 .submit{
-  margin-top: 30rpx;
+  margin: 30rpx 30rpx;
 }

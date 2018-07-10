@@ -38,6 +38,8 @@
   text-align: left;
   width: 33%;
   height: 350rpx;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
 }
 
 .space_line {
