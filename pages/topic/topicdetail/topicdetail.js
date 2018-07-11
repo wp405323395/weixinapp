@@ -3,6 +3,7 @@ import videoController from '../../../template/video.js';
 import { wxRequest, netApi } from '../../../netapi.js'
 let pageNum = 1;
 let context;
+let topicId;
 Page({
 
   /**
@@ -18,10 +19,11 @@ Page({
    */
   onLoad: function (options) {
     context = this;
-    let topicId = options.topicId;
+    pageNum = 1;
+    topicId = options.topicId;
     console.log('接受过来的topicid = ' + topicId);
-    this.loadTopicDetail(topicId);
-    this.loadItems(topicId);
+    this.loadTopicDetail();
+    this.loadItems();
     
     //todo ： 加载专区信息
   },
@@ -82,7 +84,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.loadItems();
   },
 
   /**
@@ -91,7 +93,7 @@ Page({
   onShareAppMessage: function (e) {
     return videoController.share(e, this);
   },
-  loadTopicDetail: function (topicId){
+  loadTopicDetail: function (){
     wxRequest.request(netApi.topicById, { id: topicId }, successed => {
       if (successed) {
         context.setData({
@@ -103,7 +105,7 @@ Page({
       console.log(failed);
     });
   },
-  loadItems: function (topicId){
+  loadItems: function (){
     if(pageNum == -1) {
       return ;
     }

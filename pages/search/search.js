@@ -95,6 +95,16 @@ Page({
   onShareAppMessage: function () {
   
   },
+  /**
+   * 点击热门搜索词
+   */
+  searchHotKey:function(e){
+    e.detail.value = e.currentTarget.dataset.text
+    this.searchVideo(e);
+    this.setData({
+      searchinput: e.detail.value
+    });
+  },
   searchVideo:function(e){
     //todo: 搜索事件
     context.setData({

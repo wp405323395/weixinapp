@@ -29,7 +29,7 @@
     </view>
 
     <view class='hot_history_wrap'>
-      <view class='hot_item' wx:key="idx" wx:for="{{hotSearchItems}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class='hot_item' data-text='{{itemName.keyword}}' bindtap='searchHotKey' wx:key="idx" wx:for="{{hotSearchItems}}" wx:for-index="idx" wx:for-item="itemName">
         {{itemName.keyword}}
       </view>
     </view>
