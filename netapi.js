@@ -91,6 +91,26 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/my/favorite/video/{videoId}`,
     method: 'DELETE'
   },//删除收藏视频
+  like:{
+    url: `${schema}://${host}/misa-service/api/videoLike/like`,
+    method: 'POST'
+  },//视频点赞
+  videoDetail:{
+    url: `${schema}://${host}/misa-service/api/video/{videoId}`,
+    method: 'GET'
+  },//视频详情
+  recommendListVido:{
+    url: `${schema}://${host}/misa-service/api/video/recommend/{videoId}`,
+    method: 'GET'
+  },//详情里面推荐视频
+  comment:{
+    url: `${schema}://${host}/misa-service/api/video/comment`,
+    method:'GET'
+  },
+  recommendList:{
+    url: `${schema}://${host}/misa-service/api/video/recommendList`,
+    method:'GET'
+  }
 
 
 };

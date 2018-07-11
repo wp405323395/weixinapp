@@ -51,7 +51,6 @@ Page({
     }
     switch (e.target.dataset.current) {
       case '0':
-
         break;
       case '1':
         if (!liveChannelComponentHasLoad) {

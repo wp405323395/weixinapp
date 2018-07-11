@@ -1,12 +1,15 @@
+
 var videoController = {
   like:function(e, context){
+    console.log(e);
+    let videoId = e.currentTarget.dataset.videoid;
+    context.wxRequest.request(context.netApi.like, null, success=>{},faild=>{});
     console.log("like");
   },
   msg: function (e, context){
-    let videoid = context.data.items[e.currentTarget.dataset.index].id;
-    videoid = '323';
+    //let videoid = context.data.items[e.currentTarget.dataset.index].id;
     wx.navigateTo({
-      url: '/pages/videodetail/detail/detail?videoid=' + videoid,
+      url: '/pages/videodetail/detail/detail?videoId=' + e.currentTarget.dataset.videoid,
     })
   },
   star: function (e, context){
