@@ -107,7 +107,11 @@ const netApi = {
   comment:{
     url: `${schema}://${host}/misa-service/api/video/comment`,
     method:'GET'
-  },
+  },//添加评论
+  userCenterInfo:{
+    url: `${schema}://${host}/misa-service/api/my/device/default`,
+    method:'GET'
+  },//获取是否绑定设备
   recommendList:{
     url: `${schema}://${host}/misa-service/api/video/recommendList`,
     method:'GET'

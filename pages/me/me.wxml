@@ -3,7 +3,9 @@
 <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
 <block wx:else>
   <image  class="userinfo-avatar" src='{{userInfo.avatarUrl}}' background-size="cover"></image>
-  <text bindtap='bindUser'>绑定用户</text>
+  <text wx:if='{{!cardInfo}}' bindtap='bindUser'>绑定用户</text>
+  <text wx:elif='{{cardInfo.name}}'>{{cardInfo.name}}</text>
+  <text wx:elif='{{cardInfo.cardId}}'>{{cardInfo.cardId}}</text>
 </block>
 
 </view>

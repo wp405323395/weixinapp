@@ -11,7 +11,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo:{
       avatarUrl:"../../img/default_header.jpg"
-    }
+    },
+    cardInfo:null
   },
 
   /**
@@ -49,6 +50,15 @@ Page({
       })
       
     }
+    this.loadBindStatus();
+  },
+  loadBindStatus:function(){
+    wxRequest.request(netApi.userCenterInfo,null,success=>{
+      this.setData({
+        cardInfo:success
+      });
+      
+    },faild=>{});
   },
   getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
