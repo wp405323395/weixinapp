@@ -1,6 +1,7 @@
 // pages/videodetail/detail/detail.js
 import videoController from '../../../template/video.js'
 import { netApi, wxRequest } from '../../../netapi.js';
+import util from '../../../utils/util.js'
 Page({
 
   /**
@@ -9,7 +10,8 @@ Page({
   data: {
     items:[{}],
     hidecontroller:true,
-    recomendVideo:[]
+    recomendVideo:[],
+    comments:[]
   },
   like: function (e) {
     videoController.like(e, this);
@@ -44,16 +46,28 @@ Page({
     let videoId = options.videoId;
     wxRequest.request(netApi.videoDetail, { videoId: videoId},success=>{
       this.data.items[0] = success
+      for (let item of this.data.items) {
+        item.duration = util.formartTime(item.duration);
+      }
       this.setData({
         items: this.data.items
       });
     },faild=>{});
     wxRequest.request(netApi.recommendListVido, { videoId: videoId},success=>{
+      for (let item of success) {
+        item.duration = util.formartTime(item.duration);
+      }
       this.setData({
         recomendVideo: success
       });
     },failed=>{});
     wxRequest.request(netApi.comment, { videoId: videoId},success=>{
+      for(let item of success) {
+        item.updateAt = util.formartTime1(item.updateAt);
+      }
+      this.setData({
+        comments: success
+      });
       console.log(success);
     },failed=>{});
   },
