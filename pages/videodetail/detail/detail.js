@@ -44,32 +44,51 @@ Page({
    */
   onLoad: function (options) {
     let videoId = options.videoId;
-    wxRequest.request(netApi.videoDetail, { videoId: videoId},success=>{
-      this.data.items[0] = success
-      for (let item of this.data.items) {
-        item.duration = util.formartTime(item.duration);
-      }
-      this.setData({
-        items: this.data.items
+    new Promise((resolve,reject)=>{
+      wxRequest.request(netApi.videoDetail, { videoId: videoId }, success => {
+        this.data.items[0] = success
+        for (let item of this.data.items) {
+          item.duration = util.formartTime(item.duration);
+        }
+        this.setData({
+          items: this.data.items
+        });
+        resolve();
+      }, faild => {
+        resolve();
+       });
+    }).then(value=>{
+      return new Promise((resolve, reject) => {
+        wxRequest.request(netApi.recommendListVido, { videoId: videoId }, success => {
+          for (let item of success) {
+            item.duration = util.formartTime(item.duration);
+          }
+          this.setData({
+            recomendVideo: success
+          });
+          resolve();
+        }, failed => {
+          resolve();
+        });
       });
-    },faild=>{});
-    wxRequest.request(netApi.recommendListVido, { videoId: videoId},success=>{
-      for (let item of success) {
-        item.duration = util.formartTime(item.duration);
-      }
-      this.setData({
-        recomendVideo: success
+    }).then(value=>{
+      return new Promise((resolve, reject) => {
+        wxRequest.request(netApi.comment, { videoId: videoId }, success => {
+          for (let item of success) {
+            item.updateAt = util.formartTime1(item.updateAt);
+          }
+          this.setData({
+            comments: success
+          });
+          resolve();
+        }, failed => {
+          resolve();
+        });
       });
-    },failed=>{});
-    wxRequest.request(netApi.comment, { videoId: videoId},success=>{
-      for(let item of success) {
-        item.updateAt = util.formartTime1(item.updateAt);
-      }
-      this.setData({
-        comments: success
-      });
-      console.log(success);
-    },failed=>{});
+    }).then(value=>{}).catch(err=>{});
+    
+    
+    
   },
 
   /**
