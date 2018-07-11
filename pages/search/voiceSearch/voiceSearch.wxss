@@ -1,0 +1,7 @@
+text{
+  display: block;
+  width: 100%;
+  height: 700rpx;
+  text-align: center;
+  padding-top: 400rpx;
+}
