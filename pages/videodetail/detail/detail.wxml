@@ -37,7 +37,7 @@
     <view class='common_detail'>
       <view class='header_wrap'>
         <text class='name'>王老五</text>
-        <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text>
+        <!-- <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text> -->
       </view>
       <text class='common'>{{itemName.comment}}</text>
       <text class='time'>{{itemName.updateAt}}</text>
