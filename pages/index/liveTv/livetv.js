@@ -69,6 +69,9 @@ Component({
     },
     selectKind:function(evn) {
       let id = evn.target.id;
+      if(id == context.data.kindSelect) {
+        return ;
+      }
       context.setData({
         kindSelect:id
       });
