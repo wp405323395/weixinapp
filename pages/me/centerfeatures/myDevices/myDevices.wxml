@@ -1,6 +1,6 @@
 <!--pages/me/centerfeatures/myDevices/myDevices.wxml-->
 <view class='context'>
-  <view class='add_more_wrap'>
+  <view class='add_more_wrap' bindtap='bindUser'>
     <view>
       <text class='lable'>添加设备</text>
       <text class='lable_des'>扫描智能卡背面条码，完成添加</text>

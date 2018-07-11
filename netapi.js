@@ -15,7 +15,8 @@ const netApi = {
           method:'POST'},//上传用户信息
   feedback: {url:`${schema}://${host}/misa-service/api/my/feedback`,
               method:'POST'},//用户反馈
-  bindCard: {url:`${schema}://${host}/misa-service/api/user/device/{cardId}/bind`,
+  bindCard: {
+    url: `${schema}://${host}/misa-service/api/my/device/{cardId}/bind`,
               method:'POST'},//绑定卡号
   topic: {url:`${schema}://${host}/misa-service/api/topic`,
               method:'GET'}, //专题列表
@@ -184,7 +185,7 @@ var Processing = {
       title: '加载中',
     });
     let token = Processing.getToken();
-    let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
+    let contentType = (api.url == netApi.info.url ? 'application/x-www-form-urlencoded' : 'application/json');
     wx.request({
       url: api.url, //仅为示例，并非真实的接口地址
       data: data,

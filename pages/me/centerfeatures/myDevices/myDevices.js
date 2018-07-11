@@ -16,11 +16,15 @@ Page({
    */
   onLoad: function (options) {
     context = this;
-    wxRequest.request(netApi.device,null,success=>{
+    this.initData();
+    
+  },
+  initData:function(){
+    wxRequest.request(netApi.device, null, success => {
       this.setData({
         devices: success
       });
-    }, faild=>{});
+    }, faild => { });
   },
 
   /**
@@ -142,5 +146,28 @@ Page({
       })
     },faild=>{
     });
+  },
+  bindUser: function () {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        let cardNum = res.result;
+        // 发起绑定卡的请求。
+        wxRequest.request(netApi.bindCard, { 'cardId': cardNum }, (res) => {
+          context.initData();
+          wx.showToast({
+            title: '绑定成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }, (res) => {
+          wx.showToast({
+            title: '绑定失败',
+            icon: 'none',
+            duration: 2000
+          });
+        });
+      }
+    })
   }
 })
