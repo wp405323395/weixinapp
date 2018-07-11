@@ -91,6 +91,26 @@ const netApi = {
     url: `${schema}://${host}/misa-service/api/my/favorite/video/{videoId}`,
     method: 'DELETE'
   },//删除收藏视频
+  like:{
+    url: `${schema}://${host}/misa-service/api/videoLike/like`,
+    method: 'POST'
+  },//视频点赞
+  videoDetail:{
+    url: `${schema}://${host}/misa-service/api/video/{videoId}`,
+    method: 'GET'
+  },//视频详情
+  recommendListVido:{
+    url: `${schema}://${host}/misa-service/api/video/recommend/{videoId}`,
+    method: 'GET'
+  },//详情里面推荐视频
+  comment:{
+    url: `${schema}://${host}/misa-service/api/video/comment`,
+    method:'GET'
+  },
+  recommendList:{
+    url: `${schema}://${host}/misa-service/api/video/recommendList`,
+    method:'GET'
+  }
 
 
 };
@@ -122,11 +142,6 @@ var Processing = {
       // Do something when catch error
     }
     return token;
-  },
-  showLoading(){
-    wx.showLoading({
-      title: '加载中',
-    });
   },
   wxLogin(context, api, data, successed, failed){
     // 登录
@@ -165,7 +180,9 @@ var Processing = {
     })
   },
   req(that, api, data, successed, failed) {
-    this.showLoading();
+    wx.showLoading({
+      title: '加载中',
+    });
     let token = Processing.getToken();
     let contentType = (api.url == netApi.info ? 'application/x-www-form-urlencoded' : 'application/json');
     wx.request({

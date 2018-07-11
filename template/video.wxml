@@ -1,7 +1,7 @@
 <template name="video">
 <view wx:key="idx" wx:for="{{items}}" wx:for-index="idx" wx:for-item="itemName">
   <view class='video_wrap'>
-  <video autoplay bindended="onVideoEnd"  data-index='{{idx}}'  wx:if="{{itemName.playing}}" class='video_style' src='/MY_VIDEO.mp4' controls show-center-play-btn objectFit="contain">
+  <video autoplay bindended="onVideoEnd"  data-index='{{idx}}'  wx:if="{{itemName.playing}}" class='video_style' src="http://39.108.84.154:8888/videos/{{itemName.vid}}" controls show-center-play-btn objectFit="contain">
   </video>
   <view wx:elif="{{itemName.isEnd}}" class='video_style'>
     <view class='info_wrap'>
@@ -22,7 +22,7 @@
       </view>
       <view class='video_count_footer'>
         <text>{{itemName.watchCount}}次播放量</text>
-         <text>{{parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60))?parseInt((itemName.duration % (1000 * 60 * 60)) / (1000 * 60)):'00'+':'+((itemName.duration % (1000 * 60)) / 1000)}}</text> 
+         <text>{{itemName.duration}}</text> 
        
       </view>
     </view>
@@ -32,8 +32,8 @@
   <view class='controller_section' wx:if="{{!hidecontroller}}">
     <image bindtap='showOnTv'  data-index='{{idx}}' mode='aspectFit' class='show_on_tv_btn' src='/img/show_on_tv.png'></image>
     <view class='controller_wrap'>
-      <view bindtap='like' data-index='{{idx}}' class="like {{itemName.isLike?'liking':''}}"></view>
-      <view bindtap='msg' data-index='{{idx}}' class='msg'></view>
+      <view bindtap='like' data-videoId='{{itemName.id}}' data-index='{{idx}}' class="like {{itemName.isLike?'liking':''}}"></view>
+      <view bindtap='msg' data-videoId='{{itemName.id}}' data-index='{{idx}}' class='msg'></view>
       <view bindtap='star' data-index='{{idx}}' class="star {{itemName.isFavorite?'staring':''}}"></view>
       <button open-type="share" data-index='{{idx}}' class='share'></button>
     </view>

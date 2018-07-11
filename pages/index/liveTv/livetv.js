@@ -12,7 +12,9 @@ Component({
   properties: {
     
   },
-
+  attached:function(){
+    context = this;
+  },
   /**
    * 组件的初始数据
    */
@@ -22,36 +24,52 @@ Component({
     myChannels: [],
     otherChannels:[]
   },
-  attached: function () {
-    context = this;
-    this.initData();
-    this.queCurProListByType(0);
-  },
+
 
   /**
    * 组件的方法列表
    */
   methods: {
+
+    onLoadData: function () {
+      this.initData().then(value=>{
+        return this.queCurProListByType(0);
+      }).catch(err=>{
+        console.log("请求失败");
+      });
+    },
     queCurProListByType:function(tag){
-      wxRequest.request(netApi.queCurProListByType, { type: tag},success=>{
-        for(let channel of success) {
-          channel.watchTime = (util.formartTime2(channel.endTime) +'-'+ util.formartTime2(channel.startTime));
-        }
-        this.setData({
-          otherChannels: success
-        });
-      },faild=>{})
+     return new Promise((resolve,reject)=>{
+        wxRequest.request(netApi.queCurProListByType, { type: tag }, success => {
+          for (let channel of success) {
+            channel.watchTime = (util.formartTime2(channel.endTime) + '-' + util.formartTime2(channel.startTime));
+          }
+          context.setData({
+            otherChannels: success
+          });
+          resolve(success);
+        }, faild => {
+          reject(faild);
+         })
+      });
+      
     },
     initData:function(){
-      wxRequest.request(netApi.userFavoriteChannel,null,success=>{
-        context.setData({
-          myChannels: success
-        });
-      },faild=>{});
+     return new Promise((resolve, reject)=>{
+        wxRequest.request(netApi.userFavoriteChannel, null, success => {
+          context.setData({
+            myChannels: success
+          });
+          resolve(success);
+        }, faild => {
+          reject(faild);
+         });
+      });
+      
     },
     selectKind:function(evn) {
       let id = evn.target.id;
-      this.setData({
+      context.setData({
         kindSelect:id
       });
       //todo: 切换频道类型，切换数据
@@ -69,7 +87,7 @@ Component({
       })
     },
     showDelete:function(){
-      this.setData({
+      context.setData({
         isShowDelete:true
       });
     },
@@ -88,7 +106,7 @@ Component({
             //todo: 播放频道
           }
       } else {
-        this.setData({
+        context.setData({
           isShowDelete:false
         });
       }

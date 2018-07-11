@@ -1,5 +1,8 @@
 // pages/index/hotvideo/videoreco.js
 import videoController from '../../../template/video.js'
+import { wxRequest, netApi } from '../../../netapi.js'
+import util from '../../../utils/util.js'
+let context;
 Component({
   /**
    * 组件的属性列表
@@ -7,38 +10,34 @@ Component({
   properties: {
 
   },
+  attached: function () {
+    context = this;
+    context.wxRequest = wxRequest;
+    context.netApi = netApi;
+    context.util = util;
+  },
 
   /**
    * 组件的初始数据
    */
   data: {
-    items: [{
-      index: 0,
-      msg: '首付士大夫邸士大夫士大夫士大夫士大夫发的说法',
-      time: '2016-09-15',
-      url:'../../MY_VIDEO.mp4'
-    },{
-      index: 0,
-      msg: '威风威风违反违反违反违反违反违反违反我',
-      time: '2016-09-15',
-      url: '../../MY_VIDEO.mp4'
-      },{
-        index: 0,
-        msg: '飞飞飞无法无法否认个人格沟通过通过人格而非而非违反',
-        time: '2016-09-15',
-        url: '../../MY_VIDEO.mp4'
-    },{
-      index: 0,
-      msg: 'ahahahahahah',
-      time: '2016-09-15',
-      url: '../../MY_VIDEO.mp4'
-    }]
+    items:[]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onLoadData: function () {
+      wxRequest.request(netApi.recommendList,null,success=>{
+        for (let item of success) {
+          item.duration = util.formartTime(item.duration);
+        }
+        context.setData({
+          items:success
+        });
+      },failed=>{});
+    },
     like:function(e) {
       videoController.like(e,this);
     },

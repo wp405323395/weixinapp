@@ -3,24 +3,24 @@
 <template is="video" data="{{items,hidecontroller}}"></template>
 <view class='detail_cotent'>
   <view class='video_control'>
-    <text class='video_title'>标题标题做多一行，标题标题做多一行，标题标题做多一行，标题标题做多一行，标题标题做多一行，</text>
-    <text class='video_detail'>内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号内容简介做多为三行。多余省略号</text>
+    <text class='video_title'>{{items[0].title}}</text>
+    <text class='video_detail'>{{items[0].intro}}</text>
   </view>
   <view class='controller_wrap'>
-    <text bindtap='like' data-index='{{1}}' class="like {{true?'liking':''}}">24</text>
-    <text class='msg'>34</text>
-    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">54</text>
-    <button open-type="share" data-index='{{1}}' class='share share_detail'>123</button>
+    <text bindtap='like' data-index='{{1}}' class="like {{true?'liking':''}}">{{items[0].likeCount}}</text>
+    <text class='msg'>{{items[0].commentCount}}</text>
+    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">没有收藏数字{{items[0].likeCount}}</text>
+    <button open-type="share" data-index='{{1}}' class='share share_detail'>{{items[0].shareCount}}</button>
   </view>
 </view>
 <view class='line'></view>
 <view class='detail_cotent recommend_video_wrap'>
   <view class='recommend_video'>
-    <view class='video_wrap_item' data-index='{{idx}}' bindtap='openVideo' wx:key="idx" wx:for="{{[1,2,3]}}" wx:for-index="idx" wx:for-item="itemName">
-      <image class='img' src=''></image>
+    <view class='video_wrap_item' data-index='{{idx}}' bindtap='openVideo' wx:key="idx" wx:for="{{recomendVideo}}" wx:for-index="idx" wx:for-item="itemName">
+      <image class='img' src='{{itemName.poster}}'></image>
       <view class='detail'>
-        <text>这个是标题最多两行</text>
-        <text>00:59</text>
+        <text>{{itemName.title}}</text>
+        <text>{{itemName.duration}}</text>
       </view>
     </view>
   </view>
@@ -31,7 +31,7 @@
 </view>
 <view class='line'></view>
 <view class='detail_cotent'>
-  <view    wx:key="idx" wx:for="{{[1,2,3]}}" wx:for-index="idx" wx:for-item="itemName">
+  <view    wx:key="idx" wx:for="{{recomendVideo}}" wx:for-index="idx" wx:for-item="itemName">
     <view class='common_item'>
       <image class='icon' src=''></image>
     <view class='common_detail'>
@@ -39,8 +39,8 @@
         <text class='name'>王老五</text>
         <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text>
       </view>
-      <text class='common'>评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。评论内容。。。。。</text>
-      <text class='time'>6月7日</text>
+      <text class='common'>{{itemName.comment}}</text>
+      <text class='time'>{{itemName.updateAt}}</text>
     </view>
     </view>
     

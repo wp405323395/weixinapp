@@ -1,5 +1,6 @@
 // pages/videodetail/detail/detail.js
 import videoController from '../../../template/video.js'
+import { netApi, wxRequest } from '../../../netapi.js';
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
    */
   data: {
     items:[{}],
-    hidecontroller:true
+    hidecontroller:true,
+    recomendVideo:[]
   },
   like: function (e) {
     videoController.like(e, this);
@@ -39,8 +41,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let videoid = options.videoid;
-    console.log(videoid);
+    let videoId = options.videoId;
+    wxRequest.request(netApi.videoDetail, { videoId: videoId},success=>{
+      this.data.items[0] = success
+      this.setData({
+        items: this.data.items
+      });
+    },faild=>{});
+    wxRequest.request(netApi.recommendListVido, { videoId: videoId},success=>{
+      this.setData({
+        recomendVideo: success
+      });
+    },failed=>{});
+    wxRequest.request(netApi.comment, { videoId: videoId},success=>{
+      console.log(success);
+    },failed=>{});
   },
 
   /**

@@ -2,6 +2,9 @@
 import videoController from '../../template/video.js'
 let topicComponent;
 let liveChannelComponent;
+let hotRecommendComponent;
+var liveChannelComponentHasLoad = false;
+var topicComponentHasLoad = false;
 Page({
 
   /**
@@ -15,14 +18,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    hotRecommendComponent = this.selectComponent("#hotRecommend");
     topicComponent = this.selectComponent("#topic");
     liveChannelComponent = this.selectComponent("#liveChannel");
+    hotRecommendComponent.__proto__.onLoadData();
   },
   bindchange: function (e) {
     const that = this;
     that.setData({
       currentData: e.detail.current
-    })
+    });
   },
   gotoSearch: function () {
     wx.navigateTo({
@@ -43,6 +48,23 @@ Page({
       that.setData({
         currentData: e.target.dataset.current
       })
+    }
+    switch (e.target.dataset.current) {
+      case '0':
+        break;
+      case '1':
+        if (!liveChannelComponentHasLoad) {
+          liveChannelComponent.__proto__.onLoadData();
+          liveChannelComponentHasLoad = true;
+        }
+        
+        break;
+      case '2':
+        if (!topicComponentHasLoad) {
+          topicComponent.__proto__.onLoadData();
+          topicComponentHasLoad = true;
+        }
+        break;
     }
   },
   voicebtn: function (event) {

@@ -1,6 +1,7 @@
 // pages/me/centerfeatures/myCollection/myCollection.js
 import videoController from "../../../../template/video.js"
 import { netApi, wxRequest } from '../../../../netapi.js'
+import util from '../../../../utils/util.js'
 Page({
 
   /**
@@ -32,6 +33,9 @@ Page({
    */
   onLoad: function (options) {
     wxRequest.request(netApi.favoriteVideo,null,success=>{
+      for(let item of success) {
+        item.duration = util.formartTime(item.duration);
+      }
       this.setData({
         items:success
       });

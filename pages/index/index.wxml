@@ -11,7 +11,7 @@
 <view class='swiper'>
   <view hidden='{{currentData != 0}}'>
     <view class='swiper_con'>
-      <videoreco></videoreco>
+      <videoreco id='hotRecommend'></videoreco>
     </view>
   </view> 
   <!-- 直播频道》》》》》 -->
