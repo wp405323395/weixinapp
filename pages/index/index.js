@@ -5,6 +5,7 @@ let liveChannelComponent;
 let hotRecommendComponent;
 var liveChannelComponentHasLoad = false;
 var topicComponentHasLoad = false;
+import {wxRequest,netApi} from '../../netapi.js';
 Page({
 
   /**
@@ -22,6 +23,8 @@ Page({
     topicComponent = this.selectComponent("#topic");
     liveChannelComponent = this.selectComponent("#liveChannel");
     hotRecommendComponent.__proto__.onLoadData();
+    this.wxRequest = wxRequest;
+    this.netApi = netApi; 
   },
   bindchange: function (e) {
     const that = this;
@@ -105,6 +108,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    if (this.data.currentData == 0) {
+      hotRecommendComponent.__proto__.onLoadData(1);
+      wx.stopPullDownRefresh();
+    }
     if (this.data.currentData == 1) {
       liveChannelComponent.__proto__.initData();
       wx.stopPullDownRefresh();
@@ -116,6 +123,9 @@ Page({
    */
   onReachBottom: function () {
     console.log();
+    if (this.data.currentData == 0) {
+      hotRecommendComponent.__proto__.onLoadData();
+    }
     if (this.data.currentData == 2) {
       topicComponent.__proto__.initData();
     }

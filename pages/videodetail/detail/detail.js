@@ -1,7 +1,11 @@
 // pages/videodetail/detail/detail.js
 import videoController from '../../../template/video.js'
 import { netApi, wxRequest } from '../../../netapi.js';
-import util from '../../../utils/util.js'
+
+import util from '../../../utils/util.js';
+let pageNum;
+let videoId;
+
 Page({
 
   /**
@@ -11,7 +15,8 @@ Page({
     items:[{}],
     hidecontroller:true,
     recomendVideo:[],
-    comments:[]
+    commentVideo:[]
+
   },
   like: function (e) {
     videoController.like(e, this);
@@ -35,60 +40,51 @@ Page({
     console.log(e.currentTarget.dataset.index);
   },
   openVideo:function(e){
-    console.log(e.currentTarget.dataset.index);
-    
+    wx.navigateTo({
+      url: '/pages/videodetail/detail/detail?videoId=' +
+      e.currentTarget.dataset.videoid,
+    })    
   },
+  //查询视频评论
+  commentPage: function () {
+    if (pageNum == -1) {
+      return;
+    }
+    wxRequest.request(netApi.comment, { current: pageNum, videoId: videoId }, successed =>    {
+      if (successed) {
+        pageNum++;
+        if (successed.length == 0) {
+          pageNum = -1;
+        }
+        this.setData({
+          commentVideo: this.data.commentVideo.concat(successed)
+        });
+      }
+    }, failed => { });
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let videoId = options.videoId;
-    new Promise((resolve,reject)=>{
-      wxRequest.request(netApi.videoDetail, { videoId: videoId }, success => {
-        this.data.items[0] = success
-        for (let item of this.data.items) {
-          item.duration = util.formartTime(item.duration);
-        }
-        this.setData({
-          items: this.data.items
-        });
-        resolve();
-      }, faild => {
-        resolve();
-       });
-    }).then(value=>{
-      return new Promise((resolve, reject) => {
-        wxRequest.request(netApi.recommendListVido, { videoId: videoId }, success => {
-          for (let item of success) {
-            item.duration = util.formartTime(item.duration);
-          }
-          this.setData({
-            recomendVideo: success
-          });
-          resolve();
-        }, failed => {
-          resolve();
-        });
+    videoId = options.videoId;
+    pageNum = 1;  //视频评论需要分页
+    wxRequest.request(netApi.videoDetail, { videoId: videoId},success=>{
+      this.data.items[0] = success
+      this.data.items[0].duration = util.formartTime(success.duration);
+      this.setData({
+        items: this.data.items
       });
-    }).then(value=>{
-      return new Promise((resolve, reject) => {
-        wxRequest.request(netApi.comment, { videoId: videoId }, success => {
-          for (let item of success) {
-            item.updateAt = util.formartTime1(item.updateAt);
-          }
-          this.setData({
-            comments: success
-          });
-          resolve();
-        }, failed => {
-          resolve();
-        });
+    },faild=>{});
+    wxRequest.request(netApi.recommendListVido, { videoId: videoId},success=>{
+      for (let item of success){
+        item.duration = util.formartTime(item.duration);
+      }
+      this.setData({
+        recomendVideo: success
       });
-    }).then(value=>{}).catch(err=>{});
-    
-    
-    
+    },failed=>{});
+    this.commentPage();
   },
 
   /**
@@ -130,13 +126,17 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.commentPage();
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
+    this.netApi = netApi;
+    this.wxRequest = wxRequest;
+    this.data.items[0].shareCount = parseInt(this.data.items[0].shareCount) + 1;
+    this.setData({ items: this.data.items})
     return videoController.share(e, this);
   }
 })

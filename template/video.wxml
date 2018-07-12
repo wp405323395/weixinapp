@@ -34,8 +34,8 @@
     <view class='controller_wrap'>
       <view bindtap='like' data-videoId='{{itemName.id}}' data-index='{{idx}}' class="like {{itemName.isLike?'liking':''}}"></view>
       <view bindtap='msg' data-videoId='{{itemName.id}}' data-index='{{idx}}' class='msg'></view>
-      <view bindtap='star' data-index='{{idx}}' class="star {{itemName.isFavorite?'staring':''}}"></view>
-      <button open-type="share" data-index='{{idx}}' class='share'></button>
+      <view bindtap='star' data-videoType="{{itemName.type}}" data-videoId='{{itemName.id}}' data-index='{{idx}}' class="star {{itemName.isFavorite?'staring':''}}"></view>
+      <button  open-type="share" data-videoId='{{itemName.id}}' data-videoTitle='{{itemName.title}}' data-index='{{idx}}' class='share'></button>
     </view>
   </view>
 </view>

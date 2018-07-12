@@ -28,14 +28,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onLoadData: function () {
+    onLoadData: function (e) {
       wxRequest.request(netApi.recommendList,null,success=>{
         for (let item of success) {
           item.duration = util.formartTime(item.duration);
         }
-        context.setData({
-          items:success
-        });
+        if(e==1){
+          context.setData({
+            items: success.concat(context.data.items)
+          });
+        }else{
+          context.setData({
+            items: context.data.items.concat(success)
+          });
+        }
+       
       },failed=>{});
     },
     like:function(e) {

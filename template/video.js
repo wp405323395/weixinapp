@@ -1,9 +1,20 @@
 
 var videoController = {
+  //视频列表是否点赞
   like:function(e, context){
-    console.log(e);
-    let videoId = e.currentTarget.dataset.videoid;
-    context.wxRequest.request(context.netApi.like, null, success=>{},faild=>{});
+    let items = context.data.items;  //获取热门推荐视频上下文
+    let index = e.currentTarget.dataset.index;  //获取选中行下标
+    let data = {
+      videoId: e.currentTarget.dataset.videoid,  //视频id
+      status: items[index].isLike?1:0  //0是点赞  1是取消点赞
+    }
+    context.wxRequest.request(context.netApi.like, data, success=>{
+     
+      items[index].isLike = !items[index].isLike;
+      context.setData({
+        items: items
+      });
+    },faild=>{});
     console.log("like");
   },
   msg: function (e, context){
@@ -12,14 +23,33 @@ var videoController = {
       url: '/pages/videodetail/detail/detail?videoId=' + e.currentTarget.dataset.videoid,
     })
   },
+  //视频列表是否收藏
   star: function (e, context){
-    console.log("star");
+    let items = context.data.items;  //获取热门推荐视频上下文
+    let index = e.currentTarget.dataset.index;  //获取选中行下标
+    let data = {
+      linkId: e.currentTarget.dataset.videoid,  //视频id
+      'type': e.currentTarget.dataset.videotype,  //视频类型
+      status: items[index].isFavorite ? 1 : 0   //收藏标识   0收藏  1取消收藏
+    }
+    context.wxRequest.request(context.netApi.userFavoriteVideo, data, success => {
+      items[index].isFavorite = !items[index].isFavorite;
+      context.setData({
+        items: items
+      });
+    }, faild => { });
   },
   share: function (e, context){
-    console.log("携带的关键数据是，" + e.target.dataset.index);
+    let dataset = e.target.dataset;
+    let data = {
+      videoId: dataset.videoid,  //视频id
+      'shareTo': 'weixin'  //分享渠道
+    }
+    context.wxRequest.request(context.netApi.videoShare, data, success => {
+    }, faild => { });
     return {
-      title: "fffffffffff",
-      path: '/page/user?id=' + e.target.dataset.index,
+      title: dataset.videotitle,
+      path: '/pages/videodetail/detail/detail?videoId=' + dataset.videoid,
       success: function (res) {
         var shareTickets = res.shareTickets;
         if (shareTickets.length == 0) {

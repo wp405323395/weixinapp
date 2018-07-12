@@ -1,4 +1,4 @@
-//app.js
+  //app.js
 import { netApi} from 'netapi.js'
 App({
   onLaunch: function () {

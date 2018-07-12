@@ -1,6 +1,7 @@
 
 var host = "maywide.free.ngrok.cc";
 var host = "39.108.84.154:8080";
+// var host = "localhost:8080";
 var isHttps = ("maywide.free.ngrok.cc" == host);
 var isHttps = false;
 var schema = isHttps?'https':'http';
@@ -115,9 +116,16 @@ const netApi = {
   recommendList:{
     url: `${schema}://${host}/misa-service/api/video/recommendList`,
     method:'GET'
-  }
-
-
+  },//推荐视频列表
+   userFavoriteVideo: {
+     url: `${schema}://${host}/misa-service/api/userFavoriteVideo/favorite`,
+    method: 'POST'
+  },//视频收藏 及取消收藏
+   videoShare: {
+     url: `${schema}://${host}/misa-service/api/videoShareHistory/share`,
+     method: 'POST'
+   }//视频分享
+   
 };
 const wxRequest = {
   retryCount:0,

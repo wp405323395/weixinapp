@@ -9,14 +9,15 @@
   <view class='controller_wrap'>
     <text bindtap='like' data-index='{{1}}' class="like {{true?'liking':''}}">{{items[0].likeCount}}</text>
     <text class='msg'>{{items[0].commentCount}}</text>
-    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">没有收藏数字{{items[0].likeCount}}</text>
-    <button open-type="share" data-index='{{1}}' class='share share_detail'>{{items[0].shareCount}}</button>
+    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">{{items[0].favoriteCount}}</text>
+  <button open-type="share" data-videoId='{{items[0].id}}' 
+   data-videoTitle='{{items[0].title}}' data-index='{{1}}' class='share share_detail'>{{items[0].shareCount}}</button>
   </view>
 </view>
 <view class='line'></view>
 <view class='detail_cotent recommend_video_wrap'>
   <view class='recommend_video'>
-    <view class='video_wrap_item' data-index='{{idx}}' bindtap='openVideo' wx:key="idx" wx:for="{{recomendVideo}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class='video_wrap_item' data-index='{{idx}}' data-videoId='{{itemName.id}}'       bindtap='openVideo' wx:key="idx" wx:for="{{recomendVideo}}" wx:for-index="idx"          wx:for-item="itemName">
       <image class='img' src='{{itemName.poster}}'></image>
       <view class='detail'>
         <text>{{itemName.title}}</text>
@@ -31,7 +32,7 @@
 </view>
 <view class='line'></view>
 <view class='detail_cotent'>
-  <view    wx:key="idx" wx:for="{{comments}}" wx:for-index="idx" wx:for-item="itemName">
+  <view wx:key="idx" wx:for="{{commentVideo}}"wx:for-index="idx" wx:for-item="itemName">
     <view class='common_item'>
       <image class='icon' src=''></image>
     <view class='common_detail'>
