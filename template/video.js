@@ -79,16 +79,13 @@ var videoController = {
     context.wxRequest.request(context.netApi.showVidoOnTV, { videoId: item.id}, success => {
 
     }, faild => {
-      if(faild == 'offline') {
         wx.showModal({
           title: '观看提示',
-          content: '请先打开电视',
+          content: faild,
           showCancel:false,
           success: function (res) {
-            
           }
         })
-      }
      });
   },
   onVideoEnd: function(e, context){

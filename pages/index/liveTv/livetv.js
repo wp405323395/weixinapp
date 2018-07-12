@@ -110,16 +110,14 @@ Component({
             wxRequest.request(netApi.showChannelOnTv, { channelId: channelid }, success => {
               
             }, faild => { 
-              if (faild == 'offline') {
                 wx.showModal({
                   title: '观看提示',
-                  content: '请先打开电视',
+                  content: faild,
                   showCancel: false,
                   success: function (res) {
 
                   }
                 })
-              }
               console.log('faild====',faild);
             });
           }
