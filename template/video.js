@@ -75,7 +75,21 @@ var videoController = {
     });
   },
   showOnTv: function (e, context){
-    console.log("showOnTv");
+    let item = context.data.items[e.currentTarget.dataset.index];
+    context.wxRequest.request(context.netApi.showVidoOnTV, { videoId: item.id}, success => {
+
+    }, faild => {
+      if(faild == 'offline') {
+        wx.showModal({
+          title: '观看提示',
+          content: '请先打开电视',
+          showCancel:false,
+          success: function (res) {
+            
+          }
+        })
+      }
+     });
   },
   onVideoEnd: function(e, context){
     context.data.items[e.currentTarget.dataset.index].playing = false;

@@ -128,7 +128,15 @@ const netApi = {
    videoShare: {
      url: `${schema}://${host}/${contextPath}/misa-service/api/videoShareHistory/share`,
      method: 'POST'
-   }//视频分享
+   },//视频分享
+  showVidoOnTV:{
+    url: `${schema}://${host}/${contextPath}/misa-service/api/control/video/{videoId}`,
+    method:'GET'
+  },//电视观看完整视频
+  showChannelOnTv:{
+    url: `${schema}://${host}/${contextPath}/misa-service/api/control/channel/{channelId}`,
+    method: 'GET'
+  },//电视上播放频道
    
 };
 const wxRequest = {
