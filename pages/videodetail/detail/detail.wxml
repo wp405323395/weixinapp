@@ -7,11 +7,11 @@
     <text class='video_detail'>{{items[0].intro}}</text>
   </view>
   <view class='controller_wrap'>
-    <text bindtap='like' data-index='{{1}}' class="like {{true?'liking':''}}">{{items[0].likeCount}}</text>
+    <text bindtap='like' data-videoId='{{items[0].id}}' data-index='{{0}}' class="like      {{items[0].isLike?'liking':''}}   ">{{items[0].likeCount}}</text>
     <text class='msg'>{{items[0].commentCount}}</text>
-    <text bindtap='star' data-index='{{1}}' class="star {{true?'staring':''}}">{{items[0].favoriteCount}}</text>
+    <text bindtap='star' data-index='{{0}}' data-videoType="{{items[0].type}}"              data-videoId='{{items[0].id}}' class="star {{items[0].isFavorite?                       'staring':''}}">{{items[0].favoriteCount}}</text>
   <button open-type="share" data-videoId='{{items[0].id}}' 
-   data-videoTitle='{{items[0].title}}' data-index='{{1}}' class='share share_detail'>{{items[0].shareCount}}</button>
+   data-videoTitle='{{items[0].title}}' data-index='{{0}}' class='share share_detail'>{{items[0].shareCount}}</button>
   </view>
 </view>
 <view class='line'></view>
@@ -34,10 +34,10 @@
 <view class='detail_cotent'>
   <view wx:key="idx" wx:for="{{commentVideo}}"wx:for-index="idx" wx:for-item="itemName">
     <view class='common_item'>
-      <image class='icon' src=''></image>
+      <image class='icon' src='{{itemName.avatar}}'></image>
     <view class='common_detail'>
       <view class='header_wrap'>
-        <text class='name'>王老五</text>
+        <text class='name'>{{itemName.nickName}}</text>
         <!-- <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text> -->
       </view>
       <text class='common'>{{itemName.comment}}</text>
@@ -51,6 +51,6 @@
 </view>
 <view class='margin_bot'></view>
 <view class='footer_common'>
-  <input placeholder='发表你的评论吧' class='common_input'></input>
+  <input placeholder='发表你的评论吧' bindconfirm="addComment"                             class='common_input'></input>
   <image class='' src='../../../img/show_on_tv.png' mode='aspectFit' class='show_on_tv_btn' ></image>
 </view>

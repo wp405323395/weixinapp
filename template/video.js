@@ -39,18 +39,20 @@ var videoController = {
       });
     }, faild => { });
   },
-  share: function (e, context){
+  share: function (e, context, callback){
     let dataset = e.target.dataset;
     let data = {
       videoId: dataset.videoid,  //视频id
       'shareTo': 'weixin'  //分享渠道
     }
-    context.wxRequest.request(context.netApi.videoShare, data, success => {
-    }, faild => { });
+    
     return {
       title: dataset.videotitle,
       path: '/pages/videodetail/detail/detail?videoId=' + dataset.videoid,
       success: function (res) {
+        context.wxRequest.request(context.netApi.videoShare, data, success => {
+          callback();
+    }, faild => { });
         var shareTickets = res.shareTickets;
         if (shareTickets.length == 0) {
           return false;
