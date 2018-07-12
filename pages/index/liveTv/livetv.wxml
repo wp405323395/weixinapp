@@ -27,7 +27,7 @@
 <view class='other_channel_wrap' bindtap='despatchClick'>
   <view wx:for="{{otherChannels}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName" class='other_channel_item_wrap'>
     <text class='other_wrap_lable'>{{itemName.channelName}}</text>
-    <image id='10105' data-channelid='{{idx}}' class='other_channel_img' src='{{itemName.channelLogo}}'></image>
+    <image id='10105' data-channelid='{{itemName.channelId}}' class='other_channel_img' src='{{itemName.channelLogo}}'></image>
     <text class='other_wrap_lable channel_desc'>{{itemName.desc}}</text>
     <text class='other_wrap_lable time_desc'>{{itemName.watchTime}}</text>
   </view>
