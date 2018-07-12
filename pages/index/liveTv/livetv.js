@@ -107,6 +107,21 @@ Component({
           } else {
             console.log("点击进入播放台channelid= " + channelid);
             //todo: 播放频道
+            wxRequest.request(netApi.showChannelOnTv, { channelId: channelid }, success => {
+              
+            }, faild => { 
+              if (faild == 'offline') {
+                wx.showModal({
+                  title: '观看提示',
+                  content: '请先打开电视',
+                  showCancel: false,
+                  success: function (res) {
+
+                  }
+                })
+              }
+              console.log('faild====',faild);
+            });
           }
       } else {
         context.setData({
