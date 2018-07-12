@@ -1,128 +1,132 @@
 
-var host = "maywide.free.ngrok.cc";
-var host = "39.108.84.154:8080";
+var host = "www.maywidehb.com";
+//var host = "39.108.84.154:8080";
 // var host = "localhost:8080";
-var isHttps = ("maywide.free.ngrok.cc" == host);
-var isHttps = false;
+var isHttps = ("www.maywidehb.com" == host);
 var schema = isHttps?'https':'http';
 var retryTimes = 3;
+var contextPath = 'gateway';
 //wxRequest,netApi
 const netApi = {
   host,
   schema,
-  login: {url: `${schema}://${host}/api/oauth/miniapp/login`,
+  login: {
+    url: `${schema}://${host}/${contextPath}/api/oauth/miniapp/login`,
           method:'POST'},//登录
-  info:  {url:`${schema}://${host}/api/oauth/miniapp/info`,
+  info: {
+    url: `${schema}://${host}/${contextPath}/api/oauth/miniapp/info`,
           method:'POST'},//上传用户信息
-  feedback: {url:`${schema}://${host}/misa-service/api/my/feedback`,
+  feedback: {
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/feedback`,
               method:'POST'},//用户反馈
   bindCard: {
-    url: `${schema}://${host}/misa-service/api/my/device/{cardId}/bind`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/device/{cardId}/bind`,
               method:'POST'},//绑定卡号
-  topic: {url:`${schema}://${host}/misa-service/api/topic`,
+  topic: {
+    url: `${schema}://${host}/${contextPath}/misa-service/api/topic`,
               method:'GET'}, //专题列表
   topicById: {
-    url: `${schema}://${host}/misa-service/api/topic/{id}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/topic/{id}`,
     method: 'GET'
   }, //专题列表
   topicDetail: {
-    url: `${schema}://${host}/misa-service/api/topic_video/detail`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/topic_video/detail`,
     method: 'GET'
   }, //专题详情
   loadHotSearch:{
-    url: `${schema}://${host}/misa-service/api/user/search_recommend_history/all`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/user/search_recommend_history/all`,
     method:'GET'
   },//加载热门搜索
   search:{
-    url: `${schema}://${host}/misa-service/api/search`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/search`,
     method:'GET'
   },//搜索
   device:{
-    url: `${schema}://${host}/misa-service/api/my/device`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/device`,
     method:'GET'
   },//我的设备列表
   modifyDevices: {
-    url: `${schema}://${host}/misa-service/api/my/device`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/device`,
     method: 'POST'
   },//我的设备修改
   unbind:{
-    url: `${schema}://${host}/misa-service/api/my/device/{cardId}/unbind`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/device/{cardId}/unbind`,
     method: 'POST'
   },//解绑设备
   watchVideoHistory:{
-    url: `${schema}://${host}/misa-service/api/my/history/watch/video`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/history/watch/video`,
     method: 'GET'
   },//我的 收看历史（视频）
   watchChannelHistory:{
-    url: `${schema}://${host}/misa-service/api/my/history/watch/channel`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/history/watch/channel`,
     method: 'GET'
   },//直播历史列表
   deleteHistory:{
-    url: `${schema}://${host}/misa-service/api/my/history/watch/{id}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/history/watch/{id}`,
     method:'DELETE'
   },//删除收看历史
   favoriteVideo:{
-    url: `${schema}://${host}/misa-service/api/my/favorite/video`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/favorite/video`,
     method:'GET'
   },//我的收藏
   questioon: {
-    url: `${schema}://${host}/misa-service/api/faq/all`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/faq/all`,
     method: 'GET'
   },//疑难解答
   userFavoriteChannel:{
-    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/que`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/userFavoriteChannel/que`,
     method:'GET'
   },//查询我的频道列表
   delMyChannel:{
-    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/del/{channelId}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/userFavoriteChannel/del/{channelId}`,
     method:'POST'
   },//删除我关注的频道
   queCurProListByType:{
-    url: `${schema}://${host}/misa-service/api/channelProgram/queCurProListByType/{type}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/channelProgram/queCurProListByType/{type}`,
     method: 'POST'
   },//分类查询频道列表
   queChannelListByTag:{
-    url: `${schema}://${host}/misa-service/api/channel/queChannelListByTag`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/channel/queChannelListByTag`,
     method:'GET'
   },//添加频道
   addUserFavoriteChannel:{
-    url: `${schema}://${host}/misa-service/api/userFavoriteChannel/add/{channelId}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/userFavoriteChannel/add/{channelId}`,
     method: 'POST'
   },//添加频道到我的频道
   deleteFavoriteVideo:{
-    url: `${schema}://${host}/misa-service/api/my/favorite/video/{videoId}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/favorite/video/{videoId}`,
     method: 'DELETE'
   },//删除收藏视频
   like:{
-    url: `${schema}://${host}/misa-service/api/videoLike/like`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/videoLike/like`,
     method: 'POST'
   },//视频点赞
   videoDetail:{
-    url: `${schema}://${host}/misa-service/api/video/{videoId}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/video/{videoId}`,
     method: 'GET'
   },//视频详情
   recommendListVido:{
-    url: `${schema}://${host}/misa-service/api/video/recommend/{videoId}`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/video/recommend/{videoId}`,
     method: 'GET'
   },//详情里面推荐视频
   comment:{
-    url: `${schema}://${host}/misa-service/api/video/comment`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/video/comment`,
     method:'GET'
   },//添加评论
   userCenterInfo:{
-    url: `${schema}://${host}/misa-service/api/my/device/default`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/my/device/default`,
     method:'GET'
   },//获取是否绑定设备
   recommendList:{
-    url: `${schema}://${host}/misa-service/api/video/recommendList`,
+    url: `${schema}://${host}/${contextPath}/misa-service/api/video/recommendList`,
     method:'GET'
   },//推荐视频列表
    userFavoriteVideo: {
-     url: `${schema}://${host}/misa-service/api/userFavoriteVideo/favorite`,
+     url: `${schema}://${host}/${contextPath}/misa-service/api/userFavoriteVideo/favorite`,
     method: 'POST'
   },//视频收藏 及取消收藏
    videoShare: {
-     url: `${schema}://${host}/misa-service/api/videoShareHistory/share`,
+     url: `${schema}://${host}/${contextPath}/misa-service/api/videoShareHistory/share`,
      method: 'POST'
    }//视频分享
    

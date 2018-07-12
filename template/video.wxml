@@ -1,7 +1,7 @@
 <template name="video">
 <view wx:key="idx" wx:for="{{items}}" wx:for-index="idx" wx:for-item="itemName">
   <view class='video_wrap'>
-  <video autoplay bindended="onVideoEnd"  data-index='{{idx}}'  wx:if="{{itemName.playing}}" class='video_style' src="http://39.108.84.154:8888/videos/{{itemName.vid}}" controls show-center-play-btn objectFit="contain">
+  <video autoplay bindended="onVideoEnd"  data-index='{{idx}}'  wx:if="{{itemName.playing}}" class='video_style' src="https://www.maywidehb.com/videos/{{itemName.vid}}" controls show-center-play-btn objectFit="contain">
   </video>
   <view wx:elif="{{itemName.isEnd}}" class='video_style'>
     <view class='info_wrap'>
