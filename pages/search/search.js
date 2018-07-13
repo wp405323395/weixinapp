@@ -13,7 +13,8 @@ Page({
     showRecomend:true,
     channelList:[],
     videoList:[],
-    historys:[]
+    historys:[],
+    focus:false
   },
 
   /**
@@ -178,6 +179,19 @@ Page({
     });
     searchHistory = historys.join('||-||')
     wx.setStorageSync('searchs', searchHistory);
+  },
+  //搜索结果跳转视频详情
+  videoDetail:function(e){
+    wx.navigateTo({
+      url: '/pages/videodetail/detail/detail?videoId=' + e.currentTarget.dataset.videoid,
+    })
+  },
+  //将搜索历史key放入搜索框
+  searchHistory:function(e){
+    let key = e.currentTarget.dataset.searchkey;
+    this.setData({
+      searchinput: key,
+      focus: true
+    });
   }
-  
 })

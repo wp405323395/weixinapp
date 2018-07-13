@@ -1,7 +1,7 @@
 <!--pages/search/search.wxml-->
 <view class='input_arear'>
   <text class='search_icon'></text>
-  <input value="{{searchinput}}" bindconfirm="searchVideo" confirm-type="search" focus="true" placeholder='帮你快速寻找剧集和电影'></input>
+  <input value="{{searchinput}}" bindconfirm="searchVideo" confirm-type="search" focus="{{focus}}" placeholder='帮你快速寻找剧集和电影'></input>
   <text bindtap='voiceBtn' class='voice_icon'></text>
   <text bindtap='cancleSearch'>取消</text>
 </view>
@@ -14,7 +14,7 @@
 
     <view class='search_history_wrap' wx:key="idx" wx:key="{{idx}}" wx:for="{{historys}}" wx:for-index="idx" wx:for-item="itemName">
       <view class='history_item'>
-        <text>{{itemName}}</text>
+        <text bindtap='searchHistory' data-searchKey='{{itemName}}'>{{itemName}}</text>
         <text  bindtap='deleteHistory' data-index='{{idx}}'  class='delet_btn'></text>
       </view>
       <view class='space_line'></view>
@@ -37,7 +37,7 @@
 </view>
 <view wx:else>
   <view class='video_list'>
-    <view class='video_item'  wx:key="idx" wx:for="{{videoList}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class='video_item' bindtap='videoDetail' data-videoId='{{itemName.id}}'  wx:key="idx" wx:for="{{videoList}}" wx:for-index="idx" wx:for-item="itemName">
       <image src='{{itemName.poster}}' mode='aspectFit' style='background-color:yellow;'></image>
       <view class='video_detail'>
         <text class='title'>{{itemName.title}}</text>
