@@ -69,6 +69,7 @@ Page({
         }
         break;
     }
+    hotRecommendComponent.stopAllPlay();
   },
   voicebtn: function (event) {
     wx.navigateTo({
@@ -94,7 +95,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    hotRecommendComponent.stopAllPlay();
   },
 
   /**
@@ -108,6 +109,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    hotRecommendComponent.stopAllPlay();
     if (this.data.currentData == 0) {
       hotRecommendComponent.__proto__.onLoadData(1);
       wx.stopPullDownRefresh();
@@ -122,6 +124,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    hotRecommendComponent.stopAllPlay();
     console.log();
     if (this.data.currentData == 0) {
       hotRecommendComponent.__proto__.onLoadData();
@@ -135,6 +138,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
+    hotRecommendComponent.stopAllPlay();
     return videoController.share(e,this);
   },
   

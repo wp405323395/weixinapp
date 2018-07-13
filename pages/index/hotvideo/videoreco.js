@@ -28,6 +28,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    stopAllPlay:function(e){
+      for (let item of context.data.items){
+        item.playing = false;
+      }
+      context.setData({
+        items: context.data.items
+      });
+    },
     onLoadData: function (e) {
       wxRequest.request(netApi.recommendList,null,success=>{
         for (let item of success) {
