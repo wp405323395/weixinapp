@@ -20,6 +20,9 @@ Page({
    */
   onLoad: function (options) {
     context = this;
+    context.wxRequest = wxRequest;
+    context.netApi = netApi;
+    context.util = util;
     pageNum = 1;
     topicId = options.topicId;
     console.log('接受过来的topicid = ' + topicId);

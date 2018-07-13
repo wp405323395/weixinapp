@@ -51,12 +51,14 @@ var videoController = {
       path: '/pages/videodetail/detail/detail?videoId=' + dataset.videoid,
       success: function (res) {
         context.wxRequest.request(context.netApi.videoShare, data, success => {
-          callback();
+          if (callback != undefined){
+            callback();
+          }
     }, faild => { });
-        var shareTickets = res.shareTickets;
-        if (shareTickets.length == 0) {
-          return false;
-        }
+        // var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
       }
     }
   },
