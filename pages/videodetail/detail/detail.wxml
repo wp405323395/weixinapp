@@ -41,7 +41,7 @@
         <!-- <text bindtap='zan' data-index='{{idx}}' class="zan {{true?'zaning':''}}">32</text> -->
       </view>
       <text class='common'>{{itemName.comment}}</text>
-      <text class='time'>{{itemName.updateAt}}</text>
+      <text class='time'>{{itemName.createAt}}</text>
     </view>
     </view>
     

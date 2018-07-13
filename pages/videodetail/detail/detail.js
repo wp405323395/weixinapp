@@ -58,6 +58,9 @@ Page({
     }
     wxRequest.request(netApi.comment, { current: pageNum, videoId: videoId }, successed => {
       if (successed) {
+        for (let item of successed) {
+          item.createAt = util.formatDate(item.createAt,'Y-M-D');
+        }
         this.setData({
           commentVideo: pageNum == 1 ? successed :
             this.data.commentVideo.concat(successed)
