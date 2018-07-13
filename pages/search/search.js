@@ -107,14 +107,18 @@ Page({
     });
   },
   searchVideo:function(e){
+    let value = e.detail.value;
+    if (value == null || value.length == 0){
+      return;
+    }
     //todo: 搜索事件
     context.setData({
       showRecomend:false
     });
-    wxRequest.request(netApi.search, { key: e.detail.value,'from':'index'}, success=>{
+    wxRequest.request(netApi.search, { key: value,'from':'index'}, success=>{
       videoListAll = success.videoList;
       if (videoListAll.length > 0) {
-        context.insertStorage(e.detail.value);
+        context.insertStorage(value);
       }
       context.setData({
         videoCount: success.videoList.length,
