@@ -52,7 +52,7 @@
   <view class='channel_list'>
     <view class='channel_item' wx:key="idx" wx:for="{{channelList}}" wx:for-index="idx" wx:for-item="itemName">
       <text>{{itemName.channelName}}:{{itemName.programName}}</text>
-      <button>换台</button>
+      <button bindtap='changeChannel' data-channelId='{{itemName.id}}'>换台</button>
     </view>
   </view>
 </view>

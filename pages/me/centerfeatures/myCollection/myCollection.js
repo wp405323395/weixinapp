@@ -2,6 +2,7 @@
 import videoController from "../../../../template/video.js"
 import { netApi, wxRequest } from '../../../../netapi.js'
 import util from '../../../../utils/util.js'
+let context;
 Page({
 
   /**
@@ -32,6 +33,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    context = this;
+    context.wxRequest = wxRequest;
+    context.netApi = netApi;
+    context.util = util;
     wxRequest.request(netApi.favoriteVideo,null,success=>{
       for(let item of success) {
         item.duration = util.formartTime(item.duration);
