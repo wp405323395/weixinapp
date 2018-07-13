@@ -25,7 +25,36 @@ Page({
     hotRecommendComponent.__proto__.onLoadData();
     this.wxRequest = wxRequest;
     this.netApi = netApi; 
+    this.loadUserInfo();
   },
+  loadUserInfo:function(){
+    wxRequest.request(netApi.userInfo,{},success=>{
+      wx.setStorage({
+        key: 'defDeviceCardId',
+        data: success.defDeviceCardId,
+      })
+    },faild=>{});
+  },
+checkDefDeviceCardId:function(){
+  this.data.defDeviceCardId = wx.getStorageSync('defDeviceCardId');
+  if (!this.data.defDeviceCardId) {
+    wx.showModal({
+      title: '提示',
+      content: '请先绑定设备',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../../../../me/centerfeatures/myDevices/myDevices',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  } 
+  
+},
   bindchange: function (e) {
     const that = this;
     that.setData({
@@ -40,6 +69,7 @@ Page({
       complete: function (res) { },
     })
   },
+
   //点击切换，滑块index赋值
   checkCurrent: function (e) {
     const that = this;
@@ -60,7 +90,7 @@ Page({
           liveChannelComponent.__proto__.onLoadData();
           liveChannelComponentHasLoad = true;
         }
-        
+        that.checkDefDeviceCardId();
         break;
       case '2':
         if (!topicComponentHasLoad) {

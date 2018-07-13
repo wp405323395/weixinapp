@@ -118,6 +118,10 @@ const netApi = {
     url: `${schema}://${host}/${contextPath}/misa-service/api/video/comment`,
     method: 'GET'
   },//评论列表
+  userInfo:{
+    url: `${schema}://${host}/${contextPath}/misa-service/api/user/info`,
+    method:'GET'
+  },
   addComment: {
     url: `${schema}://${host}/${contextPath}/misa-service/api/video/comment/comment`,
     method: 'POST'
