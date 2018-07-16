@@ -57,9 +57,19 @@ Component({
     initData:function(){
      return new Promise((resolve, reject)=>{
         wxRequest.request(netApi.userFavoriteChannel, null, success => {
-          context.setData({
-            myChannels: success
-          });
+          if (success.length == 0) {
+            context.setData({
+              isShowDelete:false,
+              myChannels: success
+            });
+          } else {
+            context.setData({
+              myChannels: success
+            });
+          }
+
+
+         
           resolve(success);
         }, faild => {
           reject(faild);
