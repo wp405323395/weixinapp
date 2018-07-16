@@ -117,7 +117,7 @@ Page({
     });
     wxRequest.request(netApi.search, { key: value,'from':'index'}, success=>{
       videoListAll = success.videoList;
-      if (videoListAll.length > 0) {
+      if (videoListAll.length > 0 || success.channelList.length > 0) {
         context.insertStorage(value);
       }
       context.setData({
