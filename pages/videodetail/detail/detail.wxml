@@ -29,7 +29,7 @@
     </view> 
   </view>
 </view>
-<view class='margin_line'></view>
+<view id="commonView" class='margin_line'></view>
 <view class='detail_cotent'>
   <text class='common_lable'>精彩评论</text>
 </view>
@@ -54,6 +54,6 @@
 </view>
 <view class='margin_bot'></view>
 <view class='footer_common'>
-  <input placeholder='发表你的评论吧' type='text' focus='true' bindconfirm="addComment"        class='common_input'confirm-type="send" cursor-spacing="50"></input>
+  <input placeholder='发表你的评论吧' type='text' bindconfirm="addComment"        class='common_input'confirm-type="send" cursor-spacing="50"></input>
   <image class='' src='../../../img/show_on_tv.png' mode='aspectFit' class='show_on_tv_btn' ></image>
 </view>

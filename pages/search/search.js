@@ -174,7 +174,6 @@ Page({
     });
   },
   deleteHistory:function(e){
-    console.log(searchHistory);
     let arr = searchHistory.split('||-||');
     arr.splice(e.currentTarget.dataset.index, 1);
     let historys = arr;
