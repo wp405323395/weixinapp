@@ -20,7 +20,7 @@ var videoController = {
   msg: function (e, context){
     //let videoid = context.data.items[e.currentTarget.dataset.index].id;
     wx.navigateTo({
-      url: '/pages/videodetail/detail/detail?videoId=' + e.currentTarget.dataset.videoid,
+      url: '/pages/videodetail/detail/detail?videoId=' + e.currentTarget.dataset.videoid       +'&moveComment=true',
     })
   },
   //视频列表是否收藏
@@ -83,6 +83,7 @@ var videoController = {
     context.wxRequest.request(context.netApi.showVidoOnTV, { videoId: item.id}, success => {
       let url = util.getRelativePath('pages/interactive/interactive');
       console.log(url);
+
       wx.switchTab({
         url: url
       });

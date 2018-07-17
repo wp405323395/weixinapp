@@ -5,7 +5,8 @@ import { netApi, wxRequest } from '../../../netapi.js';
 import util from '../../../utils/util.js';
 let pageNum;
 let videoId;
-let recomendVideoAll;
+let moveComment = false; //页面初始化时是否需要移动到评论区域
+let recomendVideoAll;  //根据当前视频所推荐的所有视频
 Page({
 
   /**
@@ -64,6 +65,18 @@ Page({
         this.setData({
           commentVideo: pageNum == 1 ? successed :
             this.data.commentVideo.concat(successed)
+        },function(){
+          //setData回调前pageNum已经加1所以判断2为第一页,只有当为第一页时才移动到评论区域
+          if (moveComment && pageNum == 2){
+            wx.createSelectorQuery().select('#commonView').
+            boundingClientRect(function (rect) {
+              // 使页面滚动到评论区域
+              wx.pageScrollTo({
+                scrollTop: rect.bottom,
+                duration: 300
+              })
+            }).exec()
+          }
         });
         pageNum++;
         if (successed.length == 0) {
@@ -95,6 +108,7 @@ Page({
     this.netApi = netApi;
     this.wxRequest = wxRequest;
     videoId = options.videoId;
+    moveComment = options.moveComment;
     pageNum = 1;  //视频评论需要分页
     wxRequest.request(netApi.videoDetail, { videoId: videoId }, success => {
       this.data.items[0] = success
@@ -112,7 +126,6 @@ Page({
         recomendVideo: success.slice(0, 3),
         recomendVideoCount: success.length
       });
-      console.log(this.data.recomendVideoCount + this.data.recomendVideo);
     }, failed => { });
     this.commentPage();
   },
@@ -121,7 +134,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+ 
   },
 
   /**
