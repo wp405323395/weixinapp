@@ -84,6 +84,16 @@ const formatDate = (mss,format)=>{
   }
   return format;
 }
+function getRelativePath(absolutePath) {
+  let routers = getCurrentPages();
+  let currentPage = routers[routers.length - 1].route;
+  let paths = currentPage.split('/');
+  let absolutePaths = absolutePath.split('/');
+  absolutePaths = absolutePaths.splice(1, absolutePaths.length).join('/')
+  let arr = new Array(paths.length - 1);
+  let relativePath = arr.join('../') + absolutePaths;
+  return relativePath;
+}
 
 module.exports = {
   formatTime: formatTime,
@@ -91,5 +101,6 @@ module.exports = {
   formartTime2: formartTime2,
   formartTime1: formartTime1,
   formartTime: formartTime,
-  formatDate: formatDate
+  formatDate: formatDate,
+  getRelativePath: getRelativePath
 }

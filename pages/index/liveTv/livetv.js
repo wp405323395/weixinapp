@@ -119,16 +119,29 @@ Component({
             //todo: 播放频道
             wxRequest.request(netApi.showChannelOnTv, { channelId: channelid }, success => {
               
-            }, faild => { 
+            }, faild => {
+              if (faild.code == 1) {
                 wx.showModal({
                   title: '观看提示',
-                  content: faild,
+                  content: faild.message,
                   showCancel: false,
                   success: function (res) {
-
                   }
                 })
-              console.log('faild====',faild);
+              } else if (faild.code == 100) {
+                wx.showModal({
+                  title: '观看提示',
+                  content: faild.message,
+                  showCancel: false,
+                  success: function (res) {
+                    let url = util.getRelativePath('pages/me/centerfeatures/myDevices/myDevices');
+                    console.log(url);
+                    wx.navigateTo({
+                      url: url,
+                    });
+                  }
+                })
+              }
             });
           }
       } else {
