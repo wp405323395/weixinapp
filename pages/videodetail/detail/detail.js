@@ -73,7 +73,7 @@ Page({
               // 使页面滚动到评论区域
               wx.pageScrollTo({
                 scrollTop: rect.bottom,
-                duration: 300
+                duration: 100
               })
             }).exec()
           }
