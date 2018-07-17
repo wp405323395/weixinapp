@@ -122,8 +122,8 @@ Page({
       }
       context.setData({
         videoCount: success.videoList.length,
-        channelList: success.channelList.splice(0,3),
-        videoList: success.videoList.splice(0, 3)
+        channelList: success.channelList,
+        videoList: success.videoList.slice(0, 3)
       });
 
     }, failed=>{
