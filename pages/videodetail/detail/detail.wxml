@@ -24,6 +24,9 @@
         <text>{{itemName.duration}}</text>
       </view>
     </view>
+      <view wx:if="{{recomendVideoCount>3}}" bindtap='loadMore' class='video_more'>
+      <text>加载更多</text>
+    </view> 
   </view>
 </view>
 <view class='margin_line'></view>

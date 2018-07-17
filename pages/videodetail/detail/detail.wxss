@@ -170,3 +170,12 @@ padding-top:0;
   margin-left: 0;
   padding-left: 0;
 }
+.video_more{
+  text-align: center;
+  border-top: 1px solid #eeeeee;
+}
+.video_more>text{
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #999999;
+}

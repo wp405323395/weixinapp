@@ -5,7 +5,7 @@ import { netApi, wxRequest } from '../../../netapi.js';
 import util from '../../../utils/util.js';
 let pageNum;
 let videoId;
-
+let recomendVideoAll;
 Page({
 
   /**
@@ -82,6 +82,12 @@ Page({
     pageNum = 1;
     this.commentPage();
   },
+  loadMore: function () {
+    this.setData({
+      recomendVideoCount: -1,
+      recomendVideo: recomendVideoAll
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -101,9 +107,12 @@ Page({
       for (let item of success) {
         item.duration = util.formartTime(item.duration);
       }
+      recomendVideoAll = success;
       this.setData({
-        recomendVideo: success
+        recomendVideo: success.slice(0, 3),
+        recomendVideoCount: success.length
       });
+      console.log(this.data.recomendVideoCount + this.data.recomendVideo);
     }, failed => { });
     this.commentPage();
   },

@@ -198,9 +198,9 @@ Page({
       focus: true
     });
   },
-   //点击换台观看直播电视
+   //点击换台观看直播电视 
    changeChannel:function(e){
-     let channelid = e.currentTarget.dataset.channelid
+     let channelid = e.currentTarget.dataset.channelid;
      console.log("点击进入播放台channelid= " + channelid);
      //todo: 播放频道
      wxRequest.request(netApi.showChannelOnTv, { channelId: channelid }, success => {
