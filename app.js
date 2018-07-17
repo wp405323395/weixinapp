@@ -1,5 +1,6 @@
   //app.js
 import { netApi} from 'netapi.js'
+var tdweapp = require('./utils/talkingDateSDK/tdweapp.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力

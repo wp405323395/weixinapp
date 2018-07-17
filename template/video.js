@@ -1,4 +1,14 @@
-
+function getRelativePath(absolutePath) {
+  let routers = getCurrentPages();
+  let currentPage = routers[routers.length - 1].route;
+  let paths = currentPage.split('/');
+  let absolutePaths = absolutePath.split('/');
+  absolutePaths = absolutePaths.splice(1, absolutePaths.length).join('/')
+  let arr = new Array(paths.length-1);
+  let relativePath = arr.join('../') + absolutePaths;
+  return relativePath;
+  
+}
 var videoController = {
   //视频列表是否点赞
   like:function(e, context){
@@ -79,17 +89,39 @@ var videoController = {
     });
   },
   showOnTv: function (e, context){
+
     let item = context.data.items[e.currentTarget.dataset.index];
     context.wxRequest.request(context.netApi.showVidoOnTV, { videoId: item.id}, success => {
-
+      let url = getRelativePath('pages/interactive/interactive');
+      console.log(url);
+      wx.switchTab({
+        url: url
+      });
     }, faild => {
+      console.log(faild);
+      if (faild.code == 1) {
         wx.showModal({
           title: '观看提示',
-          content: faild,
-          showCancel:false,
+          content: faild.message,
+          showCancel: false,
           success: function (res) {
           }
         })
+      } else if(faild.code == 100) {
+        wx.showModal({
+          title: '观看提示',
+          content: faild.message,
+          showCancel: false,
+          success: function (res) {
+            let url = getRelativePath('pages/me/centerfeatures/myDevices/myDevices');
+            console.log(url);
+            wx.navigateTo({
+              url: url,
+            });
+          }
+        })
+      }
+        
      });
   },
   onVideoEnd: function(e, context){
@@ -101,4 +133,5 @@ var videoController = {
     console.log("showOnTv");
   }
 }
+
 export default videoController;

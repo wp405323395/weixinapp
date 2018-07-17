@@ -240,7 +240,7 @@ var Processing = {
             //token失效，重新登录。
             Processing.wxLogin(that, api, data, successed, failed);
           } else {
-            failed(resp.data.message);
+            failed(resp.data);
           }
         }
       },
