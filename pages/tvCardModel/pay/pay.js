@@ -6,6 +6,8 @@ var util = require('../../../utils/util.js');
 
 Page({
   data: {
+    isUserInfoHidden:true,
+    isPruductInfoHidden:true,
     cardNumberSelectHidden: true,
     cardNumberSelect: -1,
     tvCardAnimationData: {},
@@ -258,5 +260,15 @@ Page({
     this.setData({
       isHiddenToast: true
     });
+  },
+  switchUserInfo:function(){
+    this.setData({
+      isUserInfoHidden: !this.data.isUserInfoHidden
+    })
+  },
+  switchPruductInfo:function(){
+    this.setData({
+      isPruductInfoHidden: !this.data.isPruductInfoHidden
+    })
   }
 })
