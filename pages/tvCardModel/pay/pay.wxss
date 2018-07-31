@@ -16,6 +16,7 @@
 
 
 .text-padding, .cell1{
+  font-size: 29rpx;
   padding: 15rpx;
   padding-left: 0;
   padding-right: 20rpx;
@@ -57,8 +58,8 @@
   width: 100%;
   height: 100rpx;
   background-color: white;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
   left: 0px;
   display: flex;
   justify-content:space-between;
@@ -125,7 +126,7 @@
   text-align: center;
 }
 .package-select{
-  height: 370rpx;
+  height: 400rpx;
   white-space: nowrap;
   display: flex;
   background-color: white;
@@ -145,12 +146,12 @@
 }
 .package-content{
   background-color: white;
-  margin-left: 10rpx;
   border-radius: 10rpx;
-  width: 100%;
-  height: 100%;
-  border:1px solid #d4d4d4;
-
+  width: 80%;
+  height: 350rpx;
+  border:1px solid #fe0000;
+  margin:25rpx;
+  position: relative;
 }
 .package-content-title{
   background-color: #6394c7;
@@ -378,7 +379,7 @@ margin-left:12rpx;
 .user-info-lable-img{
   width: 40rpx;
   height: 40rpx;
-  margin-right: 10rpx;
+  margin-right: 15rpx;
 }
 .user-info-lable{
   display: flex;
@@ -386,7 +387,7 @@ margin-left:12rpx;
   align-items: center;
 }
 .text-header{
-  font-weight: 600;
+  font-weight: 500;
 }
 .user-info-lable>text, .item>text{
   color: #999999;
@@ -401,4 +402,11 @@ margin-left:12rpx;
 }
 .user-info-style:first-child{
   margin-top: 0;
+}
+.current-selected{
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  right:0;
+  bottom: 0;
 }
