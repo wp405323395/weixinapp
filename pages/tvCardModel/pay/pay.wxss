@@ -7,7 +7,6 @@
   flex-direction: row;
   justify-content:space-between; 
   align-items: center;
-  border-bottom: 1px solid #eeeeee;
   padding: 5rpx 0;
 }
 .containner-spacetop{
@@ -16,7 +15,7 @@
 
 
 .text-padding, .cell1{
-  font-size: 29rpx;
+  font-size: 28rpx;
   padding: 15rpx;
   padding-left: 0;
   padding-right: 20rpx;
@@ -391,7 +390,7 @@ margin-left:12rpx;
 }
 .user-info-lable>text, .item>text{
   color: #999999;
-  font-size: 29rpx;
+  font-size: 28rpx;
 }
 .jiantou-img{
   width: 40rpx;

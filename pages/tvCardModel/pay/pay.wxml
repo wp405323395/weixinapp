@@ -23,6 +23,7 @@
         <view animation="{{tvCardAnimationData}}" class="go_in"></view>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
     <view hidden="{{cardNumberSelectHidden}}" class="select_position">
       <view class="select_wrap">
         <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}" bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{searchPerson.cardsNumber}}" wx:key="unique">
@@ -40,6 +41,7 @@
         <text class='text-padding'>{{scanCardInfo.custname}}</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
     <view class="item" style='border:none;'>
       <view class='user-info-lable'>
         <image class='user-info-lable-img' src='../../../../img/icon_address.png'></image>
@@ -71,18 +73,21 @@
         <text class='text-padding'>套餐名称</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>订购日期</text>
       <view style="padding-right:30rpx;">
         <text class='text-padding'>2016年</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>有效期</text>
       <view style="padding-right:30rpx;">
         <text class='text-padding'>232323-232323-232323</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>费用</text>
       <view style="padding-right:30rpx;">
@@ -96,7 +101,7 @@
 
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style'>
+  <view class='user-info-style'>
     <view class='user-info-lable'>
       <image src='../../../../img/icon_se.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>选择套餐</text>
@@ -139,7 +144,7 @@
 
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style'>
+  <view class='user-info-style'>
     <view class='user-info-lable'>
       <image src='../../../../img/icon_pay.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>选择支付方式</text>
@@ -154,7 +159,7 @@
   </view>
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style'>
+  <view class='user-info-style'>
     <view class='user-info-lable'>
       <text style='display:block; margin-left:10rpx;margin-right:20rpx;' >收款方</text>
       <text class='text-header' style=' color:#0c0b0b; font-weight:400; font-size:32rpx;'>湖北广电网络有限公司</text>
