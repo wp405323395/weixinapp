@@ -110,20 +110,20 @@
   </view>
 
   <scroll-view class='package-select' scroll-x style="width: 100%;">
-    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class='package-content'>
+    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class='package-content' bindtap='select' data-itemselect='{{item}}'>
       
-        <view class='package-content-title'>
+        <view class='package-content-title' >
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
             <text class='package-content-title-text'>套餐名称</text>
-            <text class='package-content-money-price-now'>{{item.price}}</text>
+            <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
           </view>
           <text class='package-content-title-text font-black-color'>{{item.salesname}}</text>
-          <!-- <radio value="r1" class='package-content-title-checkbox' bindtap='select' data-itemselect='{{item}}' checked="{{currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}" /> -->
+
           <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
         </view>
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
-          <text bindtap='chooseProductCount' >选择数量</text>
+          <text class='choose-product-count' bindtap='chooseProductCount' >{{coupQuantity}}份</text>
 
           <!-- <view class='package-content-money-price'>
             <text class='package-content-money-price-old'>原价:￥{{item.origprice}}</text>

@@ -3,7 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
-
+const itemList = ['1', '3', '6', '12', '24', '36'];
 Page({
   data: {
     isUserInfoHidden:true,
@@ -12,7 +12,7 @@ Page({
     cardNumberSelect: -1,
     tvCardAnimationData: {},
     packages:[],
-    coupQuantity:1,
+    coupQuantity:3,
     currentPackageSelect:undefined,
     isHiddenToast: true
   },
@@ -80,17 +80,10 @@ Page({
 
   },
   select:function(event){
-    let itemselect = event.target.dataset.itemselect
-    // if (this.data.currentPackageSelect && this.data.currentPackageSelect.salescode == itemselect.salescode) {
-    //   this.setData({
-    //     currentPackageSelect:undefined
-    //   });
-    // } else {
+    let itemselect = event.currentTarget.dataset.itemselect
       this.setData({
         currentPackageSelect: itemselect
       });
-    // }
-
   },
   loadCards: function (custid, tvCardNum, serviceID) {
     let that = this;
@@ -234,21 +227,7 @@ Page({
     });
     
   },
-  onSubClick: function (e) {
-    if (this.data.coupQuantity > 1 && this.data.currentPackageSelect && e.currentTarget.dataset.tappackage.salescode == this.data.currentPackageSelect.salescode ) {
-      this.setData({
-        coupQuantity: --this.data.coupQuantity
-      });
-    }
-  },
-  onPlusClick: function (e) {
-    if (this.data.currentPackageSelect && e.currentTarget.dataset.tappackage.salescode == this.data.currentPackageSelect.salescode) {
-      this.setData({
-        coupQuantity: ++this.data.coupQuantity
-      });
-    }
-
-  },
+  
   showPackageInfo(e){
     let selectPackageDetail = e.currentTarget.dataset.selectpackage;
     this.setData({
@@ -272,10 +251,13 @@ Page({
     })
   },
   chooseProductCount:function(){
+    let that = this;
     wx.showActionSheet({
-      itemList: ['1', '3', '6','12','24','36'],
+      itemList: itemList,
       success: function (res) {
-        console.log(res.tapIndex)
+        that.setData({
+          coupQuantity: itemList[res.tapIndex]
+        });
       },
       fail: function (res) {
         console.log(res.errMsg)
