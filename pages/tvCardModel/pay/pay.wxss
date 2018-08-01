@@ -14,9 +14,9 @@
 }
 
 
-.text-padding, .cell1{
-  font-size: 28rpx;
-  padding: 15rpx;
+.cell1{
+  font-size: 26rpx;
+
   padding-left: 0;
   padding-right: 20rpx;
   color: #333333;
@@ -70,7 +70,7 @@
   font-size:1.05rem;
   height: 100%;
   width: 300rpx;
-  background-color: #ff302c;
+  background-color: #fe3a14;
   color: white;
   line-height: 100rpx;
 }
@@ -125,7 +125,7 @@
   text-align: center;
 }
 .package-select{
-  height: 400rpx;
+  height: 370rpx;
   white-space: nowrap;
   display: flex;
   background-color: white;
@@ -147,26 +147,25 @@
   background-color: white;
   border-radius: 10rpx;
   width: 80%;
-  height: 350rpx;
+  height: 320rpx;
   border:1px solid #fe0000;
   margin:25rpx;
   position: relative;
 }
 .package-content-title{
-  background-color: #6394c7;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  background-color: white;
   align-items: center;
   padding-left: 10rpx;
   padding-right: 10rpx;
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
+  padding-top: 15rpx;
+
 }
 .package-content-title-text{
-  color: white;
+  color: #999999;
   margin: 5rpx;
-  font-size: 35rpx;
+  font-size: 30rpx;
   display: inline-block;
 }
 .package-content-money{
@@ -174,10 +173,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding:10rpx 15rpx;
+  padding:15rpx 15rpx;
 }
 .package-content-money-price-now{
-  font-size: 50rpx;
+  font-size: 40rpx;
   color: red;
   font-weight: 500;
 }
@@ -409,3 +408,7 @@ margin-left:12rpx;
   right:0;
   bottom: 0;
 }
+.font-black-color{
+  color: #333333;
+}
+

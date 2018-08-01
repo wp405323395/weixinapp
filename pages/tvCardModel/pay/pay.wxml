@@ -113,17 +113,23 @@
     <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class='package-content'>
       
         <view class='package-content-title'>
-          <text class='package-content-title-text text-padding'>{{item.salesname}}</text>
-          <radio value="r1" class='package-content-title-checkbox' bindtap='select' data-itemselect='{{item}}' checked="{{currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}" />
-
+          <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
+            <text class='package-content-title-text'>套餐名称</text>
+            <text class='package-content-money-price-now'>{{item.price}}</text>
+          </view>
+          <text class='package-content-title-text font-black-color'>{{item.salesname}}</text>
+          <!-- <radio value="r1" class='package-content-title-checkbox' bindtap='select' data-itemselect='{{item}}' checked="{{currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}" /> -->
+          <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
         </view>
         <view class='package-content-money'>
-          <view class='package-content-money-price'>
-            <text class='package-content-money-price-now text-padding'>{{item.price}}</text>
-            <text class='package-content-money-price-old text-padding'>原价:￥{{item.origprice}}</text>
+          <text class='package-content-title-text'>套餐订购数量</text>
+          <text bindtap='chooseProductCount' >选择数量</text>
+
+          <!-- <view class='package-content-money-price'>
+            <text class='package-content-money-price-old'>原价:￥{{item.origprice}}</text>
           </view>
           <view class='package-content-money-number'>
-            <text class='package-content-money-lable text-padding'>订购周期/{{item.unit == 1?'月':'年'}}:</text>
+            <text class='package-content-money-lable'>订购周期/{{item.unit == 1?'月':'年'}}:</text>
 
             <view class="coup_number">
               <view data-tappackage='{{item}}' bindtap="onSubClick" class="subtraction temp_box" />
@@ -133,9 +139,13 @@
               <view data-tappackage='{{item}}' bindtap="onPlusClick" class="plus temp_box" />
             </view>
 
-          </view>
+          </view> -->
         </view>
-        <view class='divide-line'></view>
+        <view style='height:1px; background-color: #eeeeee;'></view>
+        <view class='package-content-money' style='display:block;'>
+          <text style='display:block;' class='package-content-title-text'>使用有效期</text>
+          <text class='package-content-title-text font-black-color'>2129012901290192019</text>
+        </view>
       
         <image hidden='{{!currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}' class='current-selected' src='../../../../img/box_selected.png'></image>
       </view>
@@ -152,7 +162,7 @@
   </view>
   <view class="pay_way">
     <view>
-      <image class="pay_lable_img" src="../../../../image/" />
+      <image class="pay_lable_img" src="../../../../img/weixinpay.jpg" />
       <text>微信支付</text>
     </view>
     <image style='width:40rpx;height:40rpx;' src='../../../../img/selected.png'></image>

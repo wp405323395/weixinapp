@@ -270,5 +270,16 @@ Page({
     this.setData({
       isPruductInfoHidden: !this.data.isPruductInfoHidden
     })
+  },
+  chooseProductCount:function(){
+    wx.showActionSheet({
+      itemList: ['1', '3', '6','12','24','36'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   }
 })
