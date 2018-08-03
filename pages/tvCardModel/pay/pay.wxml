@@ -4,16 +4,16 @@
 
   <view bindtap='switchUserInfo' class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='../../../../img/icon_info.png' class='user-info-lable-img'></image>
+      <image src='https://www.htrnpay.cn/scan/img/icon_info.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户信息</text>
     </view>
-    <image wx:if="{{isUserInfoHidden}}" class='jiantou-img' src='../../../../img/icon_jiantoushang.png'></image>
-    <image wx:else class='jiantou-img' src='../../../../img/icon_jiantouxia.png'></image>
+    <image wx:if="{{isUserInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
+    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
   </view>
   <view class="pa_wrap" hidden='{{isUserInfoHidden}}'>
     <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
       <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='../../../../img/icon_blank.png'></image>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_blank.png'></image>
         <text style='margin-left:4rpx;' class='text-padding'>智能卡号</text>
       </view>
 
@@ -33,7 +33,7 @@
     </view>
     <view class="item">
       <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='../../../../img/icon_per.png'></image>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_per.png'></image>
         <text class='text-padding'>客户姓名</text>
       </view>
 
@@ -44,7 +44,7 @@
     <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
     <view class="item" style='border:none;'>
       <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='../../../../img/icon_address.png'></image>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_address.png'></image>
         <text class='text-padding' style=' display: inline-block;width:200rpx;'>所在地址</text>
       </view>
 
@@ -59,11 +59,11 @@
 
   <view bindtap='switchPruductInfo' class='user-info-style' hidden='{{true}}'>
     <view class='user-info-lable'>
-      <image src='../../../../img/icon_loca.png' class='user-info-lable-img'></image>
+      <image src='https://www.htrnpay.cn/scan/img/icon_loca.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前套餐</text>
     </view>
-    <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='../../../../img/icon_jiantoushang.png'></image>
-    <image wx:else class='jiantou-img' src='../../../../img/icon_jiantouxia.png'></image>
+    <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
+    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
   </view>
 
   <view class="pa_wrap" style='padding-left:50rpx;' hidden='{{isPruductInfoHidden}}'>
@@ -103,7 +103,7 @@
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='../../../../img/icon_se.png' class='user-info-lable-img'></image>
+      <image src='https://www.htrnpay.cn/scan/img/icon_se.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>选择套餐</text>
     </view>
 
@@ -134,7 +134,7 @@
           <text class='package-content-title-text font-black-color'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
         </view>
       
-        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='../../../../img/box_selected.png'></image>
+        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view> 
   </view>
 </scroll-view>
@@ -146,16 +146,16 @@
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='../../../../img/icon_pay.png' class='user-info-lable-img'></image>
+      <image src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>选择支付方式</text>
     </view>
   </view>
   <view class="pay_way">
     <view>
-      <image class="pay_lable_img" src="../../../../img/weixinpay.jpg" />
+      <image class="pay_lable_img" src="https://www.htrnpay.cn/scan/img/weixinpay.jpg" />
       <text>微信支付</text>
     </view>
-    <image style='width:40rpx;height:40rpx;' src='../../../../img/selected.png'></image>
+    <image style='width:40rpx;height:40rpx;' src='https://www.htrnpay.cn/scan/img/img/selected.png'></image>
   </view>
 
 
@@ -185,6 +185,6 @@
       <text class='toast-packagedetail-detail'>{{selectPackageDetail.salesintro}}</text>
 
     </view>
-    <image bindtap='closeToast' class='toast-close' src='../../../img/delete_img.png'></image>
+    <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>
 </view>
