@@ -109,8 +109,9 @@
 
   </view>
 
-  <scroll-view class='package-select' scroll-x style="width: 100%;">
-    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
+  <scroll-view scroll-x>
+  <view class='hor'>
+         <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
       
         <view class='package-content-title' >
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
@@ -125,21 +126,7 @@
           <text class='package-content-title-text'>套餐订购数量</text>
           <text class='choose-product-count' bindtap='chooseProductCount' >{{coupQuantity}}份</text>
 
-          <!-- <view class='package-content-money-price'>
-            <text class='package-content-money-price-old'>原价:￥{{item.origprice}}</text>
-          </view>
-          <view class='package-content-money-number'>
-            <text class='package-content-money-lable'>订购周期/{{item.unit == 1?'月':'年'}}:</text>
 
-            <view class="coup_number">
-              <view data-tappackage='{{item}}' bindtap="onSubClick" class="subtraction temp_box" />
-              <view class="numb temp_box">
-                <input disabled="{{true}}" type="number" min='1' maxlength="3" class="input_numb" value="{{coupQuantity}}" />
-              </view>
-              <view data-tappackage='{{item}}' bindtap="onPlusClick" class="plus temp_box" />
-            </view>
-
-          </view> -->
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
@@ -147,9 +134,12 @@
           <text class='package-content-title-text font-black-color'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
         </view>
       
-        <image hidden='{{!currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}' class='current-selected' src='../../../../img/box_selected.png'></image>
-      </view>
-  </scroll-view>
+        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='../../../../img/box_selected.png'></image>
+      </view> 
+  </view>
+</scroll-view>
+
+
 
 
 

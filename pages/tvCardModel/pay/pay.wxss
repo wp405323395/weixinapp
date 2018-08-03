@@ -124,14 +124,11 @@
   bottom:120rpx;
   text-align: center;
 }
-.package-select{
-  height: 390rpx;
-  white-space: nowrap;
+.hor {
   display: flex;
-  background-color: white;
-  overflow-x: scroll;
+  flex-direction: row;
+  width: 100%;
 }
-
 .package-pannel{
   width: 640rpx;
   height: 100%;
@@ -146,11 +143,12 @@
 .package-content{
   background-color: white;
   border-radius: 10rpx;
-  width: 80%;
+  width: 600rpx;
   height: 340rpx;
-  border:1px solid #eeecec;
+  border:1px solid #5a5757;
   margin:25rpx;
   position: relative;
+  flex-shrink: 0;
 }
 .package-content-select{
   border:1px solid #fe0000;

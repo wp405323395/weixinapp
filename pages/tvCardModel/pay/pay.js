@@ -81,6 +81,7 @@ Page({
   },
   select:function(event){
     let itemselect = event.currentTarget.dataset.itemselect
+    console.log('当前点击的套餐是  ', itemselect);
       this.setData({
         currentPackageSelect: itemselect
       });
