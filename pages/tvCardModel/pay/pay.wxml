@@ -57,7 +57,7 @@
 
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style'>
+  <view bindtap='switchPruductInfo' class='user-info-style' hidden='{{true}}'>
     <view class='user-info-lable'>
       <image src='../../../../img/icon_loca.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前套餐</text>

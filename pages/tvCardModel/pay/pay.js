@@ -6,7 +6,7 @@ var util = require('../../../utils/util.js');
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
 Page({
   data: {
-    isUserInfoHidden:true,
+    isUserInfoHidden:false,
     isPruductInfoHidden:true,
     cardNumberSelectHidden: true,
     cardNumberSelect: -1,
@@ -69,6 +69,11 @@ Page({
       });
     }).then(value => {
       if (value.salesList && value.salesList.length != 0)  {
+        if (value.salesList[0].salestype == '1') {
+          that.setData({
+            coupQuantity:1
+          })
+        }
         that.setData({
           packages: value.salesList,
           currentPackageSelect: value.salesList[0]

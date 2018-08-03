@@ -423,6 +423,7 @@ margin-left:12rpx;
   text-align: center;
   line-height: 50rpx;
   border-radius: 5rpx;
+  color: rgba(53, 53, 241, 0.74);
 }
 
 
