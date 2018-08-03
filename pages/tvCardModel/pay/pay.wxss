@@ -125,7 +125,7 @@
   text-align: center;
 }
 .package-select{
-  height: 370rpx;
+  height: 390rpx;
   white-space: nowrap;
   display: flex;
   background-color: white;
@@ -147,10 +147,13 @@
   background-color: white;
   border-radius: 10rpx;
   width: 80%;
-  height: 320rpx;
-  border:1px solid #fe0000;
+  height: 340rpx;
+  border:1px solid #eeecec;
   margin:25rpx;
   position: relative;
+}
+.package-content-select{
+  border:1px solid #fe0000;
 }
 .package-content-title{
   background-color: white;

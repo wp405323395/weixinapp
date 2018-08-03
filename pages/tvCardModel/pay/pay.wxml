@@ -110,7 +110,7 @@
   </view>
 
   <scroll-view class='package-select' scroll-x style="width: 100%;">
-    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class='package-content' bindtap='select' data-itemselect='{{item}}'>
+    <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
       
         <view class='package-content-title' >
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
@@ -143,8 +143,8 @@
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
-          <text style='display:block;' class='package-content-title-text'>使用有效期</text>
-          <text class='package-content-title-text font-black-color'>2129012901290192019</text>
+          <text style='display:block;' class='package-content-title-text'>产品总量</text>
+          <text class='package-content-title-text font-black-color'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
         </view>
       
         <image hidden='{{!currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false}}' class='current-selected' src='../../../../img/box_selected.png'></image>

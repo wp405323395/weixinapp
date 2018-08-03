@@ -3,7 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
-const itemList = ['1', '3', '6', '12', '24', '36'];
+const itemList = ['请选择订购份数','1', '3', '6', '12'];
 Page({
   data: {
     isUserInfoHidden:true,
@@ -255,6 +255,7 @@ Page({
     wx.showActionSheet({
       itemList: itemList,
       success: function (res) {
+        if (res.tapIndex == 0) {return;}
         that.setData({
           coupQuantity: itemList[res.tapIndex]
         });
