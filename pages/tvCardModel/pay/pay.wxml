@@ -143,11 +143,6 @@
   </view>
 </scroll-view>
 
-
-
-
-
-
   <view class='user-info-style'>
     <view class='user-info-lable'>
       <image src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>

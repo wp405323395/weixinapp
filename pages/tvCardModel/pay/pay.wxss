@@ -148,68 +148,6 @@
   color: red;
 }
 
-.coup_number{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 0;
-}
-.subtraction{
-  border-right: none;
-  background: #eeeeee;
-  border-top-left-radius:10rpx;
-  border-bottom-left-radius:10rpx;
-}
-.subtraction::before{
-content:'';
-display:block;
-width:30rpx;
-height:1px;
-background-color:#666666;
-margin-top:25rpx;
-margin-left:12rpx;
-
-}
-.temp_box{
-  width: 50rpx;
-  height: 50rpx;
-  border: 1px #d4d4d4 solid;
-}
-.numb{
-  border-right: none;
-  border-left: none;
-  width: 80rpx;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.input_numb{
-  text-align: center;
-  color: #333333;
-  font-size:35rpx;
-}
-.plus{
-  background-color: #eeeeee;
-  border-top-right-radius:10rpx;
-  border-bottom-right-radius:10rpx;
-}
-.plus:before{
-  content: '';
-  display: block;
-  width: 30rpx;
-  height: 1px;
-  background-color: #666666;
-  margin-top:25rpx;
-  margin-left:12rpx;
-}
-.plus::after{
-  content: '';
-  display: block;
-  width: 1px;
-  height: 30rpx;
-  background-color: #666666;
-  margin: -14rpx 26rpx;
-}
 .dell-all{
   padding-left: 30rpx;
 }
@@ -231,11 +169,6 @@ margin-left:12rpx;
   overflow: hidden; 
   width: 400rpx;  
   text-overflow:ellipsis; 
-}
-.lable{
-  font-size: 0.7rem;
-  color: #999999;
-  padding-bottom: 0;
 }
 .toast-close{
   width: 150rpx;
@@ -340,7 +273,7 @@ margin-left:12rpx;
   padding-right: 50rpx;
   line-height: 50rpx;
   border-radius: 5rpx;
-  color: rgba(53, 53, 241, 0.74);
+  color: #fe3a14;
 }
 
 .choose_package_count_wrap{
@@ -349,6 +282,6 @@ margin-left:12rpx;
 .choose_package_count_wrap>image{
   position: absolute;
   right: 5rpx;
-  top: 4rpx;
+  top: 6rpx;
 }
 
