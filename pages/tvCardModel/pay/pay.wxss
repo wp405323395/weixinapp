@@ -418,12 +418,21 @@ margin-left:12rpx;
 .choose-product-count{
   display: inline-block;
   border: 1px solid #d4d4d4;
-  width: 150rpx;
+
   height: 50rpx;
-  text-align: center;
+  padding-left: 30rpx;
+  padding-right: 50rpx;
   line-height: 50rpx;
   border-radius: 5rpx;
   color: rgba(53, 53, 241, 0.74);
 }
 
+.choose_package_count_wrap{
+  position: relative;
+}
+.choose_package_count_wrap>image{
+  position: absolute;
+  right: 5rpx;
+  top: 4rpx;
+}
 
