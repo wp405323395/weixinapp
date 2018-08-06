@@ -134,7 +134,7 @@
 .package-content-money{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   padding:15rpx 15rpx;
 }
@@ -278,6 +278,7 @@
 }
 
 .choose_package_count_wrap{
+  margin-left: 30rpx;
   position: relative;
 }
 .choose_package_count_wrap>image{
