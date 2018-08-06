@@ -234,13 +234,6 @@ Page({
     
   },
   
-  showPackageInfo(e){
-    let selectPackageDetail = e.currentTarget.dataset.selectpackage;
-    this.setData({
-      selectPackageDetail: selectPackageDetail,
-      isHiddenToast:false
-    });
-  },
   closeToast(){
     this.setData({
       isHiddenToast: true

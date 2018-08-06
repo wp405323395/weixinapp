@@ -13,15 +13,6 @@
   height: 15rpx;
 }
 
-
-.cell1{
-  font-size: 26rpx;
-
-  padding-left: 0;
-  padding-right: 20rpx;
-  color: #333333;
-}
-
 .pa_wrap{
 
   margin-top: 0;
@@ -78,9 +69,6 @@
   background-color: #d52c28;
 }
 
-.clickDown{
-  background-color: gray;
-}
 .pay_lable_img{
   width: 25px;
   height: 25px;
@@ -88,15 +76,7 @@
   top: 8rpx;
   margin-right: 10rpx;
 }
-.radio_layout{
-  margin: auto 0;
-  padding-right:20rpx;
 
-}
-.lit_left{
-  width:30rpx;
-  height:30rpx;
-}
 .pay_way{
   overflow: hidden;
   background-color: white;
@@ -111,35 +91,16 @@
   flex-direction: row;
   align-items: center;
 }
-.logo_style{
-  z-index: -1;
-}
 .go_in{
   display: inline-block;
 }
-.bottom_logo{
-  width: 100%;
-  position: fixed;
-  z-index: 99;
-  bottom:120rpx;
-  text-align: center;
-}
+
 .hor {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-.package-pannel{
-  width: 640rpx;
-  height: 100%;
-  background: white;
-  border: 20rpx solid white;
-  border-radius: 15rpx;
-  box-sizing: content-box;
 
-  display: inline-block;
-  margin-right: 20rpx;
-}
 .package-content{
   background-color: white;
   border-radius: 10rpx;
@@ -186,52 +147,7 @@
   font-size:35rpx;
   color: red;
 }
-.package-content-money-number{
-  display: flex;
-  flex-direction: row;
-}
-.package-content-money-price-old{
-  color: #999999;
-  font-size: 25rpx;
-  text-decoration:line-through;
-  display: inline-block;
-  margin-left: 15rpx;
-}
-.package-content-money-lable{
-    font-size: 25rpx;
-    margin-right: 10rpx;
-}
-.divide-line{
-  height: 1px;
-  background-color: #d4d4d4;
-  margin:10rpx;
-}
-.package-content-detail{
 
-}
-.package-content-detail-text{
-  margin-left: 15rpx;
-  margin-right: 15rpx;
-  margin-top: 18rpx; 
-  line-height: 45rpx;
-  color: #999999;
-  font-size: 28rpx;
-  word-break: break-all;
-  text-overflow: ellipsis;
-  display: -webkit-box; 
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-   overflow: hidden;
-   white-space:pre-line;
-}
-.more-info{
-  text-align: right;
-  display: block;
-  margin-right: 20rpx;
-  margin-top: 10rpx;
-  font-size: 28rpx;
-  text-decoration: underline;
-}
 .coup_number{
   display: flex;
   flex-direction: row;
