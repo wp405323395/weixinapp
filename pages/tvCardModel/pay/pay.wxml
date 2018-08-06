@@ -175,9 +175,7 @@
 
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
   </view>
-  <view class='bottom_logo'>
-    <image src="https://www.htrnpay.cn/scan/img/guangdian_logo.png" class='logo_style'></image>
-  </view>
+
   <view class='toast' hidden='{{isHiddenToast}}'>
     <view class='toast-packagedetail'>
       <text class='toast-packagedetail-title'>{{selectPackageDetail.salesname}}</text>
