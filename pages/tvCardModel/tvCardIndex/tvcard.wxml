@@ -2,7 +2,7 @@
 <view class="container">
 <view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
    
-      <image src="https://www.maywidehb.com/banner/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
+      <image src="https://www.htrnpay.cn/scan/img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
       <view class="text_wrap">
         <text>您的微信号暂无有线电视账号记录</text>
       </view>
@@ -17,7 +17,7 @@
 </view>
 
     <view class="customItem" bindtap="onSelected" data-id="{{item}}" wx:for="{{custList}}" wx:key="unique">
-      <image class="icon" src="../../../img/person_icon.png"></image>
+      <image class="icon" src="https://www.htrnpay.cn/scan/img/person_icon.png"></image>
       <view class="cu_value">
         <view class="item0">
           <text>{{item.custname}}</text>
@@ -33,7 +33,7 @@
     <button class="nex_btn" hover-class="nex_btn_tap" bindtap='onSearchMore'>搜索新账号</button>
 </view>
 <view class='bottom_logo'>
-<image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+<image src="https://www.htrnpay.cn/scan/img/guangdian_logo.png" class='logo_style'></image>
 </view>
 
 </view>
