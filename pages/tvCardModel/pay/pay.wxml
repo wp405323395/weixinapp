@@ -111,7 +111,7 @@
 
   <scroll-view scroll-x>
   <view class='hor'>
-         <view wx:for="{{packages}}" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
+         <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
       
         <view class='package-content-title' >
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
@@ -154,7 +154,7 @@
       <image class="pay_lable_img" src="https://www.htrnpay.cn/scan/img/weixinpay.jpg" />
       <text>微信支付</text>
     </view>
-    <image style='width:40rpx;height:40rpx;' src='https://www.htrnpay.cn/scan/img/img/selected.png'></image>
+    <image style='width:40rpx;height:40rpx;' src='https://www.htrnpay.cn/scan/img/selected.png'></image>
   </view>
 
 
