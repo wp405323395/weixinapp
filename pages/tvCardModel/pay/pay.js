@@ -61,9 +61,7 @@ Page({
         
         that.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city).then(value=>{
           return that.loadCurrentPackageInfo(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
-        }).then(value=>{
-
-        });
+        }).then(value=>{});
       }, 500);
     }
   },
