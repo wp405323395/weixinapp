@@ -21,6 +21,7 @@
         <text class='text-padding'>{{currentPackageInfo.charge}}元</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
     <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
       <view class='user-info-lable'>
         <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_blank.png'></image>
