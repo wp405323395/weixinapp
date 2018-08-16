@@ -4,6 +4,7 @@ var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
+let  that;
 Page({
   data: {
     isUserInfoHidden:false,
@@ -14,10 +15,12 @@ Page({
     packages:[],
     coupQuantity:3,
     currentPackageSelect:undefined,
-    isHiddenToast: true
+    isHiddenToast: true,
+    currentPackageInfo:null
   },
 
   onLoad: function (options) {
+    that = this;
     console.log(options);
     let custid = options.custid;
     let tvCardNum = options.tvCardNum;
@@ -55,13 +58,17 @@ Page({
     this.qrKind = (qrKind == undefined ? 'undefined' : qrKind) ;
     if (!util.textIsNull(tvCardNum)) {
       setTimeout(() => {
-        this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
+        
+        that.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city).then(value=>{
+          return that.loadCurrentPackageInfo(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
+        }).then(value=>{
+
+        });
       }, 500);
     }
   },
   loadPackage: function (custid, tvCardNumber, serviceID, qrKind,city) {
-    let that = this;
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       new RequestEngine().request(config.querySalesList, { city,custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
         resolve(success);
       }, (faild) => {
@@ -84,6 +91,19 @@ Page({
     }).catch(err => { })
 
   },
+  loadCurrentPackageInfo: function (custid, tvCardNumber, serviceID, qrKind, city){
+      return new Promise((resolve,reject)=>{
+        new RequestEngine().request(config.doQueServSalesPkgInfo, { city, custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.doQueServSalesPkgInfo, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
+          resolve(success);
+          console.log('下来的请求',success);
+          that.setData({
+            currentPackageInfo: success
+          });
+        }, (faild) => {
+          reject(faild);
+        });
+      })
+  },
   select:function(event){
     let itemselect = event.currentTarget.dataset.itemselect
     console.log('当前点击的套餐是  ', itemselect);
@@ -92,7 +112,6 @@ Page({
       });
   },
   loadCards: function (custid, tvCardNum, serviceID) {
-    let that = this;
     new Promise((resolve, reject) => {
       new RequestEngine().request(config.queryOrderKeyno, { custid: custid }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
         resolve(success);
@@ -149,7 +168,6 @@ Page({
 
   },
   payClick: function (e) {
-    let that = this;
     if (!util.textIsNotNull(that.tvCardNum)) {
       wx.showModal({
         title: "请您先选择智能卡号",
@@ -179,7 +197,6 @@ Page({
     this.pay();
   },
   pay: function () {
-    let that = this;
     if (that.isPaying) {
       return;
     }
@@ -250,7 +267,6 @@ Page({
     })
   },
   chooseProductCount:function(){
-    let that = this;
     wx.showActionSheet({
       itemList: itemList,
       success: function (res) {

@@ -11,6 +11,16 @@
     <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
   </view>
   <view class="pa_wrap" hidden='{{isUserInfoHidden}}'>
+      <view class="item">
+      <view class='user-info-lable'>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
+        <text class='text-padding'>账户余额</text>
+      </view>
+
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.charge}}元</text>
+      </view>
+    </view>
     <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
       <view class='user-info-lable'>
         <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_blank.png'></image>
@@ -57,7 +67,7 @@
 
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style' hidden='{{true}}'>
+  <view bindtap='switchPruductInfo' class='user-info-style'>
     <view class='user-info-lable'>
       <image src='https://www.htrnpay.cn/scan/img/icon_loca.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前套餐</text>
@@ -70,28 +80,28 @@
     <view class="item">
       <text class='text-padding'>套餐名称</text>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>套餐名称</text>
+        <text class='text-padding'>{{currentPackageInfo.name}}</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>订购日期</text>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>2016年</text>
+        <text class='text-padding'>{{currentPackageInfo.optime}}</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>有效期</text>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>232323-232323-232323</text>
+        <text class='text-padding'>{{currentPackageInfo.etime}}</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
     <view class="item">
       <text class='text-padding'>费用</text>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>￥23元</text>
+        <text class='text-padding'>￥{{currentPackageInfo.fees}}元</text>
       </view>
     </view>
   </view>
