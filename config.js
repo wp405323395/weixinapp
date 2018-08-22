@@ -6,7 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var host = 'www.htrnpay.cn';
-// var host = "192.168.2.113:8383"
+// var host = "192.168.2.118:8080"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';
@@ -60,7 +60,8 @@ var config = {
     doVot: `${schema}://${host}/scanweb/vot/vot-wx!doVot`,
     isHadVot: `${schema}://${host}/scanweb/vot/vot-wx!isHadVot`,
     queQrcodePutById: `${schema}://${host}/scanweb/qrwx/qrcode!queQrcodePutById`,
-    doQueServSalesPkgInfo: `${schema}://${host}/scanweb/qrwx/wx-order!doQueServSalesPkgInfo`
+    doQueServSalesPkgInfo: `${schema}://${host}/scanweb/qrwx/wx-order!doQueServSalesPkgInfo`,
+    recordPayFaild: `${schema}://${host}/scanweb/qrwx/wx-order!savePayErrMsg`
 };
 
 

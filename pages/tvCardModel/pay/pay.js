@@ -13,7 +13,7 @@ Page({
     cardNumberSelect: -1,
     tvCardAnimationData: {},
     packages:[],
-    coupQuantity:3,
+    coupQuantity:12,
     currentPackageSelect:undefined,
     isHiddenToast: true,
     currentPackageInfo:null
@@ -235,7 +235,16 @@ Page({
           },
           'fail': function (res) {
             that.isPaying = false;
-            console.log('支付失败', res);
+            ///// 记录错误日志
+            let param = {
+              errMsg: res.errMsg
+            }
+            new RequestEngine().request(config.recordPayFaild, param, { callBy: that, method: '', params: [] }, (success) => {
+              console.log(success);
+            }, (faild) => {
+              console.log(faild)
+            });
+            //////
           }
         })
     }).catch(err=>{
@@ -245,6 +254,16 @@ Page({
         showCancel: false,
         confirmText: "取消"
       })
+      ///// 记录错误日志
+      let param = {
+        errMsg: err
+      }
+      new RequestEngine().request(config.recordPayFaild, param, { callBy: that, method: '', params: [] }, (success) => {
+        console.log(success);
+      }, (faild) => {
+        console.log(faild)
+      });
+  //////
     });
     
   },
@@ -278,4 +297,5 @@ Page({
       }
     })
   }
+  
 })
