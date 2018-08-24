@@ -17,40 +17,9 @@ var config = {
     srcUrl: `${schema}://${host}/`,
     // 登录地址，用于建立会话
     loginUrl: `${schema}://${host}/scanweb/qrwx/wx-order!login`,
-    discoverUrl: `${schema}://${host}/scanweb/mcwx/mc-wx!queryCouponList`,
-    mycoup: `${schema}://${host}/scanweb/mcwx/mc-wx!queryWxCouponList`,
-    loadProduct: `${schema}://${host}/scanweb/mcwx/mc-wx!queryCouponDetailById`,
-    useCoup: `${schema}://${host}/scanweb/mcwx/mc-wx!useCoupon`,
-    receiveCoup: `${schema}://${host}/scanweb/mcwx/mc-wx!receiveCoupon`,
-    received_tickit_url: `${schema}://${host}/scanweb/mcwx/mc-wx!queryUnuseCouponList`,
-    deleteCoup: `${schema}://${host}/scanweb/mcwx/mc-wx!delCoupon`,
-        
-    businessAuther: `${schema}://${host}/scanweb/mcwx/merc-wx!doMercSettled`,
-    queMercDetail: `${schema}://${host}/scanweb/mcwx/merc-wx!queMercDetail`,
-    publishMercCoup: `${schema}://${host}/scanweb/mcwx/merc-wx!publishMercCoup`,
-    
-
-    used_tickit_url: `${schema}://${host}/scanweb/mcwx/mc-wx!queryUsedCouponList`,
-    queryWxUserCouponDetail: `${schema}://${host}/scanweb/mcwx/mc-wx!queryWxUserCouponDetail`,
-    uploadBusinessPic: `${schema}://${host}/scanweb/mcwx/file-upload!doUpload`,
-    queMercSettled: `${schema}://${host}/scanweb/mcwx/merc-wx!queMercSettled`,
-    loadAllCoup: `${schema}://${host}/scanweb/mcwx/merc-wx!queMercCoupListByStoreid`,
-
-    uploadQrInfo: `${schema}://${host}/scanweb/mcwx/mc-wx!saveCardidOpenid?scene=`,
-    useCouponByWxCode: `${schema}://${host}/scanweb/mcwx/mc-wx!useCouponByWxCode`,
-    mercSureUseCoup: `${schema}://${host}/scanweb/mcwx/merc-wx!mercSureUseCoup`,
-    queMercAssistListByStoreid: `${schema}://${host}/scanweb/mcwx/merc-wx!queMercAssistListByStoreid`,
-    
-    addStoreAssit: `${schema}://${host}/scanweb/mcwx/merc-wx!addStoreAssit`,
-    createStoreAssistCode: `${schema}://${host}/scanweb/mcwx/merc-wx!createStoreAssistCode`,
-    delAssistbyAssistid: `${schema}://${host}/scanweb/mcwx/merc-wx!delAssistbyAssistid`,
-    giveAwayCoupon: `${schema}://${host}/scanweb/mcwx/mc-wx!giveAwayCoupon`,
-    gainGiveAwayCoupon: `${schema}://${host}/scanweb/mcwx/mc-wx!gainGiveAwayCoupon`,
-
 
     querySalesList: `${schema}://${host}/scanweb/qrwx/wx-order!querySalesList`,
     queryCustInfo: `${schema}://${host}/scanweb/qrwx/wx-order!queryCustInfo`,
-    doOrder: `${schema}://${host}/scanweb/qrwx/wx-order!doOrder`,
     wxPay: `${schema}://${host}/scanweb/qrwx/wx-order!wxPay`,
     queryOrderKeyno: `${schema}://${host}/scanweb/qrwx/wx-order!queryOrderKeyno`,
     queCustInfoByOpenid: `${schema}://${host}/scanweb/qrwx/wx-order!queCustInfoByOpenid`,
