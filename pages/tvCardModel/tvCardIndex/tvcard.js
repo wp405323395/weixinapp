@@ -12,29 +12,6 @@ Page({
     hidd2:true,
   },
 
- /* onLoad: function (options) {
-    // var scene = decodeURIComponent(options.q);
-    // if(util.textIsNull(scene)) {
-    //   var scene = decodeURIComponent(options.scene);
-    // } else {
-    //   scene = scene.split("scene=")[1];
-    // }
-    //  //scene = '20~219~8270102533142253';
-    //  scene = 'FCB4526479A1FE51435F0CC057A06E9EBA5A74F7F57AE2AD';
-    // scene = DES3.decrypt(scene);
-
-    var scene = util.getScene(options)
-    this.getCardInfo(scene);
-    setTimeout(() => {
-        if (util.textIsNotNull(this.tvCardNum)) {
-          this.loadTvCardInfo(this.tvCardNum);
-        } else {
-          this.loadRecordHistory();
-        }
-    }, 500);
-    
-  }, */
-
   /*qrid查询*/
   onLoad: function (options) {
     var src = decodeURIComponent(options.q)
