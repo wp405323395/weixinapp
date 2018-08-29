@@ -5,7 +5,7 @@ var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
 let  that;
-let countDown = 4000;
+let countDown = 0;
 var qrid
 Page({
   data: {
@@ -69,7 +69,7 @@ Page({
         }).then(value=>{});
       }, 500);
     }
-    
+    console.log('祝远祝远祝远祝远祝远',qrid);
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
@@ -95,7 +95,7 @@ Page({
       if (countDown<1000) {
         return;
       }
-      countDown = countDown - 1000;
+      countDown -= 1000;
       that.refreshCountDown();
     },1000);
   },
