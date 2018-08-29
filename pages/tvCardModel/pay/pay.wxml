@@ -1,7 +1,11 @@
 <!--pay.wxml-->
 <view class="container">
   <view class='containner-spacetop'></view>
-
+  <view class='header-toast-wrap' wx:if="{{toastType == '2'||toastType == '1' }}">
+    <text wx:if="{{toastType == '2'}}">您本次的免费观看已结束,请尽快续费</text>
+    <text wx:if="{{toastType == '1'}}">您还可以免费观看<text class='hint-color'>{{formatTime}}</text>,请尽快续费</text>
+    
+  </view>
   <view bindtap='switchUserInfo' class='user-info-style'>
     <view class='user-info-lable'>
       <image src='https://www.htrnpay.cn/scan/img/icon_info.png' class='user-info-lable-img'></image>

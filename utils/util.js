@@ -139,6 +139,24 @@ function getScene(options, callback, flag) {
   var qrutil = require('../qrutil/qrutil.js');
   return qrutil.getScene(options, callback, flag);
 }
+
+function formatDuring(mss){
+  var days = parseInt(mss / (1000 * 60 * 60 * 24));
+  var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = parseInt((mss % (1000 * 60)) / 1000);
+  let time;
+  if (days) {
+    time = days + " 天 " + hours + " 时 " + minutes + " 分 " + seconds + " 秒 ";
+  } else if (hours) {
+    time = hours + " 时 " + minutes + " 分 " + seconds + " 秒 ";
+  } else if (minutes) {
+    time = minutes + " 分 " + seconds + " 秒 ";
+  } else {
+    time = seconds + " 秒 ";
+  }
+  return time;
+}
 /**
  *
 function getScene(options,flag) {
@@ -184,6 +202,6 @@ module.exports = {
   showShortToast: showShortToast,
   textIsNull: textIsNull,
   splice: splice,
-  splice: splice,
-  getScene:getScene
+  getScene:getScene,
+  formatDuring: formatDuring
 }

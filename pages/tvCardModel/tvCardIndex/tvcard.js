@@ -3,7 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
-
+var qrid
 Page({
 
   data: {
@@ -14,21 +14,19 @@ Page({
 
   /*qrid查询*/
   onLoad: function (options) {
-    var src = decodeURIComponent(options.q)
     let that=this;
-    var scene = util.getScene(options, function (scene){
-      that.getCardInfo(scene);
+    qrid = util.getScene(options, function (scene){
+      that.getQrInfo(scene);
       setTimeout(() => {
         if (util.textIsNotNull(that.tvCardNum)) {
           that.loadTvCardInfo(that.tvCardNum);
         } else {
           that.loadRecordHistory();
         }
+        
       }, 500);
     })
   },
-
-  
   onSearchMore:function(){
     wx.navigateTo({
       url: '../msgConfirm/confirm',
@@ -37,7 +35,7 @@ Page({
   onSelected: function (e) {
     let item = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile + "&city="+item.city
+      url: `../pay/pay?qrid=${qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
     })
   },
   loadRecordHistory:function(){
@@ -75,7 +73,7 @@ Page({
     })
     
   },
-  getCardInfo: function (tvCardInfo) {
+  getQrInfo: function (tvCardInfo) {
     if (util.textIsNull(tvCardInfo)) {
       return null;
     }
@@ -105,7 +103,7 @@ Page({
       });
     }).then(value=>{
       let cardInfo = value.custList[0];
-      let url = '../pay/pay?tvCardNum=' + this.tvCardNum + '&custid=' + cardInfo.custid + '&serviceID=' + this.serviceID + "&qrKind=" + this.qrKind + "&addr=" + cardInfo.addr + "&custname=" + cardInfo.custname + "&mobile=" + cardInfo.mobile + "&city=" + cardInfo.city;
+      let url = `../pay/pay?qrid=${qrid}&tvCardNum=${this.tvCardNum}&custid=${cardInfo.custid}&serviceID=${this.serviceID}&qrKind=${this.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
       wx.navigateTo({
         url: url
       })

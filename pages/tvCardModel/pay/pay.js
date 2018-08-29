@@ -5,8 +5,11 @@ var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
 let  that;
+let countDown = 4000;
+var qrid
 Page({
   data: {
+    toastType:-1,
     isUserInfoHidden:false,
     isPruductInfoHidden:true,
     cardNumberSelectHidden: true,
@@ -16,12 +19,14 @@ Page({
     coupQuantity:12,
     currentPackageSelect:undefined,
     isHiddenToast: true,
-    currentPackageInfo:null
+    currentPackageInfo:null,
+    formatTime:''
   },
 
   onLoad: function (options) {
     that = this;
     console.log(options);
+    qrid = options.qrid;
     let custid = options.custid;
     let tvCardNum = options.tvCardNum;
     let serviceID = options.serviceID;
@@ -64,7 +69,37 @@ Page({
         }).then(value=>{});
       }, 500);
     }
+    
+    if (util.textIsNotNull(qrid)) {
+      this.loadToast(qrid);
+    }
   },
+  loadToast: function (qrid) {
+    new RequestEngine().request(config.baseTrySee + `?qrid=${qrid}&city=${this.city}`, {}, { callBy: that, method: that.loadToast, params: [] }, (success) => {
+      countDown = success.time;
+      that.setData({
+        toastType: success.type,
+      });
+      if (success.type == '1') {
+        that.refreshCountDown();
+      } 
+    }, (faild) => {
+    });
+  },
+  refreshCountDown: function(){
+    setTimeout(()=>{
+      let time = util.formatDuring(countDown);
+      this.setData({
+        formatTime:time
+      });
+      if (countDown<1000) {
+        return;
+      }
+      countDown = countDown - 1000;
+      that.refreshCountDown();
+    },1000);
+  },
+  
   loadPackage: function (custid, tvCardNumber, serviceID, qrKind,city) {
     return new Promise((resolve, reject) => {
       new RequestEngine().request(config.querySalesList, { city,custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {

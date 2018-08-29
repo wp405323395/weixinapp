@@ -289,4 +289,16 @@
 scroll-view{
   background-color: white;
 }
-
+.header-toast-wrap{
+  background-color: #ffe193;
+  padding: 20rpx;
+  font-weight: 500;
+}
+.header-toast-wrap{
+  background-color: #ffe193;
+  padding: 20rpx;
+  font-weight: 500;
+}
+.hint-color{
+  color: red;
+}

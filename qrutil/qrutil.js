@@ -36,8 +36,6 @@ function getScene(options, callback, flag) {
   // qrid = 1;
   if (!util.textIsNull(qrid)) {
     var config = require('../config.js');
-    var request = require('../qrutil/qrutil.js');
-    qrid = DES3.encrypt(qrid);
     let url = config.queQrcodePutById + "?qrid=" + qrid;
     new Promise((resolve, reject) => {
       new RequestEngine().request(url, {}, { callBy: this, method: this.getScene, params: [options, callback, flag] }, (success) => {
@@ -46,6 +44,7 @@ function getScene(options, callback, flag) {
         reject(faild);
       });
     })
+    return qrid;
   }else{
     if (util.textIsNull(scene)) {
 
@@ -61,8 +60,6 @@ function getScene(options, callback, flag) {
     }
     if (callback){
       callback(scene);
-    }else{
-      return scene;
     }
   }
 
