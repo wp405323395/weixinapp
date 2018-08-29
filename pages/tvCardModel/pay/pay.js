@@ -76,13 +76,16 @@ Page({
   },
   loadToast: function (qrid) {
     new RequestEngine().request(config.baseTrySee + `?qrid=${qrid}&city=${this.city}`, {}, { callBy: that, method: that.loadToast, params: [] }, (success) => {
-      countDown = success.time;
-      that.setData({
-        toastType: success.type,
-      });
-      if (success.type == '1') {
-        that.refreshCountDown();
-      } 
+      if(countDown == 0) {
+        countDown = success.time;
+        that.setData({
+          toastType: success.type,
+        });
+        if (success.type == '1') {
+          that.refreshCountDown();
+        } 
+      }
+
     }, (faild) => {
     });
   },
