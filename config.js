@@ -6,7 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var host = 'www.htrnpay.cn';
-var host = "192.168.2.106:8080"
+// var host = "192.168.2.106:8080"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';
