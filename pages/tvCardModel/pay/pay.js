@@ -321,6 +321,9 @@ Page({
       isPruductInfoHidden: !this.data.isPruductInfoHidden
     })
   },
+  onHide: function(){
+    countDown = 0;
+  },
   chooseProductCount:function(){
     wx.showActionSheet({
       itemList: itemList,
