@@ -69,7 +69,9 @@ Page({
         }).then(value=>{});
       }, 500);
     }
-    console.log('祝远祝远祝远祝远祝远',qrid);
+    
+  },
+  onShow:function(){
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
@@ -96,6 +98,11 @@ Page({
         formatTime:time
       });
       if (countDown<1000) {
+        if(countDown == 0) {
+          this.setData({
+            formatTime: ''
+          });
+        }
         return;
       }
       countDown -= 1000;
