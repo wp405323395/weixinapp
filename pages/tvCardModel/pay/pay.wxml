@@ -140,7 +140,7 @@
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
           <view class='choose_package_count_wrap' bindtap='chooseProductCount'>
-            <text class='choose-product-count'>{{coupQuantity}}份</text>
+            <text class='choose-product-count'>{{coupQuantity}}</text>
             <image class="jiantou-img" src="https://www.htrnpay.cn/scan/img/icon_jiantouxia.png"></image>
           </view>
           
