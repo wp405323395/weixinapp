@@ -274,7 +274,7 @@ Page({
           'success': function (res) {
             that.isPaying = false;
             console.log('支付结果',res);
-            wx.navigateTo({
+            wx.redirectTo({
               url: 'success/paySuccess',
             })
           },
