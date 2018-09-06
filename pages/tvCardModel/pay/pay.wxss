@@ -106,7 +106,7 @@
  
 }
 .hor1{
- height: 360rpx;
+ height: 380rpx;
 }
 .pkglist-wrap{
   padding-bottom: 20rpx;
@@ -115,8 +115,7 @@
 .package-content{
   background-color: white;
   border-radius: 10rpx;
-  /* width: 600rpx; */
-  height: 340rpx;
+
   border:1px solid #eaeaea;
   box-sizing: border-box;
   position: relative;
