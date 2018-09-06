@@ -141,7 +141,7 @@
           <image class='text-tag' wx:if="{{item.tag=='optimal'}}" src='../../../../../img/green-tag.png'></image>
           <image class='pic-tag' wx:elif="{{item.tag=='current'}}"  src='../../../../../img/current-tag.png'></image>
           <image class='text-tag' wx:elif="{{item.tag}}" src='../../../../../img/blue-tag.png'></image>
-          <text class='text-tag-text'>{{item.tag}}</text>
+          <text wx:if="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
         </view>
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
@@ -153,7 +153,7 @@
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
           <text style='display:block;' class='package-content-title-text'>产品介绍</text>
-          <text class='package-content-title-text font-black-color'>{{item.salesintro}}阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿斯顿发士大夫阿三地方阿斯顿发士大夫阿三地方阿三地方</text>
+          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿斯顿发士大夫阿三地方阿斯顿发士大夫阿三地方阿三地方</text>
         </view>
 
         <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>

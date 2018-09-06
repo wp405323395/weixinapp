@@ -103,10 +103,9 @@
   background-color: white;
   padding:20rpx;
   overflow: hidden;
- 
 }
 .hor1{
- height: 380rpx;
+ height: 400rpx;
 }
 .pkglist-wrap{
   padding-bottom: 20rpx;
@@ -372,4 +371,11 @@ scroll-view{
   position: absolute;
   top: 24rpx;
   font-size: 28rpx;
+}
+.max-text-length{
+      overflow:hidden;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
 }
