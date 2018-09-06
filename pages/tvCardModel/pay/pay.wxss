@@ -350,7 +350,7 @@ scroll-view{
   width: 100%;
   position: relative;
 }
-.pkg-tag-wrap>image{
+.pkg-tag-image{
   position: absolute;
 }
 .text-tag{
