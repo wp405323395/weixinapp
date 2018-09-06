@@ -4,7 +4,7 @@
   <view class='header-toast-wrap' wx:if="{{toastType == '2'||toastType == '1' }}">
     <text wx:if="{{toastType == '2' || formatTime =='0 秒 '}}">您本次的免费观看已结束,请尽快续费</text>
     <text wx:elif="{{toastType == '1' && formatTime !='0 秒 '}}">您还可以免费观看<text class='hint-color'> {{formatTime}}</text>,请尽快续费</text>
-    
+
   </view>
   <view bindtap='switchUserInfo' class='user-info-style'>
     <view class='user-info-lable'>
@@ -15,7 +15,7 @@
     <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
   </view>
   <view class="pa_wrap" hidden='{{isUserInfoHidden}}'>
-      <view class="item">
+    <view class="item">
       <view class='user-info-lable'>
         <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
         <text class='text-padding'>账户余额</text>
@@ -124,11 +124,11 @@
 
   </view>
 
-  <scroll-view scroll-x>
-  <view class='hor'>
-         <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
-      
-        <view class='package-content-title' >
+  <view class='pkglist-wrap'>
+    <view class="hor {{isListFold?'hor1':''}}">
+      <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
+
+        <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
             <text class='package-content-title-text'>套餐名称</text>
             <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
@@ -143,20 +143,22 @@
             <text class='choose-product-count'>{{coupQuantity}}</text>
             <image class="jiantou-img" src="https://www.htrnpay.cn/scan/img/icon_jiantouxia.png"></image>
           </view>
-          
-
-
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
           <text style='display:block;' class='package-content-title-text'>产品总量</text>
           <text class='package-content-title-text font-black-color'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
         </view>
-      
+
         <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
-      </view> 
+      </view>
+    </view>
+    <view class='more-wrap' wx:if='{{packages.length>1}}' bindtap='switchList'>
+        <text>更多套餐</text>
+        <image wx:if="{{isListFold}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
+        <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
+      </view>
   </view>
-</scroll-view>
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
@@ -175,7 +177,7 @@
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <text style='display:block; margin-left:10rpx;margin-right:20rpx;' >收款方</text>
+      <text style='display:block; margin-left:10rpx;margin-right:20rpx;'>收款方</text>
       <text class='text-header' style=' color:#0c0b0b; font-weight:400; font-size:32rpx;'>湖北省广播电视信息网络股份有限公司</text>
     </view>
   </view>

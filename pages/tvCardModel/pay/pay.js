@@ -9,6 +9,7 @@ let countDown = 0;
 var qrid
 Page({
   data: {
+    isListFold:true,
     toastType:-1,
     isUserInfoHidden:false,
     isPruductInfoHidden:true,
@@ -326,6 +327,11 @@ Page({
   switchPruductInfo:function(){
     this.setData({
       isPruductInfoHidden: !this.data.isPruductInfoHidden
+    })
+  },
+  switchList:function(){
+    this.setData({
+      isListFold: !this.data.isListFold  
     })
   },
   onHide: function(){
