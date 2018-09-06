@@ -138,10 +138,13 @@
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
         <view class='pkg-tag-wrap'>
-          <image class='text-tag' wx:if="{{item.tag=='optimal'}}" src='../../../../../img/green-tag.png'></image>
-          <image class='pic-tag' wx:elif="{{item.tag=='current'}}"  src='../../../../../img/current-tag.png'></image>
-          <image class='text-tag' wx:elif="{{item.tag}}" src='../../../../../img/blue-tag.png'></image>
-          <text wx:if="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
+          <view wx:if="{{item.tag!='null'}}">
+            <image class='text-tag' wx:if="{{item.tag=='optimal'}}" src='../../../../../img/green-tag.png'></image>
+            <image class='pic-tag' wx:elif="{{item.tag=='current'}}" src='../../../../../img/current-tag.png'></image>
+            <image class='text-tag' wx:elif="{{item.tag}}" src='../../../../../img/blue-tag.png'></image>
+            <text wx:if="{{item.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
+            <text wx:elif="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
+          </view>
         </view>
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
@@ -160,10 +163,10 @@
       </view>
     </view>
     <view class='more-wrap' wx:if='{{packages.length>1}}' bindtap='switchList'>
-        <text>更多套餐</text>
-        <image wx:if="{{isListFold}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
-        <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
-      </view>
+      <text>更多套餐</text>
+      <image wx:if="{{isListFold}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
+      <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
+    </view>
   </view>
 
   <view class='user-info-style'>
