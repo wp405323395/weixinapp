@@ -20,6 +20,8 @@ Page({
     coupQuantity:12,
     currentPackageSelect:undefined,
     isHiddenToast: true,
+    isHiddenToast1:true,
+    isHiddenToast2: true,
     currentPackageInfo:null,
     formatTime:''
   },
@@ -313,10 +315,25 @@ Page({
     });
     
   },
+  feedbackPkg(){
+    this.setData({
+      isHiddenToast: false
+    })
+  },
+  showFeedback(){
+    this.setData({
+      isHiddenToast2: false
+    })
+  },
+  postFeedbackPkg(){
+
+  },
   
   closeToast(){
     this.setData({
-      isHiddenToast: true
+      isHiddenToast: true,
+      isHiddenToast1: true,
+      isHiddenToast2: true
     });
   },
   switchUserInfo:function(){

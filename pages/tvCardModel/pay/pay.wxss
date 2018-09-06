@@ -210,12 +210,36 @@
   z-index: 100000;
 }
 .toast-packagedetail{
-  padding: 20rpx;
+  padding: 30rpx;
   width: 600rpx;
   height: 800rpx;
   background-color: white;
   overflow: scroll;
   border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+.toast-packagedetail>checkbox{
+  margin-left:20rpx;
+  margin-top: 30rpx;
+}
+.toast-packagedetail>label{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}
+.toast-packagedetail>textarea {
+  border: 1px solid #00a1fe;
+  width: 540rpx;
+  margin-left: 20rpx;
+  padding: 20rpx;
+}
+.toast-packagedetail>button{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  width: 200rpx;
+  display: block;
+  padding: 0;
+  flex-shrink: 0;
 }
 .toast-packagedetail-title{
   font-size: 40rpx;
