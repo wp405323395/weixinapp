@@ -28,11 +28,11 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
-					"name": "扫码进小程序",
+					"name": "直接进pay界面",
 					"pathName": "pages/tvCardModel/pay/pay",
 					"query": "addr=湖北省武汉市青山区红钢城街二街社******代中心22楼&city=WH&custid=760013708129&custname=*实验室测试用户&mobile=159****7032&tvCardNum=8717003634384870",
 					"scene": "1011"
@@ -45,10 +45,10 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
-					"name": "扫码进小程序",
+					"id": 2,
+					"name": "用sceen进入",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
-					"query": "",
+					"query": "scene=27~0~8270104243185218",
 					"scene": "1011"
 				}
 			]

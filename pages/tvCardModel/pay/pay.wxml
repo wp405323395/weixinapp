@@ -135,7 +135,19 @@
           </view>
           <text class='package-content-title-text font-black-color'>{{item.salesname}}</text>
 
-          <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
+        </view>
+        <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
+        <view class='pkg-tag-wrap'>
+          <!-- <image class='text-tag' wx:if="{{item.tag=='optimal'}}" src='../../../../../img/green-tag.png'></image>
+          <image class='pic-tag' wx:elif="{{item.tag=='current'}}"  src='../../../../../img/current-tag.png'></image> -->
+          <!-- <image class='text-tag' wx:elif="{{item.tag}}" src='../../../../../img/blue-tag.png'>
+            <text>{{item.tag}}</text>
+          </image> -->
+          <image class='text-tag' src='../../../../../img/blue-tag.png'>
+          </image>
+          <text class='text-tag-text'>70%用户订购</text>
+
+          
         </view>
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
@@ -146,8 +158,8 @@
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
-          <text style='display:block;' class='package-content-title-text'>产品总量</text>
-          <text class='package-content-title-text font-black-color'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
+          <text style='display:block;' class='package-content-title-text'>产品介绍</text>
+          <text class='package-content-title-text font-black-color'>{{item.salesintro}}</text>
         </view>
 
         <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>

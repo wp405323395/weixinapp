@@ -347,3 +347,30 @@ scroll-view{
 .hint-color{
   color: red;
 }
+.pkg-tag-wrap{
+  height: 0;
+  width: 100%;
+  position: relative;
+}
+.pkg-tag-wrap>image{
+  position: absolute;
+}
+.text-tag{
+  width: 188rpx;
+  height: 72rpx;
+  right: -12rpx;
+  top: 13rpx;
+}
+.pic-tag{
+  width: 128rpx;
+  height: 97rpx;
+  right: 30rpx;
+  top: 10rpx;
+}
+.text-tag-text{
+  right: 2rpx;
+  color: white;
+  position: absolute;
+  top: 20rpx;
+  font-size: 28rpx;
+}
