@@ -139,9 +139,9 @@
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
         <view class='pkg-tag-wrap'>
           <view wx:if="{{item.tag!='null'}}">
-            <image class='pkg-tag-image text-tag' wx:if="{{item.tag=='optimal'}}" src='../../../../../img/green-tag.png'></image>
-            <image class='pkg-tag-image pic-tag' wx:elif="{{item.tag=='current'}}" src='../../../../../img/current-tag.png'></image>
-            <image class='pkg-tag-image text-tag' wx:elif="{{item.tag}}" src='../../../../../img/blue-tag.png'></image>
+            <image class='pkg-tag-image text-tag' wx:if="{{item.tag=='optimal'}}" src='https://www.htrnpay.cn/scan/img/green-tag.png'></image>
+            <image class='pkg-tag-image pic-tag' wx:elif="{{item.tag=='current'}}" src='https://www.htrnpay.cn/scan/img/current-tag.png'></image>
+            <image class='pkg-tag-image text-tag' wx:elif="{{item.tag}}" src='https://www.htrnpay.cn/scan/img/blue-tag.png'></image>
             <text wx:if="{{item.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
             <text wx:elif="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
           </view>
@@ -156,7 +156,7 @@
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
           <text style='display:block;' class='package-content-title-text'>产品介绍</text>
-          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿三地方阿斯顿发士大夫阿三地方阿斯顿发士大夫阿三地方阿三地方</text>
+          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}</text>
         </view>
 
         <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
@@ -208,7 +208,7 @@
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
   </view>
 
-  <view class='toast' hidden='{{isHiddenToast}}'>
+  <view class='toast' hidden='{{isHiddenToast}}'  catchtouchmove="ture">
     <view class='toast-packagedetail'>
       <label>{{feedbackData.title}}</label>
       <view class='checkbox-wrap'>
@@ -218,6 +218,7 @@
 
       </view>
       <label>其他建议或者意见(选填)</label>
+      
       <textarea placeholder='请输入您宝贵的建议...' bindinput="paperTextChanged"></textarea>
       <text class='toast-note'>您的意见或者建议是我们宝贵的动力，我们将更好为您服务</text>
       <button bindtap='paperSubmit'>确定</button>
@@ -225,7 +226,7 @@
     <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>
 
-  <view class='toast' hidden='{{isHiddenToast2}}'>
+  <view class='toast' hidden='{{isHiddenToast2}}'  catchtouchmove="ture">
     <view class='toast-packagedetail toast-packagedetail2'>
       <label>描述</label>
       <textarea placeholder='告诉我们您的需求，建议或遇到的问题...' bindinput="paper2InputContent"></textarea>

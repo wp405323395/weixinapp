@@ -7,6 +7,7 @@
 
 var host = 'www.htrnpay.cn';
 var host = "192.168.2.119:8080"
+var host = "120.79.229.253:8181"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';

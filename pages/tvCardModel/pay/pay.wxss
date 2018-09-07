@@ -197,6 +197,7 @@
 .toast-close{
   width: 150rpx;
   height: 150rpx;
+  overflow: hidden;
 }
 .toast{
   width: 100%;
