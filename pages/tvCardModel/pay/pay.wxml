@@ -1,5 +1,5 @@
 <!--pay.wxml-->
-<view class="container">
+<view class="container {{!isHiddenToast||!isHiddenToast2?'container-toast':''}}">
   <view class='containner-spacetop'></view>
   <view class='header-toast-wrap' wx:if="{{toastType == '2'||toastType == '1' }}">
     <text wx:if="{{toastType == '2' || formatTime =='0 秒 '}}">您本次的免费观看已结束,请尽快续费</text>
@@ -210,40 +210,26 @@
 
   <view class='toast' hidden='{{isHiddenToast}}'>
     <view class='toast-packagedetail'>
-      <text class='toast-packagedetail-lable'>用户反馈</text>
-      <checkbox value='{{pkgFeedback.a}}'>价格太高</checkbox>
-      <checkbox value='{{pkgFeedback.b}}'>不了解产品详细信息</checkbox>
-      <checkbox value='{{pkgFeedback.c}}'>供选择的产品太少</checkbox>
-      <checkbox value='{{pkgFeedback.d}}'>需要人工帮忙</checkbox>
-      <label>其他原因:</label>
-      <textarea placeholder='输入其他原因...' value='{{pkgFeedback.e}}'></textarea>
+      <label>{{feedbackData.title}}</label>
+      <view class='checkbox-wrap'>
+        <checkbox wx:for="{{feedbackData.options}}"  wx:for-index="idx" wx:for-item="item" value='{{item.id}}'>{{item.text}}</checkbox>
+      </view>
+      <label>其他建议或者意见(选填)</label>
+      <textarea placeholder='请输入您宝贵的建议...' value='{{pkgFeedback.e}}'></textarea>
+      <text class='toast-note'>您的意见或者建议是我们宝贵的动力，我们将更好为您服务</text>
       <button bindtap='postFeedbackPkg'>确定</button>
     </view>
     <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>
 
-  <view class='toast' hidden='{{isHiddenToast1}}'>
-    <view class='toast-packagedetail'>
-      <text class='toast-packagedetail-lable'>检测到您未支付成功</text>
-      <checkbox value='{{payFaildFeedback.a}}'>微信余额不足</checkbox>
-      <checkbox value='{{payFaildFeedback.b}}'>我不想买这个套餐</checkbox>
-      <checkbox value='{{payFaildFeedback.c}}'>支付失败</checkbox>
-      <checkbox value='{{payFaildFeedback.d}}'>操作失误我要继续买</checkbox>
-      <label>其他原因:</label>
-      <textarea placeholder='输入其他原因...' value='{{payFaildFeedback.e}}'></textarea>
-      <button bindtap='postPayFaildFeedback'>确定</button>
-    </view>
-    <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
-  </view>
-
   <view class='toast' hidden='{{isHiddenToast2}}'>
-    <view class='toast-packagedetail'>
-      <text class='toast-packagedetail-lable'>用户反馈</text>
-      <label>反馈内容:</label>
-      <textarea placeholder='请输入内容...' value='{{feedback.e}}'></textarea>
-      <label>联系方式:</label>
-      <input placeholder='请输入联系方式...' value='{{feedback.e}}' type='number'></input>
-      <button bindtap='postPayFaildFeedback'>确定</button>
+    <view class='toast-packagedetail toast-packagedetail2'>
+      <label>描述</label>
+      <textarea placeholder='告诉我们您的需求，建议或遇到的问题...' bindinput="paper2InputContent"></textarea>
+      <label>联系方式(选填)</label>
+      <input class='input-style' placeholder='QQ/邮箱/手机号...' bindinput="paper2InputContact" type='number'></input>
+      <text class='toast-note'>方便我们将处理结果通知给您，我们将严格保密</text>
+      <button bindtap='paper2Submit'>提交反馈</button>
     </view>
     <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>

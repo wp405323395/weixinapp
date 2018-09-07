@@ -6,7 +6,7 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var host = 'www.htrnpay.cn';
-//var host = "192.168.2.102:8081"
+var host = "192.168.2.119:8080"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';
@@ -32,7 +32,9 @@ var config = {
     doQueServSalesPkgInfo: `${schema}://${host}/scanweb/qrwx/wx-order!doQueServSalesPkgInfo`,
     recordPayFaild: `${schema}://${host}/scanweb/qrwx/wx-order!savePayErrMsg`,
     baseTrySee: `${schema}://${host}/scanweb/qrwx/qrcode!baseTrySee`,
-    getPayFaildFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!getSurvey`
+    getFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!getSurvey`, //查询调研数据
+    setFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!saveSurveyResult`, //发送调研结果
+    saveFeedback: `${schema}://${host}/scanweb/qrwx/feedback!saveFeedback` //小程序调研
 };
 
 

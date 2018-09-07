@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.1",
+	"libVersion": "2.2.5",
 	"appid": "wx2648144233a7a5a4",
 	"projectname": "%E5%B9%BF%E7%94%B5%E6%89%AB%E7%A0%81%E7%BB%AD%E8%B4%B9",
 	"condition": {
@@ -48,7 +48,7 @@
 					"id": 2,
 					"name": "用sceen进入",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
-					"query": "scene=27~0~8270104243185218",
+					"query": "scene=27~0~8270104243895428",
 					"scene": "1011"
 				}
 			]

@@ -20,8 +20,8 @@ Page({
     coupQuantity:12,
     currentPackageSelect:undefined,
     isHiddenToast: true,
-    isHiddenToast1:true,
     isHiddenToast2: true,
+    feedbackData:null,
     currentPackageInfo:null,
     formatTime:''
   },
@@ -315,11 +315,23 @@ Page({
     });
     
   },
+  //套餐de反馈
   feedbackPkg(){
+    let feedback = require('../requestUtil/feedback.js')
+    feedback.getFeedbackPaper(this,'package')
     this.setData({
       isHiddenToast: false
     })
   },
+  // 支付失败的反馈
+  showPayFeedback() {
+    let feedback = require('../requestUtil/feedback.js')
+    feedback.getFeedbackPaper(this, 'pay-canceled')
+    this.setData({
+      isHiddenToast: false
+    })
+  },
+  // 小程序的反馈
   showFeedback(){
     this.setData({
       isHiddenToast2: false
@@ -332,7 +344,6 @@ Page({
   closeToast(){
     this.setData({
       isHiddenToast: true,
-      isHiddenToast1: true,
       isHiddenToast2: true
     });
   },
@@ -367,6 +378,26 @@ Page({
         console.log(res.errMsg)
       }
     })
+  },
+  paper:{
+
+  },
+  paper1:{
+
+  },
+  paper2:{
+    content:'',
+    contact:''
+  },
+  paper2InputContent(event){
+    this.paper2.content = event.detail.value;
+  },
+  paper2InputContact(event){
+    this.paper2.contact = event.detail.value;
+  },
+  paper2Submit() {
+    let feedback = require('../requestUtil/feedback.js');
+    feedback.setAppFeedbackPaper(this, this.paper2.content, this.paper2.contact)
   }
   
 })
