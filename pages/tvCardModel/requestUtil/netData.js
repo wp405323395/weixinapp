@@ -33,16 +33,7 @@ var netData = {
     })
 
   },
-  loadCurrentPackageInfo(city, custid, tvCardNumber, serviceID, qrKind) {
-    let that = this;
-    return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.doQueServSalesPkgInfo, { city, custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadCurrentPackageInfo, params: [city, custid, tvCardNumber, serviceID, qrKind] }, (success) => {
-        resolve(success);
-      }, (faild) => {
-        reject(faild);
-      });
-    })
-  },
+
   loadCards(custid, tvCardNum, serviceID) {
     let that = this;
     return new Promise((resolve, reject) => {

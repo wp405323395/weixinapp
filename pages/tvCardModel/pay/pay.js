@@ -3,6 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
+var netData = require('../requestUtil/netData.js')
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
 let  that;
 let countDown = 0;
@@ -28,13 +29,14 @@ Page({
 
   onLoad: function (options) {
     that = this;
-    console.log(options);
     qrid = options.qrid;
-    let custid = options.custid;
-    let tvCardNum = options.tvCardNum;
+
     let serviceID = options.serviceID;
+    this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
     let qrKind = options.qrKind;
-    //--------------------
+    this.qrKind = (qrKind == undefined ? 'undefined' : qrKind);
+    this.custid = options.custid;
+    this.tvCardNum = options.tvCardNum;
     this.addr = options.addr;
     this.custname = options.custname;
     this.mobile = options.mobile;
@@ -42,11 +44,11 @@ Page({
     //--------------------
     this.setData({
       scanCardInfo: {
-        custid: custid,
-        tvCardNum: tvCardNum,
-        serviceID: serviceID,
-        custname: options.custname,
-        addr: options.addr
+        custid: that.custid,
+        tvCardNum: that.tvCardNum,
+        serviceID: that.serviceID,
+        custname: that.custname,
+        addr: that.addr
       }
     });
     this.animation = wx.createAnimation({
@@ -54,25 +56,53 @@ Page({
       timingFunction: 'ease',
     });
     this.animation.rotate(90).step();
+    setTimeout(() => {
+      this.loadData();
+    }, 500)
+  },
+  loadPackage: function (custid, tvCardNum, serviceID, qrKind, city) {
+    return netData.loadPackage(city, custid, tvCardNum, serviceID, qrKind).then(value => {
+      if (value.salesList && value.salesList.length != 0) {
+        if (value.salesList[0].salestype.indexOf('1') > -1) {
+          that.setData({
+            coupQuantity: 1
+          })
+        }
+        that.setData({
+          packages: value.salesList,
+          currentPackageSelect: value.salesList[0]
+        });
 
-    if (util.textIsNull(tvCardNum)) {
-      setTimeout(() => {
-        this.loadCards(custid, tvCardNum, serviceID);
-      }, 500)
-    }
-    this.tvCardNum = tvCardNum;
-    this.custid = custid;
-    this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
-    this.qrKind = (qrKind == undefined ? 'undefined' : qrKind) ;
-    if (!util.textIsNull(tvCardNum)) {
-      setTimeout(() => {
-        
-        that.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city).then(value=>{
-          return that.loadCurrentPackageInfo(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
-        }).then(value=>{});
-      }, 500);
-    }
+      }
+
+    }).catch(err => { })
+
+  },
+  loadCards:  function (custid, tvCardNum, serviceID) {
+    let cardsNumber = netData.loadCards(custid, tvCardNum, serviceID).then(cardsNumber=>{
+      if (cardsNumber.length > 0) {
+        this.data.cardNumberSelect = 0;
+        this.tvCardNum = cardsNumber[0];
+      }
+      this.setData({
+        searchPerson: {
+          cardsNumber: cardsNumber,
+        },
+        cardNumberSelect: this.data.cardNumberSelect
+      });
+      return this.loadPackage();
+    }).then(value=>{
+    })
     
+  },
+  loadData:function(){
+    if (util.textIsNull(this.tvCardNum)) {
+      this.loadCards(this.custid, this.tvCardNum, this.serviceID);
+    } else {
+        that.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city).then(value => {
+          return that.loadCurrentPackageInfo(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
+        }).then(value => { });
+    }
   },
   onShow:function(){
     if (util.textIsNotNull(qrid)) {
@@ -80,8 +110,8 @@ Page({
     }
   },
   loadToast: function (qrid) {
-    new RequestEngine().request(config.baseTrySee + `?qrid=${qrid}&city=${this.city}`, {}, { callBy: that, method: that.loadToast, params: [] }, (success) => {
-      if(countDown == 0) {
+    netData.loadToast(qrid, this.city).then(success=>{
+      if (countDown == 0) {
         countDown = success.time;
         that.setData({
           toastType: success.type,
@@ -90,9 +120,7 @@ Page({
           that.refreshCountDown();
         } 
       }
-
-    }, (faild) => {
-    });
+    })
   },
   refreshCountDown: function(){
     setTimeout(()=>{
@@ -113,77 +141,20 @@ Page({
     },1000);
   },
   
-  loadPackage: function (custid, tvCardNumber, serviceID, qrKind,city) {
-    return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.querySalesList, { city,custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.loadPackage, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
-        resolve(success);
-      }, (faild) => {
-        reject(faild);
-      });
-    }).then(value => {
-      if (value.salesList && value.salesList.length != 0)  {
-        if (value.salesList[0].salestype.indexOf('1')>-1) {
-          that.setData({
-            coupQuantity:1
-          })
-        }
-        that.setData({
-          packages: value.salesList,
-          currentPackageSelect: value.salesList[0]
-        });
-
-      }
-     
-    }).catch(err => { })
-
-  },
   loadCurrentPackageInfo: function (custid, tvCardNumber, serviceID, qrKind, city){
-      return new Promise((resolve,reject)=>{
-        new RequestEngine().request(config.doQueServSalesPkgInfo, { city, custid, tvCardNumber, serviceID, qrKind }, { callBy: that, method: that.doQueServSalesPkgInfo, params: [custid, tvCardNumber, serviceID, qrKind] }, (success) => {
-          resolve(success);
-          console.log('下来的请求',success);
-          that.setData({
-            currentPackageInfo: success
-          });
-        }, (faild) => {
-          reject(faild);
-        });
-      })
+    netData.loadCurrentPackageInfo(city, custid, tvCardNumber, serviceID, qrKind).then(success=>{
+      that.setData({
+        currentPackageInfo: success
+      });
+    })
   },
   select:function(event){
     let itemselect = event.currentTarget.dataset.itemselect
-    console.log('当前点击的套餐是  ', itemselect);
       this.setData({
         currentPackageSelect: itemselect
       });
   },
-  loadCards: function (custid, tvCardNum, serviceID) {
-    new Promise((resolve, reject) => {
-      new RequestEngine().request(config.queryOrderKeyno, { custid: custid }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
-        resolve(success);
-      }, (faild) => {
-        reject(faild);
-      });
-    }).then(value => {
-      let cardsNumber = value;
-      if (cardsNumber.length > 0) {
-        this.data.cardNumberSelect = 0;
-        this.tvCardNum = cardsNumber[0];
-      }
-      
-      this.setData({
-        searchPerson: {
-          cardsNumber: cardsNumber,
-        },
-        cardNumberSelect: this.data.cardNumberSelect
-      });
-      this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind,this.city);
-
-    }).catch(err => {
-
-    });
-
-  },
+  
   onCardNumberSelectOptionClick: function (e) {
     let id = parseInt(e.currentTarget.id);
     this.tvCardNum = this.data.searchPerson.cardsNumber[id];
@@ -248,26 +219,20 @@ Page({
     }
     that.isPaying = true;
     let reqUrl = config.wxPay
-    new Promise((resolve, reject) => {
-      let param = {
-        custid: that.custid,
-        tvCardNumber: that.tvCardNum,
-        salestype: that.data.currentPackageSelect.salestype,//类型 0订购产品;1营销方案订购
-        salescode: that.data.currentPackageSelect.salescode,//产品编码
-        count: that.data.coupQuantity,//套餐倍数
-        unit: that.data.currentPackageSelect.unit,//订购单位 0：天；1：月；2：年
-        addr : this.addr,
-        custname : this.custname,
-        mobile : this.mobile,
-        city:this.city,
-        serviceid: this.serviceID
-      };
-      new RequestEngine().request(reqUrl, param, { callBy: that, method: that.pay, params: [] }, (success) => {
-        resolve(success);
-      }, (faild) => {
-        reject(faild);
-      });
-    }).then(value=>{
+    let param = {
+      custid: that.custid,
+      tvCardNumber: that.tvCardNum,
+      salestype: that.data.currentPackageSelect.salestype,//类型 0订购产品;1营销方案订购
+      salescode: that.data.currentPackageSelect.salescode,//产品编码
+      count: that.data.coupQuantity,//套餐倍数
+      unit: that.data.currentPackageSelect.unit,//订购单位 0：天；1：月；2：年
+      addr: this.addr,
+      custname: this.custname,
+      mobile: this.mobile,
+      city: this.city,
+      serviceid: this.serviceID
+    };
+    netData.pay(param).then(value=>{
         wx.requestPayment({
           'timeStamp': value.timeStamp,
           'nonceStr': value.nonceStr,
@@ -348,9 +313,6 @@ Page({
       case 'pay-canceled':
         let feedback = require('../requestUtil/feedback.js')
         feedback.getFeedbackPaper(this, this.currentPaperType)
-        this.setData({
-          isHiddenToast: false
-        })
         break;
       case 'app-feedback':
         this.setData({

@@ -8,7 +8,8 @@ var feedback = {
   getFeedbackPaper(context,paperId){ 
     new RequestEngine().request(config.getFeedbackPaper, { id: paperId }, { callBy: this, method: this.getFeedbackPaper, params: [paperId] }, (success) => {
       context.setData({
-        feedbackData: success
+        feedbackData: success,
+        isHiddenToast: false
       })
     }, (faild) => {
     });
