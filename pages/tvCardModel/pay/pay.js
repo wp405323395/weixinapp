@@ -122,7 +122,7 @@ Page({
       });
     }).then(value => {
       if (value.salesList && value.salesList.length != 0)  {
-        if (value.salesList[0].salestype.indexOf('1')>0) {
+        if (value.salesList[0].salestype.indexOf('1')>-1) {
           that.setData({
             coupQuantity:1
           })
