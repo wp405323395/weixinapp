@@ -6,7 +6,7 @@ var feedback = {
    * paperId: 'package,pay-canceled'
    */
   getFeedbackPaper(context,paperId){ 
-    new RequestEngine().request(config.getFeedbackPaper, { id: paperId }, { callBy: context, method: context.getPayFaildFeedbackPaper, params: [paperId] }, (success) => {
+    new RequestEngine().request(config.getFeedbackPaper, { id: paperId }, { callBy: this, method: this.getFeedbackPaper, params: [paperId] }, (success) => {
       context.setData({
         feedbackData: success
       })
@@ -15,7 +15,7 @@ var feedback = {
 
   },
   setPkgFeedbackPaper(context, paperId, selectedStr, answer) {
-    new RequestEngine().request(config.setFeedbackPaper, { surveyId: paperId, selected: selectedStr, answer: answer }, { callBy: context, method: context.getPayFaildFeedbackPaper, params: [paperId, selectedStr, answer] }, (success) => {
+    new RequestEngine().request(config.setFeedbackPaper, { surveyId: paperId, selected: selectedStr, answer: answer }, { callBy: this, method: this.setPkgFeedbackPaper, params: [paperId, selectedStr, answer] }, (success) => {
       wx.showToast({
         title: '反馈提交成功',
         icon: 'success',
@@ -26,7 +26,7 @@ var feedback = {
     });
   },
   setAppFeedbackPaper(context, content, contact){
-    new RequestEngine().request(config.saveFeedback, { content: content, contact: contact }, { callBy: context, method: context.setAppFeedbackPaper, params: [context, content, contact] }, (success) => {
+    new RequestEngine().request(config.saveFeedback, { content: content, contact: contact }, { callBy: this, method: this.setAppFeedbackPaper, params: [context, content, contact] }, (success) => {
       wx.showToast({
         title: '反馈提交成功',
         icon: 'success',

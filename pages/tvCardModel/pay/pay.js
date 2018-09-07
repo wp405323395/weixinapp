@@ -284,14 +284,9 @@ Page({
           'fail': function (res) {
             that.isPaying = false;
             ///// 记录错误日志
-            let param = {
-              errMsg: res.errMsg
-            }
-            new RequestEngine().request(config.recordPayFaild, param, { callBy: that, method: '', params: [] }, (success) => {
-              console.log(success);
-            }, (faild) => {
-              console.log(faild)
-            });
+            that.showFeedbackPaper({ target: { id: 'pay-canceled' } })
+            let uploadNetApi = require('../requestUtil/uploadNetApi.js')
+            uploadNetApi.payFaild(res.errMsg)
             //////
           }
         })
@@ -303,15 +298,9 @@ Page({
         confirmText: "取消"
       })
       ///// 记录错误日志
-      let param = {
-        errMsg: err
-      }
-      new RequestEngine().request(config.recordPayFaild, param, { callBy: that, method: '', params: [] }, (success) => {
-        console.log(success);
-      }, (faild) => {
-        console.log(faild)
-      });
-  //////
+      let uploadNetApi = require('../requestUtil/uploadNetApi.js')
+      uploadNetApi.payFaild(err)
+      //////
     });
     
   },
