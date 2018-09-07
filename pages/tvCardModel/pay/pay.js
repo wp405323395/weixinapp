@@ -315,38 +315,7 @@ Page({
     });
     
   },
-  //套餐de反馈
-  feedbackPkg(){
-    let feedback = require('../requestUtil/feedback.js')
-    feedback.getFeedbackPaper(this,'package')
-    this.setData({
-      isHiddenToast: false
-    })
-  },
-  // 支付失败的反馈
-  showPayFeedback() {
-    let feedback = require('../requestUtil/feedback.js')
-    feedback.getFeedbackPaper(this, 'pay-canceled')
-    this.setData({
-      isHiddenToast: false
-    })
-  },
-  // 小程序的反馈
-  showFeedback(){
-    this.setData({
-      isHiddenToast2: false
-    })
-  },
-  postFeedbackPkg(){
 
-  },
-  
-  closeToast(){
-    this.setData({
-      isHiddenToast: true,
-      isHiddenToast2: true
-    });
-  },
   switchUserInfo:function(){
     this.setData({
       isUserInfoHidden: !this.data.isUserInfoHidden
@@ -379,25 +348,68 @@ Page({
       }
     })
   },
-  paper:{
 
+
+
+  //套餐de反馈 package,pay-canceled，app-feedback
+  showFeedbackPaper(e) {
+    this.currentPaperType = e.target.id
+    switch (this.currentPaperType) {
+      case 'package':
+      case 'pay-canceled':
+        let feedback = require('../requestUtil/feedback.js')
+        feedback.getFeedbackPaper(this, this.currentPaperType)
+        this.setData({
+          isHiddenToast: false
+        })
+        break;
+      case 'app-feedback':
+        this.setData({
+          isHiddenToast2: false
+        })
+        break;
+    }
+
+  },
+  //提交问卷
+  paperSubmit() {
+    let feedback = require('../requestUtil/feedback.js')
+    switch (this.currentPaperType) {
+      case 'package':
+      case 'pay-canceled':
+        feedback.setPkgFeedbackPaper(this, this.currentPaperType, this.paper.selected, this.paper.answer)
+      break;
+      case 'app-feedback':
+        feedback.setAppFeedbackPaper(this, this.paper1.content, this.paper1.contact)
+      break;
+    }
+  },
+
+  closeToast() {
+    this.setData({
+      isHiddenToast: true,
+      isHiddenToast2: true
+    });
+  },
+  paper:{
+    selected:'',
+    answer:''
   },
   paper1:{
-
-  },
-  paper2:{
     content:'',
     contact:''
   },
   paper2InputContent(event){
-    this.paper2.content = event.detail.value;
+    this.paper1.content = event.detail.value;
   },
   paper2InputContact(event){
-    this.paper2.contact = event.detail.value;
+    this.paper1.contact = event.detail.value;
   },
-  paper2Submit() {
-    let feedback = require('../requestUtil/feedback.js');
-    feedback.setAppFeedbackPaper(this, this.paper2.content, this.paper2.contact)
+  checkboxChanged(event) {
+    this.paper.selected = event.detail.value.join(',');
+  },
+  paperTextChanged(event) {
+    this.paper.answer = event.detail.value;
   }
   
 })

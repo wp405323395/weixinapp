@@ -16,7 +16,12 @@ var feedback = {
   },
   setPkgFeedbackPaper(context, paperId, selectedStr, answer) {
     new RequestEngine().request(config.setFeedbackPaper, { surveyId: paperId, selected: selectedStr, answer: answer }, { callBy: context, method: context.getPayFaildFeedbackPaper, params: [paperId, selectedStr, answer] }, (success) => {
-
+      wx.showToast({
+        title: '反馈提交成功',
+        icon: 'success',
+        duration: 2000
+      })
+      context.closeToast();
     }, (faild) => {
     });
   },

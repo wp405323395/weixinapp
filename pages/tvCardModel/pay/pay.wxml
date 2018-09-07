@@ -121,7 +121,7 @@
       <image src='https://www.htrnpay.cn/scan/img/icon_se.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>选择套餐</text>
     </view>
-    <text bindtap='feedbackPkg' style="color:#00a1fe;">反馈</text>
+    <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">反馈</text>
   </view>
 
   <view class='pkglist-wrap'>
@@ -190,7 +190,7 @@
       <text class='text-header' style=' color:#0c0b0b; font-weight:400; font-size:32rpx;'>湖北省广播电视信息网络股份有限公司</text>
     </view>
   </view>
-  <view class='user-info-style' bindtap='showFeedback'>
+  <view class='user-info-style' bindtap="showFeedbackPaper" id='app-feedback'>
     <view class='user-info-lable'>
       <image src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户反馈</text>
@@ -212,12 +212,15 @@
     <view class='toast-packagedetail'>
       <label>{{feedbackData.title}}</label>
       <view class='checkbox-wrap'>
-        <checkbox wx:for="{{feedbackData.options}}"  wx:for-index="idx" wx:for-item="item" value='{{item.id}}'>{{item.text}}</checkbox>
+        <checkbox-group bindchange='checkboxChanged'>
+          <checkbox wx:for="{{feedbackData.options}}" wx:for-index="idx" wx:for-item="item" value='{{item.id}}'>{{item.text}}</checkbox>
+        </checkbox-group>
+
       </view>
       <label>其他建议或者意见(选填)</label>
-      <textarea placeholder='请输入您宝贵的建议...' value='{{pkgFeedback.e}}'></textarea>
+      <textarea placeholder='请输入您宝贵的建议...' bindinput="paperTextChanged"></textarea>
       <text class='toast-note'>您的意见或者建议是我们宝贵的动力，我们将更好为您服务</text>
-      <button bindtap='postFeedbackPkg'>确定</button>
+      <button bindtap='paperSubmit'>确定</button>
     </view>
     <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>
@@ -229,7 +232,7 @@
       <label>联系方式(选填)</label>
       <input class='input-style' placeholder='QQ/邮箱/手机号...' bindinput="paper2InputContact" type='number'></input>
       <text class='toast-note'>方便我们将处理结果通知给您，我们将严格保密</text>
-      <button bindtap='paper2Submit'>提交反馈</button>
+      <button bindtap='paperSubmit'>提交反馈</button>
     </view>
     <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
   </view>
