@@ -1,7 +1,4 @@
 // pay.js
-import RequestEngine from '../../../netApi/requestEngine.js';
-var Promise = require('../../../libs/es6-promise.js').Promise;
-var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 var netData = require('../requestUtil/netData.js')
 const itemList = ['请选择订购份数','1', '3', '6', '12'];
@@ -79,7 +76,7 @@ Page({
 
   },
   loadCards:  function (custid, tvCardNum, serviceID) {
-    let cardsNumber = netData.loadCards(custid, tvCardNum, serviceID).then(cardsNumber=>{
+    return netData.loadCards(custid, tvCardNum, serviceID).then(cardsNumber=>{
       if (cardsNumber.length > 0) {
         this.data.cardNumberSelect = 0;
         this.tvCardNum = cardsNumber[0];
@@ -218,7 +215,6 @@ Page({
       return;
     }
     that.isPaying = true;
-    let reqUrl = config.wxPay
     let param = {
       custid: that.custid,
       tvCardNumber: that.tvCardNum,

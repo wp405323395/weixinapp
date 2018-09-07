@@ -19,8 +19,10 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
       let responseData;
       let response_code;
       try {
-        responseData = JSON.parse(res.data);
-        response_code = responseData.retCode;
+        if (res.data) {
+          responseData = JSON.parse(res.data);
+          response_code = responseData.retCode;
+        }
       } catch (e) {
         for (let interceptor of interceptors) {
           interceptor.onServiceError(url, header, responseData);
