@@ -12,7 +12,7 @@ Page({
     isUserInfoHidden:false,
     isPruductInfoHidden:true,
     cardNumberSelectHidden: true,
-    cardNumberSelect: -1,
+    cardsSelectIndex: -1,
     tvCardAnimationData: {},
     packages:[],
     coupQuantity:12,
@@ -57,8 +57,8 @@ Page({
       this.loadData();
     }, 500)
   },
-  loadPackage: function (custid, tvCardNum, serviceID, qrKind, city) {
-    return netData.loadPackage(city, custid, tvCardNum, serviceID, qrKind).then(value => {
+  loadPackage: function () {
+    return netData.loadPackage(this.city, this.custid, this.tvCardNum, this.serviceID, this.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
         if (value.salesList[0].salestype.indexOf('1') > -1) {
           that.setData({
@@ -75,29 +75,29 @@ Page({
     }).catch(err => { })
 
   },
-  loadCards:  function (custid, tvCardNum, serviceID) {
-    return netData.loadCards(custid, tvCardNum, serviceID).then(cardsNumber=>{
+  loadCards:  function (custid) {
+    return netData.loadCards(custid).then(cardsNumber=>{
       if (cardsNumber.length > 0) {
-        this.data.cardNumberSelect = 0;
+        this.data.cardsSelectIndex = 0;
         this.tvCardNum = cardsNumber[0];
       }
       this.setData({
-        searchPerson: {
-          cardsNumber: cardsNumber,
-        },
-        cardNumberSelect: this.data.cardNumberSelect
+        allCards: cardsNumber,
+        cardsSelectIndex: this.data.cardsSelectIndex
       });
+      if (this.tvCardNum) {
       return this.loadPackage();
+      }
     }).then(value=>{
     })
     
   },
   loadData:function(){
     if (util.textIsNull(this.tvCardNum)) {
-      this.loadCards(this.custid, this.tvCardNum, this.serviceID);
+      this.loadCards(this.custid);
     } else {
-        that.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city).then(value => {
-          return that.loadCurrentPackageInfo(this.custid, this.tvCardNum, this.serviceID, this.qrKind, this.city);
+      that.loadPackage().then(value => {
+          return that.loadCurrentPackageInfo();
         }).then(value => { });
     }
   },
@@ -138,8 +138,8 @@ Page({
     },1000);
   },
   
-  loadCurrentPackageInfo: function (custid, tvCardNumber, serviceID, qrKind, city){
-    netData.loadCurrentPackageInfo(city, custid, tvCardNumber, serviceID, qrKind).then(success=>{
+  loadCurrentPackageInfo: function (){
+    netData.loadCurrentPackageInfo(this.city, this.custid, this.tvCardNum, this.serviceID, this.qrKind).then(success=>{
       that.setData({
         currentPackageInfo: success
       });
@@ -154,14 +154,14 @@ Page({
   
   onCardNumberSelectOptionClick: function (e) {
     let id = parseInt(e.currentTarget.id);
-    this.tvCardNum = this.data.searchPerson.cardsNumber[id];
+    this.tvCardNum = this.data.allCards[id];
     this.animation.rotate(0).step();
     this.setData({
-      cardNumberSelect: id,
+      cardsSelectIndex: id,
       cardNumberSelectHidden: !this.data.cardNumberSelectHidden,
       tvCardAnimationData: this.animation.export()
     });
-    this.loadPackage(this.custid, this.tvCardNum, this.serviceID, this.qrKind,this.city);
+    this.loadPackage();
 
   },
   onSelectCard: function () {

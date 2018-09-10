@@ -33,7 +33,7 @@
       </view>
 
       <view style="padding-right:20rpx;">
-        <text class='text-padding'>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardNumberSelect != -1 &&searchPerson.cardsNumber[cardNumberSelect])?searchPerson.cardsNumber[cardNumberSelect]:'请选择智能卡号')}}</text>
+        <text class='text-padding'>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardsSelectIndex != -1 &&allCards[cardsSelectIndex])?allCards[cardsSelectIndex]:'请选择智能卡号')}}</text>
 
         <view animation="{{tvCardAnimationData}}" class="go_in"></view>
       </view>
@@ -41,7 +41,7 @@
     <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
     <view hidden="{{cardNumberSelectHidden}}" class="select_position">
       <view class="select_wrap">
-        <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}" bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{searchPerson.cardsNumber}}" wx:key="unique">
+        <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}" bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{allCards}}" wx:key="unique">
           <text class="item_card_number text-padding">{{item}}</text>
         </view>
       </view>

@@ -34,10 +34,10 @@ var netData = {
 
   },
 
-  loadCards(custid, tvCardNum, serviceID) {
+  loadCards(custid) {
     let that = this;
     return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.queryOrderKeyno, { custid: custid }, { callBy: that, method: that.loadCards, params: [custid, tvCardNum, serviceID] }, (success) => {
+      new RequestEngine().request(config.queryOrderKeyno, { custid: custid }, { callBy: that, method: that.loadCards, params: [custid] }, (success) => {
         resolve(success);
       }, (faild) => {
         reject(faild);
