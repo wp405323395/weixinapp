@@ -36,6 +36,8 @@ Page({
   },
   onSelected: function (e) {
     let item = e.currentTarget.dataset.id
+    let uploadNetApi = require('../requestUtil/uploadNetApi.js')
+    uploadNetApi.savePageLog('pay', 'confirm', 0)
     wx.navigateTo({
       url: '../pay/pay?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile + "&city=" + item.city
     })

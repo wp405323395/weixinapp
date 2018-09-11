@@ -7,7 +7,7 @@
 
 var host = 'www.htrnpay.cn';
 // var host = "192.168.2.119:8080"
-// var host = "120.79.229.253:8181"
+ var host = "192.168.2.115:8080"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
 var schema = isHttps ? 'https':'http';
@@ -35,7 +35,8 @@ var config = {
     baseTrySee: `${schema}://${host}/scanweb/qrwx/qrcode!baseTrySee`,
     getFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!getSurvey`, //查询调研数据
     setFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!saveSurveyResult`, //发送调研结果
-    saveFeedback: `${schema}://${host}/scanweb/qrwx/feedback!saveFeedback` //小程序调研
+    saveFeedback: `${schema}://${host}/scanweb/qrwx/feedback!saveFeedback`, //小程序调研
+    savePageLog: `${schema}://${host}/scanweb/qrwx/wx-order!savePageLog`, //记录页面数据
 };
 
 

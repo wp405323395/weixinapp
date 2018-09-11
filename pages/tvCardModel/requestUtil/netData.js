@@ -54,6 +54,6 @@ var netData = {
         reject(faild);
       });
     })
-  },
+  }
 }
 module.exports = netData;
