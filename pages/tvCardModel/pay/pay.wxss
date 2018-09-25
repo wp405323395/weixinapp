@@ -15,6 +15,7 @@
 }
 .containner-spacetop{
   height: 15rpx;
+  width: 100%;
 }
 
 .pa_wrap{
@@ -211,6 +212,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, .5);
   z-index: 100000;
+  overflow: hidden;
 }
 .toast-packagedetail{
   width: 600rpx;

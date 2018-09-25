@@ -126,7 +126,7 @@
 
   <view class='pkglist-wrap'>
     <view class="hor {{isListFold?'hor1':''}}">
-      <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)?'package-content-select':''}}" bindtap='select' data-itemselect='{{item}}'>
+      <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
@@ -148,8 +148,8 @@
         </view>
         <view class='package-content-money'>
           <text class='package-content-title-text'>套餐订购数量</text>
-          <view class='choose_package_count_wrap' bindtap='chooseProductCount'>
-            <text class='choose-product-count'>{{coupQuantity}}</text>
+          <view class='choose_package_count_wrap' data-packageItem='{{index}}' bindtap='chooseProductCount'>
+            <text class='choose-product-count'>{{item.count}}</text>
             <image class="jiantou-img" src="https://www.htrnpay.cn/scan/img/icon_jiantouxia.png"></image>
           </view>
         </view>
@@ -201,8 +201,8 @@
 
   <view class="footer">
     <view class='dell-all'>
-      <text class="pay_intro"> 总金额:  {{currentPackageSelect?currentPackageSelect.price*coupQuantity:0}}元</text>
-      <text class='packageName'>{{currentPackageSelect?currentPackageSelect.salesname:''}}{{coupQuantity == 0 || currentPackageSelect==undefined ?'':('x'+coupQuantity+'('+(currentPackageSelect.unit == 1?'月':'年')+')')}}</text>
+      <text class="pay_intro" wx:if="{{packages}}"> 总金额:  {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}}元</text>
+      <text class='packageName' wx:if="{{packages}}">{{packages[currentPackageSelect].salesname}}x{{packages[currentPackageSelect].count}}({{packages[currentPackageSelect].unit == 1?'月':'年'}})</text>
     </view>
 
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>

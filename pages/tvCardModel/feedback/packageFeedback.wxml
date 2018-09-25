@@ -1,0 +1,32 @@
+<view>
+  <view class='toast' hidden='{{isHiddenToast}}'  catchtouchmove="ture">
+    <view class='toast-packagedetail'>
+      <label>{{feedbackData.title}}</label>
+      <view class='checkbox-wrap'>
+        <checkbox-group bindchange='checkboxChanged'>
+          <checkbox wx:for="{{feedbackData.options}}" wx:for-index="idx" wx:for-item="item" value='{{item.id}}'>{{item.text}}</checkbox>
+        </checkbox-group>
+
+      </view>
+      <label>其他建议或者意见(选填)</label>
+      
+      <textarea placeholder='请输入您宝贵的建议...' bindinput="paperTextChanged"></textarea>
+      <text class='toast-note'>您的意见或者建议是我们宝贵的动力，我们将更好为您服务</text>
+      <button bindtap='paperSubmit'>确定</button>
+    </view>
+    <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
+  </view>
+
+  <view class='toast' hidden='{{isHiddenToast2}}'  catchtouchmove="ture">
+    <view class='toast-packagedetail toast-packagedetail2'>
+      <label>描述</label>
+      <textarea placeholder='告诉我们您的需求，建议或遇到的问题...' bindinput="paper2InputContent"></textarea>
+      <label>联系方式(选填)</label>
+      <input class='input-style' placeholder='QQ/邮箱/手机号...' bindinput="paper2InputContact" type='number'></input>
+      <text class='toast-note'>方便我们将处理结果通知给您，我们将严格保密</text>
+      <button bindtap='paperSubmit'>提交反馈</button>
+    </view>
+    <image bindtap='closeToast' class='toast-close' src='https://www.htrnpay.cn/scan/img/delete_img.png'></image>
+  </view>
+</view>
+

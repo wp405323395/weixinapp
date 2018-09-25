@@ -1,10 +1,12 @@
 // pay.js
 var util = require('../../../utils/util.js');
 var netData = require('../requestUtil/netData.js')
-const itemList = ['请选择订购份数','1', '3', '6', '12'];
+const itemList = ['请选择订购份数','1', '2', '3', '4'];// 套餐数量的可选范围
+const itemList2 = ['请选择订购份数', '3', '6', '12', '24'];// 基本包的可选范围。
 let  that;
 let countDown = 0;
 var qrid
+var currentPackageSelect = 0
 Page({
   data: {
     isListFold:true,
@@ -14,9 +16,8 @@ Page({
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
-    packages:[],
-    coupQuantity:12,
-    currentPackageSelect:undefined,
+    packages:null,
+    currentPackageSelect:0,
     isHiddenToast: true,
     isHiddenToast2: true,
     feedbackData:null,
@@ -27,7 +28,6 @@ Page({
   onLoad: function (options) {
     that = this;
     qrid = options.qrid;
-
     let serviceID = options.serviceID;
     this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
     let qrKind = options.qrKind;
@@ -60,14 +60,8 @@ Page({
   loadPackage: function () {
     return netData.loadPackage(this.city, this.custid, this.tvCardNum, this.serviceID, this.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
-        if (value.salesList[0].salestype.indexOf('1') > -1) {
-          that.setData({
-            coupQuantity: 1
-          })
-        }
         that.setData({
           packages: value.salesList,
-          currentPackageSelect: value.salesList[0]
         });
 
       }
@@ -146,9 +140,10 @@ Page({
     })
   },
   select:function(event){
-    let itemselect = event.currentTarget.dataset.itemselect
+    let index = event.currentTarget.dataset.itemselect
+    currentPackageSelect = index
       this.setData({
-        currentPackageSelect: itemselect
+        currentPackageSelect: index
       });
   },
   
@@ -192,20 +187,6 @@ Page({
     } else if (!util.textIsNotNull(that.custid)) {
 
       return;
-    } else if (!that.data.currentPackageSelect) {
-      wx.showModal({
-        title: "请您先选择套餐",
-        showCancel: false,
-        confirmText: "确定"
-      })
-      return;
-    } else if (!util.textIsNotNull(that.data.currentPackageSelect.salescode)){
-      wx.showModal({
-        title: "请您先选择套餐",
-        showCancel: false,
-        confirmText: "确定"
-      })
-      return;
     }
 
     this.pay();
@@ -218,10 +199,10 @@ Page({
     let param = {
       custid: that.custid,
       tvCardNumber: that.tvCardNum,
-      salestype: that.data.currentPackageSelect.salestype,//类型 0订购产品;1营销方案订购
-      salescode: that.data.currentPackageSelect.salescode,//产品编码
-      count: that.data.coupQuantity,//套餐倍数
-      unit: that.data.currentPackageSelect.unit,//订购单位 0：天；1：月；2：年
+      salestype: that.data.packages[currentPackageSelect].salestype,//类型 0订购产品;1营销方案订购
+      salescode: that.data.packages[currentPackageSelect].salescode,//产品编码
+      count: that.data.packages[currentPackageSelect].count,//套餐倍数
+      unit: that.data.packages[currentPackageSelect].unit,//订购单位 0：天；1：月；2：年
       addr: this.addr,
       custname: this.custname,
       mobile: this.mobile,
@@ -284,13 +265,17 @@ Page({
   onHide: function(){
     countDown = 0;
   },
-  chooseProductCount:function(){
+  chooseProductCount: function (target){
+    let index = target.currentTarget.dataset.packageitem
+    let currentItemList = that.data.packages[index].salestype.indexOf('1') > -1 ? itemList : itemList2;
     wx.showActionSheet({
-      itemList: itemList,
+      itemList: currentItemList,
       success: function (res) {
         if (res.tapIndex == 0) {return;}
+        console.log('index:',index)
+        that.data.packages[index].count = currentItemList[res.tapIndex]
         that.setData({
-          coupQuantity: itemList[res.tapIndex]
+          packages: that.data.packages
         });
       },
       fail: function (res) {

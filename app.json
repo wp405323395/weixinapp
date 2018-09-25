@@ -4,8 +4,8 @@
     "pages/vote/vote",
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
-    "pages/tvCardModel/pay/success/paySuccess"
-    
+    "pages/tvCardModel/pay/success/paySuccess",
+    "pages/tvCardModel/feedback/packageFeedback"
   ],
   "window": {
     "navigationBarTextStyle": "black",
