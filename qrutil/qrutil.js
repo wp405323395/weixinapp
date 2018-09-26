@@ -37,13 +37,12 @@ function getScene(options, callback, flag) {
   if (!util.textIsNull(qrid)) {
     var config = require('../config.js');
     let url = config.queQrcodePutById + "?qrid=" + qrid;
-    new Promise((resolve, reject) => {
-      new RequestEngine().request(url, {}, { callBy: this, method: this.getScene, params: [options, callback, flag] }, (success) => {
-        callback(success);
-      }, (faild) => {
-        reject(faild);
-      });
-    })
+    new RequestEngine().request(url, {}, { callBy: this, method: this.getScene, params: [options, callback, flag] }, (success) => {
+      callback(success);
+    }, (faild) => {
+      callback({failed:true})
+    });
+
     return qrid;
   }else{
     if (util.textIsNull(scene)) {

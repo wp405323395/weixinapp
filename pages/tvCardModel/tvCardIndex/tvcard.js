@@ -16,15 +16,22 @@ Page({
   onLoad: function (options) {
     let that=this;
     qrid = util.getScene(options, function (scene){
-      that.getQrInfo(scene);
-      setTimeout(() => {
-        if (util.textIsNotNull(that.tvCardNum)) {
-          that.loadTvCardInfo(that.tvCardNum);
-        } else {
+      if (scene.failed) {
+        setTimeout(() => {
           that.loadRecordHistory();
-        }
-        
-      }, 500);
+        }, 500);
+      } else {
+        that.getQrInfo(scene);
+        setTimeout(() => {
+          if (util.textIsNotNull(that.tvCardNum)) {
+            that.loadTvCardInfo(that.tvCardNum);
+          } else {
+            that.loadRecordHistory();
+          }
+
+        }, 500);
+      }
+      
     })
   },
   onSearchMore:function(){
