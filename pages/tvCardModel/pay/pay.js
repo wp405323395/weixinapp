@@ -6,7 +6,6 @@ const itemList2 = ['请选择订购份数', '3', '6', '12', '24'];// 基本包�
 let  that;
 let countDown = 0;
 var qrid
-var currentPackageSelect = 0
 Page({
   data: {
     isListFold:true,
@@ -141,7 +140,6 @@ Page({
   },
   select:function(event){
     let index = event.currentTarget.dataset.itemselect
-    currentPackageSelect = index
       this.setData({
         currentPackageSelect: index
       });
@@ -196,13 +194,14 @@ Page({
       return;
     }
     that.isPaying = true;
+    let currentIndex = that.data.currentPackageSelect
     let param = {
       custid: that.custid,
       tvCardNumber: that.tvCardNum,
-      salestype: that.data.packages[currentPackageSelect].salestype,//类型 0订购产品;1营销方案订购
-      salescode: that.data.packages[currentPackageSelect].salescode,//产品编码
-      count: that.data.packages[currentPackageSelect].count,//套餐倍数
-      unit: that.data.packages[currentPackageSelect].unit,//订购单位 0：天；1：月；2：年
+      salestype: that.data.packages[currentIndex].salestype,//类型 0订购产品;1营销方案订购
+      salescode: that.data.packages[currentIndex].salescode,//产品编码
+      count: that.data.packages[currentIndex].count,//套餐倍数
+      unit: that.data.packages[currentIndex].unit,//订购单位 0：天；1：月；2：年
       addr: this.addr,
       custname: this.custname,
       mobile: this.mobile,
@@ -258,9 +257,16 @@ Page({
     })
   },
   switchList:function(){
+    let delItem = this.data.packages[this.data.currentPackageSelect]
+    this.data.packages.splice(this.data.currentPackageSelect, 1)
+    this.data.packages.unshift(delItem)
     this.setData({
+      packages: this.data.packages,
+      currentPackageSelect:0,
       isListFold: !this.data.isListFold  
     })
+
+
   },
   onHide: function(){
     countDown = 0;

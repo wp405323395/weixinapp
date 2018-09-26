@@ -125,8 +125,8 @@
   </view>
 
   <view class='pkglist-wrap'>
-    <view class="hor {{isListFold?'hor1':''}}">
-      <view wx:for="{{packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
+    <view class="hor">
+      <view wx:for="{{!isListFold?[packages[0]]:packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
