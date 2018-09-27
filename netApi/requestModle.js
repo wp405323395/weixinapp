@@ -46,7 +46,12 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
         for (let interceptor of interceptors) {
           interceptor.onFaildResponse(url, header, responseData);
         }
-        requestFail(responseData.retMsg);
+        if (responseData.retMsg) {
+          requestFail(responseData.retMsg);
+        } else {
+          requestFail('服务器错误的消息格式');
+        }
+        
       }
     },
     fail: function (res) {
