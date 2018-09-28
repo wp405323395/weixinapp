@@ -227,7 +227,7 @@ Page({
             ///// 记录错误日志
             that.showFeedbackPaper({ target: { id: 'pay-canceled' } })
             let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-            uploadNetApi.payFaild(res.errMsg)
+            uploadNetApi.payFaild(res.errMsg, that.city, that.custid, that.tvCardNum, that.serviceID, that.qrKind, that.data.packages[currentIndex].salescode)
             //////
           }
         })
@@ -240,7 +240,7 @@ Page({
       })
       ///// 记录错误日志
       let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-      uploadNetApi.payFaild(err)
+      uploadNetApi.payFaild(err, that.city, that.custid, that.tvCardNum, that.serviceID, that.qrKind, that.data.packages[currentIndex].salescode)
       //////
     });
     
