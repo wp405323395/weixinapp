@@ -24,8 +24,12 @@ class RequestStatusInterceptor extends Interceptor{
     wx.hideToast();
   }
   onFaildResponse(url, header, data) {
+    let title = '服务器未返回错误原因'
+    try{
+      title = data.retMsg
+    } catch(err){}
     util.showToast({
-      title: data.retMsg == null ? '服务器未返回错误原因' : data.retMsg,
+      title: title,
       icon: "loading" ,
       duration:2000
     });
