@@ -22,18 +22,28 @@ var feedback = {
         icon: 'success',
         duration: 2000
       })
-      context.closeToast();
+      setTimeout(()=>{
+        wx.navigateBack({
+          
+        })
+      },2000)
+
     }, (faild) => {
     });
   },
   setAppFeedbackPaper(context, content, contact, packages){
-    new RequestEngine().request(config.saveFeedback, { content: content, contact: contact, packages: packages }, { callBy: this, method: this.setAppFeedbackPaper, params: [context, content, contact, packages] }, (success) => {
+    new RequestEngine().request(config.saveFeedback, { content:content, contact: contact, packages: packages }, { callBy: this, method: this.setAppFeedbackPaper, params: [context, content, contact, packages] }, (success) => {
       wx.showToast({
         title: '反馈提交成功',
         icon: 'success',
         duration: 2000
       })
-      context.closeToast();
+      setTimeout(() => {
+        wx.navigateBack({
+          
+        })
+       }, 2000)
+
     }, (faild) => {
     });
   }

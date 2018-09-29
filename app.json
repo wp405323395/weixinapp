@@ -5,7 +5,7 @@
     "pages/tvCardModel/msgConfirm/confirm",
     "pages/tvCardModel/pay/pay",
     "pages/tvCardModel/pay/success/paySuccess",
-    "pages/tvCardModel/feedback/packageFeedback"
+    "pages/tvCardModel/feedback/feedback"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,61 @@
+/* pages/tvCardModel/feedback/feedback.wxss */
+.toast-packagedetail{
+  background-color: #f5f4f9;
+  display: flex;
+  flex-direction: column;
+}
+.toast-packagedetail checkbox{
+  margin-left:40rpx;
+  margin-top: 30rpx;
+  display: block;
+}
+.toast-packagedetail checkbox:first-child{
+  margin-top: 0;
+}
+.toast-packagedetail>label{
+  background-color: #f5f4f9;
+  border-bottom:1px solid #d4d4d4;
+  color: #a09fa3;
+  padding: 20rpx;
+}
+.toast-packagedetail>.toast-note{
+  display: inline-block;
+  border-top: 1px solid #d4d4d4;
+  padding: 20rpx;
+  color: #a09fa3;
+  font-size: 25rpx;
+}
+.toast-packagedetail>textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  height: 200rpx;
+  background-color: white;
+  flex-shrink: 0;
+}
+.toast-packagedetail>button{
+  background-color: #118eea;
+  color: white;
+  border: none;
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  width: 500rpx;
+  display: block;
+  padding: 0;
+  flex-shrink: 0;
+}
+.checkbox-wrap{
+  background-color: white;
+  padding-left: 10rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.toast-packagedetail2{
+  height: 670rpx;
+}
+.input-style{
+  padding: 15rpx;
+  background-color: white;
+}

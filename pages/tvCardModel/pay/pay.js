@@ -17,8 +17,6 @@ Page({
     tvCardAnimationData: {},
     packages:null,
     currentPackageSelect:0,
-    isHiddenToast: true,
-    isHiddenToast2: true,
     feedbackData:null,
     currentPackageInfo:null,
     formatTime:''
@@ -289,65 +287,11 @@ Page({
       }
     })
   },
-
-
-
-  //套餐de反馈 package,pay-canceled，app-feedback
-  showFeedbackPaper(e) {
-    this.currentPaperType = e.target.id
-    switch (this.currentPaperType) {
-      case 'package':
-      case 'pay-canceled':
-        let feedback = require('../requestUtil/feedback.js')
-        feedback.getFeedbackPaper(this, this.currentPaperType)
-        break;
-      case 'app-feedback':
-        this.setData({
-          isHiddenToast2: false
-        })
-        break;
-    }
+  showFeedbackPaper(event) {
+    console.log('target ', event.target.id)
+    wx.navigateTo({
+      url: '../feedback/feedback?feedBackType=' + event.target.id,
+    })
 
   },
-  //提交问卷
-  paperSubmit() {
-    let feedback = require('../requestUtil/feedback.js')
-    switch (this.currentPaperType) {
-      case 'package':
-      case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, this.currentPaperType, this.paper.selected, this.paper.answer, this.data.packages)
-      break;
-      case 'app-feedback':
-        feedback.setAppFeedbackPaper(this, this.paper1.content, this.paper1.contact, this.data.packages)
-      break;
-    }
-  },
-
-  closeToast() {
-    this.setData({
-      isHiddenToast: true,
-      isHiddenToast2: true
-    });
-  },
-  paper:{
-    selected:'',
-    answer:''
-  },
-  paper1:{
-    content:'',
-    contact:''
-  },
-  paper2InputContent(event){
-    this.paper1.content = event.detail.value;
-  },
-  paper2InputContact(event){
-    this.paper1.contact = event.detail.value;
-  },
-  checkboxChanged(event) {
-    this.paper.selected = event.detail.value.join(',');
-  },
-  paperTextChanged(event) {
-    this.paper.answer = event.detail.value;
-  }
-  
 })
