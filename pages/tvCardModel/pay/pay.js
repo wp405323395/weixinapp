@@ -315,10 +315,10 @@ Page({
     switch (this.currentPaperType) {
       case 'package':
       case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, this.currentPaperType, this.paper.selected, this.paper.answer)
+        feedback.setPkgFeedbackPaper(this, this.currentPaperType, this.paper.selected, this.paper.answer, this.data.packages)
       break;
       case 'app-feedback':
-        feedback.setAppFeedbackPaper(this, this.paper1.content, this.paper1.contact)
+        feedback.setAppFeedbackPaper(this, this.paper1.content, this.paper1.contact, this.data.packages)
       break;
     }
   },
