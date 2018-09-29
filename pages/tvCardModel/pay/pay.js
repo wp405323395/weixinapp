@@ -25,26 +25,25 @@ Page({
   onLoad: function (options) {
     that = this;
     qrid = options.qrid;
-    let serviceID = options.serviceID;
-    this.serviceID = (serviceID == undefined ? 'undefined' : serviceID);
-    let qrKind = options.qrKind;
-    this.qrKind = (qrKind == undefined ? 'undefined' : qrKind);
-    this.custid = options.custid;
-    this.tvCardNum = options.tvCardNum;
-    this.addr = options.addr;
-    this.custname = options.custname;
-    this.mobile = options.mobile;
-    this.city = options.city;
-    //--------------------
+
+    let cardInfo = {
+      custid: options.custid,
+      tvCardNum: options.tvCardNum,
+      serviceID: (options.serviceID == undefined ? 'undefined' : options.serviceID),
+      custname: options.custname,
+      addr: options.addr,
+      qrKind: (options.qrKind == undefined ? 'undefined' : options.qrKind),
+      mobile: options.mobile,
+      city : options.city
+    }
+    this.cardInfo = cardInfo
     this.setData({
-      scanCardInfo: {
-        custid: that.custid,
-        tvCardNum: that.tvCardNum,
-        serviceID: that.serviceID,
-        custname: that.custname,
-        addr: that.addr
-      }
+      scanCardInfo: cardInfo
     });
+    wx.setStorage({
+      key: 'cardInfo',
+      data: JSON.stringify(cardInfo)
+    })
     this.animation = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease',
@@ -54,51 +53,56 @@ Page({
       this.loadData();
     }, 500)
   },
+  loadData: function () {
+    if (util.textIsNull(this.cardInfo.tvCardNum)) {
+      this.loadCards();
+    } else {
+      that.loadPackage().then(value => {
+        return that.loadCurrentPackageInfo();
+      }).then(value => { });
+    }
+  },
   loadPackage: function () {
-    return netData.loadPackage(this.city, this.custid, this.tvCardNum, this.serviceID, this.qrKind).then(value => {
+    return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
         that.setData({
           packages: value.salesList,
         });
+        wx.setStorage({
+          key: 'packages',
+          data: JSON.stringify(value.salesList),
+        })
 
       }
 
     }).catch(err => { })
 
   },
-  loadCards:  function (custid) {
-    return netData.loadCards(custid).then(cardsNumber=>{
+  loadCards:  function () {
+    return netData.loadCards(this.cardInfo.custid).then(cardsNumber=>{
       if (cardsNumber.length > 0) {
         this.data.cardsSelectIndex = 0;
-        this.tvCardNum = cardsNumber[0];
+        this.cardInfo.tvCardNum = cardsNumber[0];
       }
       this.setData({
         allCards: cardsNumber,
         cardsSelectIndex: this.data.cardsSelectIndex
       });
-      if (this.tvCardNum) {
+      if (this.cardInfo.tvCardNum) {
       return this.loadPackage();
       }
     }).then(value=>{
     })
     
   },
-  loadData:function(){
-    if (util.textIsNull(this.tvCardNum)) {
-      this.loadCards(this.custid);
-    } else {
-      that.loadPackage().then(value => {
-          return that.loadCurrentPackageInfo();
-        }).then(value => { });
-    }
-  },
+
   onShow:function(){
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
   },
   loadToast: function (qrid) {
-    netData.loadToast(qrid, this.city).then(success=>{
+    netData.loadToast(qrid, this.cardInfo.city).then(success=>{
       if (countDown == 0) {
         countDown = success.time;
         that.setData({
@@ -130,7 +134,7 @@ Page({
   },
   
   loadCurrentPackageInfo: function (){
-    netData.loadCurrentPackageInfo(this.city, this.custid, this.tvCardNum, this.serviceID, this.qrKind).then(success=>{
+    netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success=>{
       that.setData({
         currentPackageInfo: success
       });
@@ -145,7 +149,7 @@ Page({
   
   onCardNumberSelectOptionClick: function (e) {
     let id = parseInt(e.currentTarget.id);
-    this.tvCardNum = this.data.allCards[id];
+    this.cardInfo.tvCardNum = this.data.allCards[id];
     this.animation.rotate(0).step();
     this.setData({
       cardsSelectIndex: id,
@@ -156,7 +160,7 @@ Page({
 
   },
   onSelectCard: function () {
-    if (this.data.scanCardInfo.tvCardNum) {
+    if (this.cardInfo.tvCardNum) {
       return;
     }
     if (this.data.cardNumberSelectHidden) {
@@ -173,14 +177,14 @@ Page({
 
   },
   payClick: function (e) {
-    if (!util.textIsNotNull(that.tvCardNum)) {
+    if (!util.textIsNotNull(this.cardInfo.tvCardNum)) {
       wx.showModal({
         title: "请您先选择智能卡号",
         showCancel: false,
         confirmText: "确定"
       })
       return;
-    } else if (!util.textIsNotNull(that.custid)) {
+    } else if (!util.textIsNotNull(this.cardInfo.custid)) {
 
       return;
     }
@@ -194,17 +198,17 @@ Page({
     that.isPaying = true;
     let currentIndex = that.data.currentPackageSelect
     let param = {
-      custid: that.custid,
-      tvCardNumber: that.tvCardNum,
+      custid: this.cardInfo.custid,
+      tvCardNumber: this.cardInfo.tvCardNum,
       salestype: that.data.packages[currentIndex].salestype,//类型 0订购产品;1营销方案订购
       salescode: that.data.packages[currentIndex].salescode,//产品编码
       count: that.data.packages[currentIndex].count,//套餐倍数
       unit: that.data.packages[currentIndex].unit,//订购单位 0：天；1：月；2：年
-      addr: this.addr,
-      custname: this.custname,
-      mobile: this.mobile,
-      city: this.city,
-      serviceid: this.serviceID
+      addr: this.cardInfo.addr,
+      custname: this.cardInfo.custname,
+      mobile: this.cardInfo.mobile,
+      city: this.cardInfo.city,
+      serviceid: this.cardInfo.serviceID
     };
     netData.pay(param).then(value=>{
         wx.requestPayment({
@@ -225,7 +229,7 @@ Page({
             ///// 记录错误日志
             that.showFeedbackPaper({ target: { id: 'pay-canceled' } })
             let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-            uploadNetApi.payFaild(res.errMsg, that.city, that.custid, that.tvCardNum, that.serviceID, that.qrKind, that.data.packages[currentIndex].salescode)
+            uploadNetApi.payFaild(res.errMsg, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
             //////
           }
         })
@@ -238,7 +242,7 @@ Page({
       })
       ///// 记录错误日志
       let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-      uploadNetApi.payFaild(err, that.city, that.custid, that.tvCardNum, that.serviceID, that.qrKind, that.data.packages[currentIndex].salescode)
+      uploadNetApi.payFaild(err, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
       //////
     });
     
