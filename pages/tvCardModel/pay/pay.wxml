@@ -187,8 +187,8 @@
   </view>
   <view class='user-info-style' bindtap="showFeedbackPaper" id='app-feedback'>
     <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户反馈</text>
+      <image id='app-feedback' src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
+      <text id='app-feedback' class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户反馈</text>
     </view>
   </view>
 
