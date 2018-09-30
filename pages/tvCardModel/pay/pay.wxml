@@ -173,7 +173,7 @@
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
+      <image src='https://www.htrnpay.cn/scan/img/dell-detail.png' class='user-info-lable-img'></image>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>订单明细</text>
     </view>
   </view>
@@ -182,7 +182,7 @@
       <text class='package-content-title-text'>已选套餐：</text>
       <text class='packageName' wx:if="{{packages}}">{{packages[currentPackageSelect].salesname}}x{{packages[currentPackageSelect].count}}({{packages[currentPackageSelect].unit == 1?'月':'年'}})</text>
     </view>
-    <text>{{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}}元</text>
+    <text wx-if="{{packages}}">{{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}}元</text>
   </view>
 
   <view class="pay_way" wx:if="{{currentPackageInfo.charge<0}}">
@@ -199,7 +199,7 @@
   </view>
   <navigator class='user-info-style' url="../feedback/feedback?feedBackType=app-feedback">
     <view class='user-info-lable'>
-      <image id='app-feedback' src='https://www.htrnpay.cn/scan/img/icon_pay.png' class='user-info-lable-img'></image>
+      <image id='app-feedback' src='https://www.htrnpay.cn/scan/img/user-feedback.png' class='user-info-lable-img'></image>
       <text id='app-feedback' class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户反馈</text>
     </view>
   </navigator>
