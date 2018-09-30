@@ -13,6 +13,10 @@
   align-items: center;
   padding: 15rpx 0;
 }
+.itemspasure{
+  margin-left: 0;
+  padding-left: 15rpx;
+}
 .containner-spacetop{
   height: 15rpx;
   width: 100%;
@@ -90,6 +94,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 25rpx;
+  margin-bottom: 1px;
 }
 .pay_way>view{
   display: flex;
@@ -183,7 +188,7 @@
 
 }
 .packageName{
-  color: #999999;
+  color:#333333;
   font-size: 23rpx;
   padding: 0;
   margin-top: 4rpx;

@@ -10,8 +10,8 @@ Page({
   data: {
     isListFold:true,
     toastType:-1,
-    isUserInfoHidden:false,
-    isPruductInfoHidden:false,
+    isUserInfoHidden:true,
+    isPruductInfoHidden:true,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
@@ -208,7 +208,8 @@ Page({
       custname: this.cardInfo.custname,
       mobile: this.cardInfo.mobile,
       city: this.cardInfo.city,
-      serviceid: this.cardInfo.serviceID
+      serviceid: this.cardInfo.serviceID,
+      custfess: that.data.currentPackageInfo.charge
     };
     netData.pay(param).then(value=>{
         wx.requestPayment({
