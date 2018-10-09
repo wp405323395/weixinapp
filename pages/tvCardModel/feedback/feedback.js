@@ -8,7 +8,7 @@ Page({
    */
   data: {
     isHiddenToast: true,
-    isHiddenToast2: true,
+
     feedbackData: null,
     cardInfo:null,
     packages:null
@@ -98,11 +98,6 @@ Page({
         let feedback = require('../requestUtil/feedback.js')
         feedback.getFeedbackPaper(this, currentPaperType)
         break;
-      case 'app-feedback':
-        this.setData({
-          isHiddenToast2: false
-        })
-        break;
     }
 
   },
@@ -112,27 +107,20 @@ Page({
     switch (currentPaperType) {
       case 'package':
       case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper.selected, this.paper.answer, this.data.cardInfo, this.data.packages)
+        feedback.setPkgFeedbackPaper(this, currentPaperType, paper, this.data.cardInfo, this.data.packages)
         break;
-      case 'app-feedback':
-        feedback.setAppFeedbackPaper(this, this.paper1.content, this.paper1.contact, this.data.cardInfo, this.data.packages)
         break;
     }
   },
 
   paper: {
     selected: '',
-    answer: ''
+    answer: '',
+    contact:''
   },
-  paper1: {
-    content: '',
-    contact: ''
-  },
-  paper2InputContent(event) {
-    this.paper1.content = event.detail.value;
-  },
-  paper2InputContact(event) {
-    this.paper1.contact = event.detail.value;
+
+  paperInputContact(event) {
+    this.paper.contact = event.detail.value;
   },
   checkboxChanged(event) {
     this.paper.selected = event.detail.value.join(',');

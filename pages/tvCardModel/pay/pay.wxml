@@ -1,13 +1,13 @@
 <!--pay.wxml-->
 <view class="container">
-  <view class='containner-spacetop'></view>
+
   <view class='header-toast-wrap' wx:if="{{toastType == '2'||toastType == '1' }}">
     <text wx:if="{{toastType == '2' || formatTime =='0 秒 '}}">您本次的免费观看已结束,请尽快续费</text>
     <text wx:elif="{{toastType == '1' && formatTime !='0 秒 '}}">您还可以免费观看<text class='hint-color'> {{formatTime}}</text>,请尽快续费</text>
 
   </view>
   <view class='header-toast-wrap' wx:if="{{currentPackageInfo.charge<0}}">
-    <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{currentPackageInfo.charge}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
+    <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{-currentPackageInfo.charge}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
 
   </view>
 
@@ -135,7 +135,7 @@
   <view bindtap='switchPruductInfo' class='user-info-style'>
     <view class='user-info-lable'>
       <image src='https://www.htrnpay.cn/scan/img/icon_loca.png' class='user-info-lable-img'></image>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前订购产品</text>
+      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>使用中的产品</text>
     </view>
     <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
     <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
@@ -187,7 +187,7 @@
 
   <view class="pay_way" wx:if="{{currentPackageInfo.charge<0}}">
     <text class='package-content-title-text'>补缴欠费：</text>
-    <text>{{currentPackageInfo.charge}}元</text>
+    <text>{{-currentPackageInfo.charge}}元</text>
   </view>
 
 
@@ -197,12 +197,7 @@
       <text class='text-header' style=' color:#0c0b0b; font-weight:400; font-size:32rpx;'>湖北省广播电视信息网络股份有限公司</text>
     </view>
   </view>
-  <navigator class='user-info-style' url="../feedback/feedback?feedBackType=app-feedback">
-    <view class='user-info-lable'>
-      <image id='app-feedback' src='https://www.htrnpay.cn/scan/img/user-feedback.png' class='user-info-lable-img'></image>
-      <text id='app-feedback' class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户反馈</text>
-    </view>
-  </navigator>
+  <text class='qq-talk-wrap'>讨论咨询欢迎加入QQ群：xxxxxxxx</text>
 
   <view style='width:100%; height:200rpx;'></view>
 
