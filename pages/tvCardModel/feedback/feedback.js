@@ -107,7 +107,7 @@ Page({
     switch (currentPaperType) {
       case 'package':
       case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, currentPaperType, paper, this.data.cardInfo, this.data.packages)
+        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper, this.data.cardInfo, this.data.packages)
         break;
         break;
     }
