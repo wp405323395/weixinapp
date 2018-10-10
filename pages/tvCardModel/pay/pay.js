@@ -11,7 +11,7 @@ Page({
     isListFold:true,
     toastType:-1,
     isUserInfoHidden:true,
-    isPruductInfoHidden:true,
+    isPruductInfoHidden:false,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
