@@ -44,7 +44,7 @@ Page({
     uploadNetApi.savePageLog('pay', 'tvcard', 0)
     let item = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `../pay/pay?qrid=${qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
+      url: `../pay/storeHall?qrid=${qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
     })
   },
   loadRecordHistory:function(){
@@ -111,10 +111,10 @@ Page({
         reject(faild);
       });
     }).then(value=>{
-      let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-      uploadNetApi.savePageLog('pay', 'tvcard', 1)
+      // let uploadNetApi = require('../requestUtil/uploadNetApi.js')
+      // uploadNetApi.savePageLog('pay', 'tvcard', 1)
       let cardInfo = value.custList[0];
-      let url = `../pay/pay?qrid=${qrid}&tvCardNum=${this.tvCardNum}&custid=${cardInfo.custid}&serviceID=${this.serviceID}&qrKind=${this.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
+      let url = `../pay/storeHall?qrid=${qrid}&tvCardNum=${this.tvCardNum}&custid=${cardInfo.custid}&serviceID=${this.serviceID}&qrKind=${this.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
       wx.redirectTo({
         url: url
       })

@@ -1,24 +1,21 @@
 // pay.js
 var util = require('../../../utils/util.js');
 var netData = require('../requestUtil/netData.js')
-const itemList = ['请选择订购份数','1', '2', '3', '4'];// 套餐数量的可选范围
-const itemList2 = ['请选择订购份数', '3', '6', '12', '24'];// 基本包的可选范围。
-let  that;
+let that;
 let countDown = 0;
 var qrid
 Page({
   data: {
-    recommendProduct:{},
-    recommendPackage:[],
-    toastType:-1,
+    recommendProduct: {},
+    recommendPackage: [],
+    toastType: -1,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
-    packages:null,
-    currentPackageSelect:0,
-    feedbackData:null,
-    currentPackageInfo:null,
-    formatTime:''
+    packages: null,
+    currentPackageSelect: 0,
+    currentPackageInfo: null,
+    formatTime: ''
   },
 
   onLoad: function (options) {
@@ -32,7 +29,7 @@ Page({
       addr: options.addr,
       qrKind: (options.qrKind == undefined ? 'undefined' : options.qrKind),
       mobile: options.mobile,
-      city : options.city
+      city: options.city
     }
     this.cardInfo = cardInfo
     this.setData({
@@ -63,8 +60,8 @@ Page({
     return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
         that.setData({
-          recommendProduct:value.salesList[0],
-          recommendPackage:value.salesList.splice(1),
+          recommendProduct: value.salesList[0],
+          recommendPackage: value.salesList.splice(1),
           packages: value.salesList,
         });
 
@@ -78,8 +75,8 @@ Page({
     }).catch(err => { })
 
   },
-  loadCards:  function () {
-    return netData.loadCards(this.cardInfo.custid).then(cardsNumber=>{
+  loadCards: function () {
+    return netData.loadCards(this.cardInfo.custid).then(cardsNumber => {
       if (cardsNumber.length > 0) {
         this.data.cardsSelectIndex = 0;
         this.cardInfo.tvCardNum = cardsNumber[0];
@@ -93,20 +90,20 @@ Page({
         cardsSelectIndex: this.data.cardsSelectIndex
       });
       if (this.cardInfo.tvCardNum) {
-      return this.loadPackage();
+        return this.loadPackage();
       }
-    }).then(value=>{
+    }).then(value => {
     })
-    
+
   },
 
-  onShow:function(){
+  onShow: function () {
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
   },
   loadToast: function (qrid) {
-    netData.loadToast(qrid, this.cardInfo.city).then(success=>{
+    netData.loadToast(qrid, this.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
         that.setData({
@@ -114,18 +111,18 @@ Page({
         });
         if (success.type == '1') {
           that.refreshCountDown();
-        } 
+        }
       }
     })
   },
-  refreshCountDown: function(){
-    setTimeout(()=>{
+  refreshCountDown: function () {
+    setTimeout(() => {
       let time = util.formatDuring(countDown);
       this.setData({
-        formatTime:time
+        formatTime: time
       });
-      if (countDown<1000) {
-        if(countDown == 0) {
+      if (countDown < 1000) {
+        if (countDown == 0) {
           this.setData({
             formatTime: ''
           });
@@ -134,23 +131,23 @@ Page({
       }
       countDown -= 1000;
       that.refreshCountDown();
-    },1000);
+    }, 1000);
   },
   // 当前产品
-  loadCurrentPackageInfo: function (){
-    netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success=>{
+  loadCurrentPackageInfo: function () {
+    netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success => {
       that.setData({
         currentPackageInfo: success
       });
     })
   },
-  select:function(event){
+  select: function (event) {
     let index = event.currentTarget.dataset.itemselect
-      this.setData({
-        currentPackageSelect: index
-      });
+    this.setData({
+      currentPackageSelect: index
+    });
   },
-  
+
   onCardNumberSelectOptionClick: function (e) {
     let id = parseInt(e.currentTarget.id);
     this.cardInfo.tvCardNum = this.data.allCards[id];
@@ -210,8 +207,6 @@ Page({
       tvCardNumber: this.cardInfo.tvCardNum,
       salestype: that.data.packages[currentIndex].salestype,//类型 0订购产品;1营销方案订购
       salescode: that.data.packages[currentIndex].salescode,//产品编码
-      count: that.data.packages[currentIndex].count,//套餐倍数
-      unit: that.data.packages[currentIndex].unit,//订购单位 0：天；1：月；2：年
       addr: this.cardInfo.addr,
       custname: this.cardInfo.custname,
       mobile: this.cardInfo.mobile,
@@ -219,30 +214,30 @@ Page({
       serviceid: this.cardInfo.serviceID,
       custfess: that.data.currentPackageInfo.charge
     };
-    netData.pay(param).then(value=>{
-        wx.requestPayment({
-          'timeStamp': value.timeStamp,
-          'nonceStr': value.nonceStr,
-          'package': value.package,
-          'signType': value.signType,
-          'paySign': value.paySign,
-          'success': function (res) {
-            that.isPaying = false;
-            console.log('支付结果',res);
-            wx.redirectTo({
-              url: 'success/paySuccess',
-            })
-          },
-          'fail': function (res) {
-            that.isPaying = false;
-            ///// 记录错误日志
-            that.showFeedbackPaper({ target: { id: 'pay-canceled' } })
-            let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-            uploadNetApi.payFaild(res.errMsg, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
-            //////
-          }
-        })
-    }).catch(err=>{
+    netData.pay(param).then(value => {
+      wx.requestPayment({
+        'timeStamp': value.timeStamp,
+        'nonceStr': value.nonceStr,
+        'package': value.package,
+        'signType': value.signType,
+        'paySign': value.paySign,
+        'success': function (res) {
+          that.isPaying = false;
+          console.log('支付结果', res);
+          wx.redirectTo({
+            url: 'success/paySuccess',
+          })
+        },
+        'fail': function (res) {
+          that.isPaying = false;
+          ///// 记录错误日志
+          that.showFeedbackPaper({ target: { id: 'pay-canceled' } })
+          let uploadNetApi = require('../requestUtil/uploadNetApi.js')
+          uploadNetApi.payFaild(res.errMsg, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
+          //////
+        }
+      })
+    }).catch(err => {
       that.isPaying = false;
       wx.showModal({
         title: "支付失败,如有疑问请拨打客服电话96516",
@@ -254,36 +249,19 @@ Page({
       uploadNetApi.payFaild(err, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
       //////
     });
-    
+
   },
-  gotoCharge:function(){
+  gotoCharge: function () {
     wx.navigateTo({
       url: '../charge/charge',
     })
   },
 
 
-  onHide: function(){
+  onHide: function () {
     countDown = 0;
   },
-  chooseProductCount: function (target){
-    let index = target.currentTarget.dataset.packageitem
-    let currentItemList = that.data.packages[index].salestype.indexOf('1') > -1 ? itemList : itemList2;
-    wx.showActionSheet({
-      itemList: currentItemList,
-      success: function (res) {
-        if (res.tapIndex == 0) {return;}
-        console.log('index:',index)
-        that.data.packages[index].count = currentItemList[res.tapIndex]
-        that.setData({
-          packages: that.data.packages
-        });
-      },
-      fail: function (res) {
-        console.log(res.errMsg)
-      }
-    })
-  },
+
   showFeedbackPaper(event) {
     console.log('target ', event.target.id)
     wx.navigateTo({
