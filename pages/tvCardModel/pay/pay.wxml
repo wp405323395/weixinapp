@@ -11,39 +11,124 @@
 
   </view>
 
-  <view>
-    <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item itemspasure">
+  <view class='user-info-style'>
+    <view class='user-info-lable'>
+      <view class='left-icon'></view>
+      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户信息</text>
+    </view>
+    <text bindtap='gotoCharge'>充值</text>
+  </view>
+  <view class="pa_wrap">
+    <view>
+      <view hover-stay-time="{{40}}" hover-class="clicked_style" bindtap="onSelectCard" class="item">
+        <view class='user-info-lable'>
+          <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_blank.png'></image>
+          <text style='margin-left:4rpx;' class='text-padding'>智能卡号</text>
+        </view>
+
+        <view style="padding-right:20rpx;">
+          <text class='text-padding'>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardsSelectIndex != -1 &&allCards[cardsSelectIndex])?allCards[cardsSelectIndex]:'请选择智能卡号')}}</text>
+
+          <view animation="{{tvCardAnimationData}}" class="go_in"></view>
+        </view>
+      </view>
+      <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
+      <view hidden="{{cardNumberSelectHidden}}" class="select_position">
+        <view class="select_wrap">
+          <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}" bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{allCards}}" wx:key="unique">
+            <text class="item_card_number text-padding">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
       <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_blank.png'></image>
-        <text style='margin-left:4rpx;' class='text-padding'>智能卡号</text>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
+        <text class='text-padding'>账户余额</text>
       </view>
 
-      <view style="padding-right:20rpx;">
-        <text class='text-padding'>{{scanCardInfo.tvCardNum?scanCardInfo.tvCardNum:((cardsSelectIndex != -1 &&allCards[cardsSelectIndex])?allCards[cardsSelectIndex]:'请选择智能卡号')}}</text>
-
-        <view animation="{{tvCardAnimationData}}" class="go_in"></view>
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.charge}}元</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
-    <view hidden="{{cardNumberSelectHidden}}" class="select_position">
-      <view class="select_wrap">
-        <view hover-class="clicked_style" wx:for-index="idx" id="{{idx}}" bindtap="onCardNumberSelectOptionClick" class="options" wx:for="{{allCards}}" wx:key="unique">
-          <text class="item_card_number text-padding">{{item}}</text>
-        </view>
+
+    <view class="item">
+      <view class='user-info-lable'>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_per.png'></image>
+        <text class='text-padding'>客户姓名</text>
+      </view>
+
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{scanCardInfo.custname}}</text>
+      </view>
+    </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
+    <view class="item" style='border:none;'>
+      <view class='user-info-lable'>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_address.png'></image>
+        <text class='text-padding' style=' display: inline-block;width:200rpx;'>所在地址</text>
+      </view>
+
+      <view style="padding-right:20rpx;">
+        <text class='text-padding' style='display:inline-block; padding-top:20rpx;padding-bottom:20rpx;'>{{scanCardInfo.addr}}</text>
+      </view>
+    </view>
+
+  </view>
+
+
+
+  <view bindtap='switchPruductInfo' class='user-info-style'>
+    <view class='user-info-lable'>
+      <view class='left-icon'></view>
+      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前产品</text>
+    </view>
+    <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
+    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
+  </view>
+
+  <view class="pa_wrap" style='padding-left:50rpx;' hidden='{{isPruductInfoHidden}}'>
+    <view class="item">
+      <text class='text-padding'>套餐名称</text>
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.name}}</text>
+      </view>
+    </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
+    <view class="item">
+      <text class='text-padding'>订购日期</text>
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.optime}}</text>
+      </view>
+    </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
+    <view class="item">
+      <text class='text-padding'>有效期</text>
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.etime}}</text>
+      </view>
+    </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
+    <view class="item">
+      <text class='text-padding'>费用</text>
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.fees}}元</text>
       </view>
     </view>
   </view>
 
+
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/icon_se.png' class='user-info-lable-img'></image>
+      <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐产品</text>
     </view>
     <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">反馈</text>
   </view>
 
   <view class='pkglist-wrap'>
-    <view class="hor" wx:if="{{packages}}" >
+    <view class="hor" wx:if="{{packages}}">
       <view wx:for="{{isListFold?[packages[0]]:packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
 
         <view class='package-content-title'>
@@ -87,96 +172,9 @@
     </view>
   </view>
 
-<view bindtap='switchPruductInfo' class='user-info-style'>
-    <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/icon_loca.png' class='user-info-lable-img'></image>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>使用中的产品</text>
-    </view>
-    <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
-    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
-  </view>
-
-  <view class="pa_wrap" style='padding-left:50rpx;' hidden='{{isPruductInfoHidden}}'>
-    <view class="item">
-      <text class='text-padding'>套餐名称</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.name}}</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>订购日期</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.optime}}</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>有效期</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.etime}}</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>费用</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.fees}}元</text>
-      </view>
-    </view>
-  </view>
-
-
-  <view bindtap='switchUserInfo' class='user-info-style'>
-    <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/icon_info.png' class='user-info-lable-img'></image>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户信息</text>
-    </view>
-    <image wx:if="{{isUserInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
-    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
-  </view>
-  <view class="pa_wrap" hidden='{{isUserInfoHidden}}'>
-    <view class="item">
-      <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
-        <text class='text-padding'>账户余额</text>
-      </view>
-
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.charge}}元</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
-
-    <view class="item">
-      <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_per.png'></image>
-        <text class='text-padding'>客户姓名</text>
-      </view>
-
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{scanCardInfo.custname}}</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
-    <view class="item" style='border:none;'>
-      <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/icon_address.png'></image>
-        <text class='text-padding' style=' display: inline-block;width:200rpx;'>所在地址</text>
-      </view>
-
-      <view style="padding-right:20rpx;">
-        <text class='text-padding' style='display:inline-block; padding-top:20rpx;padding-bottom:20rpx;'>{{scanCardInfo.addr}}</text>
-      </view>
-    </view>
-
-  </view>
-
-  
-
   <view class='user-info-style'>
     <view class='user-info-lable'>
-      <image src='https://www.htrnpay.cn/scan/img/dell-detail.png' class='user-info-lable-img'></image>
+      <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>订单明细</text>
     </view>
   </view>

@@ -1,0 +1,29 @@
+<!--pages/tvCardModel/charge/charge.wxml-->
+
+<view class='content'>
+  <view>
+    <view class='header'>
+      <view class='left-icon'></view>
+      <text class='lable'>充值金额</text>
+    </view>
+    <view class='charge-item'>
+      <text bindtap='choice' class="{{[totlaMoney == 50? 'focus':'unfocus','money-normal']}}" data-money='{{50}}'>50</text>
+      <text bindtap='choice' class="{{[totlaMoney == 100? 'focus':'unfocus','money-normal']}}" data-money='{{100}}'>100</text>
+      <text bindtap='choice' class="{{[totlaMoney == 200? 'focus':'unfocus','money-normal']}}" data-money='{{200}}'>200</text>
+      <text bindtap='choice' class="{{[totlaMoney == 300? 'focus':'unfocus','money-normal']}}" data-money='{{300}}'>300</text>
+      <text bindtap='choice' class="{{[totlaMoney == 500? 'focus':'unfocus','money-normal']}}" data-money='{{500}}'>500</text>
+      <text bindtap='choice' class="{{[totlaMoney == 800? 'focus':'unfocus','money-normal']}}" data-money='{{800}}'>800</text>
+    </view>
+    <view class='header'>
+      <text class='lable'>其他金额： </text>
+      <input bindinput='inputMoney' placeholder='输入充值金额'></input>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='total-money-wrap'>
+      <text class='small-lable'>应付金额：</text>
+      <text class='total-money'>{{totlaMoney}}元</text>
+    </view>
+    <button bindtap='charge'>立即支付</button>
+  </view>
+</view>

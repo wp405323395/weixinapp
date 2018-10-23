@@ -1,0 +1,91 @@
+/* pages/tvCardModel/charge/charge.wxss */
+.left-icon{
+  width: 10rpx;
+  height: 30rpx;
+  background-color: #2290ed;
+  margin-right: 20rpx;
+}
+.header{
+  background-color: white;
+  padding:20rpx 15rpx;
+  border-bottom:1px solid #eeeeee;
+  display:flex;
+  flex-direction:row;
+  padding-right:25rpx;
+  align-items:center;
+
+}
+
+.charge-item{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom:0;
+  border-bottom:1px solid #eeeeee;
+}
+input{
+  border: 1px solid #eeeeee;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.lable{
+  color:#0c0b0b; font-size:32rpx;
+}
+.footer{
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.small-lable{
+  font-size: 24rpx;
+  color: #000000;
+}
+.total-money-wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+}
+.total-money{
+  font-size: 32rpx;
+  color: #ff0000;
+  font-weight: 600;
+}
+button{
+  height: 98rpx;
+  line-height: 98rpx;
+  width: 250rpx;
+  margin: 0;
+  border: none;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 0;
+}
+
+.money-normal{
+  display: block;
+  width: 210rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  border: 1px solid #eeeeee;
+  margin-bottom: 30rpx;
+  font-size: 36rpx;
+  color: #333333;
+}
+.unfocus {
+    color: #333333;
+    border-color: #eeeeee;
+}
+.focus{
+  color: #ff0000;
+  border-color: #ff0000;
+}

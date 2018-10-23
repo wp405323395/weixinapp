@@ -355,3 +355,9 @@ scroll-view{
   justify-content: center;
   padding-top: 10rpx;
 }
+.left-icon{
+  width: 10rpx;
+  height: 30rpx;
+  background-color: #2290ed;
+  margin-right: 20rpx;
+}

@@ -26,8 +26,12 @@ class RequestStatusInterceptor extends Interceptor{
   onFaildResponse(url, header, data) {
     let title = '服务器未返回错误原因'
     try{
-      title = data.retMsg
-    } catch(err){}
+      if (data && data.retMsg) {
+        title = data.retMsg
+      }
+    } catch(err){
+      title = '服务器未返回错误原因'
+    }
     util.showToast({
       title: title,
       icon: "loading" ,

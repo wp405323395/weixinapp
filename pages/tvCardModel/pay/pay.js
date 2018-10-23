@@ -10,7 +10,6 @@ Page({
   data: {
     isListFold:true,
     toastType:-1,
-    isUserInfoHidden:true,
     isPruductInfoHidden:false,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
@@ -49,17 +48,14 @@ Page({
       timingFunction: 'ease',
     });
     this.animation.rotate(90).step();
-    setTimeout(() => {
-      this.loadData();
-    }, 500)
+    this.loadData();
   },
   loadData: function () {
     if (util.textIsNull(this.cardInfo.tvCardNum)) {
       this.loadCards();
     } else {
       that.loadPackage().then(value => {
-        return that.loadCurrentPackageInfo();
-      }).then(value => { });
+      })
     }
   },
   loadPackage: function () {
@@ -84,6 +80,10 @@ Page({
         this.data.cardsSelectIndex = 0;
         this.cardInfo.tvCardNum = cardsNumber[0];
       }
+      wx.setStorage({
+        key: 'cardInfo',
+        data: JSON.stringify(this.cardInfo)
+      })
       this.setData({
         allCards: cardsNumber,
         cardsSelectIndex: this.data.cardsSelectIndex
@@ -100,6 +100,7 @@ Page({
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
+    this.loadCurrentPackageInfo();
   },
   loadToast: function (qrid) {
     netData.loadToast(qrid, this.cardInfo.city).then(success=>{
@@ -156,6 +157,10 @@ Page({
       cardNumberSelectHidden: !this.data.cardNumberSelectHidden,
       tvCardAnimationData: this.animation.export()
     });
+    wx.setStorage({
+      key: 'cardInfo',
+      data: JSON.stringify(this.cardInfo)
+    })
     this.loadPackage();
 
   },
@@ -248,10 +253,9 @@ Page({
     });
     
   },
-
-  switchUserInfo:function(){
-    this.setData({
-      isUserInfoHidden: !this.data.isUserInfoHidden
+  gotoCharge:function(){
+    wx.navigateTo({
+      url: '../charge/charge',
     })
   },
   switchPruductInfo:function(){
