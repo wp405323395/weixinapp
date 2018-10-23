@@ -67,9 +67,9 @@
 
 .pay_btn {
   text-align: center;
-  font-size:1.05rem;
+  font-size:38rpx;
   height: 100%;
-  width: 300rpx;
+  width: 100%;
   background-color: #fe3a14;
   color: white;
   line-height: 100rpx;
@@ -128,14 +128,7 @@
   position: relative;
   margin-bottom: 20rpx;
 }
-.more-wrap{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: #00a1fe;
-  margin-top: 20rpx;
-}
+
 .package-content:last-child{
   margin-bottom: 0;
 }
@@ -388,4 +381,14 @@ scroll-view{
   border-radius: 5rpx;
   border: 1px solid #fe0000;
   font-size: 26rpx;
+}
+.total-text{
+  color: #666666;
+  font-size: 28rpx;
+  margin-right: 55rpx;
+}
+.float-left{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

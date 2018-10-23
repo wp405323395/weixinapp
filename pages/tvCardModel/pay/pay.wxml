@@ -79,16 +79,14 @@
 
 
 
-  <view bindtap='switchPruductInfo' class='user-info-style'>
+  <view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前产品</text>
     </view>
-    <image wx:if="{{isPruductInfoHidden}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
-    <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
   </view>
 
-  <view class="pa_wrap" style='padding-left:50rpx;' hidden='{{isPruductInfoHidden}}'>
+  <view class="pa_wrap" style='padding-left:50rpx;' wx:if="{{currentPackageInfo}}">
     <view class="current-wrap" wx:if="{{currentPackageInfo.prodsbo}}">
       <view class='current-left-wrap'>
         <text class='text-padding'>{{currentPackageInfo.prodsbo.pname}}</text>
@@ -108,21 +106,73 @@
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}</text>
       </view>
     </view>
+    <view style='height:1px; background-color: #eeeeee;'></view>
+    <view class="current-wrap float-left">
+      <text class='total-text'>合计总价格：</text>
+    </view>
     
   </view>
 
 
-  <view class='user-info-style'>
+
+
+
+<view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐产品</text>
     </view>
     <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">反馈</text>
   </view>
-
   <view class='pkglist-wrap'>
-    <view class="hor" wx:if="{{packages}}">
-      <view wx:for="{{isListFold?[packages[0]]:packages}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
+    <view class="hor" wx:if="{{recommendProduct}}">
+      <view class="package-content package-content-select" bindtap='select'>
+
+        <view class='package-content-title'>
+          <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
+            <text class='package-content-title-text'>套餐名称</text>
+            <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
+          </view>
+          <text class='package-content-title-text font-black-color'>{{recommendProduct.salesname}}</text>
+
+        </view>
+        <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
+        <view class='pkg-tag-wrap'>
+          <view wx:if="{{item.tag!='null'}}">
+            <image class='pkg-tag-image text-tag' wx:if="{{item.tag=='optimal'}}" src='https://www.htrnpay.cn/scan/img/green-tag.png'></image>
+            <image class='pkg-tag-image pic-tag' wx:elif="{{item.tag=='current'}}" src='https://www.htrnpay.cn/scan/img/current-tag.png'></image>
+            <image class='pkg-tag-image text-tag' wx:elif="{{item.tag}}" src='https://www.htrnpay.cn/scan/img/blue-tag.png'></image>
+            <text wx:if="{{item.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
+            <text wx:elif="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
+          </view>
+        </view>
+        <view class='package-content-money'>
+          <text class='package-content-title-text'>套餐订购数量</text>
+          <view class='choose_package_count_wrap' data-packageItem='{{index}}' bindtap='chooseProductCount'>
+            <text class='choose-product-count'>{{item.count}}</text>
+            <image class="jiantou-img" src="https://www.htrnpay.cn/scan/img/icon_jiantouxia.png"></image>
+          </view>
+        </view>
+        <view style='height:1px; background-color: #eeeeee;'></view>
+        <view class='package-content-money' style='display:block;'>
+          <text style='display:block;' class='package-content-title-text'>产品介绍</text>
+          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}</text>
+        </view>
+
+        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='user-info-style'>
+    <view class='user-info-lable'>
+      <view class='left-icon'></view>
+      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐套餐</text>
+    </view>
+  
+  </view>
+  <view class='pkglist-wrap'>
+    <view class="hor" wx:if="{{recommendPackage}}">
+      <view wx:for="{{recommendPackage}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
@@ -158,49 +208,11 @@
         <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
-    <view class='more-wrap' wx:if='{{packages.length>1}}' bindtap='switchList'>
-      <text>更多套餐</text>
-      <image wx:if="{{isListFold}}" class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantoushang.png'></image>
-      <image wx:else class='jiantou-img' src='https://www.htrnpay.cn/scan/img/icon_jiantouxia.png'></image>
-    </view>
   </view>
-
-  <view class='user-info-style'>
-    <view class='user-info-lable'>
-      <view class='left-icon'></view>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>订单明细</text>
-    </view>
-  </view>
-  <view class="pay_way">
-    <view>
-      <text class='package-content-title-text'>已选套餐：</text>
-      <text class='packageName' wx:if="{{packages}}">{{packages[currentPackageSelect].salesname}}x{{packages[currentPackageSelect].count}}({{packages[currentPackageSelect].unit == 1?'月':'年'}})</text>
-    </view>
-    <text wx-if="{{packages}}">{{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}}元</text>
-  </view>
-
-  <view class="pay_way" wx:if="{{currentPackageInfo.feesums<0}}">
-    <text class='package-content-title-text'>补缴欠费：</text>
-    <text>{{-currentPackageInfo.feesums}}元</text>
-  </view>
-
-
-  <view class='user-info-style'>
-    <view class='user-info-lable'>
-      <text style='display:block; margin-left:10rpx;margin-right:20rpx;'>收款方</text>
-      <text class='text-header' style=' color:#0c0b0b; font-weight:400; font-size:32rpx;'>湖北省广播电视信息网络股份有限公司</text>
-    </view>
-  </view>
-  <text class='qq-talk-wrap'>讨论咨询欢迎加入QQ群：928926436</text>
 
   <view style='width:100%; height:200rpx;'></view>
 
   <view class="footer">
-    <view class='dell-all'>
-      <text class="pay_intro" wx:if="{{packages && currentPackageInfo.feesums<0}}"> 总金额: {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count) - currentPackageInfo.feesums}} 元</text>
-      <text class="pay_intro" wx:elif="{{packages}}"> 总金额: {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}} 元</text>
-
-    </view>
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
   </view>
 </view>

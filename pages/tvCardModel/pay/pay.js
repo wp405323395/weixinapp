@@ -8,9 +8,9 @@ let countDown = 0;
 var qrid
 Page({
   data: {
-    isListFold:true,
+    recommendProduct:{},
+    recommendPackage:[],
     toastType:-1,
-    isPruductInfoHidden:false,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
@@ -24,7 +24,6 @@ Page({
   onLoad: function (options) {
     that = this;
     qrid = options.qrid;
-
     let cardInfo = {
       custid: options.custid,
       tvCardNum: options.tvCardNum,
@@ -59,13 +58,16 @@ Page({
       that.loadCurrentPackageInfo();
     }
   },
-  // 推荐产品
+  // 推荐产品,推荐套餐
   loadPackage: function () {
     return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
         that.setData({
+          recommendProduct:value.salesList[0],
+          recommendPackage:value.salesList.splice(1),
           packages: value.salesList,
         });
+
         wx.setStorage({
           key: 'packages',
           data: JSON.stringify(value.salesList),
@@ -259,23 +261,8 @@ Page({
       url: '../charge/charge',
     })
   },
-  switchPruductInfo:function(){
-    this.setData({
-      isPruductInfoHidden: !this.data.isPruductInfoHidden
-    })
-  },
-  switchList:function(){
-    let delItem = this.data.packages[this.data.currentPackageSelect]
-    this.data.packages.splice(this.data.currentPackageSelect, 1)
-    this.data.packages.unshift(delItem)
-    this.setData({
-      packages: this.data.packages,
-      currentPackageSelect:0,
-      isListFold: !this.data.isListFold  
-    })
 
 
-  },
   onHide: function(){
     countDown = 0;
   },
