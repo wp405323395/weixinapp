@@ -14,6 +14,7 @@ Page({
     tvCardAnimationData: {},
     packages: null,
     currentPackageSelect: 0,
+    currentPackageTotalMoney:0,
     currentPackageInfo: null,
     formatTime: ''
   },
@@ -136,7 +137,17 @@ Page({
   // 当前产品
   loadCurrentPackageInfo: function () {
     netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success => {
+      console.log('success---f-f-f-f-f',success)
+      let money1 = 0;
+      let money2 = 0;
+      if (success.prodsbo) {
+        money1 = parseFloat(success.prodsbo.price)
+      } 
+      if (success.salespkgbo) {
+        money2 = parseFloat(success.salespkgbo.fees)
+      }
       that.setData({
+        currentPackageTotalMoney: money1 + money2,
         currentPackageInfo: success
       });
     })

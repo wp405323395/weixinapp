@@ -108,7 +108,7 @@
     </view>
     <view style='height:1px; background-color: #eeeeee;'></view>
     <view class="current-wrap float-left">
-      <text class='total-text'>合计总价格：</text>
+      <text class='total-text'>合计总价格：{{currentPackageTotalMoney}}</text>
     </view>
     
   </view>
@@ -122,7 +122,7 @@
       <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐产品</text>
     </view>
-    <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">反馈</text>
+    <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">意见反馈</text>
   </view>
   <view class='pkglist-wrap'>
     <view class="hor" wx:if="{{recommendProduct}}">
@@ -131,29 +131,29 @@
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
             <text class='package-content-title-text'>套餐名称</text>
-            <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
+            <text class='package-content-money-price-now'>{{recommendProduct.price}}/{{recommendProduct.unit == 1?'月':'年'}}</text>
           </view>
           <text class='package-content-title-text font-black-color'>{{recommendProduct.salesname}}</text>
 
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
         <view class='pkg-tag-wrap'>
-          <view wx:if="{{item.tag!='null'}}">
-            <image class='pkg-tag-image text-tag' wx:if="{{item.tag=='optimal'}}" src='https://www.htrnpay.cn/scan/img/green-tag.png'></image>
-            <image class='pkg-tag-image pic-tag' wx:elif="{{item.tag=='current'}}" src='https://www.htrnpay.cn/scan/img/current-tag.png'></image>
-            <image class='pkg-tag-image text-tag' wx:elif="{{item.tag}}" src='https://www.htrnpay.cn/scan/img/blue-tag.png'></image>
-            <text wx:if="{{item.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
-            <text wx:elif="{{item.tag!='optimal' && item.tag!='current' && item.tag }}" class='text-tag-text'>{{item.tag}}</text>
+          <view wx:if="{{recommendProduct.tag!='null'}}">
+            <image class='pkg-tag-image text-tag' wx:if="{{recommendProduct.tag=='optimal'}}" src='https://www.htrnpay.cn/scan/img/green-tag.png'></image>
+            <image class='pkg-tag-image pic-tag' wx:elif="{{recommendProduct.tag=='current'}}" src='https://www.htrnpay.cn/scan/img/current-tag.png'></image>
+            <image class='pkg-tag-image text-tag' wx:elif="{{recommendProduct.tag}}" src='https://www.htrnpay.cn/scan/img/blue-tag.png'></image>
+            <text wx:if="{{recommendProduct.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
+            <text wx:elif="{{recommendProduct.tag!='optimal' && recommendProduct.tag!='current' && recommendProduct.tag }}" class='text-tag-text'>{{recommendProduct.tag}}</text>
           </view>
         </view>
 
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
           <text style='display:block;' class='package-content-title-text'>产品介绍</text>
-          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}</text>
+          <text class='package-content-title-text font-black-color max-text-length'>{{recommendProduct.salesintro}}</text>
         </view>
 
-        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == recommendProduct.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
   </view>

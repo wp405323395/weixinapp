@@ -1,0 +1,18 @@
+<!--pages/tvCardModel/pay/payMoney/pay.wxml-->
+<view class='content'>
+  <text class='lable'>订单明细</text>
+  <view class='pack-item-wrap'>
+    <view class='left-part-wrap'>
+      <text class='name'>A包产品（武汉）</text>
+      <text class='detail'>产品有效期：1年</text>
+    </view>
+    <text class='money'>255元/年</text>
+  </view>
+  <view class='footer'>
+    <view class='money-total-wrap'>
+      <text class='money-total-wrap-lable'>应付金额：</text>
+      <text class='total-money'>899元</text>
+    </view>
+    <button>立即支付</button>
+  </view>
+</view>
