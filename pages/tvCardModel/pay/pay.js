@@ -56,8 +56,10 @@ Page({
     } else {
       that.loadPackage().then(value => {
       })
+      that.loadCurrentPackageInfo();
     }
   },
+  // 推荐产品
   loadPackage: function () {
     return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
       if (value.salesList && value.salesList.length != 0) {
@@ -100,7 +102,6 @@ Page({
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
-    this.loadCurrentPackageInfo();
   },
   loadToast: function (qrid) {
     netData.loadToast(qrid, this.cardInfo.city).then(success=>{
@@ -133,7 +134,7 @@ Page({
       that.refreshCountDown();
     },1000);
   },
-  
+  // 当前产品
   loadCurrentPackageInfo: function (){
     netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success=>{
       that.setData({

@@ -65,7 +65,7 @@ button{
   width: 250rpx;
   margin: 0;
   border: none;
-  background-color: #ff0000;
+  background-color: #fe3a14;
   color: white;
   border-radius: 0;
 }

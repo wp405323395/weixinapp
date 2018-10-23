@@ -6,8 +6,8 @@
     <text wx:elif="{{toastType == '1' && formatTime !='0 秒 '}}">您还可以免费观看<text class='hint-color'> {{formatTime}}</text>,请尽快续费</text>
 
   </view>
-  <view class='header-toast-wrap' wx:if="{{currentPackageInfo.charge<0}}">
-    <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{-currentPackageInfo.charge}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
+  <view class='header-toast-wrap' wx:if="{{currentPackageInfo.feesums<0}}">
+    <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{-currentPackageInfo.feesums}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
 
   </view>
 
@@ -16,7 +16,7 @@
       <view class='left-icon'></view>
       <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户信息</text>
     </view>
-    <text bindtap='gotoCharge'>充值</text>
+    <text bindtap='gotoCharge' class='charge-text'>充值</text>
   </view>
   <view class="pa_wrap">
     <view>
@@ -48,7 +48,7 @@
       </view>
 
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.charge}}元</text>
+        <text class='text-padding'>{{currentPackageInfo.feesums}}元</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
@@ -89,33 +89,26 @@
   </view>
 
   <view class="pa_wrap" style='padding-left:50rpx;' hidden='{{isPruductInfoHidden}}'>
-    <view class="item">
-      <text class='text-padding'>套餐名称</text>
+    <view class="current-wrap" wx:if="{{currentPackageInfo.prodsbo}}">
+      <view class='current-left-wrap'>
+        <text class='text-padding'>{{currentPackageInfo.prodsbo.pname}}</text>
+        <text class='current-sub-endtime'>{{currentPackageInfo.prodsbo.etime}}</text>
+      </view>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.name}}</text>
+        <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}</text>
       </view>
     </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>订购日期</text>
+    <view style='height:1px; background-color: #eeeeee;'></view>
+    <view class="current-wrap" wx:if="{{currentPackageInfo.salespkgbo}}">
+      <view class='current-left-wrap'>
+        <text class='text-padding'>{{currentPackageInfo.salespkgbo.salespkgname}}</text>
+        <text class='current-sub-endtime'>{{currentPackageInfo.salespkgbo.etime}}</text>
+      </view>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.optime}}</text>
+        <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}</text>
       </view>
     </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>有效期</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.etime}}</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:10px;'></view>
-    <view class="item">
-      <text class='text-padding'>费用</text>
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.fees}}元</text>
-      </view>
-    </view>
+    
   </view>
 
 
@@ -186,9 +179,9 @@
     <text wx-if="{{packages}}">{{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}}元</text>
   </view>
 
-  <view class="pay_way" wx:if="{{currentPackageInfo.charge<0}}">
+  <view class="pay_way" wx:if="{{currentPackageInfo.feesums<0}}">
     <text class='package-content-title-text'>补缴欠费：</text>
-    <text>{{-currentPackageInfo.charge}}元</text>
+    <text>{{-currentPackageInfo.feesums}}元</text>
   </view>
 
 
@@ -204,7 +197,7 @@
 
   <view class="footer">
     <view class='dell-all'>
-      <text class="pay_intro" wx:if="{{packages && currentPackageInfo.charge<0}}"> 总金额: {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count) - currentPackageInfo.charge}} 元</text>
+      <text class="pay_intro" wx:if="{{packages && currentPackageInfo.feesums<0}}"> 总金额: {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count) - currentPackageInfo.feesums}} 元</text>
       <text class="pay_intro" wx:elif="{{packages}}"> 总金额: {{packages[currentPackageSelect].price*(packages[currentPackageSelect].count)}} 元</text>
 
     </view>

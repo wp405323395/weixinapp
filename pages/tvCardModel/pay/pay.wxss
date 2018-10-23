@@ -355,9 +355,37 @@ scroll-view{
   justify-content: center;
   padding-top: 10rpx;
 }
+.current-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15rpx 0;
+  align-items: center;
+}
+.current-sub-endtime{
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
 .left-icon{
   width: 10rpx;
   height: 30rpx;
   background-color: #2290ed;
   margin-right: 20rpx;
+}
+.current-left-wrap{
+  display: flex;
+  flex-direction: column;
+  color: #666666;
+  font-size: 28rpx;
+}
+.charge-text{
+  color: #fe0000;
+  display: inline-block;
+  width: 80rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  text-align: center;
+  border-radius: 5rpx;
+  border: 1px solid #fe0000;
+  font-size: 26rpx;
 }
