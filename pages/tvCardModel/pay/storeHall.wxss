@@ -122,18 +122,19 @@
 .package-content{
   background-color: white;
   border-radius: 10rpx;
-
-  border:1px solid #eaeaea;
+  border:1px solid #b3b2b2;
   box-sizing: border-box;
   position: relative;
-  margin-bottom: 20rpx;
+  margin-bottom: 25rpx;
+  -moz-box-shadow:0px 3px 6px #C7C6C6; -webkit-box-shadow:0px 3px 6px #C7C6C6; box-shadow:0px 3px 6px #C7C6C6;
+}
+.package-content-select{
+  border:1px solid #fe0000;
+  -moz-box-shadow:0px 3px 9px #BFA1A2; -webkit-box-shadow:0px 3px 9px #BFA1A2; box-shadow:0px 3px 9px #BFA1A2;
 }
 
 .package-content:last-child{
   margin-bottom: 0;
-}
-.package-content-select{
-  border:1px solid #fe0000;
 }
 .package-content-title{
   background-color: white;

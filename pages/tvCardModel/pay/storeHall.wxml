@@ -156,7 +156,7 @@
           </view>
         </view>
 
-        <image hidden='{{!(packageSelectIndex? (packageSelectIndex.salescode == recommendProduct.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+        <image hidden='{{!isBasePackSelect}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
   </view>
@@ -198,7 +198,7 @@
           </view>
         </view>
 
-        <image hidden='{{!(packageSelectIndex? (packageSelectIndex.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+        <image hidden='{{packageSelectIndex!=index}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
   </view>
