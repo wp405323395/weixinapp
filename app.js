@@ -37,5 +37,7 @@ App({
 
   globalData: {
     userInfo: null
-  }
+  },
+  package1:null,
+  package2:null
 })

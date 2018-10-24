@@ -16,6 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #eeeeee;
 }
 .name{
   color: #000000;
@@ -72,4 +73,7 @@ button{
   display: flex;
   justify-content:space-between;
   align-items:center ;
+}
+.space{
+  margin-top: 10rpx;
 }

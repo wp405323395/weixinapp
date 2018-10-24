@@ -1,18 +1,31 @@
 <!--pages/tvCardModel/pay/payMoney/pay.wxml-->
 <view class='content'>
   <text class='lable'>订单明细</text>
-  <view class='pack-item-wrap'>
+  <view class='pack-item-wrap' wx:if="{{package1}}">
     <view class='left-part-wrap'>
-      <text class='name'>A包产品（武汉）</text>
+      <text class='name'>{{package1.salesname}}</text>
       <text class='detail'>产品有效期：1年</text>
     </view>
-    <text class='money'>255元/年</text>
+    <text class='money'>{{package1.price}}元/年</text>
   </view>
+  <view class='pack-item-wrap'  wx:if="{{package2}}">
+    <view class='left-part-wrap'>
+      <text class='name'>{{package2.salesname}}</text>
+      <text class='detail'>产品有效期：1年</text>
+    </view>
+    <text class='money'>{{package2.price}}元/年</text>
+  </view>
+  <view class='pack-item-wrap space'  wx:if="{{currentPackageInfo.feesums<0}}">
+    <text>补交欠费</text>
+    <text class='money'>{{-currentPackageInfo.feesums}}元</text>
+  </view>
+
   <view class='footer'>
     <view class='money-total-wrap'>
       <text class='money-total-wrap-lable'>应付金额：</text>
-      <text class='total-money'>899元</text>
+      <text wx:if="{{currentPackageInfo.feesums<0}}" class='total-money'>{{totalMoney-currentPackageInfo.feesums}}元</text>
+      <text wx:else class='total-money'>{{totalMoney}}元</text>
     </view>
-    <button>立即支付</button>
+    <button bindtap='pay'>立即支付</button>
   </view>
 </view>

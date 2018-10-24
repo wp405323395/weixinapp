@@ -14,7 +14,7 @@
   <view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>用户信息</text>
+      <text class='text-header'>用户信息</text>
     </view>
     <text bindtap='gotoCharge' class='charge-text'>充值</text>
   </view>
@@ -70,8 +70,8 @@
         <text class='text-padding' style=' display: inline-block;width:200rpx;'>所在地址</text>
       </view>
 
-      <view style="padding-right:20rpx;">
-        <text class='text-padding' style='display:inline-block; padding-top:20rpx;padding-bottom:20rpx;'>{{scanCardInfo.addr}}</text>
+      <view class='addr-text-wrap'>
+        <text class='text-padding '>{{scanCardInfo.addr}}</text>
       </view>
     </view>
 
@@ -82,7 +82,7 @@
   <view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>当前产品</text>
+      <text class='text-header'>当前产品</text>
     </view>
   </view>
 
@@ -93,7 +93,7 @@
         <text class='current-sub-endtime'>{{currentPackageInfo.prodsbo.etime}}</text>
       </view>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}</text>
+        <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}元</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee;'></view>
@@ -103,37 +103,37 @@
         <text class='current-sub-endtime'>{{currentPackageInfo.salespkgbo.etime}}</text>
       </view>
       <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}</text>
+        <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}元</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee;'></view>
     <view class="current-wrap float-left">
-      <text class='total-text'>合计总价格：{{currentPackageTotalMoney}}</text>
+      <text class='total-text'>合计总价格：{{currentPackageTotalMoney}}元</text>
     </view>
-    
+
   </view>
 
 
 
 
 
-<view class='user-info-style'>
+  <view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐产品</text>
+      <text class='text-header'>推荐产品</text>
     </view>
-    <text bindtap="showFeedbackPaper" id='package' style="color:#00a1fe;">意见反馈</text>
+    <text bindtap="showFeedbackPaper" id='package' class='feedback-text'>意见反馈</text>
   </view>
-  <view class='pkglist-wrap'>
-    <view class="hor" wx:if="{{recommendProduct}}">
-      <view class="package-content package-content-select" bindtap='select'>
+  <view class='pkglist-wrap' wx:if="{{recommendProduct}}">
+    <view class="hor">
+      <view class="package-content {{isBasePackSelect?'package-content-select':''}}" bindtap='select1'>
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
-            <text class='package-content-title-text'>套餐名称</text>
+            <text class='package-content-title-text'>{{recommendProduct.salesname}}</text>
             <text class='package-content-money-price-now'>{{recommendProduct.price}}/{{recommendProduct.unit == 1?'月':'年'}}</text>
           </view>
-          <text class='package-content-title-text font-black-color'>{{recommendProduct.salesname}}</text>
+          
 
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
@@ -149,31 +149,34 @@
 
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
-          <text style='display:block;' class='package-content-title-text'>产品介绍</text>
-          <text class='package-content-title-text font-black-color max-text-length'>{{recommendProduct.salesintro}}</text>
+          <view class='introl-item-wrap' wx:for="{{recommendProduct.salesintro}}" wx:for-index="idx" wx:key="unique" wx:for-item="intros">
+            <text class="introl-key {{'pro'+idx}}">{{intros.key}}</text>
+            <text class='introl-value'>{{intros.value}}</text>
+
+          </view>
         </view>
 
-        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == recommendProduct.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+        <image hidden='{{!(packageSelectIndex? (packageSelectIndex.salescode == recommendProduct.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
   </view>
   <view class='user-info-style'>
     <view class='user-info-lable'>
       <view class='left-icon'></view>
-      <text class='text-header' style=' color:#0c0b0b; font-size:32rpx;'>推荐套餐</text>
+      <text class='text-header'>推荐套餐</text>
     </view>
-  
+
   </view>
-  <view class='pkglist-wrap'>
-    <view class="hor" wx:if="{{recommendPackage}}">
-      <view wx:for="{{recommendPackage}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{currentPackageSelect==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
+  <view class='pkglist-wrap' wx:if="{{recommendPackage}}">
+    <view class="hor">
+      <view wx:for="{{recommendPackage}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{packageSelectIndex==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
-            <text class='package-content-title-text'>套餐名称</text>
+            <text class='package-content-title-text'>{{item.salesname}}</text>
             <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
           </view>
-          <text class='package-content-title-text font-black-color'>{{item.salesname}}</text>
+          
 
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
@@ -188,11 +191,14 @@
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
-          <text style='display:block;' class='package-content-title-text'>产品介绍</text>
-          <text class='package-content-title-text font-black-color max-text-length'>{{item.salesintro}}</text>
+          <view class='introl-item-wrap' wx:for="{{item.salesintro}}" wx:for-item="intros"  wx:for-index="idx"  wx:key="unique">
+            <text class="introl-key {{'pro'+idx}}">{{intros.key}}</text>
+            <text class='introl-value'>{{intros.value}}</text>
+
+          </view>
         </view>
 
-        <image hidden='{{!(currentPackageSelect? (currentPackageSelect.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
+        <image hidden='{{!(packageSelectIndex? (packageSelectIndex.salescode == item.salescode):false)}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
       </view>
     </view>
   </view>
@@ -200,6 +206,6 @@
   <view style='width:100%; height:200rpx;'></view>
 
   <view class="footer">
-    <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
+    <view bindtap="ensureClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
   </view>
 </view>
