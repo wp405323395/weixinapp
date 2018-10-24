@@ -53,8 +53,10 @@ Page({
     if (util.textIsNull(this.cardInfo.tvCardNum)) {
       this.loadCards();
     } else {
-      that.loadPackage().then(value => {})
-      that.loadCurrentPackageInfo();
+      that.loadPackage().then(value => {
+        that.loadCurrentPackageInfo();
+      })
+      
     }
   },
   // 推荐产品,推荐套餐
