@@ -109,7 +109,16 @@ Page({
     if (this.package2) {
       u2 = this.package2.unit
     }
-    return u1+','+u2;
+    let total='';
+    if(u1&&u2) {
+      total = u1 + ',' + u2;
+    } else if(u1) {
+      total = u1;
+    } else if(u2) {
+      total = u2;
+    }
+    
+    return total;
   },
   initSalestype() {
     let u1 = '';
@@ -120,7 +129,15 @@ Page({
     if (this.package2) {
       u2 = this.package2.salestype
     }
-    return u1 + ',' + u2;
+    let total = '';
+    if (u1 && u2) {
+      total = u1 + ',' + u2;
+    } else if (u1) {
+      total = u1;
+    } else if (u2) {
+      total = u2;
+    }
+    return total;
   },
   initSalescode() {
     let u1 = '';
@@ -131,7 +148,15 @@ Page({
     if (this.package2) {
       u2 = this.package2.salescode
     }
-    return u1 + ',' + u2;
+    let total = '';
+    if (u1 && u2) {
+      total = u1 + ',' + u2;
+    } else if (u1) {
+      total = u1;
+    } else if (u2) {
+      total = u2;
+    }
+    return total;
 
   },
 
