@@ -96,7 +96,7 @@
         <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}元</text>
       </view>
     </view>
-    <view style='height:1px; background-color: #eeeeee;'></view>
+    
     <view class="current-wrap" wx:if="{{currentPackageInfo.salespkgbo}}">
       <view class='current-left-wrap'>
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.salespkgname}}</text>
@@ -106,7 +106,6 @@
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}元</text>
       </view>
     </view>
-    <view style='height:1px; background-color: #eeeeee;'></view>
     <view class="current-wrap float-left">
       <text class='total-text'>合计总价格：{{currentPackageTotalMoney}}元</text>
     </view>
@@ -206,6 +205,6 @@
   <view style='width:100%; height:200rpx;'></view>
 
   <view class="footer">
-    <view bindtap="ensureClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">确认支付</view>
+    <view bindtap="ensureClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">立即订购</view>
   </view>
 </view>
