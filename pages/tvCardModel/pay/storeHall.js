@@ -62,30 +62,40 @@ Page({
   // 推荐产品,推荐套餐
   loadPackage: function() {
     return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
-      if (value.salesList && value.salesList.length != 0) {
-        for (let item of value.salesList) {
-          let intro = JSON.parse(item.salesintro)
-          let a = []
-          for (let i in intro) {
-            a.push({
-              key: i,
-              value: intro[i]
-            })
+      try {
+        if (value.salesList && value.salesList.length != 0) {
+          for (let item of value.salesList) {
+            let intro = JSON.parse(item.salesintro)
+            let a = []
+            for (let i in intro) {
+              a.push({
+                key: i,
+                value: intro[i]
+              })
+            }
+            item.salesintro = a
           }
-          item.salesintro = a
+          that.setData({
+            recommendProduct: value.salesList[0],
+            recommendPackage: value.salesList.splice(1),
+            packages: value.salesList,
+          });
+
+          wx.setStorage({
+            key: 'packages',
+            data: JSON.stringify(value.salesList),
+          })
+
         }
-        that.setData({
-          recommendProduct: value.salesList[0],
-          recommendPackage: value.salesList.splice(1),
-          packages: value.salesList,
-        });
+      } catch(err){
+        setTimeout(()=>{
+          wx.showToast({
+            icon:'none',
+            title: '产品介绍数据有误',
+          });
+        },1000)
 
-        wx.setStorage({
-          key: 'packages',
-          data: JSON.stringify(value.salesList),
-        })
-
-      }
+      };
 
     }).catch(err => {})
 

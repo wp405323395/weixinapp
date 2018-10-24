@@ -101,34 +101,38 @@ Page({
 
   },
   initUnit() {
-    let u = '';
+    let u1 = '';
+    let u2 = '';
     if (this.package1) {
-      u = u + this.package1.unit
+      u1 = this.package1.unit
     }
     if (this.package2) {
-      u = u + ',' + this.package2.unit
+      u2 = this.package2.unit
     }
-    return u;
+    return u1+','+u2;
   },
   initSalestype() {
-    let u = '';
+    let u1 = '';
+    let u2 = '';
     if (this.package1) {
-      u = u + this.package1.salestype
+      u1 = this.package1.salestype
     }
     if (this.package2) {
-      u = u + ',' + this.package2.salestype
+      u2 = this.package2.salestype
     }
-    return u;
+    return u1 + ',' + u2;
   },
   initSalescode() {
-    let u = '';
+    let u1 = '';
+    let u2 = '';
     if (this.package1) {
-      u = u + this.package1.salescode
+      u1 = this.package1.salescode
     }
     if (this.package2) {
-      u = u + ',' + this.package2.salescode
+      u2 = this.package2.salescode
     }
-    return u;
+    return u1 + ',' + u2;
+
   },
 
 
