@@ -113,6 +113,11 @@ Page({
     if (util.textIsNotNull(qrid)) {
       this.loadToast(qrid);
     }
+    
+    appInstance.currentPackageInfo = null
+    appInstance.package1 = null
+    appInstance.package2 = null
+    appInstance.cardInfo = null
   },
   loadToast: function(qrid) {
     netData.loadToast(qrid, this.cardInfo.city).then(success => {
@@ -219,6 +224,8 @@ Page({
       return;
     }
     if (!this.data.packages) {
+      return;
+    } else if (!this.data.isBasePackSelect && this.data.packageSelectIndex == -1) {
       return;
     }
     if (this.data.currentPackageInfo) {
