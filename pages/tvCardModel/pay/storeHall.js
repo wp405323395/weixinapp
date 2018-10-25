@@ -7,6 +7,7 @@ let countDown = 0;
 var qrid
 Page({
   data: {
+    isBizEndTime:false,
     recommendProduct: null,
     recommendPackage: null,
     isBasePackSelect: true,
@@ -49,6 +50,7 @@ Page({
     this.loadData();
   },
   loadData: function() {
+    this.queryServstEtime()
     if (util.textIsNull(this.cardInfo.tvCardNum)) {
       this.loadCards();
     } else {
@@ -148,6 +150,25 @@ Page({
         if (success.type == '1') {
           that.refreshCountDown();
         }
+      }
+    })
+  },
+  // 快到期的催费。
+  queryServstEtime(){
+    netData.queryServstEtime(this.cardInfo.custid, this.cardInfo.tvCardNum).then(success=>{
+      let times = [success.CA,success.CM]
+      times = times.map(value=>{
+        return new Date(value.replace(/-/g, '/')).getTime();
+      })
+      let minTime = Math.min(...times)
+      let disTime = minTime - new Date().getTime();
+      var days = Math.floor(disTime / (24 * 3600 * 1000))
+      console.log('差值日期是：', days)
+      if(days<30) {
+        this.setData({
+          deadline: days,
+          isBizEndTime:true
+        })
       }
     })
   },

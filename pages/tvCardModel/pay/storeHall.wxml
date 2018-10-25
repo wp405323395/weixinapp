@@ -10,6 +10,10 @@
     <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{-currentPackageInfo.feesums}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
 
   </view>
+  <view class='header-toast-wrap' wx:if="{{isBizEndTime}}">
+    <text>尊敬的用户,您的套餐还有<text class='hint-color'> {{deadline}}天</text>到期,请及时续费,以免停机影响您正常使用</text>
+
+  </view>
 
   <view class='user-info-style'>
     <view class='user-info-lable'>
@@ -96,7 +100,7 @@
         <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}元</text>
       </view>
     </view>
-    
+
     <view class="current-wrap" wx:if="{{currentPackageInfo.salespkgbo}}">
       <view class='current-left-wrap'>
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.salespkgname}}</text>
@@ -132,7 +136,7 @@
             <text class='package-content-title-text'>{{recommendProduct.salesname}}</text>
             <text class='package-content-money-price-now'>{{recommendProduct.price}}/{{recommendProduct.unit == 1?'月':'年'}}</text>
           </view>
-          
+
 
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
@@ -175,7 +179,7 @@
             <text class='package-content-title-text'>{{item.salesname}}</text>
             <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'月':'年'}}</text>
           </view>
-          
+
 
         </view>
         <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
@@ -190,7 +194,7 @@
         </view>
         <view style='height:1px; background-color: #eeeeee;'></view>
         <view class='package-content-money' style='display:block;'>
-          <view class='introl-item-wrap' wx:for="{{item.salesintro}}" wx:for-item="intros"  wx:for-index="idx"  wx:key="unique">
+          <view class='introl-item-wrap' wx:for="{{item.salesintro}}" wx:for-item="intros" wx:for-index="idx" wx:key="unique">
             <text class="introl-key {{'pro'+idx}}">{{intros.key}}</text>
             <text class='introl-value'>{{intros.value}}</text>
 

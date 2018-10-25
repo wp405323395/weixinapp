@@ -63,8 +63,7 @@ Page({
       url: '../msgConfirm/confirm',
     })
   },
-  onShareAppMessage: function () {
-  },
+
   onPullDownRefresh: function () {
     
     if (util.textIsNull(this.tvCardNum)) {

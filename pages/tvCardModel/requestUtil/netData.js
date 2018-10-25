@@ -85,7 +85,20 @@ var netData = {
       new RequestEngine().request(config.wxPay, param, {
         callBy: this,
         method: this.pay,
-        params: []
+        params: [param]
+      }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    })
+  },
+  queryServstEtime( custid, tvCardNumber){
+    return new Promise((resolve, reject) => {
+      new RequestEngine(false).request(config.queryServstEtime, { custid, tvCardNumber}, {
+        callBy: this,
+        method: this.queryServstEtime,
+        params: [custid, tvCardNumber]
       }, (success) => {
         resolve(success);
       }, (faild) => {
