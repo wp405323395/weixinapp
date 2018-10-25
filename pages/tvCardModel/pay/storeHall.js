@@ -24,7 +24,7 @@ Page({
   onLoad: function(options) {
     that = this;
     qrid = options.qrid;
-    let cardInfo = {
+    this.cardInfo = {
       custid: options.custid,
       tvCardNum: options.tvCardNum,
       serviceID: (options.serviceID == undefined ? 'undefined' : options.serviceID),
@@ -34,13 +34,12 @@ Page({
       mobile: options.mobile,
       city: options.city
     }
-    this.cardInfo = cardInfo
     this.setData({
-      scanCardInfo: cardInfo
+      scanCardInfo: that.cardInfo
     });
     wx.setStorage({
       key: 'cardInfo',
-      data: JSON.stringify(cardInfo)
+      data: JSON.stringify(that.cardInfo)
     })
     this.animation = wx.createAnimation({
       duration: 500,
@@ -100,6 +99,24 @@ Page({
     }).catch(err => {})
 
   },
+  // 当前产品
+  loadCurrentPackageInfo: function () {
+    netData.loadCurrentPackageInfo(this.cardInfo).then(success => {
+      let money1 = 0;
+      let money2 = 0;
+      if (success.prodsbo) {
+        money1 = parseFloat(success.prodsbo.price)
+      }
+      if (success.salespkgbo) {
+        money2 = parseFloat(success.salespkgbo.fees)
+      }
+      that.setData({
+        currentPackageTotalMoney: money1 + money2,
+        currentPackageInfo: success
+      });
+    })
+  },
+  //当前所有卡号
   loadCards: function() {
     return netData.loadCards(this.cardInfo.custid).then(cardsNumber => {
       if (cardsNumber.length > 0) {
@@ -120,19 +137,9 @@ Page({
     }).then(value => {})
 
   },
-
-  onShow: function() {
-    if (util.textIsNotNull(qrid)) {
-      this.loadToast(qrid);
-    }
-    
-    appInstance.currentPackageInfo = null
-    appInstance.package1 = null
-    appInstance.package2 = null
-    appInstance.cardInfo = null
-  },
-  loadToast: function(qrid) {
-    netData.loadToast(qrid, this.cardInfo.city).then(success => {
+  //试看请求
+  baseTrySee: function (qrid) {
+    netData.baseTrySee(qrid, this.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
         that.setData({
@@ -144,6 +151,18 @@ Page({
       }
     })
   },
+
+  onShow: function() {
+    if (util.textIsNotNull(qrid)) {
+      this.baseTrySee(qrid);
+    }
+    // 充值下单数据
+    appInstance.currentPackageInfo = null
+    appInstance.package1 = null
+    appInstance.package2 = null
+    appInstance.cardInfo = null
+  },
+  //试看倒计时
   refreshCountDown: function() {
     setTimeout(() => {
       let time = util.formatDuring(countDown);
@@ -162,35 +181,20 @@ Page({
       that.refreshCountDown();
     }, 1000);
   },
-  // 当前产品
-  loadCurrentPackageInfo: function() {
-    netData.loadCurrentPackageInfo(this.cardInfo).then(success => {
-      let money1 = 0;
-      let money2 = 0;
-      if (success.prodsbo) {
-        money1 = parseFloat(success.prodsbo.price)
-      }
-      if (success.salespkgbo) {
-        money2 = parseFloat(success.salespkgbo.fees)
-      }
-      that.setData({
-        currentPackageTotalMoney: money1 + money2,
-        currentPackageInfo: success
-      });
-    })
-  },
+  //基本包的选择
   select: function(event) {
     let index = event.currentTarget.dataset.itemselect 
     this.setData({
         packageSelectIndex: (this.data.packageSelectIndex != index ? index : -1)
     });
   },
+  //推荐套餐的选择
   select1: function(event) {
     this.setData({
       isBasePackSelect: !this.data.isBasePackSelect
     })
   },
-
+  //选择卡号。
   onCardNumberSelectOptionClick: function(e) {
     let id = parseInt(e.currentTarget.id);
     this.cardInfo.tvCardNum = this.data.allCards[id];
@@ -207,6 +211,7 @@ Page({
     this.loadPackage();
 
   },
+  //点击选卡后的动画
   onSelectCard: function() {
     if (this.cardInfo.tvCardNum) {
       return;
@@ -224,6 +229,7 @@ Page({
     });
 
   },
+  //确定要下单的事件
   ensureClick: function(e) {
     if (!util.textIsNotNull(this.cardInfo.tvCardNum)) {
       wx.showModal({
@@ -261,14 +267,16 @@ Page({
   },
 
   onHide: function() {
+    //试看倒计时重置
     countDown = 0;
   },
+  //跳转到充值界面
   gotoCharge: function () {
     wx.navigateTo({
       url: '../charge/charge',
     })
   },
-
+  //跳转到反馈界面
   showFeedbackPaper(event) {
     console.log('target ', event.target.id)
     wx.navigateTo({
