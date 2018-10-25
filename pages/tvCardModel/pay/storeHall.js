@@ -50,7 +50,6 @@ Page({
     this.loadData();
   },
   loadData: function() {
-    this.queryServstEtime()
     if (util.textIsNull(this.cardInfo.tvCardNum)) {
       this.loadCards();
     } else {
@@ -169,6 +168,11 @@ Page({
           deadline: days,
           isBizEndTime:true
         })
+      } else {
+        this.setData({
+          deadline: days,
+          isBizEndTime: false
+        })
       }
     })
   },
@@ -177,6 +181,7 @@ Page({
     if (util.textIsNotNull(qrid)) {
       this.baseTrySee(qrid);
     }
+    this.queryServstEtime()
     // 充值下单数据
     appInstance.currentPackageInfo = null
     appInstance.package1 = null

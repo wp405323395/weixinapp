@@ -300,11 +300,7 @@ scroll-view{
   background-color: #ffe193;
   padding: 20rpx;
   font-weight: 500;
-}
-.header-toast-wrap{
-  background-color: #ffe193;
-  padding: 20rpx;
-  font-weight: 500;
+  border-bottom: 1px solid #eeeeee;
 }
 .hint-color{
   color: red;
