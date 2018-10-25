@@ -1,20 +1,11 @@
 <!--tvcard.wxml-->
 <view class="container">
-<view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
-   
-      <image src="https://www.htrnpay.cn/scan/img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
-      <view class="text_wrap">
-        <text>您的微信号暂无有线电视账号记录</text>
-      </view>
-      <text  bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
-
-</view>
-<view hidden="{{hidd2}}">
-<view class='text_note'>
-  <text class='note'>当前共有</text>
-  <text class='note_blue'>{{custList.length}}</text>
-  <text class='note'>条有线电视账号记录</text>
-</view>
+  <view wx:if="{{custList}}">
+    <view class='text_note'>
+      <text class='note'>当前共有</text>
+      <text class='note_blue'>{{custList.length}}</text>
+      <text class='note'>条有线电视账号记录</text>
+    </view>
 
     <view class="customItem" bindtap="onSelected" data-id="{{item}}" wx:for="{{custList}}" wx:key="unique">
       <image class="icon" src="https://www.htrnpay.cn/scan/img/person_icon.png"></image>
@@ -31,10 +22,18 @@
     </view>
 
     <button class="nex_btn" hover-class="nex_btn_tap" bindtap='onSearchMore'>搜索新账号</button>
-</view>
-<view class='bottom_logo'>
-<image src="https://www.htrnpay.cn/scan/img/guangdian_logo.png" class='logo_style'></image>
-</view>
+  </view>
+  <view wx:elif="{{showNoDate}}" class="scan_no_cardId">
+
+    <image src="https://www.htrnpay.cn/scan/img/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
+    <view class="text_wrap">
+      <text>您的微信号暂无有线电视账号记录</text>
+    </view>
+    <text bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
+
+  </view>
+  <view class='bottom_logo'>
+    <image src="https://www.htrnpay.cn/scan/img/guangdian_logo.png" class='logo_style'></image>
+  </view>
 
 </view>
-

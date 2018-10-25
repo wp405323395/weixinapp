@@ -10,29 +10,19 @@ let loadRecordHistory = function(context) {
       reject(faild);
     });
   }).then(value => {
-
-    let hidd1 = false;
-    let hidd2 = true;
-    if (value != null) {
-      let cardList = value.custInfolist;
-      if (cardList.length == 0) {
-        hidd1 = false; hidd2 = true;
-      } else {
-        hidd1 = true; hidd2 = false;
-      }
+    if (value.custInfolist) {
+      context.setData({
+        custList: value.custInfolist
+      });
     } else {
-      hidd1 = false; hidd2 = true;
+      context.setData({
+        showNoDate: true
+      })
     }
-    context.setData({
-      hidd1: hidd1,
-      hidd2: hidd2,
-      custList: value.custInfolist
-    });
   }).catch(err => {
     context.setData({
-      hidd1: false,
-      hidd2: true
-    });
+      showNoDate:true
+    })
   })
 
 }

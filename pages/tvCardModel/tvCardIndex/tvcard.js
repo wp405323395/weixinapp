@@ -5,9 +5,7 @@ var qrid
 Page({
 
   data: {
-
-    hidd1:true,
-    hidd2:true,
+    custList:null,
   },
 
   /*qrid查询*/
