@@ -155,9 +155,9 @@ Page({
   // 快到期的催费。
   queryServstEtime(){
     netData.queryServstEtime(this.cardInfo.custid, this.cardInfo.tvCardNum).then(success=>{
-      let times = [success.CA,success.CM]
-      times = times.map(value=>{
-        return new Date(value.replace(/-/g, '/')).getTime();
+
+      let times = success.map(item=>{
+        return new Date(item.value.replace(/-/g, '/')).getTime();
       })
       let minTime = Math.min(...times)
       let disTime = minTime - new Date().getTime();
