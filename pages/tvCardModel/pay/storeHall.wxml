@@ -45,17 +45,7 @@
         </view>
       </view>
     </view>
-    <view class="item">
-      <view class='user-info-lable'>
-        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
-        <text class='text-padding'>账户余额</text>
-      </view>
-
-      <view style="padding-right:30rpx;">
-        <text class='text-padding'>{{currentPackageInfo.feesums}}元</text>
-      </view>
-    </view>
-    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
+    
 
     <view class="item">
       <view class='user-info-lable'>
@@ -65,6 +55,17 @@
 
       <view style="padding-right:30rpx;">
         <text class='text-padding'>{{scanCardInfo.custname}}</text>
+      </view>
+    </view>
+    <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
+    <view class="item">
+      <view class='user-info-lable'>
+        <image class='user-info-lable-img' src='https://www.htrnpay.cn/scan/img/account_money.png'></image>
+        <text class='text-padding'>账户余额</text>
+      </view>
+
+      <view style="padding-right:30rpx;">
+        <text class='text-padding'>{{currentPackageInfo.feesums}}元</text>
       </view>
     </view>
     <view style='height:1px; background-color: #eeeeee; margin-left:32px;'></view>
