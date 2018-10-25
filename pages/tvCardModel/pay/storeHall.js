@@ -61,7 +61,7 @@ Page({
   },
   // 推荐产品,推荐套餐
   loadPackage: function() {
-    return netData.loadPackage(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(value => {
+    return netData.loadPackage(this.cardInfo).then(value => {
       try {
         if (value.salesList && value.salesList.length != 0) {
           for (let item of value.salesList) {
@@ -164,7 +164,7 @@ Page({
   },
   // 当前产品
   loadCurrentPackageInfo: function() {
-    netData.loadCurrentPackageInfo(this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind).then(success => {
+    netData.loadCurrentPackageInfo(this.cardInfo).then(success => {
       let money1 = 0;
       let money2 = 0;
       if (success.prodsbo) {
