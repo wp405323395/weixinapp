@@ -11,7 +11,7 @@
 
   </view>
   <view class='header-toast-wrap' wx:if="{{isBizEndTime}}">
-    <text>尊敬的用户,您的套餐还有<text class='hint-color'> {{deadline}}天</text>到期,请及时续费,以免停机影响您正常使用</text>
+    <text>尊敬的用户,您的套餐还有<text class='hint-color'> {{deadline<0?0:deadline}}天</text>到期,请及时续费,以免停机影响您正常使用</text>
 
   </view>
 
@@ -45,7 +45,7 @@
         </view>
       </view>
     </view>
-    
+
 
     <view class="item">
       <view class='user-info-lable'>
@@ -121,7 +121,7 @@
 
 
 
-  <view class='user-info-style'>
+  <view class='user-info-style' wx:if="{{recommendProduct}}">
     <view class='user-info-lable'>
       <view class='left-icon'></view>
       <text class='text-header'>推荐产品</text>
@@ -164,7 +164,7 @@
       </view>
     </view>
   </view>
-  <view class='user-info-style'>
+  <view class='user-info-style' wx:if="{{recommendPackage}}">
     <view class='user-info-lable'>
       <view class='left-icon'></view>
       <text class='text-header'>推荐套餐</text>
