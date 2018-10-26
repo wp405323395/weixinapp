@@ -286,5 +286,12 @@ Page({
       url: '../charge/charge',
     })
   },
+  //跳转到反馈界面
+  showFeedbackPaper(event) {
+    console.log('target ', event.target.id)
+    wx.navigateTo({
+      url: '../feedback/feedback?feedBackType=' + event.target.id,
+    })
 
+  },
 })
