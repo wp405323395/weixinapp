@@ -1,5 +1,6 @@
 // pages/tvCardModel/charge/charge.js
 var charge = require('../requestUtil/charge.js');
+var appInstance = getApp()
 Page({
 
   /**
@@ -14,15 +15,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let cardInfo = JSON.parse(wx.getStorageSync('cardInfo'))
     this.setData({
-      cardInfo: cardInfo
+      cardInfo: appInstance.cardInfo
     })
   },
   charge:function(){
     if (this.data.totlaMoney>0) {
       let fees = this.data.totlaMoney
-      charge.charge(this.data.cardInfo, fees,success=>{
+      charge.charge(appInstance.cardInfo, fees,success=>{
         wx.requestPayment({
           timeStamp: success.timeStamp,
           nonceStr: success.nonceStr,

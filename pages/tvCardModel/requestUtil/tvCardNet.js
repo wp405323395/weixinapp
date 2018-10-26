@@ -41,7 +41,6 @@ let loadTvCardInfo = function (context, qrid) {
       reject(faild);
     });
   }).then(value => {
-    console.log('得到值为', value);
     if (!value || !value.custList || value.custList.length==0) {
       throw '请求卡信息失败'
     }

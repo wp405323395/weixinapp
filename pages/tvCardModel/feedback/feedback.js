@@ -1,4 +1,5 @@
 // pages/tvCardModel/feedback/packageFeedback.js
+var appInstance = getApp()
 var currentPaperType;
 var vm;
 Page({
@@ -8,10 +9,7 @@ Page({
    */
   data: {
     isHiddenToast: true,
-
     feedbackData: null,
-    cardInfo:null,
-    packages:null
   },
 
   /**
@@ -19,25 +17,14 @@ Page({
    */
   onLoad: function (options) {
     vm = this;
-    console.log('options.feedBackType = ', options.feedBackType)
     currentPaperType = options.feedBackType
     this.showFeedbackPaper()
-    wx.getStorage({
-      key: 'cardInfo',
-      success: function(res) {
-        console.log(res)
-        vm.setData({
-          cardInfo: JSON.parse(res.data)
-        })
-      },
-    })
     wx.getStorage({
       key: 'packages',
       success: function(res) {
         console.log(res)
-        vm.setData({
-          packages: JSON.parse(res.data)
-        })
+        vm.packages = JSON.parse(res.data)
+        
       },
     })
   },
@@ -107,7 +94,7 @@ Page({
     switch (currentPaperType) {
       case 'package':
       case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper, this.data.cardInfo, this.data.packages)
+        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper, appInstance.cardInfo, vm.packages)
         break;
         break;
     }

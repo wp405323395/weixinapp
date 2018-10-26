@@ -18,7 +18,7 @@ Page({
   onLoad: function (options) {
     this.package1 = appInstance.package1
     this.package2 = appInstance.package2
-    this.cardInfo = appInstance.cardInfo
+    appInstance.cardInfo
     this.currentPackageInfo = appInstance.currentPackageInfo;
     this.freshUi();
     
@@ -47,13 +47,13 @@ Page({
     that.isPaying = true;
     let currentIndex = that.data.packageSelectIndex
     let param = {
-      custid: this.cardInfo.custid,
-      tvCardNumber: this.cardInfo.tvCardNum,
-      addr: this.cardInfo.addr,
-      custname: this.cardInfo.custname,
-      mobile: this.cardInfo.mobile,
-      city: this.cardInfo.city,
-      serviceid: this.cardInfo.serviceID,
+      custid: appInstance.cardInfo.custid,
+      tvCardNumber: appInstance.cardInfo.tvCardNum,
+      addr: appInstance.cardInfo.addr,
+      custname: appInstance.cardInfo.custname,
+      mobile: appInstance.cardInfo.mobile,
+      city: appInstance.cardInfo.city,
+      serviceid: appInstance.cardInfo.serviceID,
       custfess: this.currentPackageInfo.feesums,
       unit: this.initUnit(),//订购单位 0：天；1：月；2：年
       salestype: this.initSalestype(), //类型 0订购产品;1营销方案订购
@@ -82,7 +82,7 @@ Page({
             }
           })
           let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
-          uploadNetApi.payFaild(res.errMsg, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
+          uploadNetApi.payFaild(res.errMsg, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.package1.salescode)
           //////
         }
       })
@@ -95,7 +95,7 @@ Page({
       })
       ///// 记录错误日志
       let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
-      uploadNetApi.payFaild(err, this.cardInfo.city, this.cardInfo.custid, this.cardInfo.tvCardNum, this.cardInfo.serviceID, this.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
+      uploadNetApi.payFaild(err, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
       //////
     });
 
@@ -157,6 +157,14 @@ Page({
       total = u2;
     }
     return total;
+
+  },
+  //跳转到反馈界面
+  showFeedbackPaper(event) {
+    console.log('target ', event.target.id)
+    wx.navigateTo({
+      url: '../../feedback/feedback?feedBackType=' + event.target.id,
+    })
 
   },
 

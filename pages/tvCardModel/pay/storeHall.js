@@ -25,7 +25,7 @@ Page({
   onLoad: function(options) {
     that = this;
     qrid = options.qrid;
-    this.cardInfo = {
+    appInstance.cardInfo = {
       custid: options.custid,
       tvCardNum: options.tvCardNum,
       serviceID: (options.serviceID == undefined ? 'undefined' : options.serviceID),
@@ -36,12 +36,8 @@ Page({
       city: options.city
     }
     this.setData({
-      scanCardInfo: that.cardInfo
+      scanCardInfo: appInstance.cardInfo
     });
-    wx.setStorage({
-      key: 'cardInfo',
-      data: JSON.stringify(that.cardInfo)
-    })
     this.animation = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease',
@@ -50,7 +46,7 @@ Page({
     this.loadData();
   },
   loadData: function() {
-    if (util.textIsNull(this.cardInfo.tvCardNum)) {
+    if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
       this.loadCards();
     } else {
       that.loadPackage().then(value => {
@@ -61,7 +57,7 @@ Page({
   },
   // 推荐产品,推荐套餐
   loadPackage: function() {
-    return netData.loadPackage(this.cardInfo).then(value => {
+    return netData.loadPackage(appInstance.cardInfo).then(value => {
       try {
         if (value.salesList && value.salesList.length != 0) {
           for (let item of value.salesList) {
@@ -102,7 +98,7 @@ Page({
   },
   // 当前产品
   loadCurrentPackageInfo: function () {
-    netData.loadCurrentPackageInfo(this.cardInfo).then(success => {
+    netData.loadCurrentPackageInfo(appInstance.cardInfo).then(success => {
       let money1 = 0;
       let money2 = 0;
       if (success.prodsbo) {
@@ -119,20 +115,16 @@ Page({
   },
   //当前所有卡号
   loadCards: function() {
-    return netData.loadCards(this.cardInfo.custid).then(cardsNumber => {
+    return netData.loadCards(appInstance.cardInfo.custid).then(cardsNumber => {
       if (cardsNumber.length > 0) {
         this.data.cardsSelectIndex = 0;
-        this.cardInfo.tvCardNum = cardsNumber[0];
+        appInstance.cardInfo.tvCardNum = cardsNumber[0];
       }
-      wx.setStorage({
-        key: 'cardInfo',
-        data: JSON.stringify(this.cardInfo)
-      })
       this.setData({
         allCards: cardsNumber,
         cardsSelectIndex: this.data.cardsSelectIndex
       });
-      if (this.cardInfo.tvCardNum) {
+      if (appInstance.cardInfo.tvCardNum) {
         return this.loadPackage();
       }
     }).then(value => {})
@@ -140,7 +132,7 @@ Page({
   },
   //试看请求
   baseTrySee: function (qrid) {
-    netData.baseTrySee(qrid, this.cardInfo.city).then(success => {
+    netData.baseTrySee(qrid, appInstance.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
         that.setData({
@@ -154,7 +146,7 @@ Page({
   },
   // 快到期的催费。
   queryServstEtime(){
-    netData.queryServstEtime(this.cardInfo.custid, this.cardInfo.tvCardNum).then(success=>{
+    netData.queryServstEtime(appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum).then(success=>{
 
       let times = success.map(item=>{
         return new Date(item.value.replace(/-/g, '/')).getTime();
@@ -186,7 +178,6 @@ Page({
     appInstance.currentPackageInfo = null
     appInstance.package1 = null
     appInstance.package2 = null
-    appInstance.cardInfo = null
   },
   //试看倒计时
   refreshCountDown: function() {
@@ -223,23 +214,19 @@ Page({
   //选择卡号。
   onCardNumberSelectOptionClick: function(e) {
     let id = parseInt(e.currentTarget.id);
-    this.cardInfo.tvCardNum = this.data.allCards[id];
+    appInstance.cardInfo.tvCardNum = this.data.allCards[id];
     this.animation.rotate(0).step();
     this.setData({
       cardsSelectIndex: id,
       cardNumberSelectHidden: !this.data.cardNumberSelectHidden,
       tvCardAnimationData: this.animation.export()
     });
-    wx.setStorage({
-      key: 'cardInfo',
-      data: JSON.stringify(this.cardInfo)
-    })
     this.loadPackage();
 
   },
   //点击选卡后的动画
   onSelectCard: function() {
-    if (this.cardInfo.tvCardNum) {
+    if (appInstance.cardInfo.tvCardNum) {
       return;
     }
     if (this.data.cardNumberSelectHidden) {
@@ -257,14 +244,14 @@ Page({
   },
   //确定要下单的事件
   ensureClick: function(e) {
-    if (!util.textIsNotNull(this.cardInfo.tvCardNum)) {
+    if (!util.textIsNotNull(appInstance.cardInfo.tvCardNum)) {
       wx.showModal({
         title: "请您先选择智能卡号",
         showCancel: false,
         confirmText: "确定"
       })
       return;
-    } else if (!util.textIsNotNull(this.cardInfo.custid)) {
+    } else if (!util.textIsNotNull(appInstance.cardInfo.custid)) {
       return;
     }
     if (!this.data.packages) {
@@ -283,9 +270,6 @@ Page({
     if (this.data.packageSelectIndex>-1) {
       appInstance.package2 = this.data.recommendPackage[this.data.packageSelectIndex]
     }
-    if (this.cardInfo) {
-      appInstance.cardInfo = this.cardInfo;
-    }
     
     wx.navigateTo({
       url: 'payMoney/pay',
@@ -302,12 +286,5 @@ Page({
       url: '../charge/charge',
     })
   },
-  //跳转到反馈界面
-  showFeedbackPaper(event) {
-    console.log('target ', event.target.id)
-    wx.navigateTo({
-      url: '../feedback/feedback?feedBackType=' + event.target.id,
-    })
 
-  },
 })
