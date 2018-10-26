@@ -11,7 +11,7 @@ Page({
     recommendProduct: null,
     recommendPackage: null,
     isBasePackSelect: true,
-    packageSelectIndex: 0,
+    packageSelectIndex: -1,
     toastType: -1,
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
