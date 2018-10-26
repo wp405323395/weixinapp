@@ -135,7 +135,7 @@
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
             <text class='package-content-title-text'>{{recommendProduct.salesname}}</text>
-            <text class='package-content-money-price-now'>{{recommendProduct.price}}/{{recommendProduct.unit == 1?'年':'年'}}</text>
+            <text class='package-content-money-price-now'>{{recommendProduct.price}}/年</text>
           </view>
 
 
@@ -178,7 +178,7 @@
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
             <text class='package-content-title-text'>{{item.salesname}}</text>
-            <text class='package-content-money-price-now'>{{item.price}}/{{item.unit == 1?'年':'年'}}</text>
+            <text class='package-content-money-price-now'>{{item.price}}/年</text>
           </view>
 
 
