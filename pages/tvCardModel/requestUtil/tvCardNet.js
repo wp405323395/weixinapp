@@ -27,7 +27,7 @@ let loadRecordHistory = function(context) {
 
 }
 
-let loadTvCardInfo = function(context,cardNum,qrid) {
+let loadTvCardInfo = function(context) {
 
   new Promise((resolve, reject) => {
     var param = {
@@ -35,24 +35,28 @@ let loadTvCardInfo = function(context,cardNum,qrid) {
       serviceID: context.serviceID,
       qrKind: context.qrKind
     };
-    new RequestEngine().request(config.queryCustInfo, param, { callBy: this, method: this.loadTvCardInfo, params: [context, cardNum, qrid] }, (success) => {
+    new RequestEngine().request(config.queryCustInfo, param, { callBy: this, method: this.loadTvCardInfo, params: [context] }, (success) => {
       resolve(success);
     }, (faild) => {
       reject(faild);
     });
   }).then(value => {
+    console.log('得到值为', value);
+    if (!value || !value.custList || value.custList.length==0) {
+      throw '请求卡信息失败'
+    }
     let cardInfo = value.custList[0];
     let url = `../pay/storeHall?qrid=${qrid}&tvCardNum=${context.tvCardNum}&custid=${cardInfo.custid}&serviceID=${context.serviceID}&qrKind=${context.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
     wx.redirectTo({
       url: url
     })
   }).catch(err => {
+    let title = err ? err : "获取用户信息失败，尝试下拉刷新页面获取信息"
     wx.showModal({
-      title: "获取用户信息失败，尝试下拉刷新页面获取信息",
+      title: title,
       showCancel: false,
       confirmText: "确定"
     })
-    return;
   });
 }
 
