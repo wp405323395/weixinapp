@@ -1,6 +1,7 @@
 // tvcard.js
 var util = require('../../../utils/util.js');
 var tvCardNet = require('../requestUtil/tvCardNet.js')
+var myOptions
 Page({
 
   data: {
@@ -9,8 +10,12 @@ Page({
 
   /*qrid查询*/
   onLoad: function (options) {
-    let that=this;
-    util.getScene(options, function (scene, qrid){
+    myOptions = options;
+    this.loadData();
+  },
+  loadData(){
+    let that = this;
+    util.getScene(myOptions, function (scene, qrid) {
       if (scene.failed) {
         setTimeout(() => {
           tvCardNet.loadRecordHistory(that)
@@ -27,7 +32,7 @@ Page({
 
         }, 500);
       }
-      
+
     })
   },
   onSearchMore:function(){
@@ -63,12 +68,7 @@ Page({
   },
 
   onPullDownRefresh: function () {
-    
-    if (util.textIsNull(this.tvCardNum)) {
-      wx.stopPullDownRefresh();
-    } else {
-      tvCardNet.loadTvCardInfo(this,this.tvCardNum,this.qrid);
-    }
+    this.loadData();
     wx.stopPullDownRefresh()
   }
 })
