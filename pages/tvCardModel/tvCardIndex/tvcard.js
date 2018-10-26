@@ -1,7 +1,6 @@
 // tvcard.js
 var util = require('../../../utils/util.js');
 var tvCardNet = require('../requestUtil/tvCardNet.js')
-var qrid
 Page({
 
   data: {
@@ -11,16 +10,17 @@ Page({
   /*qrid查询*/
   onLoad: function (options) {
     let that=this;
-    qrid = util.getScene(options, function (scene){
+    util.getScene(options, function (scene, qrid){
       if (scene.failed) {
         setTimeout(() => {
           tvCardNet.loadRecordHistory(that)
         }, 500);
       } else {
+        that.qrid = qrid;
         that.getQrInfo(scene);
         setTimeout(() => {
           if (util.textIsNotNull(that.tvCardNum)) {
-            tvCardNet.loadTvCardInfo(that, that.tvCardNum, qrid);
+            tvCardNet.loadTvCardInfo(that, that.tvCardNum, that.qrid);
           } else {
             tvCardNet.loadRecordHistory(that)
           }
@@ -36,9 +36,10 @@ Page({
     })
   },
   onSelected: function (e) {
+    let that =this;
     let item = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `../pay/storeHall?qrid=${qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
+      url: `../pay/storeHall?qrid=${that.qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
     })
   },
 
@@ -53,7 +54,6 @@ Page({
     this.tvCardNum = prarams[2];
     this.qrKind = prarams[0];
     this.serviceID = prarams[1];
-    return this.tvCardNum;
   },
   
   onMsgConfirm:function(e){
@@ -67,7 +67,7 @@ Page({
     if (util.textIsNull(this.tvCardNum)) {
       wx.stopPullDownRefresh();
     } else {
-      tvCardNet.loadTvCardInfo(this,this.tvCardNum,qrid);
+      tvCardNet.loadTvCardInfo(this,this.tvCardNum,this.qrid);
     }
     wx.stopPullDownRefresh()
   }

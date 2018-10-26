@@ -38,7 +38,7 @@ function getScene(options, callback, flag) {
     var config = require('../config.js');
     let url = config.queQrcodePutById + "?qrid=" + qrid;
     new RequestEngine().request(url, {}, { callBy: this, method: this.getScene, params: [options, callback, flag] }, (success) => {
-      callback(success);
+      callback(success, qrid);
     }, (faild) => {
       callback({failed:true})
     });
