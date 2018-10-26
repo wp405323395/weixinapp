@@ -54,7 +54,7 @@ Page({
       mobile: this.cardInfo.mobile,
       city: this.cardInfo.city,
       serviceid: this.cardInfo.serviceID,
-      custfess: that.data.currentPackageInfo.charge,
+      custfess: this.currentPackageInfo.feesums,
       unit: this.initUnit(),//订购单位 0：天；1：月；2：年
       salestype: this.initSalestype(), //类型 0订购产品;1营销方案订购
       salescode: this.initSalescode()//产品编码
