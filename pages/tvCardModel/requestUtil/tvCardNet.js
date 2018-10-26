@@ -27,7 +27,7 @@ let loadRecordHistory = function(context) {
 
 }
 
-let loadTvCardInfo = function(context) {
+let loadTvCardInfo = function (context, qrid) {
 
   new Promise((resolve, reject) => {
     var param = {
