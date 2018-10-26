@@ -95,7 +95,7 @@
     <view class="current-wrap" wx:if="{{currentPackageInfo.prodsbo}}">
       <view class='current-left-wrap'>
         <text class='text-padding'>{{currentPackageInfo.prodsbo.pname}}</text>
-        <text class='current-sub-endtime'>{{currentPackageInfo.prodsbo.etime}}</text>
+        <text class='current-sub-endtime'>到期时间：{{currentPackageInfo.prodsbo.etime}}</text>
       </view>
       <view style="padding-right:30rpx;">
         <text class='text-padding'>{{currentPackageInfo.prodsbo.price}}元/年</text>
@@ -105,7 +105,7 @@
     <view class="current-wrap" wx:if="{{currentPackageInfo.salespkgbo}}">
       <view class='current-left-wrap'>
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.salespkgname}}</text>
-        <text class='current-sub-endtime'>{{currentPackageInfo.salespkgbo.etime}}</text>
+        <text class='current-sub-endtime'>到期时间：{{currentPackageInfo.salespkgbo.etime}}</text>
       </view>
       <view style="padding-right:30rpx;">
         <text class='text-padding'>{{currentPackageInfo.salespkgbo.fees}}元/年</text>
