@@ -16,7 +16,6 @@ Page({
     cardNumberSelectHidden: true,
     cardsSelectIndex: -1,
     tvCardAnimationData: {},
-    packages: null,
     currentPackageTotalMoney: 0,
     currentPackageInfo: null,
     formatTime: ''
@@ -59,6 +58,7 @@ Page({
   loadPackage: function() {
     return netData.loadPackage(appInstance.cardInfo).then(value => {
       try {
+        appInstance.packages = value.salesList
         if (value.salesList && value.salesList.length != 0) {
           for (let item of value.salesList) {
             let intro = JSON.parse(item.salesintro)
@@ -73,15 +73,9 @@ Page({
           }
           that.setData({
             recommendProduct: value.salesList[0],
-            recommendPackage: value.salesList.splice(1),
-            packages: value.salesList,
+            recommendPackage: value.salesList.splice(1)
           });
-
-          wx.setStorage({
-            key: 'packages',
-            data: JSON.stringify(value.salesList),
-          })
-
+          
         }
       } catch(err){
         setTimeout(()=>{
@@ -254,7 +248,7 @@ Page({
     } else if (!util.textIsNotNull(appInstance.cardInfo.custid)) {
       return;
     }
-    if (!this.data.packages) {
+    if (!appInstance.packages) {
       return;
     } else if (!this.data.isBasePackSelect && this.data.packageSelectIndex == -1) {
       return;

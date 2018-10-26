@@ -19,14 +19,6 @@ Page({
     vm = this;
     currentPaperType = options.feedBackType
     this.showFeedbackPaper()
-    wx.getStorage({
-      key: 'packages',
-      success: function(res) {
-        console.log(res)
-        vm.packages = JSON.parse(res.data)
-        
-      },
-    })
   },
 
   /**
@@ -94,7 +86,7 @@ Page({
     switch (currentPaperType) {
       case 'package':
       case 'pay-canceled':
-        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper, appInstance.cardInfo, vm.packages)
+        feedback.setPkgFeedbackPaper(this, currentPaperType, this.paper, appInstance.cardInfo, appInstance.packages)
         break;
         break;
     }
