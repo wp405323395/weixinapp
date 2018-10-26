@@ -16,7 +16,7 @@
     </view>
     <view class='header'>
       <text class='lable'>其他金额： </text>
-      <input bindinput='inputMoney' type='number' placeholder='输入金额'></input>
+      <input bindfocus='inputMoneyFocus' bindinput='inputMoney' type='number' placeholder='输入金额'></input>
     </view>
   </view>
   <view class='footer'>

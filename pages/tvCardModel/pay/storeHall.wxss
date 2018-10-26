@@ -314,7 +314,7 @@ scroll-view{
   position: absolute;
 }
 .text-tag{
-  width: 188rpx;
+  width: 200rpx;
   height: 72rpx;
   right: -12rpx;
   top: 13rpx;
@@ -326,11 +326,14 @@ scroll-view{
   top: 10rpx;
 }
 .text-tag-text{
-  right:-5rpx;
+  right:-12rpx;
   color: white;
   position: absolute;
   top: 24rpx;
   font-size: 28rpx;
+  width: 188rpx;
+  display: flex;
+  justify-content: center;
 }
 .qq-talk-wrap{
   color: #999999;
