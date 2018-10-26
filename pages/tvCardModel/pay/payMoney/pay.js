@@ -70,7 +70,7 @@ Page({
           that.isPaying = false;
           console.log('支付结果', res);
           wx.redirectTo({
-            url: 'success/paySuccess',
+            url: '../success/paySuccess',
           })
         },
         'fail': function (res) {
@@ -81,7 +81,7 @@ Page({
               id: 'pay-canceled'
             }
           })
-          let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
+          let uploadNetApi = require('../../../requestUtil/uploadNetApi.js')
           uploadNetApi.payFaild(res.errMsg, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.package1.salescode)
           //////
         }
@@ -94,7 +94,7 @@ Page({
         confirmText: "取消"
       })
       ///// 记录错误日志
-      let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
+      let uploadNetApi = require('../../../requestUtil/uploadNetApi.js')
       uploadNetApi.payFaild(err, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
       //////
     });
