@@ -4,7 +4,7 @@
       <label>{{feedbackData.title}}</label>
       <view class='checkbox-wrap'>
         <checkbox-group bindchange='checkboxChanged'>
-          <checkbox wx:for="{{feedbackData.options}}" wx:for-index="idx" wx:for-item="item" value='{{item.id}}'>{{item.text}}</checkbox>
+          <checkbox wx:for="{{feedbackData.options}}" wx:for-index="idx" wx:for-item="item" wx:key='{{idx}}' value='{{item.id}}'>{{item.text}}</checkbox>
         </checkbox-group>
 
       </view>
