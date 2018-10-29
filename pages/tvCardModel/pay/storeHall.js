@@ -46,7 +46,9 @@ Page({
   },
   loadData: function() {
     if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
-      this.loadCards();
+      this.loadCards().then(value=>{
+        that.loadCurrentPackageInfo();
+      });
     } else {
       that.loadPackage().then(value => {
         that.loadCurrentPackageInfo();
@@ -105,6 +107,7 @@ Page({
         currentPackageTotalMoney: money1 + money2,
         currentPackageInfo: success
       });
+      appInstance.currentPackageInfo = success
     })
   },
   //当前所有卡号
@@ -246,17 +249,35 @@ Page({
       })
       return;
     } else if (!util.textIsNotNull(appInstance.cardInfo.custid)) {
+      wx.showModal({
+        title: "custid为空,不可订购",
+        showCancel: false,
+        confirmText: "确定"
+      })
       return;
     }
     if (!appInstance.packages) {
+      wx.showModal({
+        title: "订购包为空,不可订购",
+        showCancel: false,
+        confirmText: "确定"
+      })
       return;
     } else if (!this.data.isBasePackSelect && this.data.packageSelectIndex == -1) {
+      wx.showModal({
+        title: "至少选择一个产品下单",
+        showCancel: false,
+        confirmText: "确定"
+      })
       return;
     }
-    if (this.data.currentPackageInfo) {
-      appInstance.currentPackageInfo = this.data.currentPackageInfo
-    } else {
-      return;
+    if (!this.data.currentPackageInfo) {
+      wx.showModal({
+        title: "因为您的当前产品未被查询到，导致您订购失败",
+        showCancel: false,
+        confirmText: "确定"
+      })
+      return 
     }
     if (this.data.isBasePackSelect) {
       appInstance.package1 = this.data.recommendProduct

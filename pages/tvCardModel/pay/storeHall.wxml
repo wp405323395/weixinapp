@@ -20,7 +20,7 @@
       <view class='left-icon'></view>
       <text class='text-header'>用户信息</text>
     </view>
-    <text bindtap='gotoCharge' class='charge-text'>充值</text>
+    <text bindtap='gotoCharge' wx:if="{{scanCardInfo.city=='WH'}}" class='charge-text'>充值</text>
   </view>
   <view class="pa_wrap">
     <view>
