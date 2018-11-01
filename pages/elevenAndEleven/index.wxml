@@ -1,0 +1,55 @@
+<view class="content">
+  <image class='header-background' mode="widthFix" src='../../img/11-bj_01.png'></image>
+  <image class='header-img' src='../../img/11-header-img.png'></image>
+  <view class='time-wrap'>
+    <view class='time-wrap-header'>
+      <view class='time-wrap-header-line'></view>
+      <text class='time-wrap-header-text'>距离活动开始还有</text>
+      <view class='time-wrap-header-line'></view>
+    </view>
+    <view class='time-wrap-text'>
+      <text class='time-wrap-number'>115</text>
+      <text>:</text>
+      <text class='time-wrap-number'>37</text>
+      <text>:</text>
+      <text class='time-wrap-number'>59</text>
+    </view>
+  </view>
+  <view class='coup-content'>
+    <image class='banner' src='../../img/11-banner.png'></image>
+    <view class='coup-item-wrap' wx:for="{{[1,2,3,4]}}">
+      <view class='coup-item-content'>
+        <view>
+          <text class='money-text'>￥10</text>
+          <text class='money-use-limit'>(缴费满388元可用)</text>
+        </view>
+        <view class='useful-time'>
+          <text>有效期：2018年11月11日-11月22日</text>
+        </view>
+      </view>
+      <view>
+        <text class='get-it-now'>立即领取</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='detail-wrap'>
+    <text>活动规则说明：
+    </text>
+    <text>
+      1. 用户可通过扫描电视投放的活动二维码或者本活动页领取现金券，各面额的现金券仅能领取一张；
+    </text>
+    <text>2. 本现金券仅支持湖北广电产品缴费使用，用户在指定微信小程序支付时直接抵现，现金券不支持线下渠道或者其他电子渠道；
+    </text>
+    <text>3. 活动预热期间，现金券仅能领取，暂不能用于抵现；
+    </text>
+    <text>4. 用户可在活动页面申请活动提醒，活动开始前将第一时间收到短信通知；
+    </text>
+    <text>4. 预热时间：11月4日-11月7日，活动时间：11月8日-11月11日
+    </text>
+  </view>
+  <view class='empty-space'></view>
+  <view class='footer-wrap'>
+    <button>活动开始前提醒我</button>
+  </view>
+</view>

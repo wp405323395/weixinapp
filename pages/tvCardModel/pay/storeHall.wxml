@@ -212,4 +212,8 @@
   <view class="footer">
     <view bindtap="ensureClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn">立即订购</view>
   </view>
+
+  <view class='festival-wrap'>
+    <image wx:if="{{isFestival}}" bindtap='gotoFestival' class='festival-img' src='https://www.htrnpay.cn/scan/img/icon_11_btn@2x.png'></image>
+  </view>
 </view>

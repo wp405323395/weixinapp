@@ -424,3 +424,11 @@ scroll-view{
   color:black; 
   font-size:32rpx;
 }
+
+.festival-img{
+  width: 130rpx;
+  height: 130rpx;
+  position: fixed;
+  top: 540rpx;
+  right: 10rpx;
+}

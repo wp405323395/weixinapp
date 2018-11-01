@@ -5,8 +5,10 @@ var appInstance = getApp()
 let that;
 let countDown = 0;
 var qrid
+var timeInterval=11
 Page({
   data: {
+    isFestival:false,
     isBizEndTime:false,
     recommendProduct: null,
     recommendPackage: null,
@@ -43,6 +45,17 @@ Page({
     });
     this.animation.rotate(90).step();
     this.loadData();
+    this.initIsFestival();
+  },
+  initIsFestival:function(){
+    let date = new Date(2018,10,11);
+    let dateNow = new Date();
+    let dateDistin = date.getTime()-dateNow.getTime();
+    if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin>0){
+      this.setData({
+        isFestival:true
+      })
+    }
   },
   loadData: function() {
     if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
@@ -55,6 +68,11 @@ Page({
       })
       
     }
+  },
+  gotoFestival:function() {
+    wx.navigateTo({
+      url: '/pages/elevenAndEleven/index',
+    })
   },
   // 推荐产品,推荐套餐
   loadPackage: function() {
