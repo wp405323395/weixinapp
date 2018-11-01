@@ -8,11 +8,11 @@
       <view class='time-wrap-header-line'></view>
     </view>
     <view class='time-wrap-text'>
-      <text class='time-wrap-number'>115</text>
+      <text class='time-wrap-number'>{{hours}}</text>
       <text>:</text>
-      <text class='time-wrap-number'>37</text>
+      <text class='time-wrap-number'>{{minutes}}</text>
       <text>:</text>
-      <text class='time-wrap-number'>59</text>
+      <text class='time-wrap-number'>{{seconds}}</text>
     </view>
   </view>
   <view class='coup-content'>

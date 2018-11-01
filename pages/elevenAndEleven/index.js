@@ -14,7 +14,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initTime()
+  },
+  initTime(){
+    setTimeout(()=>{
+      let date = new Date(2018, 10, 11);
+      let dateNow = new Date();
+      let mss = date.getTime() - dateNow.getTime();
+      var days = parseInt(mss / (1000 * 60 * 60 * 24));
+      var  hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var  minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = parseInt((mss % (1000 * 60)) / 1000);
+      hours = hours + days * 24
+      this.setData({
+        hours: hours<10?'0'+hours:hours,
+        minutes:minutes<10?'0'+minutes:minutes,
+        seconds:seconds<10?'0'+seconds:seconds
+      })
+      this.initTime()
+    },1000);
   },
   noteMeClick:function(){
     this.setData({
