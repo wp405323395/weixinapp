@@ -7,7 +7,7 @@ var charge = function (cardInfo, fees,successCallback,faildCallback){
   let tvCardNumber = cardInfo.tvCardNumber
   let serviceID = cardInfo.serviceID
   let qrKind = cardInfo.qrKind
-  new RequestEngine().request(config.doBossBizCharging, { city, custid, tvCardNumber, serviceID, qrKind, fees }, { callBy: this, method: this.charge, params: [cardInfo] }, (success) => {
+  new RequestEngine().request(config.doBossBizCharging, { city, custid, tvCardNumber, serviceID, qrKind, fees }, { callBy: this, method: this.charge, params: [cardInfo, fees, successCallback, faildCallback] }, (success) => {
     successCallback(success)
     }, (faild) => {
       faildCallback(faild)

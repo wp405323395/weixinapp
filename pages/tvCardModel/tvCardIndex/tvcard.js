@@ -1,6 +1,7 @@
 // tvcard.js
 var util = require('../../../utils/util.js');
 var tvCardNet = require('../requestUtil/tvCardNet.js')
+var appInstance = getApp()
 var myOptions
 Page({
 
@@ -24,10 +25,10 @@ Page({
         that.qrid = qrid;
         that.getQrInfo(scene);
         setTimeout(() => {
-          if (util.textIsNotNull(that.tvCardNum)) {
+          if (util.textIsNotNull(that.tvCardNum)) { //进入产品列表
             tvCardNet.loadTvCardInfo(that, that.tvCardNum, that.qrid);
           } else {
-            tvCardNet.loadRecordHistory(that)
+            tvCardNet.loadRecordHistory(that) //进入充值历史记录
           }
 
         }, 500);
@@ -43,6 +44,16 @@ Page({
   onSelected: function (e) {
     let that =this;
     let item = e.currentTarget.dataset.id
+    appInstance.cardInfo = {
+      custid: item.custid,
+      tvCardNum: item.tvCardNumber,
+      serviceID: undefined,
+      custname: item.custname,
+      addr: item.addr,
+      qrKind: undefined,
+      mobile: item.mobile,
+      city: item.city
+    }
     wx.navigateTo({
       url: `../pay/storeHall?qrid=${that.qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
     })

@@ -3,6 +3,7 @@ import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
+var appInstance = getApp()
 Page({
 
   data: {
@@ -38,6 +39,16 @@ Page({
     let item = e.currentTarget.dataset.id
     // let uploadNetApi = require('../requestUtil/uploadNetApi.js')
     // uploadNetApi.savePageLog('storeHall', 'confirm', 0)
+    appInstance.cardInfo = {
+      custid: item.custid,
+      tvCardNum: item.tvCardNumber,
+      serviceID: undefined,
+      custname: item.custname,
+      addr: item.addr,
+      qrKind: undefined,
+      mobile: item.mobile,
+      city: item.city
+    }
     wx.navigateTo({
       url: '../pay/storeHall?custid=' + item.custid + "&tvCardNum=" + item.tvCardNumber + "&addr=" + item.addr + "&custname=" + item.custname + "&mobile=" + item.mobile + "&city=" + item.city
     })

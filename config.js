@@ -7,7 +7,7 @@
 
 var host = 'www.htrnpay.cn';
 // var host = "192.168.2.119:8080"
-// var host = "192.168.2.108:8081"
+ var host = "192.168.2.110:8080"
 // var host = "www.juzijumi.com:8181"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
@@ -39,7 +39,9 @@ var config = {
     saveFeedback: `${schema}://${host}/scanweb/qrwx/feedback!saveFeedback`, //小程序调研
     savePageLog: `${schema}://${host}/scanweb/qrwx/wx-order!savePageLog`, //记录页面数据
     doBossBizCharging: `${schema}://${host}/scanweb/qrwx/wx-pay!doBossBizCharging`,//充值
-    queryServstEtime: `${schema}://${host}/scanweb/qrwx/wx-order!queryServstEtime` //到期时间
+    queryServstEtime: `${schema}://${host}/scanweb/qrwx/wx-order!queryServstEtime`, //到期时间
+
+    queryCouponsStatus: `${schema}://${host}/scanweb/active/coupon!queryCouponsStatus`
 };
 
 

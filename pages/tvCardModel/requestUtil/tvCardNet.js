@@ -1,6 +1,7 @@
 import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
+var appInstance = getApp()
 let loadRecordHistory = function(context) {
 
   new Promise((resolve, reject) => {
@@ -45,10 +46,29 @@ let loadTvCardInfo = function (context, qrid) {
       throw '请求卡信息失败'
     }
     let cardInfo = value.custList[0];
-    let url = `../pay/storeHall?qrid=${qrid}&tvCardNum=${context.tvCardNum}&custid=${cardInfo.custid}&serviceID=${context.serviceID}&qrKind=${context.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
-    wx.redirectTo({
-      url: url
-    })
+    
+    appInstance.cardInfo = {
+      qrid:qrid,
+      custid: cardInfo.custid,
+      tvCardNum: context.tvCardNum,
+      serviceID: context.serviceID,
+      custname: cardInfo.custname,
+      addr: cardInfo.addr,
+      qrKind: context.qrKind,
+      mobile: cardInfo.mobile,
+      city: cardInfo.city
+    }
+    if (context.qrKind == 'A11') {
+      wx.redirectTo({
+        url: '/pages/elevenAndEleven/index'
+      })
+    } else {
+      let url = `../pay/storeHall?qrid=${qrid}&tvCardNum=${context.tvCardNum}&custid=${cardInfo.custid}&serviceID=${context.serviceID}&qrKind=${context.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
+      wx.redirectTo({
+        url: url
+      })
+    }
+    
   }).catch(err => {
     let title = err ? err : "获取用户信息失败，尝试下拉刷新页面获取信息"
     wx.showModal({

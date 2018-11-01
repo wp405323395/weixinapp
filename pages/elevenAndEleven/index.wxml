@@ -17,7 +17,7 @@
   </view>
   <view class='coup-content'>
     <image class='banner' src='https://www.htrnpay.cn/scan/img/11-banner.png'></image>
-    <view class='coup-item-wrap' wx:for="{{[1,2,3,4]}}">
+    <view class='coup-item-wrap' wx:for="{{[1,2,3,4]}}" wx:key="idx">
       <view class='coup-item-content'>
         <view>
           <text class='money-text'>￥10</text>
