@@ -1,5 +1,6 @@
 // pages/elevenAndEleven/index.js
-var queryCouponsStatus = require('requestUtil/coupNet.js')
+var requestUtil = require('requestUtil/coupNet.js')
+
 var appInstance = getApp()
 Page({ 
 
@@ -26,7 +27,7 @@ Page({
     })
   },
   initCoupList(){
-    queryCouponsStatus.queryCouponsStatus(appInstance.cardInfo,success=>{
+    requestUtil.queryCouponsStatus(appInstance.cardInfo,success=>{
       this.setData({
         coupList: success
       })
@@ -61,7 +62,8 @@ Page({
     });
   },
   submitUserInfo:function(){
-    
+    let that = this;
+    requestUtil.activityRegister(appInstance.cardInfo, { name: that.inputName, phone: that.inputPhone}, this)
   },
   bindNameInput: function (e) {
     this.setData({

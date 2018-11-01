@@ -41,7 +41,8 @@ var config = {
     doBossBizCharging: `${schema}://${host}/scanweb/qrwx/wx-pay!doBossBizCharging`,//充值
     queryServstEtime: `${schema}://${host}/scanweb/qrwx/wx-order!queryServstEtime`, //到期时间
 
-    queryCouponsStatus: `${schema}://${host}/scanweb/active/coupon!queryCouponsStatus`
+    queryCouponsStatus: `${schema}://${host}/scanweb/active/coupon!queryCouponsStatus`,
+    activityRegister: `${schema}://${host}/scanweb/active/buy-give!activityRegister`
 };
 
 

@@ -15,4 +15,30 @@ var queryCouponsStatus = function (cardInfo, successCallback, faildCallback) {
   });
 
 }
+var activityRegister = function (cardInfo,data,context) {
+  let that = this;
+  let city = cardInfo.city
+  let custid = cardInfo.custid
+  let tvCardNumber = cardInfo.tvCardNum
+  let serviceID = cardInfo.serviceID
+  let qrKind = cardInfo.qrKind
+  new RequestEngine().request(config.activityRegister, { city, custid, tvCardNumber, serviceID, qrKind, name: data.name, phone:data.phone }, { callBy: that, method: that.activityRegister, params: [cardInfo, data, context] }, (success) => {
+    context.setData({
+      isShowPop:false
+    })
+    wx.showModal({
+      title: '提示',
+      content: '信息发送成功',
+    })
+  }, (faild) => {
+    context.setData({
+      isShowPop: false
+    })
+    wx.showModal({
+      title: '提示',
+      content: '信息发送失败',
+    })
+  });
+}
 module.exports.queryCouponsStatus = queryCouponsStatus;
+module.exports.activityRegister = activityRegister;
