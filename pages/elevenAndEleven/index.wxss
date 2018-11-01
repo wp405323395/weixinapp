@@ -1,6 +1,7 @@
 /* pages/elevenAndEleven/index.wxss */
 .content{
   background-color: #d51965;
+  overflow-x: hidden;
 }
 .header-background{
   width: 100%;
@@ -47,6 +48,7 @@
    color:  #ff2883;
    display: flex;
    flex-direction: row;
+   line-height: 60rpx;
 }
 .time-wrap-number{
   display: block;
@@ -106,7 +108,7 @@
 
 }
 .get-it-now{
-  font-size: 36rpx;
+  font-size: 38rpx;
   color: #000000;
   width: 205rpx;
   display: inline-block;
@@ -142,4 +144,52 @@
 }
 .empty-space{
   height: 100rpx;
+}
+.pop-wrap{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+}
+.delete{
+  width: 80rpx;
+  height: 80rpx;
+  align-self: flex-end;
+}
+.pop-content{
+  background-color: white;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  margin-top: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pop-btn{
+  width: 580rpx;
+  height: 80rpx;
+  color: white;
+  background-color: #ff2882;
+  margin-bottom: 50rpx;
+  font-size: 36rpx;
+  margin-top: 20rpx;
+}
+.pop-content>input{
+  background-color: #eeeeee;
+  border: 1px solid #d4d4d4;
+  border-radius: 8rpx;
+  width: 580rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  color: #999999;
+  padding-left: 20rpx;
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+}
+.pop-title{
+ font-size: 36rpx;
+  margin-bottom: 50rpx;
+  margin-top: -10rpx;
 }

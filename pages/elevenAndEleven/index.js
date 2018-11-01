@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputPhone:null,
+    inputName:null,
+    isShowPop: false
   },
 
   /**
@@ -13,6 +15,29 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  noteMeClick:function(){
+    this.setData({
+      isShowPop: true
+    });
+  },
+  closePop:function(){
+    this.setData({
+      isShowPop: false
+    });
+  },
+  submitUserInfo:function(){
+    
+  },
+  bindNameInput: function (e) {
+    this.setData({
+      inputName: e.detail.value
+    })
+  },
+  bindPhoneInput: function (e) {
+    this.setData({
+      inputPhone: e.detail.value
+    })
   },
 
   /**

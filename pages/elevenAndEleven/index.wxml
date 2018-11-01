@@ -1,5 +1,5 @@
 <view class="content">
-  <image class='header-background' mode="widthFix" src='../../img/11-bj_01.png'></image>
+  <image class='header-background' mode="widthFix" src='https://www.htrnpay.cn/scan/img/11-bj_01.png'></image>
   <image class='header-img' src='../../img/11-header-img.png'></image>
   <view class='time-wrap'>
     <view class='time-wrap-header'>
@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class='coup-content'>
-    <image class='banner' src='../../img/11-banner.png'></image>
+    <image class='banner' src='https://www.htrnpay.cn/scan/img/11-banner.png'></image>
     <view class='coup-item-wrap' wx:for="{{[1,2,3,4]}}">
       <view class='coup-item-content'>
         <view>
@@ -50,6 +50,16 @@
   </view>
   <view class='empty-space'></view>
   <view class='footer-wrap'>
-    <button>活动开始前提醒我</button>
+    <button bindtap='noteMeClick'>活动开始前提醒我</button>
+  </view>
+
+  <view class='pop-wrap' wx:if="{{isShowPop}}">
+    <view class='pop-content'>
+      <image bindtap='closePop' class='delete' src='https://www.htrnpay.cn/scan/img/11-close.png'></image>
+      <text class='pop-title'>活动开始前提醒我</text>
+      <input bindinput="bindNameInput" placeholder='请输入姓名'></input>
+      <input  bindinput="bindPhoneInput" placeholder='请输入手机号'></input>
+      <button bindtap='submitUserInfo' class='pop-btn'>提交</button>
+    </view>
   </view>
 </view>
