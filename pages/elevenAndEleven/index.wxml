@@ -17,11 +17,11 @@
   </view>
   <view class='coup-content'>
     <image class='banner' src='https://www.htrnpay.cn/scan/img/11-banner.png'></image>
-    <view class='coup-item-wrap' wx:for="{{[1,2,3,4]}}" wx:key="idx">
+    <view class='coup-item-wrap' wx:for="{{coupList}}" wx:key="idx">
       <view class='coup-item-content'>
         <view>
-          <text class='money-text'>￥10</text>
-          <text class='money-use-limit'>(缴费满388元可用)</text>
+          <text class='money-text'>￥{{item.discountprice}}</text>
+          <text class='money-use-limit'>({{item.couponname}})</text>
         </view>
         <view class='useful-time'>
           <text>有效期：2018年11月11日-11月22日</text>
@@ -51,6 +51,7 @@
   <view class='empty-space'></view>
   <view class='footer-wrap'>
     <button bindtap='noteMeClick'>活动开始前提醒我</button>
+    <text bindtap='gotostoreHall' class='goto-charge'>去缴费页</text>
   </view>
 
   <view class='pop-wrap' wx:if="{{isShowPop}}">

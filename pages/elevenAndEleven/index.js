@@ -9,7 +9,8 @@ Page({
   data: {
     inputPhone:null,
     inputName:null,
-    isShowPop: false
+    isShowPop: false,
+    coupList:[]
   },
 
   /**
@@ -19,8 +20,17 @@ Page({
     this.initTime();
     this.initCoupList();
   },
+  gotostoreHall(){
+    wx.navigateTo({
+      url: '/pages/tvCardModel/pay/storeHall',
+    })
+  },
   initCoupList(){
-    queryCouponsStatus.queryCouponsStatus(appInstance.cardInfo,success=>{})
+    queryCouponsStatus.queryCouponsStatus(appInstance.cardInfo,success=>{
+      this.setData({
+        coupList: success
+      })
+    }, faildCallback=>{})
   },
   initTime(){
     setTimeout(()=>{

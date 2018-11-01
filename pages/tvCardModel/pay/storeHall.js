@@ -25,17 +25,7 @@ Page({
 
   onLoad: function(options) {
     that = this;
-    qrid = options.qrid;
-    appInstance.cardInfo = {
-      custid: options.custid,
-      tvCardNum: options.tvCardNum,
-      serviceID: (options.serviceID == undefined ? 'undefined' : options.serviceID),
-      custname: options.custname,
-      addr: options.addr,
-      qrKind: (options.qrKind == undefined ? 'undefined' : options.qrKind),
-      mobile: options.mobile,
-      city: options.city
-    }
+    qrid = appInstance.cardInfo.qrid;
     this.setData({
       scanCardInfo: appInstance.cardInfo
     });

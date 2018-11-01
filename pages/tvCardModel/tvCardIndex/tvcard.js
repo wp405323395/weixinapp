@@ -47,15 +47,15 @@ Page({
     appInstance.cardInfo = {
       custid: item.custid,
       tvCardNum: item.tvCardNumber,
-      serviceID: undefined,
+      serviceID: "undefined",
       custname: item.custname,
       addr: item.addr,
-      qrKind: undefined,
+      qrKind: "undefined",
       mobile: item.mobile,
       city: item.city
     }
     wx.navigateTo({
-      url: `../pay/storeHall?qrid=${that.qrid}&custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&custname=${item.custname}&mobile=${item.mobile}&city=${item.city}`
+      url: `../pay/storeHall`
     })
   },
 

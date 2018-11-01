@@ -63,7 +63,7 @@ let loadTvCardInfo = function (context, qrid) {
         url: '/pages/elevenAndEleven/index'
       })
     } else {
-      let url = `../pay/storeHall?qrid=${qrid}&tvCardNum=${context.tvCardNum}&custid=${cardInfo.custid}&serviceID=${context.serviceID}&qrKind=${context.qrKind}&addr=${cardInfo.addr}&custname=${cardInfo.custname}&mobile=${cardInfo.mobile}&city=${cardInfo.city}`;
+      let url = `../pay/storeHall`;
       wx.redirectTo({
         url: url
       })
