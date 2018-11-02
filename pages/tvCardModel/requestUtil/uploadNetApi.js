@@ -4,7 +4,7 @@ var config = require('../../../config.js');
 var uploadNetApi = {
   // 上传支付失败的接口
   payFaild(errMsg, city, custid, tvCardNum, serviceID, qrKind, salescode){
-    new RequestEngine().request(config.recordPayFaild, { errMsg: errMsg, city: city, custid: custid, tvCardNum: tvCardNum, serviceID: serviceID, qrKind: qrKind, salescode: salescode }, { callBy: this, method: this.uploadPayFaild, params: [errMsg, city, custid, tvCardNum, serviceID, qrKind, salescode] }, (success) => {
+    new RequestEngine().request(config.recordPayFaild, { errMsg: errMsg, city: city, custid: custid, tvCardNumber: tvCardNum, serviceID: serviceID, qrKind: qrKind, salescode: salescode }, { callBy: this, method: this.uploadPayFaild, params: [errMsg, city, custid, tvCardNum, serviceID, qrKind, salescode] }, (success) => {
       console.log(success);
     }, (faild) => {
       console.log(faild)

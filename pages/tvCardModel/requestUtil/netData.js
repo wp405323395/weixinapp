@@ -52,7 +52,7 @@ var netData = {
   },
   baseTrySee(qrid, city) {
     return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.baseTrySee + `?qrid=${qrid}&city=${city}`, {}, {
+      new RequestEngine(false).request(config.baseTrySee + `?qrid=${qrid}&city=${city}`, {}, {
         callBy: this,
         method: this.loadToast,
         params: [qrid, city]
@@ -66,7 +66,7 @@ var netData = {
   },
   offlineBaseTrySee(scene, city) {
     return new Promise((resolve, reject) => {
-      new RequestEngine().request(config.offlineBaseTrySee + `?scene=${scene}&city=${city}`, {}, {
+      new RequestEngine(false).request(config.offlineBaseTrySee + `?scene=${scene}&city=${city}`, {}, {
         callBy: this,
         method: this.offlineBaseTrySee,
         params: [scene, city]
