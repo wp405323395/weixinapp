@@ -58,7 +58,7 @@ let loadTvCardInfo = function (context) {
       mobile: cardInfo.mobile,
       city: cardInfo.city
     }
-    if (context.qrKind == 'A11') {
+    if (appInstance.qrInfo.qrKind == 'A11') {
       wx.redirectTo({
         url: '/pages/elevenAndEleven/index'
       })
