@@ -432,3 +432,11 @@ scroll-view{
   top: 540rpx;
   right: 10rpx;
 }
+.coup-banner{
+  width: 100%;
+  height: 60rpx;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url('https://www.htrnpay.cn/scan/img/11-huodong.png')
+}
