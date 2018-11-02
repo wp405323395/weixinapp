@@ -5,7 +5,6 @@ var appInstance = getApp()
 let that;
 let countDown = 0;
 var qrid
-var timeInterval=8
 Page({
   data: {
     isFestival:false,
@@ -27,6 +26,7 @@ Page({
     that = this;
     qrid = appInstance.cardInfo.qrid;
     this.setData({
+      isFestival:appInstance.initIsFestival(8),
       scanCardInfo: appInstance.cardInfo
     });
     this.animation = wx.createAnimation({
@@ -35,18 +35,9 @@ Page({
     });
     this.animation.rotate(90).step();
     this.loadData();
-    this.initIsFestival();
+    
   },
-  initIsFestival:function(){
-    let date = new Date(2018,10,11);
-    let dateNow = new Date();
-    let dateDistin = date.getTime()-dateNow.getTime();
-    if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin>0){
-      this.setData({
-        isFestival:true
-      })
-    }
-  },
+  
   loadData: function() {
     if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
       this.loadCards().then(value=>{

@@ -1,6 +1,5 @@
 // pages/elevenAndEleven/index.js
 var requestUtil = require('requestUtil/coupNet.js')
-
 var appInstance = getApp()
 Page({ 
 
@@ -11,8 +10,10 @@ Page({
     inputPhone:null,
     inputName:null,
     isShowPop: false,
-    coupList:[]
+    coupList:[],
+    isFestival:false
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -20,6 +21,9 @@ Page({
   onLoad: function (options) {
     this.initTime();
     this.initCoupList();
+    this.setData({
+      isFestival: appInstance.initIsFestival(4)
+    })
   },
   getCoup:function(target) {
     let that = this;

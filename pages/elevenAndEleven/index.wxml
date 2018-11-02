@@ -54,7 +54,8 @@
   </view>
   <view class='empty-space'></view>
   <view class='footer-wrap'>
-    <button bindtap='noteMeClick'>活动开始前提醒我</button>
+    <button bindtap='noteMeClick' wx:if="{{!isFestival}}">活动开始前提醒我</button>
+    <button bindtap='gotostoreHall' wx:if="{{isFestival}}">立即缴费</button>
     <text bindtap='gotostoreHall' class='goto-charge'>去缴费页</text>
   </view>
 
