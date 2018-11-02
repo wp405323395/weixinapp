@@ -46,7 +46,7 @@
 				},
 				{
 					"id": 2,
-					"name": "用sceen进入",
+					"name": "用sceen进入,双十一码",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
 					"query": "scene=A11~0~8420610425384022",
 					"scene": "1011"
