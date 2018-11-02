@@ -35,6 +35,18 @@ Page({
     this.loadData();
     
   },
+  onShow: function () {
+    if (util.textIsNotNull(appInstance.qrid)) {
+      this.baseTrySee();// 头部黄色提示-试看
+    } else if (util.textIsNotNull(appInstance.scene)) {
+      this.offlineBaseTrySee();// 头部黄色提示-试看
+    }
+    console.log('卡信息是：', appInstance.cardInfo)
+    this.queryServstEtime()// 头部黄色提示-距离多少天到期
+    //appInstance.currentPackageInfo = null
+    appInstance.package1 = null
+    appInstance.package2 = null
+  },
   
   loadData: function() {
     if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
@@ -177,18 +189,6 @@ Page({
     })
   },
 
-  onShow: function() {
-    if (util.textIsNotNull(appInstance.qrid)) {
-      this.baseTrySee();// 头部黄色提示-试看
-    } else if (util.textIsNotNull(appInstance.scene)) {
-      this.offlineBaseTrySee();// 头部黄色提示-试看
-    }
-    console.log('卡信息是：',appInstance.cardInfo)
-    this.queryServstEtime()// 头部黄色提示-距离多少天到期
-    //appInstance.currentPackageInfo = null
-    appInstance.package1 = null
-    appInstance.package2 = null
-  },
   //试看倒计时
   refreshCountDown: function() {
     setTimeout(() => {
