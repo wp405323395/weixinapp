@@ -5,7 +5,7 @@ var appInstance = getApp()
 let that;
 let countDown = 0;
 var qrid
-var timeInterval=3
+var timeInterval=8
 Page({
   data: {
     isFestival:false,

@@ -10,7 +10,7 @@ Page({
     package1:null,
     package2:null,
     totalMoney:0,
-    usedCoup:null
+    usedCoup: { discountPrice:0}
   },
 
   /**

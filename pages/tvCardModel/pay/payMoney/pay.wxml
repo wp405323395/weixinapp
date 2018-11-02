@@ -15,7 +15,7 @@
     </view>
     <text class='money'>{{package2.price}}元/年</text>
   </view>
-  <view class='pack-item-wrap'  wx:if="{{usedCoup}}">
+  <view class='pack-item-wrap'  wx:if="{{usedCoup.discountPrice>0}}">
     <view class='left-part-wrap'>
       <text class='name'>优惠券</text>
     </view>
@@ -29,8 +29,8 @@
   <view class='footer'>
     <view class='money-total-wrap'>
       <text class='money-total-wrap-lable'>应付金额：</text>
-      <text wx:if="{{currentPackageInfo.feesums<0}}" class='total-money'>{{totalMoney-currentPackageInfo.feesums-usedCoup?usedCoup.discountPrice:0}}元</text>
-      <text wx:else class='total-money'>{{totalMoney-usedCoup?usedCoup.discountPrice:0}}元</text>
+      <text wx:if="{{currentPackageInfo.feesums<0}}" class='total-money'>{{totalMoney-currentPackageInfo.feesums-usedCoup.discountPrice}}元</text>
+      <text wx:else class='total-money'>{{totalMoney-usedCoup.discountPrice}}元</text>
     </view>
     <button bindtap='pay'>立即支付</button>
   </view>
