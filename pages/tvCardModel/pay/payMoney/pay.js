@@ -42,6 +42,9 @@ Page({
   pay: function () {
     let that = this;
     if (that.isPaying) {
+      wx.showToast({
+        title: '正在支付',
+      })
       return;
     }
     that.isPaying = true;
@@ -180,7 +183,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.isPaying = false
   },
 
   /**

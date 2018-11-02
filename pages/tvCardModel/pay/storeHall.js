@@ -180,7 +180,7 @@ Page({
     }
     this.queryServstEtime()
     // 充值下单数据
-    appInstance.currentPackageInfo = null
+    //appInstance.currentPackageInfo = null
     appInstance.package1 = null
     appInstance.package2 = null
   },
