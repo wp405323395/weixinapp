@@ -20,6 +20,17 @@ App({
       })
     }
   },
+  cardInfo:{
+    tvCardNum: null,
+    serviceID: null,
+    qrKind: null,
+    qrid: null,
+    custid: null,
+    custname: null,
+    addr: null,
+    mobile: null,
+    city: null
+  },
   qrInfo:{
     tvCardNum :null,
     qrKind :null,

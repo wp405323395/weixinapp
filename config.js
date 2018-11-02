@@ -7,7 +7,7 @@
 
 var host = 'www.htrnpay.cn';
 // var host = "192.168.2.110:8080"
-var host = "192.168.2.123:8080"
+ var host = "192.168.2.123:8080"
 // var host = "192.168.2.108:8081"
 // var host = "www.juzijumi.com:8181"
 var isHttps = ('www.htrnpay.cn' == host);
