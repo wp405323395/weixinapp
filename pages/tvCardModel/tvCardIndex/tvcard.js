@@ -22,11 +22,12 @@ Page({
           tvCardNet.loadRecordHistory(that)
         }, 500);
       } else {
-        that.qrid = qrid;
+        appInstance.qrid = qrid;
+        appInstance.scene = scene;
         that.getQrInfo(scene);
         setTimeout(() => {
-          if (util.textIsNotNull(that.tvCardNum)) { //进入产品列表
-            tvCardNet.loadTvCardInfo(that, that.tvCardNum, that.qrid);
+          if (util.textIsNotNull(appInstance.qrInfo.tvCardNum)) { //进入产品列表
+            tvCardNet.loadTvCardInfo(that);
           } else {
             tvCardNet.loadRecordHistory(that) //进入充值历史记录
           }
@@ -45,12 +46,13 @@ Page({
     let that =this;
     let item = e.currentTarget.dataset.id
     appInstance.cardInfo = {
-      custid: item.custid,
       tvCardNum: item.tvCardNumber,
       serviceID: "undefined",
+      qrKind: "undefined",
+      qrid: '',
+      custid: item.custid,
       custname: item.custname,
       addr: item.addr,
-      qrKind: "undefined",
       mobile: item.mobile,
       city: item.city
     }
@@ -67,9 +69,9 @@ Page({
     if (prarams == null || prarams.length != 3) {
       return null;
     }
-    this.tvCardNum = prarams[2];
-    this.qrKind = prarams[0];
-    this.serviceID = prarams[1];
+    appInstance.qrInfo.tvCardNum = prarams[2];
+    appInstance.qrInfo.qrKind = prarams[0];
+    appInstance.qrInfo.serviceID = prarams[1];
   },
   
   onMsgConfirm:function(e){

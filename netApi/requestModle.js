@@ -1,6 +1,7 @@
 import Header from './Header.js'    //引入类
 const loginJs = require('./login.js');
-
+const loginMaxCount = 3
+var count = 0 ;
 var request = function (url, data, reqMethod, requestSuccess, requestFail, requestComplete, interceptors) {
   
   var header = new Header('application/json').getHeader();
@@ -36,7 +37,11 @@ var request = function (url, data, reqMethod, requestSuccess, requestFail, reque
           interceptor.onAutherErrorResponse(url, header, responseData);
         }
         console.log("身份失效");
-        loginJs.clientLogin(reqMethod);
+        if (count < loginMaxCount) {
+          loginJs.clientLogin(reqMethod);
+          count++;
+        }
+        
       } else if (response_code == '0') {
         for (let interceptor of interceptors) {
           interceptor.onResponse(url, header, responseData);

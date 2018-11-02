@@ -28,13 +28,13 @@ let loadRecordHistory = function(context) {
 
 }
 
-let loadTvCardInfo = function (context, qrid) {
+let loadTvCardInfo = function (context) {
 
   new Promise((resolve, reject) => {
     var param = {
-      tvCardNumber: context.tvCardNum,
-      serviceID: context.serviceID,
-      qrKind: context.qrKind
+      tvCardNumber: appInstance.qrInfo.tvCardNum,
+      serviceID: appInstance.qrInfo.serviceID,
+      qrKind: appInstance.qrInfo.qrKind
     };
     new RequestEngine().request(config.queryCustInfo, param, { callBy: this, method: this.loadTvCardInfo, params: [context] }, (success) => {
       resolve(success);
@@ -48,13 +48,13 @@ let loadTvCardInfo = function (context, qrid) {
     let cardInfo = value.custList[0];
     
     appInstance.cardInfo = {
-      qrid:qrid,
+      tvCardNum: appInstance.qrInfo.tvCardNum,
+      serviceID: appInstance.qrInfo.serviceID,
+      qrKind: appInstance.qrInfo.qrKind,
+      qrid:'',
       custid: cardInfo.custid,
-      tvCardNum: context.tvCardNum,
-      serviceID: context.serviceID,
       custname: cardInfo.custname,
       addr: cardInfo.addr,
-      qrKind: context.qrKind,
       mobile: cardInfo.mobile,
       city: cardInfo.city
     }

@@ -20,7 +20,13 @@ App({
       })
     }
   },
-
+  qrInfo:{
+    tvCardNum :null,
+    qrKind :null,
+    serviceID :null
+  },
+  qrid:null,
+  scene:null,
   globalData: {
     userInfo: null
   },
@@ -31,5 +37,6 @@ App({
     if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin > 0) {
       return true;
     }
+    return false;
   },
 })

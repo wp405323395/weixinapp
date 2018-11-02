@@ -4,7 +4,6 @@ var netData = require('../requestUtil/netData.js')
 var appInstance = getApp()
 let that;
 let countDown = 0;
-var qrid
 Page({
   data: {
     isFestival:false,
@@ -24,7 +23,6 @@ Page({
 
   onLoad: function(options) {
     that = this;
-    qrid = appInstance.cardInfo.qrid;
     this.setData({
       isFestival:appInstance.initIsFestival(8),
       scanCardInfo: appInstance.cardInfo
@@ -127,8 +125,22 @@ Page({
 
   },
   //试看请求
-  baseTrySee: function (qrid) {
-    netData.baseTrySee(qrid, appInstance.cardInfo.city).then(success => {
+  baseTrySee: function () {
+    netData.baseTrySee(appInstance.qrid, appInstance.cardInfo.city).then(success => {
+      if (countDown == 0) {
+        countDown = success.time;
+        that.setData({
+          toastType: success.type,
+        });
+        if (success.type == '1') {
+          that.refreshCountDown();
+        }
+      }
+    })
+  },
+  //试看请求
+  offlineBaseTrySee: function () {
+    netData.offlineBaseTrySee(appInstance.scene, appInstance.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
         that.setData({
@@ -166,8 +178,10 @@ Page({
   },
 
   onShow: function() {
-    if (util.textIsNotNull(qrid)) {
-      this.baseTrySee(qrid);
+    if (util.textIsNotNull(appInstance.qrid)) {
+      this.baseTrySee();
+    } else if (util.textIsNotNull(appInstance.scene)) {
+      this.offlineBaseTrySee();
     }
     console.log('卡信息是：',appInstance.cardInfo)
     this.queryServstEtime()

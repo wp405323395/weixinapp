@@ -64,6 +64,20 @@ var netData = {
     })
 
   },
+  offlineBaseTrySee(scene, city) {
+    return new Promise((resolve, reject) => {
+      new RequestEngine().request(config.offlineBaseTrySee + `?scene=${scene}&city=${city}`, {}, {
+        callBy: this,
+        method: this.offlineBaseTrySee,
+        params: [scene, city]
+      }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    })
+
+  },
 
   loadCards(custid) {
     return new Promise((resolve, reject) => {

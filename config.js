@@ -34,6 +34,7 @@ var config = {
     doQueServSalesPkgInfo: `${schema}://${host}/scanweb/qrwx/wx-order!doQueServSalesPkgInfo`,
     recordPayFaild: `${schema}://${host}/scanweb/qrwx/wx-order!savePayErrMsg`,
     baseTrySee: `${schema}://${host}/scanweb/qrwx/qrcode!baseTrySee`,
+    offlineBaseTrySee: `${schema}://${host}/scanweb/qrwx/qrcode!offlineBaseTrySee`,
     getFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!getSurvey`, //查询调研数据
     setFeedbackPaper: `${schema}://${host}/scanweb/qrwx/survey!saveSurveyResult`, //发送调研结果
     saveFeedback: `${schema}://${host}/scanweb/qrwx/feedback!saveFeedback`, //小程序调研

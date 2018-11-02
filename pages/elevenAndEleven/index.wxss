@@ -145,7 +145,7 @@ background-image: url('https://www.htrnpay.cn/scan/img/11-coup.png');
 }
 .goto-charge{
   margin-top: 30rpx;
-  margin-left: 180rpx;
+  margin-left: 20rpx;
 }
 
 .footer-wrap>button{
@@ -158,7 +158,6 @@ background-image: url('https://www.htrnpay.cn/scan/img/11-coup.png');
   font-size: 28rpx;
   margin-left: 0;
   margin-right: 0;
-  margin-right: -140rpx;
 }
 .empty-space{
   height: 100rpx;
