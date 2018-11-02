@@ -105,6 +105,29 @@ var netData = {
         reject(faild);
       });
     })
+  },
+  queryUsrCanUseCoupons(cardInfo){
+    let city = cardInfo.city;
+    let custid = cardInfo.custid;
+    let tvCardNumber = cardInfo.tvCardNum;
+    let serviceID = cardInfo.serviceID
+    let qrKind = cardInfo.qrKind
+    return new Promise((resolve, reject) => {
+      new RequestEngine(false).request(config.queryUsrCanUseCoupons, {
+        city,
+        custid,
+        tvCardNumber,
+        serviceID,
+        qrKind}, {
+        callBy: this,
+          method: this.queryUsrCanUseCoupons,
+          params: [cardInfo]
+      }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+    })
   }
 }
 module.exports = netData;

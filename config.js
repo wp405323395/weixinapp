@@ -42,7 +42,9 @@ var config = {
     queryServstEtime: `${schema}://${host}/scanweb/qrwx/wx-order!queryServstEtime`, //到期时间
 
     queryCouponsStatus: `${schema}://${host}/scanweb/active/coupon!queryCouponsStatus`,
-    activityRegister: `${schema}://${host}/scanweb/active/buy-give!activityRegister`
+    activityRegister: `${schema}://${host}/scanweb/active/buy-give!activityRegister`,
+    receiveCoupon: `${schema}://${host}/scanweb/active/coupon!receiveCoupon`,
+    queryUsrCanUseCoupons: `${schema}://${host}/scanweb/active/coupon!queryUsrCanUseCoupons`,
 };
 
 

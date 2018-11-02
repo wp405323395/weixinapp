@@ -9,7 +9,8 @@ Page({
   data: {
     package1:null,
     package2:null,
-    totalMoney:0
+    totalMoney:0,
+    usedCoup:null
   },
 
   /**
@@ -21,7 +22,27 @@ Page({
     appInstance.cardInfo
     this.currentPackageInfo = appInstance.currentPackageInfo;
     this.freshUi();
-    
+    this.loadCoup()
+  },
+  //加在优惠券
+  loadCoup(){
+    let that = this;
+    netData.queryUsrCanUseCoupons(appInstance.cardInfo).then(value=>{
+      let coups = value;
+      coups.sort(function(m,n){
+        if (m.fullPrice > n.fullPrice) {return -1}
+        else if (m.fullPrice < n.fullPrice) {return 1}
+        else {return 0};
+      })
+      for (let item of coups) {
+        if (item.fullPrice < this.data.totalMoney) {
+          that.setData({
+            usedCoup: item
+          })
+          return 
+        }
+      }
+    })  
   },
   freshUi(){
     let money1 = 0;
@@ -60,7 +81,8 @@ Page({
       custfess: this.currentPackageInfo.feesums,
       unit: this.initUnit(),//订购单位 0：天；1：月；2：年
       salestype: this.initSalestype(), //类型 0订购产品;1营销方案订购
-      salescode: this.initSalescode()//产品编码
+      salescode: this.initSalescode(),//产品编码
+      userCouponId: this.data.usedCoup.userCouponId //优惠券
     };
     netData.pay(param).then(value => {
       wx.requestPayment({
@@ -71,7 +93,6 @@ Page({
         'paySign': value.paySign,
         'success': function (res) {
           that.isPaying = false;
-          console.log('支付结果', res);
           wx.redirectTo({
             url: '../success/paySuccess',
           })
@@ -164,7 +185,6 @@ Page({
   },
   //跳转到反馈界面
   showFeedbackPaper(event) {
-    console.log('target ', event.target.id)
     wx.navigateTo({
       url: '../../feedback/feedback?feedBackType=' + event.target.id,
     })

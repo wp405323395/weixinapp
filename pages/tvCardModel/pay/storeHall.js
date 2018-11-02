@@ -178,6 +178,7 @@ Page({
     if (util.textIsNotNull(qrid)) {
       this.baseTrySee(qrid);
     }
+    console.log('卡信息是：',appInstance.cardInfo)
     this.queryServstEtime()
     // 充值下单数据
     //appInstance.currentPackageInfo = null

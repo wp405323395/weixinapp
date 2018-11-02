@@ -21,6 +21,15 @@ Page({
     this.initTime();
     this.initCoupList();
   },
+  getCoup:function(target) {
+    let that = this;
+    let item = this.data.coupList[target.currentTarget.dataset.idx]
+    requestUtil.receiveCoupon(appInstance.cardInfo, item.couponId,success=>{
+      that.initCoupList()
+    },err=>{
+
+    })
+  },
   gotostoreHall(){
     wx.navigateTo({
       url: '/pages/tvCardModel/pay/storeHall',
@@ -63,7 +72,7 @@ Page({
   },
   submitUserInfo:function(){
     let that = this;
-    requestUtil.activityRegister(appInstance.cardInfo, { name: that.inputName, phone: that.inputPhone}, this)
+    requestUtil.activityRegister(appInstance.cardInfo, { name: that.data.inputName, phone: that.data.inputPhone}, this)
   },
   bindNameInput: function (e) {
     this.setData({

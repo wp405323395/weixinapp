@@ -15,6 +15,19 @@ var queryCouponsStatus = function (cardInfo, successCallback, faildCallback) {
   });
 
 }
+var receiveCoupon = function (cardInfo, couponId, successCallback, faildCallback) {
+  let that = this;
+  let city = cardInfo.city
+  let custid = cardInfo.custid
+  let tvCardNumber = cardInfo.tvCardNum
+  let serviceID = cardInfo.serviceID
+  let qrKind = cardInfo.qrKind
+  new RequestEngine().request(config.receiveCoupon, { city, custid, tvCardNumber, serviceID, qrKind, couponId }, { callBy: that, method: that.receiveCoupon, params: [cardInfo, couponId, successCallback, faildCallback] }, (success) => {
+    successCallback(success)
+  }, (faild) => {
+    faildCallback(faild)
+  });
+}
 var activityRegister = function (cardInfo,data,context) {
   let that = this;
   let city = cardInfo.city
@@ -42,3 +55,4 @@ var activityRegister = function (cardInfo,data,context) {
 }
 module.exports.queryCouponsStatus = queryCouponsStatus;
 module.exports.activityRegister = activityRegister;
+module.exports.receiveCoupon = receiveCoupon;

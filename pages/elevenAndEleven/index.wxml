@@ -17,7 +17,7 @@
   </view>
   <view class='coup-content'>
     <image class='banner' src='https://www.htrnpay.cn/scan/img/11-banner.png'></image>
-    <view class='coup-item-wrap' wx:for="{{coupList}}" wx:key="idx">
+    <view class="coup-item-wrap {{ item.status == 2?'coup-item-wrap-dark':'coup-item-wrap-light'}}" wx:for="{{coupList}}" wx:key="idx" wx:for-index="idx">
       <view class='coup-item-content'>
         <view>
           <text class='money-text'>￥{{item.discountPrice}}</text>
@@ -28,7 +28,11 @@
         </view>
       </view>
       <view>
-        <text class='get-it-now'>{{item.status}}立即领取</text>
+        <text wx:if="{{item.status==0}}" class='get-it-now'>未开始</text>
+        <text bindtap='getCoup' data-idx='{{idx}}' wx:if="{{item.status==1}}" class='get-it-now'>立即领取</text>
+        <text wx:if="{{item.status==2}}" class='get-it-now'>已过期</text>
+        <text wx:if="{{item.status==3}}" class='get-it-now'>已领完</text>
+        <text wx:if="{{item.status==4}}" class='get-it-now'>已领取</text>
       </view>
     </view>
   </view>
