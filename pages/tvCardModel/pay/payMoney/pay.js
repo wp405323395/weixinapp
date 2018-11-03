@@ -35,7 +35,7 @@ Page({
         else {return 0};
       })
       for (let item of coups) {
-        if (item.fullPrice < this.data.totalMoney) {
+        if (item.fullPrice <= this.data.totalMoney) {
           that.setData({
             usedCoup: item
           })
