@@ -1,7 +1,7 @@
 <view class="content">
   <image class='header-background' mode="widthFix" src='https://www.htrnpay.cn/scan/img/11-bj_01.png'></image>
   <image class='header-img' src='../../img/11-header-img.png'></image>
-  <view class='time-wrap'>
+  <view class='time-wrap' wx:if="{{isShowCountDownTime}}">
     <view class='time-wrap-header'>
       <view class='time-wrap-header-line'></view>
       <text class='time-wrap-header-text'>距离活动开始还有</text>
