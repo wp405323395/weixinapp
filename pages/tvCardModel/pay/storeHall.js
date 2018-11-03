@@ -1,13 +1,14 @@
 // pay.js
 var util = require('../../../utils/util.js');
 var netData = require('../requestUtil/netData.js')
+var coupNet = require('../../elevenAndEleven/requestUtil/coupNet.js')
 var appInstance = getApp()
 let that;
 let countDown = 0;
 Page({
   data: {
-    isFestival:false,
-    isBizEndTime:false,
+    isFestival: false,
+    isBizEndTime: false,
     recommendProduct: null,
     recommendPackage: null,
     packageSelectIndex: -1,
@@ -23,7 +24,7 @@ Page({
   onLoad: function(options) {
     that = this;
     this.setData({
-      isFestival:appInstance.initIsFestival(8),
+      isFestival: appInstance.initIsFestival(8),
       scanCardInfo: appInstance.cardInfo
     });
     this.animation = wx.createAnimation({
@@ -31,35 +32,61 @@ Page({
       timingFunction: 'ease',
     });
     this.animation.rotate(90).step();
-    this.loadData();
-    
+    if (this.data.isFestival) {
+      coupNet.queryCouponsStatus(appInstance.cardInfo, value => {
+        let coups = value;
+        coups.sort(function(m, n) {
+          if (m.fullPrice > n.fullPrice) {
+            return -1
+          } else if (m.fullPrice < n.fullPrice) {
+            return 1
+          } else {
+            return 0
+          };
+        })
+        that.coups = coups;
+
+        this.loadData();
+      }, faildCallback => {
+
+      })
+    } else {
+      this.loadData();
+    }
   },
-  onShow: function () {
+  onShow: function() {
     if (util.textIsNotNull(appInstance.qrid)) {
-      this.baseTrySee();// 头部黄色提示-试看
+      this.baseTrySee(); // 头部黄色提示-试看
     } else if (util.textIsNotNull(appInstance.scene)) {
-      this.offlineBaseTrySee();// 头部黄色提示-试看
+      this.offlineBaseTrySee(); // 头部黄色提示-试看
     }
     console.log('卡信息是：', appInstance.cardInfo)
-    this.queryServstEtime()// 头部黄色提示-距离多少天到期
+    this.queryServstEtime() // 头部黄色提示-距离多少天到期
     //appInstance.currentPackageInfo = null
     appInstance.package1 = null
     appInstance.package2 = null
   },
-  
+  getCanUsedCoup(price) {
+    for (let item of this.coups) {
+      if (item.fullPrice < price) {
+        return item
+      }
+    }
+    return null;
+  },
   loadData: function() {
     if (util.textIsNull(appInstance.cardInfo.tvCardNum)) {
-      this.loadCards().then(value=>{
+      this.loadCards().then(value => {
         that.loadCurrentPackageInfo();
       });
     } else {
       that.loadPackage().then(value => {
         that.loadCurrentPackageInfo();
       })
-      
+
     }
   },
-  gotoFestival:function() {
+  gotoFestival: function() {
     wx.navigateTo({
       url: '/pages/elevenAndEleven/index',
     })
@@ -81,28 +108,39 @@ Page({
             }
             item.salesintro = a
             item.price = parseFloat(item.price)
+            if (item.prdType == 'a104') {
+              item.totalPrice = parseFloat(item.price) + parseFloat(value.salesList[0].price)
+              item.totalSalesname = `${item.salesname}+${value.salesList[0].salesname}`
+            } else {
+              item.totalPrice = parseFloat(item.price)
+              item.totalSalesname = item.salesname
+            }
+            if (this.coups) {
+              item.coupItem = this.getCanUsedCoup(item.totalPrice)
+            }
           }
           that.setData({
             recommendProduct: value.salesList[0],
             recommendPackage: value.salesList.splice(1)
           });
-          
         }
-      } catch(err){
-        setTimeout(()=>{
+      } catch (err) {
+        setTimeout(() => {
           wx.showToast({
-            icon:'none',
+            icon: 'none',
             title: '产品介绍数据有误',
           });
-        },1000)
+        }, 1000)
 
       };
 
-    }).catch(err => {})
+    }).catch(err => {
+      console.log('******************',err)
+    })
 
   },
   // 当前产品
-  loadCurrentPackageInfo: function () {
+  loadCurrentPackageInfo: function() {
     netData.loadCurrentPackageInfo(appInstance.cardInfo).then(success => {
       let money1 = 0;
       let money2 = 0;
@@ -137,7 +175,7 @@ Page({
 
   },
   //试看请求
-  baseTrySee: function () {
+  baseTrySee: function() {
     netData.baseTrySee(appInstance.qrid, appInstance.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
@@ -151,7 +189,7 @@ Page({
     })
   },
   //试看请求
-  offlineBaseTrySee: function () {
+  offlineBaseTrySee: function() {
     netData.offlineBaseTrySee(appInstance.scene, appInstance.cardInfo.city).then(success => {
       if (countDown == 0) {
         countDown = success.time;
@@ -165,20 +203,20 @@ Page({
     })
   },
   // 快到期的催费。
-  queryServstEtime(){
-    netData.queryServstEtime(appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum).then(success=>{
+  queryServstEtime() {
+    netData.queryServstEtime(appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum).then(success => {
 
-      let times = success.map(item=>{
+      let times = success.map(item => {
         return new Date(item.value.replace(/-/g, '/')).getTime();
       })
       let minTime = Math.min(...times)
       let disTime = minTime - new Date().getTime();
       var days = Math.floor(disTime / (24 * 3600 * 1000))
       console.log('差值日期是：', days)
-      if(days<30) {
+      if (days < 30) {
         this.setData({
           deadline: days,
-          isBizEndTime:true
+          isBizEndTime: true
         })
       } else {
         this.setData({
@@ -210,9 +248,9 @@ Page({
   },
   //基本包的选择
   select: function(event) {
-    let index = event.currentTarget.dataset.itemselect 
+    let index = event.currentTarget.dataset.itemselect
     this.setData({
-        packageSelectIndex: (this.data.packageSelectIndex != index ? index : -1)
+      packageSelectIndex: (this.data.packageSelectIndex != index ? index : -1)
     });
   },
 
@@ -285,11 +323,11 @@ Page({
         showCancel: false,
         confirmText: "确定"
       })
-      return 
+      return
     }
     appInstance.package1 = this.data.recommendProduct
     appInstance.package2 = this.data.recommendPackage[this.data.packageSelectIndex]
-    
+
     wx.navigateTo({
       url: 'payMoney/pay',
     })
@@ -300,7 +338,7 @@ Page({
     countDown = 0;
   },
   //跳转到充值界面
-  gotoCharge: function () {
+  gotoCharge: function() {
     wx.navigateTo({
       url: '../charge/charge',
     })

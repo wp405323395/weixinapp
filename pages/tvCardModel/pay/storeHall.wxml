@@ -137,10 +137,8 @@
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
-            <text wx:if="{{item.prdType == 'a104'}}" class='package-content-title-text'>{{item.salesname +'+'+ recommendProduct.salesname}}</text>
-            <text wx:else class='package-content-title-text'>{{item.salesname}}</text>
-            <text wx:if="{{item.prdType == 'a104'}}" class='package-content-money-price-now'>{{item.price+recommendProduct.price}}/年</text>
-            <text wx:else class='package-content-money-price-now'>{{item.price}}/年</text>
+            <text class='package-content-title-text'>{{item.totalSalesname}}</text>
+            <text class='package-content-money-price-now'>{{item.totalPrice}}/年</text>
           </view>
 
 
@@ -161,6 +159,12 @@
             <text class="introl-key {{'pro'+idx}}">{{intros.key}}</text>
             <text class='introl-value'>{{intros.value}}</text>
 
+          </view>
+          <view class='introl-item-wrap' wx:if="{{item.coupItem}}">
+            <text class="introl-key introl-key2">领券</text>
+            <text class='introl-value introl-value-small'>可用优惠券</text>
+            <image class='tickit-background' src='../../../img/biaoqian_01@2x.png'></image>
+            <text class='coup-name'>{{item.coupItem.couponName}}</text>
           </view>
         </view>
 

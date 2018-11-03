@@ -396,11 +396,23 @@ scroll-view{
   color: white;
   margin-right: 15rpx;
 }
+.introl-key2{
+  background-color: #ff9a38;
+}
+.tickit-background{
+  width: 150rpx;
+  height: 40rpx;
+  margin: 0;
+  padding:0;
+}
 .introl-value{
   width: 400rpx;
   word-wrap: break-word;
   overflow: hidden;
   display: inline-block;
+}
+.introl-value-small{
+  width:150rpx;
 }
 .introl-item-wrap{
   margin-bottom: 15rpx;
@@ -409,6 +421,11 @@ scroll-view{
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.coup-name{
+  position: relative;
+  color: white;
+  right: 135rpx;
 }
 .pro0{
   background-color: rgb(0, 162, 255);
