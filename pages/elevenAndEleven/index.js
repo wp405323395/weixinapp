@@ -11,7 +11,8 @@ Page({
     inputName:null,
     isShowPop: false,
     coupList:[],
-    isFestival:false
+    isFestival:false,
+    isShowCountDownTime:false
   },
   
 
@@ -48,15 +49,19 @@ Page({
   },
   initTime(){
     setTimeout(()=>{
-      let date = new Date(2018, 10, 11);
+      let date = new Date(2018, 10, 8);
       let dateNow = new Date();
       let mss = date.getTime() - dateNow.getTime();
+      if(mss<0) {
+        return;
+      }
       var days = parseInt(mss / (1000 * 60 * 60 * 24));
       var  hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var  minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = parseInt((mss % (1000 * 60)) / 1000);
       hours = hours + days * 24
       this.setData({
+        isShowCountDownTime:true,
         hours: hours<10?'0'+hours:hours,
         minutes:minutes<10?'0'+minutes:minutes,
         seconds:seconds<10?'0'+seconds:seconds
