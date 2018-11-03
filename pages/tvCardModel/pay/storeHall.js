@@ -114,9 +114,14 @@ Page({
               item.coupItem = this.getCanUsedCoup(item.totalPrice)
             }
           }
+          let recommendProduct = value.salesList[0];
+          let recommendPackage = value.salesList.splice(1);
+          if (!recommendPackage) {
+            recommendPackage = recommendProduct
+          }
           that.setData({
-            recommendProduct: value.salesList[0],
-            recommendPackage: value.salesList.splice(1)
+            recommendProduct: recommendProduct,
+            recommendPackage: recommendPackage
           });
         }
       } catch (err) {
