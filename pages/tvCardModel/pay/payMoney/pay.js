@@ -47,7 +47,7 @@ Page({
   freshUi(){
     let money1 = 0;
     let money2 = 0;
-    if (this.package1) {
+    if (this.package1 && this.package2.prdType == 'a104') {
       money1 = parseFloat(this.package1.price)
     }
     if(this.package2) {
@@ -127,7 +127,7 @@ Page({
   initUnit() {
     let u1 = '';
     let u2 = '';
-    if (this.package1) {
+    if (this.package1 && this.package2.prdType == 'a104') {
       u1 = this.package1.unit
     }
     if (this.package2) {
@@ -147,7 +147,7 @@ Page({
   initSalestype() {
     let u1 = '';
     let u2 = '';
-    if (this.package1) {
+    if (this.package1 && this.package2.prdType == 'a104') {
       u1 = this.package1.salestype
     }
     if (this.package2) {
@@ -166,7 +166,7 @@ Page({
   initSalescode() {
     let u1 = '';
     let u2 = '';
-    if (this.package1) {
+    if (this.package1 && this.package2.prdType == 'a104') {
       u1 = this.package1.salescode
     }
     if (this.package2) {

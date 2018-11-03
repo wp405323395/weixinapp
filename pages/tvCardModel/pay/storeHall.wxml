@@ -122,54 +122,13 @@
 
 
 
-  <view class='user-info-style' wx:if="{{recommendProduct}}">
-    <view class='user-info-lable'>
-      <view class='left-icon'></view>
-      <text class='text-header'>推荐产品</text>
-    </view>
-    <text bindtap="showFeedbackPaper" id='package' class='feedback-text'>意见反馈</text>
-  </view>
-  <view class='pkglist-wrap' wx:if="{{recommendProduct}}">
-    <view class="hor">
-      <view class="package-content {{isBasePackSelect?'package-content-select':''}}" bindtap='select1'>
-
-        <view class='package-content-title'>
-          <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
-            <text class='package-content-title-text'>{{recommendProduct.salesname}}</text>
-            <text class='package-content-money-price-now'>{{recommendProduct.price}}/年</text>
-          </view>
-
-
-        </view>
-        <view style='height:1px; margin-top:15rpx; background-color: #eeeeee;'></view>
-        <view class='pkg-tag-wrap'>
-          <view wx:if="{{recommendProduct.tag!='null'}}">
-            <image class='pkg-tag-image text-tag' wx:if="{{recommendProduct.tag=='optimal'}}" src='https://www.htrnpay.cn/scan/img/green-tag.png'></image>
-            <image class='pkg-tag-image pic-tag' wx:elif="{{recommendProduct.tag=='current'}}" src='https://www.htrnpay.cn/scan/img/current-tag.png'></image>
-            <image class='pkg-tag-image text-tag' wx:elif="{{recommendProduct.tag}}" src='https://www.htrnpay.cn/scan/img/blue-tag.png'></image>
-            <text wx:if="{{recommendProduct.tag =='optimal'}}" class='text-tag-text'>最优套餐</text>
-            <text wx:elif="{{recommendProduct.tag!='optimal' && recommendProduct.tag!='current' && recommendProduct.tag }}" class='text-tag-text'>{{recommendProduct.tag}}</text>
-          </view>
-        </view>
-
-        <view style='height:1px; background-color: #eeeeee;'></view>
-        <view class='package-content-money' style='display:block;'>
-          <view class='introl-item-wrap' wx:for="{{recommendProduct.salesintro}}" wx:for-index="idx" wx:key="unique" wx:for-item="intros">
-            <text class="introl-key {{'pro'+idx}}">{{intros.key}}</text>
-            <text class='introl-value'>{{intros.value}}</text>
-
-          </view>
-        </view>
-
-        <image hidden='{{!isBasePackSelect}}' class='current-selected' src='https://www.htrnpay.cn/scan/img/box_selected.png'></image>
-      </view>
-    </view>
-  </view>
+  
   <view class='user-info-style' wx:if="{{recommendPackage&&recommendPackage.length>0}}">
     <view class='user-info-lable'>
       <view class='left-icon'></view>
       <text class='text-header'>推荐套餐</text>
     </view>
+    <text bindtap="showFeedbackPaper" id='package' class='feedback-text'>意见反馈</text>
   </view>
   <view wx:if="{{isFestival}}" bindtap='gotoFestival' class='coup-banner'></view>
   <view class='pkglist-wrap' wx:if="{{recommendPackage&&recommendPackage.length>0}}">
@@ -178,8 +137,10 @@
 
         <view class='package-content-title'>
           <view style=' display: flex;flex-direction: row;justify-content: space-between;'>
-            <text class='package-content-title-text'>{{item.salesname}}</text>
-            <text class='package-content-money-price-now'>{{item.price}}/年</text>
+            <text wx:if="{{item.prdType == 'a104'}}" class='package-content-title-text'>{{item.salesname +'+'+ recommendProduct.salesname}}</text>
+            <text wx:else class='package-content-title-text'>{{item.salesname}}</text>
+            <text wx:if="{{item.prdType == 'a104'}}" class='package-content-money-price-now'>{{item.price+recommendProduct.price}}/年</text>
+            <text wx:else class='package-content-money-price-now'>{{item.price}}/年</text>
           </view>
 
 

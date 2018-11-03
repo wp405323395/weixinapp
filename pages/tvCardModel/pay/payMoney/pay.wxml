@@ -1,7 +1,7 @@
 <!--pages/tvCardModel/pay/payMoney/pay.wxml-->
 <view class='content'>
   <text class='lable'>订单明细</text>
-  <view class='pack-item-wrap' wx:if="{{package1}}">
+  <view class='pack-item-wrap' wx:if="{{package1&&package2.prdType == 'a104'}}">
     <view class='left-part-wrap'>
       <text class='name'>{{package1.salesname}}</text>
       <text class='detail'>产品有效期：1年</text>

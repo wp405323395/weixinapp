@@ -10,7 +10,6 @@ Page({
     isBizEndTime:false,
     recommendProduct: null,
     recommendPackage: null,
-    isBasePackSelect: true,
     packageSelectIndex: -1,
     toastType: -1,
     cardNumberSelectHidden: true,
@@ -81,6 +80,7 @@ Page({
               })
             }
             item.salesintro = a
+            item.price = parseFloat(item.price)
           }
           that.setData({
             recommendProduct: value.salesList[0],
@@ -215,12 +215,7 @@ Page({
         packageSelectIndex: (this.data.packageSelectIndex != index ? index : -1)
     });
   },
-  //推荐套餐的选择
-  select1: function(event) {
-    this.setData({
-      isBasePackSelect: !this.data.isBasePackSelect
-    })
-  },
+
   //选择卡号。
   onCardNumberSelectOptionClick: function(e) {
     let id = parseInt(e.currentTarget.id);
@@ -276,7 +271,7 @@ Page({
         confirmText: "确定"
       })
       return;
-    } else if (!this.data.isBasePackSelect && this.data.packageSelectIndex == -1) {
+    } else if (this.data.packageSelectIndex == -1) {
       wx.showModal({
         title: "至少选择一个产品下单",
         showCancel: false,
@@ -292,12 +287,8 @@ Page({
       })
       return 
     }
-    if (this.data.isBasePackSelect) {
-      appInstance.package1 = this.data.recommendProduct
-    }
-    if (this.data.packageSelectIndex>-1) {
-      appInstance.package2 = this.data.recommendPackage[this.data.packageSelectIndex]
-    }
+    appInstance.package1 = this.data.recommendProduct
+    appInstance.package2 = this.data.recommendPackage[this.data.packageSelectIndex]
     
     wx.navigateTo({
       url: 'payMoney/pay',
