@@ -63,7 +63,7 @@ Page({
   },
   getCanUsedCoup(price) {
     for (let item of this.coups) {
-      if (item.fullPrice < price) {
+      if (item.fullPrice <= price) {
         return item
       }
     }
