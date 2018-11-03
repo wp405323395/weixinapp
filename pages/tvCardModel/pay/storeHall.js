@@ -116,8 +116,8 @@ Page({
           }
           let recommendProduct = value.salesList[0];
           let recommendPackage = value.salesList.splice(1);
-          if (!recommendPackage) {
-            recommendPackage = recommendProduct
+          if (recommendPackage.length ==0) {
+             recommendPackage.push(recommendProduct)
           }
           that.setData({
             recommendProduct: recommendProduct,
