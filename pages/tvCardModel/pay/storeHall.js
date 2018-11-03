@@ -36,13 +36,7 @@ Page({
       coupNet.queryCouponsStatus(appInstance.cardInfo, value => {
         let coups = value;
         coups.sort(function(m, n) {
-          if (m.fullPrice > n.fullPrice) {
-            return -1
-          } else if (m.fullPrice < n.fullPrice) {
-            return 1
-          } else {
-            return 0
-          };
+          return n.discountPrice - m.discountPrice
         })
         that.coups = coups;
 

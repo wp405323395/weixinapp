@@ -29,11 +29,10 @@ Page({
     let that = this;
     netData.queryUsrCanUseCoupons(appInstance.cardInfo).then(value=>{
       let coups = value;
-      coups.sort(function(m,n){
-        if (m.fullPrice > n.fullPrice) {return -1}
-        else if (m.fullPrice < n.fullPrice) {return 1}
-        else {return 0};
+      coups.sort(function (m, n) {
+        return n.discountPrice - m.discountPrice
       })
+      console.log('可用优惠券，倒序：',coups)
       for (let item of coups) {
         if (item.fullPrice <= this.data.totalMoney) {
           that.setData({
