@@ -171,7 +171,7 @@
       <text class='text-header'>推荐套餐</text>
     </view>
   </view>
-  <view class='coup-banner'></view>
+  <view wx:if="{{isFestival}}" bindtap='gotoFestival' class='coup-banner'></view>
   <view class='pkglist-wrap' wx:if="{{recommendPackage&&recommendPackage.length>0}}">
     <view class="hor">
       <view wx:for="{{recommendPackage}}" wx:key="index" wx:for-index="index" wx:for-item="item" class="package-content {{packageSelectIndex==index?'package-content-select':''}}" bindtap='select' data-itemselect='{{index}}'>
