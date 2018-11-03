@@ -157,6 +157,8 @@
   margin-bottom: 0;
   font-size: 30rpx;
   display: inline-block;
+  width: 480rpx;
+
 }
 .package-content-money{
   display: flex;
