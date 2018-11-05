@@ -46,7 +46,8 @@ function getScene(options, callback, flag) {
     return qrid;
   }else{
     if (util.textIsNull(scene)) {
-
+      callback({ failed: true })
+      return ;
     //判断下，如果scene 包含~ 或者长度小于15 不需要解密或者flag 为true 则强制需要解密
     } else if (flag || (scene.length > 15 && scene.indexOf('~') < 0)) {
       try {

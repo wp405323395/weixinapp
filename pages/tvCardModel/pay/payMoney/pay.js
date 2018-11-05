@@ -22,9 +22,7 @@ Page({
     appInstance.cardInfo
     this.currentPackageInfo = appInstance.currentPackageInfo;
     this.freshUi();
-    if (appInstance.initIsFestival(4)) {
-      this.loadCoup()
-    }
+    this.loadCoup()
   },
   //加在优惠券
   loadCoup(){

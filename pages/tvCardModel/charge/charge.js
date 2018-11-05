@@ -1,5 +1,6 @@
 // pages/tvCardModel/charge/charge.js
 var charge = require('../requestUtil/charge.js');
+var netData = require('../requestUtil/netData.js')
 var appInstance = getApp()
 Page({
 
@@ -30,6 +31,9 @@ Page({
           signType: success.signType,
           paySign: success.paySign,
           success(res) { 
+            netData.loadCurrentPackageInfo(appInstance.cardInfo).then(success => {
+              appInstance.currentPackageInfo = success
+            })
             wx.showModal({
               title: '提示',
               content: '充值成功',
