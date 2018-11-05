@@ -121,6 +121,9 @@ background-image: url('https://www.htrnpay.cn/scan/img/11-coup.png');
   display: inline-block;
   text-align: center;
 }
+.get-it-now2{
+  color: #92621d;
+}
 .detail-wrap{
   color: #ff9fc5;
   font-size: 20rpx;

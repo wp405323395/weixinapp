@@ -42,12 +42,12 @@ App({
     userInfo: null
   },
   initIsFestival: function (timeInterval) {
-    let date = new Date(2018, 10, 11);
-    let dateNow = new Date();
-    let dateDistin = date.getTime() - dateNow.getTime();
-    if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin > 0) {
-      return true;
-    }
+    // let date = new Date(2018, 10, 11);
+    // let dateNow = new Date();
+    // let dateDistin = date.getTime() - dateNow.getTime();
+    // if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin > 0) {
+    //   return true;
+    // }
     return false;
   },
 })
