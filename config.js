@@ -12,6 +12,7 @@ var host = 'www.htrnpay.cn';
  var host = "www.juzijumi.com:8181"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
+isDebug = true;
 var schema = isHttps ? 'https':'http';
 var config = {
     // 下面的地址配合云端 Server 工作
