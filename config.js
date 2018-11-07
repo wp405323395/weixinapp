@@ -8,7 +8,7 @@
 var host = 'www.htrnpay.cn';
 // var host = "192.168.2.110:8080"
 // var host = "192.168.2.123:8080"
-// var host = "192.168.2.108:8081"
+var host = "192.168.2.106:8080"
 // var host = "www.juzijumi.com:8181"
 var isHttps = ('www.htrnpay.cn' == host);
 var isDebug = !isHttps;
@@ -48,6 +48,7 @@ var config = {
     activityRegister: `${schema}://${host}/scanweb/active/buy-give!activityRegister`,
     receiveCoupon: `${schema}://${host}/scanweb/active/coupon!receiveCoupon`,
     queryUsrCanUseCoupons: `${schema}://${host}/scanweb/active/coupon!queryUsrCanUseCoupons`,
+    queryActivityImageUrl: `${schema}://${host}/scanweb/active/coupon!queryActivityImageUrl`
 };
 
 

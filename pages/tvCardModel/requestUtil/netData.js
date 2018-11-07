@@ -142,6 +142,31 @@ var netData = {
         reject(faild);
       });
     })
-  }
+  },
+  
+queryActivityImageUrl(cardInfo) {
+  let city = cardInfo.city;
+  let custid = cardInfo.custid;
+  let tvCardNumber = cardInfo.tvCardNum;
+  let serviceID = cardInfo.serviceID
+  let qrKind = cardInfo.qrKind
+  return new Promise((resolve, reject) => {
+    new RequestEngine(false).request(config.queryActivityImageUrl, {
+      city,
+      custid,
+      tvCardNumber,
+      serviceID,
+      qrKind
+    }, {
+        callBy: this,
+        method: this.queryActivityImageUrl,
+        params: [cardInfo]
+      }, (success) => {
+        resolve(success);
+      }, (faild) => {
+        reject(faild);
+      });
+  })
+}
 }
 module.exports = netData;

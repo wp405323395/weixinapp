@@ -2,6 +2,7 @@
 var charge = require('../requestUtil/charge.js');
 var netData = require('../requestUtil/netData.js')
 var appInstance = getApp()
+var conf = require('../../../config.js')
 Page({
 
   /**
@@ -9,7 +10,8 @@ Page({
    */
   data: {
     totlaMoney:0,
-    cardInfo:null
+    cardInfo:null,
+    canUseCoup:null
   },
 
   /**
@@ -19,6 +21,43 @@ Page({
     this.setData({
       cardInfo: appInstance.cardInfo
     })
+    
+    this.queryActivityImageUrl();
+  },
+
+  queryActivityImageUrl(){
+    netData.queryActivityImageUrl(appInstance.cardInfo).then(value =>{
+      console.log('得到的返回结果是：',value)
+      this.setData({
+        coupBanner: conf.srcUrl + value
+      })
+      
+    })
+  },
+  //加在优惠券
+  loadCoup() {
+    let that = this;
+    netData.queryUsrCanUseCoupons(appInstance.cardInfo).then(value => {
+      this.coups = value;
+      this.coups.sort(function (m, n) {
+        return n.discountPrice - m.discountPrice
+      })
+      let coup = that.getCanUsedCoup(that.data.totlaMoney);
+      this.setData({
+        canUseCoup: coup
+      })
+      console.log('可用优惠券，倒序：', this.coups)
+    })
+    
+    
+  },
+  getCanUsedCoup(price) {
+    for (let item of this.coups) {
+      if (item.fullPrice <= price) {
+        return item
+      }
+    }
+    return null;
   },
   charge:function(){
     if (this.data.totlaMoney>0) {
@@ -65,12 +104,21 @@ Page({
 
   },
   choice:function(target) {
+    let coup = this.getCanUsedCoup(target.currentTarget.dataset.money)
     this.setData({
+      canUseCoup: coup,
       totlaMoney: target.currentTarget.dataset.money
     })
   },
+  gotoCoup:function(){
+    wx.navigateTo({
+      url: '/pages/elevenAndEleven/index',
+    })
+  },
   inputMoney:function(target) {
+    let coup = this.getCanUsedCoup(target.detail.value);
     this.setData({
+      canUseCoup: coup,   
       totlaMoney: target.detail.value
     })
   },
@@ -91,7 +139,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadCoup()
   },
 
   /**
