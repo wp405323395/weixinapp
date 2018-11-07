@@ -47,6 +47,7 @@ Page({
     } else {
       this.loadData();
     }
+    this.loadCoup();
   },
   onShow: function() {
     if (util.textIsNotNull(appInstance.qrid)) {
@@ -335,6 +336,18 @@ Page({
     wx.navigateTo({
       url: 'payMoney/pay',
     })
+  },
+  //加在优惠券
+  loadCoup() {
+    let that = this;
+    netData.queryUsrCanUseCoupons(appInstance.cardInfo).then(value => {
+      let canUseCoups = value;
+      this.setData({
+        canUseCoups: canUseCoups
+      })
+    })
+
+
   },
 
   onHide: function() {

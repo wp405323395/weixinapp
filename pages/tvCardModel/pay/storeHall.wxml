@@ -1,6 +1,8 @@
 <!--pay.wxml-->
 <view class="container">
-
+  <view class='header-toast-wrap' wx:if="{{canUseCoups&&canUseCoups.length>1}}">
+    <text bindtap='gotoFestival'>您有<text class='hint-color'>{{canUseCoups.length}}</text>张未使用的现金券，查看我的现金券</text>
+  </view>
   <view class='header-toast-wrap' wx:if="{{toastType == '2'||toastType == '1' }}">
     <text wx:if="{{toastType == '2' || formatTime =='0 秒 '}}">您本次的免费观看已结束,请尽快续费</text>
     <text wx:elif="{{toastType == '1' && formatTime !='0 秒 '}}">您还可以免费观看<text class='hint-color'> {{formatTime}}</text>,请尽快续费</text>
@@ -122,7 +124,7 @@
 
 
 
-  
+
   <view class='user-info-style' wx:if="{{recommendPackage&&recommendPackage.length>0}}">
     <view class='user-info-lable'>
       <view class='left-icon'></view>
@@ -180,6 +182,6 @@
   </view>
 
   <view class='festival-wrap'>
-    <image wx:if="{{isFestival}}" bindtap='gotoFestival' class='festival-img' src='https://www.htrnpay.cn/scan/img/icon_11_btn@2x.png'></image>
+    <image wx:if="{{isFestival}}" bindtap='gotoFestival' class='festival-img' src='https://www.htrnpay.cn/scan/img/mycoup.png'></image>
   </view>
 </view>

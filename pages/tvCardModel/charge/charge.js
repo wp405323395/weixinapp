@@ -11,7 +11,7 @@ Page({
   data: {
     totlaMoney:0,
     cardInfo:null,
-    canUseCoup:null
+    canUseCoup:{}
   },
 
   /**
@@ -62,7 +62,7 @@ Page({
   charge:function(){
     if (this.data.totlaMoney>0) {
       let fees = this.data.totlaMoney
-      charge.charge(appInstance.cardInfo, fees,success=>{
+      charge.charge(appInstance.cardInfo, this.data.canUseCoup, fees,success=>{
         wx.requestPayment({
           timeStamp: success.timeStamp,
           nonceStr: success.nonceStr,
