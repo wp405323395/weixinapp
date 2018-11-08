@@ -49,11 +49,11 @@
     </text>
     <text>4. 用户可在活动页面申请活动提醒，活动开始前将第一时间收到短信通知；
     </text>
-    <text>4. 预热时间：11月4日-11月7日，活动时间：11月8日-11月11日
+    <text>4. 预热时间：11月4日-11月7日，活动时间：11月8日-11月13日
     </text>
   </view>
   <view class='empty-space'></view>
-  <view class='footer-wrap'>
+  <view class='footer-wrap' wx:if="{{coupList&&coupList.length>0}}">
     <button bindtap='noteMeClick' wx:if="{{!isFestival}}">活动开始前提醒我</button>
     <button bindtap='gotostoreHall' wx:if="{{isFestival}}">立即使用</button>
     <text bindtap='gotostoreHall'  wx:if="{{!isFestival}}" class='goto-charge'>去缴费页</text>

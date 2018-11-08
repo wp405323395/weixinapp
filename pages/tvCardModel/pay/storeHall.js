@@ -24,7 +24,7 @@ Page({
   onLoad: function(options) {
     that = this;
     this.setData({
-      isFestival: appInstance.initIsFestival(8),
+      isFestival: appInstance.initIsFestival(),
       scanCardInfo: appInstance.cardInfo
     });
     this.animation = wx.createAnimation({

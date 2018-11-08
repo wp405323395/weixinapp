@@ -63,11 +63,13 @@ App({
   globalData: {
     userInfo: null
   },
-  initIsFestival: function (timeInterval) {
-    let date = new Date(2018, 10, 11);
+  //传入活动截止日和活动持续天数。
+  initIsFestival: function (continuedDays = 6, endDate = new Date(2018, 10, 13)) {
+    //8号-13号
+    let date = endDate
     let dateNow = new Date();
-    let dateDistin = date.getTime() - dateNow.getTime();
-    if (dateDistin < timeInterval * 24 * 60 * 60 * 1000 && dateDistin > 0) {
+    let dateDistin = date.getTime() - dateNow.getTime();//当前时间距离活动结束时间。
+    if (dateDistin < continuedDays * 24 * 60 * 60 * 1000 && dateDistin > 0) {
       return true;
     }
     return false;

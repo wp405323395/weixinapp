@@ -22,9 +22,6 @@ Page({
   onLoad: function (options) {
     this.initTime();
     this.initCoupList();
-    this.setData({
-      isFestival: appInstance.initIsFestival(4)
-    })
   },
   getCoup:function(target) {
     let that = this;
@@ -52,10 +49,14 @@ Page({
   },
   initTime(){
     setTimeout(()=>{
+      //8号开始活动
       let date = new Date(2018, 10, 8);
       let dateNow = new Date();
       let mss = date.getTime() - dateNow.getTime();
       if(mss<0) {
+        this.setData({
+          isFestival: true
+        })
         return;
       }
       var days = parseInt(mss / (1000 * 60 * 60 * 24));
