@@ -19,8 +19,6 @@ Page({
   onLoad: function (options) {
     this.package1 = appInstance.package1
     this.package2 = appInstance.package2
-    appInstance.cardInfo
-    this.currentPackageInfo = appInstance.currentPackageInfo;
     this.freshUi();
     this.loadCoup()
   },
@@ -34,22 +32,14 @@ Page({
       })
       console.log('可用优惠券，倒序：',coups)
       for (let item of coups) {
-        if (this.data.currentPackageInfo.feesums < 0) {
-          if (item.fullPrice <= this.data.totalMoney - this.data.currentPackageInfo.feesums) {
-            that.setData({
-              usedCoup: item
-            })
-            return
-          }
-        } else {
-          if (item.fullPrice <= this.data.totalMoney) {
-            that.setData({
-              usedCoup: item
-            })
-            return
-          }
+        if (item.fullPrice <= this.data.totalMoney) {
+          let money = (this.data.totalMoney - item.discountPrice).toFixed(2)
+          that.setData({
+            usedCoup: item,
+            totalMoney: money
+          })
+          return
         }
-        
       }
     })  
   },
@@ -62,12 +52,22 @@ Page({
     if(this.package2) {
       money2 = parseFloat(this.package2.price)
     }
+    let totalMoney = 0;
+    if (appInstance.currentPackageInfo.feesums < 0) {
+      totalMoney = (money1 + money2 - appInstance.currentPackageInfo.feesums).toFixed(2)
+    } else {
+      totalMoney = (money1 + money2).toFixed(2)
+    }
     this.setData({
       package1: this.package1,
       package2: this.package2,
-      currentPackageInfo:this.currentPackageInfo,
-      totalMoney: money1 + money2
+      currentPackageInfo: appInstance.currentPackageInfo,
+      totalMoney: totalMoney
     })
+  
+  },
+  money:function(e) {
+    return 10202;
   },
   pay: function () {
     let that = this;
@@ -87,7 +87,7 @@ Page({
       mobile: appInstance.cardInfo.mobile,
       city: appInstance.cardInfo.city,
       serviceid: appInstance.cardInfo.serviceID,
-      custfess: this.currentPackageInfo.feesums,
+      custfess: appInstance.currentPackageInfo.feesums,
       unit: this.initUnit(),//订购单位 0：天；1：月；2：年
       salestype: this.initSalestype(), //类型 0订购产品;1营销方案订购
       salescode: this.initSalescode(),//产品编码
