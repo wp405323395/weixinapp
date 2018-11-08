@@ -195,7 +195,7 @@ Page({
   //跳转到反馈界面
   showFeedbackPaper(event) {
     wx.navigateTo({
-      url: '../../feedback/feedback?feedBackType=' + event.target.id,
+      url: '/pages/tvCardModel/feedback/feedback?feedBackType=' + event.target.id,
     })
 
   },

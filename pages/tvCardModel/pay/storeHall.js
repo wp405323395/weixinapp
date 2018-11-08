@@ -364,7 +364,7 @@ Page({
   showFeedbackPaper(event) {
     console.log('target ', event.target.id)
     wx.navigateTo({
-      url: '../feedback/feedback?feedBackType=' + event.target.id,
+      url: '/pages/tvCardModel/feedback/feedback?feedBackType=' + event.target.id,
     })
 
   },
