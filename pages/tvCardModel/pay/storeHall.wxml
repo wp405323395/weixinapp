@@ -8,7 +8,7 @@
     <text wx:elif="{{toastType == '1' && formatTime !='0 秒 '}}">您还可以免费观看<text class='hint-color'> {{formatTime}}</text>,请尽快续费</text>
 
   </view>
-  <view class='header-toast-wrap' wx:if="{{currentPackageInfo.feesums<0}}">
+  <view bindtap='gotoCharge' class='header-toast-wrap' wx:if="{{currentPackageInfo.feesums<0}}">
     <text>尊敬的用户，您当前广电账户<text class='hint-color'> 已欠费{{-currentPackageInfo.feesums}}元,</text>请及时缴清欠费，以免影响您使用电视业务</text>
 
   </view>
