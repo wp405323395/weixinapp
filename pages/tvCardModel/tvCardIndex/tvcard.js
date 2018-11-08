@@ -15,10 +15,9 @@ Page({
     this.loadData();
   },
   loadData(){
-    console.log('能不能看到神奇')
     let that = this;
     util.getScene(myOptions, function (scene, qrid) {
-      console.log('神奇：',scene)
+      console.log('链接中携带的信息-》scene：',scene)
       if (scene.failed) {
         setTimeout(() => {
           tvCardNet.loadRecordHistory(that)

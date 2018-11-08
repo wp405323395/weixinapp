@@ -29,11 +29,14 @@ Page({
   getCoup:function(target) {
     let that = this;
     let item = this.data.coupList[target.currentTarget.dataset.idx]
-    requestUtil.receiveCoupon(appInstance.cardInfo, item.couponId,success=>{
-      that.initCoupList()
-    },err=>{
+    if (item.status == 1) {
+      requestUtil.receiveCoupon(appInstance.cardInfo, item.couponId,success=>{
+        that.initCoupList()
+      },err=>{
 
-    })
+      })
+
+    }
   },
   gotostoreHall(){
     wx.navigateTo({

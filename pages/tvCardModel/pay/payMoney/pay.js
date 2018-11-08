@@ -34,12 +34,22 @@ Page({
       })
       console.log('可用优惠券，倒序：',coups)
       for (let item of coups) {
-        if (item.fullPrice <= this.data.totalMoney) {
-          that.setData({
-            usedCoup: item
-          })
-          return 
+        if (this.data.currentPackageInfo.feesums < 0) {
+          if (item.fullPrice <= this.data.totalMoney - this.data.currentPackageInfo.feesums) {
+            that.setData({
+              usedCoup: item
+            })
+            return
+          }
+        } else {
+          if (item.fullPrice <= this.data.totalMoney) {
+            that.setData({
+              usedCoup: item
+            })
+            return
+          }
         }
+        
       }
     })  
   },

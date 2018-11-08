@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -48,7 +48,7 @@
 					"id": 2,
 					"name": "用sceen进入,双十一码",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
-					"query": "scene=A11~0~8717004080139164",
+					"query": "scene=A11~0~8270104048420612",
 					"scene": "1011"
 				},
 				{

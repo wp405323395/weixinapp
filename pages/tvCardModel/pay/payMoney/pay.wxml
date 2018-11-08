@@ -15,15 +15,15 @@
     </view>
     <text class='money'>{{package2.price}}元/年</text>
   </view>
+  <view class='pack-item-wrap space'  wx:if="{{currentPackageInfo.feesums<0}}">
+    <text>补交欠费</text>
+    <text class='money'>{{-currentPackageInfo.feesums}}元</text>
+  </view>
   <view class='pack-item-wrap'  wx:if="{{usedCoup.discountPrice>0}}">
     <view class='left-part-wrap'>
       <text class='name'>优惠券</text>
     </view>
     <text class='money'>-{{usedCoup.discountPrice}}元</text>
-  </view>
-  <view class='pack-item-wrap space'  wx:if="{{currentPackageInfo.feesums<0}}">
-    <text>补交欠费</text>
-    <text class='money'>{{-currentPackageInfo.feesums}}元</text>
   </view>
 
   <view class='footer'>
