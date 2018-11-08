@@ -128,7 +128,7 @@ Page({
       })
       ///// 记录错误日志
       let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
-      uploadNetApi.payFaild(err, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.data.packages[currentIndex].salescode)
+      uploadNetApi.payFaild(err, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.package1.salescode)
       //////
     });
 
