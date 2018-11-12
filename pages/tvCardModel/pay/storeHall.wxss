@@ -369,6 +369,7 @@ scroll-view{
   flex-direction: column;
   color: #666666;
   font-size: 28rpx;
+  width: 480rpx;
 }
 .charge-text{
   color: #fe0000;
