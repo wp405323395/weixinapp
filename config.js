@@ -48,7 +48,8 @@ var config = {
     activityRegister: `${schema}://${host}/scanweb/active/buy-give!activityRegister`,
     receiveCoupon: `${schema}://${host}/scanweb/active/coupon!receiveCoupon`,
     queryUsrCanUseCoupons: `${schema}://${host}/scanweb/active/coupon!queryUsrCanUseCoupons`,
-    queryActivityImageUrl: `${schema}://${host}/scanweb/active/coupon!queryActivityImageUrl`
+    queryActivityImageUrl: `${schema}://${host}/scanweb/active/coupon!queryActivityImageUrl`,
+  doBuriedPoint: `${schema}://${host}/scanweb/qrwx/interface-log!saveLog`
 };
 
 
