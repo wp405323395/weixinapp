@@ -13,9 +13,8 @@
   z-index: 0;
 }
 .header-img{
-  width: 753rpx;
-  height: 423rpx;
-  margin-top: 15rpx;
+  width: 750rpx;
+  height: 478rpx;
   position: relative;
 }
 .time-wrap{
@@ -74,7 +73,7 @@
 }
 .banner{
   width: 700rpx;
-  height: 219rpx;
+  height: 191rpx;
 }
 .coup-item-wrap{
   width: 690rpx;
