@@ -182,6 +182,6 @@
   </view>
 
   <view class='festival-wrap'>
-    <image bindtap='gotoFestival' class='festival-img' src='https://www.htrnpay.cn/scan/img/mycoup.png'></image>
+    <image bindtap='gotoFestival' class='festival-img' src='https://www.htrnpay.cn/scan/img/mycoup2.png'></image>
   </view>
 </view>

@@ -1,6 +1,5 @@
 <view class="content">
-  <image class='header-background' mode="widthFix" src='https://www.htrnpay.cn/scan/img/11-bj_01.png'></image>
-  <image class='header-img' src='../../img/11-header-img.png'></image>
+  <image class='header-img' src='../../img/img_bt@2x.png'></image>
   <view class='time-wrap' wx:if="{{isShowCountDownTime}}">
     <view class='time-wrap-header'>
       <view class='time-wrap-header-line'></view>
@@ -45,21 +44,18 @@
     </text>
     <text>2. 本现金券仅支持湖北广电产品缴费使用，用户在指定微信小程序支付时直接抵现，现金券不支持线下渠道或者其他电子渠道；
     </text>
-    <text>3. 活动预热期间，现金券仅能领取，暂不能用于抵现；
+    <text>3. 本活动解释权归湖北广电网络所有；
     </text>
-    <text>4. 用户可在活动页面申请活动提醒，活动开始前将第一时间收到短信通知；
-    </text>
-    <text>5. 预热时间：11月4日-11月7日，活动时间：11月8日-11月13日
-    </text>
+   
   </view>
   <view class='empty-space'></view>
   <view class='footer-wrap' wx:if="{{coupList&&coupList.length>0}}">
-    <button bindtap='noteMeClick' wx:if="{{!isFestival}}">活动开始前提醒我</button>
-    <button bindtap='gotostoreHall' wx:if="{{isFestival}}">立即使用</button>
-    <text bindtap='gotostoreHall'  wx:if="{{!isFestival}}" class='goto-charge'>去缴费页</text>
+    <button bindtap='noteMeClick' wx:if="{{false}}">活动开始前提醒我</button>
+    <button bindtap='gotostoreHall' wx:if="{{true}}">立即使用</button>
+    <text bindtap='gotostoreHall'  wx:if="{{false}}" class='goto-charge'>去缴费页</text>
   </view>
 
-  <view class='pop-wrap' wx:if="{{isShowPop}}">
+  <view class='pop-wrap' wx:if="{{false}}">
     <view class='pop-content'>
       <image bindtap='closePop' class='delete' src='https://www.htrnpay.cn/scan/img/11-close.png'></image>
       <text class='pop-title'>活动开始前提醒我</text>

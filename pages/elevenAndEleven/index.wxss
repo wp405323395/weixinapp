@@ -1,10 +1,10 @@
 /* pages/elevenAndEleven/index.wxss */
 .content{
   /* background-color: #d51965; */
-  background: -webkit-linear-gradient(#c90e58, #ad0049); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#c90e58, #ad0049); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#c90e58, #ad0049); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#c90e58, #ad0049); /* 标准的语法 */
+  background: -webkit-linear-gradient(#213e97, #0f2362); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#213e97, #0f2362); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#213e97, #0f2362); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#213e97, #0f2362); /* 标准的语法 */
   overflow-x: hidden;
 }
 .header-background{
@@ -15,7 +15,7 @@
 .header-img{
   width: 753rpx;
   height: 423rpx;
-  margin-top: 95rpx;
+  margin-top: 15rpx;
   position: relative;
 }
 .time-wrap{
@@ -125,11 +125,11 @@ background-image: url('https://www.htrnpay.cn/scan/img/11-coup.png');
   color: #92621d;
 }
 .detail-wrap{
-  color: #ff9fc5;
+  color: #5f7fe6;
   font-size: 20rpx;
   padding: 30rpx;
   margin: 30rpx;
-  background-color: #8f003c;
+  background-color: #0b1845;
   border-radius: 10rpx;
 }
 .detail-wrap>text:first-child{
@@ -137,7 +137,7 @@ background-image: url('https://www.htrnpay.cn/scan/img/11-coup.png');
 }
 .footer-wrap{
   position: fixed;
-  background-image: url('https://www.htrnpay.cn/scan/img/11-bottom-btn.png');
+  background-image: url('https://www.htrnpay.cn/scan/img/xf-bj@2x.png');
   color: white;
   bottom: 0;
   width: 100%;
