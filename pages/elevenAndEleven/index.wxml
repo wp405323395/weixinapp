@@ -15,7 +15,7 @@
     </view>
   </view>
   <view class='coup-content'>
-    <image class='banner' src='https://www.htrnpay.cn/scan/img/coup-page-binner.png'></image>
+    <image class='banner' src='https://www.htrnpay.cn/scan/img/youhui-banner.png'></image>
     <view  bindtap='getCoup' data-idx='{{idx}}' class="coup-item-wrap {{ item.status == 2?'coup-item-wrap-dark':'coup-item-wrap-light'}}" wx:for="{{coupList}}" wx:key="idx" wx:for-index="idx">
       <view class='coup-item-content'>
         <view>

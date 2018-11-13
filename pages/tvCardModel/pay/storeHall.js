@@ -8,6 +8,7 @@ let that;
 let countDown = 0;
 Page({
   data: {
+    currentLatestProduct:null,
     isFestival: false,
     isBizEndTime: false,
     recommendProduct: null,
@@ -211,17 +212,25 @@ Page({
   // 快到期的催费。
   queryServstEtime() {
     netData.queryServstEtime(appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum).then(success => {
-
-      let times = success.map(item => {
-        return new Date(item.value.replace(/-/g, '/')).getTime();
+      let pdArr = success;
+      pdArr.sort((a,b)=>{
+        return new Date(a.value.replace(/-/g, '/')).getTime() - new Date(b.value.replace(/-/g, '/')).getTime()
       })
-      let minTime = Math.min(...times)
-      let disTime = minTime - new Date().getTime();
+      let min = pdArr[0]
+      if(min.key === 'CA') {
+        min.productName = '基本包'
+      } else if(min.key === 'CM') {
+        min.productName = '宽带'
+      } else {
+        min.productName = '套餐'
+      }
+      let disTime = new Date(min.value.replace(/-/g, '/')).getTime() - new Date().getTime();
       var days = Math.floor(disTime / (24 * 3600 * 1000))
       console.log('差值日期是：', days)
       if (days < 30) {
         this.setData({
           deadline: days,
+          currentLatestProduct: min,
           isBizEndTime: true
         })
       } else {

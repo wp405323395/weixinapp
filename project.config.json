@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -55,7 +55,7 @@
 					"id": 3,
 					"name": "用sceen进入,断网码",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
-					"query": "scene=27~0~8420610425384022",
+					"query": "scene=27~0~8712180206000035",
 					"scene": "1011"
 				},
 				{
