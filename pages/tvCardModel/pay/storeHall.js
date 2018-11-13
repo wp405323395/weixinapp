@@ -2,6 +2,7 @@
 var util = require('../../../utils/util.js');
 var netData = require('../requestUtil/netData.js')
 var coupNet = require('../../elevenAndEleven/requestUtil/coupNet.js')
+var dataUtil = require('../requestUtil/buriedPoint.js')
 var appInstance = getApp()
 let that;
 let countDown = 0;
@@ -292,6 +293,7 @@ Page({
   },
   //确定要下单的事件
   ensureClick: function(e) {
+    dataUtil.buriedPoint("推荐页表,立即订购", appInstance.cardInfo)
     if (!util.textIsNotNull(appInstance.cardInfo.tvCardNum)) {
       wx.showModal({
         title: "请您先选择智能卡号",

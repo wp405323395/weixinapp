@@ -1,5 +1,6 @@
 // pages/elevenAndEleven/index.js
 var requestUtil = require('requestUtil/coupNet.js')
+var dataUtil = require('../tvCardModel/requestUtil/buriedPoint.js')
 var appInstance = getApp()
 Page({ 
 
@@ -36,9 +37,11 @@ Page({
     }
   },
   gotostoreHall(){
+    dataUtil.buriedPoint("双十一活动页,立即使用", appInstance.cardInfo)
     wx.navigateTo({
       url: '/pages/tvCardModel/pay/storeHall',
     })
+    
   },
   initCoupList(){
     requestUtil.queryCouponsStatus(appInstance.cardInfo,success=>{
@@ -109,7 +112,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+      dataUtil.buriedPoint("双十一活动页",appInstance.cardInfo)
   },
 
   /**

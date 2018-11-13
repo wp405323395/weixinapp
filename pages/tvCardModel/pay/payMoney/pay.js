@@ -1,5 +1,6 @@
 // pages/tvCardModel/pay/payMoney/pay.js
 var netData = require('../../requestUtil/netData.js')
+var dataUtil = require('../../requestUtil/buriedPoint.js')
 var appInstance = getApp()
 Page({
 
@@ -77,6 +78,7 @@ Page({
       })
       return;
     }
+    dataUtil.buriedPoint("订单支付页,立即支付", appInstance.cardInfo);
     that.isPaying = true;
     let currentIndex = that.data.packageSelectIndex
     let param = {
