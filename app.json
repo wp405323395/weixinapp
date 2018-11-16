@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/tvCardModel/tvCardIndex/tvcard",
     "pages/vote/vote",
     "pages/tvCardModel/msgConfirm/confirm",
@@ -8,8 +9,9 @@
     "pages/tvCardModel/feedback/feedback",
     "pages/tvCardModel/charge/charge",
     "pages/tvCardModel/pay/payMoney/pay",
-    "pages/elevenAndEleven/index"
-
+    "pages/elevenAndEleven/index",
+    "pages/tvCardModel/webview/webview"
+    
   ],
   "window": {
     "navigationBarTextStyle": "black",

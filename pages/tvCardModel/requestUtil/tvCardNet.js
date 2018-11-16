@@ -29,7 +29,7 @@ let loadRecordHistory = function(context) {
 }
 
 let loadTvCardInfo = function (context) {
-
+  
   new Promise((resolve, reject) => {
     var param = {
       tvCardNumber: appInstance.qrInfo.tvCardNum,

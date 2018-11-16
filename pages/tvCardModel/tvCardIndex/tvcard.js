@@ -12,7 +12,27 @@ Page({
   /*qrid查询*/
   onLoad: function (options) {
     myOptions = options;
-    this.loadData();
+    let qrid = options.qrid;
+    let scene = options.scene;
+    let url
+    if (qrid) {
+      url = appInstance.baseUrl + '?qrid=' + qrid;
+      console.log('url:',url)
+      this.setData({
+        url: url
+      })
+    } else if (scene) {
+      url = appInstance.baseUrl + '?scene=' + scene;
+      console.log('url:', url)
+      this.setData({
+        url: url
+      })
+
+    } else {
+      setTimeout(() => {
+        tvCardNet.loadRecordHistory(this)
+      }, 500);
+    }
   },
   loadData(){
     let that = this;
@@ -57,9 +77,13 @@ Page({
       mobile: item.mobile,
       city: item.city
     }
+    
     wx.navigateTo({
-      url: `../pay/storeHall`
+      url: `/pages/tvCardModel/webview/webview?custid=${item.custid}&tvCardNum=${item.tvCardNumber}&addr=${item.addr}&city=${item.city}&custname=${item.custname}&mobile=${item.mobile}`
     })
+    // wx.navigateTo({
+    //   url: `../pay/storeHall`
+    // })
   },
 
   getQrInfo: function (tvCardInfo) {

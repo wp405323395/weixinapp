@@ -37,8 +37,6 @@ Page({
   },
   onSelected: function (e) {
     let item = e.currentTarget.dataset.id
-    // let uploadNetApi = require('../requestUtil/uploadNetApi.js')
-    // uploadNetApi.savePageLog('storeHall', 'confirm', 0)
     appInstance.cardInfo = {
       custid: item.custid,
       tvCardNum: item.tvCardNumber,
@@ -49,8 +47,9 @@ Page({
       mobile: item.mobile,
       city: item.city
     }
+    appInstance.webViewUrl = `?city=${item.city}&custid=${item.custid}`
     wx.navigateTo({
-      url: '../pay/storeHall'
+      url: '/pages/tvCardModel/webview/webview'
     })
   },
   isCannotinput(isCannoteInput){
