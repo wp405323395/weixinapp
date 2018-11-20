@@ -16,18 +16,14 @@ Page({
     let scene = options.scene;
     let url
     if (qrid) {
-      url = appInstance.baseUrl + '?qrid=' + qrid;
-      console.log('url:',url)
-      this.setData({
-        url: url
+      wx.navigateTo({
+        url: '/pages/tvCardModel/webview/webview?qrid=' + qrid,
       })
+      
     } else if (scene) {
-      url = appInstance.baseUrl + '?scene=' + scene;
-      console.log('url:', url)
-      this.setData({
-        url: url
+      wx.navigateTo({
+        url: '/pages/tvCardModel/webview/webview?scene=' + scene,
       })
-
     } else {
       setTimeout(() => {
         tvCardNet.loadRecordHistory(this)

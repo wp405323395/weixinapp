@@ -32,7 +32,4 @@
     <text bindtap="onMsgConfirm" hover-class="err_hove" class="link_text">点击此处搜索!</text>
 
   </view>
-  <web-view wx:if="{{url}}" src="{{url}}"></web-view>
-  
-
 </view>
