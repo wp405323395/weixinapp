@@ -21,10 +21,8 @@ Page({
     let custid = options.custid;
     let url;
     //custid=${item.custid}&tvCardNum=${item.tvCardNum}&addr=${item.addr}&city=${item.city}&custname=${item.custname}&mobile=${item.mobile}
-    if(qrid) {
-      url = appInstance.baseUrl +'?qrid='+qrid;
-    } else if(scene) {
-      url = appInstance.baseUrl + '?scene=' + scene;
+    if (qrid || scene) {
+      url = `${appInstance.baseUrl}?qrid=${qrid}&scene=${scene}`;
     } else if(custid) {
       options.addr = encodeURIComponent(options.addr)
       options.custname = encodeURIComponent(options.custname)
