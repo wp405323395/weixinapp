@@ -9,60 +9,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    totlaMoney:0,
-    cardInfo:null,
-    canUseCoup:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      cardInfo: appInstance.cardInfo
-    })
-    
-    this.queryActivityImageUrl();
+    this.params = options.params
+    if (!this.params) {
+      return;
+    } else {
+      this.params = JSON.parse(decodeURIComponent(this.params))
+    }
+    this.charge()
+//    this.queryActivityImageUrl();
   },
 
-  queryActivityImageUrl(){
-    netData.queryActivityImageUrl(appInstance.cardInfo).then(value =>{
-      console.log('得到的返回结果是：',value)
-      this.setData({
-        coupBanner: conf.srcUrl + value
-      })
+  // queryActivityImageUrl(){
+  //   netData.queryActivityImageUrl(appInstance.cardInfo).then(value =>{
+  //     console.log('得到的返回结果是：',value)
+  //     this.setData({
+  //       coupBanner: conf.srcUrl + value
+  //     })
       
-    })
-  },
+  //   })
+  // },
   //加在优惠券
-  loadCoup() {
-    let that = this;
-    netData.queryUsrCanUseCoupons(appInstance.cardInfo).then(value => {
-      this.coups = value;
-      this.coups.sort(function (m, n) {
-        return n.discountPrice - m.discountPrice
-      })
-      let coup = that.getCanUsedCoup(that.data.totlaMoney);
-      this.setData({
-        canUseCoup: coup
-      })
-      console.log('可用优惠券，倒序：', this.coups)
-    })
-    
-    
-  },
-  getCanUsedCoup(price) {
-    for (let item of this.coups) {
-      if (item.fullPrice <= price) {
-        return item
-      }
-    }
-    return null;
-  },
+  
   charge:function(){
-    if (this.data.totlaMoney>0) {
-      let fees = this.data.totlaMoney
-      charge.charge(appInstance.cardInfo, this.data.canUseCoup, fees,success=>{
+    charge.charge(this.params,success=>{
         wx.requestPayment({
           timeStamp: success.timeStamp,
           nonceStr: success.nonceStr,
@@ -70,16 +45,15 @@ Page({
           signType: success.signType,
           paySign: success.paySign,
           success(res) { 
-            netData.loadCurrentPackageInfo(appInstance.cardInfo).then(success => {
-              appInstance.currentPackageInfo = success
-            })
             wx.showModal({
               title: '提示',
               content: '充值成功',
               showCancel:false,
               success(res) {
                 if (res.confirm) {
-                  
+                  wx.navigateBack({
+                    
+                  })
                 }
               }})
           },
@@ -90,7 +64,9 @@ Page({
               showCancel: false,
               success(res) {
                 if (res.confirm) {
-                  
+                  wx.navigateBack({
+                    
+                  })
                 }
               }
             })
@@ -98,37 +74,9 @@ Page({
         })
 
       },faild=>{});
-    } else {
-      wx.showToast({ title: '请输入金额', icon:'none'})
-    }
-
-  },
-  choice:function(target) {
-    let coup = this.getCanUsedCoup(target.currentTarget.dataset.money)
-    this.setData({
-      canUseCoup: coup,
-      totlaMoney: target.currentTarget.dataset.money
-    })
-  },
-  gotoCoup:function(){
-    wx.navigateTo({
-      url: '/pages/elevenAndEleven/index',
-    })
-  },
-  inputMoney:function(target) {
-    let coup = this.getCanUsedCoup(target.detail.value);
-    this.setData({
-      canUseCoup: coup,   
-      totlaMoney: target.detail.value
-    })
-  },
-  inputMoneyFocus:function(target){
-    this.setData({
-      totlaMoney: target.detail.value
-    })
-  },
-
-  /**
+    },
+  
+    /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -139,7 +87,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.loadCoup()
   },
 
   /**

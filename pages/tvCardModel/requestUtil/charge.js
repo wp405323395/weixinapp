@@ -1,14 +1,8 @@
 import RequestEngine from '../../../netApi/requestEngine.js';
 var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
-var charge = function (cardInfo, canUseCoup, fees,successCallback,faildCallback){
-  let city = cardInfo.city 
-  let custid = cardInfo.custid
-  let tvCardNumber = cardInfo.tvCardNum
-  let serviceID = cardInfo.serviceID
-  let qrKind = cardInfo.qrKind
-  let userCouponId = canUseCoup ? canUseCoup.userCouponId:undefined
-  new RequestEngine().request(config.doBossBizCharging, { city, custid, tvCardNumber, serviceID, qrKind, fees, userCouponId }, { callBy: this, method: this.charge, params: [cardInfo, canUseCoup, fees, successCallback, faildCallback] }, (success) => {
+var charge = function (params,successCallback,faildCallback){
+  new RequestEngine().request(config.doBossBizCharging, { ...params }, { callBy: this, method: this.charge, params: [params, successCallback, faildCallback] }, (success) => {
     successCallback(success)
     }, (faild) => {
       faildCallback(faild)
