@@ -10,7 +10,7 @@ var host = 'www.htrnpay.cn';
 // var host = "192.168.2.123:8080"
 // var host = "192.168.2.106:8080"
 var host = "www.juzijumi.com"
-var isHttps = ('www.htrnpay.cn' == host);
+var isHttps = ('www.htrnpay.cn' == host) || ('www.juzijumi.com' == host);
 var isDebug = !isHttps;
 isDebug = true;
 var schema = isHttps ? 'https':'http';

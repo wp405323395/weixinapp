@@ -23,18 +23,22 @@ Page({
       qrid = this.getQueryString(q, 'qrid');
       scene = this.getQueryString(q, 'scene');
     }
-    qrid = qrid?qrid:''
-    scene = scene?scene:''
-    if (qrid || scene) {
-      wx.navigateTo({
-        url: `/pages/tvCardModel/webview/webview?qrid=${qrid}&scene=${scene}`,
-      })
+    this.qrid = qrid?qrid:''
+    this.scene = scene?scene:''
+    if (this.qrid || this.scene) {
     } else {
       setTimeout(() => {
         tvCardNet.loadRecordHistory(this)
       }, 500);
     }
 
+  },
+  onShow: function(){
+    if (this.qrid || this.scene) {
+      wx.navigateTo({
+        url: `/pages/tvCardModel/webview/webview?qrid=${this.qrid}&scene=${this.scene}`,
+      })
+    }
   },
   getQueryString: function(url, name) {
     var p0 = url.split('?')

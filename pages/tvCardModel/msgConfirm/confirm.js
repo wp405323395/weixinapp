@@ -47,9 +47,8 @@ Page({
       mobile: item.mobile,
       city: item.city
     }
-    appInstance.webViewUrl = `?city=${item.city}&custid=${item.custid}`
     wx.navigateTo({
-      url: '/pages/tvCardModel/webview/webview'
+      url: '/pages/tvCardModel/webview/webview' + `?tvCardNum=${item.tvCardNumber}&custname=${item.custname}&addr=${item.addr}&mobile=${item.mobile}&city=${item.city}&custid=${item.custid}`
     })
   },
   isCannotinput(isCannoteInput){

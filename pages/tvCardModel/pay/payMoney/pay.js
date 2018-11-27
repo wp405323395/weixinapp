@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.params = options.params
+    
     if(!this.params) {
       return;
     } else {
@@ -50,10 +51,6 @@ Page({
         'fail': function (res) {
           that.isPaying = false;
           wx.navigateBack({})
-          ///// 记录错误日志
-          let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
-          uploadNetApi.payFaild(res.errMsg, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.package1.salescode)
-          //////
         }
       })
     }).catch(err => {
@@ -70,7 +67,7 @@ Page({
       })
       ///// 记录错误日志
       let uploadNetApi = require('../../requestUtil/uploadNetApi.js')
-      uploadNetApi.payFaild(err, appInstance.cardInfo.city, appInstance.cardInfo.custid, appInstance.cardInfo.tvCardNum, appInstance.cardInfo.serviceID, appInstance.cardInfo.qrKind, that.package1.salescode)
+      uploadNetApi.payFaild(err, this.params.city, this.params.custid, this.params.tvCardNumber, this.params.serviceID, this.params.qrKind, this.params.salescode)
       //////
     });
 

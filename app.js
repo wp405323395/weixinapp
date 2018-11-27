@@ -67,7 +67,7 @@ App({
    * `?city=${item.city}&custid=${item.custid}`
    */
   webViewUrl:'?qrid=1',
-  baseUrl:'http://192.168.2.108:8081/#/',
+  baseUrl:'https://www.juzijumi.com/s/#/',
   //传入活动截止日和活动持续天数。
   initIsFestival: function (continuedDays = 6, endDate = new Date(2018, 10, 13)) {
     //8号-13号
