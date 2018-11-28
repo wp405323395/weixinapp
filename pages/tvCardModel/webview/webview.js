@@ -27,8 +27,9 @@ Page({
       options.addr = encodeURIComponent(options.addr)
       options.custname = encodeURIComponent(options.custname)
       url = `${appInstance.baseUrl}?custid=${options.custid}&tvCardNum=${options.tvCardNum}&addr=${options.addr}&city=${options.city}&custname=${options.custname}&mobile=${options.mobile}`;
-      
     }
+    let date = new Date().getSeconds();
+    url = url+`&date=${date}`
     console.log('网页fff：',url)
     this.setData({
       url: url
@@ -46,7 +47,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

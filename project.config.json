@@ -5,10 +5,11 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
+	"libVersion": "2.4.1",
 	"appid": "wx2648144233a7a5a4",
 	"projectname": "%E5%B9%BF%E7%94%B5%E6%89%AB%E7%A0%81%E7%BB%AD%E8%B4%B9",
 	"condition": {
@@ -48,7 +49,7 @@
 					"id": 2,
 					"name": "用sceen进入,双十一码",
 					"pathName": "pages/tvCardModel/tvCardIndex/tvcard",
-					"query": "scene=27~0~8420610118667907~39347024",
+					"query": "scene=27~0~9912345601756031~39347024",
 					"scene": "1011"
 				},
 				{
