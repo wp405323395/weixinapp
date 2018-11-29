@@ -1,5 +1,6 @@
 <!--tvcard.wxml-->
 <view class="container">
+  <official-account></official-account>
   <view wx:if="{{custList}}">
     <view class='text_note'>
       <text class='note'>当前共有</text>
