@@ -56,7 +56,7 @@ Page({
     }).catch(err => {
       that.isPaying = false;
       wx.showModal({
-        title: "支付失败,如有疑问请拨打客服电话96516",
+        title: "当前产品无法订购，建议您订购其他推荐产品或去营业厅订购",
         showCancel: false,
         confirmText: "取消",
         success(res) {

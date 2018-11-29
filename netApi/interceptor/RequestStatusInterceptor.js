@@ -24,13 +24,13 @@ class RequestStatusInterceptor extends Interceptor{
     wx.hideToast();
   }
   onFaildResponse(url, header, data) {
-    let title = '服务器未返回错误原因'
+    let title = '服务器无错误原因'
     try{
       if (data && data.retMsg) {
         title = data.retMsg
       }
     } catch(err){
-      title = '服务器未返回错误原因'
+      title = '服务器无错误原因'
     }
     util.showToast({
       title: title,
