@@ -1,6 +1,7 @@
 // tvcard.js
 var util = require('../../../utils/util.js');
 var tvCardNet = require('../requestUtil/tvCardNet.js')
+var dataUtil = require('../requestUtil/buriedPoint.js')
 var appInstance = getApp()
 var myOptions
 Page({
@@ -23,17 +24,27 @@ Page({
       qrid = this.getQueryString(q, 'qrid');
       scene = this.getQueryString(q, 'scene');
     }
-    this.qrid = qrid?qrid:''
-    this.scene = scene?scene:''
-    if (this.qrid || this.scene) {
-    } else {
+    this.qrid = qrid ? qrid : ''
+    this.scene = scene ? scene : ''
+    if (this.qrid || this.scene) {} else {
       setTimeout(() => {
         tvCardNet.loadRecordHistory(this)
       }, 500);
     }
-
+    dataUtil.buriedPoint2({
+      sid: appInstance.sid,
+      url: 'page/tvCards',
+      time: new Date().getTime(),
+      type: "page_view",
+      uid: '',
+      mod: 'miniApp',
+      info: {
+        qrid: qrid,
+        scene: scene
+      }
+    })
   },
-  onShow: function(){
+  onShow: function() {
     if (this.qrid || this.scene) {
       wx.navigateTo({
         url: `/pages/tvCardModel/webview/webview?qrid=${this.qrid}&scene=${this.scene}`,

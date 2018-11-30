@@ -49,7 +49,8 @@ var config = {
     receiveCoupon: `${schema}://${host}/scanweb/active/coupon!receiveCoupon`,
     queryUsrCanUseCoupons: `${schema}://${host}/scanweb/active/coupon!queryUsrCanUseCoupons`,
     queryActivityImageUrl: `${schema}://${host}/scanweb/active/coupon!queryActivityImageUrl`,
-  doBuriedPoint: `${schema}://${host}/scanweb/qrwx/interface-log!saveLog`
+    doBuriedPoint: `${schema}://${host}/scanweb/qrwx/interface-log!saveLog`,
+    pointUrl:'http://212.64.111.203:8081/api/collector/event'
 };
 
 

@@ -66,6 +66,7 @@ App({
   /**
    * `?city=${item.city}&custid=${item.custid}`
    */
+  sid: ('' + Math.random()).substr(2, 6),
   webViewUrl:'?qrid=1',
   baseUrl:'https://www.baidu.com/#/',
   baseUrl:'https://www.juzijumi.com/s/',

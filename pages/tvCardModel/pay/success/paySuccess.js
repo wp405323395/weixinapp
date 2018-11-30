@@ -1,4 +1,6 @@
 // paySuccess.js
+var dataUtil = require('../../requestUtil/buriedPoint.js')
+var appInstance = getApp()
 Page({
 
   /**
@@ -12,7 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    dataUtil.buriedPoint2({
+      sid: appInstance.sid, url: 'page/paysuccess', time: new Date().getTime(), type: "page_view", uid: '', mod: 'miniApp'
+    })
   },
 
   onClickOk:function(e) {

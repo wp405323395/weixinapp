@@ -4,6 +4,7 @@ var Promise = require('../../../libs/es6-promise.js').Promise;
 var config = require('../../../config.js');
 var util = require('../../../utils/util.js');
 var appInstance = getApp()
+var dataUtil = require('../requestUtil/buriedPoint.js')
 Page({
 
   data: {
@@ -12,7 +13,9 @@ Page({
   },
 
   onLoad: function (options) {
-
+    console.log('dataUtil:',dataUtil)
+    dataUtil.buriedPoint2({
+      sid: appInstance.sid, url: 'page/search', time: new Date().getTime(), type:"page_view",uid:'',mod:'miniApp'})
   },
   onSearchClick: function (event) {
     let inputValue = event.detail.value;

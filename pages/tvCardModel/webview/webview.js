@@ -1,4 +1,5 @@
 // pages/tvCardModel/webview/webview.js
+var dataUtil = require('../requestUtil/buriedPoint.js')
 var appInstance = getApp()
 Page({
 
@@ -29,10 +30,21 @@ Page({
       url = `${appInstance.baseUrl}?custid=${options.custid}&tvCardNum=${options.tvCardNum}&addr=${options.addr}&city=${options.city}&custname=${options.custname}&mobile=${options.mobile}`;
     }
     let date = new Date().getSeconds();
-    url = url+`&date=${date}`
+    url = url + `&sid=${appInstance.sid}&date=${date}`
     console.log('网页fff：',url)
     this.setData({
       url: url
+    })
+    dataUtil.buriedPoint2({
+      sid: appInstance.sid,
+      url: 'page/webview',
+      time: new Date().getTime(),
+      type: "page_view",
+      uid: '',
+      mod: 'miniApp',
+      info: {
+        url: url
+      }
     })
   },
 

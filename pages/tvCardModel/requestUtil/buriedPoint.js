@@ -12,4 +12,19 @@ var buriedPoint = function (pagename,cardInfo) {
   });
 
 }
+var buriedPoint2 = function (data) {
+  wx.request({
+    url: config.pointUrl,
+    method:'post',
+    data:data,
+    success:()=>{
+      console.log('埋点成功')
+    },
+    faild:()=>{
+      console.error('埋点失败')
+    }
+  })
+
+}
 module.exports.buriedPoint = buriedPoint;
+module.exports.buriedPoint2 = buriedPoint2;
