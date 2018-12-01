@@ -36,6 +36,7 @@ function clientLogin(successFun,failedFun) {
             wx.hideNavigationBarLoading();
             wx.hideToast();
             if(successFun != null) {
+              console.log('请求方法：', successFun)
               successFun.method.apply(successFun.callBy, successFun.params);
             }
 

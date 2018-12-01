@@ -95,10 +95,11 @@ var netData = {
     })
   },
   pay(param) {
+    let that = this;
     return new Promise((resolve, reject) => {
       new RequestEngine().request(config.wxPay, param, {
-        callBy: this,
-        method: this.pay,
+        callBy: that,
+        method: that.pay,
         params: [param]
       }, (success) => {
         resolve(success);
