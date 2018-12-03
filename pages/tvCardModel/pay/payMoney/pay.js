@@ -34,7 +34,7 @@ Page({
     return new Promise((resolve, reject) => {
       vm.isPaying = false;
       wx.showModal({
-        title: "当前产品无法订购，建议您订购其他推荐产品或去营业厅订购",
+        content:'当前产品无法订购，建议您订购其他推荐产品或去营业厅订购',
         showCancel: false,
         confirmText: "取消",
         success(res) {
