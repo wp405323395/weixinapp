@@ -1,5 +1,6 @@
 // pages/tvCardModel/webview/webview.js
 var dataUtil = require('../requestUtil/buriedPoint.js')
+var config = require('../../../config.js')
 var appInstance = getApp()
 Page({
 
@@ -9,8 +10,6 @@ Page({
    */
   data: {
     url:'',
-    webViewUrl: appInstance.webViewUrl,
-    baseUrl: appInstance.baseUrl,
   },
 
   /**
@@ -23,14 +22,14 @@ Page({
     let url;
     //custid=${item.custid}&tvCardNum=${item.tvCardNum}&addr=${item.addr}&city=${item.city}&custname=${item.custname}&mobile=${item.mobile}
     if (qrid || scene) {
-      url = `${appInstance.baseUrl}?qrid=${qrid}&scene=${scene}`;
+      url = `${config.schema}://${config.host}/s/?qrid=${qrid}&scene=${scene}`;
     } else if(custid) {
       options.addr = encodeURIComponent(options.addr)
       options.custname = encodeURIComponent(options.custname)
-      url = `${appInstance.baseUrl}?custid=${options.custid}&tvCardNum=${options.tvCardNum}&addr=${options.addr}&city=${options.city}&custname=${options.custname}&mobile=${options.mobile}`;
+      url = `${config.schema}://${config.host}/s/?custid=${options.custid}&tvCardNum=${options.tvCardNum}&addr=${options.addr}&city=${options.city}&custname=${options.custname}&mobile=${options.mobile}`;
     }
     let date = new Date().getSeconds();
-    url = url + `&sid=${appInstance.sid}&date=${date}`
+    url = url + `&sid=${appInstance.sid}&date=${date}&mod=miniapp`
     console.log('网页fff：',url)
     this.setData({
       url: url
@@ -38,13 +37,12 @@ Page({
     dataUtil.buriedPoint2({
       sid: appInstance.sid,
       url: 'page/webview',
+      app: 'qrcode',
       time: new Date().getTime(),
       type: "page_view",
       uid: '',
-      mod: 'miniApp',
-      info: {
-        url: url
-      }
+      mod: 'miniapp',
+      args: options
     })
   },
 

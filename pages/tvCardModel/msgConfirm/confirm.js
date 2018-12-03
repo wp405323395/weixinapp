@@ -15,7 +15,15 @@ Page({
   onLoad: function (options) {
     console.log('dataUtil:',dataUtil)
     dataUtil.buriedPoint2({
-      sid: appInstance.sid, url: 'page/search', time: new Date().getTime(), type:"page_view",uid:'',mod:'miniApp'})
+      sid: appInstance.sid,
+      url: 'page/search', 
+      app: 'qrcode',
+      time: new Date().getTime(), 
+      type:"page_view",
+      uid:'',
+      mod:'miniapp',
+      args: options
+      })
   },
   onSearchClick: function (event) {
     let inputValue = event.detail.value;

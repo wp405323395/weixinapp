@@ -20,10 +20,12 @@ Page({
     dataUtil.buriedPoint2({
       sid: appInstance.sid,
       url: 'page/charge',
+      app: 'qrcode',
       time: new Date().getTime(),
       type: "page_view",
       uid: '',
-      mod: 'miniApp'
+      mod: 'miniapp',
+      args: options
     })
     this.params = options.params
     if (!this.params) {
@@ -68,10 +70,11 @@ Page({
               dataUtil.buriedPoint2({
                 sid: appInstance.sid,
                 url: 'page/charge',
+                app: 'qrcode',
                 time: new Date().getTime(),
                 type: "charge_success",
                 uid: '',
-                mod: 'miniApp',
+                mod: 'miniapp',
                 info: { param:vm.params}
               })
             }
@@ -91,10 +94,11 @@ Page({
               dataUtil.buriedPoint2({
                 sid: appInstance.sid,
                 url: 'page/charge',
+                app: 'qrcode',
                 time: new Date().getTime(),
                 type: "charge_cancle",
                 uid: '',
-                mod: 'miniApp',
+                mod: 'miniapp',
                 info: {param:vm.params,error:'放弃支付'}
               })
             }
@@ -106,10 +110,11 @@ Page({
       dataUtil.buriedPoint2({
         sid: appInstance.sid,
         url: 'page/charge',
+        app: 'qrcode',
         time: new Date().getTime(),
         type: "charge_cancle",
         uid: '',
-        mod: 'miniApp',
+        mod: 'miniapp',
         info: {param:vm.params,error:faild}
       })
     });

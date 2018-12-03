@@ -34,14 +34,12 @@ Page({
     dataUtil.buriedPoint2({
       sid: appInstance.sid,
       url: 'page/tvCards',
+      app: 'qrcode',
       time: new Date().getTime(),
       type: "page_view",
       uid: '',
-      mod: 'miniApp',
-      info: {
-        qrid: qrid,
-        scene: scene
-      }
+      mod: 'miniapp',
+      args: options
     })
   },
   onShow: function() {

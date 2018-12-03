@@ -15,7 +15,14 @@ Page({
    */
   onLoad: function (options) {
     dataUtil.buriedPoint2({
-      sid: appInstance.sid, url: 'page/paysuccess', time: new Date().getTime(), type: "page_view", uid: '', mod: 'miniApp'
+      sid: appInstance.sid, 
+      url: 'page/paysuccess', 
+      app: 'qrcode',
+      time: new Date().getTime(), 
+      type: "page_view", 
+      uid: '', 
+      mod: 'miniapp',
+      args: options
     })
   },
 

@@ -46,10 +46,11 @@ Page({
       dataUtil.buriedPoint2({
         sid: appInstance.sid,
         url: 'page/pay',
+        app: 'qrcode',
         time: new Date().getTime(),
         type: "pay_faild",
         uid: '',
-        mod: 'miniApp',
+        mod: 'miniapp',
         info: {
           param: vm.params,
           errMsg: err
@@ -74,10 +75,11 @@ Page({
           dataUtil.buriedPoint2({
             sid: appInstance.sid,
             url: 'page/pay',
+            app: 'qrcode',
             time: new Date().getTime(),
             type: "pay_success",
             uid: '',
-            mod: 'miniApp',
+            mod: 'miniapp',
             info: {
               param: vm.params,
             }
@@ -92,10 +94,11 @@ Page({
           dataUtil.buriedPoint2({
             sid: appInstance.sid,
             url: 'page/pay',
+            app: 'qrcode',
             time: new Date().getTime(),
             type: "pay_cancle",
             uid: '',
-            mod: 'miniApp',
+            mod: 'miniapp',
             info: {
               param: vm.params,
               errMsg: '用户取消支付'

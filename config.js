@@ -17,6 +17,7 @@ var schema = isHttps ? 'https':'http';
 var config = {
     // 下面的地址配合云端 Server 工作
     host,
+    schema,
     isDebug,
     srcUrl: `${schema}://${host}/`,
     // 登录地址，用于建立会话
@@ -50,8 +51,6 @@ var config = {
     queryUsrCanUseCoupons: `${schema}://${host}/scanweb/active/coupon!queryUsrCanUseCoupons`,
     queryActivityImageUrl: `${schema}://${host}/scanweb/active/coupon!queryActivityImageUrl`,
     doBuriedPoint: `${schema}://${host}/scanweb/qrwx/interface-log!saveLog`,
-    pointUrl:'http://212.64.111.203:8081/api/collector/event'
-};
-
-
+    pointUrl: 'https://collector.ums.htrnpay.cn/api/collector/event'
+}
 module.exports = config
