@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "湖北广电有线电视缴费",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#0387FE",
+  "navigationBarTextStyle": "white"
+}
