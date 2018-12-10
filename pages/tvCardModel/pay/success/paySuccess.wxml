@@ -1,8 +1,5 @@
 <!--paySuccess.wxml-->
 <view class="container">
- <official-account></official-account>
-  <image class="okimage" src="https://www.htrnpay.cn/scan/img/pay_success.png"/>
-  <text class='note_text'>支付成功，请耐心等待系统开通，如有疑问请拨打客服电话96516</text>
-  <button bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
+ <web-view src="{{url}}"></web-view>
   
 </view>

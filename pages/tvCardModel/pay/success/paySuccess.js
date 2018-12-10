@@ -1,19 +1,23 @@
 // paySuccess.js
 var dataUtil = require('../../requestUtil/buriedPoint.js')
 var appInstance = getApp()
+var config = require('../../../../config.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    url: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      url: config.schema + '://' + config.host + '/s/paysuccess'
+    })
     dataUtil.buriedPoint2({
       sid: appInstance.sid, 
       url: 'page/paysuccess', 
