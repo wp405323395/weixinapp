@@ -63,8 +63,8 @@ Page({
             showCancel: false,
             success(res) {
               if (res.confirm) {
-                wx.navigateBack({
-
+                wx.navigateTo({
+                  url: '/pages/tvCardModel/pay/success/paySuccess',
                 })
               }
               dataUtil.buriedPoint2({
