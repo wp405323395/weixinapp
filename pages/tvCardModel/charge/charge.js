@@ -57,26 +57,19 @@ Page({
         signType: success.signType,
         paySign: success.paySign,
         success(res) {
-          wx.showModal({
-            title: '提示',
-            content: '充值成功',
-            showCancel: false,
-            success(res) {
-              if (res.confirm) {
-                wx.navigateTo({
-                  url: '/pages/tvCardModel/pay/success/paySuccess',
-                })
-              }
-              dataUtil.buriedPoint2({
-                sid: appInstance.sid,
-                url: 'page/charge',
-                app: 'qrcode',
-                time: new Date().getTime(),
-                type: "charge_success",
-                uid: '',
-                mod: 'miniapp',
-                info: { param:vm.params}
-              })
+          wx.navigateTo({
+            url: '/pages/tvCardModel/pay/success/paySuccess',
+          })
+          dataUtil.buriedPoint2({
+            sid: appInstance.sid,
+            url: 'page/charge',
+            app: 'qrcode',
+            time: new Date().getTime(),
+            type: "charge_success",
+            uid: '',
+            mod: 'miniapp',
+            info: {
+              param: vm.params
             }
           })
         },
@@ -99,7 +92,10 @@ Page({
                 type: "charge_cancle",
                 uid: '',
                 mod: 'miniapp',
-                info: {param:vm.params,error:'放弃支付'}
+                info: {
+                  param: vm.params,
+                  error: '放弃支付'
+                }
               })
             }
           })
@@ -115,7 +111,10 @@ Page({
         type: "charge_cancle",
         uid: '',
         mod: 'miniapp',
-        info: {param:vm.params,error:faild}
+        info: {
+          param: vm.params,
+          error: faild
+        }
       })
     });
   },
