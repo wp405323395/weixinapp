@@ -57,7 +57,7 @@ Page({
         signType: success.signType,
         paySign: success.paySign,
         success(res) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/tvCardModel/pay/success/paySuccess',
           })
           dataUtil.buriedPoint2({
