@@ -58,7 +58,7 @@ Page({
         paySign: success.paySign,
         success(res) {
           wx.redirectTo({
-            url: '/pages/tvCardModel/pay/success/paySuccess',
+            url: `/pages/tvCardModel/pay/success/paySuccess?orderid=${this.params}`,
           })
           dataUtil.buriedPoint2({
             sid: appInstance.sid,

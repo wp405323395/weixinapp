@@ -85,7 +85,7 @@ Page({
             }
           })
           wx.redirectTo({
-            url: '../success/paySuccess',
+            url: '../success/paySuccess?orderid=' + value.orderid,
           })
         },
         'fail': function(res) {

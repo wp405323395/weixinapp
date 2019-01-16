@@ -15,8 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let orderid = options.orderid
     this.setData({
-      url: config.schema + '://' + config.host + '/s/paysuccess'
+      url: config.schema + '://' + config.host + '/s/paysuccess?orderid=' + orderid
     })
     dataUtil.buriedPoint2({
       sid: appInstance.sid, 

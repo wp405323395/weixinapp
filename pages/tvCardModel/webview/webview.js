@@ -31,6 +31,8 @@ Page({
     let date = new Date().getSeconds();
     url = url + `&sid=${appInstance.sid}&date=${date}&mod=miniapp`
     console.log('网页fff：',url)
+    console.log('卡号：', options.tvCardNum)
+    console.log(`?custid=${options.custid}`)
     this.setData({
       url: url
     })
