@@ -49,6 +49,7 @@ Page({
   //加在优惠券
 
   charge: function() {
+    let that = this;
     charge.charge(this.params, success => {
       wx.requestPayment({
         timeStamp: success.timeStamp,
@@ -58,7 +59,7 @@ Page({
         paySign: success.paySign,
         success(res) {
           wx.redirectTo({
-            url: `/pages/tvCardModel/pay/success/paySuccess?orderid=${this.params}`,
+            url: `/pages/tvCardModel/pay/success/paySuccess?orderid=${success.orderid}`,
           })
           dataUtil.buriedPoint2({
             sid: appInstance.sid,

@@ -16,8 +16,10 @@ Page({
    */
   onLoad: function (options) {
     let orderid = options.orderid
+    let successUrl = config.schema + '://' + config.host + '/s/paysuccess?orderid=' + orderid
+    console.log('支付成功跳转url：',successUrl)
     this.setData({
-      url: config.schema + '://' + config.host + '/s/paysuccess?orderid=' + orderid
+      url: successUrl
     })
     dataUtil.buriedPoint2({
       sid: appInstance.sid, 
