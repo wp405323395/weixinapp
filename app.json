@@ -58,7 +58,7 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "视家TV",
     "backgroundColor": "#ffffff",
-    "backgroundTextStyle": "white"
+    "backgroundTextStyle": "light"
   },
   "debug": false
 }
