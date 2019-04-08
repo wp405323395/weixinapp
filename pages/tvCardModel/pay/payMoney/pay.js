@@ -27,6 +27,7 @@ Page({
       this.params = JSON.parse(decodeURIComponent(this.params))
     }
     console.log('ddd', this.params)
+    this.params.mod = "miniapp";
     this.pay()
   },
   boosFaild: function() {
