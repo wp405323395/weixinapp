@@ -33,6 +33,7 @@ Page({
     } else {
       this.params = JSON.parse(decodeURIComponent(this.params))
     }
+    this.params.mod = "miniapp";
     this.charge()
     //    this.queryActivityImageUrl();
   },
