@@ -3,7 +3,6 @@ var util = require('../../../utils/util.js')
 var config = require('../../../config.js');
 import RequestEngine from '../../../netApi/requestEngine.js';  
 var uploadFileEngin = require('../../../netApi/uploadFiles.js');
-var Promise = require('../../../libs/es6-promise.js').Promise;
 var formatLocation = util.formatLocation
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]

@@ -1,7 +1,6 @@
 // detail.js
 var config = require('../../config.js');
 import RequestEngine from '../../netApi/requestEngine.js';
-var Promise = require('../../libs/es6-promise.js').Promise;
 var util = require('../../utils/util.js');
 import Header from '../../netApi/Header.js'
 var product

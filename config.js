@@ -6,12 +6,12 @@
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 
-var host = 'www.maywidehb.com';
+var host = 'www.juzijumi.com';
 //var host = "192.168.2.113:8080"
-var isHttps = (host == 'www.maywidehb.com')?true:false;
+var isHttps = (host == 'www.juzijumi.com')?true:false;
 var isDebug = true;
 var schema = isHttps ? 'https':'http';
-var srcHost = 'https://www.maywidehb.com/'
+var srcHost = 'https://www.juzijumi.com/'
 var config = {
     // 下面的地址配合云端 Server 工作
     host,
