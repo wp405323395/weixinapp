@@ -9,7 +9,7 @@ Page({
    */
   data: {
     isHidden:true,
-    qrImgUrl: "https://www.maywidehb.com/banner/loading.gif"
+    qrImgUrl: "https://www.juzijumi.com/banner/loading.gif"
   },
   deletePerson:function(id){
     let that = this;

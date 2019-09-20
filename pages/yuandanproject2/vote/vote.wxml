@@ -6,7 +6,7 @@
     <!-- <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button> -->
     <button class='push_page' bindtap='gotocontribution'>提交问卷</button>
   </view>
-  <image class='pic' src='https://www.maywidehb.com/yuandanproject/vote.png'></image>
+  <image class='pic' src='https://www.juzijumi.com/yuandanproject/vote.png'></image>
   <view class='bm'>
     <view class='bm_vote1'>
       <view class='votetitle'>

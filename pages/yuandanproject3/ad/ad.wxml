@@ -15,6 +15,6 @@
     <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button>
     <button class='push_page' bindtap='gotoorder'>立即购买</button>
   </view>
-  <image class='pic' src='https://www.maywidehb.com/yuandanproject/ad.jpg'></image>
+  <image class='pic' src='https://www.juzijumi.com/yuandanproject/ad.jpg'></image>
 
 </view>

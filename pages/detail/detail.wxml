@@ -64,7 +64,7 @@
       <view class="dialog2_content">
         <view class="tickit_content" id="t1">
           <view class="tickit_wrap tickit1" hover-class="tickit_tap">
-            <image src="https://www.maywidehb.com/banner/tickit.png" class="tickit "></image>
+            <image src="https://www.juzijumi.com/banner/tickit.png" class="tickit "></image>
             <view class="tickit_txt_content">
               <view class="tickit_title">
                 <text class="tickit_title1_style">武汉广电优惠券套餐</text>
@@ -84,7 +84,7 @@
         </view>
         <view class="tickit_content" id="t2">
           <view class="tickit_wrap tickit2" hover-class="tickit_tap">
-            <image src="https://www.maywidehb.com/banner/tickit.png" class="tickit"></image>
+            <image src="https://www.juzijumi.com/banner/tickit.png" class="tickit"></image>
             <view class="tickit_txt_content">
               <view class="tickit_title">
                 <text class="tickit_title1_style">武汉广电优惠券套餐</text>

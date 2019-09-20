@@ -2,7 +2,7 @@
 .container{
   width: 100%;
   height: 100%;
-  background-image: url('https://www.maywidehb.com/advert/pindanshouye1.png');
+  background-image: url('https://www.juzijumi.com/advert/pindanshouye1.png');
   background-size: 100% 100%;
   overflow: hidden;
 }
@@ -25,13 +25,13 @@
   margin-top: -30rpx;
 }
 .btn{
-  background-image: url('https://www.maywidehb.com/advert/dandugoumai1.png');
+  background-image: url('https://www.juzijumi.com/advert/dandugoumai1.png');
   width: 170rpx;
   height: 70rpx;
   background-size: 170rpx 70rpx;
 }
 .btn1{
-  background-image: url('https://www.maywidehb.com/advert/pintuan1.png');
+  background-image: url('https://www.juzijumi.com/advert/pintuan1.png');
   width: 170rpx;
   height: 70rpx;
   background-size: 170rpx 70rpx;
@@ -50,7 +50,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://www.maywidehb.com/advert/kaiqihongbao.png');
+  background-image: url('https://www.juzijumi.com/advert/kaiqihongbao.png');
   background-size: 100% 100%; 
   display: flex;
   flex-direction: column;

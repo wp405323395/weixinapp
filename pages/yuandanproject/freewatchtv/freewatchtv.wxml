@@ -3,16 +3,16 @@
   <view class='bottom'>
     <image bindtap='freeWatchTv' class='see_tv_button' src='../../../img/test_see_tv.png'></image>
   </view>
-  <image class='pic' src='https://www.maywidehb.com/advert/free_see_tv.png'></image>
+  <image class='pic' src='https://www.juzijumi.com/advert/free_see_tv.png'></image>
 
 </view> -->
 
 <view class="container">
   <view class='bottom'>
-    <image bindtap='freeWatchTv' class='see_tail' src='https://www.maywidehb.com/advert/free_see_tail.png'></image>
+    <image bindtap='freeWatchTv' class='see_tail' src='https://www.juzijumi.com/advert/free_see_tail.png'></image>
   </view>
   <view class="top">
-    <image class='see_head' src='https://www.maywidehb.com/advert/free_see_head.png'></image>
+    <image class='see_head' src='https://www.juzijumi.com/advert/free_see_head.png'></image>
   </view>
   <view class="six">
     <view class='btn1' bindtap='gotocontribution'>

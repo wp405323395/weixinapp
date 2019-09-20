@@ -17,7 +17,7 @@
     <button class='free_watchtv' disabled='{{isDisable}}' bindtap='gotoseeTv'>免费看电视</button>
     <button class='push_page' bindtap='gotocontribution'>我要捐款</button>
   </view>
-   <image class='pic' src='https://www.maywidehb.com/yuandanproject/test_contribution.png'></image> 
+   <image class='pic' src='https://www.juzijumi.com/yuandanproject/test_contribution.png'></image> 
 
 </view>
 

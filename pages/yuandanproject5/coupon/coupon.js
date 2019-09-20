@@ -9,9 +9,9 @@ Page({
    */
   data: {
     contributionImgList: [
-      'https://www.maywidehb.com/yuandanproject/coupon_1.png',
-      'https://www.maywidehb.com/yuandanproject/coupon_2.png',
-      'https://www.maywidehb.com/yuandanproject/coupon_3.png'
+      'https://www.juzijumi.com/yuandanproject/coupon_1.png',
+      'https://www.juzijumi.com/yuandanproject/coupon_2.png',
+      'https://www.juzijumi.com/yuandanproject/coupon_3.png'
     ],
     ishiddenToast: true,
     isDisable: true

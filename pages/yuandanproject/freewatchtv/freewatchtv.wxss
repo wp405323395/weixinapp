@@ -59,7 +59,7 @@
   align-content: space-between;
 }
 .btn1{
-  background-image: url("https://www.maywidehb.com/advert/free_1.png");
+  background-image: url("https://www.juzijumi.com/advert/free_1.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-bottom: 15rpx;
@@ -67,7 +67,7 @@
   height: 380rpx;
 }
 .btn2{
-  background-image: url("https://www.maywidehb.com/advert/free_2.png");
+  background-image: url("https://www.juzijumi.com/advert/free_2.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-right: 20rpx;
@@ -76,7 +76,7 @@
   height: 380rpx;
 }
 .btn3{
-  background-image: url("https://www.maywidehb.com/advert/free_3.png");
+  background-image: url("https://www.juzijumi.com/advert/free_3.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-bottom: 15rpx;
@@ -84,7 +84,7 @@
   height: 380rpx;
 }
 .btn4{
-  background-image: url("https://www.maywidehb.com/advert/free_4.png");
+  background-image: url("https://www.juzijumi.com/advert/free_4.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-right: 20rpx;
@@ -93,7 +93,7 @@
   height: 380rpx;
 }
 .btn5{
-  background-image: url("https://www.maywidehb.com/advert/free_5.png");
+  background-image: url("https://www.juzijumi.com/advert/free_5.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-bottom: 15rpx;
@@ -101,7 +101,7 @@
   height: 380rpx;
 }
 .btn6{
-  background-image: url("https://www.maywidehb.com/advert/free_6.png");
+  background-image: url("https://www.juzijumi.com/advert/free_6.png");
   background-size: 100%;
   margin-left: 15rpx;
   margin-right: 20rpx;

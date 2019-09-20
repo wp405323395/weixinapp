@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    qrImgUrl: "https://www.maywidehb.com/banner/loading.gif",
+    qrImgUrl: "https://www.juzijumi.com/banner/loading.gif",
     unShow: true,
     isHidden: true,
     isHidden1: true,
@@ -418,7 +418,7 @@ Page({
       return {
         title: '送你一张优惠券，快来领取',
         path: 'pages/detail/detail?shareCoup_coupId=' + that.data.product.relaId + "&id=id-" + that.data.product.id,
-        imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
+        imageUrl: 'https://www.juzijumi.com/banner/complimentary.png',
         success: function (res) {
           if (!util.textIsNull(that.data.product.relaId)) {
             new Promise((resolve, reject) => {
@@ -450,7 +450,7 @@ Page({
       return {
         title: '送你一张优惠券，快来领取',
         path: 'pages/detail/detail?id=id-' + that.data.product.id,
-        imageUrl: 'https://www.maywidehb.com/banner/complimentary.png',
+        imageUrl: 'https://www.juzijumi.com/banner/complimentary.png',
         success: function (res) {
           
         },

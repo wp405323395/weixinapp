@@ -52,7 +52,7 @@
     <text class="item lable" >选择支付方式</text>
     <view bindtap="onWeixinClick" hover-stay-time="50" hover-class="clickDown" class="item">
       <view class="cell1">
-        <image class="pay_lable_img" src="https://www.maywidehb.com/banner/weixinpay.png"/>
+        <image class="pay_lable_img" src="https://www.juzijumi.com/banner/weixinpay.png"/>
         <text>微信支付</text>
       </view>
       
@@ -77,6 +77,6 @@
     <view bindtap="payClick" hover-stay-time="50" hover-class="pay_btn_press" class="pay_btn" >立即支付</view>
   </view>
   <view class='bottom_logo'>
-<image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+<image src="https://www.juzijumi.com/banner/guangdian_logo.png" class='logo_style'></image>
 </view>
 </view>

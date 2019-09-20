@@ -10,7 +10,7 @@
   margin-right: 20rpx; 
   height: 1617rpx;
   margin-bottom: 20rpx;
-  /* background-image: url("https://www.maywidehb.com/yuandanproject/vote_bm1.png");  */
+  /* background-image: url("https://www.juzijumi.com/yuandanproject/vote_bm1.png");  */
   background-size: 100% 1617rpx;
   overflow: hidden;  
 }

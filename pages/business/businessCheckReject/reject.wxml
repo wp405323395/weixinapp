@@ -1,7 +1,7 @@
 <!--reject.wxml-->
 <view class="container">
   <view class="wrap">
-    <image class="reject_img" src="https://www.maywidehb.com/banner/reject.png" mode="widthFix"> </image>
+    <image class="reject_img" src="https://www.juzijumi.com/banner/reject.png" mode="widthFix"> </image>
     <view class="check_again">
       <text class="lable">当前认证未通过审核，</text>
       <!-- view class="item my_coup" id="my_coup" hover-class="clicked_style" bindtap="onClick" -->

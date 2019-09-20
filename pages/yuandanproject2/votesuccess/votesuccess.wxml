@@ -2,7 +2,7 @@
 
 <view class="container">
   
-  <image  class='pic' src='https://www.maywidehb.com/advert/vot_success.png'></image>
+  <image  class='pic' src='https://www.juzijumi.com/advert/vot_success.png'></image>
    <text class='success'>提交成功</text>
   <text class='note'>感谢您参加本次问卷调查，同时获得1天收看时长</text> 
   <text class='goto_detail' bindtap='gotoseeTv'>点击免费看电视</text>

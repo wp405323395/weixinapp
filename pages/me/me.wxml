@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="me_banner" src="https://www.maywidehb.com/banner/me_banner.png"/>
+  <image class="me_banner" src="https://www.juzijumi.com/banner/me_banner.png"/>
   <view class="me_icon">
      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" mod></image>
      <text class="userinfo_nickName">{{userInfo.nickName}}</text>

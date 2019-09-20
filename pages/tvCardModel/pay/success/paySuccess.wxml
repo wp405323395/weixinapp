@@ -1,6 +1,6 @@
 <!--paySuccess.wxml-->
 <view class="container">
-  <image class="okimage" src="https://www.maywidehb.com/banner/pay_success.png"/>
+  <image class="okimage" src="https://www.juzijumi.com/banner/pay_success.png"/>
   <text>订单支付成功</text>
   <button bindtap="onClickOk" class="iknow_btn" size="default">我知道了</button>
 </view>

@@ -20,7 +20,7 @@
 </view>
 <view hidden="{{hidd1||cardInfo.tvCardNumber}}" class="scan_no_cardId">
    
-      <image src="https://www.maywidehb.com/banner/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
+      <image src="https://www.juzijumi.com/banner/no_map_cardId.png" class="no_data_img" mode="widthFix"></image>
       <view class="text_wrap">
         <text>您的微信号暂无有线电视账号记录</text>
       </view>
@@ -51,7 +51,7 @@
     <button class="nex_btn" hover-class="nex_btn_tap" bindtap='onSearchMore'>搜索新账号</button>
 </view>
 <view class='bottom_logo'>
-<image src="https://www.maywidehb.com/banner/guangdian_logo.png" class='logo_style'></image>
+<image src="https://www.juzijumi.com/banner/guangdian_logo.png" class='logo_style'></image>
 </view>
 
 </view>

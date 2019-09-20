@@ -3,6 +3,6 @@
   <view class='bottom'>
     <button class='push_page' bindtap='gotoseeTv'>免费看电视</button>
   </view> 
-  <image class='pic' src='https://www.maywidehb.com/yuandanproject/adordersuccess.png'></image>
+  <image class='pic' src='https://www.juzijumi.com/yuandanproject/adordersuccess.png'></image>
 </view>
 
